@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayerNormalState" load_steps=2 format=3 uid="uid://16vy8xvffbhf"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerNormalState.cs" id="1_5pecg"]
+
+[resource]
+script = ExtResource("1_5pecg")
+jumpVelocity = 180.0
+speed = 80.0
+accel = 600.0
+airAccel = 220.0
+normalGravScale = 1.0
+risingGravScale = 1.4
+fallingGravScale = 1.1
+shortHopGravScale = 2.0
+riseThresh = 50.0
+fallThresh = -10.0
+fallSpeedMax = 0.0

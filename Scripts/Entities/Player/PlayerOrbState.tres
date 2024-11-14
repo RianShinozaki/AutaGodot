@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PlayerOrbState" load_steps=2 format=3 uid="uid://dxnboyk6amndt"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerOrbState.cs" id="1_ectn5"]
+
+[resource]
+script = ExtResource("1_ectn5")
+speed = 130.0
+initSpeed = 150.0
+accel = 80.0
+initYSpeed = 30.0
+minBounceSpeed = 0.0
+minOrbTime = 0.5
+bounce = 0.8
+normalGravScale = 1.0
+drag = 0.0
+dragApplyMinThresh = 0.0
+initialGravScale = 0.2
+gravityMultWaitTime = 0.25
+exitYSpeed = 0.0
+exitMoveSpeed = 75.0
