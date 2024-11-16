@@ -35,10 +35,13 @@ enabled=PackedStringArray("res://addons/YouCanDoIt/plugin.cfg", "res://addons/gl
 
 folder_colors={
 "res://Art Assets/": "pink",
+"res://Assets/": "yellow",
 "res://Objects/": "red",
 "res://Scenes/": "blue",
 "res://Scripts/": "teal",
-"res://Tilesets/": "orange"
+"res://Shaders/": "purple",
+"res://Tilesets/": "orange",
+"res://addons/": "yellow"
 }
 
 [input]
