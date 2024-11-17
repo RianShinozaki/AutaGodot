@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=40 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Resource" uid="uid://16vy8xvffbhf" path="res://Scripts/Entities/Player/PlayerNormalState.tres" id="2_dfh58"]
 [ext_resource type="Resource" uid="uid://dxnboyk6amndt" path="res://Scripts/Entities/Player/PlayerOrbState.tres" id="3_7s3fs"]
-[ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="3_sacqp"]
+[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="4_25evr"]
+[ext_resource type="Texture2D" uid="uid://b572get7u4s24" path="res://Art Assets/Characters/Auta/Auta1.tres" id="4_46p0d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2kcwi"]
 friction = 0.0
@@ -266,9 +267,11 @@ shape = SubResource("SegmentShape2D_6w6ih")
 target_position = Vector2(0, 10)
 
 [node name="Art" type="Sprite2D" parent="."]
+light_mask = 2
 texture_filter = 1
+material = ExtResource("4_25evr")
 rotation = -0.00265226
-texture = ExtResource("3_sacqp")
+texture = ExtResource("4_46p0d")
 offset = Vector2(0, -8)
 hframes = 8
 vframes = 4
