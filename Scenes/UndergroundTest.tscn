@@ -268,13 +268,14 @@ position = Vector2(1006, -199)
 scale = Vector2(1.0759, 2.28122)
 script = ExtResource("3_8b71m")
 cam = NodePath("../../../Camera2D")
-ScrollScale = 1.4
+ScrollScale = 0.8
 
 [node name="PlayerLight" type="PointLight2D" parent="Lighting/RuinKing/Sunspots"]
 light_mask = 2
 position = Vector2(235.055, -565.29)
 rotation = 0.261799
 scale = Vector2(5.32765, 11.2376)
+color = Color(0.686849, 0.755539, 0.711004, 1)
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 4096
@@ -282,29 +283,51 @@ texture = SubResource("GradientTexture2D_k05vl")
 offset = Vector2(-15.255, 35.69)
 
 [node name="SunBeamIlluminator" type="PointLight2D" parent="Lighting/RuinKing/Sunspots"]
+modulate = Color(0.3142, 0.286255, 0.344626, 1)
 light_mask = 4096
-position = Vector2(281.16, -552.937)
-rotation = 0.261799
+position = Vector2(321.591, -319.566)
+rotation = 0.426343
 scale = Vector2(6.33771, 11.2376)
+color = Color(0.363664, 0.772646, 0.951656, 1)
 range_item_cull_mask = 4096
 shadow_enabled = true
+shadow_color = Color(0.117647, 0, 0.278431, 0.701961)
 shadow_item_cull_mask = 4096
 texture = SubResource("GradientTexture2D_k05vl")
 offset = Vector2(-15.255, 35.69)
 
 [node name="SunBeam" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
+modulate = Color(0.3142, 0.286255, 0.344626, 1)
 light_mask = 4096
 position = Vector2(16.2722, -54.7347)
-rotation = 0.832768
-scale = Vector2(0.732633, 0.84338)
+rotation = 0.629793
+scale = Vector2(0.415682, 1.17342)
+texture = ExtResource("8_dxns2")
+
+[node name="SunBeam3" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
+modulate = Color(0.3142, 0.286255, 0.344626, 1)
+light_mask = 4096
+position = Vector2(16.2722, -54.7347)
+rotation = 0.629793
+scale = Vector2(0.415682, 1.17342)
 texture = ExtResource("8_dxns2")
 
 [node name="SunBeam2" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
+modulate = Color(0.3142, 0.286255, 0.344626, 1)
 light_mask = 4096
 material = SubResource("CanvasItemMaterial_omag2")
-position = Vector2(113.89, -18.0518)
-rotation = 3.97411
-scale = Vector2(0.773365, 0.832401)
+position = Vector2(120.829, 10.0823)
+rotation = 3.77114
+scale = Vector2(0.431877, 0.832401)
+texture = ExtResource("8_dxns2")
+
+[node name="SunBeam4" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
+modulate = Color(0.3142, 0.286255, 0.344626, 1)
+light_mask = 4096
+material = SubResource("CanvasItemMaterial_omag2")
+position = Vector2(46.4727, -10.959)
+rotation = 3.77114
+scale = Vector2(0.431877, 0.832401)
 texture = ExtResource("8_dxns2")
 
 [node name="SwordShadowCaster" type="LightOccluder2D" parent="Lighting/RuinKing"]
