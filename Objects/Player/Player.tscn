@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=41 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Resource" uid="uid://16vy8xvffbhf" path="res://Scripts/Entities/Player/PlayerNormalState.tres" id="2_dfh58"]
@@ -244,6 +244,9 @@ graph_offset = Vector2(-108, -202)
 [sub_resource type="CircleShape2D" id="CircleShape2D_cjpgg"]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5red"]
+radius = 16.0
+
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("shapeCast")]
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_2kcwi")
@@ -294,6 +297,15 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_cjpgg")
+
+[node name="DistanceArea" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DistanceArea"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_w5red")
+debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]

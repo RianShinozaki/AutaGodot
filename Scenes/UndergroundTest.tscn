@@ -1,28 +1,89 @@
-[gd_scene load_steps=32 format=4 uid="uid://dqhj0wgykakyv"]
+[gd_scene load_steps=44 format=4 uid="uid://dqhj0wgykakyv"]
 
 [ext_resource type="TileSet" uid="uid://biyk13yov233s" path="res://Tilesets/Underground/WarpTerminal.tres" id="1_v8e8d"]
-[ext_resource type="Texture2D" uid="uid://b3un0exndk8xt" path="res://Art Assets/Effects/Lighting/ProceduralGradient.tres" id="2_skk6o"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_ka7ya"]
 [ext_resource type="Texture2D" uid="uid://dngcdgbrkta54" path="res://Art Assets/Environment/Underground/Backgrounds/bg_Cave.png" id="2_y4v6p"]
+[ext_resource type="Material" uid="uid://dilj3elssfbc4" path="res://Art Assets/Materials/2D_Unlit_Additive.tres" id="2_yv5pd"]
 [ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Art Assets/Environment/Underground/Backgrounds/spr_RockyBG_TC.png" id="3_0vrvh"]
 [ext_resource type="Script" path="res://Scripts/System/ParallaxController.cs" id="3_8b71m"]
 [ext_resource type="Script" path="res://Scripts/GameCamera.cs" id="4_8l3m5"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Player/Player.tscn" id="5_8h4d0"]
-[ext_resource type="Texture2D" uid="uid://1o1ruju5e1bf" path="res://Art Assets/Effects/Lighting/ProceduralGradient-Full.tres" id="5_varqv"]
+[ext_resource type="Texture2D" uid="uid://1o1ruju5e1bf" path="res://Art Assets/Effects/Lighting/ProceduralGradient.tres" id="5_varqv"]
 [ext_resource type="PackedScene" uid="uid://c2jdfhmn0xuo0" path="res://Objects/Effects/Lighting/point_light_2d.tscn" id="6_deaf2"]
 [ext_resource type="Texture2D" uid="uid://kfb0yyq3vsv" path="res://Art Assets/Characters/Misc/Ruin King Big.png" id="6_dnser"]
-[ext_resource type="PackedScene" uid="uid://d3g30r1oyug18" path="res://Objects/Effects/Lighting/gradient_light.tscn" id="6_rfeec"]
 [ext_resource type="Shader" path="res://Shaders/2D-Default.gdshader" id="7_nr8ah"]
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="8_dxns2"]
 [ext_resource type="Texture2D" uid="uid://wcidcfa3acbr" path="res://Art Assets/Characters/Misc/Ruin King Big_n.png" id="9_1uqmv"]
+[ext_resource type="Script" path="res://Scripts/System/EnableOnPlayerTrigger.cs" id="9_shr3j"]
+[ext_resource type="Texture2D" uid="uid://buunjhvp223al" path="res://Art Assets/Effects/Lighting/ProceduralGradient-FlourescentBulb.tres" id="10_73mgt"]
+[ext_resource type="Texture2D" uid="uid://cq2qdga0sfka8" path="res://Art Assets/Effects/Lighting/ProceduralGradient-SolidBottom.tres" id="10_dndv7"]
 
-[sub_resource type="Gradient" id="Gradient_hx00e"]
-offsets = PackedFloat32Array(0, 0.704698)
+[sub_resource type="Environment" id="Environment_etjc1"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 0.65
+glow_enabled = true
+glow_intensity = 1.12
+glow_strength = 0.57
+glow_bloom = 0.7
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 21.95
+adjustment_enabled = true
+adjustment_contrast = 0.95
+adjustment_saturation = 1.25
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ggvaq"]
+blend_mode = 4
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjmet"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_hswq2"]
+offsets = PackedFloat32Array(0, 0.681979)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ohe2"]
-gradient = SubResource("Gradient_hx00e")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uanf8"]
+gradient = SubResource("Gradient_hswq2")
+fill = 1
+fill_from = Vector2(0.523077, 0.487179)
+
+[sub_resource type="Gradient" id="Gradient_25qwu"]
+offsets = PackedFloat32Array(0.0136519, 0.221843, 0.784983, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.407843, 1, 1, 1, 0.337255, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x250t"]
+radius = 34.0
+
+[sub_resource type="Gradient" id="Gradient_yw4eh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ktnra"]
+gradient = SubResource("Gradient_yw4eh")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hgvi7"]
+radius = 22.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8dd8"]
+radius = 45.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5i31"]
+size = Vector2(57, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llho3"]
+size = Vector2(211, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doiaf"]
+size = Vector2(28, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10dt1"]
+size = Vector2(11.5, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d5bg"]
+size = Vector2(62.75, 13.5)
 
 [sub_resource type="Gradient" id="Gradient_iagbf"]
 offsets = PackedFloat32Array(0.763158, 1)
@@ -47,8 +108,8 @@ light_mode = 2
 polygon = PackedVector2Array(76, 15, -73, -46, -75, -46, -73, -47, 30, -6)
 
 [sub_resource type="Gradient" id="Gradient_qgkbr"]
-offsets = PackedFloat32Array(0, 0.423077, 1)
-colors = PackedColorArray(0.136826, 0.136826, 0.136826, 1, 0.343462, 0.343462, 0.343462, 1, 0.726496, 0.726496, 0.726496, 1)
+offsets = PackedFloat32Array(0, 0.700855)
+colors = PackedColorArray(0.136826, 0.136826, 0.136826, 1, 0.726496, 0.726496, 0.726496, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7l1eo"]
 gradient = SubResource("Gradient_qgkbr")
@@ -64,36 +125,6 @@ normal_texture = ExtResource("9_1uqmv")
 texture_filter = 1
 texture_repeat = 1
 
-[sub_resource type="Environment" id="Environment_etjc1"]
-background_mode = 3
-tonemap_mode = 2
-tonemap_exposure = 0.65
-glow_enabled = true
-glow_intensity = 1.12
-glow_strength = 0.57
-glow_bloom = 0.7
-glow_blend_mode = 0
-glow_hdr_luminance_cap = 21.95
-adjustment_enabled = true
-adjustment_contrast = 0.95
-adjustment_saturation = 1.25
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjmet"]
-blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_hswq2"]
-offsets = PackedFloat32Array(0, 0.681979)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_uanf8"]
-gradient = SubResource("Gradient_hswq2")
-fill = 1
-fill_from = Vector2(0.523077, 0.487179)
-
-[sub_resource type="Gradient" id="Gradient_25qwu"]
-offsets = PackedFloat32Array(0.0136519, 0.221843, 0.784983, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.407843, 1, 1, 1, 0.337255, 1, 1, 1, 0)
-
 [node name="Node2D" type="CanvasModulate"]
 color = Color(0.4539, 0.3417, 0.51, 1)
 
@@ -101,224 +132,6 @@ color = Color(0.4539, 0.3417, 0.51, 1)
 zoom = Vector2(2, 2)
 script = ExtResource("4_8l3m5")
 target = NodePath("../Entities/Player")
-
-[node name="Lighting" type="Node2D" parent="."]
-
-[node name="Baubles" type="Node2D" parent="Lighting"]
-
-[node name="PointLight2D" parent="Lighting/Baubles" instance=ExtResource("6_deaf2")]
-
-[node name="PointLight2D" parent="Lighting/Baubles/PointLight2D" instance=ExtResource("6_deaf2")]
-position = Vector2(420, 146)
-
-[node name="PointLight2D2" parent="Lighting/Baubles/PointLight2D" instance=ExtResource("6_deaf2")]
-position = Vector2(595, 145)
-
-[node name="PointLight2D3" parent="Lighting/Baubles/PointLight2D" instance=ExtResource("6_deaf2")]
-position = Vector2(520, 134)
-
-[node name="PointLight2D5" parent="Lighting/Baubles/PointLight2D" instance=ExtResource("6_deaf2")]
-position = Vector2(520, 134)
-
-[node name="PointLight2D6" parent="Lighting/Baubles/PointLight2D" instance=ExtResource("6_deaf2")]
-position = Vector2(675, 144)
-
-[node name="WRONG_ON_PURPOSE" parent="Lighting/Baubles/PointLight2D" instance=ExtResource("6_deaf2")]
-position = Vector2(648, 125)
-
-[node name="PointLight2D2" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(459, -128)
-color = Color(1, 0.258824, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D3" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(300, -79)
-color = Color(1, 0.258824, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D5" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(88, -101)
-color = Color(1, 0.258824, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D4" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(188, -80)
-color = Color(1, 0.258824, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D6" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(246, -71)
-color = Color(0, 0.786792, 0.203262, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D7" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(309, -87)
-color = Color(0, 0.786792, 0.203262, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D11" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(794, 7)
-color = Color(0, 0.786792, 0.203262, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D12" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(887, 25)
-color = Color(0, 0.786792, 0.203262, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D13" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(903, 9)
-color = Color(0, 0.786792, 0.203262, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D14" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(1049, 10)
-color = Color(0, 0.786792, 0.203262, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D8" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(452, -118)
-color = Color(0.340825, 0.669863, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D9" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(294, -69)
-color = Color(0.340825, 0.669863, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D15" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(853, 27)
-color = Color(0.340825, 0.669863, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D16" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(980, 25)
-color = Color(0.340825, 0.669863, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="PointLight2D10" type="PointLight2D" parent="Lighting/Baubles"]
-position = Vector2(182, -70)
-color = Color(0.340825, 0.669863, 1, 1)
-texture = SubResource("GradientTexture2D_1ohe2")
-
-[node name="LEDs" type="Node2D" parent="Lighting"]
-
-[node name="GradientLight3" parent="Lighting" instance=ExtResource("6_rfeec")]
-position = Vector2(400, -108)
-rotation = 0.0142748
-scale = Vector2(0.85, 1.328)
-color = Color(0.943327, 0.349181, 0.437853, 1)
-energy = 1.0
-texture = ExtResource("2_skk6o")
-offset = Vector2(0, 32)
-
-[node name="Gradient" parent="Lighting/GradientLight3" index="0"]
-modulate = Color(0.701942, 0.240861, 0.496024, 0.192157)
-position = Vector2(0, 32)
-texture = ExtResource("2_skk6o")
-flip_v = true
-
-[node name="GradientLight2" parent="Lighting" instance=ExtResource("6_rfeec")]
-modulate = Color(0.913725, 0.337255, 0.407843, 0.431373)
-position = Vector2(404.332, -12.87)
-rotation = -6.49859e-06
-scale = Vector2(2.87472, 0.46338)
-color = Color(0.814237, 0.243309, 0.662695, 1)
-energy = 1.0
-texture = ExtResource("2_skk6o")
-offset = Vector2(0, -32)
-
-[node name="RuinKing" type="Node2D" parent="Lighting"]
-
-[node name="FootLight" parent="Lighting/RuinKing" instance=ExtResource("6_deaf2")]
-position = Vector2(987, -7.57578)
-scale = Vector2(0.296875, 0.234375)
-energy = 0.6
-range_item_cull_mask = 1026
-texture = ExtResource("5_varqv")
-offset = Vector2(0, -33.81)
-
-[node name="RingLight" type="PointLight2D" parent="Lighting/RuinKing"]
-self_modulate = Color(0.580392, 0.435294, 0.65098, 1)
-light_mask = 1024
-position = Vector2(986, -171)
-rotation = 0.446483
-scale = Vector2(3.10959, 0.826266)
-skew = -0.429433
-color = Color(0.580392, 0.435294, 0.65098, 1)
-range_item_cull_mask = 1024
-shadow_item_cull_mask = 1024
-texture = SubResource("GradientTexture2D_ekirq")
-offset = Vector2(0, 92.82)
-
-[node name="FeetShadow" type="PointLight2D" parent="Lighting/RuinKing"]
-modulate = Color(0.780392, 0.670588, 0.635294, 0.196078)
-position = Vector2(917, 26)
-rotation = -2.60693
-scale = Vector2(2.13185, 1.23374)
-energy = 0.4
-blend_mode = 1
-range_item_cull_mask = 2048
-shadow_item_cull_mask = 2048
-texture = ExtResource("5_varqv")
-offset = Vector2(0, 59.77)
-
-[node name="Sunspots" type="Node2D" parent="Lighting/RuinKing" node_paths=PackedStringArray("cam")]
-position = Vector2(1006, -199)
-scale = Vector2(1.0759, 2.28122)
-script = ExtResource("3_8b71m")
-cam = NodePath("../../../Camera2D")
-ScrollScale = 1.4
-
-[node name="PlayerLight" type="PointLight2D" parent="Lighting/RuinKing/Sunspots"]
-light_mask = 2
-position = Vector2(235.055, -565.29)
-rotation = 0.261799
-scale = Vector2(5.32765, 11.2376)
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 4096
-texture = SubResource("GradientTexture2D_k05vl")
-offset = Vector2(-15.255, 35.69)
-
-[node name="SunBeamIlluminator" type="PointLight2D" parent="Lighting/RuinKing/Sunspots"]
-light_mask = 4096
-position = Vector2(281.16, -552.937)
-rotation = 0.261799
-scale = Vector2(6.33771, 11.2376)
-range_item_cull_mask = 4096
-shadow_enabled = true
-shadow_item_cull_mask = 4096
-texture = SubResource("GradientTexture2D_k05vl")
-offset = Vector2(-15.255, 35.69)
-
-[node name="SunBeam" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
-light_mask = 4096
-position = Vector2(16.2722, -54.7347)
-rotation = 0.832768
-scale = Vector2(0.732633, 0.84338)
-texture = ExtResource("8_dxns2")
-
-[node name="SunBeam2" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
-light_mask = 4096
-material = SubResource("CanvasItemMaterial_omag2")
-position = Vector2(113.89, -18.0518)
-rotation = 3.97411
-scale = Vector2(0.773365, 0.832401)
-texture = ExtResource("8_dxns2")
-
-[node name="SwordShadowCaster" type="LightOccluder2D" parent="Lighting/RuinKing"]
-light_mask = 4096
-position = Vector2(974, -63)
-occluder = SubResource("OccluderPolygon2D_bl4xu")
-occluder_light_mask = 4096
-
-[node name="RuinKing" type="Sprite2D" parent="Lighting/RuinKing"]
-light_mask = 3072
-texture_filter = 1
-material = SubResource("ShaderMaterial_vw4rb")
-position = Vector2(974, -63)
-texture = SubResource("CanvasTexture_x7eyc")
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -340,6 +153,13 @@ texture_filter = 1
 position = Vector2(46, -13)
 texture = ExtResource("2_y4v6p")
 
+[node name="BgCave2" type="Sprite2D" parent="Environment/Backgrounds/Stalagtites"]
+modulate = Color(0.54902, 0.45098, 0.698039, 1)
+z_index = -100
+texture_filter = 1
+position = Vector2(1198, -13)
+texture = ExtResource("2_y4v6p")
+
 [node name="CaveWall" type="Parallax2D" parent="Environment/Backgrounds"]
 modulate = Color(0.273142, 0.273142, 0.273142, 1)
 z_index = -101
@@ -351,6 +171,12 @@ repeat_times = 8
 z_index = -100
 texture_filter = 1
 position = Vector2(46, -13)
+texture = ExtResource("3_0vrvh")
+
+[node name="BgCave2" type="Sprite2D" parent="Environment/Backgrounds/CaveWall"]
+z_index = -100
+texture_filter = 1
+position = Vector2(1774, -13)
 texture = ExtResource("3_0vrvh")
 
 [node name="Tiles" type="Node2D" parent="Environment"]
@@ -373,7 +199,13 @@ tile_set = ExtResource("1_v8e8d")
 
 [node name="Decor" type="TileMapLayer" parent="Environment"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAXAPn/AAAOAAUAAAAYAPn/AAAPAAUAAAAaAPn/AAARAAUAAAAXAPj/AAAOAAQAAAAXAPf/AAAOAAQAAAAXAPb/AAAOAAQAAAAOAP7/AAANAAYAAAAPAP7/AAANAAcAAAAQAP7/AAANAAYAAAARAP7/AAAMAAcAAAASAP7/AAAMAAYAAAATAP7/AAANAAUAAAAUAP7/AAAMAAUAAAAVAP7/AAANAAYAAAAWAP7/AAAMAAUAAAAXAP7/AAANAAcAAAAYAP7/AAANAAUAAAAZAP7/AAAAAAAAAAAaAP7/AAANAAYAAAAbAP7/AAAMAAUAAAAcAP7/AAAAAAAAAAABAP//AAAMAAcAAAACAP//AAANAAYAAAADAP//AAANAAcAAAAEAP//AAANAAUAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAANAAYAAAASAPr/AAAeABAAAAASAPv/AAAeABEAAAAcAPf/AAAeABAAAAAcAPj/AAAeABEAAAALAPr/AAAeABAAAAALAPv/AAAeABEAAAACAPj/AAAeABAAAAACAPn/AAAeABEAAAAFAPj/AAAcABAAAAAFAPn/AAAcABEAAAAVAPf/AAAcABAAAAAVAPj/AAAcABEAAAATAPn/AAAfABAAAAATAPr/AAAfABEAAAAPAPr/AAAfABAAAAAPAPv/AAAfABEAAAAZAPn/AAAQAAUAAAAaAPf/AAAOAAQAAAAaAPj/AAAOAAQAAAAfAAAAAAAQAAoAAAAgAAAAAAAQAAoAAAAhAAAAAAAQAAoAAAAiAAAAAAAQAAoAAAAjAAAAAAAQAAoAAAAkAAAAAAAQAAoAAAAlAAAAAAAQAAoAAAAhAP//AAAMAAYAAAAkAP//AAANAAYAAAAjAP//AAANAAUAAAA6AAAAAAAcABAAAAA6AAEAAAAcABEAAAA/AAAAAAAcABAAAAA/AAEAAAAcABEAAAAvAAAAAAAcABAAAAAvAAEAAAAcABEAAAA1AAAAAAAeABAAAAA1AAEAAAAeABEAAAA9AAAAAAAeABAAAAA3AAAAAAAfABAAAAA3AAEAAAAfABEAAAA4AAAAAAAfABEAAAAxAAAAAAAfABEAAABBAAAAAAAfABEAAAA9AAEAAAAeABEAAAA=")
+tile_map_data = PackedByteArray("AAAXAPn/AAAOAAUAAAAYAPn/AAAPAAUAAAAaAPn/AAARAAUAAAAXAPj/AAAOAAQAAAAXAPf/AAAOAAQAAAAXAPb/AAAOAAQAAAAOAP7/AAANAAYAAAAPAP7/AAANAAcAAAAQAP7/AAANAAYAAAARAP7/AAAMAAcAAAASAP7/AAAMAAYAAAATAP7/AAANAAUAAAAUAP7/AAAMAAUAAAAVAP7/AAANAAYAAAAWAP7/AAAMAAUAAAAXAP7/AAANAAcAAAAYAP7/AAANAAUAAAAZAP7/AAAAAAAAAAAaAP7/AAANAAYAAAAbAP7/AAAMAAUAAAAcAP7/AAAAAAAAAAABAP//AAAMAAcAAAACAP//AAANAAYAAAADAP//AAANAAcAAAAEAP//AAANAAUAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAANAAYAAAAZAPn/AAAQAAUAAAAaAPf/AAAOAAQAAAAaAPj/AAAOAAQAAAAhAP//AAAMAAYAAAAkAP//AAANAAYAAAAjAP//AAANAAUAAAA=")
+tile_set = ExtResource("1_v8e8d")
+
+[node name="Decor-Unlit" type="TileMapLayer" parent="Environment"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_ggvaq")
+tile_map_data = PackedByteArray("AAASAPr/AAAeABAAAAASAPv/AAAeABEAAAAcAPf/AAAeABAAAAAcAPj/AAAeABEAAAALAPr/AAAeABAAAAALAPv/AAAeABEAAAACAPj/AAAeABAAAAACAPn/AAAeABEAAAAFAPj/AAAcABAAAAAFAPn/AAAcABEAAAAVAPf/AAAcABAAAAAVAPj/AAAcABEAAAATAPn/AAAfABAAAAATAPr/AAAfABEAAAAPAPr/AAAfABAAAAAPAPv/AAAfABEAAAA6AAAAAAAcABAAAAA6AAEAAAAcABEAAAA/AAAAAAAcABAAAAA/AAEAAAAcABEAAAAvAAAAAAAcABAAAAAvAAEAAAAcABEAAAA1AAAAAAAeABAAAAA1AAEAAAAeABEAAAA9AAAAAAAeABAAAAA3AAAAAAAfABAAAAA3AAEAAAAfABEAAAA4AAAAAAAfABEAAAAxAAAAAAAfABEAAABBAAAAAAAfABEAAAA9AAEAAAAeABEAAAA=")
 tile_set = ExtResource("1_v8e8d")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Environment"]
@@ -396,7 +228,660 @@ script = ExtResource("3_8b71m")
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("5_8h4d0")]
-position = Vector2(883, -33)
+position = Vector2(399, -72)
 
-[editable path="Lighting/GradientLight3"]
+[node name="CollisionShape2D" parent="Entities/Player" index="0"]
+visible = false
+
+[node name="GroundCastPivot" parent="Entities/Player" index="1"]
+visible = false
+
+[node name="Hurtbox" parent="Entities/Player" index="3"]
+visible = false
+
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="Baubles" type="Node2D" parent="Lighting"]
+
+[node name="RuinKingBaubles" type="Node2D" parent="Lighting/Baubles"]
+position = Vector2(892, -16)
+
+[node name="Pink" type="Node2D" parent="Lighting/Baubles/RuinKingBaubles"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Pink"]
+self_modulate = Color(1, 0.682353, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(-133, 42)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Pink"]
+self_modulate = Color(1, 0.682353, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(-33, 31)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Pink"]
+self_modulate = Color(1, 0.682353, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(43, 42)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Pink"]
+self_modulate = Color(1, 0.682353, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(95, 31)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Pink"]
+self_modulate = Color(1, 0.682353, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(95, 13)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Pink"]
+self_modulate = Color(1, 0.682353, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(123, 42)
+texture = ExtResource("2_ka7ya")
+
+[node name="Blue" type="Node2D" parent="Lighting/Baubles/RuinKingBaubles"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Blue"]
+self_modulate = Color(0, 0.686275, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(-39, 42)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Blue"]
+self_modulate = Color(0, 0.686275, 1, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(89, 42)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ka7ya")
+
+[node name="Green" type="Node2D" parent="Lighting/Baubles/RuinKingBaubles"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Green"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(-100, 25)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Green"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(-4, 41)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Green"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(12, 25)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Lighting/Baubles/RuinKingBaubles/Green"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.117647)
+material = ExtResource("2_yv5pd")
+position = Vector2(156, 25)
+texture = ExtResource("2_ka7ya")
+
+[node name="Pink" type="Node2D" parent="Lighting/Baubles"]
+
+[node name="Art" type="Node2D" parent="Lighting/Baubles/Pink"]
+
+[node name="Sprite2D7" type="Sprite2D" parent="Lighting/Baubles/Pink/Art"]
+self_modulate = Color(1, 0.682353, 1, 0.188235)
+material = ExtResource("2_yv5pd")
+position = Vector2(43, -113)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Lighting/Baubles/Pink/Art"]
+self_modulate = Color(1, 0.682353, 1, 0.188235)
+material = ExtResource("2_yv5pd")
+position = Vector2(87, -102)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Lighting/Baubles/Pink/Art"]
+self_modulate = Color(1, 0.682353, 1, 0.188235)
+material = ExtResource("2_yv5pd")
+position = Vector2(187, -81)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Lighting/Baubles/Pink/Art"]
+self_modulate = Color(1, 0.682353, 1, 0.188235)
+material = ExtResource("2_yv5pd")
+position = Vector2(299, -81)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Lighting/Baubles/Pink/Art"]
+self_modulate = Color(1, 0.682353, 1, 0.188235)
+material = ExtResource("2_yv5pd")
+position = Vector2(343, -118)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Lighting/Baubles/Pink/Art"]
+self_modulate = Color(1, 0.682353, 1, 0.188235)
+material = ExtResource("2_yv5pd")
+position = Vector2(459, -129)
+texture = ExtResource("2_ka7ya")
+
+[node name="Area2D" type="Area2D" parent="Lighting/Baubles/Pink" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(42, -113)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Pink/Area2D"]
+shape = SubResource("CircleShape2D_x250t")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting/Baubles/Pink/Area2D"]
+position = Vector2(1, 0)
+color = Color(1, 0.521569, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.75
+
+[node name="Area2D2" type="Area2D" parent="Lighting/Baubles/Pink" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(86, -102)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D2")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Pink/Area2D2"]
+shape = SubResource("CircleShape2D_x250t")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lighting/Baubles/Pink/Area2D2"]
+position = Vector2(1, 0)
+color = Color(1, 0.521569, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.75
+
+[node name="Area2D3" type="Area2D" parent="Lighting/Baubles/Pink" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(186, -81)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D3")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Pink/Area2D3"]
+shape = SubResource("CircleShape2D_x250t")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lighting/Baubles/Pink/Area2D3"]
+position = Vector2(1, 0)
+color = Color(1, 0.521569, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.75
+
+[node name="Area2D4" type="Area2D" parent="Lighting/Baubles/Pink" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(298, -81)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D4")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Pink/Area2D4"]
+shape = SubResource("CircleShape2D_x250t")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lighting/Baubles/Pink/Area2D4"]
+position = Vector2(1, 0)
+color = Color(1, 0.521569, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.75
+
+[node name="Area2D5" type="Area2D" parent="Lighting/Baubles/Pink" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(342, -118)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D5")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Pink/Area2D5"]
+shape = SubResource("CircleShape2D_x250t")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="PointLight2D5" type="PointLight2D" parent="Lighting/Baubles/Pink/Area2D5"]
+position = Vector2(1, 0)
+color = Color(1, 0.521569, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.75
+
+[node name="Area2D6" type="Area2D" parent="Lighting/Baubles/Pink" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(458, -129)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D6")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Pink/Area2D6"]
+shape = SubResource("CircleShape2D_x250t")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="PointLight2D6" type="PointLight2D" parent="Lighting/Baubles/Pink/Area2D6"]
+position = Vector2(1, 0)
+color = Color(1, 0.521569, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.75
+
+[node name="Blue" type="Node2D" parent="Lighting/Baubles"]
+
+[node name="Art" type="Node2D" parent="Lighting/Baubles/Blue"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Lighting/Baubles/Blue/Art"]
+self_modulate = Color(0, 0.686275, 1, 0.137255)
+material = ExtResource("2_yv5pd")
+position = Vector2(37, -102)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Lighting/Baubles/Blue/Art"]
+self_modulate = Color(0, 0.686275, 1, 0.137255)
+material = ExtResource("2_yv5pd")
+position = Vector2(181, -70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Lighting/Baubles/Blue/Art"]
+self_modulate = Color(0, 0.686275, 1, 0.137255)
+material = ExtResource("2_yv5pd")
+position = Vector2(293, -70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Lighting/Baubles/Blue/Art"]
+self_modulate = Color(0, 0.686275, 1, 0.137255)
+material = ExtResource("2_yv5pd")
+position = Vector2(453, -118)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ka7ya")
+
+[node name="Area2D" type="Area2D" parent="Lighting/Baubles/Blue" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(37, -102)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D7")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Blue/Area2D"]
+shape = SubResource("CircleShape2D_hgvi7")
+debug_color = Color(0, 0.678431, 0.772549, 0.419608)
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lighting/Baubles/Blue/Area2D"]
+color = Color(0, 0.705882, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.5
+
+[node name="Area2D2" type="Area2D" parent="Lighting/Baubles/Blue" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(181, -70)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D8")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Blue/Area2D2"]
+shape = SubResource("CircleShape2D_hgvi7")
+debug_color = Color(0, 0.678431, 0.772549, 0.419608)
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lighting/Baubles/Blue/Area2D2"]
+color = Color(0, 0.705882, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.5
+
+[node name="Area2D3" type="Area2D" parent="Lighting/Baubles/Blue" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(293, -70)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D9")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Blue/Area2D3"]
+shape = SubResource("CircleShape2D_hgvi7")
+debug_color = Color(0, 0.678431, 0.772549, 0.419608)
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lighting/Baubles/Blue/Area2D3"]
+color = Color(0, 0.705882, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.5
+
+[node name="Area2D4" type="Area2D" parent="Lighting/Baubles/Blue" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(453, -118)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("../../Pink/Area2D6/PointLight2D6")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Blue/Area2D4"]
+shape = SubResource("CircleShape2D_hgvi7")
+debug_color = Color(0, 0.678431, 0.772549, 0.419608)
+
+[node name="PointLight2D10" type="PointLight2D" parent="Lighting/Baubles/Blue/Area2D4"]
+color = Color(0, 0.705882, 1, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+texture_scale = 0.5
+
+[node name="Green" type="Node2D" parent="Lighting/Baubles"]
+
+[node name="Art" type="Node2D" parent="Lighting/Baubles/Green"]
+
+[node name="Sprite2D5" type="Sprite2D" parent="Lighting/Baubles/Green/Art"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.168627)
+material = ExtResource("2_yv5pd")
+position = Vector2(1048, 9)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Lighting/Baubles/Green/Art"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.168627)
+material = ExtResource("2_yv5pd")
+position = Vector2(248, -71)
+texture = ExtResource("2_ka7ya")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Lighting/Baubles/Green/Art"]
+self_modulate = Color(0, 0.823529, 0.376471, 0.168627)
+material = ExtResource("2_yv5pd")
+position = Vector2(312, -87)
+texture = ExtResource("2_ka7ya")
+
+[node name="Area2D" type="Area2D" parent="Lighting/Baubles/Green" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(248, -71)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D11")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Green/Area2D"]
+shape = SubResource("CircleShape2D_e8dd8")
+debug_color = Color(1.44392e-07, 0.72779, 0.268601, 0.419608)
+
+[node name="PointLight2D11" type="PointLight2D" parent="Lighting/Baubles/Green/Area2D"]
+color = Color(0, 0.705882, 0, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+
+[node name="Area2D2" type="Area2D" parent="Lighting/Baubles/Green" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+position = Vector2(312, -87)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D12")]
+ReferenceObject = NodePath("../../../../Entities/Player/DistanceArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Baubles/Green/Area2D2"]
+shape = SubResource("CircleShape2D_e8dd8")
+debug_color = Color(1.44392e-07, 0.72779, 0.268601, 0.419608)
+
+[node name="PointLight2D12" type="PointLight2D" parent="Lighting/Baubles/Green/Area2D2"]
+color = Color(0, 0.705882, 0, 1)
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ktnra")
+
+[node name="LEDs" type="Node2D" parent="Lighting"]
+
+[node name="Area2D" type="Area2D" parent="Lighting/LEDs"]
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting/LEDs/Area2D"]
+position = Vector2(404, -270)
+rotation = -3.11541
+scale = Vector2(0.859375, 0.96875)
+color = Color(1, 0.521569, 1, 1)
+energy = 1.8
+range_item_cull_mask = 2
+texture = ExtResource("10_73mgt")
+offset = Vector2(0, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/LEDs/Area2D"]
+self_modulate = Color(1, 0.518, 1, 0.333)
+material = ExtResource("2_yv5pd")
+position = Vector2(399.003, -66.934)
+rotation = -3.12157
+scale = Vector2(0.997459, 1.28922)
+texture = ExtResource("10_73mgt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/LEDs/Area2D"]
+position = Vector2(400.5, -73)
+shape = SubResource("RectangleShape2D_s5i31")
+debug_color = Color(0.8617, 0.000646492, 0.871423, 0.42)
+
+[node name="Ground Lighting" type="Node2D" parent="Lighting"]
+
+[node name="Area2D" type="Area2D" parent="Lighting/Ground Lighting" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D")]
+ReferenceObject = NodePath("../../../Entities/Player/DistanceArea")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting/Ground Lighting/Area2D"]
+position = Vector2(325, 38.4375)
+scale = Vector2(3.15625, 0.203125)
+color = Color(1, 0.521569, 1, 1)
+energy = 0.7
+range_item_cull_mask = 2
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Ground Lighting/Area2D"]
+position = Vector2(324.5, -23)
+shape = SubResource("RectangleShape2D_llho3")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Ground Lighting/Area2D"]
+self_modulate = Color(1, 0.682353, 1, 0.192157)
+material = ExtResource("2_yv5pd")
+position = Vector2(325, 98.9306)
+scale = Vector2(3.5, 0.202422)
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -600)
+
+[node name="Area2D2" type="Area2D" parent="Lighting/Ground Lighting" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D")]
+ReferenceObject = NodePath("../../../Entities/Player/DistanceArea")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting/Ground Lighting/Area2D2"]
+position = Vector2(571.5, 54)
+scale = Vector2(0.421875, 0.203125)
+color = Color(1, 0.521569, 1, 1)
+energy = 0.7
+range_item_cull_mask = 2
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Ground Lighting/Area2D2"]
+position = Vector2(571, -6.5)
+shape = SubResource("RectangleShape2D_doiaf")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Ground Lighting/Area2D2"]
+self_modulate = Color(1, 0.682353, 1, 0.192157)
+material = ExtResource("2_yv5pd")
+position = Vector2(571, 115)
+scale = Vector2(0.437501, 0.202422)
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -600)
+
+[node name="Area2D3" type="Area2D" parent="Lighting/Ground Lighting" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D")]
+ReferenceObject = NodePath("../../../Entities/Player/DistanceArea")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting/Ground Lighting/Area2D3"]
+position = Vector2(116, 55)
+scale = Vector2(0.15625, 0.203125)
+color = Color(1, 0.521569, 1, 1)
+energy = 0.7
+range_item_cull_mask = 2
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Ground Lighting/Area2D3"]
+position = Vector2(116.25, -5.5)
+shape = SubResource("RectangleShape2D_10dt1")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Ground Lighting/Area2D3"]
+self_modulate = Color(1, 0.682353, 1, 0.192157)
+material = ExtResource("2_yv5pd")
+position = Vector2(116, 115)
+scale = Vector2(0.15625, 0.202422)
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -600)
+
+[node name="Area2D4" type="Area2D" parent="Lighting/Ground Lighting" node_paths=PackedStringArray("Enables", "ReferenceObject")]
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("9_shr3j")
+Enables = [NodePath("PointLight2D")]
+ReferenceObject = NodePath("../../../Entities/Player/DistanceArea")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting/Ground Lighting/Area2D4"]
+position = Vector2(48.5, 55)
+scale = Vector2(0.953125, 0.203125)
+color = Color(1, 0.521569, 1, 1)
+energy = 0.7
+range_item_cull_mask = 2
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting/Ground Lighting/Area2D4"]
+position = Vector2(48.625, -6.25)
+shape = SubResource("RectangleShape2D_4d5bg")
+debug_color = Color(0.945098, 0.843137, 1, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lighting/Ground Lighting/Area2D4"]
+self_modulate = Color(1, 0.682353, 1, 0.192157)
+material = ExtResource("2_yv5pd")
+position = Vector2(48.5, 115)
+scale = Vector2(1.01562, 0.202422)
+texture = ExtResource("10_dndv7")
+offset = Vector2(0, -600)
+
+[node name="RuinKing" type="Node2D" parent="Lighting"]
+
+[node name="FootLight" parent="Lighting/RuinKing" instance=ExtResource("6_deaf2")]
+position = Vector2(987, -7.57578)
+scale = Vector2(0.296875, 0.234375)
+energy = 0.6
+range_item_cull_mask = 1026
+texture = ExtResource("5_varqv")
+offset = Vector2(0, -33.81)
+
+[node name="RingLight" type="PointLight2D" parent="Lighting/RuinKing"]
+self_modulate = Color(0.580392, 0.435294, 0.65098, 1)
+light_mask = 1024
+position = Vector2(987.368, -251.257)
+rotation = 0.446483
+scale = Vector2(3.10959, 2.08648)
+skew = -0.429433
+color = Color(0.580392, 0.435294, 0.65098, 1)
+range_item_cull_mask = 1024
+shadow_item_cull_mask = 1024
+texture = SubResource("GradientTexture2D_ekirq")
+offset = Vector2(0, 92.82)
+height = 25.0
+
+[node name="ShadowBlender" type="PointLight2D" parent="Lighting/RuinKing"]
+modulate = Color(0.780392, 0.670588, 0.635294, 0.196078)
+position = Vector2(911.775, 25.8413)
+rotation = -2.60693
+scale = Vector2(2.97247, 1.82528)
+energy = 0.4
+blend_mode = 1
+range_item_cull_mask = 2048
+shadow_item_cull_mask = 2048
+texture = ExtResource("5_varqv")
+offset = Vector2(0, 59.77)
+
+[node name="Sunspots" type="Node2D" parent="Lighting/RuinKing" node_paths=PackedStringArray("cam")]
+position = Vector2(1006, -199)
+scale = Vector2(1.0759, 2.28122)
+script = ExtResource("3_8b71m")
+cam = NodePath("../../../Camera2D")
+ScrollScale = 1.2
+
+[node name="SunBeamIlluminator" type="PointLight2D" parent="Lighting/RuinKing/Sunspots"]
+light_mask = 4096
+position = Vector2(383.865, -278.798)
+rotation = 0.261799
+scale = Vector2(6.33771, 11.2376)
+range_item_cull_mask = 4096
+shadow_enabled = true
+shadow_item_cull_mask = 4096
+texture = SubResource("GradientTexture2D_k05vl")
+offset = Vector2(-46.61, 23.375)
+
+[node name="PlayerLight" type="PointLight2D" parent="Lighting/RuinKing/Sunspots/SunBeamIlluminator"]
+light_mask = 2
+rotation = 0.321608
+scale = Vector2(1.23324, 1)
+energy = 0.8
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 4096
+texture = SubResource("GradientTexture2D_k05vl")
+offset = Vector2(-15.255, 35.69)
+
+[node name="SunBeam" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
+self_modulate = Color(0.336608, 0.336608, 0.336608, 1)
+light_mask = 4096
+material = SubResource("CanvasItemMaterial_omag2")
+position = Vector2(-29.7425, -15.3427)
+rotation = 0.832768
+scale = Vector2(0.732633, 0.55477)
+texture = ExtResource("8_dxns2")
+
+[node name="SunBeam2" type="Sprite2D" parent="Lighting/RuinKing/Sunspots"]
+self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+light_mask = 4096
+material = SubResource("CanvasItemMaterial_omag2")
+position = Vector2(56.9412, 33.7682)
+rotation = 3.97411
+scale = Vector2(0.773365, 0.585617)
+texture = ExtResource("8_dxns2")
+
+[node name="SwordShadowCaster" type="LightOccluder2D" parent="Lighting/RuinKing"]
+light_mask = 4096
+position = Vector2(974, -63)
+occluder = SubResource("OccluderPolygon2D_bl4xu")
+occluder_light_mask = 4096
+
+[node name="RuinKing" type="Sprite2D" parent="Lighting/RuinKing"]
+light_mask = 3072
+texture_filter = 1
+material = SubResource("ShaderMaterial_vw4rb")
+position = Vector2(974, -63)
+texture = SubResource("CanvasTexture_x7eyc")
+
 [editable path="Entities/Player"]

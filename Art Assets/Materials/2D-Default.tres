@@ -3,10 +3,11 @@
 [ext_resource type="Shader" path="res://Shaders/2D-Default.gdshader" id="1_fid1c"]
 
 [sub_resource type="Gradient" id="Gradient_qgkbr"]
-offsets = PackedFloat32Array(0.854701, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jyuvq"]
 gradient = SubResource("Gradient_qgkbr")
+width = 4
 
 [resource]
 shader = ExtResource("1_fid1c")
