@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dd87u6he2t1n1"]
+
+[ext_resource type="Shader" path="res://Shaders/2D-Default.gdshader" id="1_fid1c"]
+
+[sub_resource type="Gradient" id="Gradient_qgkbr"]
+colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jyuvq"]
+gradient = SubResource("Gradient_qgkbr")
+width = 4
+
+[resource]
+shader = ExtResource("1_fid1c")
+shader_parameter/LightGradient = SubResource("GradientTexture1D_jyuvq")

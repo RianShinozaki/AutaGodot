@@ -44,6 +44,10 @@ folder_colors={
 "res://addons/": "yellow"
 }
 
+[filesystem]
+
+import/laigter/laigter_path="C:/Users/josep/AppData/Local/Programs/Laigter/laigter.exe"
+
 [input]
 
 Jump={

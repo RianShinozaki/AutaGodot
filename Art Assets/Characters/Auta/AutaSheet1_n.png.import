@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://celeelnfu5jpe"
-path="res://.godot/imported/AutaSheet1.png-154c58d20a4d3d0fc56cb73f07ff2b2e.ctex"
+uid="uid://5xt11tblfi5f"
+path="res://.godot/imported/AutaSheet1_n.png-f9b4f1166e2e03f80a81aa007333cc1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art Assets/Characters/Auta/AutaSheet1.png"
-dest_files=["res://.godot/imported/AutaSheet1.png-154c58d20a4d3d0fc56cb73f07ff2b2e.ctex"]
+source_file="res://Art Assets/Characters/Auta/AutaSheet1_n.png"
+dest_files=["res://.godot/imported/AutaSheet1_n.png-f9b4f1166e2e03f80a81aa007333cc1f.ctex"]
 
 [params]
 
