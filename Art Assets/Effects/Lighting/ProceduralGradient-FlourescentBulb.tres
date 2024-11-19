@@ -78,8 +78,8 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_awmng")
 
 [sub_resource type="Gradient" id="Gradient_iql3l"]
-offsets = PackedFloat32Array(0.0650406, 0.910569, 0.979675, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.0650406, 0.430704, 0.979675, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.560784, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7emfi"]
 gradient = SubResource("Gradient_iql3l")

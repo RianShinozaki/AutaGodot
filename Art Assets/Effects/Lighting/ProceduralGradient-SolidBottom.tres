@@ -71,11 +71,13 @@ nodes/fragment/6/position = Vector2(40, 480)
 nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 5, 2, 3, 0, 6, 0, 5, 0, 6, 1, 6, 0, 0, 0, 6, 4, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_qpu4k"]
-offsets = PackedFloat32Array(0, 0.0325203, 0.963415, 1)
+offsets = PackedFloat32Array(0, 0.266525, 0.750533, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tpvkh"]
 gradient = SubResource("Gradient_qpu4k")
+fill_from = Vector2(0.017094, 0.00854701)
+fill_to = Vector2(0.967521, 0.00854701)
 
 [sub_resource type="Gradient" id="Gradient_n6k3m"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
@@ -83,7 +85,7 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bdcdk"]
 gradient = SubResource("Gradient_n6k3m")
 fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
+fill_to = Vector2(0.499145, 1)
 
 [resource]
 resource_local_to_scene = false
