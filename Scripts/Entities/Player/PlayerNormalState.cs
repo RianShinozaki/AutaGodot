@@ -9,8 +9,10 @@ public partial class PlayerNormalState : EntityState
 	[Export] float speed;
 	[Export] float accel;
 	[Export] float decel;
+	[Export] float decelTooFast;
 	[Export] float airAccel;
 	[Export] float airDecel;
+	[Export] float airDecelTooFast;
 	[Export] float gravity;
 	[Export] float normalGravScale;
 	[Export] float risingGravScale;
@@ -45,9 +47,7 @@ public partial class PlayerNormalState : EntityState
 			if(player.horSpeed * hor < speed)
 				player.AccelerateHor((player.grounded ? accel : airAccel) * hor, speed * hor, true);
 			else {
-				if(player.grounded) {
-					player.AccelerateHor((player.grounded ? decel : airAccel) * hor, speed * hor, true);
-				}
+				player.AccelerateHor((player.grounded ? decelTooFast : airDecelTooFast) * hor, speed * hor, true);
 			}
 		}
 		else {
@@ -70,7 +70,7 @@ public partial class PlayerNormalState : EntityState
 							player.vertProj < fallThresh ? JumpingState.Falling :
 							JumpingState.Peak;
 		
-		GD.Print(player.vertProj);
+
 		//Apply gravity
 		switch(js) {
 			case JumpingState.Grounded:

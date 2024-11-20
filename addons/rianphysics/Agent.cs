@@ -53,13 +53,20 @@ public partial class Agent : CharacterBody2D
 			Vector2 vel = new Vector2(horSpeed, vertSpeed);
 			KinematicCollision2D kc = MoveAndCollide(vel * delta, true);
 			if(kc != null) {
-				vel = -vel.Reflect(kc.GetNormal()) * bounceFactor;
-
+				vel = -vel.Reflect(kc.GetNormal());
 				vel.Y += gravity * (float)delta;
-			}
+
+                Vector2 lossFactor = new Vector2( Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (1-bounceFactor);
+                GD.Print(lossFactor);
+                vel.X -= lossFactor.X * vel.X;
+                vel.Y -= lossFactor.Y * vel.Y;
+            }
 			horSpeed = vel.X;
 			vertSpeed = vel.Y;
-			MoveAndCollide(new Vector2(horSpeed, vertSpeed) * delta);
+
+            MoveAndSlide();
+
+			//MoveAndCollide(new Vector2(horSpeed, vertSpeed) * delta);
 		}
 		previouslyGrounded = grounded;
 	}

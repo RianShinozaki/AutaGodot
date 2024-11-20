@@ -15,6 +15,5 @@ public partial class ParallaxController : Node2D
 
 	public override void _PhysicsProcess(double delta) {
 		GlobalPosition = origPosition + cam.GlobalPosition * (1 - ScrollScale);
-		GD.Print(GlobalPosition);
 	}
 }

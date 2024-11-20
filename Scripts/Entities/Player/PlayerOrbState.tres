@@ -4,18 +4,20 @@
 
 [resource]
 script = ExtResource("1_ectn5")
-speed = 130.0
+speed = 160.0
 initSpeed = 150.0
 accel = 2.0
 decel = 1.0
 initYSpeed = -60.0
 minBounceSpeed = 0.0
-minOrbTime = 0.5
-bounce = 0.8
-gravity = 220.0
+minOrbTime = 0.45
+bounce = 1.0
+gravity = 500.0
 drag = 0.0
 dragApplyMinThresh = 0.0
 initialGravScale = 0.2
 gravityMultWaitTime = 0.2
 exitYSpeed = 0.0
-exitMoveSpeed = 75.0
+exitMoveSpeed = 100.0
+orbShape = NodePath("OrbEnvironmentBox")
+normalShape = NodePath("NormalEnvironmentBox")

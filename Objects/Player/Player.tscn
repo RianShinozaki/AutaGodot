@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=41 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Resource" uid="uid://16vy8xvffbhf" path="res://Scripts/Entities/Player/PlayerNormalState.tres" id="2_dfh58"]
@@ -10,6 +10,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 8.0
 height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_icj15"]
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_oogdo"]
 resource_name = "Fall"
@@ -240,21 +243,25 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5red"]
 radius = 16.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shapeCast")]
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_uqxb3")
 states = {
 "Normal": ExtResource("2_dfh58"),
 "Orb": ExtResource("3_7s3fs")
 }
-shapeCast = NodePath("")
 floorOffset = 8
 slopeLeaveInfluence = 0.5
 bounceFactor = 0.8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_hv6ar")
+
+[node name="OrbEnvironmentBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_icj15")
+disabled = true
 
 [node name="RayArray" type="Node2D" parent="."]
 script = ExtResource("4_a2cge")

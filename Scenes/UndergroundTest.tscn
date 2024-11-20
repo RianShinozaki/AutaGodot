@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dqhj0wgykakyv"]
+[gd_scene load_steps=45 format=4 uid="uid://dqhj0wgykakyv"]
 
 [ext_resource type="TileSet" uid="uid://biyk13yov233s" path="res://Tilesets/Underground/WarpTerminal.tres" id="1_v8e8d"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_ka7ya"]
@@ -127,9 +127,6 @@ radius = 45.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llho3"]
 size = Vector2(211, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_doiaf"]
-size = Vector2(28, 13)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10dt1"]
 size = Vector2(11.5, 13)
 
@@ -140,6 +137,8 @@ size = Vector2(62.75, 13.5)
 color = Color(0.4539, 0.3417, 0.51, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(400, -63)
+scale = Vector2(2.56772, 1.40059)
 zoom = Vector2(2, 2)
 script = ExtResource("4_8l3m5")
 target = NodePath("../Entities/Player")
@@ -346,10 +345,9 @@ script = ExtResource("3_8b71m")
 
 [node name="Player" parent="Entities" instance=ExtResource("5_8h4d0")]
 light_mask = 2
-position = Vector2(944, -153)
-
-[node name="CollisionShape2D" parent="Entities/Player" index="0"]
-visible = false
+position = Vector2(427, -28)
+GroundedFloorCheckDist = 16
+AirFloorCheckDist = 8
 
 [node name="Environment-Over" type="Node2D" parent="."]
 
@@ -830,34 +828,6 @@ self_modulate = Color(1, 0.322578, 0.838208, 0.192157)
 material = ExtResource("2_yv5pd")
 position = Vector2(0, 98.9306)
 scale = Vector2(3.5, 0.202422)
-texture = ExtResource("10_dndv7")
-offset = Vector2(0, -600)
-
-[node name="Area2D2" type="Area2D" parent="Lighting-Over/Ground Lighting" node_paths=PackedStringArray("ReferenceObject")]
-collision_layer = 0
-collision_mask = 65536
-script = ExtResource("9_shr3j")
-ReferenceObject = NodePath("../../../Entities/Player/DistanceArea")
-
-[node name="PointLight2D" type="PointLight2D" parent="Lighting-Over/Ground Lighting/Area2D2"]
-position = Vector2(571.5, 54)
-scale = Vector2(0.421875, 0.203125)
-color = Color(1, 0.521569, 1, 1)
-energy = 0.7
-range_item_cull_mask = 2
-texture = ExtResource("10_dndv7")
-offset = Vector2(0, -300)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting-Over/Ground Lighting/Area2D2"]
-position = Vector2(571, -6.5)
-shape = SubResource("RectangleShape2D_doiaf")
-debug_color = Color(0.945098, 0.843137, 1, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="Lighting-Over/Ground Lighting/Area2D2"]
-self_modulate = Color(1, 0.682353, 1, 0.192157)
-material = ExtResource("2_yv5pd")
-position = Vector2(571, 115)
-scale = Vector2(0.437501, 0.202422)
 texture = ExtResource("10_dndv7")
 offset = Vector2(0, -600)
 

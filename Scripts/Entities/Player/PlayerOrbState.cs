@@ -21,6 +21,8 @@ public partial class PlayerOrbState : EntityState
 	[Export] float gravityMultWaitTime;
 	[Export] float exitYSpeed;
 	[Export] float exitMoveSpeed;
+	[Export] public NodePath orbShape;
+	[Export] public NodePath normalShape;
 	float orbTime;
 	Vector3 prevVelocity;
 
@@ -49,6 +51,8 @@ public partial class PlayerOrbState : EntityState
 		if(player.vertSpeed == 0 && !player.grounded) {
 			player.vertSpeed = initYSpeed*0.3f;
 		}
+		player.GetNode<CollisionShape2D>(orbShape).Disabled = false;
+		player.GetNode<CollisionShape2D>(normalShape).Disabled = true;
 	}
 	public override void Update(Node entity, Transform2D transform, double delta) {
 		PlayerController player = (PlayerController)entity;
@@ -99,6 +103,9 @@ public partial class PlayerOrbState : EntityState
 		if(Mathf.Abs(player.horSpeed) > 0.1f && player.grounded) {
 			player.sprite.FlipH = (player.horSpeed < 0) ? true : false;
 		}
+
+		player.GetNode<CollisionShape2D>(orbShape).Disabled = true;
+		player.GetNode<CollisionShape2D>(normalShape).Disabled = false;
 	}
 	
 }
