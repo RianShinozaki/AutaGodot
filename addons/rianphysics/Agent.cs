@@ -84,6 +84,7 @@ public partial class Agent : CharacterBody2D
 			if(rayArray.IsColliding() && vertSpeed >= 0) {
 				if(!grounded) {
 					horSpeed += vertSpeed * lastFloorNormal.Rotated(Mathf.DegToRad(90f)).Y * slopeLandInfluence;
+                    OnGrounded(lastFloorNormal, new Vector2(horSpeed, vertSpeed));
 				}
 				GlobalPosition = GlobalPosition.Lerp(new Vector2(GlobalPosition.X, rayArray.GetCollisionPoint().Y - floorOffset),lerpRate);
 				lerpRate = Mathf.MoveToward(lerpRate, 1, (float)delta * 10f);
@@ -109,4 +110,5 @@ public partial class Agent : CharacterBody2D
 		
 	}
 	public virtual void OnBounce(Vector2 normal) {}
+	public virtual void OnGrounded(Vector2 normal, Vector2 velocity) {}
 }

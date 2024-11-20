@@ -64,4 +64,8 @@ public partial class StateEntity : Agent
 			gravQueue.Remove(grav);
 		}
 	}
+    public override void OnGrounded(Vector2 normal, Vector2 velocity)
+    {
+        currentState.OnGrounded(this, normal, velocity);
+    }
 }

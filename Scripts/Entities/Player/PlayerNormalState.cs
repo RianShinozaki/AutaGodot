@@ -95,14 +95,25 @@ public partial class PlayerNormalState : EntityState
 				player.SwitchState("Orb");
 			}
 		}
-
+		
 		//Flip sprite based on direction if grounded  
 		if(Mathf.Abs(player.horProj) > 0.1f && player.grounded) {
-			player.sprite.FlipH = (player.horProj < 0) ? true : false;
+			bool toFlipH = (player.horProj < 0) ? true : false;
+			if(toFlipH != player.sprite.FlipH) {
+				var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
+				stateMachine.Start("Turn", true);
+			}
+			player.sprite.FlipH = toFlipH;
 		}
 
 	}
 	public override void End(Node entity) {
 	}
+	public override void OnGrounded(Node entity, Vector2 normal, Vector2 velocity)
+    {
+		PlayerController player = (PlayerController)entity;
+        var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Land", true);
+    }
 	
 }
