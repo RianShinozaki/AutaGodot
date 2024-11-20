@@ -8,7 +8,10 @@ public partial class PlayerNormalState : EntityState
 	[Export] float jumpVelocity;
 	[Export] float speed;
 	[Export] float accel;
+	[Export] float decel;
 	[Export] float airAccel;
+	[Export] float airDecel;
+	[Export] float gravity;
 	[Export] float normalGravScale;
 	[Export] float risingGravScale;
 	[Export] float fallingGravScale;
@@ -31,94 +34,58 @@ public partial class PlayerNormalState : EntityState
 		afterImgTimer = 0;
 	}
 	public override void Update(Node entity, Transform2D transform, double delta) {
+
 		PlayerController player = (PlayerController)entity;
-		float mass = player.Mass;
-		Vector2 up = player.gravityUp;
-		Vector2 vel = player.LinearVelocity;
-		bool grounded = player.shapeCast.IsColliding();
-		/*if(grounded) {
-			float offsets = 100;
-			for(int i = 0; i < player.shapeCast.GetCollisionCount(); i++) {
-				float newOffset = player.shapeCast.GetCollisionPoint(i).Y - player.shapeCast.GlobalPosition.Y;
-				if(newOffset < offsets) {
-					offsets = newOffset;
+		float hor = Input.GetAxis("ui_left", "ui_right");
+
+		if(player.grounded) player.canOrb = true;
+
+		if(Mathf.Abs(hor) > 0.1f) {
+			int sign = Mathf.Sign(hor);
+			if(player.horSpeed * hor < speed)
+				player.AccelerateHor((player.grounded ? accel : airAccel) * hor, speed * hor, true);
+			else {
+				if(player.grounded) {
+					player.AccelerateHor((player.grounded ? decel : airAccel) * hor, speed * hor, true);
 				}
 			}
-			player.GlobalPosition = new Vector2(player.GlobalPosition.X, player.shapeCast.GetCollisionPoint(0).Y - 10);
-		}*/
-
-		player.floorNormal = new Vector2(1, 0);
-		float angleUp = Mathf.RadToDeg(up.Angle()) + 90f;
-		player.RotationDegrees = angleUp;
-
-		//Grounded abilities
-		if(grounded) {
-			player.canOrb = true;
-			player.floorNormal = player.shapeCast.GetCollisionNormal(0);
-
-			//Jump
-			if (Input.IsActionJustPressed("Jump")) {
-				player.ApplyImpulse(up * jumpVelocity);
-			}
 		}
-
-		//Execute ground movement
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_down", "ui_up");
-		if(inputDir != cachedInput || Mathf.Abs(Mathf.AngleDifference(Mathf.DegToRad(angleUp), Mathf.DegToRad(cachedRot))) > Mathf.DegToRad(95f)) {
-			cachedInput = inputDir;
-			if(inputDir.Length() < 0.1f) cachedDirection = 0;
-			else {
-				Vector2 inputDirRot = inputDir.Rotated(Mathf.DegToRad(angleUp));
-				if(Mathf.Abs(inputDirRot.X) > 0.5f)
-					cachedDirection = Mathf.Sign(inputDirRot.X);
-			}
-		}
-		cachedRot = angleUp;
-
-		float thisAccel = player.grounded ? accel : airAccel;
-
-		Vector2 hor = up.Rotated(Mathf.DegToRad(90));
-
-		player.horProj = vel.Dot(hor);
-
-		if(cachedDirection != 0) {
-			player.PhysicsMaterialOverride.Friction = 0f;
-
-			player.ApplyForce(cachedDirection * hor * (thisAccel * mass));
-			if(player.horProj > speed) {
-				player.ApplyForce(-2 * hor * (thisAccel * mass));
-			}
-			if(player.horProj < -speed) {
-				player.ApplyForce(2 * hor * (thisAccel * mass));
-			}
-		} else {
-			player.PhysicsMaterialOverride.Friction = 0.9f;
+		else {
+			player.AccelerateHor(player.grounded ? decel : airDecel, 0);
 		}
 		
-		//if(!grounded) player.PhysicsMaterialOverride.Friction = 0;
-		
-		player.vertProj = vel.Dot(up);
+		if(Input.IsActionJustPressed("Jump") && player.grounded) {
+			player.vertSpeed = -jumpVelocity;
+		}
+		if(Input.IsActionJustPressed("Orb") && player.canOrb) {
+			player.SwitchState("Orb");
+			return;
+		}
 
-		JumpingState js = 	grounded ? JumpingState.Grounded : 
+		player.vertProj = -player.vertSpeed;
+		player.horProj = player.horSpeed;
+
+		JumpingState js = 	player.grounded ? JumpingState.Grounded : 
 							player.vertProj > riseThresh ? JumpingState.Rising :
 							player.vertProj < fallThresh ? JumpingState.Falling :
 							JumpingState.Peak;
 		
+		GD.Print(player.vertProj);
 		//Apply gravity
 		switch(js) {
 			case JumpingState.Grounded:
-				player.GravityScale = normalGravScale;
+				player.gravity = gravity;
 				break;
 			case JumpingState.Rising:
-				player.GravityScale = risingGravScale;
+				player.gravity = gravity * risingGravScale;
 				if(!Input.IsActionPressed("Jump"))
-					player.GravityScale = shortHopGravScale;
+					player.gravity = gravity * shortHopGravScale;
 				break;
 			case JumpingState.Peak:
-				player.GravityScale = normalGravScale;
+				player.gravity = gravity * normalGravScale;
 				break;
 			case JumpingState.Falling:
-				player.GravityScale = fallingGravScale;
+				player.gravity = gravity * fallingGravScale;
 				break;
 		}
 		
@@ -134,7 +101,6 @@ public partial class PlayerNormalState : EntityState
 			player.sprite.FlipH = (player.horProj < 0) ? true : false;
 		}
 
-		player.grounded = grounded;
 	}
 	public override void End(Node entity) {
 	}

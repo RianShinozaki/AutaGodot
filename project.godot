@@ -29,7 +29,7 @@ project/assembly_name="Auta"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YouCanDoIt/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg", "res://addons/godot-component-generator/plugin.cfg", "res://addons/laigter/plugin.cfg", "res://addons/procedural_textures/plugin.cfg")
+enabled=PackedStringArray("res://addons/globalize-plugins/plugin.cfg", "res://addons/godot-component-generator/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/laigter/plugin.cfg", "res://addons/procedural_textures/plugin.cfg")
 
 [file_customization]
 
@@ -63,6 +63,9 @@ Orb={
 
 [layer_names]
 
+2d_render/layer_1="Default"
+2d_render/layer_2="Player"
+2d_render/layer_4="Background"
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Entity"
 2d_physics/layer_3="GravityRegion"

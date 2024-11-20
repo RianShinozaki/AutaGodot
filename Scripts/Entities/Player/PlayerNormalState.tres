@@ -4,14 +4,17 @@
 
 [resource]
 script = ExtResource("1_5pecg")
-jumpVelocity = 180.0
-speed = 80.0
-accel = 600.0
-airAccel = 220.0
+jumpVelocity = 150.0
+speed = 90.0
+accel = 20.0
+decel = 10.0
+airAccel = 10.0
+airDecel = 5.0
+gravity = 190.0
 normalGravScale = 1.0
-risingGravScale = 1.4
-fallingGravScale = 1.1
-shortHopGravScale = 2.0
+risingGravScale = 1.2
+fallingGravScale = 1.2
+shortHopGravScale = 3.0
 riseThresh = 50.0
-fallThresh = -10.0
+fallThresh = -20.0
 fallSpeedMax = 0.0

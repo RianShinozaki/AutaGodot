@@ -1,22 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=40 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Resource" uid="uid://16vy8xvffbhf" path="res://Scripts/Entities/Player/PlayerNormalState.tres" id="2_dfh58"]
 [ext_resource type="Resource" uid="uid://dxnboyk6amndt" path="res://Scripts/Entities/Player/PlayerOrbState.tres" id="3_7s3fs"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="4_25evr"]
 [ext_resource type="Texture2D" uid="uid://b572get7u4s24" path="res://Art Assets/Characters/Auta/Auta1.tres" id="4_46p0d"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2kcwi"]
-friction = 0.0
-rough = true
+[ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 8.0
-height = 16.0
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_6w6ih"]
-a = Vector2(-5, 0)
-b = Vector2(5, 0)
+height = 22.0
 
 [sub_resource type="Animation" id="Animation_oogdo"]
 resource_name = "Fall"
@@ -247,27 +240,36 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5red"]
 radius = 16.0
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("shapeCast")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shapeCast")]
 collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_2kcwi")
-can_sleep = false
-lock_rotation = true
-continuous_cd = 1
 script = ExtResource("1_uqxb3")
 states = {
 "Normal": ExtResource("2_dfh58"),
 "Orb": ExtResource("3_7s3fs")
 }
-shapeCast = NodePath("GroundCastPivot/ShapeCast2D")
+shapeCast = NodePath("")
+floorOffset = 8
+slopeLeaveInfluence = 0.5
+bounceFactor = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
-[node name="GroundCastPivot" type="Node2D" parent="."]
+[node name="RayArray" type="Node2D" parent="."]
+script = ExtResource("4_a2cge")
+floorOffset = 8
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="GroundCastPivot"]
-shape = SubResource("SegmentShape2D_6w6ih")
-target_position = Vector2(0, 10)
+[node name="RayCast2D2" type="RayCast2D" parent="RayArray"]
+position = Vector2(-7, 0)
+target_position = Vector2(0, 8)
+
+[node name="RayCast2D" type="RayCast2D" parent="RayArray"]
+target_position = Vector2(0, 8)
+
+[node name="RayCast2D3" type="RayCast2D" parent="RayArray"]
+position = Vector2(7, 0)
+target_position = Vector2(0, 8)
 
 [node name="Art" type="Sprite2D" parent="."]
 light_mask = 2
@@ -292,6 +294,7 @@ advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -299,6 +302,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_cjpgg")
 
 [node name="DistanceArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 65536
 collision_mask = 0
 
