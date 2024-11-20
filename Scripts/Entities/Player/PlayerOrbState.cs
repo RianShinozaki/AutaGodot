@@ -8,18 +8,21 @@ public partial class PlayerOrbState : EntityState
 	[Export] float speed;
 	[Export] float initSpeed;
 	[Export] float accel;
+	[Export] float decel;
 	[Export] float initYSpeed;
 	[Export] float minBounceSpeed;
 
 	[Export] float minOrbTime;
 	[Export] float bounce;
-	[Export] float normalGravScale;
+	[Export] float gravity;
 	[Export] float drag;
 	[Export] float dragApplyMinThresh;
 	[Export] float initialGravScale;
 	[Export] float gravityMultWaitTime;
 	[Export] float exitYSpeed;
 	[Export] float exitMoveSpeed;
+	[Export] public NodePath orbShape;
+	[Export] public NodePath normalShape;
 	float orbTime;
 	Vector3 prevVelocity;
 
@@ -31,89 +34,46 @@ public partial class PlayerOrbState : EntityState
 		PlayerController player = (PlayerController)entity;
 
 		orbTime = 0;
-
-		/*AfterImage afterImg = ObjectPool.Instance.Spawn("DisintegratedImage") as AfterImage;
-		if(afterImg != null) {
-			afterImg.Texture = player.sprite.Texture;
-			afterImg.Hframes = player.sprite.Hframes;
-			afterImg.Vframes = player.sprite.Vframes;
-			afterImg.FlipH = player.sprite.FlipH;
-			afterImg.Frame = player.sprite.Frame;
-			afterImg.GlobalPosition = player.sprite.GlobalPosition;
-
-			ShaderMaterial mat = afterImg.MaterialOverride as ShaderMaterial;
-			mat.SetShaderParameter("Frame", player.sprite.Frame);
-			mat.SetShaderParameter("VFrame", player.sprite.Vframes);
-			mat.SetShaderParameter("HFrame", player.sprite.Hframes);
-		}*/
-			
 		player.orb = true;
-		player.canOrb = false;
+		player.collisionMode = Agent.CollisionMode.BOUNCE;
+
+		player.animPlayer.Play("Orb");
 
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-
-		if (inputDir != Vector2.Zero)
-		{
-			player.LinearVelocity = new Vector2(inputDir.X, inputDir.Y) * initSpeed;
+		if(inputDir == Vector2.Zero) {
+			inputDir = new Vector2(player.sprite.FlipH ? -1 : 1, 0);
 		}
-		else
-		{
-			player.LinearVelocity = new Vector2(initSpeed * (player.sprite.FlipH ? -1 : 1), 0);
+		player.horSpeed = inputDir.X * speed;
+		player.vertSpeed = inputDir.Y * speed;
+		if(player.vertSpeed == 0 && player.grounded) {
+			player.vertSpeed = initYSpeed;
 		}
-		if(Mathf.Abs(player.LinearVelocity.Y) < 5f) {
-			player.LinearVelocity += Vector2.Up*initYSpeed;
+		if(player.vertSpeed == 0 && !player.grounded) {
+			player.vertSpeed = initYSpeed*0.3f;
 		}
-
-		player.PhysicsMaterialOverride.Bounce = bounce;
-		//player.StartCreatingAfterImgs();
-
-		//GameCamera.Instance.Freeze(0.2f);
-		player.animPlayer.Play("Orb");
+		player.GetNode<CollisionShape2D>(orbShape).Disabled = false;
+		player.GetNode<CollisionShape2D>(normalShape).Disabled = true;
 	}
 	public override void Update(Node entity, Transform2D transform, double delta) {
 		PlayerController player = (PlayerController)entity;
-		float mass = player.Mass;
-		Vector2 up = player.gravityUp;
-		Vector2 vel = player.LinearVelocity;
 
-		float angleUp = Mathf.RadToDeg(up.Angle()) + 90f;
-		player.RotationDegrees = angleUp;
+		float hor = Input.GetAxis("ui_left", "ui_right");
 
-		orbTime += (float)delta;
+		if(player.grounded) player.canOrb = true;
 
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_down", "ui_up");
-		if(inputDir != cachedInput || Mathf.Abs(Mathf.AngleDifference(Mathf.DegToRad(angleUp), Mathf.DegToRad(cachedRot))) > Mathf.DegToRad(95f)) {
-			cachedInput = inputDir;
-			if(inputDir.Length() < 0.1f) cachedDirection = 0;
-			else {
-				Vector2 inputDirRot = inputDir.Rotated(Mathf.DegToRad(angleUp));
-				if(Mathf.Abs(inputDirRot.X) > 0.5f)
-					cachedDirection = Mathf.Sign(inputDirRot.X);
-			}
-		}
-		cachedRot = angleUp;
-		Vector2 hor = up.Rotated(Mathf.DegToRad(90));
-		player.horProj = vel.Dot(hor);
-
-		if(cachedDirection != 0) {
-
-			player.ApplyForce(cachedDirection * hor * (accel * mass));
-			if(player.horProj > speed) {
-				player.ApplyForce(-2 * hor * (accel * mass));
-			}
-			if(player.horProj < -speed) {
-				player.ApplyForce(2 * hor * (accel * mass));
-			}
-		}
-		
-		if(orbTime < gravityMultWaitTime)
-			player.GravityScale = initialGravScale;
+		if(Mathf.Abs(hor) > 0.1f)
+			player.AccelerateHor(accel * hor, speed * hor, true);
 		else
-			player.GravityScale = normalGravScale;
-		
+			player.AccelerateHor(decel, 0);
 
 		if(orbTime >= minOrbTime && !Input.IsActionPressed("Orb")) {
 			player.SwitchState("Normal");
+		}
+
+		if(orbTime > gravityMultWaitTime) {
+			player.gravity = gravity;
+		} else {
+			player.gravity = gravity * initialGravScale;
 		}
 		
 		//Flip sprite based on direction if grounded  
@@ -121,19 +81,31 @@ public partial class PlayerOrbState : EntityState
 			player.sprite.FlipH = (player.horProj < 0) ? true : false;
 		}
 
+		orbTime += (float)delta;
+
 	}
 	public override void End(Node entity) {
 		PlayerController player = (PlayerController)entity;
 		player.orb = false;
+		player.canOrb = false;
+		player.collisionMode = Agent.CollisionMode.FLOOR;
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
-		player.PhysicsMaterialOverride.Bounce = 0;
+		if(inputDir != Vector2.Zero) {
+			int sign = Mathf.Sign(inputDir.X);
+			player.horSpeed = sign * Mathf.Max(player.horSpeed * sign, exitMoveSpeed);
 
-		if (inputDir != Vector2.Zero)
-		{
-			player.LinearVelocity = new Vector2(inputDir.X, inputDir.Y) * exitMoveSpeed;
+			sign = Mathf.Sign(inputDir.Y);
+			if(sign == 0) sign = -1;
+			player.vertSpeed = sign * Mathf.Max(player.vertSpeed * sign, exitMoveSpeed);
 		}
 
+		if(Mathf.Abs(player.horSpeed) > 0.1f && player.grounded) {
+			player.sprite.FlipH = (player.horSpeed < 0) ? true : false;
+		}
+
+		player.GetNode<CollisionShape2D>(orbShape).Disabled = true;
+		player.GetNode<CollisionShape2D>(normalShape).Disabled = false;
 	}
 	
 }

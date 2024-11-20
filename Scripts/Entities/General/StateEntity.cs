@@ -2,14 +2,13 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class StateEntity : RigidBody2D
+public partial class StateEntity : Agent
 {
 	[Export] public Godot.Collections.Dictionary<String, EntityState> states;
 	EntityState currentState;
 	EntityState lastState;
 	public Vector2 floorNormal;
 	[Export] public ShapeCast2D shapeCast;
-	public bool grounded = false;
 	[Export] public Vector2 gravityUp = new Vector2(0, -1);
 	[Export] public Godot.Collections.Array gravQueue = new Godot.Collections.Array();
 	public float horProj;
@@ -51,6 +50,8 @@ public partial class StateEntity : RigidBody2D
 		if(currentState != null) {
         	currentState.Update(this, Transform, delta);
 		}
+
+		base._PhysicsProcess(delta);
     }
 
 	private void _on_hurtbox_area_entered(Area2D area) {

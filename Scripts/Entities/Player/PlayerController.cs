@@ -14,6 +14,7 @@ public partial class PlayerController : StateEntity
 		animPlayer = GetNode<AnimationPlayer>("Art/AnimationPlayer");
 		sprite = GetNode<Sprite2D>("Art");
 		SwitchState("Normal");
+		base._Ready();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
