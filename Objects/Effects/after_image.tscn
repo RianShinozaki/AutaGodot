@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqa8tytdncd0s"]
+
+[ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="1_25hs3"]
+[ext_resource type="Script" path="res://Scripts/Effects/AfterImage.cs" id="1_j6tdd"]
+[ext_resource type="Shader" uid="uid://4fhxa2eg78jg" path="res://Shaders/BrightColorShift.tres" id="1_suut3"]
+[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="4_767ae"]
+
+[sub_resource type="Gradient" id="Gradient_wpw4y"]
+offsets = PackedFloat32Array(0, 0.505593, 0.997763)
+colors = PackedColorArray(0.2, 1, 1, 1, 0.454902, 0.517647, 1, 1, 1, 0.172549, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_42gby"]
+gradient = SubResource("Gradient_wpw4y")
+width = 256
+height = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g2li"]
+resource_local_to_scene = true
+shader = ExtResource("1_suut3")
+shader_parameter/t = 0.0
+shader_parameter/Texture = ExtResource("1_25hs3")
+shader_parameter/ColorGradient = SubResource("GradientTexture2D_42gby")
+
+[node name="AfterImage" type="Sprite2D"]
+z_index = -50
+texture_filter = 1
+material = SubResource("ShaderMaterial_4g2li")
+texture = ExtResource("1_25hs3")
+hframes = 8
+vframes = 8
+script = ExtResource("1_j6tdd")
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("4_767ae")

@@ -9,24 +9,28 @@ public partial class Agent : CharacterBody2D
 		BOUNCE
 	}
 
+	// Set Variables
 	[Export] int GroundedFloorCheckDist = 24;
 	[Export] int AirFloorCheckDist = 16;
 	[Export] int floorOffset = 16;
 	[Export] public float slopeLeaveInfluence; //How much momentum is kept when running off a slope
 	[Export] public float slopeJumpInfluence; //How much momentum is kept when jumping off a slope
 	[Export] public float slopeLandInfluence; //How much momentum is added to horizontal speed when landing on a slope
+	[Export] public float gravity;
+	[Export] public CollisionMode collisionMode;
+
+	[Export] public float bounceFactor = 1;
+
+	// Member Variables
 	RayArray2D rayArray;
 	float xRemainder = 0;
 	float yRemainder = 0;
 	public bool grounded;
 	public bool previouslyGrounded;
-	[Export] public float gravity;
 	public float horSpeed;
 	public float vertSpeed;
-	public CollisionMode collisionMode;
 	public float lerpRate = 1f;
 	public Vector2 lastFloorNormal = Vector2.Up;
-	[Export] public float bounceFactor = 1;
 
 
 	public override void _Ready()
@@ -34,7 +38,7 @@ public partial class Agent : CharacterBody2D
 		rayArray = GetNode<RayArray2D>("RayArray");
 	}
 
-	public void Move(float x, float y, float delta) {		
+	public void Move(float x, float y, float delta, bool writeback = false) {		
 		if(grounded) {
 			Vector2 moveDir = lastFloorNormal.Rotated(Mathf.DegToRad(90f));
 			Velocity = new Vector2(x * moveDir.X, x * moveDir.Y);
@@ -45,12 +49,14 @@ public partial class Agent : CharacterBody2D
 
 		if(collisionMode == CollisionMode.FLOOR) {
 			MoveAndSlide();
-			horSpeed = Velocity.X;
-			if(!grounded)
-				vertSpeed = Velocity.Y;
+			if(writeback) {
+				horSpeed = Velocity.X;
+				if(!grounded)
+					vertSpeed = Velocity.Y;
+			}
 		}
 		else if (collisionMode == CollisionMode.BOUNCE) {
-			Vector2 vel = new Vector2(horSpeed, vertSpeed);
+			Vector2 vel = Velocity;
 			KinematicCollision2D kc = MoveAndCollide(vel * delta, true);
 			if(kc != null) {
 				vel = -vel.Reflect(kc.GetNormal());
@@ -61,8 +67,9 @@ public partial class Agent : CharacterBody2D
                 vel.X -= lossFactor.X * vel.X;
                 vel.Y -= lossFactor.Y * vel.Y;
             }
-			horSpeed = vel.X;
-			vertSpeed = vel.Y;
+			if(writeback)
+				horSpeed = vel.X;
+				vertSpeed = vel.Y;
 
             MoveAndSlide();
 
@@ -106,7 +113,9 @@ public partial class Agent : CharacterBody2D
 			grounded = false;
 			vertSpeed += gravity * (float)delta;
 		}
-		Move(horSpeed, vertSpeed, (float)delta);
+
+
+		Move(horSpeed, vertSpeed, (float)delta, true);
 		
 	}
 	public virtual void OnBounce(Vector2 normal) {}

@@ -3,9 +3,9 @@ using System;
 using System.Data;
 
 [GlobalClass]
-public partial class PlayerNormalState : EntityState
+public partial class PlayerAttackState : EntityState
 {
-	[Export] float jumpVelocity;
+
 	[Export] float speed;
 	[Export] float accel;
 	[Export] float decel;
@@ -25,7 +25,9 @@ public partial class PlayerNormalState : EntityState
 	Vector2 cachedInput = Vector2.Zero;
 	float cachedDirection = 0;
 	float cachedRot = 0;
-
+	public float comboTimer = 0;
+	[Export] public float comboTimeMax = 0.25f;
+	public int comboNum = 0;
 	enum JumpingState {
 		Grounded,
 		Rising,
@@ -33,20 +35,37 @@ public partial class PlayerNormalState : EntityState
 		Falling
 	}
 	public override void Start(Node entity) {
-		afterImgTimer = 0;
-		base.Start(entity);	
+		PlayerController player = (PlayerController)entity;
+		var stateMachine = player.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Attack", true);
+		stateMachine = player.anim.Get("parameters/Attack/playback").As<AnimationNodeStateMachinePlayback>();
+		switch(comboNum) {
+			case 0:
+				stateMachine.Start("Attack_Combo1", true);
+				//comboNum++;
+				comboTimer = comboTimeMax;
+				break;
+			case 1:
+				stateMachine.Start("Attack_Combo2", true);
+				comboNum++;
+				comboTimer = comboTimeMax;
+				break;
+			case 2:
+				stateMachine.Start("Attack_Combo3", true);
+				comboNum = 0;
+				comboTimer = comboTimeMax;
+				break;
+		}
+		base.Start(entity);
 	}
 	public override void Update(Node entity, Transform2D transform, double delta) {
 
 		PlayerController player = (PlayerController)entity;
 		float hor = Input.GetAxis("ui_left", "ui_right");
 
-		if(player.grounded) {
-			player.canOrb = true;
-			player.StopCreatingAfterImgs();
-		}
+		if(player.grounded) player.canOrb = true;
 
-		if(Mathf.Abs(hor) > 0.1f) {
+		if(Mathf.Abs(hor) > 0.1f && !player.grounded) {
 			int sign = Mathf.Sign(hor);
 			if(player.horSpeed * hor < speed)
 				player.AccelerateHor((player.grounded ? accel : airAccel) * hor, speed * hor, true);
@@ -58,9 +77,6 @@ public partial class PlayerNormalState : EntityState
 			player.AccelerateHor(player.grounded ? decel : airDecel, 0);
 		}
 		
-		if(Input.IsActionJustPressed("Jump") && player.grounded) {
-			player.vertSpeed = -jumpVelocity;
-		}
 		if(Input.IsActionJustPressed("Orb") && player.canOrb) {
 			player.SwitchState("Orb");
 			return;
@@ -92,38 +108,28 @@ public partial class PlayerNormalState : EntityState
 				player.gravity = gravity * fallingGravScale;
 				break;
 		}
-		
-		//Orb ability
-		if(player.canOrb) {
-			if (Input.IsActionJustPressed("Orb")) {
-				player.SwitchState("Orb");
-			}
-		}
-		
-		//Flip sprite based on direction if grounded  
-		if(Mathf.Abs(player.horProj) > 0.1f && player.grounded) {
-			bool toFlipH = (player.horProj < 0) ? true : false;
-			if(toFlipH != player.sprite.FlipH) {
-				var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
-				stateMachine.Start("Turn", true);
-			}
-			player.sprite.FlipH = toFlipH;
-		}
-		player.QueryAttack();
-
 	}
-	public override void End(Node entity) {
+    public override void PassiveUpdate(Node entity, Transform2D transform, double delta)
+    {
+		if(!active) {
+        	if(comboTimer > 0) comboTimer -= (float)delta;
+			else comboNum = 0;
+		}
+    }
+    public override void End(Node entity) {
 		base.End(entity);
 	}
 	public override void OnGrounded(Node entity, Vector2 normal, Vector2 velocity)
     {
+    }
+    public override void OnAnimationEnd(Node entity, string animName)
+    {
 		PlayerController player = (PlayerController)entity;
-        var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
-		stateMachine.Start("Land", true);
+		player.SwitchState("Normal");
+        base.OnAnimationEnd(entity, animName);
     }
 	public override void OnHitboxEntered(Node entity, Hurtbox hurtB) {
 		PlayerController player = (PlayerController)entity;
 		player.DefaultHitboxEntered(hurtB);
 	}
-	
 }
