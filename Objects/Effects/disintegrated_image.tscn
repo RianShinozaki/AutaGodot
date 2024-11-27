@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjf0v8ser86o1"]
+
+[ext_resource type="Shader" uid="uid://cwgau5yvosgkc" path="res://Objects/Effects/WarpOut.tres" id="1_ahbtx"]
+[ext_resource type="Texture2D" uid="uid://kfb0yyq3vsv" path="res://Art Assets/Characters/Misc/Ruin King Big.png" id="2_sw4x3"]
+[ext_resource type="Script" path="res://Scripts/Effects/AfterImage.cs" id="3_hewn2"]
+[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="4_02mtd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mg0r"]
+shader = ExtResource("1_ahbtx")
+shader_parameter/Texture2DParameter = ExtResource("2_sw4x3")
+
+[node name="DisintegratedImage" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_7mg0r")
+position = Vector2(-0.5, 1.5)
+scale = Vector2(0.968, 1)
+texture = ExtResource("2_sw4x3")
+script = ExtResource("3_hewn2")
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("4_02mtd")

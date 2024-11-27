@@ -53,6 +53,26 @@ public partial class PlayerOrbState : EntityState
 		}
 		player.GetNode<CollisionShape2D>(orbShape).Disabled = false;
 		player.GetNode<CollisionShape2D>(normalShape).Disabled = true;
+
+		player.StartCreatingAfterImgs();
+
+		/*AfterImage afterImg = ObjectPool.Instance.Spawn("DisintegratedImage") as AfterImage;
+		if(afterImg != null) {
+			afterImg.Texture = player.sprite.Texture;
+			afterImg.Hframes = player.sprite.Hframes;
+			afterImg.Vframes = player.sprite.Vframes;
+			afterImg.FlipH = player.sprite.FlipH;
+			afterImg.Frame = player.sprite.Frame;
+			afterImg.GlobalPosition = player.sprite.GlobalPosition;
+			afterImg.Offset = player.sprite.Offset;
+
+			ShaderMaterial mat = afterImg.Material as ShaderMaterial;
+			mat.SetShaderParameter("Frame", player.sprite.Frame);
+			mat.SetShaderParameter("VFrame", player.sprite.Vframes);
+			mat.SetShaderParameter("HFrame", player.sprite.Hframes);
+		}*/
+
+		base.Start(entity);	
 	}
 	public override void Update(Node entity, Transform2D transform, double delta) {
 		PlayerController player = (PlayerController)entity;
@@ -61,8 +81,11 @@ public partial class PlayerOrbState : EntityState
 
 		if(player.grounded) player.canOrb = true;
 
-		if(Mathf.Abs(hor) > 0.1f)
-			player.AccelerateHor(accel * hor, speed * hor, true);
+		if(Mathf.Abs(hor) > 0.1f) {
+			int sign = Mathf.Sign(hor);
+			if(player.horSpeed * hor < speed)
+				player.AccelerateHor(accel * hor, speed * hor, true);
+		}
 		else
 			player.AccelerateHor(decel, 0);
 
@@ -82,6 +105,7 @@ public partial class PlayerOrbState : EntityState
 		}
 
 		orbTime += (float)delta;
+		player.QueryAttack();
 
 	}
 	public override void End(Node entity) {
@@ -106,6 +130,7 @@ public partial class PlayerOrbState : EntityState
 
 		player.GetNode<CollisionShape2D>(orbShape).Disabled = true;
 		player.GetNode<CollisionShape2D>(normalShape).Disabled = false;
+		base.End(entity);
 	}
 	
 }
