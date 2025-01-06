@@ -36,6 +36,10 @@ public partial class PlayerAttackState : EntityState
 	}
 	public override void Start(Node entity) {
 		PlayerController player = (PlayerController)entity;
+		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		if(inputDir != Vector2.Zero) {
+			player.sprite.FlipH = (inputDir.X < 0);
+		}
 		var stateMachine = player.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("Attack", true);
 		stateMachine = player.anim.Get("parameters/Attack/playback").As<AnimationNodeStateMachinePlayback>();

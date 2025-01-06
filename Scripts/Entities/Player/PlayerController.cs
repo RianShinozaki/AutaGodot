@@ -28,8 +28,9 @@ public partial class PlayerController : StateEntity
 
 	}
 	public override void DefaultHitboxEntered(Hurtbox hb) {
-		horKnockbackSpeed = 60f * (sprite.FlipH ? 1 : -1);
-		horSpeed = 0;
+		//horKnockbackSpeed = 60f * (sprite.FlipH ? 1 : -1);
+		GameManager.Instance.FrameFreeze(0.05f, 0.35f);
+		//horSpeed = 0;
 	}
 
 }

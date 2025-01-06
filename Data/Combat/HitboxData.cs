@@ -9,5 +9,6 @@ public partial class HitboxData : Resource
 	[Export] public float xKnockback;
 	[Export] public float yKnockback;
 	[Export] public bool flip;
+	[Export] public int weight;
 
 }

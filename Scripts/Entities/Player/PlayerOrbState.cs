@@ -43,6 +43,9 @@ public partial class PlayerOrbState : EntityState
 		if(inputDir == Vector2.Zero) {
 			inputDir = new Vector2(player.sprite.FlipH ? -1 : 1, 0);
 		}
+		else {
+			player.sprite.FlipH = (inputDir.X < 0);
+		}
 		player.horSpeed = inputDir.X * speed;
 		player.vertSpeed = inputDir.Y * speed;
 		if(player.vertSpeed == 0 && player.grounded) {
