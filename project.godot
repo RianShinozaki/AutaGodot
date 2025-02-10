@@ -47,7 +47,7 @@ folder_colors={
 "res://Scripts/": "teal",
 "res://Shaders/": "purple",
 "res://Tilesets/": "orange",
-"res://addons/": "yellow"
+"res://addons/": "green"
 }
 
 [filesystem]

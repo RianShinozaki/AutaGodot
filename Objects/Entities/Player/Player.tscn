@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=69 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Resource" uid="uid://16vy8xvffbhf" path="res://Scripts/Entities/Player/PlayerNormalState.tres" id="2_dfh58"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b572get7u4s24" path="res://Art Assets/Characters/Auta/Auta1.tres" id="4_46p0d"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
 [ext_resource type="Resource" uid="uid://br05d0k1ak46n" path="res://Scripts/Entities/Player/PlayerAttackState.tres" id="4_oia56"]
+[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="8_fumsl"]
 [ext_resource type="Texture2D" uid="uid://ctmy0sgjf47p3" path="res://Art Assets/Characters/Auta/AutaAttackFX.png" id="8_rtcfq"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="9_grlvd"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="10_b8sdc"]
@@ -603,6 +604,8 @@ states = {
 "Orb": ExtResource("3_7s3fs")
 }
 knockbackRecovery = 300.0
+GroundedFloorCheckDist = 16
+AirFloorCheckDist = 8
 floorOffset = 8
 slopeLeaveInfluence = 0.5
 bounceFactor = 0.8
@@ -652,6 +655,9 @@ root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_6uj1n")
 advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="AfterImageGenerator" type="Node" parent="Art"]
+script = ExtResource("8_fumsl")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 visible = false

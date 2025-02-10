@@ -43,7 +43,7 @@ public partial class PlayerNormalState : EntityState
 
 		if(player.grounded) {
 			player.canOrb = true;
-			player.StopCreatingAfterImgs();
+			player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
 		}
 
 		if(Mathf.Abs(hor) > 0.1f) {

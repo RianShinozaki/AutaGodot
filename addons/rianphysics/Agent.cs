@@ -9,17 +9,18 @@ public partial class Agent : CharacterBody2D
 		BOUNCE
 	}
 
-	// Set Variables
+	[ExportGroup("Collision")]
 	[Export] int GroundedFloorCheckDist = 24;
 	[Export] int AirFloorCheckDist = 16;
 	[Export] int floorOffset = 16;
+	[Export] public float gravity;
+	[Export] public CollisionMode collisionMode;
+	[Export] public float bounceFactor = 1;
+	[ExportSubgroup("Slopes")]
+	
 	[Export] public float slopeLeaveInfluence; //How much momentum is kept when running off a slope
 	[Export] public float slopeJumpInfluence; //How much momentum is kept when jumping off a slope
 	[Export] public float slopeLandInfluence; //How much momentum is added to horizontal speed when landing on a slope
-	[Export] public float gravity;
-	[Export] public CollisionMode collisionMode;
-
-	[Export] public float bounceFactor = 1;
 
 	// Member Variables
 	RayArray2D rayArray;

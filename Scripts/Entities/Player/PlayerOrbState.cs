@@ -57,7 +57,7 @@ public partial class PlayerOrbState : EntityState
 		player.GetNode<CollisionShape2D>(orbShape).Disabled = false;
 		player.GetNode<CollisionShape2D>(normalShape).Disabled = true;
 
-		player.StartCreatingAfterImgs();
+		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
 		/*AfterImage afterImg = ObjectPool.Instance.Spawn("DisintegratedImage") as AfterImage;
 		if(afterImg != null) {
