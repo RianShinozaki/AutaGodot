@@ -17,15 +17,13 @@ public partial class Agent : CharacterBody2D
 	[Export] public CollisionMode collisionMode;
 	[Export] public float bounceFactor = 1;
 	[ExportSubgroup("Slopes")]
-	
+
 	[Export] public float slopeLeaveInfluence; //How much momentum is kept when running off a slope
 	[Export] public float slopeJumpInfluence; //How much momentum is kept when jumping off a slope
 	[Export] public float slopeLandInfluence; //How much momentum is added to horizontal speed when landing on a slope
 
 	// Member Variables
-	RayArray2D rayArray;
-	float xRemainder = 0;
-	float yRemainder = 0;
+	[Export] RayArray2D rayArray;
 	public bool grounded;
 	public bool previouslyGrounded;
 	public float horSpeed;
@@ -33,6 +31,11 @@ public partial class Agent : CharacterBody2D
 	public float lerpRate = 1f;
 	public Vector2 lastFloorNormal = Vector2.Up;
 
+	[Signal]
+	public delegate void GroundedEventHandler(Vector2 normal, Vector2 velocity);
+
+	[Signal]
+	public delegate void BounceEventHandler(Vector2 normal, Vector2 velocity);
 
 	public override void _Ready()
 	{
@@ -92,7 +95,7 @@ public partial class Agent : CharacterBody2D
 			if(rayArray.IsColliding() && vertSpeed >= 0) {
 				if(!grounded) {
 					horSpeed += vertSpeed * lastFloorNormal.Rotated(Mathf.DegToRad(90f)).Y * slopeLandInfluence;
-                    OnGrounded(lastFloorNormal, new Vector2(horSpeed, vertSpeed));
+                    EmitSignal(SignalName.Grounded, lastFloorNormal, new Vector2(horSpeed, vertSpeed));
 				}
 				GlobalPosition = GlobalPosition.Lerp(new Vector2(GlobalPosition.X, rayArray.GetCollisionPoint().Y - floorOffset),lerpRate);
 				lerpRate = Mathf.MoveToward(lerpRate, 1, (float)delta * 10f);
@@ -119,6 +122,4 @@ public partial class Agent : CharacterBody2D
 		Move(horSpeed, vertSpeed, (float)delta, true);
 		
 	}
-	public virtual void OnBounce(Vector2 normal) {}
-	public virtual void OnGrounded(Vector2 normal, Vector2 velocity) {}
 }

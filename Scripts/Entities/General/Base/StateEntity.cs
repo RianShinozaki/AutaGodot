@@ -5,8 +5,7 @@ using System.Linq;
 
 public partial class StateEntity : Agent
 {
-	[ExportGroup("Manual References")]
-	[Export] public Godot.Collections.Dictionary<String, EntityState> states;
+	//[ExportGroup("Manual References")]
 	
 	[ExportGroup("Manual Variables")]
 	[Export] public float knockbackRecovery;
@@ -34,16 +33,15 @@ public partial class StateEntity : Agent
 		anim = GetNode<AnimationTree>("Art/AnimationTree");
 		animPlayer = GetNode<AnimationPlayer>("Art/AnimationPlayer");
 		sprite = GetNode<Sprite2D>("Art");
-		flipPivot = GetNode<Node2D>("FlipPivot");
 		base._Ready();
 	}
 	public void SwitchState(String newState) {
 		if(currentState != null) {
-			currentState.End(this);
+			currentState.End();
 		}
 		lastState = currentState;
-		currentState = states[newState];
-		currentState.Start(this);
+		currentState = GetNode<EntityState>("States/" + newState);
+		currentState.Start();
 	}
     public override void _PhysicsProcess(double delta)
     {
@@ -67,12 +65,6 @@ public partial class StateEntity : Agent
 			gravityUp = currentGravRegion.GetGravity(GlobalPosition);
 		else 
 			gravityUp = Vector2.Up;
-		if(currentState != null) {
-        	currentState.Update(this, Transform, delta);
-		}
-		foreach(KeyValuePair<String, EntityState>state in states) {
-			state.Value.PassiveUpdate(this, Transform, delta);
-		}
 
 		base._PhysicsProcess(delta);
 		
@@ -89,12 +81,6 @@ public partial class StateEntity : Agent
 		if(area is GravityRegion grav) {
 			gravQueue.Insert(0, grav);
 		}
-		if(area is Hitbox hb) {
-			if(currentState != null)
-        		currentState.OnHurtboxEntered(this, hb);
-			else
-				DefaultHurtboxEntered(hb);
-		}
 	}
 	public virtual void DefaultHurtboxEntered(Hitbox hb) {
 		HitboxData dat = hb.hitboxData;
@@ -106,24 +92,10 @@ public partial class StateEntity : Agent
 		}
 	}
 	private void _on_hitbox_area_entered(Area2D area) {
-		if(area is Hurtbox hurtB) {
-			if(currentState != null)
-        		currentState.OnHitboxEntered(this, hurtB);
-			else
-				DefaultHitboxEntered(hurtB);
-		}
+
 	}
 	public virtual void DefaultHitboxEntered(Hurtbox hb) {
 		horKnockbackSpeed = 60f * (sprite.FlipH ? 1 : -1);
 	}
-	
-    public override void OnGrounded(Vector2 normal, Vector2 velocity)
-    {
-		if(currentState != null)
-        	currentState.OnGrounded(this, normal, velocity);
-    }
-	private void _on_animation_tree_animation_finished(StringName anim_name) {
-		if(currentState != null)
-			currentState.OnAnimationEnd(this, anim_name);	
-	}
+
 }

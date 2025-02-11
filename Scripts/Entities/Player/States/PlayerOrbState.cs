@@ -5,13 +5,11 @@ using System.Data;
 [GlobalClass]
 public partial class PlayerOrbState : EntityState
 {
+	
 	[Export] float speed;
 	[Export] float initSpeed;
-	[Export] float accel;
-	[Export] float decel;
 	[Export] float initYSpeed;
 	[Export] float minBounceSpeed;
-
 	[Export] float minOrbTime;
 	[Export] float bounce;
 	[Export] float gravity;
@@ -30,7 +28,7 @@ public partial class PlayerOrbState : EntityState
 	float cachedDirection;
 	float cachedRot;
 
-	public override void Start(Node entity) {
+	public override void Start() {
 		PlayerController player = (PlayerController)entity;
 
 		orbTime = 0;
@@ -54,8 +52,8 @@ public partial class PlayerOrbState : EntityState
 		if(player.vertSpeed == 0 && !player.grounded) {
 			player.vertSpeed = initYSpeed*0.3f;
 		}
-		player.GetNode<CollisionShape2D>(orbShape).Disabled = false;
-		player.GetNode<CollisionShape2D>(normalShape).Disabled = true;
+		GetNode<CollisionShape2D>(orbShape).Disabled = false;
+		GetNode<CollisionShape2D>(normalShape).Disabled = true;
 
 		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
@@ -75,25 +73,16 @@ public partial class PlayerOrbState : EntityState
 			mat.SetShaderParameter("HFrame", player.sprite.Hframes);
 		}*/
 
-		base.Start(entity);	
+		base.Start();	
 	}
-	public override void Update(Node entity, Transform2D transform, double delta) {
+	public override void _Process(double delta) {
 		PlayerController player = (PlayerController)entity;
-
-		float hor = Input.GetAxis("ui_left", "ui_right");
-
 		if(player.grounded) player.canOrb = true;
-
-		if(Mathf.Abs(hor) > 0.1f) {
-			int sign = Mathf.Sign(hor);
-			if(player.horSpeed * hor < speed)
-				player.AccelerateHor(accel * hor, speed * hor, true);
-		}
-		else
-			player.AccelerateHor(decel, 0);
+		
+		if(!active) return;
 
 		if(orbTime >= minOrbTime && !Input.IsActionPressed("Orb")) {
-			player.SwitchState("Normal");
+			player.SwitchState("NormalState");
 		}
 
 		if(orbTime > gravityMultWaitTime) {
@@ -101,17 +90,12 @@ public partial class PlayerOrbState : EntityState
 		} else {
 			player.gravity = gravity * initialGravScale;
 		}
-		
-		//Flip sprite based on direction if grounded  
-		if(Mathf.Abs(player.horProj) > 0.1f && player.grounded) {
-			player.sprite.FlipH = (player.horProj < 0) ? true : false;
-		}
 
 		orbTime += (float)delta;
 		player.QueryAttack();
 
 	}
-	public override void End(Node entity) {
+	public override void End() {
 		PlayerController player = (PlayerController)entity;
 		player.orb = false;
 		player.canOrb = false;
@@ -131,9 +115,9 @@ public partial class PlayerOrbState : EntityState
 			player.sprite.FlipH = (player.horSpeed < 0) ? true : false;
 		}
 
-		player.GetNode<CollisionShape2D>(orbShape).Disabled = true;
-		player.GetNode<CollisionShape2D>(normalShape).Disabled = false;
-		base.End(entity);
+		GetNode<CollisionShape2D>(orbShape).Disabled = true;
+		GetNode<CollisionShape2D>(normalShape).Disabled = false;
+		base.End();
 	}
 	
 }
