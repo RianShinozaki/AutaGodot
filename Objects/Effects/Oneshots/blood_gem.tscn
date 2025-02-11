@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bumxjqlecahob"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/BouncingParticle.cs" id="1_n6mbf"]
+[ext_resource type="Texture2D" uid="uid://cmwu8suaga0br" path="res://Art Assets/Effects/Particles/BloodGem.png" id="2_6to3h"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_8xhl6"]
+[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="4_25j3a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yumdx"]
+friction = 0.0
+bounce = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1f7x"]
+radius = 3.0
+
+[node name="BloodGem" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_yumdx")
+script = ExtResource("1_n6mbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u1f7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6to3h")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+color = Color(1, 0.377991, 0.31005, 1)
+texture = ExtResource("3_8xhl6")
+texture_scale = 0.2
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("4_25j3a")

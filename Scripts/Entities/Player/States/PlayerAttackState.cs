@@ -5,7 +5,7 @@ using System.Data;
 [GlobalClass]
 public partial class PlayerAttackState : EntityState
 {
-	[Export] float gravity;
+	[Export] float gravityFloatMult;
 	
 	float afterImgTimer;
 	Vector2 cachedInput = Vector2.Zero;
@@ -19,7 +19,7 @@ public partial class PlayerAttackState : EntityState
 		entity.anim.AnimationFinished += OnAnimationEnd;
 		PlayerController player = (PlayerController)entity;
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if(inputDir != Vector2.Zero) {
+		if(inputDir.X != 0) {
 			player.sprite.FlipH = (inputDir.X < 0);
 		}
 		var stateMachine = player.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
@@ -28,7 +28,7 @@ public partial class PlayerAttackState : EntityState
 		switch(comboNum) {
 			case 0:
 				stateMachine.Start("Attack_Combo1", true);
-				//comboNum++;
+				comboNum++;
 				comboTimer = comboTimeMax;
 				break;
 			case 1:
@@ -50,21 +50,12 @@ public partial class PlayerAttackState : EntityState
 			else comboNum = 0;
 			return;
 		}
-		PlayerController player = (PlayerController)entity;
-		
-		if(Input.IsActionJustPressed("Orb") && player.canOrb) {
-			player.SwitchState("OrbState");
-			return;
-		}
-
-		player.vertProj = -player.vertSpeed;
-		player.horProj = player.horSpeed;
 
 	}
     public override void End()
     {
 		entity.anim.AnimationFinished -= OnAnimationEnd;
-
+		GetNode<Jump>("ActiveScriptGroup/Jump").extraMult = 1;
         base.End();
     }
 
@@ -75,5 +66,9 @@ public partial class PlayerAttackState : EntityState
     }
 	public void _on_hitbox_area_entered(Area2D area) {
 		GameManager.Instance.FrameFreeze(0.05f, 0.2f);
+		if(!entity.grounded) {
+			entity.vertSpeed = -GetNode<Jump>("ActiveScriptGroup/Jump").riseThresh;
+			GetNode<Jump>("ActiveScriptGroup/Jump").extraMult = gravityFloatMult;
+		}
 	}
 }

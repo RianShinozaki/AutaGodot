@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://dqhj0wgykakyv"]
+[gd_scene load_steps=54 format=4 uid="uid://dqhj0wgykakyv"]
 
 [ext_resource type="TileSet" uid="uid://biyk13yov233s" path="res://Tilesets/Underground/WarpTerminal.tres" id="1_v8e8d"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_ka7ya"]
@@ -137,20 +137,30 @@ size = Vector2(11.5, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4d5bg"]
 size = Vector2(62.75, 13.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt8p5"]
+size = Vector2(23, 27.8846)
+
 [sub_resource type="Resource" id="Resource_2rxvv"]
 script = ExtResource("20_e5wye")
-objectToPool = "res://Objects/Effects/after_image.tscn"
+objectToPool = "uid://cqa8tytdncd0s"
 number = 20
 
 [sub_resource type="Resource" id="Resource_nep2b"]
 script = ExtResource("20_e5wye")
-objectToPool = "res://Objects/Effects/disintegrated_image.tscn"
+objectToPool = "uid://bjf0v8ser86o1"
 number = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt8p5"]
-size = Vector2(23, 27.8846)
+[sub_resource type="Resource" id="Resource_43p07"]
+script = ExtResource("20_e5wye")
+objectToPool = "uid://bumxjqlecahob"
+number = 30
 
-[node name="Node2D" type="CanvasModulate"]
+[sub_resource type="Resource" id="Resource_el2gh"]
+script = ExtResource("20_e5wye")
+objectToPool = "uid://dj3pyv3wewpob"
+number = 10
+
+[node name="CanvasModulate" type="CanvasModulate"]
 color = Color(0.4539, 0.3417, 0.51, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
@@ -912,15 +922,6 @@ scale = Vector2(1.01562, 0.202422)
 texture = ExtResource("10_dndv7")
 offset = Vector2(0, -600)
 
-[node name="System" type="Node" parent="."]
-
-[node name="ObjectPool" type="Node2D" parent="System"]
-script = ExtResource("19_hee8u")
-pool = Array[Object]([SubResource("Resource_2rxvv"), SubResource("Resource_nep2b")])
-
-[node name="Node" type="Node" parent="System"]
-script = ExtResource("21_leev1")
-
 [node name="wq" type="RigidBody2D" parent="."]
 position = Vector2(1392, -80)
 collision_mask = 3
@@ -936,3 +937,12 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wq2"]
 scale = Vector2(1, 7.28)
 shape = SubResource("RectangleShape2D_rt8p5")
+
+[node name="System" type="Node" parent="."]
+
+[node name="ObjectPool" type="Node2D" parent="System"]
+script = ExtResource("19_hee8u")
+pool = Array[Object]([SubResource("Resource_2rxvv"), SubResource("Resource_nep2b"), SubResource("Resource_43p07"), SubResource("Resource_el2gh")])
+
+[node name="Node" type="Node" parent="System"]
+script = ExtResource("21_leev1")

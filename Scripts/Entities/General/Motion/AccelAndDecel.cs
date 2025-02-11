@@ -18,7 +18,7 @@ public partial class AccelAndDecel : StateScript
 		
 		float hor = Input.GetAxis("ui_left", "ui_right");
 
-		if(Mathf.Abs(hor) > 0.1f) {
+		if(Mathf.Abs(hor) > 0.1f && !(entity.grounded && accel == 0)) {
 			int sign = Mathf.Sign(hor);
 			if(entity.horSpeed * hor < speed)
 				entity.AccelerateHor((entity.grounded ? accel : airAccel) * hor, speed * hor, true);

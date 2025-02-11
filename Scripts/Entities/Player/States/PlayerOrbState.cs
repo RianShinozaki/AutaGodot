@@ -37,21 +37,28 @@ public partial class PlayerOrbState : EntityState
 
 		player.animPlayer.Play("Orb");
 
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if(inputDir == Vector2.Zero) {
-			inputDir = new Vector2(player.sprite.FlipH ? -1 : 1, 0);
+		if(entity.lastState.Name == "DuckState") {
+			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+			inputDir.X = Mathf.Sign(inputDir.X);
+			if(inputDir.X == 0) inputDir.X = player.sprite.FlipH ? -1 : 1;
+
+			player.horSpeed = inputDir.X * speed;
 		}
 		else {
-			player.sprite.FlipH = (inputDir.X < 0);
+			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+			if(inputDir == Vector2.Zero) inputDir.X = player.sprite.FlipH ? -1 : 1;
+
+			player.horSpeed = inputDir.X * speed;
+			player.vertSpeed = inputDir.Y * speed;
+			if(player.vertSpeed == 0 && player.grounded) {
+				player.vertSpeed = initYSpeed;
+			}
+			if(player.vertSpeed == 0 && !player.grounded) {
+				player.vertSpeed = initYSpeed*0.3f;
+			}
 		}
-		player.horSpeed = inputDir.X * speed;
-		player.vertSpeed = inputDir.Y * speed;
-		if(player.vertSpeed == 0 && player.grounded) {
-			player.vertSpeed = initYSpeed;
-		}
-		if(player.vertSpeed == 0 && !player.grounded) {
-			player.vertSpeed = initYSpeed*0.3f;
-		}
+
+		
 		GetNode<CollisionShape2D>(orbShape).Disabled = false;
 		GetNode<CollisionShape2D>(normalShape).Disabled = true;
 
@@ -92,8 +99,6 @@ public partial class PlayerOrbState : EntityState
 		}
 
 		orbTime += (float)delta;
-		player.QueryAttack();
-
 	}
 	public override void End() {
 		PlayerController player = (PlayerController)entity;
@@ -109,10 +114,6 @@ public partial class PlayerOrbState : EntityState
 			sign = Mathf.Sign(inputDir.Y);
 			if(sign == 0) sign = -1;
 			player.vertSpeed = sign * Mathf.Max(player.vertSpeed * sign, exitMoveSpeed);
-		}
-
-		if(Mathf.Abs(player.horSpeed) > 0.1f && player.grounded) {
-			player.sprite.FlipH = (player.horSpeed < 0) ? true : false;
 		}
 
 		GetNode<CollisionShape2D>(orbShape).Disabled = true;

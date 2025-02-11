@@ -11,7 +11,6 @@ public partial class FlipToFaceDirection : StateScript
 	public override void _Process(double delta)
 	{
 		if(!active) return;
-		
 		//Flip sprite based on direction if grounded  
 		if(Mathf.Abs(entity.horProj) > 0.1f && (!mustBeGrounded || (mustBeGrounded && entity.grounded))) {
 			bool toFlipH = (entity.horProj < 0) ? true : false;
@@ -19,6 +18,7 @@ public partial class FlipToFaceDirection : StateScript
 				EmitSignal(SignalName.FlipSprite, toFlipH);
 			}
 			entity.sprite.FlipH = toFlipH;
+			GD.Print("Caused flip from " + GetParent().GetParent().Name);
 			
 		}
 		if(flipObject != null) {

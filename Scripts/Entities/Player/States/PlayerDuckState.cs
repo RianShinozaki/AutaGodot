@@ -3,7 +3,7 @@ using System;
 using System.Data;
 
 [GlobalClass]
-public partial class PlayerNormalState : EntityState
+public partial class PlayerDuckState : EntityState
 {
 	Vector2 cachedInput = Vector2.Zero;
 	float cachedDirection = 0;
@@ -21,12 +21,12 @@ public partial class PlayerNormalState : EntityState
 		if(player.grounded) {
 			player.canOrb = true;
 			player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
-			float vert = Input.GetAxis("ui_down", "ui_up");
-			if(vert == -1) {
-				player.SwitchState("DuckState");
-				var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
-				stateMachine.Start("Duck", true);
-			}
+		}
+		float vert = Input.GetAxis("ui_down", "ui_up");
+		if(vert != -1) {
+			player.SwitchState("NormalState");
+			var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
+			stateMachine.Start("FromDuck", true);
 		}
 
 	}

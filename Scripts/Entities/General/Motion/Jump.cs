@@ -18,9 +18,10 @@ public partial class Jump : StateScript
 	[Export] float risingGravScale;
 	[Export] float fallingGravScale;
 	[Export] float shortHopGravScale;
-	[Export] float riseThresh;
+	[Export] public float riseThresh;
 	[Export] float fallThresh;
 	[Export] float fallSpeedMax;
+	[Export] public float extraMult = 1;
 
     public override void _Process(double delta)
 	{
@@ -52,5 +53,6 @@ public partial class Jump : StateScript
 				entity.gravity = gravity * fallingGravScale;
 				break;
 		}
+		entity.gravity *= extraMult;
 	}
 }

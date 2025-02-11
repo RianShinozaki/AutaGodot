@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c4utwgyn4y7hs"]
+[gd_scene load_steps=61 format=3 uid="uid://c4utwgyn4y7hs"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_f4s6w"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_3y45a"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="4_x7mmj"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="5_kd6w5"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="5_n4c7d"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="6_64w8n"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="6_ehwrf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8qqqs"]
@@ -424,7 +425,6 @@ radius = 16.0
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_f4s6w")
-knockbackRecovery = 300.0
 gravity = 300.0
 
 [node name="Art" type="Sprite2D" parent="."]
@@ -457,9 +457,14 @@ script = ExtResource("3_3y45a")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/BaseState"]
 script = ExtResource("4_s737c")
+runIfInactive = true
 
 [node name="ProcessHitbox" type="Node" parent="States/BaseState/ActiveScriptGroup"]
 script = ExtResource("5_kd6w5")
+
+[node name="ProcessKnockback" type="Node" parent="States/BaseState/ActiveScriptGroup"]
+script = ExtResource("6_64w8n")
+knockbackRecovery = 300.0
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("3_3y45a")
