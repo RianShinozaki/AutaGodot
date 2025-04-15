@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class StateScript : Node
+public partial class StateScript : Node2D
 {
 	[Export] bool autoHook = true;
 	[Export] public StateEntity entity;

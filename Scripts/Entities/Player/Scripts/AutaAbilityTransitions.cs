@@ -26,8 +26,10 @@ public partial class AutaAbilityTransitions : StateScript
 			return;
 		}
 
-		if(attackBufferTime > 0 && allowAttack)
+		if(attackBufferTime > 0 && allowAttack) {
 			entity.SwitchState("AttackState");
+			attackBufferTime = 0;
+		}
 		
 	}
 }

@@ -61,8 +61,9 @@ public partial class PlayerAttackState : EntityState
 
     public void OnAnimationEnd(StringName animName)
     {
-		PlayerController player = (PlayerController)entity;
-		player.SwitchState("NormalState");
+		if(!active) return;
+			PlayerController player = (PlayerController)entity;
+			player.SwitchState("NormalState");
     }
 	public void _on_hitbox_area_entered(Area2D area) {
 		GameManager.Instance.FrameFreeze(0.05f, 0.2f);

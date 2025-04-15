@@ -21,6 +21,7 @@ public partial class PlayerOrbState : EntityState
 	[Export] float exitMoveSpeed;
 	[Export] public NodePath orbShape;
 	[Export] public NodePath normalShape;
+	[Export] public NodePath duckShape;
 	float orbTime;
 	Vector3 prevVelocity;
 
@@ -32,10 +33,10 @@ public partial class PlayerOrbState : EntityState
 		PlayerController player = (PlayerController)entity;
 
 		orbTime = 0;
-		player.orb = true;
 		player.collisionMode = Agent.CollisionMode.BOUNCE;
 
-		player.animPlayer.Play("Orb");
+		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Orb", true);
 
 		if(entity.lastState.Name == "DuckState") {
 			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
@@ -61,6 +62,7 @@ public partial class PlayerOrbState : EntityState
 		
 		GetNode<CollisionShape2D>(orbShape).Disabled = false;
 		GetNode<CollisionShape2D>(normalShape).Disabled = true;
+		GetNode<CollisionShape2D>(duckShape).Disabled = true;
 
 		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
@@ -89,7 +91,13 @@ public partial class PlayerOrbState : EntityState
 		if(!active) return;
 
 		if(orbTime >= minOrbTime && !Input.IsActionPressed("Orb")) {
-			player.SwitchState("NormalState");
+			float vert = Input.GetAxis("ui_down", "ui_up");
+			if(entity.IsOnFloor() && vert == -1){
+				player.SwitchState("DuckState");
+			}
+			else {
+				player.SwitchState("NormalState");
+			}
 		}
 
 		if(orbTime > gravityMultWaitTime) {
@@ -112,7 +120,6 @@ public partial class PlayerOrbState : EntityState
 			player.horSpeed = sign * Mathf.Max(player.horSpeed * sign, exitMoveSpeed);
 
 			sign = Mathf.Sign(inputDir.Y);
-			if(sign == 0) sign = -1;
 			player.vertSpeed = sign * Mathf.Max(player.vertSpeed * sign, exitMoveSpeed);
 		}
 

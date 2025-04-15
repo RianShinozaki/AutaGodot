@@ -8,9 +8,21 @@ public partial class PlayerDuckState : EntityState
 	Vector2 cachedInput = Vector2.Zero;
 	float cachedDirection = 0;
 	float cachedRot = 0;
+	[Export] public NodePath orbShape;
+	[Export] public NodePath normalShape;
+	[Export] public NodePath duckShape;
 
 	public override void Start() {
 		base.Start();	
+		GetNode<CollisionShape2D>(duckShape).Disabled = false;
+		GetNode<CollisionShape2D>(normalShape).Disabled = true;
+
+		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Grounded", true);
+		stateMachine = entity.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Duck", true);
+		PlayerController player = (PlayerController)entity;
+		player.duck = true;
 	}
 	public override void _Process(double delta) {
 
@@ -31,6 +43,11 @@ public partial class PlayerDuckState : EntityState
 
 	}
 	public override void End() {
+		GetNode<CollisionShape2D>(duckShape).Disabled = true;
+		GetNode<CollisionShape2D>(normalShape).Disabled = false;
+		PlayerController player = (PlayerController)entity;
+		player.duck = false;
+
 		base.End();
 	}
 }

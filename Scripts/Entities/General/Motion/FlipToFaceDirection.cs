@@ -18,7 +18,6 @@ public partial class FlipToFaceDirection : StateScript
 				EmitSignal(SignalName.FlipSprite, toFlipH);
 			}
 			entity.sprite.FlipH = toFlipH;
-			GD.Print("Caused flip from " + GetParent().GetParent().Name);
 			
 		}
 		if(flipObject != null) {

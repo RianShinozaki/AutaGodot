@@ -7,6 +7,6 @@ public partial class GameCamera : Camera2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		GlobalPosition = GlobalPosition.Lerp(target.GlobalPosition, 0.2f);
+		GlobalPosition = GlobalPosition.Lerp(target.GlobalPosition , 0.2f);
 	}
 }

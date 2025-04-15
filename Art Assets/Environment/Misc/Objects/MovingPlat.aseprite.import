@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cwfp1bpqcyulv"
+path="res://.godot/imported/MovingPlat.aseprite-6d9032f6bb76da412eb2e1da9b6af910.res"
+
+[deps]
+
+source_file="res://Art Assets/Environment/Misc/Objects/MovingPlat.aseprite"
+dest_files=["res://.godot/imported/MovingPlat.aseprite-6d9032f6bb76da412eb2e1da9b6af910.res"]
+
+[params]
+

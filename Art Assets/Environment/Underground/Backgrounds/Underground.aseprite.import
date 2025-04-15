@@ -1,0 +1,17 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split"
+type="JSON"
+uid="uid://b6hd6x2qpgc1v"
+path="res://.godot/imported/Underground.aseprite-95ef31f31f4ffd0d14790b3426afc26e.json"
+
+[deps]
+
+source_file="res://Art Assets/Environment/Underground/Backgrounds/Underground.aseprite"
+dest_files=["res://.godot/imported/Underground.aseprite-95ef31f31f4ffd0d14790b3426afc26e.json"]
+
+[params]
+
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
+output/layers_resources_folder=""

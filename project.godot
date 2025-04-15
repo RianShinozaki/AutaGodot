@@ -16,14 +16,14 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="AutaGodot"
-run/main_scene="res://Scenes/UndergroundTest.tscn"
+run/main_scene="res://Scenes/WeaponsBunker.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://Scripts/icon.svg"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=450
+window/size/viewport_width=896
+window/size/viewport_height=504
 window/size/window_width_override=1600
 window/size/window_height_override=900
 window/stretch/mode="viewport"
@@ -34,7 +34,7 @@ project/assembly_name="Auta"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/procedural_textures/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/procedural_textures/plugin.cfg")
 
 [file_customization]
 
@@ -71,6 +71,11 @@ Attack={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
 ]
 }
+SpecialMenu={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -80,6 +85,8 @@ Attack={
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Entity"
 2d_physics/layer_3="GravityRegion"
+2d_physics/layer_4="Player"
+2d_physics/layer_5="EntityMovingPlatCollider"
 2d_physics/layer_9="PlayerHitbox"
 2d_physics/layer_10="PlayerHurtbox"
 2d_physics/layer_11="EnemyHitbox"

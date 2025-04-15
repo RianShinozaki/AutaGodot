@@ -10,6 +10,8 @@ public partial class PlayerNormalState : EntityState
 	float cachedRot = 0;
 
 	public override void Start() {
+		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Grounded", true);
 		base.Start();	
 	}
 	public override void _Process(double delta) {
@@ -24,8 +26,6 @@ public partial class PlayerNormalState : EntityState
 			float vert = Input.GetAxis("ui_down", "ui_up");
 			if(vert == -1) {
 				player.SwitchState("DuckState");
-				var stateMachine = player.anim.Get("parameters/Grounded/playback").As<AnimationNodeStateMachinePlayback>();
-				stateMachine.Start("Duck", true);
 			}
 		}
 

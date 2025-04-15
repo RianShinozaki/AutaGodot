@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 public partial class StateEntity : Agent
@@ -27,6 +28,7 @@ public partial class StateEntity : Agent
 		anim = GetNode<AnimationTree>("Art/AnimationTree");
 		animPlayer = GetNode<AnimationPlayer>("Art/AnimationPlayer");
 		sprite = GetNode<Sprite2D>("Art");
+		if(currentState != null) SwitchState(currentState.Name);
 		base._Ready();
 	}
 	public void SwitchState(String newState) {

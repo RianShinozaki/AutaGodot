@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=103 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b572get7u4s24" path="res://Art Assets/Characters/Auta/Auta1.tres" id="4_46p0d"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="5_524kh"]
+[ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="5_ijq85"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/PlayerNormalAnimations.cs" id="6_apovy"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="6_mm0tc"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/Jump.cs" id="7_5n0yb"]
@@ -19,8 +20,29 @@
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="9_grlvd"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="9_s3pnp"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="10_b8sdc"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="11_03o8e"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerDuckState.cs" id="15_c8jlq"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaAbilityTransitions.cs" id="15_mntrl"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaSpecialMenu.cs" id="18_10f7p"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
+
+[sub_resource type="Animation" id="Animation_hq2ft"]
+resource_name = "Duck"
+length = 0.07
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0588235),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [45, 46]
+}
 
 [sub_resource type="Animation" id="Animation_oogdo"]
 resource_name = "Fall"
@@ -36,6 +58,56 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [23, 24, 25]
+}
+
+[sub_resource type="Animation" id="Animation_aev23"]
+resource_name = "FromDuck"
+length = 0.07
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [47]
+}
+
+[sub_resource type="Animation" id="Animation_g0kfn"]
+resource_name = "FromSlide"
+length = 0.08
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [52]
+}
+
+[sub_resource type="Animation" id="Animation_hcra8"]
+resource_name = "Hurt"
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.153846),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [48, 49]
 }
 
 [sub_resource type="Animation" id="Animation_wvn26"]
@@ -157,6 +229,22 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_310b7"]
+resource_name = "Slide"
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0769231),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [50, 51]
+}
+
 [sub_resource type="Animation" id="Animation_2r0hl"]
 resource_name = "Turn"
 length = 0.2
@@ -174,45 +262,13 @@ tracks/0/keys = {
 "values": [14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_hq2ft"]
-resource_name = "Duck"
-length = 0.07
-step = 0.06
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Art:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0588235),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [45, 46]
-}
-
-[sub_resource type="Animation" id="Animation_aev23"]
-resource_name = "FromDuck"
-length = 0.07
-step = 0.06
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Art:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [47]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjstx"]
 _data = {
 "Duck": SubResource("Animation_hq2ft"),
 "Fall": SubResource("Animation_oogdo"),
 "FromDuck": SubResource("Animation_aev23"),
+"FromSlide": SubResource("Animation_g0kfn"),
+"Hurt": SubResource("Animation_hcra8"),
 "Idle": SubResource("Animation_wvn26"),
 "Jump": SubResource("Animation_eap1r"),
 "JumpToFall": SubResource("Animation_068nl"),
@@ -220,6 +276,7 @@ _data = {
 "Orb": SubResource("Animation_dqf4c"),
 "RESET": SubResource("Animation_q4vwf"),
 "Run": SubResource("Animation_5hoco"),
+"Slide": SubResource("Animation_310b7"),
 "Turn": SubResource("Animation_2r0hl")
 }
 
@@ -347,6 +404,9 @@ animation = &"Duck"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h41u2"]
 animation = &"FromDuck"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6qp1f"]
+animation = &"FromSlide"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycl7s"]
 animation = &"Idle"
 
@@ -356,11 +416,11 @@ animation = &"Land"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvtho"]
 animation = &"Run"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g5j43"]
+animation = &"Slide"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yium"]
 animation = &"Turn"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ogpvt"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5l0kj"]
 advance_mode = 2
@@ -382,21 +442,54 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d61rj"]
+advance_mode = 2
+advance_expression = "abs(horProj) > 100f
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8kc68"]
+advance_mode = 2
+advance_expression = "abs(horProj) < 0.5f"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r258h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ogpvt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7je4p"]
+priority = 0
+advance_mode = 2
+advance_expression = "duck == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hunov"]
+advance_mode = 2
+advance_expression = "duck == true"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eg2nn"]
 states/Duck/node = SubResource("AnimationNodeAnimation_u2e3c")
-states/Duck/position = Vector2(179, -52)
+states/Duck/position = Vector2(25, -125)
 states/FromDuck/node = SubResource("AnimationNodeAnimation_h41u2")
-states/FromDuck/position = Vector2(272, -125)
+states/FromDuck/position = Vector2(278, -27.2)
+states/FromSlide/node = SubResource("AnimationNodeAnimation_6qp1f")
+states/FromSlide/position = Vector2(101, -26)
 states/Idle/node = SubResource("AnimationNodeAnimation_ycl7s")
 states/Idle/position = Vector2(368, 111.6)
 states/Land/node = SubResource("AnimationNodeAnimation_t3x3s")
 states/Land/position = Vector2(386.6, -63.2)
 states/Run/node = SubResource("AnimationNodeAnimation_hvtho")
 states/Run/position = Vector2(562.4, 110.64)
+states/Slide/node = SubResource("AnimationNodeAnimation_g5j43")
+states/Slide/position = Vector2(-22, -6)
+states/Start/position = Vector2(165, 113.24)
 states/Turn/node = SubResource("AnimationNodeAnimation_2yium")
 states/Turn/position = Vector2(624.2, -31.2)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7")]
-graph_offset = Vector2(-23, -251)
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Duck", "Slide", SubResource("AnimationNodeStateMachineTransition_d61rj"), "Slide", "FromSlide", SubResource("AnimationNodeStateMachineTransition_8kc68"), "FromSlide", "Duck", SubResource("AnimationNodeStateMachineTransition_r258h"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov")]
+graph_offset = Vector2(-104, -176)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jessi"]
+animation = &"Hurt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5l3k2"]
 animation = &"Fall"
@@ -447,18 +540,6 @@ advance_expression = "grounded == false"
 advance_mode = 2
 advance_expression = "grounded == true"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lcc5c"]
-advance_mode = 2
-advance_expression = "orb == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7jgpc"]
-advance_mode = 2
-advance_expression = "orb == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4bg73"]
-advance_mode = 2
-advance_expression = "orb == false"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yvtee"]
 switch_mode = 2
 advance_mode = 2
@@ -469,13 +550,15 @@ states/Attack/position = Vector2(614.6, -71.8)
 states/End/position = Vector2(708, 51.2)
 states/Grounded/node = SubResource("AnimationNodeStateMachine_eg2nn")
 states/Grounded/position = Vector2(439, 105.2)
+states/Hurt/node = SubResource("AnimationNodeAnimation_jessi")
+states/Hurt/position = Vector2(153, 12)
 states/Jump/node = SubResource("AnimationNodeStateMachine_fohhu")
 states/Jump/position = Vector2(428.8, -138.6)
 states/Orb/node = SubResource("AnimationNodeAnimation_x8bts")
 states/Orb/position = Vector2(266.8, -37.6)
 states/Start/position = Vector2(151.2, 122.944)
-transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Jump", "Orb", SubResource("AnimationNodeStateMachineTransition_lcc5c"), "Grounded", "Orb", SubResource("AnimationNodeStateMachineTransition_7jgpc"), "Orb", "Grounded", SubResource("AnimationNodeStateMachineTransition_4bg73"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
-graph_offset = Vector2(13, -198)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
+graph_offset = Vector2(43, -173)
 
 [sub_resource type="Resource" id="Resource_l3uw4"]
 script = ExtResource("10_b8sdc")
@@ -628,12 +711,12 @@ _data = {
 "RESET": SubResource("Animation_pvjgl")
 }
 
-[sub_resource type="Gradient" id="Gradient_ieusm"]
+[sub_resource type="Gradient" id="Gradient_qr2vu"]
 offsets = PackedFloat32Array(0, 0.402834, 1)
 colors = PackedColorArray(0, 1, 1, 1, 0.0728745, 1, 1, 0.927126, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jgwpx"]
-gradient = SubResource("Gradient_ieusm")
+gradient = SubResource("Gradient_qr2vu")
 fill = 1
 fill_from = Vector2(0.505983, 0.51453)
 fill_to = Vector2(0.892308, 0.152137)
@@ -650,7 +733,15 @@ HitFX = "Slice"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 6.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2oiyr"]
+radius = 6.0
 height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7536"]
+radius = 5.5
+height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icj15"]
 radius = 7.0
@@ -662,7 +753,7 @@ radius = 8.0
 radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 10
 script = ExtResource("1_uqxb3")
 GroundedFloorCheckDist = 16
 AirFloorCheckDist = 8
@@ -696,6 +787,13 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="AfterImageGenerator" type="Node" parent="Art"]
 script = ExtResource("8_fumsl")
 
+[node name="Attributes" type="Node2D" parent="."]
+
+[node name="EntityHealth" type="Node2D" parent="Attributes"]
+script = ExtResource("5_ijq85")
+health = 20.0
+maxHealth = 20
+
 [node name="States" type="Node2D" parent="."]
 
 [node name="BaseState" type="Node2D" parent="States"]
@@ -703,16 +801,29 @@ script = ExtResource("2_2h7nr")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/BaseState"]
 script = ExtResource("6_mm0tc")
+runIfInactive = true
 
-[node name="ProcessHitbox" type="Node" parent="States/BaseState/ActiveScriptGroup"]
+[node name="ProcessHitbox" type="Node2D" parent="States/BaseState/ActiveScriptGroup"]
 script = ExtResource("7_7nrjr")
 
-[node name="ProcessGravityRegions" type="Node" parent="States/BaseState/ActiveScriptGroup"]
+[node name="ProcessGravityRegions" type="Node2D" parent="States/BaseState/ActiveScriptGroup"]
 script = ExtResource("8_fa06a")
 
-[node name="ProcessKnockback" type="Node" parent="States/BaseState/ActiveScriptGroup"]
+[node name="ProcessKnockback" type="Node2D" parent="States/BaseState/ActiveScriptGroup"]
 script = ExtResource("9_s3pnp")
 knockbackRecovery = 300.0
+
+[node name="SignalScriptGroup" type="Node2D" parent="States/BaseState"]
+script = ExtResource("6_mm0tc")
+runIfInactive = true
+
+[node name="SwitchStateOnSignal - ProcessHitbox -> HurtState" type="Node2D" parent="States/BaseState/SignalScriptGroup"]
+script = ExtResource("16_1meyx")
+toState = "HurtState"
+
+[node name="PlayAnimationOnSignal - ProcessHitbox -> Hurt" type="Node2D" parent="States/BaseState/SignalScriptGroup"]
+script = ExtResource("11_03o8e")
+animName = &"Hurt"
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("2_2h7nr")
@@ -720,24 +831,25 @@ script = ExtResource("2_2h7nr")
 [node name="ActiveScriptGroup" type="Node2D" parent="States/NormalState"]
 script = ExtResource("6_mm0tc")
 
-[node name="AccelAndDecel" type="Node" parent="States/NormalState/ActiveScriptGroup"]
+[node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("7_ywl3w")
+directControl = true
 speed = 90.0
-accel = 15.0
-decel = 8.0
-decelTooFast = 2.0
-airAccel = 8.0
-airDecel = 1.0
-airDecelTooFast = 1.0
+accel = 900.0
+decel = 480.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecel = 60.0
+airDecelTooFast = 60.0
 
-[node name="FlipToFaceDirection" type="Node" parent="States/NormalState/ActiveScriptGroup"]
+[node name="FlipToFaceDirection" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("5_524kh")
 mustBeGrounded = true
 
-[node name="PlayerNormalAnimations" type="Node" parent="States/NormalState/ActiveScriptGroup"]
+[node name="PlayerNormalAnimations" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("6_apovy")
 
-[node name="Jump" type="Node" parent="States/NormalState/ActiveScriptGroup"]
+[node name="Jump" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("7_5n0yb")
 allowInitiation = true
 jumpVelocity = 220.0
@@ -749,31 +861,38 @@ shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
 
-[node name="AutaAbilityTransitions" type="Node" parent="States/NormalState/ActiveScriptGroup"]
+[node name="AutaAbilityTransitions" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("15_mntrl")
 allowAttack = true
 allowOrb = true
 
+[node name="AutaSpecialMenu" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+script = ExtResource("18_10f7p")
+
 [node name="DuckState" type="Node2D" parent="States"]
 script = ExtResource("15_c8jlq")
+orbShape = NodePath("../../OrbEnvironmentBox")
+normalShape = NodePath("../../NormalEnvironmentBox")
+duckShape = NodePath("../../DuckEnvironmentBox")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/DuckState"]
 script = ExtResource("6_mm0tc")
 
-[node name="AccelAndDecel" type="Node" parent="States/DuckState/ActiveScriptGroup"]
+[node name="AccelAndDecel" type="Node2D" parent="States/DuckState/ActiveScriptGroup"]
 script = ExtResource("7_ywl3w")
+directControl = true
 speed = 90.0
-decel = 2.0
-decelTooFast = 2.0
-airAccel = 8.0
-airDecel = 1.0
-airDecelTooFast = 1.0
+decel = 180.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecel = 60.0
+airDecelTooFast = 60.0
 
-[node name="FlipToFaceDirection" type="Node" parent="States/DuckState/ActiveScriptGroup"]
+[node name="FlipToFaceDirection" type="Node2D" parent="States/DuckState/ActiveScriptGroup"]
 script = ExtResource("5_524kh")
 mustBeGrounded = true
 
-[node name="Jump" type="Node" parent="States/DuckState/ActiveScriptGroup"]
+[node name="Jump" type="Node2D" parent="States/DuckState/ActiveScriptGroup"]
 script = ExtResource("7_5n0yb")
 allowInitiation = true
 jumpVelocity = 220.0
@@ -785,10 +904,17 @@ shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
 
-[node name="AutaAbilityTransitions" type="Node" parent="States/DuckState/ActiveScriptGroup"]
+[node name="AutaAbilityTransitions" type="Node2D" parent="States/DuckState/ActiveScriptGroup"]
 script = ExtResource("15_mntrl")
 allowAttack = true
 allowOrb = true
+
+[node name="SignalStateGroup" type="Node2D" parent="States/DuckState"]
+script = ExtResource("6_mm0tc")
+
+[node name="SwitchStateOnSignal - Jump -> NormalState" type="Node2D" parent="States/DuckState/SignalStateGroup"]
+script = ExtResource("16_1meyx")
+toState = "NormalState"
 
 [node name="OrbState" type="Node2D" parent="States"]
 script = ExtResource("8_tjto1")
@@ -803,22 +929,23 @@ gravityMultWaitTime = 0.2
 exitMoveSpeed = 110.0
 orbShape = NodePath("../../OrbEnvironmentBox")
 normalShape = NodePath("../../NormalEnvironmentBox")
+duckShape = NodePath("../../DuckEnvironmentBox")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/OrbState"]
 script = ExtResource("6_mm0tc")
 
-[node name="AccelAndDecel" type="Node" parent="States/OrbState/ActiveScriptGroup"]
+[node name="AccelAndDecel" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
 script = ExtResource("7_ywl3w")
+directControl = true
 speed = 180.0
-accel = 2.0
-decel = 1.0
-airAccel = 2.0
-airDecel = 1.0
+decel = 60.0
+airAccel = 120.0
+airDecel = 60.0
 
-[node name="FlipToFaceDirection" type="Node" parent="States/OrbState/ActiveScriptGroup"]
+[node name="FlipToFaceDirection" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
 script = ExtResource("5_524kh")
 
-[node name="AutaAbilityTransitions" type="Node" parent="States/OrbState/ActiveScriptGroup"]
+[node name="AutaAbilityTransitions" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
 script = ExtResource("15_mntrl")
 allowAttack = true
 
@@ -897,21 +1024,22 @@ texture = SubResource("GradientTexture2D_jgwpx")
 [node name="ActiveScriptGroup" type="Node2D" parent="States/AttackState"]
 script = ExtResource("6_mm0tc")
 
-[node name="FlipToFaceDirection" type="Node" parent="States/AttackState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
+[node name="FlipToFaceDirection" type="Node2D" parent="States/AttackState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
 script = ExtResource("5_524kh")
 mustBeGrounded = true
 flipObject = NodePath("../../Attacks")
 
-[node name="AccelAndDecel" type="Node" parent="States/AttackState/ActiveScriptGroup"]
+[node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
 script = ExtResource("7_ywl3w")
+directControl = true
 speed = 90.0
-decel = 8.0
-decelTooFast = 2.0
-airAccel = 4.0
-airDecel = 1.0
-airDecelTooFast = 2.0
+decel = 480.0
+decelTooFast = 120.0
+airAccel = 240.0
+airDecel = 60.0
+airDecelTooFast = 120.0
 
-[node name="Jump" type="Node" parent="States/AttackState/ActiveScriptGroup"]
+[node name="Jump" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
 script = ExtResource("7_5n0yb")
 jumpVelocity = 220.0
 gravity = 230.0
@@ -922,41 +1050,82 @@ shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
 
+[node name="HurtState" type="Node2D" parent="States"]
+script = ExtResource("23_5rue2")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/HurtState"]
+script = ExtResource("6_mm0tc")
+
+[node name="AccelAndDecel" type="Node2D" parent="States/HurtState/ActiveScriptGroup"]
+script = ExtResource("7_ywl3w")
+directControl = true
+speed = 90.0
+decel = 480.0
+decelTooFast = 120.0
+airAccel = 240.0
+airDecelTooFast = 120.0
+
+[node name="SignalScriptGroup" type="Node2D" parent="States/HurtState"]
+script = ExtResource("6_mm0tc")
+runIfInactive = true
+
+[node name="SwitchStateOnSignal - KnockbackRecovered -> NormalState" type="Node2D" parent="States/HurtState/SignalScriptGroup"]
+script = ExtResource("16_1meyx")
+toState = "NormalState"
+
+[node name="PlayAnimationOnSignal - KnockbackRecovered -> Grounded" type="Node2D" parent="States/HurtState/SignalScriptGroup"]
+script = ExtResource("11_03o8e")
+animName = &"Grounded"
+
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
 [node name="DuckEnvironmentBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("CapsuleShape2D_hv6ar")
+visible = false
+shape = SubResource("CapsuleShape2D_2oiyr")
+
+[node name="MovingPlatCollider" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="MovingPlatCollider" type="CollisionShape2D" parent="MovingPlatCollider"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_e7536")
 
 [node name="OrbEnvironmentBox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_icj15")
 disabled = true
 
 [node name="RayArray" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_a2cge")
 floorOffset = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="RayArray"]
-position = Vector2(-7, 0)
+position = Vector2(-5, 0)
 target_position = Vector2(0, 8)
 
 [node name="RayCast2D" type="RayCast2D" parent="RayArray"]
 target_position = Vector2(0, 8)
 
 [node name="RayCast2D3" type="RayCast2D" parent="RayArray"]
-position = Vector2(7, 0)
+position = Vector2(5, 0)
 target_position = Vector2(0, 8)
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 1536
-collision_mask = 4
+visible = false
+collision_layer = 512
+collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_cjpgg")
 
 [node name="DistanceArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 65536
 collision_mask = 0
 
@@ -965,8 +1134,22 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+offset_bottom = -19.0
+text = "da"
+horizontal_alignment = 1
+
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/SwitchStateOnSignal - ProcessHitbox -> HurtState" method="_on_signal"]
+[connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/PlayAnimationOnSignal - ProcessHitbox -> Hurt" method="_on_signal"]
+[connection signal="knockbackRecovered" from="States/BaseState/ActiveScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/SwitchStateOnSignal - KnockbackRecovered -> NormalState" method="_on_signal"]
+[connection signal="knockbackRecovered" from="States/BaseState/ActiveScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/PlayAnimationOnSignal - KnockbackRecovered -> Grounded" method="_on_signal"]
 [connection signal="FlipSprite" from="States/NormalState/ActiveScriptGroup/FlipToFaceDirection" to="States/NormalState/ActiveScriptGroup/PlayerNormalAnimations" method="_on_flip_sprite"]
+[connection signal="Jumped" from="States/DuckState/ActiveScriptGroup/Jump" to="States/DuckState/SignalStateGroup/SwitchStateOnSignal - Jump -> NormalState" method="_on_signal"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Attack1" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Attack2" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ActiveScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

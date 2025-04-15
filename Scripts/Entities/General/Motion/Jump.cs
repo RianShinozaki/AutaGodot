@@ -22,13 +22,30 @@ public partial class Jump : StateScript
 	[Export] float fallThresh;
 	[Export] float fallSpeedMax;
 	[Export] public float extraMult = 1;
+	bool canShortHop;
+
+	[Signal]
+	public delegate void JumpedEventHandler();
 
     public override void _Process(double delta)
 	{
-		if(!active) return;
+		if(!active) {
+			canShortHop = false; 
+
+			if(allowInitiation && Input.IsActionJustPressed("Jump") && entity.grounded) {
+				canShortHop = true;
+				EmitSignal(SignalName.Jumped);
+			}
+
+			return;
+		}
 
 		if(allowInitiation && Input.IsActionJustPressed("Jump") && entity.grounded) {
 			entity.vertSpeed = -jumpVelocity;
+			entity.vertProj = -entity.vertSpeed;
+			entity.grounded = false;
+			canShortHop = true;
+			EmitSignal(SignalName.Jumped);
 		}
 
 		JumpingState js = entity.grounded ? JumpingState.Grounded : 
@@ -40,17 +57,20 @@ public partial class Jump : StateScript
 		switch(js) {
 			case JumpingState.Grounded:
 				entity.gravity = gravity;
+				canShortHop = false;
 				break;
 			case JumpingState.Rising:
 				entity.gravity = gravity * risingGravScale;
-				if(!Input.IsActionPressed("Jump"))
+				if(!Input.IsActionPressed("Jump") && canShortHop)
 					entity.gravity = gravity * shortHopGravScale;
 				break;
 			case JumpingState.Peak:
+				canShortHop = false;
 				entity.gravity = gravity * normalGravScale;
 				break;
 			case JumpingState.Falling:
 				entity.gravity = gravity * fallingGravScale;
+				canShortHop = false;
 				break;
 		}
 		entity.gravity *= extraMult;

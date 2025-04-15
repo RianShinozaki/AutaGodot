@@ -5,6 +5,10 @@ using System;
 public partial class ProcessHitbox : StateScript
 {
 	ProcessKnockback procKnock;
+
+	[Signal]
+	public delegate void HurtEventHandler();
+
     public override void Init()
     {
 		procKnock = GetParent().GetNode<ProcessKnockback>("ProcessKnockback");
@@ -12,10 +16,13 @@ public partial class ProcessHitbox : StateScript
     }
     public virtual void _on_hurtbox_area_entered(Area2D area) {
 		if(!active) return;
-
+		
 		if(area is Hitbox hitB){
 			HitboxData dat = hitB.hitboxData;
 			procKnock.horKnockbackSpeed = dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1);
+			entity.vertSpeed = -dat.yKnockback;
+			entity.GetNode<EntityHealth>("Attributes/EntityHealth").ChangeHealth(-dat.damage);
+			EmitSignal(SignalName.Hurt);
 
 			Node2D fx;
 			for(int i = 0; i < dat.damage; i++) {

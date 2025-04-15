@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://coq5iqtbcm6ho"
+path="res://.godot/imported/AutaUI.aseprite-77efbb5cef3d5fd8558d20cf948df07b.res"
+
+[deps]
+
+source_file="res://Art Assets/UI/Game/AutaUI.aseprite"
+dest_files=["res://.godot/imported/AutaUI.aseprite-77efbb5cef3d5fd8558d20cf948df07b.res"]
+
+[params]
+
