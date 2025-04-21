@@ -34,7 +34,7 @@ project/assembly_name="Auta"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/procedural_textures/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/procedural_textures/plugin.cfg", "res://addons/racoonery/plugin.cfg")
 
 [file_customization]
 
