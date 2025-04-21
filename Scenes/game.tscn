@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/AutaUi.cs" id="3_jx31h"]
 [ext_resource type="Texture2D" uid="uid://pgi55101u1u6" path="res://Art Assets/UI/Game/spr_HealthbarBar.png" id="3_qj8so"]
 [ext_resource type="Texture2D" uid="uid://d113a3wcib8nn" path="res://Art Assets/UI/Game/spr_MPBar.png" id="4_2txl4"]
-[ext_resource type="PackedScene" uid="uid://rv7xg4obnm88" path="res://Scenes/HouseEclipse.tscn" id="6_htfnh"]
 [ext_resource type="Script" path="res://Scripts/System/SFXController.cs" id="6_o47f1"]
+[ext_resource type="PackedScene" uid="uid://rtss4xgk0676" path="res://Scenes/WeaponsBunker.tscn" id="6_pix6n"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_db4av"]
 light_mode = 1
@@ -59,4 +59,4 @@ scale = Vector2(2, 2)
 script = ExtResource("6_o47f1")
 numChannels = 8
 
-[node name="CanvasModulate" parent="." instance=ExtResource("6_htfnh")]
+[node name="CanvasModulate" parent="." instance=ExtResource("6_pix6n")]

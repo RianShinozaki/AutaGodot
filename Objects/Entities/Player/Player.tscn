@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=105 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaSpecialMenu.cs" id="18_10f7p"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
+[ext_resource type="Texture2D" uid="uid://qvvkw3s402xi" path="res://Art Assets/Characters/Auta/AutaAttackFXHand.png" id="25_jqwbh"]
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
 resource_name = "Duck"
@@ -360,11 +361,39 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.117647)
 }
 
+[sub_resource type="Animation" id="Animation_ekx5p"]
+resource_name = "HandCombo1"
+length = 0.3332
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [64, 65, 66, 67]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("States/AttackState/Attacks/Attack1/Sprite2D/AnimationTree")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Hitbox"),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b056u"]
 _data = {
 "Combo1": SubResource("Animation_cgv2g"),
 "Combo2": SubResource("Animation_o8xra"),
-"Combo3": SubResource("Animation_swsgs")
+"Combo3": SubResource("Animation_swsgs"),
+"HandCombo1": SubResource("Animation_ekx5p")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q3qwu"]
@@ -571,16 +600,16 @@ weight = 0
 HitFX = "Slice"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ntgs"]
-radius = 11.0
-height = 48.0
+radius = 8.0
+height = 32.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_53d17"]
 blend_mode = 1
 
 [sub_resource type="Animation" id="Animation_o0nuo"]
 resource_name = "Hitbox"
-length = 0.3
-step = 0.06
+length = 0.3333
+step = 0.0833
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -588,10 +617,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0588235, 0.117647, 0.176471, 0.235294),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -600,7 +629,7 @@ tracks/1/path = NodePath("..:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -612,7 +641,7 @@ tracks/2/path = NodePath("../PointLight2D:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.24),
+"times": PackedFloat32Array(0, 0.0833333, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -636,7 +665,7 @@ tracks/4/path = NodePath("../CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.18),
+"times": PackedFloat32Array(0, 0.0833333, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -769,7 +798,7 @@ rotation = -0.00265226
 texture = ExtResource("4_46p0d")
 offset = Vector2(0, -8)
 hframes = 8
-vframes = 8
+vframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
 root_node = NodePath("../..")
@@ -1021,6 +1050,40 @@ energy = 0.5
 range_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_jgwpx")
 
+[node name="Attack1Hand" type="Area2D" parent="States/AttackState/Attacks"]
+visible = false
+collision_layer = 256
+collision_mask = 2048
+script = ExtResource("9_grlvd")
+hitboxData = SubResource("Resource_l3uw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/AttackState/Attacks/Attack1Hand"]
+position = Vector2(23, -3)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_5ntgs")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="States/AttackState/Attacks/Attack1Hand"]
+light_mask = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_53d17")
+position = Vector2(15, -5)
+texture = ExtResource("25_jqwbh")
+hframes = 8
+vframes = 4
+
+[node name="AnimationTree" type="AnimationPlayer" parent="States/AttackState/Attacks/Attack1Hand/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_x8gsr")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Attack1Hand"]
+position = Vector2(30, -4)
+enabled = false
+energy = 0.5
+range_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_jgwpx")
+
 [node name="ActiveScriptGroup" type="Node2D" parent="States/AttackState"]
 script = ExtResource("6_mm0tc")
 
@@ -1152,4 +1215,5 @@ horizontal_alignment = 1
 [connection signal="Jumped" from="States/DuckState/ActiveScriptGroup/Jump" to="States/DuckState/SignalStateGroup/SwitchStateOnSignal - Jump -> NormalState" method="_on_signal"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Attack1" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Attack2" to="States/AttackState" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="States/AttackState/Attacks/Attack1Hand" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ActiveScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

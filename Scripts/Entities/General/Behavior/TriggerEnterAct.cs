@@ -43,7 +43,6 @@ public partial class TriggerEnterAct : StateScript
 					entity.sprite.FlipH = inContact.GlobalPosition.X > GlobalPosition.X ? false : true;
 					GetParent().GetNode<AccelAndDecel>("AccelAndDecel").BurstSpeed(5, 0, true);
 					GetParent().GetNode<AccelAndDecel>("AccelAndDecel").hor = 0;
-					GD.Print("LOOKINGINDIRECTION");
 				}
 				waitTime = rand.RandfRange(SubseqTriggerWaitRange.X, SubseqTriggerWaitRange.Y);
 				t = 0;

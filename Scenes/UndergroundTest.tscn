@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://dilj3elssfbc4" path="res://Art Assets/Materials/2D_Unlit_Additive.tres" id="2_yv5pd"]
 [ext_resource type="Texture2D" uid="uid://cw2p77tl28ann" path="res://Art Assets/Environment/Underground/Backgrounds/FarBuildings.png" id="3_3blem"]
 [ext_resource type="Script" path="res://Scripts/System/ParallaxController.cs" id="3_8b71m"]
-[ext_resource type="Script" path="res://Scripts/GameCamera.cs" id="4_8l3m5"]
+[ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="4_8l3m5"]
 [ext_resource type="Texture2D" uid="uid://lhiwo17607ix" path="res://Art Assets/Environment/Underground/Backgrounds/CloseBuildings.png" id="4_ckbrs"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="5_8h4d0"]
 [ext_resource type="Texture2D" uid="uid://1o1ruju5e1bf" path="res://Art Assets/Effects/Lighting/ProceduralGradient.tres" id="5_varqv"]

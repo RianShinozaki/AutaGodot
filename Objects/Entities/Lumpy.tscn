@@ -303,11 +303,11 @@ script = ExtResource("9_ql0ip")
 script = ExtResource("4_hx0a2")
 runIfInactive = true
 
-[node name="SwitchStateOnSignal - KnockbackRecovered -> HurtState" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
+[node name="StateSig - KnockbackRecovered -> HurtState" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
 script = ExtResource("13_s17o8")
 toState = "HurtState"
 
-[node name="PlayAnimationOnSignal - KnockbackRecovered -> Hurt" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
+[node name="AnimSig - KnockbackRecovered -> Hurt" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
 script = ExtResource("14_grjjd")
 animName = &"Hurt"
 
@@ -337,6 +337,7 @@ waitTimeRange = Vector2(2, 3)
 moveTimeRange = Vector2(1, 2)
 
 [node name="TriggerEnterAct" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+process_priority = -1
 script = ExtResource("12_xtvbw")
 toState = "AttackState"
 playAnim = &"Attack"
@@ -397,9 +398,8 @@ airAccel = 480.0
 airDecel = 240.0
 airDecelTooFast = 60.0
 
-[node name="FlipToFaceDirection" type="Node2D" parent="States/AttackState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
-script = ExtResource("9_veaq1")
-flipObject = NodePath("../../Attack")
+[node name="InitScriptGroup" type="Node2D" parent="States/AttackState"]
+script = ExtResource("4_hx0a2")
 
 [node name="Attack" type="Area2D" parent="States/AttackState"]
 collision_layer = 1024
@@ -453,8 +453,8 @@ shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-[connection signal="Hurt" from="States/BaseState/ConstantScriptGroup/ProcessHitbox" to="States/BaseState/TriggerScriptGroup/SwitchStateOnSignal - KnockbackRecovered -> HurtState" method="_on_signal"]
-[connection signal="Hurt" from="States/BaseState/ConstantScriptGroup/ProcessHitbox" to="States/BaseState/TriggerScriptGroup/PlayAnimationOnSignal - KnockbackRecovered -> Hurt" method="_on_signal"]
+[connection signal="Hurt" from="States/BaseState/ConstantScriptGroup/ProcessHitbox" to="States/BaseState/TriggerScriptGroup/StateSig - KnockbackRecovered -> HurtState" method="_on_signal"]
+[connection signal="Hurt" from="States/BaseState/ConstantScriptGroup/ProcessHitbox" to="States/BaseState/TriggerScriptGroup/AnimSig - KnockbackRecovered -> Hurt" method="_on_signal"]
 [connection signal="knockbackRecovered" from="States/BaseState/ConstantScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/SwitchStateOnSignal - KnockbackRecovered -> NormalState" method="_on_signal"]
 [connection signal="knockbackRecovered" from="States/BaseState/ConstantScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/PlayAnimationOnSignal - KnockbackRecovered -> Idle" method="_on_signal"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ConstantScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=4 uid="uid://rv7xg4obnm88"]
 
-[ext_resource type="Script" path="res://Scripts/GameCamera.cs" id="1_oe07w"]
+[ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="1_oe07w"]
 [ext_resource type="Texture2D" uid="uid://c8op2g4rf720c" path="res://Art Assets/Environment/House/Backgrounds/spr_VoidBG_Space.png" id="2_w6gqj"]
 [ext_resource type="Texture2D" uid="uid://cw2p77tl28ann" path="res://Art Assets/Environment/Underground/Backgrounds/FarBuildings.png" id="3_d1drg"]
 [ext_resource type="Texture2D" uid="uid://dkju7ehy3w6xb" path="res://Art Assets/Environment/House/Backgrounds/bgr_StarrySky.png" id="4_t68xb"]

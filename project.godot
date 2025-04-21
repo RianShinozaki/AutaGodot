@@ -16,7 +16,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="AutaGodot"
-run/main_scene="res://Scenes/WeaponsBunker.tscn"
+run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://Scripts/icon.svg"
 
@@ -93,6 +93,8 @@ SpecialMenu={
 2d_physics/layer_12="EnemyHurtbox"
 2d_physics/layer_13="EnvironmentHitbox"
 2d_physics/layer_14="EnvironmentHurtbox"
+2d_physics/layer_17="Camera"
+2d_physics/layer_18="CameraBoundary"
 
 [physics]
 

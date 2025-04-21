@@ -7,7 +7,9 @@ public partial class EntityState : Node2D
 	public StateEntity entity;
 
 	[Signal]
-	public delegate void StateStatusChangedEventHandler(bool active);
+	public delegate void StateBegunEventHandler();
+	[Signal]
+	public delegate void StateEndEventHandler();
 
 	[Export] public bool active = false;
     public override void _Ready()
@@ -25,13 +27,13 @@ public partial class EntityState : Node2D
 		active = true;
 		GD.Print("Beginning state " + entity.currentState.Name);
 
-		EmitSignal(SignalName.StateStatusChanged, true);
+		EmitSignal(SignalName.StateBegun);
 	}
 	public virtual void End() {
 		active = false;
 		GD.Print("Ending state " + entity.currentState.Name);
 
-		EmitSignal(SignalName.StateStatusChanged, false);
+		EmitSignal(SignalName.StateEnd);
 	}
 }
 
