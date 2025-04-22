@@ -15,17 +15,11 @@ public partial class EntityHealth : Node
 	{
 		entity = GetParent<Node2D>().GetParent<StateEntity>();
 		health = maxHealth;
-		try {
-			GetNode<Label>("Label").Text = health.ToString();
-		} catch(InvalidCastException) {}
 		
 	}
 
 	public void ChangeHealth(float amount) {
 		health += amount;
 		EmitSignal(SignalName.HealthChanged, amount, health, maxHealth);
-		try {
-			GetNode<Label>("Label").Text = health.ToString();
-		} catch(InvalidCastException) {}
 	}
 }

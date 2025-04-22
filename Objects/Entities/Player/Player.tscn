@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=129 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="22_jk1sa"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
 [ext_resource type="Texture2D" uid="uid://qvvkw3s402xi" path="res://Art Assets/Characters/Auta/AutaAttackFXHand.png" id="25_jqwbh"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerGrabState.cs" id="28_jq8db"]
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
 resource_name = "Duck"
@@ -216,7 +217,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("States/ThrowState/FlipPivot/ThrowParent:position:x")
+tracks/1/path = NodePath("States/GrabState/FlipPivot/ThrowParent:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -227,13 +228,25 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("States/ThrowState/FlipPivot/ThrowParent:position:y")
+tracks/2/path = NodePath("States/GrabState/FlipPivot/ThrowParent:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("States/GrabState/FlipPivot/ThrowParent:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_5hoco"]
@@ -272,9 +285,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ln1gp"]
 resource_name = "ThrowSpin"
-length = 0.5
+length = 0.25
 loop_mode = 1
-step = 0.0833
+step = 0.0417
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -282,7 +295,7 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.1666, 0.2499, 0.3332, 0.4165),
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [90, 91, 92, 93, 94, 95]
@@ -290,24 +303,36 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("States/ThrowState/FlipPivot/ThrowParent:position:x")
+tracks/1/path = NodePath("States/GrabState/FlipPivot/ThrowParent:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-10, -0.25, 0, 0.0833907, 0.137046, -3.72066, -0.0532974, -5.13719, 0.0373446, 3.79705, 7.89386, -0.0696984, -0.441173, 0.0278052, -0.217817, -10.0863, -0.0648088, 1.17277, 0.0648094, -2.17758),
-"times": PackedFloat32Array(0, 0.17929, 0.323229, 0.479949)
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(-8, -0.2, 0, 0.0346501, -1.24151, -4.81352, -0.0461988, -2.45692, 0.0127896, 0.680167, 9.59295, -0.0302341, 0.0943245, 0.0398578, -0.124349, -7.91066, -0.035, 1.242, 0.035, -1.242),
+"times": PackedFloat32Array(0, 0.125, 0.166667, 0.249194)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("States/ThrowState/FlipPivot/ThrowParent:position:y")
+tracks/2/path = NodePath("States/GrabState/FlipPivot/ThrowParent:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-5.84254, -0.25, 0, 0.0842971, 0.558391, -5.17247, -0.0525724, -0.223356, 0.0552917, -0.335034, -7.74107, -0.018672, -0.335035, 0.0665315, 0.223356, -6.51261, -0.0684344, -0.223356, 0.0784057, -0.558391),
-"times": PackedFloat32Array(-0.0045321, 0.165875, 0.327761, 0.479949)
+"handle_modes": PackedInt32Array(0, 0, 2, 0),
+"points": PackedFloat32Array(-7, -0.25, 0, 0.02, 0, -5.17247, -0.0525724, -0.223356, 0.0552917, -0.335034, -6.89296, -0.0182375, 0, 0.00980415, 0, -7, 0, -0.02, 0.02, 0),
+"times": PackedFloat32Array(0, 0.165875, 0.238315, 0.25)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("States/GrabState/FlipPivot/ThrowParent:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, -1]
 }
 
 [sub_resource type="Animation" id="Animation_2r0hl"]
@@ -743,6 +768,9 @@ graph_offset = Vector2(-95, -214)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x8bts"]
 animation = &"Orb"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li7pu"]
+animation = &"ThrowSpin"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dxtdl"]
 advance_mode = 2
 
@@ -771,11 +799,10 @@ states/Jump/position = Vector2(428.8, -138.6)
 states/Orb/node = SubResource("AnimationNodeAnimation_x8bts")
 states/Orb/position = Vector2(266.8, -37.6)
 states/Start/position = Vector2(151.2, 122.944)
+states/ThrowSpin/node = SubResource("AnimationNodeAnimation_li7pu")
+states/ThrowSpin/position = Vector2(201, -115)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
-graph_offset = Vector2(43, -173)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_t3mj2"]
-radius = 8.0
+graph_offset = Vector2(28, -209)
 
 [sub_resource type="Resource" id="Resource_l3uw4"]
 script = ExtResource("10_b8sdc")
@@ -1206,6 +1233,9 @@ _data = {
 "RESET": SubResource("Animation_pvjgl")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3mj2"]
+radius = 8.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 6.0
 height = 20.0
@@ -1390,50 +1420,6 @@ script = ExtResource("6_mm0tc")
 [node name="SwitchStateOnSignal - Jump -> NormalState" type="Node2D" parent="States/DuckState/SignalStateGroup"]
 script = ExtResource("16_1meyx")
 toState = "NormalState"
-
-[node name="OrbState" type="Node2D" parent="States"]
-script = ExtResource("8_tjto1")
-speed = 180.0
-initSpeed = 150.0
-initYSpeed = -60.0
-minOrbTime = 0.45
-bounce = 1.0
-gravity = 500.0
-initialGravScale = 0.2
-gravityMultWaitTime = 0.2
-exitMoveSpeed = 110.0
-orbShape = NodePath("../../OrbEnvironmentBox")
-normalShape = NodePath("../../NormalEnvironmentBox")
-duckShape = NodePath("../../DuckEnvironmentBox")
-
-[node name="ActiveScriptGroup" type="Node2D" parent="States/OrbState"]
-script = ExtResource("6_mm0tc")
-
-[node name="AccelAndDecel" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
-script = ExtResource("7_ywl3w")
-directControl = true
-speed = 180.0
-decel = 60.0
-airAccel = 120.0
-airDecel = 60.0
-
-[node name="FlipToFaceDirection" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
-script = ExtResource("5_524kh")
-
-[node name="AutaAbilityTransitions" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
-script = ExtResource("15_mntrl")
-allowAttack = true
-
-[node name="ActiveComponentGroup" type="Node2D" parent="States/OrbState"]
-script = ExtResource("21_2pqk3")
-
-[node name="Area2D" type="Area2D" parent="States/OrbState/ActiveComponentGroup"]
-script = ExtResource("22_jk1sa")
-autoHook = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/OrbState/ActiveComponentGroup/Area2D"]
-shape = SubResource("CircleShape2D_t3mj2")
-debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 
 [node name="AttackState" type="Node2D" parent="States"]
 script = ExtResource("9_7hcsp")
@@ -1645,24 +1631,72 @@ shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
 
-[node name="ThrowState" type="Node2D" parent="States"]
-script = ExtResource("9_7hcsp")
-gravityFloatMult = 0.6
+[node name="OrbState" type="Node2D" parent="States"]
+script = ExtResource("8_tjto1")
+speed = 180.0
+initSpeed = 150.0
+initYSpeed = -60.0
+minOrbTime = 0.45
+bounce = 1.0
+gravity = 500.0
+initialGravScale = 0.2
+gravityMultWaitTime = 0.2
+exitMoveSpeed = 110.0
+orbShape = NodePath("../../OrbEnvironmentBox")
+normalShape = NodePath("../../NormalEnvironmentBox")
+duckShape = NodePath("../../DuckEnvironmentBox")
 
-[node name="FlipPivot" type="Node2D" parent="States/ThrowState"]
-
-[node name="ThrowParent" type="RemoteTransform2D" parent="States/ThrowState/FlipPivot"]
-position = Vector2(-10, -4)
-
-[node name="ActiveScriptGroup" type="Node2D" parent="States/ThrowState"]
+[node name="ActiveScriptGroup" type="Node2D" parent="States/OrbState"]
 script = ExtResource("6_mm0tc")
 
-[node name="FlipToFaceDirection" type="Node2D" parent="States/ThrowState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
+[node name="AccelAndDecel" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
+script = ExtResource("7_ywl3w")
+directControl = true
+speed = 180.0
+decel = 60.0
+airAccel = 120.0
+airDecel = 60.0
+
+[node name="FlipToFaceDirection" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
+script = ExtResource("5_524kh")
+
+[node name="AutaAbilityTransitions" type="Node2D" parent="States/OrbState/ActiveScriptGroup"]
+script = ExtResource("15_mntrl")
+allowAttack = true
+
+[node name="ActiveComponentGroup" type="Node2D" parent="States/OrbState"]
+script = ExtResource("21_2pqk3")
+
+[node name="OrbGrab" type="Area2D" parent="States/OrbState/ActiveComponentGroup"]
+collision_layer = 0
+collision_mask = 16384
+script = ExtResource("22_jk1sa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/OrbState/ActiveComponentGroup/OrbGrab"]
+shape = SubResource("CircleShape2D_t3mj2")
+debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
+
+[node name="GrabState" type="Node2D" parent="States"]
+script = ExtResource("28_jq8db")
+initVertSpeed = 60.0
+timescale = 0.2
+minGrabTime = 0.1
+throwPower = 200.0
+
+[node name="FlipPivot" type="Node2D" parent="States/GrabState"]
+
+[node name="ThrowParent" type="Node2D" parent="States/GrabState/FlipPivot"]
+position = Vector2(-10, -4)
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/GrabState"]
+script = ExtResource("6_mm0tc")
+
+[node name="FlipToFaceDirection" type="Node2D" parent="States/GrabState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
 script = ExtResource("5_524kh")
 mustBeGrounded = true
 flipObject = NodePath("../../FlipPivot")
 
-[node name="AccelAndDecel" type="Node2D" parent="States/ThrowState/ActiveScriptGroup"]
+[node name="AccelAndDecel" type="Node2D" parent="States/GrabState/ActiveScriptGroup"]
 script = ExtResource("7_ywl3w")
 directControl = true
 speed = 90.0
@@ -1778,4 +1812,6 @@ horizontal_alignment = 1
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-WeakHit" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-Launch" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-StrongHit" to="States/AttackState" method="_on_hitbox_area_entered"]
+[connection signal="GrabbedEntity" from="States/OrbState" to="States/GrabState" method="OnEnemyGrabbed"]
+[connection signal="area_entered" from="States/OrbState/ActiveComponentGroup/OrbGrab" to="States/OrbState" method="_on_orb_grab_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ActiveScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

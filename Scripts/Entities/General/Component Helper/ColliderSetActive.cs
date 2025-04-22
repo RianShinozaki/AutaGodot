@@ -5,7 +5,7 @@ using System;
 public partial class ColliderSetActive : Area2D
 {
 	public CollisionShape2D collider;
-	[Export] private bool autoHook;
+	[Export] private bool autoHook = true;
     public override void _Ready()
     {
         base._Ready();
@@ -17,11 +17,16 @@ public partial class ColliderSetActive : Area2D
     }
 
 	private void makeColliderActive() {
-		collider.Disabled = false;
+		Callable.From(() => {
+			collider.Disabled = false;
+		}).CallDeferred();
 
 	}
 	private void makeColliderInactive() {
-		collider.Disabled = true;
+		Callable.From(() => {
+			collider.Disabled = true;
+		}).CallDeferred();
+
 
 	}
 }

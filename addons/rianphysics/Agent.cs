@@ -24,6 +24,7 @@ public partial class Agent : CharacterBody2D
 
 	// Member Variables
 	[Export] RayArray2D rayArray;
+	[Export] public bool applyPhysics = true;
 	public bool grounded;
 	public bool previouslyGrounded;
 	public float horSpeed;
@@ -95,6 +96,7 @@ public partial class Agent : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
+		if(!applyPhysics) return;
 		
 		if(collisionMode == CollisionMode.FLOOR) {
 			if(rayArray.IsColliding() && vertSpeed >= 0) {

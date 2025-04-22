@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
@@ -6,21 +6,22 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_hovqr"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_hx0a2"]
 [ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="4_yn7u8"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="5_nkrm5"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="6_ufvlx"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessDeathEnemyBasic.cs" id="5_dbr1k"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/EnemyHurt.cs" id="7_25fif"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="7_mp0wg"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="8_84q3h"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_de1pw"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="8_h5yuc"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessDeathEnemyBasic.cs" id="9_ql0ip"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="9_veaq1"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/SetGravityThresh.cs" id="10_r6fng"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="11_1muus"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="12_xtvbw"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="13_1dilq"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="13_s17o8"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="14_grjjd"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="14_oub3d"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="16_btju7"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="17_o5wty"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityGrabbedState.cs" id="18_qcf61"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityThrownState.cs" id="20_i7suw"]
 
 [sub_resource type="Animation" id="Animation_k40gc"]
 resource_name = "Attack"
@@ -153,24 +154,6 @@ tracks/2/keys = {
 "values": [Vector2(0, -8)]
 }
 
-[sub_resource type="Animation" id="Animation_ycjq8"]
-resource_name = "Walk"
-length = 0.64
-loop_mode = 1
-step = 0.16
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 0]
-}
-
 [sub_resource type="Animation" id="Animation_64llm"]
 resource_name = "Tuck"
 step = 0.08
@@ -197,6 +180,24 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_ycjq8"]
+resource_name = "Walk"
+length = 0.64
+loop_mode = 1
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5c5"]
@@ -265,7 +266,7 @@ states/RESET/position = Vector2(562, 100)
 states/Tuck/node = SubResource("AnimationNodeAnimation_dq8sd")
 states/Tuck/position = Vector2(556, 8)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb")]
-graph_offset = Vector2(-83, -75)
+graph_offset = Vector2(-28, -95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruk6c"]
 size = Vector2(136, 19)
@@ -283,6 +284,8 @@ HitFX = "Slice"
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm1vm"]
 radius = 4.00001
 height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xw20l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 4.0
@@ -332,15 +335,8 @@ script = ExtResource("4_yn7u8")
 health = 6.0
 maxHealth = 6
 
-[node name="Label" type="Label" parent="Attributes/EntityHealth"]
-texture_filter = 1
-offset_left = -8.0
-offset_top = -13.0
-offset_right = 32.0
-offset_bottom = 10.0
-scale = Vector2(0.395, 0.395)
-text = "3"
-horizontal_alignment = 1
+[node name="ProcessDeathEnemyBasic" type="Node2D" parent="Attributes"]
+script = ExtResource("5_dbr1k")
 
 [node name="States" type="Node2D" parent="."]
 
@@ -351,39 +347,14 @@ script = ExtResource("3_hovqr")
 script = ExtResource("4_hx0a2")
 runIfInactive = true
 
-[node name="ProcessHitbox" type="Node2D" parent="States/BaseState/ConstantScriptGroup"]
-script = ExtResource("5_nkrm5")
-
-[node name="ProcessKnockback" type="Node2D" parent="States/BaseState/ConstantScriptGroup"]
-script = ExtResource("6_ufvlx")
+[node name="EnemyHurt" type="Node2D" parent="States/BaseState/ConstantScriptGroup"]
+script = ExtResource("7_25fif")
 knockbackRecovery = 300.0
-
-[node name="ProcessDeathEnemyBasic" type="Node2D" parent="States/BaseState/ConstantScriptGroup"]
-script = ExtResource("9_ql0ip")
 canTuck = true
+recoverAnim = "Grounded"
 
 [node name="SetGravityThresh" type="Node2D" parent="States/BaseState/ConstantScriptGroup"]
 script = ExtResource("10_r6fng")
-
-[node name="TriggerScriptGroup" type="Node2D" parent="States/BaseState"]
-script = ExtResource("4_hx0a2")
-runIfInactive = true
-
-[node name="StateSig - ProcHit -> HurtState" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
-script = ExtResource("13_s17o8")
-toState = "HurtState"
-
-[node name="AnimSig - ProcHit -> Hurt" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
-script = ExtResource("14_grjjd")
-animName = &"Hurt"
-
-[node name="StateSig - Tucked -> TuckState" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
-script = ExtResource("13_s17o8")
-toState = "TuckState"
-
-[node name="AnimSig - Tucked -> Tuck" type="Node2D" parent="States/BaseState/TriggerScriptGroup"]
-script = ExtResource("14_grjjd")
-animName = &"Tuck"
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("8_de1pw")
@@ -474,18 +445,6 @@ decelTooFast = 120.0
 airAccel = 480.0
 airDecelTooFast = 60.0
 
-[node name="SignalScriptGroup" type="Node2D" parent="States/HurtState"]
-script = ExtResource("4_hx0a2")
-runIfInactive = true
-
-[node name="StateSig - KnockbackRecovered -> NormalState" type="Node2D" parent="States/HurtState/SignalScriptGroup"]
-script = ExtResource("13_s17o8")
-toState = "NormalState"
-
-[node name="AnimSig - KnockbackRecovered -> Idle" type="Node2D" parent="States/HurtState/SignalScriptGroup"]
-script = ExtResource("14_grjjd")
-animName = &"Grounded"
-
 [node name="TuckState" type="Node2D" parent="States"]
 script = ExtResource("8_de1pw")
 
@@ -499,13 +458,30 @@ accel = 900.0
 decel = 480.0
 decelTooFast = 120.0
 airAccel = 480.0
-airDecel = 240.0
 airDecelTooFast = 60.0
 
+[node name="ActiveComponentGroup" type="Node2D" parent="States/TuckState"]
+script = ExtResource("16_btju7")
+
+[node name="ColliderSetActive" type="Area2D" parent="States/TuckState/ActiveComponentGroup"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("17_o5wty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/TuckState/ActiveComponentGroup/ColliderSetActive"]
+shape = SubResource("CircleShape2D_xw20l")
+debug_color = Color(0.854176, 0.258141, 0.66403, 0.42)
+
 [node name="GrabbedState" type="Node2D" parent="States"]
-script = ExtResource("8_de1pw")
+script = ExtResource("18_qcf61")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/GrabbedState"]
+script = ExtResource("4_hx0a2")
+
+[node name="ThrownState" type="Node2D" parent="States"]
+script = ExtResource("20_i7suw")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/ThrownState"]
 script = ExtResource("4_hx0a2")
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
@@ -549,10 +525,4 @@ shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-[connection signal="Hurt" from="States/BaseState/ConstantScriptGroup/ProcessHitbox" to="States/BaseState/TriggerScriptGroup/StateSig - ProcHit -> HurtState" method="_on_signal"]
-[connection signal="Hurt" from="States/BaseState/ConstantScriptGroup/ProcessHitbox" to="States/BaseState/TriggerScriptGroup/AnimSig - ProcHit -> Hurt" method="_on_signal"]
-[connection signal="knockbackRecovered" from="States/BaseState/ConstantScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/StateSig - KnockbackRecovered -> NormalState" method="_on_signal"]
-[connection signal="knockbackRecovered" from="States/BaseState/ConstantScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/AnimSig - KnockbackRecovered -> Idle" method="_on_signal"]
-[connection signal="Tucked" from="States/BaseState/ConstantScriptGroup/ProcessDeathEnemyBasic" to="States/BaseState/TriggerScriptGroup/StateSig - Tucked -> TuckState" method="_on_process_death_enemy_basic_tucked"]
-[connection signal="Tucked" from="States/BaseState/ConstantScriptGroup/ProcessDeathEnemyBasic" to="States/BaseState/TriggerScriptGroup/AnimSig - Tucked -> Tuck" method="_on_process_death_enemy_basic_tucked"]
-[connection signal="area_entered" from="Hurtbox" to="States/BaseState/ConstantScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="States/BaseState/ConstantScriptGroup/EnemyHurt" method="_on_hurtbox_area_entered"]

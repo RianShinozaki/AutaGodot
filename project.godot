@@ -93,6 +93,7 @@ SpecialMenu={
 2d_physics/layer_12="EnemyHurtbox"
 2d_physics/layer_13="EnvironmentHitbox"
 2d_physics/layer_14="EnvironmentHurtbox"
+2d_physics/layer_15="EnemyGrabBox"
 2d_physics/layer_17="Camera"
 2d_physics/layer_18="CameraBoundary"
 
