@@ -67,7 +67,6 @@ public partial class Agent : CharacterBody2D
 				vel.Y += gravity * (float)delta;
 
                 Vector2 lossFactor = new Vector2( Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (1-bounceFactor);
-                GD.Print(lossFactor);
                 vel.X -= lossFactor.X * vel.X;
                 vel.Y -= lossFactor.Y * vel.Y;
             }
@@ -83,6 +82,12 @@ public partial class Agent : CharacterBody2D
 	}
 	public void AccelerateHor(float x, float limit = int.MaxValue, bool signCorrect = false) {
 		horSpeed = Mathf.MoveToward(horSpeed , limit, x * (signCorrect ? Mathf.Sign(limit) : 1));
+	}
+	public void SetHor(float value) {
+		horSpeed = value;
+	}
+	public void SetVert(float value) {
+		vertSpeed = value;
 	}
 	public void AccelerateVert(float y, float limit = int.MaxValue, bool signCorrect = false) {
 		horSpeed = Mathf.MoveToward(vertSpeed , limit, y * (signCorrect ? Mathf.Sign(limit) : 1));

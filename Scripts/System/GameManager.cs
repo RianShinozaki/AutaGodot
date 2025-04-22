@@ -28,10 +28,8 @@ public partial class GameManager : Node
 		}
 	}
 	public async void TransitionTimeScale(float timeScale, float transTime) {
-		GD.Print("Recieved request to change speed to, " + timeScale.ToString());
 		if(timeLock) {
 			EmitSignal(SignalName.TSChangeSuccess, false);
-			GD.Print("Request failed");
 		}
 		else {
 			timeLock = true;
@@ -41,7 +39,6 @@ public partial class GameManager : Node
 			await ToSignal(timeScaleTween, "finished");
 			timeLock = false;
 			EmitSignal(SignalName.TSChangeSuccess, true);
-			GD.Print("Request succeeded");
 		}
 	}
 	public void SetGameSpeed(float timeScale) {

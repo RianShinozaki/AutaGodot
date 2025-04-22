@@ -21,17 +21,17 @@ public partial class EntityState : Node2D
 		foreach(Node node in GetChildren()) {
 			if(node is StateScriptGroup scriptGroup)
 				scriptGroup.Init();
+			if(node is StateComponentGroup compGroup)
+				compGroup.Init();
 		}
     }
     public virtual void Start() { 
 		active = true;
-		GD.Print("Beginning state " + entity.currentState.Name);
 
 		EmitSignal(SignalName.StateBegun);
 	}
 	public virtual void End() {
 		active = false;
-		GD.Print("Ending state " + entity.currentState.Name);
 
 		EmitSignal(SignalName.StateEnd);
 	}

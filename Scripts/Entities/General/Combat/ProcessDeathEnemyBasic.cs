@@ -7,6 +7,10 @@ public partial class ProcessDeathEnemyBasic : StateScript
 
 	[Signal]
 	public delegate void DiedEventHandler();
+	[Signal]
+	public delegate void TuckedEventHandler();
+	[Export] public bool canTuck;
+	private bool tucked;
 
     public override void Init()
     {
@@ -16,12 +20,18 @@ public partial class ProcessDeathEnemyBasic : StateScript
 
 	public void onHealthChanged(float delta, float total, int maxhHealth) {
 		if(total <= 0) {
-			Node2D fx = ObjectPool.Instance.Spawn("Burst") as Node2D;
-			if(fx != null) {
-				fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, entity.GlobalPosition.Y);
+			if(canTuck && !tucked) {
+				tucked = true;
+				EmitSignal(SignalName.Tucked);
 			}
-			EmitSignal(SignalName.Died);
-			entity.QueueFree();
+			else {
+				Node2D fx = ObjectPool.Instance.Spawn("Burst") as Node2D;
+				if(fx != null) {
+					fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, entity.GlobalPosition.Y);
+				}
+				EmitSignal(SignalName.Died);
+				entity.QueueFree();
+			}
 		}
 	}
 }

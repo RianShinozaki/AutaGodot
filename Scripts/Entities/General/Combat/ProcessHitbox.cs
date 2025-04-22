@@ -20,9 +20,12 @@ public partial class ProcessHitbox : StateScript
 		if(area is Hitbox hitB){
 			HitboxData dat = hitB.hitboxData;
 			procKnock.horKnockbackSpeed = dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1);
+			entity.SetHor(dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1));
 			entity.vertSpeed = -dat.yKnockback;
 			entity.GetNode<EntityHealth>("Attributes/EntityHealth").ChangeHealth(-dat.damage);
-			EmitSignal(SignalName.Hurt);
+			
+			if(entity.GetNode<EntityHealth>("Attributes/EntityHealth").health > 0)
+				EmitSignal(SignalName.Hurt);
 
 			Node2D fx;
 			for(int i = 0; i < dat.damage; i++) {
