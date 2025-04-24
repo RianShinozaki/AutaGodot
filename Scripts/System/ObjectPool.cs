@@ -19,7 +19,7 @@ public partial class ObjectPool : Node2D
 			for(int i = 0; i < po.number; i++) {
 				Node newObject = scene.Instantiate();
 				theName = newObject.Name;
-				//AddChild(newObject);
+				AddChild(newObject);
 				newObjectArray.Add(newObject);
 			}
 			standBy.Add(theName, newObjectArray);
@@ -31,13 +31,15 @@ public partial class ObjectPool : Node2D
 			Node theNode = standBy[objectName][0];
 			standBy[objectName].RemoveAt(0);
 			theNode.GetNode<ObjectPoolObject>("ObjectPoolObject").Spawn(this, objectName);
-			AddChild(theNode);
+			//AddChild(theNode);
 			return theNode;
 		}
 		return null;
 	}
 	public void ReturnToPool(Node node, String name) {
-		RemoveChild(node);
+		//RemoveChild(node);
+		node.GetParent().RemoveChild(node);
+		AddChild(node);
 		standBy[name].Add(node);
 	}
 }

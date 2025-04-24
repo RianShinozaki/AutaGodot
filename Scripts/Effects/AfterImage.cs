@@ -13,7 +13,7 @@ public partial class AfterImage : Sprite2D
 		t = 0.01f;
 		opo = GetNode<ObjectPoolObject>("ObjectPoolObject");
 		active = false;
-		
+		Visible = false;
 	}
 	public void OnSpawn() {
 		active = true;

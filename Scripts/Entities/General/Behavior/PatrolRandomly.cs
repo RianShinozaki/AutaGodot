@@ -42,7 +42,6 @@ public partial class PatrolRandomly : StateScript
 				acdc.hor = 1;
 			else {
 				int newHor = rand.RandiRange(0, 1);
-				GD.Print(newHor);
 				newHor = (newHor*2)-1;
 				acdc.hor = newHor;
 			}

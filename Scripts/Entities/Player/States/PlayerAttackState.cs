@@ -18,30 +18,39 @@ public partial class PlayerAttackState : EntityState
 	public override void Start() {
 		entity.anim.AnimationFinished += OnAnimationEnd;
 		PlayerController player = (PlayerController)entity;
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if(inputDir.X != 0) {
-			player.sprite.FlipH = (inputDir.X < 0);
+		float hor = Input.GetAxis("ui_left", "ui_right");
+		float vert = Input.GetAxis("ui_up", "ui_down");
+		if(hor != 0) {
+			player.sprite.FlipH = (hor < 0);
 		}
 		var stateMachine = player.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("Attack", true);
 		stateMachine = player.anim.Get("parameters/Attack/playback").As<AnimationNodeStateMachinePlayback>();
-		switch(comboNum) {
+		
+		if(vert <= -0.75f) {
+			stateMachine.Start("Attack_HandLaunch", true);
+			comboNum = 0;
+		}
+		else {
+			switch(comboNum) {
 			case 0:
-				stateMachine.Start("Attack_Combo1", true);
+				stateMachine.Start("Attack_HandCombo1", true);
 				comboNum++;
 				comboTimer = comboTimeMax;
 				break;
 			case 1:
-				stateMachine.Start("Attack_Combo2", true);
+				stateMachine.Start("Attack_HandCombo2", true);
 				comboNum++;
 				comboTimer = comboTimeMax;
 				break;
 			case 2:
-				stateMachine.Start("Attack_Combo3", true);
+				stateMachine.Start("Attack_HandCombo3", true);
 				comboNum = 0;
 				comboTimer = comboTimeMax;
 				break;
 		}
+		}
+		
 		base.Start();
 	}
 	public override void _Process(double delta) {
@@ -70,6 +79,11 @@ public partial class PlayerAttackState : EntityState
 		if(!entity.grounded) {
 			entity.vertSpeed = -GetNode<Jump>("ActiveScriptGroup/Jump").riseThresh;
 			GetNode<Jump>("ActiveScriptGroup/Jump").extraMult = gravityFloatMult;
+		}
+	}
+	private void _on_process_hitbox_hurt() {
+		foreach(Node2D node in GetNode<Node2D>("Attacks").GetChildren()) {
+			node.GetNode<AnimationPlayer>("Sprite2D/AnimationPlayer").CallDeferred("play", "RESET");
 		}
 	}
 }

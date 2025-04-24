@@ -39,6 +39,9 @@ public partial class StateEntity : Agent
 		currentState = GetNode<EntityState>("States/" + newState);
 		currentState.Start();
 	}
+	public EntityState GetState(String stateName) {
+		return GetNode<EntityState>("States/" + stateName);
+	}
     public override void _PhysicsProcess(double delta)
     {
 		//Holdover from gravity changes

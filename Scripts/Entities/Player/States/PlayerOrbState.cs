@@ -5,7 +5,7 @@ using System.Data;
 [GlobalClass]
 public partial class PlayerOrbState : EntityState
 {
-	
+	[Signal] public delegate void GrabbedEntityEventHandler(Node2D node);
 	[Export] float speed;
 	[Export] float initSpeed;
 	[Export] float initYSpeed;
@@ -123,9 +123,21 @@ public partial class PlayerOrbState : EntityState
 			player.vertSpeed = sign * Mathf.Max(player.vertSpeed * sign, exitMoveSpeed);
 		}
 
-		GetNode<CollisionShape2D>(orbShape).Disabled = true;
-		GetNode<CollisionShape2D>(normalShape).Disabled = false;
+		Callable.From(() => {
+			GetNode<CollisionShape2D>(orbShape).Disabled = true;
+			GetNode<CollisionShape2D>(normalShape).Disabled = false;
+		}).CallDeferred();
+
 		base.End();
+	}
+
+	private void _on_orb_grab_area_entered(Area2D area) {
+		if(!active) return;
+		
+		StateEntity enemyEnt = area.GetParent<StateComponentGroup>().entity;
+		enemyEnt.SwitchState("GrabbedState");
+		entity.SwitchState("GrabState");
+		EmitSignal(SignalName.GrabbedEntity, (Node2D)enemyEnt);
 	}
 	
 }

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3rj01we5ks3v" path="res://Objects/Environment/Underground/rocky-planet.tscn" id="1_puhls"]
 [ext_resource type="Texture2D" uid="uid://bekxhwfhunnr5" path="res://Art Assets/Environment/Underground/Objects/Planet.png" id="2_cb74i"]
 [ext_resource type="Script" path="res://Scripts/Environment/Gravity Regions/CircularGravityRegion.cs" id="3_3bi0r"]
-[ext_resource type="Script" path="res://Scripts/GameCamera.cs" id="4_e6lck"]
+[ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="4_e6lck"]
 [ext_resource type="Texture2D" uid="uid://dbmpc7dsxnbue" path="res://Art Assets/Environment/Misc/Backgrounds/0LaUZINnZU-b_16536x16536_qxVkbRV6.png" id="5_ncr73"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="6_p4u3k"]
 [ext_resource type="Script" path="res://Scripts/Environment/Gravity Regions/GravityRegion.cs" id="7_8fnkx"]

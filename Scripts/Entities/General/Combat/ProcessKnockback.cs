@@ -14,14 +14,15 @@ public partial class ProcessKnockback : StateScript
 		if(!active) return;
 		
 		if(horKnockbackSpeed != 0) {
-			entity.Move(horKnockbackSpeed, 0, (float)delta, false);
+			//entity.Move(horKnockbackSpeed, 0, (float)delta, false);
 			entity.sprite.Skew = horKnockbackSpeed/200;
 			if(knockbackRecovery != -1 && (canRecoverInAir || entity.grounded))
 				horKnockbackSpeed = Mathf.MoveToward(horKnockbackSpeed, 0, knockbackRecovery * (float)delta);
 
 			if(horKnockbackSpeed == 0) {
 				entity.sprite.Skew = 0;
-				EmitSignal(SignalName.knockbackRecovered);
+				if(entity.GetNode<EntityHealth>("Attributes/EntityHealth").health > 0)
+					EmitSignal(SignalName.knockbackRecovered);
 			}
 		}
 	}

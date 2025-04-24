@@ -15,6 +15,7 @@ public partial class EntityHealth : Node
 	{
 		entity = GetParent<Node2D>().GetParent<StateEntity>();
 		health = maxHealth;
+		
 	}
 
 	public void ChangeHealth(float amount) {
