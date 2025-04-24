@@ -70,6 +70,7 @@ public partial class Agent : CharacterBody2D
                 Vector2 lossFactor = new Vector2( Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (1-bounceFactor);
                 vel.X -= lossFactor.X * vel.X;
                 vel.Y -= lossFactor.Y * vel.Y;
+				EmitSignal(SignalName.Bounce, kc.GetNormal(), new Vector2(vel.X, vel.Y));
             }
 			if(writeback)
 				horSpeed = vel.X;

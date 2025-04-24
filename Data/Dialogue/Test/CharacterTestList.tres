@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterList" load_steps=4 format=3 uid="uid://d0dfmqvqkjqwm"]
+
+[ext_resource type="Resource" uid="uid://dbhmnp2rcv4e2" path="res://Data/Dialogue/Characters/PlasticSun.tres" id="1_8dy2a"]
+[ext_resource type="Resource" uid="uid://cwkp5de4trcgi" path="res://Data/Dialogue/Characters/Auta.tres" id="2_4cpgf"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/CharacterList.cs" id="3_j6wwo"]
+
+[resource]
+script = ExtResource("3_j6wwo")
+Characters = Array[Resource]([ExtResource("1_8dy2a"), ExtResource("2_4cpgf")])

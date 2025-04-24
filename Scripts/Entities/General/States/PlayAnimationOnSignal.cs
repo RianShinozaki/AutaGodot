@@ -5,7 +5,7 @@ using System;
 public partial class PlayAnimationOnSignal : StateScript
 {
 	[Export] public StringName animName;
-	private async void _on_signal() {
+	private void _on_signal() {
 		if(active) {
 			var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 			stateMachine.Start("RESET", true);

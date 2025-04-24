@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=52 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_asvle"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_hovqr"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_hx0a2"]
+[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_sk50q"]
 [ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="4_yn7u8"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessDeathEnemyBasic.cs" id="5_dbr1k"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Combat/EnemyHurt.cs" id="7_25fif"]
@@ -141,18 +142,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -8)]
-}
 
 [sub_resource type="Animation" id="Animation_64llm"]
 resource_name = "Tuck"
@@ -168,18 +157,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [13]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -6)]
 }
 
 [sub_resource type="Animation" id="Animation_ycjq8"]
@@ -274,7 +251,7 @@ size = Vector2(136, 19)
 [sub_resource type="Resource" id="Resource_5i24x"]
 script = ExtResource("14_oub3d")
 damage = 3.0
-hitstun = 0.25
+hitstun = 0.5
 xKnockback = 90.0
 yKnockback = 0.0
 flip = true
@@ -286,6 +263,16 @@ radius = 4.00001
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xw20l"]
+
+[sub_resource type="Resource" id="Resource_ccjcc"]
+script = ExtResource("14_oub3d")
+damage = 6.0
+hitstun = 0.5
+xKnockback = 180.0
+yKnockback = 45.0
+flip = true
+weight = 0
+HitFX = "BigSlam"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 4.0
@@ -311,10 +298,9 @@ gravity = 300.0
 light_mask = 2
 texture_filter = 1
 material = ExtResource("2_8tc4j")
-position = Vector2(0, 4)
-rotation = -0.00265226
+position = Vector2(0, -4)
 texture = ExtResource("3_asvle")
-offset = Vector2(0, -8)
+offset = Vector2(-1, 0)
 hframes = 4
 vframes = 4
 
@@ -327,6 +313,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_83c1s")
 advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="AfterImageGenerator" type="Node" parent="Art"]
+script = ExtResource("4_sk50q")
 
 [node name="Attributes" type="Node2D" parent="."]
 
@@ -347,8 +336,9 @@ script = ExtResource("3_hovqr")
 script = ExtResource("4_hx0a2")
 runIfInactive = true
 
-[node name="EnemyHurt" type="Node2D" parent="States/BaseState/ConstantScriptGroup"]
+[node name="EnemyHurt" type="Node2D" parent="States/BaseState/ConstantScriptGroup" node_paths=PackedStringArray("ignoreAreas")]
 script = ExtResource("7_25fif")
+ignoreAreas = [NodePath("../../../ThrownState/ActiveComponentGroup/ColliderSetActive/Attack")]
 knockbackRecovery = 300.0
 canTuck = true
 recoverAnim = "Grounded"
@@ -463,12 +453,14 @@ airDecelTooFast = 60.0
 [node name="ActiveComponentGroup" type="Node2D" parent="States/TuckState"]
 script = ExtResource("16_btju7")
 
-[node name="ColliderSetActive" type="Area2D" parent="States/TuckState/ActiveComponentGroup"]
-collision_layer = 16384
-collision_mask = 0
+[node name="ColliderSetActive" type="Node2D" parent="States/TuckState/ActiveComponentGroup"]
 script = ExtResource("17_o5wty")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/TuckState/ActiveComponentGroup/ColliderSetActive"]
+[node name="Area2D" type="Area2D" parent="States/TuckState/ActiveComponentGroup/ColliderSetActive"]
+collision_layer = 16384
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/TuckState/ActiveComponentGroup/ColliderSetActive/Area2D"]
 shape = SubResource("CircleShape2D_xw20l")
 debug_color = Color(0.854176, 0.258141, 0.66403, 0.42)
 
@@ -478,11 +470,32 @@ script = ExtResource("18_qcf61")
 [node name="ActiveScriptGroup" type="Node2D" parent="States/GrabbedState"]
 script = ExtResource("4_hx0a2")
 
-[node name="ThrownState" type="Node2D" parent="States"]
+[node name="ThrownState" type="Node2D" parent="States" node_paths=PackedStringArray("ignoreAreas")]
 script = ExtResource("20_i7suw")
+ignoreAreas = [NodePath("../../Hurtbox")]
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/ThrownState"]
 script = ExtResource("4_hx0a2")
+
+[node name="FlipToFaceDirection" type="Node2D" parent="States/ThrownState/ActiveScriptGroup"]
+script = ExtResource("9_veaq1")
+
+[node name="ActiveComponentGroup" type="Node2D" parent="States/ThrownState"]
+script = ExtResource("16_btju7")
+
+[node name="ColliderSetActive" type="Node2D" parent="States/ThrownState/ActiveComponentGroup"]
+script = ExtResource("17_o5wty")
+
+[node name="Attack" type="Area2D" parent="States/ThrownState/ActiveComponentGroup/ColliderSetActive"]
+collision_layer = 256
+collision_mask = 2048
+script = ExtResource("13_1dilq")
+hitboxData = SubResource("Resource_ccjcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/ThrownState/ActiveComponentGroup/ColliderSetActive/Attack"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_vm1vm")
+disabled = true
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -524,5 +537,7 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
+[connection signal="Bounce" from="." to="States/ThrownState" method="_on_bounce"]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="area_entered" from="States/ThrownState/ActiveComponentGroup/ColliderSetActive/Attack" to="States/ThrownState" method="_on_attack_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ConstantScriptGroup/EnemyHurt" method="_on_hurtbox_area_entered"]

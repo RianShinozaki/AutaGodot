@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://dbhmnp2rcv4e2"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.cs" id="1_k0js4"]
+
+[resource]
+script = ExtResource("1_k0js4")
+Name = "Plastic Sun"
+Color = Color(1, 1, 1, 1)

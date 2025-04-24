@@ -20,7 +20,7 @@ public partial class EntityGrabbedState : EntityState
 
 	public void Thrown(float angle, float speed) {
 		entity.SetHor(Mathf.Cos(angle) * speed);
-		entity.SetVert(-Mathf.Sin(angle) * speed);
+		entity.SetVert(Mathf.Sin(angle) * speed);
 		entity.SwitchState("ThrownState");
 	}
 }

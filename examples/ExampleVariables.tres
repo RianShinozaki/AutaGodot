@@ -1,0 +1,84 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cdnm5h03jwcik"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_sg8jr"]
+
+[resource]
+script = ExtResource("1_sg8jr")
+FileName = "ExampleVariables"
+Starts = {
+"Start": &"0_1"
+}
+Nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(1253.97, -933.225),
+"start_id": "Start"
+},
+"1_1": {
+"dialogue": "You can store and use variables from your dialogue tree.",
+"offset": Vector2(1560, -960),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300.001, 271),
+"speaker": 1
+},
+"1_2": {
+"dialogue": "Let's use the variable COIN to store the number of coins. Now we have {{COINS}} coins.",
+"offset": Vector2(2020, -920),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": "Add 50 Coins"
+},
+1: {
+"condition": {},
+"link": &"4_2",
+"text": "Remove 10 Coins"
+}
+},
+"size": Vector2(300, 307),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "Now the value of coins is: {{COINS}}. Open the example in the Dialogue Node Plugin to learn how it works!",
+"offset": Vector2(3080, -900),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.001, 307),
+"speaker": ""
+},
+"4_1": {
+"link": &"1_3",
+"offset": Vector2(2460, -920),
+"type": 0,
+"value": false,
+"variable": "COINS"
+},
+"4_2": {
+"link": &"1_3",
+"offset": Vector2(2480, -700),
+"type": 0,
+"value": 0.0,
+"variable": "COINS"
+}
+}
+Variables = {
+"COINS": {
+"type": 4,
+"value": "0"
+}
+}
+Comments = []
+Strays = []
+Characters = "res://examples/CharacterList.tres"

@@ -1,0 +1,74 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cjgko337t5am4"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_hokb8"]
+
+[resource]
+script = ExtResource("1_hokb8")
+FileName = "ExampleBranching"
+Starts = {
+"Start": &"0_1"
+}
+Nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(120, 100),
+"start_id": "Start"
+},
+"1_1": {
+"dialogue": "Which pill will you take?",
+"offset": Vector2(420, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Red Pill"
+},
+1: {
+"condition": {},
+"link": &"1_4",
+"text": "Blue Pill"
+}
+},
+"size": Vector2(300.001, 341),
+"speaker": "Morpheus"
+},
+"1_2": {
+"dialogue": "Do you have the doctor's prescription for the pill?",
+"offset": Vector2(840, -20),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Uh..."
+}
+},
+"size": Vector2(320.001, 370.182),
+"speaker": "Morpheus"
+},
+"1_4": {
+"dialogue": "You shouldn't take pills from strangers, you know!",
+"offset": Vector2(880, 420),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Oh.."
+}
+},
+"size": Vector2(300, 275),
+"speaker": "Morpheus"
+}
+}
+Variables = {
+"hola": {
+"type": 4,
+"value": "324"
+},
+"hola2": {
+"type": 1,
+"value": false
+}
+}
+Comments = []
+Strays = []
+Characters = ""

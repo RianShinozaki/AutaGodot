@@ -27,6 +27,12 @@ public partial class AfterImageGenerator : Node
 				afterImg.Frame = sprite.Frame;
 				afterImg.GlobalPosition = sprite.GlobalPosition;
 				afterImg.Offset = sprite.Offset;
+				afterImg.Rotation = sprite.Rotation;
+				ShaderMaterial mat = afterImg.Material as ShaderMaterial;
+				if(sprite.Texture is CanvasTexture canv) {
+					mat.SetShaderParameter("Texture", canv.DiffuseTexture);
+				}
+				else mat.SetShaderParameter("Texture", sprite.Texture);
 			}
 			afterImgTimer = 0;
 		}

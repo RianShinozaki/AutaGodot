@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=144 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="9_s3pnp"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="10_b8sdc"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="11_03o8e"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/SpawnOnSignal.cs" id="13_yv1xd"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerDuckState.cs" id="15_c8jlq"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaAbilityTransitions.cs" id="15_mntrl"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
@@ -30,6 +31,8 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
 [ext_resource type="Texture2D" uid="uid://qvvkw3s402xi" path="res://Art Assets/Characters/Auta/AutaAttackFXHand.png" id="25_jqwbh"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerGrabState.cs" id="28_jq8db"]
+[ext_resource type="Texture2D" uid="uid://dt4hy3av0h1mi" path="res://Art Assets/Characters/Auta/AimArrow.png" id="29_d0e11"]
+[ext_resource type="Texture2D" uid="uid://djybc0421wa7a" path="res://Art Assets/Characters/Auta/AimReticle.png" id="30_boeqv"]
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
 resource_name = "Duck"
@@ -50,6 +53,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_oogdo"]
 resource_name = "Fall"
+length = 0.2
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -62,6 +66,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [23, 24, 25]
+}
+
+[sub_resource type="Animation" id="Animation_g74bq"]
+resource_name = "Fall_Done"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
 }
 
 [sub_resource type="Animation" id="Animation_aev23"]
@@ -283,6 +303,23 @@ tracks/0/keys = {
 "values": [50, 51]
 }
 
+[sub_resource type="Animation" id="Animation_1pfnt"]
+resource_name = "ThrowFlip"
+length = 0.666
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165, 0.4998, 0.5831),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99, 100, 101, 102, 103]
+}
+
 [sub_resource type="Animation" id="Animation_ln1gp"]
 resource_name = "ThrowSpin"
 length = 0.25
@@ -356,6 +393,7 @@ tracks/0/keys = {
 _data = {
 "Duck": SubResource("Animation_hq2ft"),
 "Fall": SubResource("Animation_oogdo"),
+"Fall_Done": SubResource("Animation_g74bq"),
 "FromDuck": SubResource("Animation_aev23"),
 "FromSlide": SubResource("Animation_g0kfn"),
 "Hurt": SubResource("Animation_hcra8"),
@@ -367,6 +405,7 @@ _data = {
 "RESET": SubResource("Animation_q4vwf"),
 "Run": SubResource("Animation_5hoco"),
 "Slide": SubResource("Animation_310b7"),
+"ThrowFlip": SubResource("Animation_1pfnt"),
 "ThrowSpin": SubResource("Animation_ln1gp"),
 "Turn": SubResource("Animation_2r0hl")
 }
@@ -733,11 +772,17 @@ animation = &"Hurt"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5l3k2"]
 animation = &"Fall"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xh5iq"]
+animation = &"Fall_Done"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fatb8"]
 animation = &"Jump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vw62l"]
 animation = &"JumpToFall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p74sp"]
+animation = &"ThrowFlip"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f5cjg"]
 advance_mode = 2
@@ -755,15 +800,27 @@ advance_expression = "vertProj > 0.2f"
 advance_mode = 2
 advance_expression = "vertProj <= 0.2f"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t30y0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cv5xt"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fohhu"]
 states/Fall/node = SubResource("AnimationNodeAnimation_5l3k2")
 states/Fall/position = Vector2(441.8, 162.4)
+states/Fall_Done/node = SubResource("AnimationNodeAnimation_xh5iq")
+states/Fall_Done/position = Vector2(488.2, 272)
 states/Jump/node = SubResource("AnimationNodeAnimation_fatb8")
 states/Jump/position = Vector2(353.8, 2.39999)
 states/JumpToFall/node = SubResource("AnimationNodeAnimation_vw62l")
 states/JumpToFall/position = Vector2(488.2, 51.2)
-transitions = ["Jump", "JumpToFall", SubResource("AnimationNodeStateMachineTransition_f5cjg"), "JumpToFall", "Fall", SubResource("AnimationNodeStateMachineTransition_dpq4a"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_hdogo"), "Start", "Fall", SubResource("AnimationNodeStateMachineTransition_cgm5l")]
-graph_offset = Vector2(-95, -214)
+states/ThrowFlip/node = SubResource("AnimationNodeAnimation_p74sp")
+states/ThrowFlip/position = Vector2(587, 135)
+transitions = ["Jump", "JumpToFall", SubResource("AnimationNodeStateMachineTransition_f5cjg"), "JumpToFall", "Fall", SubResource("AnimationNodeStateMachineTransition_dpq4a"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_hdogo"), "Start", "Fall", SubResource("AnimationNodeStateMachineTransition_cgm5l"), "Fall", "Fall_Done", SubResource("AnimationNodeStateMachineTransition_t30y0"), "ThrowFlip", "Fall_Done", SubResource("AnimationNodeStateMachineTransition_cv5xt")]
+graph_offset = Vector2(141, 41)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x8bts"]
 animation = &"Orb"
@@ -802,7 +859,7 @@ states/Start/position = Vector2(151.2, 122.944)
 states/ThrowSpin/node = SubResource("AnimationNodeAnimation_li7pu")
 states/ThrowSpin/position = Vector2(201, -115)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
-graph_offset = Vector2(28, -209)
+graph_offset = Vector2(55, -184)
 
 [sub_resource type="Resource" id="Resource_l3uw4"]
 script = ExtResource("10_b8sdc")
@@ -1236,6 +1293,108 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3mj2"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_ndww4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2jls2"]
+resource_name = "default"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbwes"]
+_data = {
+"RESET": SubResource("Animation_ndww4"),
+"default": SubResource("Animation_2jls2")
+}
+
+[sub_resource type="Animation" id="Animation_lmydw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_47hjo"]
+resource_name = "default"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0p6x7"]
+_data = {
+"RESET": SubResource("Animation_lmydw"),
+"default": SubResource("Animation_47hjo")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 6.0
 height = 20.0
@@ -1258,6 +1417,7 @@ radius = 8.0
 radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 collision_layer = 10
 script = ExtResource("1_uqxb3")
 GroundedFloorCheckDist = 16
@@ -1274,7 +1434,7 @@ rotation = -0.00265226
 texture = ExtResource("4_46p0d")
 offset = Vector2(0, -8)
 hframes = 8
-vframes = 12
+vframes = 13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
 root_node = NodePath("../..")
@@ -1329,6 +1489,11 @@ toState = "HurtState"
 [node name="AnimSig - ProcessHitbox -> Hurt" type="Node2D" parent="States/BaseState/SignalScriptGroup"]
 script = ExtResource("11_03o8e")
 animName = &"Hurt"
+
+[node name="SpawnSig - Grounded -> Land" type="Node2D" parent="States/BaseState/SignalScriptGroup"]
+script = ExtResource("13_yv1xd")
+pooledObjectName = "Land"
+offset = Vector2(0, 8)
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("2_2h7nr")
@@ -1667,21 +1832,25 @@ allowAttack = true
 [node name="ActiveComponentGroup" type="Node2D" parent="States/OrbState"]
 script = ExtResource("21_2pqk3")
 
-[node name="OrbGrab" type="Area2D" parent="States/OrbState/ActiveComponentGroup"]
-collision_layer = 0
-collision_mask = 16384
+[node name="ColliderSetActive" type="Node2D" parent="States/OrbState/ActiveComponentGroup"]
 script = ExtResource("22_jk1sa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/OrbState/ActiveComponentGroup/OrbGrab"]
+[node name="OrbGrab" type="Area2D" parent="States/OrbState/ActiveComponentGroup/ColliderSetActive"]
+collision_layer = 0
+collision_mask = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/OrbState/ActiveComponentGroup/ColliderSetActive/OrbGrab"]
 shape = SubResource("CircleShape2D_t3mj2")
 debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 
 [node name="GrabState" type="Node2D" parent="States"]
+process_priority = 1
 script = ExtResource("28_jq8db")
 initVertSpeed = 60.0
 timescale = 0.2
 minGrabTime = 0.1
-throwPower = 200.0
+throwPower = 250.0
+recoilPower = 175.0
 
 [node name="FlipPivot" type="Node2D" parent="States/GrabState"]
 
@@ -1705,6 +1874,34 @@ decelTooFast = 120.0
 airAccel = 240.0
 airDecel = 60.0
 airDecelTooFast = 120.0
+
+[node name="ActiveComponentGroup" type="Node2D" parent="States/GrabState"]
+visible = false
+script = ExtResource("21_2pqk3")
+
+[node name="Arrow" type="Sprite2D" parent="States/GrabState/ActiveComponentGroup"]
+z_index = -1
+position = Vector2(0, -4)
+texture = ExtResource("29_d0e11")
+offset = Vector2(19.775, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="States/GrabState/ActiveComponentGroup/Arrow"]
+libraries = {
+"": SubResource("AnimationLibrary_tbwes")
+}
+autoplay = "default"
+speed_scale = 3.0
+
+[node name="Reticle" type="Sprite2D" parent="States/GrabState/ActiveComponentGroup"]
+position = Vector2(48, -4)
+texture = ExtResource("30_boeqv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="States/GrabState/ActiveComponentGroup/Reticle"]
+libraries = {
+"": SubResource("AnimationLibrary_0p6x7")
+}
+autoplay = "default"
+speed_scale = 3.0
 
 [node name="HurtState" type="Node2D" parent="States"]
 script = ExtResource("23_5rue2")
@@ -1799,6 +1996,7 @@ offset_bottom = -19.0
 text = "da"
 horizontal_alignment = 1
 
+[connection signal="Grounded" from="." to="States/BaseState/SignalScriptGroup/SpawnSig - Grounded -> Land" method="_on_signal" unbinds=2]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/StateSig - ProcessHitbox -> HurtState" method="_on_signal"]
 [connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/AnimSig - ProcessHitbox -> Hurt" method="_on_signal"]
@@ -1813,5 +2011,5 @@ horizontal_alignment = 1
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-Launch" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-StrongHit" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="GrabbedEntity" from="States/OrbState" to="States/GrabState" method="OnEnemyGrabbed"]
-[connection signal="area_entered" from="States/OrbState/ActiveComponentGroup/OrbGrab" to="States/OrbState" method="_on_orb_grab_area_entered"]
+[connection signal="area_entered" from="States/OrbState/ActiveComponentGroup/ColliderSetActive/OrbGrab" to="States/OrbState" method="_on_orb_grab_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ActiveScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

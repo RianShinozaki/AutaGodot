@@ -1,0 +1,140 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c7i8q1twhocgc"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_6qh5m"]
+
+[resource]
+script = ExtResource("1_6qh5m")
+FileName = "PlasticSunTest"
+Starts = {
+"Start": &"0_1"
+}
+Nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(200, -60),
+"start_id": "Start"
+},
+"1_1": {
+"dialogue": "Y'know...",
+"offset": Vector2(420, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 260),
+"speaker": 0
+},
+"1_2": {
+"dialogue": "This isn't really the kind of place little girls with pink hair should be hanging out.",
+"offset": Vector2(740, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "I'll be fine."
+},
+1: {
+"condition": {},
+"link": &"1_7",
+"text": "You might be right."
+}
+},
+"size": Vector2(340, 322),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "Haven't you heard?",
+"offset": Vector2(1300, -40),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
+},
+"1_4": {
+"dialogue": "I'm the living weapon, Auta, who's slept under this lab for one hundred years.",
+"offset": Vector2(1620, -40),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
+},
+"1_5": {
+"dialogue": "Is that right, now.",
+"offset": Vector2(2200, -40),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 0
+},
+"1_6": {
+"dialogue": "Well, far be it from me to tell you what to do.",
+"offset": Vector2(2880, -40),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 0
+},
+"1_7": {
+"dialogue": "I don't REALLY want to be here, so I couldn't agree more.",
+"offset": Vector2(1300, 280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
+},
+"1_8": {
+"dialogue": "So... how do I get out?",
+"offset": Vector2(1620, 280),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
+},
+"3_1": {
+"link": &"1_5",
+"offset": Vector2(1960, 60),
+"signalValue": "switchtothinking"
+},
+"3_2": {
+"link": &"1_6",
+"offset": Vector2(2560, 60),
+"signalValue": "switchtoidle"
+}
+}
+Variables = {}
+Comments = []
+Strays = []
+Characters = "res://Data/Dialogue/Test/CharacterTestList.tres"
