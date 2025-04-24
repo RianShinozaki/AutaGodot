@@ -66,6 +66,11 @@ public partial class PlayerOrbState : EntityState
 
 		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
+		Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
+		if(fx != null) {
+			fx.GlobalPosition = GlobalPosition;
+		}
+
 		/*AfterImage afterImg = ObjectPool.Instance.Spawn("DisintegratedImage") as AfterImage;
 		if(afterImg != null) {
 			afterImg.Texture = player.sprite.Texture;
@@ -134,7 +139,7 @@ public partial class PlayerOrbState : EntityState
 	private void _on_orb_grab_area_entered(Area2D area) {
 		if(!active) return;
 		
-		StateEntity enemyEnt = area.GetParent<StateComponentGroup>().entity;
+		StateEntity enemyEnt = area.GetParent().GetParent<StateComponentGroup>().entity;
 		enemyEnt.SwitchState("GrabbedState");
 		entity.SwitchState("GrabState");
 		EmitSignal(SignalName.GrabbedEntity, (Node2D)enemyEnt);

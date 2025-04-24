@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://dymew1b2ekylv"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueManager.cs" id="1_hel5a"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueCore.cs" id="2_6i725"]
+[ext_resource type="Resource" uid="uid://dvaxnhtmo01o" path="res://addons/dialogue_nodes/Preloader.tres" id="2_amhtc"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueUI.cs" id="3_gcl0s"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueInput.cs" id="6_3yo6x"]
+[ext_resource type="Texture2D" uid="uid://dla76qr5vqp1r" path="res://addons/dialogue_nodes/icons/Character.svg" id="7_qm32g"]
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_hel5a")
+data = ExtResource("2_amhtc")
+transitionType = 2
+
+[node name="DialogueCore" type="Node" parent="."]
+script = ExtResource("2_6i725")
+
+[node name="DialogueUI" type="Panel" parent="." node_paths=PackedStringArray("speaker", "speakerPortrait", "dialogue", "optionsButtons")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.5
+offset_top = -89.5
+offset_right = 307.5
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gcl0s")
+speaker = NodePath("MarginContainer/HBoxContainer/VBoxContainer/SpeakerLabel")
+speakerPortrait = NodePath("MarginContainer/HBoxContainer/PortraitTexture")
+dialogue = NodePath("MarginContainer/HBoxContainer/VBoxContainer/DialogueTxt")
+optionsButtons = [NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button2"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button3"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button4")]
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_lock_ = true
+
+[node name="DialogueInput" type="Control" parent="DialogueUI/MarginContainer"]
+layout_mode = 2
+script = ExtResource("6_3yo6x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUI/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PortraitTexture" type="TextureRect" parent="DialogueUI/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("7_qm32g")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="SpeakerLabel" type="Label" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Speaker"
+
+[node name="DialogueTxt" type="RichTextLabel" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "This is a test  dialogue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Option 1"
+
+[node name="Button2" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Option 2"
+
+[node name="Button3" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Option 4"

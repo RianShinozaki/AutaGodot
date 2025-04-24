@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 [GlobalClass]
 public partial class EnemyHurt : StateScript
@@ -10,6 +11,7 @@ public partial class EnemyHurt : StateScript
 	[Signal] public delegate void DiedEventHandler();
 	[Signal] public delegate void TuckedEventHandler();
 
+	[Export] public Godot.Collections.Array<Area2D> ignoreAreas = new Godot.Collections.Array<Area2D>();
 	[Export] public float knockbackRecovery;
 	[Export] public bool canTuck;
 	[Export] public string hurtState = "HurtState";
@@ -57,7 +59,9 @@ public partial class EnemyHurt : StateScript
 
     public virtual void _on_hurtbox_area_entered(Area2D area) {
 		if(!active) return;
-		
+		if(ignoreAreas.Contains(area)) {
+			return;
+		}
 		if(area is Hitbox hitB){
 			HitboxData dat = hitB.hitboxData;
 			horKnockbackSpeed = dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1);

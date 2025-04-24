@@ -16,7 +16,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="AutaGodot"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="res://NPCWindow.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://Scripts/icon.svg"
 
@@ -34,7 +34,7 @@ project/assembly_name="Auta"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/procedural_textures/plugin.cfg", "res://addons/racoonery/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/procedural_textures/plugin.cfg")
 
 [file_customization]
 

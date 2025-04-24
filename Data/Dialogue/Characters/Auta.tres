@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cwkp5de4trcgi"]
+
+[ext_resource type="Texture2D" uid="uid://bdfcjpm2agvml" path="res://Art Assets/UI/Dialogue/AutaPortrait.png" id="1_6hh87"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.cs" id="1_mwwld"]
+
+[resource]
+script = ExtResource("1_mwwld")
+Name = "Auta"
+Image = ExtResource("1_6hh87")
+Color = Color(1, 1, 1, 1)
