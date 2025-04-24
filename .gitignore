@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+.vs/Auta/FileContentIndex/
+
+.vs/ProjectEvaluation/
+
+*.json
+
+.vs/Auta/v17/
+
+.vs/Auta/DesignTimeBuild/
