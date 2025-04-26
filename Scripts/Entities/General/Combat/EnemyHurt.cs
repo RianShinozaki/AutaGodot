@@ -79,13 +79,28 @@ public partial class EnemyHurt : StateScript
 			}
 			else if(hp <= 0 && !tucked && canTuck) {
 				tucked = true;
-				entity.SwitchState(tuckState);
 				var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 				stateMachine.Start("RESET", true);
 				stateMachine.Start(tuckAnim, true);
+
+				//Turn into a cannonball if hit by a heavybash
+				if(dat.damageType == DamageType.HeavyBash) {
+					entity.SwitchState(tuckState);
+					float totalSpeed = 250; //This shouldn't be hard set but whatever.
+					float angle = Mathf.Atan2(GlobalPosition.Y - area.GlobalPosition.Y, GlobalPosition.X - area.GlobalPosition.Y);
+
+					entity.SetHor(-totalSpeed * Mathf.Cos(angle));
+					entity.SetVert(-totalSpeed * Mathf.Sin(angle));
+					entity.SwitchState("ThrownState");
+				}
+				else {
+					entity.SwitchState(tuckState);
+				}
+				
 				EmitSignal(SignalName.Hurt);
 			}
 			else {
+				if(! (dat.damageType == DamageType.HeavyBash && tucked))
 				entity.GetNode<ProcessDeathEnemyBasic>("Attributes/ProcessDeathEnemyBasic").Death();
 			}
 

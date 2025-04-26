@@ -86,7 +86,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="PortraitTexture" type="TextureRect" parent="DialogueUI/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(120, 120)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("6_k1ewk")

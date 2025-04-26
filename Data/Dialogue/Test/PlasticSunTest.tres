@@ -11,12 +11,12 @@ Starts = {
 Nodes = {
 "0_1": {
 "link": &"1_1",
-"offset": Vector2(200, -60),
+"offset": Vector2(-640, -100),
 "start_id": "Start"
 },
 "1_1": {
-"dialogue": "Y'know...",
-"offset": Vector2(420, -60),
+"dialogue": "So...",
+"offset": Vector2(-420, -100),
 "options": {
 0: {
 "condition": {},
@@ -27,27 +27,74 @@ Nodes = {
 "size": Vector2(300, 260),
 "speaker": 0
 },
-"1_2": {
-"dialogue": "This isn't really the kind of place little girls with pink hair should be hanging out.",
-"offset": Vector2(740, -60),
+"1_10": {
+"dialogue": "What would that be?",
+"offset": Vector2(3480, -100),
 "options": {
 0: {
 "condition": {},
-"link": &"1_3",
-"text": "I'll be fine."
+"link": &"1_11",
+"text": ""
+}
 },
-1: {
+"size": Vector2(300, 256),
+"speaker": 0
+},
+"1_11": {
+"dialogue": "Who... am I?",
+"offset": Vector2(3820, -100),
+"options": {
+0: {
 "condition": {},
-"link": &"1_7",
-"text": "You might be right."
+"link": &"3_4",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
+},
+"1_12": {
+"dialogue": "Still booting up? I already told ya.",
+"offset": Vector2(4380, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 0
+},
+"1_13": {
+"dialogue": "Living stardust weapon. OUR living stardust weapon. Auta. ",
+"offset": Vector2(4720, -100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 0
+},
+"1_2": {
+"dialogue": "Living stardust weapon: \"Auta.\"",
+"offset": Vector2(-100, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_9",
+"text": ""
 }
 },
 "size": Vector2(340, 322),
 "speaker": 0
 },
 "1_3": {
-"dialogue": "Haven't you heard?",
-"offset": Vector2(1300, -40),
+"dialogue": "From this day forward, you're in our custody. We: The Crimson Talons. You: Our weapon.",
+"offset": Vector2(600, -100),
 "options": {
 0: {
 "condition": {},
@@ -56,11 +103,11 @@ Nodes = {
 }
 },
 "size": Vector2(300, 256),
-"speaker": 1
+"speaker": 0
 },
 "1_4": {
-"dialogue": "I'm the living weapon, Auta, who's slept under this lab for one hundred years.",
-"offset": Vector2(1620, -40),
+"dialogue": "I've already overridden the imprint. Anything I say, you do.",
+"offset": Vector2(920, -100),
 "options": {
 0: {
 "condition": {},
@@ -69,11 +116,37 @@ Nodes = {
 }
 },
 "size": Vector2(300, 256),
-"speaker": 1
+"speaker": 0
 },
 "1_5": {
-"dialogue": "Is that right, now.",
-"offset": Vector2(2200, -40),
+"dialogue": "Understand? Say it.",
+"offset": Vector2(1560, -120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 0
+},
+"1_6": {
+"dialogue": "...Can I ask one question?",
+"offset": Vector2(2840, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"3_3",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
+},
+"1_7": {
+"dialogue": "I... understand.",
+"offset": Vector2(1900, -120),
 "options": {
 0: {
 "condition": {},
@@ -82,55 +155,52 @@ Nodes = {
 }
 },
 "size": Vector2(300, 256),
-"speaker": 0
-},
-"1_6": {
-"dialogue": "Well, far be it from me to tell you what to do.",
-"offset": Vector2(2880, -40),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 256),
-"speaker": 0
-},
-"1_7": {
-"dialogue": "I don't REALLY want to be here, so I couldn't agree more.",
-"offset": Vector2(1300, 280),
-"options": {
-0: {
-"condition": {},
-"link": &"1_8",
-"text": ""
-}
-},
-"size": Vector2(300, 256),
 "speaker": 1
 },
 "1_8": {
-"dialogue": "So... how do I get out?",
-"offset": Vector2(1620, 280),
+"dialogue": "Good girl.",
+"offset": Vector2(2480, -120),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_6",
 "text": ""
 }
 },
 "size": Vector2(300, 256),
-"speaker": 1
+"speaker": 0
+},
+"1_9": {
+"dialogue": "Don't get why you look so tiny. Gives off the wrong vibe. This ain't elementary school.",
+"offset": Vector2(280, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 322),
+"speaker": 0
 },
 "3_1": {
 "link": &"1_5",
-"offset": Vector2(1960, 60),
+"offset": Vector2(1300, 0),
 "signalValue": "switchtothinking"
 },
 "3_2": {
-"link": &"1_6",
-"offset": Vector2(2560, 60),
+"link": &"1_8",
+"offset": Vector2(2225.95, -36.7854),
+"signalValue": "switchtoidle"
+},
+"3_3": {
+"link": &"1_10",
+"offset": Vector2(3220, -40),
+"signalValue": "switchtothinking"
+},
+"3_4": {
+"link": &"1_12",
+"offset": Vector2(4160, -40),
 "signalValue": "switchtoidle"
 }
 }

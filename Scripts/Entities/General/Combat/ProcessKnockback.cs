@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.ExceptionServices;
 
 [GlobalClass]
 public partial class ProcessKnockback : StateScript
@@ -11,7 +12,10 @@ public partial class ProcessKnockback : StateScript
 	public bool canRecoverInAir;
 	public override void _PhysicsProcess(double delta)
 	{
-		if(!active) return;
+		if(!active) {
+			entity.sprite.Skew = 0;
+			return;
+		}
 		
 		if(horKnockbackSpeed != 0) {
 			//entity.Move(horKnockbackSpeed, 0, (float)delta, false);

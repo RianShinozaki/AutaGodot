@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm2fc327odcxe"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="1_0ss2m"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessDeathEnemyBasic.cs" id="2_cxxw3"]
+
+[node name="EnemyStandardAttributes" type="Node2D"]
+
+[node name="EntityHealth" type="Node2D" parent="."]
+script = ExtResource("1_0ss2m")
+health = 6.0
+maxHealth = 6
+
+[node name="ProcessDeathEnemyBasic" type="Node2D" parent="."]
+script = ExtResource("2_cxxw3")

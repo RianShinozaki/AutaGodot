@@ -8,6 +8,8 @@ public partial class AccelAndDecel : StateScript
 	[Export] public bool horReset;
 	[Export] bool directControl;
 	[Export] public float speed;
+	[Export] public float initSpeed;
+	[Export] public float initSpeedAir;
 	[Export] float accel;
 	[Export] float decel;
 	[Export] float decelTooFast;
@@ -25,6 +27,11 @@ public partial class AccelAndDecel : StateScript
 			int sign = Mathf.Sign(hor);
 			if(entity.horSpeed * hor < speed)
 				entity.AccelerateHor((entity.grounded ? accel : airAccel) * hor * (float)delta, speed * hor, true);
+
+				float thisInitSpeed = entity.grounded ? initSpeed : initSpeedAir;
+				if( Mathf.Abs(entity.horSpeed) < thisInitSpeed) {
+					entity.SetHor(hor*thisInitSpeed);
+				}
 			else {
 				entity.AccelerateHor((entity.grounded ? decelTooFast : airDecelTooFast) * hor * (float)delta, speed * hor, true);
 			}
