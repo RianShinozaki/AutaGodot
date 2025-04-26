@@ -11,6 +11,7 @@ public partial class EnemyHurt : StateScript
 	[Signal] public delegate void DiedEventHandler();
 	[Signal] public delegate void TuckedEventHandler();
 
+	[Export] bool autoHookToHitBox = true;
 	[Export] public Godot.Collections.Array<Area2D> ignoreAreas = new Godot.Collections.Array<Area2D>();
 	[Export] public float knockbackRecovery;
 	[Export] public bool canTuck;
@@ -29,7 +30,9 @@ public partial class EnemyHurt : StateScript
     public override void Init()
     {
         base.Init();
-
+		if(autoHookToHitBox) {
+			entity.GetNode<Area2D>("Hurtbox").AreaEntered += _on_hurtbox_area_entered;
+		}
     }
 
 	//Knockback proc

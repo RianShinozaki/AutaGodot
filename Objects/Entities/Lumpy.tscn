@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
@@ -7,13 +7,12 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_hx0a2"]
 [ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_sk50q"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_psv42"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/EnemyHurt.cs" id="7_25fif"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="7_mp0wg"]
+[ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y2wtr"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="8_84q3h"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_de1pw"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="8_h5yuc"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="9_veaq1"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/SetGravityThresh.cs" id="10_r6fng"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="11_1muus"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="12_xtvbw"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="13_1dilq"]
@@ -318,26 +317,18 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="AfterImageGenerator" type="Node" parent="Art"]
 script = ExtResource("4_sk50q")
 
-[node name="EnemyStandardAttributes" parent="." instance=ExtResource("5_psv42")]
+[node name="Attributes" parent="." instance=ExtResource("5_psv42")]
 
 [node name="States" type="Node2D" parent="."]
 
 [node name="EnemyBaseState" type="Node2D" parent="States"]
 script = ExtResource("3_hovqr")
 
-[node name="EnemyStandardScriptGroup" type="Node2D" parent="States/EnemyBaseState"]
-script = ExtResource("4_hx0a2")
-runIfInactive = true
+[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" node_paths=PackedStringArray("state") instance=ExtResource("7_y2wtr")]
+state = NodePath("../../HurtState")
 
-[node name="EnemyHurt" type="Node2D" parent="States/EnemyBaseState/EnemyStandardScriptGroup" node_paths=PackedStringArray("ignoreAreas")]
-script = ExtResource("7_25fif")
-ignoreAreas = [null]
-knockbackRecovery = 300.0
-canTuck = true
-recoverAnim = "Grounded"
-
-[node name="SetGravityThresh" type="Node2D" parent="States/EnemyBaseState/EnemyStandardScriptGroup"]
-script = ExtResource("10_r6fng")
+[node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
+ignoreAreas = [NodePath("../../../ThrownState/ActiveComponentGroup/ColliderSetActive/Attack")]
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("8_de1pw")
@@ -533,3 +524,5 @@ debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 [connection signal="Bounce" from="." to="States/ThrownState" method="_on_bounce"]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="area_entered" from="States/ThrownState/ActiveComponentGroup/ColliderSetActive/Attack" to="States/ThrownState" method="_on_attack_area_entered"]
+
+[editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]

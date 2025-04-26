@@ -12,11 +12,13 @@ public partial class ProcessKnockback : StateScript
 	public bool canRecoverInAir;
 	public override void _PhysicsProcess(double delta)
 	{
-		if(!active) {
+		if(!active) return;
+		
+		if(entity.currentState.Name == "ThrownState") {
 			entity.sprite.Skew = 0;
+			horKnockbackSpeed = 0;
 			return;
 		}
-		
 		if(horKnockbackSpeed != 0) {
 			//entity.Move(horKnockbackSpeed, 0, (float)delta, false);
 			entity.sprite.Skew = horKnockbackSpeed/200;
