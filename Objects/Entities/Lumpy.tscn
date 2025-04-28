@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=53 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="16_btju7"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="17_o5wty"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityGrabbedState.cs" id="18_qcf61"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="20_b5tuk"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityThrownState.cs" id="20_i7suw"]
 
 [sub_resource type="Animation" id="Animation_k40gc"]
@@ -263,6 +264,14 @@ height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xw20l"]
 
+[sub_resource type="Curve" id="Curve_ow81l"]
+_data = [Vector2(0, 0.987843), 0.0, 0.0, 0, 0, Vector2(1, 0.000956655), -2.6344, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1x2qc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0071696), -1.54418, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_ccjcc"]
 script = ExtResource("14_oub3d")
 damage = 6.0
@@ -463,6 +472,14 @@ script = ExtResource("4_hx0a2")
 
 [node name="FlipToFaceDirection" type="Node2D" parent="States/ThrownState/ActiveScriptGroup"]
 script = ExtResource("9_veaq1")
+
+[node name="ScreenshakeEmitter" type="Node2D" parent="States/ThrownState/ActiveScriptGroup"]
+script = ExtResource("20_b5tuk")
+shake = 5.0
+distanceFalloffCurve = SubResource("Curve_ow81l")
+maxRange = 540.0
+maxTime = 1.0
+timeFalloffCurve = SubResource("Curve_1x2qc")
 
 [node name="ActiveComponentGroup" type="Node2D" parent="States/ThrownState"]
 script = ExtResource("16_btju7")

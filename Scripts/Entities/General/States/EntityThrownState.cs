@@ -53,5 +53,7 @@ public partial class EntityThrownState : EntityState
 			fx.GlobalPosition = GlobalPosition - normal*4;
 			fx.Rotation = Mathf.Atan2(normal.X, -normal.Y);
 		}
+		GetNode<ScreenshakeEmitter>("ActiveScriptGroup/ScreenshakeEmitter").EmitShake();
+
 	}
 }

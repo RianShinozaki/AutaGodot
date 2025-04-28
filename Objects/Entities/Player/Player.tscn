@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=147 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="10_b8sdc"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="11_03o8e"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/SpawnOnSignal.cs" id="13_yv1xd"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="14_6s213"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerDuckState.cs" id="15_c8jlq"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaAbilityTransitions.cs" id="15_mntrl"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
@@ -861,6 +862,14 @@ states/ThrowSpin/position = Vector2(201, -115)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
 graph_offset = Vector2(55, -184)
 
+[sub_resource type="Curve" id="Curve_y1r14"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.998258, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_l20i6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.10768, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_l3uw4"]
 script = ExtResource("10_b8sdc")
 damage = 2.0
@@ -1498,6 +1507,14 @@ script = ExtResource("13_yv1xd")
 pooledObjectName = "Land"
 offset = Vector2(0, 8)
 
+[node name="ScreenshakeEmitter" type="Node2D" parent="States/BaseState/SignalScriptGroup"]
+script = ExtResource("14_6s213")
+shake = 5.0
+distanceFalloffCurve = SubResource("Curve_y1r14")
+maxRange = -1.0
+maxTime = 0.1
+timeFalloffCurve = SubResource("Curve_l20i6")
+
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("2_2h7nr")
 
@@ -1872,7 +1889,6 @@ flipObject = NodePath("../../FlipPivot")
 
 [node name="AccelAndDecel" type="Node2D" parent="States/GrabState/ActiveScriptGroup"]
 script = ExtResource("7_ywl3w")
-directControl = true
 speed = 90.0
 decel = 180.0
 decelTooFast = 120.0
@@ -2006,6 +2022,7 @@ horizontal_alignment = 1
 [connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/StateSig - ProcessHitbox -> HurtState" method="_on_signal"]
 [connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/AnimSig - ProcessHitbox -> Hurt" method="_on_signal"]
 [connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/AttackState" method="_on_process_hitbox_hurt"]
+[connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/BaseState/SignalScriptGroup/ScreenshakeEmitter" method="EmitShake"]
 [connection signal="knockbackRecovered" from="States/BaseState/ActiveScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/SwitchStateOnSignal - KnockbackRecovered -> NormalState" method="_on_signal"]
 [connection signal="knockbackRecovered" from="States/BaseState/ActiveScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/PlayAnimationOnSignal - KnockbackRecovered -> Grounded" method="_on_signal"]
 [connection signal="FlipSprite" from="States/NormalState/ActiveScriptGroup/FlipToFaceDirection" to="States/NormalState/ActiveScriptGroup/PlayerNormalAnimations" method="_on_flip_sprite"]
