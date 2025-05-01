@@ -34,17 +34,17 @@ public partial class PlayerAttackState : EntityState
 		else {
 			switch(comboNum) {
 			case 0:
-				stateMachine.Start("Attack_HandCombo1", true);
+				stateMachine.Start("Attack_Combo1", true);
 				comboNum++;
 				comboTimer = comboTimeMax;
 				break;
 			case 1:
-				stateMachine.Start("Attack_HandCombo2", true);
+				stateMachine.Start("Attack_Combo2", true);
 				comboNum++;
 				comboTimer = comboTimeMax;
 				break;
 			case 2:
-				stateMachine.Start("Attack_HandCombo3", true);
+				stateMachine.Start("Attack_Combo3", true);
 				comboNum = 0;
 				comboTimer = comboTimeMax;
 				break;

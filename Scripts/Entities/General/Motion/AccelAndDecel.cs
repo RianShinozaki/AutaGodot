@@ -16,6 +16,7 @@ public partial class AccelAndDecel : StateScript
 	[Export] float airAccel;
 	[Export] float airDecel;
 	[Export] float airDecelTooFast;
+	[Export] bool skewFast = true;
 
 	public override void _Process(double delta)
 	{
@@ -42,6 +43,14 @@ public partial class AccelAndDecel : StateScript
 
 		if(horReset)
 			hor = 0;
+		
+		if(skewFast) {
+			if(Mathf.Abs(entity.horSpeed) > speed) {
+				entity.sprite.Skew = (Mathf.Abs(entity.horSpeed) - speed) * Mathf.Sign(entity.horSpeed) / 400;
+			} else {
+				entity.sprite.Skew = 0;
+			}
+		}
 	}
 
 	public void BurstSpeed(float horSpeed, float vertSpeed, bool directionRelative) {

@@ -33,9 +33,11 @@ public partial class PlayerGrabState : EntityState
 		player.SetVert(-initVertSpeed);
 		player.SetHor(player.horSpeed/2);
 		GameManager.Instance.TransitionTimeScale(timescale, 0.1f);
+		GameCamera.Instance.TransitionLinesAlpha(0.2f, 0.1f);
 
 		aimPos = Vector2.Right * (entity.sprite.FlipH ? -48 : 48);
 		compGroup.Visible = true;
+
 
 		base.Start();	
 	}
@@ -57,12 +59,8 @@ public partial class PlayerGrabState : EntityState
 		grabTime += (float)delta;
 	}
 	private void Throw() {
-		PlayerController player = (PlayerController)entity;
-
-		Callable.From(() => {
-			heldEntity.Reparent(cacheParent);
-		}).CallDeferred();
-		entity.SwitchState("NormalState");
+		GD.Print("TryThrow");
+		PlayerController player = (PlayerController)entity;	
 
 		float angle = Mathf.Atan2(aimPos.Y, aimPos.X);
 		entity.SetVert(-recoilPower);
@@ -79,6 +77,9 @@ public partial class PlayerGrabState : EntityState
 		((EntityGrabbedState)heldEntity.GetState("GrabbedState")).Thrown(angle, throwPower);
 
 		player.canOrb = true;
+		
+
+		entity.SwitchState("NormalState");
 	}
 	private void OnEnemyGrabbed(Node2D node) {
 		GD.Print("OnGrabbed");
@@ -92,5 +93,13 @@ public partial class PlayerGrabState : EntityState
 		base.End();
 		compGroup.Visible = false;
 		GameManager.Instance.TransitionTimeScale(1.0f, 0.1f);
+		GameCamera.Instance.TransitionLinesAlpha(0f, 0.25f);
+
+		if(heldEntity != null) {
+				Callable.From(() => {
+				heldEntity.Reparent(cacheParent);
+			}).CallDeferred();
+		}
+
 	}
 }

@@ -65,13 +65,13 @@ public partial class EnemyHurt : StateScript
 		if(ignoreAreas.Contains(area)) {
 			return;
 		}
-		if(area is Hitbox hitB){
+		if(area is Hitbox hitB) {
 			HitboxData dat = hitB.hitboxData;
 			horKnockbackSpeed = dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1);
 			entity.SetHor(dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1));
 			entity.SetVert(-dat.yKnockback);
 			entity.GetNode<EntityHealth>("Attributes/EntityHealth").ChangeHealth(-dat.damage);
-			
+
 			float hp = entity.GetNode<EntityHealth>("Attributes/EntityHealth").health;
 			if(hp > 0) {
 				entity.SwitchState(hurtState);
@@ -80,25 +80,29 @@ public partial class EnemyHurt : StateScript
 				stateMachine.Start(hurtAnim, true);
 				EmitSignal(SignalName.Hurt);
 			}
+			// Become a cannonball if killed by a heavybash
+			else if(hp <= 0 && canTuck && dat.damageType == DamageType.HeavyBash) { 
+				entity.SwitchState(tuckState);
+				float totalSpeed = 250; //This shouldn't be hard set but whatever.
+				float angle = Mathf.Atan2(GlobalPosition.Y - area.GlobalPosition.Y, GlobalPosition.X - area.GlobalPosition.Y);
+
+				entity.SetHor(-totalSpeed * Mathf.Cos(angle));
+				entity.SetVert(-totalSpeed * Mathf.Sin(angle));
+				entity.SwitchState("ThrownState");
+
+				tucked = true;
+				var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+				stateMachine.Start("RESET", true);
+				stateMachine.Start(tuckAnim, true);
+				
+				EmitSignal(SignalName.Hurt);
+			}
 			else if(hp <= 0 && !tucked && canTuck) {
 				tucked = true;
 				var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 				stateMachine.Start("RESET", true);
 				stateMachine.Start(tuckAnim, true);
-
-				//Turn into a cannonball if hit by a heavybash
-				if(dat.damageType == DamageType.HeavyBash) {
-					entity.SwitchState(tuckState);
-					float totalSpeed = 250; //This shouldn't be hard set but whatever.
-					float angle = Mathf.Atan2(GlobalPosition.Y - area.GlobalPosition.Y, GlobalPosition.X - area.GlobalPosition.Y);
-
-					entity.SetHor(-totalSpeed * Mathf.Cos(angle));
-					entity.SetVert(-totalSpeed * Mathf.Sin(angle));
-					entity.SwitchState("ThrownState");
-				}
-				else {
-					entity.SwitchState(tuckState);
-				}
+				entity.SwitchState(tuckState);
 				
 				EmitSignal(SignalName.Hurt);
 			}
@@ -121,7 +125,4 @@ public partial class EnemyHurt : StateScript
 			}
 		}
 	}
-
-
-	
 }

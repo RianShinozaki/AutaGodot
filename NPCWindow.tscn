@@ -18,6 +18,22 @@
 [ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="15_pvy24"]
 [ext_resource type="Texture2D" uid="uid://b1xupx4l74b7r" path="res://Art Assets/Characters/NPC/PlasticSun/Thinking/Concept.png" id="16_uf8n6"]
 
+[sub_resource type="Environment" id="Environment_0n4h5"]
+background_mode = 3
+background_canvas_max_layer = 3
+tonemap_mode = 2
+tonemap_exposure = 0.65
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/6 = 3.5
+glow_levels/7 = 2.05
+glow_strength = 0.57
+glow_bloom = 0.32
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 21.95
+adjustment_enabled = true
+adjustment_saturation = 1.24
+
 [sub_resource type="Animation" id="Animation_n8xpl"]
 resource_name = "Filler"
 length = 2.0
@@ -1003,22 +1019,6 @@ _data = {
 "ThinkingTrans": SubResource("Animation_p5bhf")
 }
 
-[sub_resource type="Environment" id="Environment_0n4h5"]
-background_mode = 3
-background_canvas_max_layer = 3
-tonemap_mode = 2
-tonemap_exposure = 0.65
-glow_enabled = true
-glow_levels/4 = 2.0
-glow_levels/6 = 3.5
-glow_levels/7 = 2.05
-glow_strength = 0.57
-glow_bloom = 0.32
-glow_blend_mode = 0
-glow_hdr_luminance_cap = 21.95
-adjustment_enabled = true
-adjustment_saturation = 1.24
-
 [sub_resource type="LabelSettings" id="LabelSettings_mwfbu"]
 font = ExtResource("7_n2vqi")
 font_size = 24
@@ -1026,6 +1026,9 @@ font_color = Color(0.863326, 0.638853, 0.764625, 1)
 
 [node name="Node2D" type="CanvasLayer"]
 layer = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0n4h5")
 
 [node name="DialogueRunner" type="Control" parent="." node_paths=PackedStringArray("dialogueBox", "anim")]
 layout_mode = 3
@@ -1051,9 +1054,6 @@ autoplay = "Intro"
 next/Filler = &"Intro"
 next/Intro = &"Idle"
 next/ThinkingTrans = &"Thinking"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasModulate"]
-environment = SubResource("Environment_0n4h5")
 
 [node name="Back" type="Sprite2D" parent="CanvasModulate"]
 texture_filter = 1

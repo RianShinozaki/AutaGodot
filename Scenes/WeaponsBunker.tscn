@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://rtss4xgk0676"]
+[gd_scene load_steps=52 format=4 uid="uid://rtss4xgk0676"]
 
 [ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="1_tlmhc"]
 [ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Art Assets/Environment/Underground/Backgrounds/spr_RockyBG_TC.png" id="2_cxm0n"]
@@ -15,7 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="15_xjind"]
 [ext_resource type="Script" path="res://Scripts/System/CameraCenter.cs" id="16_asstr"]
 [ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="16_urifl"]
+[ext_resource type="Texture2D" uid="uid://ca68imfs5y3y" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_0.png" id="16_xp8hd"]
 [ext_resource type="Script" path="res://Scripts/System/GameManager.cs" id="17_87ao1"]
+[ext_resource type="Texture2D" uid="uid://cbto7t4bu32fp" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_1.png" id="17_t3can"]
+[ext_resource type="Texture2D" uid="uid://butkiw82s6a0o" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_2.png" id="18_5klgh"]
+[ext_resource type="Texture2D" uid="uid://i48k2py5mt0x" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_3.png" id="19_jtxpp"]
+[ext_resource type="Texture2D" uid="uid://v4uhi4ybsj6k" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_4.png" id="20_46vtj"]
+[ext_resource type="Texture2D" uid="uid://tahb45tish6j" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_5.png" id="21_mu3yl"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -111,6 +117,56 @@ script = ExtResource("16_urifl")
 objectToPool = "uid://c5db1ofb4p1qx"
 number = 10
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf4lf"]
+atlas = ExtResource("16_xp8hd")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwlfb"]
+atlas = ExtResource("17_t3can")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n314r"]
+atlas = ExtResource("18_5klgh")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t02mk"]
+atlas = ExtResource("19_jtxpp")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr85d"]
+atlas = ExtResource("20_46vtj")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk0nw"]
+atlas = ExtResource("21_mu3yl")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wh1hg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf4lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwlfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n314r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t02mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr85d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk0nw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o45p0"]
 friction = 0.0
 
@@ -124,6 +180,9 @@ size = Vector2(1849, 18)
 texture_filter = 1
 color = Color(0.701643, 0.589316, 0.7595, 1)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_02j3j")
+
 [node name="DebugLight" type="DirectionalLight2D" parent="."]
 visible = false
 position = Vector2(449, -437)
@@ -131,9 +190,6 @@ energy = 1.54
 
 [node name="Environment-Under" type="Node2D" parent="."]
 texture_filter = 1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment-Under"]
-environment = SubResource("Environment_02j3j")
 
 [node name="Backgrounds" type="Node2D" parent="Environment-Under"]
 light_mask = 9
@@ -325,14 +381,22 @@ pool = Array[Object]([SubResource("Resource_2rxvv"), SubResource("Resource_nep2b
 script = ExtResource("17_87ao1")
 
 [node name="CameraSystem" type="Node2D" parent="."]
-visible = false
 
 [node name="Camera2D" type="Camera2D" parent="CameraSystem" node_paths=PackedStringArray("target")]
 zoom = Vector2(2, 2)
 script = ExtResource("1_tlmhc")
 target = NodePath("../CameraCenter")
 
+[node name="SpeedLines" type="AnimatedSprite2D" parent="CameraSystem/Camera2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.27451)
+scale = Vector2(1.135, 1.135)
+sprite_frames = SubResource("SpriteFrames_wh1hg")
+autoplay = "default"
+frame_progress = 0.82741
+
 [node name="CameraCenter" type="RigidBody2D" parent="CameraSystem"]
+visible = false
 position = Vector2(0, -88)
 collision_layer = 65536
 collision_mask = 131072
@@ -347,6 +411,7 @@ scale = Vector2(2.145, 1.22)
 shape = SubResource("CircleShape2D_5t0ac")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CameraSystem"]
+visible = false
 collision_layer = 131072
 collision_mask = 65536
 
