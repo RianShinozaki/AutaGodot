@@ -1,22 +1,22 @@
 [gd_scene load_steps=27 format=3 uid="uid://b0ojvt677hwxq"]
 
-[ext_resource type="Texture2D" uid="uid://bppc0sf8ah0x5" path="res://Art Assets/Characters/NPC/PlasticSun/Body.png" id="1_5joey"]
-[ext_resource type="Resource" uid="uid://c7i8q1twhocgc" path="res://Data/Dialogue/Test/PlasticSunTest.tres" id="2_3xv1u"]
-[ext_resource type="Texture2D" uid="uid://cbwgpvh4wrkf" path="res://Art Assets/Characters/NPC/PlasticSun/Collar.png" id="2_t64xg"]
-[ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="3_4nnq1"]
-[ext_resource type="Texture2D" uid="uid://cdkolvr2jec4j" path="res://Art Assets/Characters/NPC/PlasticSun/Head.png" id="3_7udae"]
-[ext_resource type="Texture2D" uid="uid://bw4x3v7dvp1fo" path="res://Art Assets/Characters/NPC/PlasticSun/Hat.png" id="4_dwqfm"]
-[ext_resource type="Texture2D" uid="uid://dmgbf7ur07dtn" path="res://Art Assets/Characters/NPC/PlasticSun/Hair.png" id="4_qvfvt"]
-[ext_resource type="Texture2D" uid="uid://ch0e0y8shfeou" path="res://Art Assets/Characters/NPC/PlasticSun/Bangs.png" id="5_eksk1"]
-[ext_resource type="FontFile" uid="uid://j1kbe6ur8sps" path="res://Art Assets/Fonts/PublicPixel.ttf" id="7_n2vqi"]
-[ext_resource type="Texture2D" uid="uid://do1bp2bposiaj" path="res://Art Assets/Environment/Underground/Backgrounds/Back.png" id="8_oduwl"]
-[ext_resource type="Texture2D" uid="uid://f5jkjnuwqu70" path="res://Art Assets/Environment/Underground/Backgrounds/CloserStal.png" id="9_dykku"]
-[ext_resource type="Texture2D" uid="uid://2wq6u6e405c5" path="res://Art Assets/Characters/NPC/PlasticSun/HatMound.png" id="10_5heih"]
-[ext_resource type="PackedScene" uid="uid://d3g30r1oyug18" path="res://Objects/Effects/Lighting/gradient_light.tscn" id="12_i20c5"]
-[ext_resource type="Texture2D" uid="uid://f7abvjgmhiu5" path="res://Art Assets/Effects/Cutscene/Glint.png" id="13_mns7s"]
-[ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="15_ooodv"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="15_pvy24"]
-[ext_resource type="Texture2D" uid="uid://b1xupx4l74b7r" path="res://Art Assets/Characters/NPC/PlasticSun/Thinking/Concept.png" id="16_uf8n6"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="1_nvdwn"]
+[ext_resource type="Resource" uid="uid://c7i8q1twhocgc" path="res://Data/Dialogue/Test/PlasticSunTest.tres" id="2_5rsr7"]
+[ext_resource type="Texture2D" uid="uid://do1bp2bposiaj" path="res://Art Assets/Environment/Underground/Backgrounds/Back.png" id="3_cf1xn"]
+[ext_resource type="Texture2D" uid="uid://f5jkjnuwqu70" path="res://Art Assets/Environment/Underground/Backgrounds/CloserStal.png" id="4_grcy2"]
+[ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="5_k5d1j"]
+[ext_resource type="Texture2D" uid="uid://bppc0sf8ah0x5" path="res://Art Assets/Characters/NPC/PlasticSun/Body.png" id="6_8vihj"]
+[ext_resource type="Texture2D" uid="uid://cbwgpvh4wrkf" path="res://Art Assets/Characters/NPC/PlasticSun/Collar.png" id="7_sj6lo"]
+[ext_resource type="Texture2D" uid="uid://cdkolvr2jec4j" path="res://Art Assets/Characters/NPC/PlasticSun/Head.png" id="8_k0l1d"]
+[ext_resource type="Texture2D" uid="uid://dmgbf7ur07dtn" path="res://Art Assets/Characters/NPC/PlasticSun/Hair.png" id="9_857yc"]
+[ext_resource type="Texture2D" uid="uid://ch0e0y8shfeou" path="res://Art Assets/Characters/NPC/PlasticSun/Bangs.png" id="10_0hwyr"]
+[ext_resource type="Texture2D" uid="uid://bw4x3v7dvp1fo" path="res://Art Assets/Characters/NPC/PlasticSun/Hat.png" id="11_ifaxi"]
+[ext_resource type="Texture2D" uid="uid://2wq6u6e405c5" path="res://Art Assets/Characters/NPC/PlasticSun/HatMound.png" id="12_bwemk"]
+[ext_resource type="Texture2D" uid="uid://b1xupx4l74b7r" path="res://Art Assets/Characters/NPC/PlasticSun/Thinking/Concept.png" id="13_vqvnv"]
+[ext_resource type="FontFile" uid="uid://j1kbe6ur8sps" path="res://Art Assets/Fonts/PublicPixel.ttf" id="14_eopdk"]
+[ext_resource type="PackedScene" uid="uid://d3g30r1oyug18" path="res://Objects/Effects/Lighting/gradient_light.tscn" id="15_rjvv5"]
+[ext_resource type="Texture2D" uid="uid://f7abvjgmhiu5" path="res://Art Assets/Effects/Cutscene/Glint.png" id="16_8s1k0"]
+[ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="17_k31nf"]
 
 [sub_resource type="Environment" id="Environment_0n4h5"]
 background_mode = 3
@@ -1020,7 +1020,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_mwfbu"]
-font = ExtResource("7_n2vqi")
+font = ExtResource("14_eopdk")
 font_size = 24
 font_color = Color(0.863326, 0.638853, 0.764625, 1)
 
@@ -1035,8 +1035,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("15_pvy24")
-dialogueData = ExtResource("2_3xv1u")
+script = ExtResource("1_nvdwn")
+dialogueData = ExtResource("2_5rsr7")
 dialogueBox = NodePath("../DialogueBox")
 anim = NodePath("../CanvasModulate/AnimationPlayer")
 enableAudio = false
@@ -1059,14 +1059,14 @@ next/ThinkingTrans = &"Thinking"
 texture_filter = 1
 position = Vector2(447, 252)
 scale = Vector2(2, 2)
-texture = ExtResource("8_oduwl")
+texture = ExtResource("3_cf1xn")
 
 [node name="CloserStal" type="Sprite2D" parent="CanvasModulate/Back"]
 position = Vector2(1, 0)
-texture = ExtResource("9_dykku")
+texture = ExtResource("4_grcy2")
 
 [node name="ForegroundRocks" type="Sprite2D" parent="CanvasModulate/Back/CloserStal"]
-texture = ExtResource("3_4nnq1")
+texture = ExtResource("5_k5d1j")
 
 [node name="Idle" type="Node2D" parent="CanvasModulate"]
 texture_filter = 1
@@ -1074,32 +1074,32 @@ position = Vector2(453, 347)
 scale = Vector2(2, 2)
 
 [node name="Body" type="Sprite2D" parent="CanvasModulate/Idle"]
-texture = ExtResource("1_5joey")
+texture = ExtResource("6_8vihj")
 
 [node name="Collar" type="Sprite2D" parent="CanvasModulate/Idle/Body"]
 position = Vector2(0, -24)
 rotation = 0.0261799
-texture = ExtResource("2_t64xg")
+texture = ExtResource("7_sj6lo")
 
 [node name="Head" type="Sprite2D" parent="CanvasModulate/Idle/Body/Collar"]
 position = Vector2(0, -53)
-texture = ExtResource("3_7udae")
+texture = ExtResource("8_k0l1d")
 
 [node name="Hair" type="Sprite2D" parent="CanvasModulate/Idle/Body/Collar/Head"]
-texture = ExtResource("4_qvfvt")
+texture = ExtResource("9_857yc")
 
 [node name="Bangs" type="Sprite2D" parent="CanvasModulate/Idle/Body/Collar/Head"]
 position = Vector2(-2.14908, -16.5878)
-texture = ExtResource("5_eksk1")
+texture = ExtResource("10_0hwyr")
 offset = Vector2(6.39, 12.355)
 
 [node name="Hat" type="Sprite2D" parent="CanvasModulate/Idle/Body/Collar/Head"]
 position = Vector2(0, -26)
-texture = ExtResource("4_dwqfm")
+texture = ExtResource("11_ifaxi")
 
 [node name="HatMound" type="Sprite2D" parent="CanvasModulate/Idle/Body/Collar/Head"]
 position = Vector2(0, -37.001)
-texture = ExtResource("10_5heih")
+texture = ExtResource("12_bwemk")
 
 [node name="Thinking" type="Node2D" parent="CanvasModulate"]
 visible = false
@@ -1108,7 +1108,7 @@ position = Vector2(454, 357)
 [node name="Concept" type="Sprite2D" parent="CanvasModulate/Thinking"]
 position = Vector2(0, -98)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("16_uf8n6")
+texture = ExtResource("13_vqvnv")
 
 [node name="Label" type="Label" parent="CanvasModulate"]
 texture_filter = 1
@@ -1121,7 +1121,7 @@ label_settings = SubResource("LabelSettings_mwfbu")
 
 [node name="Background" type="Node2D" parent="CanvasModulate"]
 
-[node name="GradientLight" parent="CanvasModulate" instance=ExtResource("12_i20c5")]
+[node name="GradientLight" parent="CanvasModulate" instance=ExtResource("15_rjvv5")]
 modulate = Color(0.705882, 0.168627, 0.419608, 0)
 position = Vector2(452.358, 348.502)
 scale = Vector2(15.0876, -5.45303)
@@ -1133,11 +1133,11 @@ visible = false
 texture_filter = 1
 position = Vector2(453, 269)
 scale = Vector2(2, 2)
-texture = ExtResource("13_mns7s")
+texture = ExtResource("16_8s1k0")
 hframes = 11
 frame = 1
 
-[node name="DialogueBox" parent="." instance=ExtResource("15_ooodv")]
+[node name="DialogueBox" parent="." instance=ExtResource("17_k31nf")]
 visible = false
 offset_left = 452.0
 offset_top = 424.0

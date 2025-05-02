@@ -66,6 +66,7 @@ public partial class EnemyHurt : StateScript
 			return;
 		}
 		if(area is Hitbox hitB) {
+			HitstunShader();
 			HitboxData dat = hitB.hitboxData;
 			horKnockbackSpeed = dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1);
 			entity.SetHor(dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1));
@@ -124,5 +125,13 @@ public partial class EnemyHurt : StateScript
 				fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, area.GlobalPosition.Y);
 			}
 		}
+	}
+
+	public async void HitstunShader() {
+		ShaderMaterial mat = entity.sprite.Material as ShaderMaterial;
+		mat.SetShaderParameter("stunFX", 1.0f);
+		await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+		mat.SetShaderParameter("stunFX", 0.0f);
+
 	}
 }

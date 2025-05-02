@@ -11,6 +11,7 @@ public partial class PlayerDuckState : EntityState
 	[Export] public NodePath orbShape;
 	[Export] public NodePath normalShape;
 	[Export] public NodePath duckShape;
+	[Export] public AudioStream slide;
 
 	public override void Start() {
 		base.Start();	
@@ -23,6 +24,10 @@ public partial class PlayerDuckState : EntityState
 		stateMachine.Start("Duck", true);
 		PlayerController player = (PlayerController)entity;
 		player.duck = true;
+
+		if(Mathf.Abs(entity.horSpeed) > 100) {
+			SFXController.PlaySound(slide, 0.3f);
+		}
 	}
 	public override void _Process(double delta) {
 

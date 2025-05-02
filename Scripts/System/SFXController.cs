@@ -16,12 +16,13 @@ public partial class SFXController : Node
     }
 
 	//Call this with a loaded sound to play it
-    public static AudioStreamPlayer PlaySound(AudioStream sound) {
+    public static AudioStreamPlayer PlaySound(AudioStream sound, float dbLinear = 1f) {
 		foreach(var node in sfx.GetChildren()) {
 			AudioStreamPlayer audio = node as AudioStreamPlayer;
 			if(!audio.Playing) {
 				audio.Stream = sound;
 				audio.Play();
+				audio.VolumeDb = Mathf.LinearToDb(dbLinear);
 				return audio;
 			}
 		}

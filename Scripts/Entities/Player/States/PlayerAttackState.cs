@@ -28,7 +28,7 @@ public partial class PlayerAttackState : EntityState
 		stateMachine = player.anim.Get("parameters/Attack/playback").As<AnimationNodeStateMachinePlayback>();
 		
 		if(vert <= -0.75f) {
-			stateMachine.Start("Attack_HandLaunch", true);
+			stateMachine.Start("Attack_Launch", true);
 			comboNum = 0;
 		}
 		else {

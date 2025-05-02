@@ -19,9 +19,13 @@ public partial class PlayerOrbState : EntityState
 	[Export] float gravityMultWaitTime;
 	[Export] float exitYSpeed;
 	[Export] float exitMoveSpeed;
+	[Export] float minSpeedThresholdForSpeedState = 90f;
 	[Export] public NodePath orbShape;
 	[Export] public NodePath normalShape;
 	[Export] public NodePath duckShape;
+	[Export] public AudioStream orbThrow;
+	[Export] public AudioStream orbBounce;
+	[Export] public AudioStream orbReform;
 	float orbTime;
 	Vector3 prevVelocity;
 
@@ -87,6 +91,8 @@ public partial class PlayerOrbState : EntityState
 			mat.SetShaderParameter("HFrame", player.sprite.Hframes);
 		}*/
 
+		SFXController.PlaySound(orbThrow);
+
 		base.Start();	
 	}
 	public override void _Process(double delta) {
@@ -101,7 +107,12 @@ public partial class PlayerOrbState : EntityState
 				player.SwitchState("DuckState");
 			}
 			else {
-				player.SwitchState("NormalState");
+				if(Mathf.Abs(entity.horSpeed) > minSpeedThresholdForSpeedState) {
+					player.SwitchState("SpeedState");
+				}
+				else {
+					player.SwitchState("NormalState");
+				}
 			}
 		}
 
@@ -133,6 +144,7 @@ public partial class PlayerOrbState : EntityState
 			GetNode<CollisionShape2D>(normalShape).Disabled = false;
 		}).CallDeferred();
 
+		SFXController.PlaySound(orbReform);
 		base.End();
 	}
 

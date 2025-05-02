@@ -10,5 +10,9 @@ gradient = SubResource("Gradient_qgkbr")
 width = 4
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_fid1c")
+shader_parameter/outline_color_left = Color(1, 0, 1, 1)
+shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/stunFX = 0.0
 shader_parameter/LightGradient = SubResource("GradientTexture1D_jyuvq")

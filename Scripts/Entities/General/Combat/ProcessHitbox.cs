@@ -41,4 +41,6 @@ public partial class ProcessHitbox : StateScript
 			}
 		}
 	}
+
+	
 }

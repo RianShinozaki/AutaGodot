@@ -39,15 +39,17 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 [file_customization]
 
 folder_colors={
-"res://Art Assets/": "pink",
-"res://Assets/": "yellow",
-"res://Data/": "gray",
-"res://Objects/": "red",
-"res://Scenes/": "blue",
-"res://Scripts/": "teal",
+"res://Art Assets/": "red",
+"res://Assets/": "gray",
+"res://Audio/": "green",
+"res://Data/": "yellow",
+"res://Objects/": "pink",
+"res://Scenes/": "teal",
+"res://Scripts/": "blue",
 "res://Shaders/": "purple",
 "res://Tilesets/": "orange",
-"res://addons/": "green"
+"res://addons/": "gray",
+"res://examples/": "gray"
 }
 
 [filesystem]
