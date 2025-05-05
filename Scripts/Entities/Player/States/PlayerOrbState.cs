@@ -91,7 +91,7 @@ public partial class PlayerOrbState : EntityState
 			mat.SetShaderParameter("HFrame", player.sprite.Hframes);
 		}*/
 
-		SFXController.PlaySound(orbThrow);
+		SFXController.PlaySound(orbThrow, 1.4f);
 
 		base.Start();	
 	}
@@ -144,7 +144,7 @@ public partial class PlayerOrbState : EntityState
 			GetNode<CollisionShape2D>(normalShape).Disabled = false;
 		}).CallDeferred();
 
-		SFXController.PlaySound(orbReform);
+		SFXController.PlaySound(orbReform, 1.4f);
 		base.End();
 	}
 

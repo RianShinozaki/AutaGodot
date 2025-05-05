@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb7vw7fvmejei"]
+[gd_scene load_steps=5 format=3 uid="uid://bb7vw7fvmejei"]
 
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="1_v3dwl"]
+[ext_resource type="PackedScene" uid="uid://rv7xg4obnm88" path="res://Scenes/HouseEclipse.tscn" id="3_f2i41"]
+[ext_resource type="Script" path="res://Scripts/System/MusicController.cs" id="4_0qlmu"]
 [ext_resource type="Script" path="res://Scripts/System/SFXController.cs" id="6_o47f1"]
-[ext_resource type="PackedScene" uid="uid://rtss4xgk0676" path="res://Scenes/WeaponsBunker.tscn" id="6_pix6n"]
 
 [node name="Game" type="Node"]
 
@@ -12,4 +13,9 @@
 script = ExtResource("6_o47f1")
 numChannels = 8
 
-[node name="CanvasModulate" parent="." instance=ExtResource("6_pix6n")]
+[node name="CanvasModulate" parent="." instance=ExtResource("3_f2i41")]
+
+[node name="MusicController" type="Node" parent="."]
+script = ExtResource("4_0qlmu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicController"]

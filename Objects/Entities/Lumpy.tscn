@@ -1,12 +1,14 @@
-[gd_scene load_steps=53 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=56 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_asvle"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_hovqr"]
+[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_fjlw8"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_hx0a2"]
 [ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_sk50q"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_psv42"]
+[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_shbdi"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="7_mp0wg"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y2wtr"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="8_84q3h"]
@@ -22,6 +24,12 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityGrabbedState.cs" id="18_qcf61"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="20_b5tuk"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityThrownState.cs" id="20_i7suw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rbaw3"]
+diffuse_texture = ExtResource("3_asvle")
+normal_texture = ExtResource("4_fjlw8")
+specular_texture = ExtResource("5_shbdi")
+texture_filter = 1
 
 [sub_resource type="Animation" id="Animation_k40gc"]
 resource_name = "Attack"
@@ -308,7 +316,7 @@ light_mask = 2
 texture_filter = 1
 material = ExtResource("2_8tc4j")
 position = Vector2(0, -4)
-texture = ExtResource("3_asvle")
+texture = SubResource("CanvasTexture_rbaw3")
 offset = Vector2(-1, 0)
 hframes = 4
 vframes = 4
@@ -329,6 +337,7 @@ script = ExtResource("4_sk50q")
 [node name="Attributes" parent="." instance=ExtResource("5_psv42")]
 
 [node name="States" type="Node2D" parent="."]
+visible = false
 
 [node name="EnemyBaseState" type="Node2D" parent="States"]
 script = ExtResource("3_hovqr")
@@ -499,10 +508,12 @@ shape = SubResource("CapsuleShape2D_vm1vm")
 disabled = true
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
 [node name="RayArray" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 script = ExtResource("7_mp0wg")
 floorOffset = 8
@@ -519,6 +530,7 @@ position = Vector2(7, 0)
 target_position = Vector2(0, 8)
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, 4)
 collision_layer = 2048
 collision_mask = 260

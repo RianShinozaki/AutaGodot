@@ -1,6 +1,5 @@
-[gd_scene load_steps=53 format=4 uid="uid://rtss4xgk0676"]
+[gd_scene load_steps=37 format=4 uid="uid://rtss4xgk0676"]
 
-[ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="1_tlmhc"]
 [ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Art Assets/Environment/Underground/Backgrounds/spr_RockyBG_TC.png" id="2_cxm0n"]
 [ext_resource type="Texture2D" uid="uid://cw2p77tl28ann" path="res://Art Assets/Environment/Underground/Backgrounds/FarBuildings.png" id="3_08wba"]
 [ext_resource type="Texture2D" uid="uid://lhiwo17607ix" path="res://Art Assets/Environment/Underground/Backgrounds/CloseBuildings.png" id="4_td3hi"]
@@ -12,16 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://d3g30r1oyug18" path="res://Objects/Effects/Lighting/gradient_light.tscn" id="14_ftqju"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="14_o4jpm"]
 [ext_resource type="Script" path="res://Scripts/System/ObjectPool.cs" id="15_j20w2"]
+[ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="15_u6vit"]
 [ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="15_xjind"]
-[ext_resource type="Script" path="res://Scripts/System/CameraCenter.cs" id="16_asstr"]
 [ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="16_urifl"]
-[ext_resource type="Texture2D" uid="uid://ca68imfs5y3y" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_0.png" id="16_xp8hd"]
+[ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="16_xd0qn"]
 [ext_resource type="Script" path="res://Scripts/System/GameManager.cs" id="17_87ao1"]
-[ext_resource type="Texture2D" uid="uid://cbto7t4bu32fp" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_1.png" id="17_t3can"]
-[ext_resource type="Texture2D" uid="uid://butkiw82s6a0o" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_2.png" id="18_5klgh"]
-[ext_resource type="Texture2D" uid="uid://i48k2py5mt0x" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_3.png" id="19_jtxpp"]
-[ext_resource type="Texture2D" uid="uid://v4uhi4ybsj6k" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_4.png" id="20_46vtj"]
-[ext_resource type="Texture2D" uid="uid://tahb45tish6j" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_5.png" id="21_mu3yl"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -116,66 +110,6 @@ number = 4
 script = ExtResource("16_urifl")
 objectToPool = "uid://c5db1ofb4p1qx"
 number = 10
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqki8"]
-blend_mode = 1
-light_mode = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tf4lf"]
-atlas = ExtResource("16_xp8hd")
-region = Rect2(0, 0, 400, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwlfb"]
-atlas = ExtResource("17_t3can")
-region = Rect2(0, 0, 400, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n314r"]
-atlas = ExtResource("18_5klgh")
-region = Rect2(0, 0, 400, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t02mk"]
-atlas = ExtResource("19_jtxpp")
-region = Rect2(0, 0, 400, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pr85d"]
-atlas = ExtResource("20_46vtj")
-region = Rect2(0, 0, 400, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wk0nw"]
-atlas = ExtResource("21_mu3yl")
-region = Rect2(0, 0, 400, 225)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wh1hg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tf4lf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cwlfb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n314r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t02mk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pr85d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wk0nw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o45p0"]
-friction = 0.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5t0ac"]
-radius = 96.9697
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qleo7"]
 size = Vector2(2480, 49)
@@ -409,34 +343,9 @@ script = ExtResource("17_87ao1")
 
 [node name="CameraSystem" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="CameraSystem" node_paths=PackedStringArray("target")]
-zoom = Vector2(2, 2)
-script = ExtResource("1_tlmhc")
-target = NodePath("../CameraCenter")
+[node name="Camera2D" parent="CameraSystem" instance=ExtResource("15_u6vit")]
 
-[node name="SpeedLines" type="AnimatedSprite2D" parent="CameraSystem/Camera2D"]
-visible = false
-modulate = Color(1, 1, 1, 0.27451)
-material = SubResource("CanvasItemMaterial_rqki8")
-scale = Vector2(1.135, 1.135)
-sprite_frames = SubResource("SpriteFrames_wh1hg")
-autoplay = "default"
-frame_progress = 0.971086
-
-[node name="CameraCenter" type="RigidBody2D" parent="CameraSystem"]
-visible = false
-position = Vector2(0, -88)
-collision_layer = 65536
-collision_mask = 131072
-physics_material_override = SubResource("PhysicsMaterial_o45p0")
-gravity_scale = 0.0
-lock_rotation = true
-script = ExtResource("16_asstr")
-deadzone = Vector2(32, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSystem/CameraCenter"]
-scale = Vector2(2.145, 1.22)
-shape = SubResource("CircleShape2D_5t0ac")
+[node name="CameraCenter" parent="CameraSystem" instance=ExtResource("16_xd0qn")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CameraSystem"]
 collision_layer = 131072

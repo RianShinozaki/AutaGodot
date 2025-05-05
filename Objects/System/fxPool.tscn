@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxflhd836je40"]
+
+[ext_resource type="Script" path="res://Scripts/System/ObjectPool.cs" id="1_vy6vj"]
+[ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="2_8t6pi"]
+
+[sub_resource type="Resource" id="Resource_2rxvv"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://cqa8tytdncd0s"
+number = 20
+
+[sub_resource type="Resource" id="Resource_nep2b"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://bjf0v8ser86o1"
+number = 5
+
+[sub_resource type="Resource" id="Resource_43p07"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://bumxjqlecahob"
+number = 30
+
+[sub_resource type="Resource" id="Resource_el2gh"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://dj3pyv3wewpob"
+number = 10
+
+[sub_resource type="Resource" id="Resource_0y6de"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://8ubg2fxdl1ve"
+number = 5
+
+[sub_resource type="Resource" id="Resource_ply2y"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://cimwbi0rmsxca"
+number = 3
+
+[sub_resource type="Resource" id="Resource_51q3c"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://bimjw7qqi3lmu"
+number = 10
+
+[sub_resource type="Resource" id="Resource_um4ym"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://ct6pqwkiwhpf5"
+number = 3
+
+[sub_resource type="Resource" id="Resource_eact5"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://drky8ra3vdtni"
+number = 4
+
+[sub_resource type="Resource" id="Resource_1y8m3"]
+script = ExtResource("2_8t6pi")
+objectToPool = "uid://c5db1ofb4p1qx"
+number = 10
+
+[node name="FXPool" type="Node2D"]
+script = ExtResource("1_vy6vj")
+pool = Array[Object]([SubResource("Resource_2rxvv"), SubResource("Resource_nep2b"), SubResource("Resource_43p07"), SubResource("Resource_el2gh"), SubResource("Resource_0y6de"), SubResource("Resource_ply2y"), SubResource("Resource_51q3c"), SubResource("Resource_um4ym"), SubResource("Resource_eact5"), SubResource("Resource_1y8m3")])

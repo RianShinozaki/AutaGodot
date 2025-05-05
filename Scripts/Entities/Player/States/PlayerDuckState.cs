@@ -26,7 +26,7 @@ public partial class PlayerDuckState : EntityState
 		player.duck = true;
 
 		if(Mathf.Abs(entity.horSpeed) > 100) {
-			SFXController.PlaySound(slide, 0.3f);
+			SFXController.PlaySound(slide, 0.7f);
 		}
 	}
 	public override void _Process(double delta) {

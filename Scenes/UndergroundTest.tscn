@@ -108,6 +108,9 @@ width = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vw4rb"]
 shader = ExtResource("7_nr8ah")
+shader_parameter/outline_color_left = null
+shader_parameter/outline_color_right = null
+shader_parameter/stunFX = null
 shader_parameter/LightGradient = SubResource("GradientTexture1D_7l1eo")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x7eyc"]

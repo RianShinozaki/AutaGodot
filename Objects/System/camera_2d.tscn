@@ -1,0 +1,77 @@
+[gd_scene load_steps=16 format=3 uid="uid://cqx3d6x3e06hm"]
+
+[ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="1_kiqqg"]
+[ext_resource type="Texture2D" uid="uid://ca68imfs5y3y" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_0.png" id="2_exsfn"]
+[ext_resource type="Texture2D" uid="uid://cbto7t4bu32fp" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_1.png" id="3_4y0ag"]
+[ext_resource type="Texture2D" uid="uid://butkiw82s6a0o" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_2.png" id="4_akgs2"]
+[ext_resource type="Texture2D" uid="uid://i48k2py5mt0x" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_3.png" id="5_4obtg"]
+[ext_resource type="Texture2D" uid="uid://v4uhi4ybsj6k" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_4.png" id="6_70o73"]
+[ext_resource type="Texture2D" uid="uid://tahb45tish6j" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_5.png" id="7_o6fvf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqki8"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf4lf"]
+atlas = ExtResource("2_exsfn")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwlfb"]
+atlas = ExtResource("3_4y0ag")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n314r"]
+atlas = ExtResource("4_akgs2")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t02mk"]
+atlas = ExtResource("5_4obtg")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr85d"]
+atlas = ExtResource("6_70o73")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk0nw"]
+atlas = ExtResource("7_o6fvf")
+region = Rect2(0, 0, 400, 225)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wh1hg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf4lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwlfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n314r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t02mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr85d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk0nw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Camera2D" type="Camera2D" node_paths=PackedStringArray("target")]
+zoom = Vector2(2, 2)
+script = ExtResource("1_kiqqg")
+target = NodePath("")
+
+[node name="SpeedLines" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.27451)
+material = SubResource("CanvasItemMaterial_rqki8")
+scale = Vector2(1.135, 1.135)
+sprite_frames = SubResource("SpriteFrames_wh1hg")
+autoplay = "default"
+frame_progress = 0.971086
