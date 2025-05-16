@@ -29,6 +29,7 @@ public partial class PlayerController : StateEntity
 {
 	//For animations
 	public bool orb;
+	public bool skating;
 	[Export] public bool duck;
 	public bool canOrb;
 	public static PlayerController Instance;

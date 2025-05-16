@@ -11,6 +11,9 @@ public partial class PlayerSpeedState : EntityState
 	float cachedRot = 0;
 
 	public override void Start() {
+		PlayerController player = (PlayerController)entity;
+		player.skating = true;
+
 		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("Grounded", true);
 		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
@@ -35,6 +38,9 @@ public partial class PlayerSpeedState : EntityState
 
 	}
 	public override void End() {
+		PlayerController player = (PlayerController)entity;
+		player.skating = false;
+
 		base.End();
 		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
 	}

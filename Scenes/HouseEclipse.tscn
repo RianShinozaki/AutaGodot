@@ -813,130 +813,130 @@ range_item_cull_mask = 0
 [node name="PointLight2D" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(696, -69)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D2" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(631, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D12" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(903, -136)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D13" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(759, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D14" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(1015, -136)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D4" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(823, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D6" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(568, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D7" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(504, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D11" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(440, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D15" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(376, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D16" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(312, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D17" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(248, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D5" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(887, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D8" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(1079, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D9" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(1143, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="PointLight2D10" type="PointLight2D" parent="Lighting-Under/RailingLights"]
 position = Vector2(1144, -72)
 color = Color(0.98106, 0.724001, 0.57502, 1)
-energy = 2.5
+energy = 1.35
 range_item_cull_mask = 3
 texture = ExtResource("21_bsv6k")
-texture_scale = 1.5
+texture_scale = 2.27
 
 [node name="Chandelier" type="Sprite2D" parent="."]
 position = Vector2(864, -270.5)
@@ -1025,7 +1025,7 @@ script = ExtResource("25_rbcmk")
 [node name="FXPool" parent="System" instance=ExtResource("15_1dgeo")]
 
 [node name="Lumpy" parent="." instance=ExtResource("18_dovd6")]
-position = Vector2(570, -47)
+position = Vector2(581, -51)
 
 [node name="Lumpy2" parent="." instance=ExtResource("18_dovd6")]
 position = Vector2(788, -55)
