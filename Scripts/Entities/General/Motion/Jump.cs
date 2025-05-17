@@ -22,6 +22,7 @@ public partial class Jump : StateScript
 	[Export] float fallThresh;
 	[Export] float fallSpeedMax;
 	[Export] public float extraMult = 1;
+	[Export] public bool requireGrounded = true;
 	bool canShortHop;
 
 	[Signal]
@@ -32,15 +33,16 @@ public partial class Jump : StateScript
 		if(!active) {
 			canShortHop = false; 
 
-			if(allowInitiation && Input.IsActionJustPressed("Jump") && entity.grounded) {
+			//Why?
+			/*if(allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded)) {
 				canShortHop = true;
 				EmitSignal(SignalName.Jumped);
-			}
+			}*/
 
 			return;
 		}
 
-		if(allowInitiation && Input.IsActionJustPressed("Jump") && entity.grounded) {
+		if(allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded)) {
 			entity.vertSpeed = -jumpVelocity;
 			entity.vertProj = -entity.vertSpeed;
 			entity.grounded = false;

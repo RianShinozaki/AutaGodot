@@ -42,11 +42,13 @@ public partial class PlayerController : StateEntity
 	{
 		base._Ready();
 		SwitchState("NormalState");
+
 	}
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-		GetNode<Label>("Label").Text = currentState.Name;
+		GetNode<Label>("Label").Text = horSpeed.ToString();
+
     }
 }

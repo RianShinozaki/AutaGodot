@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=166 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://djybc0421wa7a" path="res://Art Assets/Characters/Auta/AimReticle.png" id="30_boeqv"]
 [ext_resource type="AudioStream" uid="uid://d4ex0rqqrshku" path="res://Audio/Sounds/Player/OrbBounce.wav" id="30_ss7dt"]
 [ext_resource type="AudioStream" uid="uid://cgsu02iieh4m2" path="res://Audio/Sounds/Player/OrbReform.wav" id="31_3ft4o"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerWallStickState.cs" id="39_4cwik"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="40_0teus"]
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
@@ -1602,7 +1603,6 @@ light_mask = 2
 texture_filter = 1
 material = ExtResource("4_25evr")
 use_parent_material = true
-rotation = -0.00265226
 texture = ExtResource("4_46p0d")
 offset = Vector2(0, -8)
 hframes = 8
@@ -1721,8 +1721,9 @@ allowOrb = true
 [node name="AutaSpecialMenu" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("18_10f7p")
 
-[node name="SpeedState" type="Node2D" parent="States"]
+[node name="SpeedState" type="Node2D" parent="States" node_paths=PackedStringArray("wallRayArray")]
 script = ExtResource("21_1hpld")
+wallRayArray = NodePath("../../WallRayArray")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/SpeedState"]
 script = ExtResource("6_mm0tc")
@@ -2050,11 +2051,11 @@ airDecelTooFast = 120.0
 
 [node name="Jump" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
 script = ExtResource("7_5n0yb")
-jumpVelocity = 220.0
+jumpVelocity = 245.0
 gravity = 230.0
-normalGravScale = 1.0
-risingGravScale = 1.6
-fallingGravScale = 1.2
+normalGravScale = 1.2
+risingGravScale = 2.0
+fallingGravScale = 1.6
 shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
@@ -2197,6 +2198,29 @@ toState = "NormalState"
 script = ExtResource("11_03o8e")
 animName = &"Grounded"
 
+[node name="WallStickState" type="Node2D" parent="States"]
+script = ExtResource("39_4cwik")
+decel = 50.0
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/WallStickState"]
+script = ExtResource("6_mm0tc")
+
+[node name="Jump" type="Node2D" parent="States/WallStickState/ActiveScriptGroup"]
+script = ExtResource("7_5n0yb")
+allowInitiation = true
+jumpVelocity = 150.0
+normalGravScale = 1.2
+risingGravScale = 2.0
+fallingGravScale = 1.6
+shortHopGravScale = 5.0
+riseThresh = 30.0
+fallThresh = -10.0
+requireGrounded = false
+
+[node name="SignalScriptGroup" type="Node2D" parent="States/WallStickState"]
+script = ExtResource("6_mm0tc")
+runIfInactive = true
+
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -8)
@@ -2255,7 +2279,6 @@ shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -20.0
 offset_top = -42.0
 offset_right = 20.0
@@ -2269,6 +2292,23 @@ position = Vector2(19, -11)
 energy = 1.09
 range_item_cull_mask = 3
 texture = ExtResource("40_0teus")
+
+[node name="WallRayArray" type="Node2D" parent="."]
+rotation = -1.57079
+script = ExtResource("4_a2cge")
+maxAngle = -1.0
+floorOffset = 8
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRayArray"]
+position = Vector2(-5, 0)
+target_position = Vector2(0, 8)
+
+[node name="RayCast2D" type="RayCast2D" parent="WallRayArray"]
+target_position = Vector2(0, 8)
+
+[node name="RayCast2D3" type="RayCast2D" parent="WallRayArray"]
+position = Vector2(5, 0)
+target_position = Vector2(0, 8)
 
 [connection signal="Grounded" from="." to="States/BaseState/SignalScriptGroup/SpawnSig - Grounded -> Land" method="_on_signal" unbinds=2]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
@@ -2289,4 +2329,5 @@ texture = ExtResource("40_0teus")
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-StrongHit" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="GrabbedEntity" from="States/OrbState" to="States/GrabState" method="OnEnemyGrabbed"]
 [connection signal="area_entered" from="States/OrbState/ActiveComponentGroup/ColliderSetActive/OrbGrab" to="States/OrbState" method="_on_orb_grab_area_entered"]
+[connection signal="Jumped" from="States/WallStickState/ActiveScriptGroup/Jump" to="States/WallStickState" method="_on_jump_jumped"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ActiveScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

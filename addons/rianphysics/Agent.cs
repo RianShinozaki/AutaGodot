@@ -122,7 +122,7 @@ public partial class Agent : CharacterBody2D
 				lerpRate = 0.5f;
 			}
 		} else {
-			grounded = false;
+			//grounded = false;
 			vertSpeed += gravity * (float)delta;
 		}
 

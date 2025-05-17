@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public partial class RayArray2D : Node2D {
     public int arrayNum;
     public Godot.Collections.Array<RayCast2D> arrays;
-    public float maxAngle = 46;
+    [Export] public float maxAngle = 46;
     [Export] int floorOffset = 16;
 
     public bool IsCollidingCheckAngle(RayCast2D ray) {

@@ -6,9 +6,15 @@ using System.Data;
 public partial class PlayerSpeedState : EntityState
 {
 	[Export] public float minSpeedThreshold = 90;
+	[Export] RayArray2D wallRayArray;
 	Vector2 cachedInput = Vector2.Zero;
 	float cachedDirection = 0;
 	float cachedRot = 0;
+
+	private enum StickDir {
+		LEFT,
+		RIGHT
+	}
 
 	public override void Start() {
 		PlayerController player = (PlayerController)entity;
@@ -32,6 +38,12 @@ public partial class PlayerSpeedState : EntityState
 				player.SwitchState("DuckState");
 			}
 		}
+		wallRayArray.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
+		if(wallRayArray.IsColliding()) {
+			WallStick(StickDir.RIGHT);
+			GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X - 8, GlobalPosition.Y);
+			return;
+		}
 		if(Mathf.Abs(entity.horSpeed) <= minSpeedThreshold) {
 			player.SwitchState("NormalState");
 		}
@@ -43,5 +55,12 @@ public partial class PlayerSpeedState : EntityState
 
 		base.End();
 		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
+	}
+
+	private void WallStick(StickDir dir) {
+		PlayerController player = (PlayerController)entity;
+		player.SwitchState("WallStickState");
+		player.horSpeed = 0;
+		entity.sprite.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
 	}
 }

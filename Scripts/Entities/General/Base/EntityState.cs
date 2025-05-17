@@ -35,5 +35,6 @@ public partial class EntityState : Node2D
 
 		EmitSignal(SignalName.StateEnd);
 	}
+	
 }
 
