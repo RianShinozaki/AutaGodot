@@ -100,11 +100,20 @@ public partial class RayArray2D : Node2D {
         }
     }
 
-    public override void _Ready() {
+    public void ForceRaycastTransform()
+    {
+        for (int i = 0; i < arrayNum; i++) {
+            arrays[i].ForceRaycastUpdate();
+        }
+    }
+
+    public override void _Ready()
+    {
         base._Ready();
         arrayNum = GetChildCount();
         arrays = new Godot.Collections.Array<RayCast2D>();
-        for (int i = 0; i < arrayNum; i++) {
+        for (int i = 0; i < arrayNum; i++)
+        {
             arrays.Add((RayCast2D)GetChild(i));
         }
     }

@@ -34,10 +34,10 @@ public partial class Jump : StateScript
 			canShortHop = false; 
 
 			//Why?
-			/*if(allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded)) {
+			if(allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded)) {
 				canShortHop = true;
-				EmitSignal(SignalName.Jumped);
-			}*/
+				//EmitSignal(SignalName.Jumped);
+			}
 
 			return;
 		}

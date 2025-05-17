@@ -40,8 +40,15 @@ public partial class PlayerSpeedState : EntityState
 		}
 		wallRayArray.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
 		if(wallRayArray.IsColliding()) {
-			WallStick(StickDir.RIGHT);
-			GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X - 8, GlobalPosition.Y);
+			WallStick(entity.sprite.FlipH ? StickDir.LEFT : StickDir.RIGHT);
+			entity.GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X + 8 * (entity.sprite.FlipH ? 1 : -1), GlobalPosition.Y);
+
+			Node2D fx = ObjectPool.Instance.Spawn("Land") as Node2D;
+			if (fx != null)
+			{
+				fx.GlobalPosition = wallRayArray.GetCollisionPoint();
+				fx.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
+			}
 			return;
 		}
 		if(Mathf.Abs(entity.horSpeed) <= minSpeedThreshold) {
@@ -57,10 +64,12 @@ public partial class PlayerSpeedState : EntityState
 		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
 	}
 
-	private void WallStick(StickDir dir) {
+	private void WallStick(StickDir dir)
+	{
 		PlayerController player = (PlayerController)entity;
 		player.SwitchState("WallStickState");
-		player.horSpeed = 0;
 		entity.sprite.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
+		
+		
 	}
 }

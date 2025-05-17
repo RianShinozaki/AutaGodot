@@ -48,7 +48,7 @@ public partial class PlayerController : StateEntity
     public override void _Process(double delta)
     {
         base._Process(delta);
-		GetNode<Label>("Label").Text = horSpeed.ToString();
-
+		GetNode<Label>("Label").Text = vertSpeed.ToString();
+		
     }
 }

@@ -44,7 +44,7 @@ public partial class Agent : CharacterBody2D
 	}
 
 	public void Move(float x, float y, float delta, bool writeback = false) {		
-		if(grounded) {
+		if(grounded && collisionMode == CollisionMode.FLOOR) {
 			Vector2 moveDir = lastFloorNormal.Rotated(Mathf.DegToRad(90f));
 			Velocity = new Vector2(x * moveDir.X, x * moveDir.Y);
 		}
@@ -60,23 +60,33 @@ public partial class Agent : CharacterBody2D
 					vertSpeed = Velocity.Y;
 			}
 		}
-		else if (collisionMode == CollisionMode.BOUNCE) {
+		else if(collisionMode == CollisionMode.FREE) {
+			GD.Print("Moveslide");
+			MoveAndSlide();
+			if(writeback) {
+				horSpeed = Velocity.X;
+				vertSpeed = Velocity.Y;
+			}
+		}
+		else if (collisionMode == CollisionMode.BOUNCE)
+		{
 			Vector2 vel = Velocity;
 			KinematicCollision2D kc = MoveAndCollide(vel * delta, true);
-			if(kc != null) {
+			if (kc != null)
+			{
 				vel = -vel.Reflect(kc.GetNormal());
 				vel.Y += gravity * (float)delta;
 
-                Vector2 lossFactor = new Vector2( Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (1-bounceFactor);
-                vel.X -= lossFactor.X * vel.X;
-                vel.Y -= lossFactor.Y * vel.Y;
+				Vector2 lossFactor = new Vector2(Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (1 - bounceFactor);
+				vel.X -= lossFactor.X * vel.X;
+				vel.Y -= lossFactor.Y * vel.Y;
 				EmitSignal(SignalName.Bounce, kc.GetNormal(), new Vector2(vel.X, vel.Y));
-            }
-			if(writeback)
+			}
+			if (writeback)
 				horSpeed = vel.X;
-				vertSpeed = vel.Y;
+			vertSpeed = vel.Y;
 
-            MoveAndSlide();
+			MoveAndSlide();
 
 			//MoveAndCollide(new Vector2(horSpeed, vertSpeed) * delta);
 		}
@@ -92,7 +102,7 @@ public partial class Agent : CharacterBody2D
 		vertSpeed = value;
 	}
 	public void AccelerateVert(float y, float limit = int.MaxValue, bool signCorrect = false) {
-		horSpeed = Mathf.MoveToward(vertSpeed , limit, y * (signCorrect ? Mathf.Sign(limit) : 1));
+		vertSpeed = Mathf.MoveToward(vertSpeed , limit, y * (signCorrect ? Mathf.Sign(limit) : 1));
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)

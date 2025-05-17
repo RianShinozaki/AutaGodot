@@ -2198,9 +2198,10 @@ toState = "NormalState"
 script = ExtResource("11_03o8e")
 animName = &"Grounded"
 
-[node name="WallStickState" type="Node2D" parent="States"]
+[node name="WallStickState" type="Node2D" parent="States" node_paths=PackedStringArray("wallRayArray")]
 script = ExtResource("39_4cwik")
-decel = 50.0
+decel = 400.0
+wallRayArray = NodePath("../../WallRayArray")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/WallStickState"]
 script = ExtResource("6_mm0tc")
@@ -2208,7 +2209,7 @@ script = ExtResource("6_mm0tc")
 [node name="Jump" type="Node2D" parent="States/WallStickState/ActiveScriptGroup"]
 script = ExtResource("7_5n0yb")
 allowInitiation = true
-jumpVelocity = 150.0
+jumpVelocity = 200.0
 normalGravScale = 1.2
 risingGravScale = 2.0
 fallingGravScale = 1.6
@@ -2279,6 +2280,7 @@ shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -42.0
 offset_right = 20.0
