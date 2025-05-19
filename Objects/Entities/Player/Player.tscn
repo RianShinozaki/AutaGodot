@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=168 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -414,11 +414,30 @@ tracks/0/keys = {
 "values": [14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_c5pnh"]
+resource_name = "FastRun"
+length = 0.66
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 59, 60, 61, 62, 63]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjstx"]
 _data = {
 "Duck": SubResource("Animation_hq2ft"),
 "Fall": SubResource("Animation_oogdo"),
 "Fall_Done": SubResource("Animation_g74bq"),
+"FastRun": SubResource("Animation_c5pnh"),
 "FromDuck": SubResource("Animation_aev23"),
 "FromSlide": SubResource("Animation_g0kfn"),
 "Hurt": SubResource("Animation_hcra8"),
@@ -742,6 +761,9 @@ graph_offset = Vector2(265, -88)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u2e3c"]
 animation = &"Duck"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sctth"]
+animation = &"FastRun"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h41u2"]
 animation = &"FromDuck"
 
@@ -822,6 +844,8 @@ advance_expression = "skating == false"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eg2nn"]
 states/Duck/node = SubResource("AnimationNodeAnimation_u2e3c")
 states/Duck/position = Vector2(25, -125)
+states/FastRun/node = SubResource("AnimationNodeAnimation_sctth")
+states/FastRun/position = Vector2(-87, 103)
 states/FromDuck/node = SubResource("AnimationNodeAnimation_h41u2")
 states/FromDuck/position = Vector2(278, -27.2)
 states/FromSlide/node = SubResource("AnimationNodeAnimation_6qp1f")
@@ -840,7 +864,7 @@ states/Start/position = Vector2(165, 113.24)
 states/Turn/node = SubResource("AnimationNodeAnimation_2yium")
 states/Turn/position = Vector2(624.2, -31.2)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Duck", "Slide", SubResource("AnimationNodeStateMachineTransition_d61rj"), "Slide", "FromSlide", SubResource("AnimationNodeStateMachineTransition_8kc68"), "FromSlide", "Duck", SubResource("AnimationNodeStateMachineTransition_r258h"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov"), "Run", "Skate", SubResource("AnimationNodeStateMachineTransition_3pwj2"), "Skate", "Run", SubResource("AnimationNodeStateMachineTransition_q4eky")]
-graph_offset = Vector2(-162, -81)
+graph_offset = Vector2(-206, -141)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jessi"]
 animation = &"Hurt"
@@ -935,7 +959,7 @@ states/Start/position = Vector2(151.2, 122.944)
 states/ThrowSpin/node = SubResource("AnimationNodeAnimation_li7pu")
 states/ThrowSpin/position = Vector2(201, -115)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
-graph_offset = Vector2(-43, -188.947)
+graph_offset = Vector2(31, -67.947)
 
 [sub_resource type="Curve" id="Curve_y1r14"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.998258, 1), 0.0, 0.0, 0, 0]
@@ -2201,6 +2225,11 @@ animName = &"Grounded"
 [node name="WallStickState" type="Node2D" parent="States" node_paths=PackedStringArray("wallRayArray")]
 script = ExtResource("39_4cwik")
 decel = 400.0
+upInitSpeed = 150.0
+upMinSpeed = 5.0
+decelUp = 120.0
+decelUpSlow = 50.0
+UpSlowThreshold = 35.0
 wallRayArray = NodePath("../../WallRayArray")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/WallStickState"]
