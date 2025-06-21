@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/System/GameCamera.cs" id="4_8l3m5"]
 [ext_resource type="Texture2D" uid="uid://lhiwo17607ix" path="res://Art Assets/Environment/Underground/Backgrounds/CloseBuildings.png" id="4_ckbrs"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="5_8h4d0"]
-[ext_resource type="Texture2D" uid="uid://1o1ruju5e1bf" path="res://Art Assets/Effects/Lighting/ProceduralGradient.tres" id="5_varqv"]
 [ext_resource type="PackedScene" uid="uid://c2jdfhmn0xuo0" path="res://Objects/Effects/Lighting/point_light_2d.tscn" id="6_deaf2"]
 [ext_resource type="Texture2D" uid="uid://kfb0yyq3vsv" path="res://Art Assets/Characters/Misc/Ruin King Big.png" id="6_dnser"]
 [ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="6_f6tgw"]
@@ -19,8 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="8_dxns2"]
 [ext_resource type="Texture2D" uid="uid://wcidcfa3acbr" path="res://Art Assets/Characters/Misc/Ruin King Big_n.png" id="9_1uqmv"]
 [ext_resource type="Script" path="res://Scripts/System/EnableOnPlayerTrigger.cs" id="9_shr3j"]
-[ext_resource type="Texture2D" uid="uid://buunjhvp223al" path="res://Art Assets/Effects/Lighting/ProceduralGradient-FlourescentBulb.tres" id="10_73mgt"]
-[ext_resource type="Texture2D" uid="uid://cq2qdga0sfka8" path="res://Art Assets/Effects/Lighting/ProceduralGradient-SolidBottom.tres" id="10_dndv7"]
 [ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="11_8hd7b"]
 [ext_resource type="Script" path="res://Scripts/System/ObjectPool.cs" id="19_hee8u"]
 [ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="20_e5wye"]
@@ -63,6 +60,10 @@ fill_from = Vector2(0.523077, 0.487179)
 [sub_resource type="Gradient" id="Gradient_25qwu"]
 offsets = PackedFloat32Array(0.0136519, 0.221843, 0.784983, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.407843, 1, 1, 1, 0.337255, 1, 1, 1, 0)
+
+[sub_resource type="Texture2D" id="Texture2D_aotpq"]
+resource_local_to_scene = false
+resource_name = ""
 
 [sub_resource type="Gradient" id="Gradient_iagbf"]
 offsets = PackedFloat32Array(0.763158, 1)
@@ -119,6 +120,10 @@ normal_texture = ExtResource("9_1uqmv")
 texture_filter = 1
 texture_repeat = 1
 
+[sub_resource type="Texture2D" id="Texture2D_ms1n7"]
+resource_local_to_scene = false
+resource_name = ""
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5i31"]
 size = Vector2(57, 72)
 
@@ -139,6 +144,10 @@ radius = 22.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8dd8"]
 radius = 45.0
+
+[sub_resource type="Texture2D" id="Texture2D_1i0a8"]
+resource_local_to_scene = false
+resource_name = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llho3"]
 size = Vector2(211, 16)
@@ -329,7 +338,7 @@ position = Vector2(54, 8)
 scale = Vector2(0.296875, 0.234375)
 energy = 0.6
 range_item_cull_mask = 1026
-texture = ExtResource("5_varqv")
+texture = SubResource("Texture2D_aotpq")
 offset = Vector2(0, -33.81)
 
 [node name="RingLight" type="PointLight2D" parent="Lighting-Under/RuinKing"]
@@ -355,7 +364,7 @@ energy = 0.4
 blend_mode = 1
 range_item_cull_mask = 2048
 shadow_item_cull_mask = 2048
-texture = ExtResource("5_varqv")
+texture = SubResource("Texture2D_aotpq")
 offset = Vector2(0, 59.77)
 
 [node name="Sunspots" type="Node2D" parent="Lighting-Under/RuinKing"]
@@ -460,7 +469,7 @@ scale = Vector2(0.859375, 1.74326)
 color = Color(0.988113, 0.467546, 0.736021, 1)
 energy = 1.32
 range_item_cull_mask = 3
-texture = ExtResource("10_73mgt")
+texture = SubResource("Texture2D_ms1n7")
 offset = Vector2(0, -200)
 
 [node name="Sprite2D" type="Sprite2D" parent="Lighting-Over/LEDs/Area2D"]
@@ -470,7 +479,7 @@ material = ExtResource("2_yv5pd")
 position = Vector2(399.003, -66.934)
 rotation = -3.12157
 scale = Vector2(0.997459, 1.28922)
-texture = ExtResource("10_73mgt")
+texture = SubResource("Texture2D_ms1n7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Lighting-Over/LEDs/Area2D"]
 self_modulate = Color(0.572445, 7.60466e-06, 0.392365, 0.372549)
@@ -478,7 +487,7 @@ material = ExtResource("2_yv5pd")
 position = Vector2(398.576, -45.5995)
 rotation = -3.12157
 scale = Vector2(0.997459, 1.95606)
-texture = ExtResource("10_73mgt")
+texture = SubResource("Texture2D_ms1n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting-Over/LEDs/Area2D"]
 position = Vector2(400.5, -73)
@@ -895,7 +904,7 @@ scale = Vector2(3.15625, 0.203125)
 color = Color(0.885046, 0.24423, 0.6011, 1)
 energy = 0.7
 range_item_cull_mask = 3
-texture = ExtResource("10_dndv7")
+texture = SubResource("Texture2D_1i0a8")
 offset = Vector2(0, -300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting-Over/Ground Lighting/Area2D"]
@@ -908,7 +917,7 @@ self_modulate = Color(1, 0.322578, 0.838208, 0.192157)
 material = ExtResource("2_yv5pd")
 position = Vector2(1, 98.9306)
 scale = Vector2(3.5, 0.202422)
-texture = ExtResource("10_dndv7")
+texture = SubResource("Texture2D_1i0a8")
 offset = Vector2(0, -600)
 
 [node name="Area2D3" type="Area2D" parent="Lighting-Over/Ground Lighting" node_paths=PackedStringArray("ReferenceObject")]
@@ -923,7 +932,7 @@ scale = Vector2(0.15625, 0.203125)
 color = Color(1, 0.521569, 1, 1)
 energy = 0.7
 range_item_cull_mask = 2
-texture = ExtResource("10_dndv7")
+texture = SubResource("Texture2D_1i0a8")
 offset = Vector2(0, -300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting-Over/Ground Lighting/Area2D3"]
@@ -936,7 +945,7 @@ self_modulate = Color(1, 0.682353, 1, 0.192157)
 material = ExtResource("2_yv5pd")
 position = Vector2(116, 115)
 scale = Vector2(0.15625, 0.202422)
-texture = ExtResource("10_dndv7")
+texture = SubResource("Texture2D_1i0a8")
 offset = Vector2(0, -600)
 
 [node name="Area2D4" type="Area2D" parent="Lighting-Over/Ground Lighting" node_paths=PackedStringArray("ReferenceObject")]
@@ -951,7 +960,7 @@ scale = Vector2(0.953125, 0.203125)
 color = Color(1, 0.521569, 1, 1)
 energy = 0.7
 range_item_cull_mask = 2
-texture = ExtResource("10_dndv7")
+texture = SubResource("Texture2D_1i0a8")
 offset = Vector2(0, -300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lighting-Over/Ground Lighting/Area2D4"]
@@ -964,7 +973,7 @@ self_modulate = Color(1, 0.682353, 1, 0.192157)
 material = ExtResource("2_yv5pd")
 position = Vector2(48.5, 115)
 scale = Vector2(1.01562, 0.202422)
-texture = ExtResource("10_dndv7")
+texture = SubResource("Texture2D_1i0a8")
 offset = Vector2(0, -600)
 
 [node name="wq" type="RigidBody2D" parent="."]

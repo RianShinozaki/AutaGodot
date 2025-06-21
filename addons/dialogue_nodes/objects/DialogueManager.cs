@@ -20,9 +20,10 @@ public partial class DialogueManager : Control
 
 	private DialogueCore dialogueCore;
 	private DialogueUI dialogueUI;
+	public static DialogueManager Instance;
 
-	public void Initialize() 
-	{	
+	public void Initialize()
+	{
 		this.Hide();
 		dialogueCore = this.GetNode<DialogueCore>("DialogueCore");
 		dialogueUI = this.GetNode<DialogueUI>("DialogueUI");
@@ -42,12 +43,19 @@ public partial class DialogueManager : Control
 			dialogueUI.Display(false);
 		}
 	}
+
+    public override void _EnterTree()
+    {
+		Instance = this;
+        base._EnterTree();
+    }
+
 		
-	public void Start(DialogueData dialogueData = null, string dialogueID = null) 
-	{	
+	public void Start(DialogueData dialogueData = null, string dialogueID = null)
+	{
 		dialogueData ??= data;
 		dialogueID = string.IsNullOrEmpty(dialogueID) ? startID : dialogueID;
-		
+
 		this.Show();
 		dialogueCore.Start(dialogueData, dialogueID);
 	}

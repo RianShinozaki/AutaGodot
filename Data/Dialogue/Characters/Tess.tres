@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://b111rrxwcvdj3"]
+
+[ext_resource type="Texture2D" uid="uid://dk750ibmy7jiv" path="res://Art Assets/UI/Dialogue/TessPortrait.png" id="1_gkt0t"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.cs" id="2_j14oy"]
+
+[resource]
+script = ExtResource("2_j14oy")
+Name = "Tess"
+Image = ExtResource("1_gkt0t")
+Color = Color(1, 1, 1, 1)

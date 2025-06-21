@@ -17,8 +17,9 @@ public partial class PlayerWallStickState : EntityState
 	[Export] public float decelUp;
 	[Export] public float decelUpSlow;
 	[Export] public float UpSlowThreshold;
-
 	[Export] RayArray2D wallRayArray;
+	[Export] public NodePath normalShape;
+	[Export] public NodePath duckShape;
 
 	Vector2 cachedInput = Vector2.Zero;
 	float cachedDirection = 0;
@@ -39,6 +40,9 @@ public partial class PlayerWallStickState : EntityState
 		player.SetHor(0);
 		subState = WallStickSubState.STICK;
 		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
+		entity.applyPhysics = false;
+		GetNode<CollisionShape2D>(duckShape).Disabled = false;
+		GetNode<CollisionShape2D>(normalShape).Disabled = true;
 		base.Start();
 	}
 	public override void _Process(double delta)
@@ -49,6 +53,7 @@ public partial class PlayerWallStickState : EntityState
 		PlayerController player = (PlayerController)entity;
 		player.grounded = true;
 		player.SetHor(0);
+		entity.Move(entity.horSpeed, entity.vertSpeed, (float)delta, false);
 		switch (subState)
 		{
 			case WallStickSubState.STICK:
@@ -74,7 +79,7 @@ public partial class PlayerWallStickState : EntityState
 		}
 		if (wallRayArray.IsColliding())
 		{
-			entity.GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X + 8 * (entity.sprite.FlipH ? 1 : -1), GlobalPosition.Y);
+			//entity.GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X + 8 * (entity.sprite.FlipH ? 1 : -1), GlobalPosition.Y);
 		}
 
 	}
@@ -85,7 +90,9 @@ public partial class PlayerWallStickState : EntityState
 		player.duck = false;
 		entity.collisionMode = Agent.CollisionMode.FLOOR;
 		entity.sprite.Rotation = 0;
-
+		entity.applyPhysics = true;
+		GetNode<CollisionShape2D>(duckShape).Disabled = true;
+		GetNode<CollisionShape2D>(normalShape).Disabled = false;
 		base.End();
 	}
 
@@ -108,4 +115,5 @@ public partial class PlayerWallStickState : EntityState
 			entity.SwitchState("SpeedState");
 		}
 	}
+
 }

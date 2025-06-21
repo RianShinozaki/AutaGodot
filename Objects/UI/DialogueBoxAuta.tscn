@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpck7bfkynclm"]
+[gd_scene load_steps=13 format=3 uid="uid://bpck7bfkynclm"]
 
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueManager.cs" id="1_0l1lm"]
 [ext_resource type="Resource" uid="uid://dvaxnhtmo01o" path="res://addons/dialogue_nodes/Preloader.tres" id="2_ygp7a"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueUI.cs" id="4_yb1yx"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueInput.cs" id="5_rbbw8"]
 [ext_resource type="Texture2D" uid="uid://dla76qr5vqp1r" path="res://addons/dialogue_nodes/icons/Character.svg" id="6_k1ewk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vpey2"]
+light_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_456xg"]
 offsets = PackedFloat32Array(0, 0.675862, 1)
@@ -29,21 +32,30 @@ Label/fonts/font = ExtResource("4_4hf1q")
 Panel/styles/panel = SubResource("StyleBoxTexture_jl84a")
 RichTextLabel/fonts/normal_font = ExtResource("4_4hf1q")
 
-[node name="DialogueBox" type="Control"]
+[node name="DialogueLayer" type="CanvasLayer"]
+
+[node name="DialogueBox" type="Control" parent="."]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 3
 anchors_preset = 0
+offset_left = 436.0
+offset_top = 426.0
+offset_right = 436.0
+offset_bottom = 426.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("1_0l1lm")
 data = ExtResource("2_ygp7a")
 transitionType = 2
+textSpeed = 50.03
 
-[node name="DialogueCore" type="Node" parent="."]
+[node name="DialogueCore" type="Node" parent="DialogueBox"]
 script = ExtResource("3_vj5q0")
 
-[node name="DialogueUI" type="Panel" parent="." node_paths=PackedStringArray("speaker", "speakerPortrait", "dialogue", "optionsButtons")]
+[node name="DialogueUI" type="Panel" parent="DialogueBox" node_paths=PackedStringArray("speaker", "speakerPortrait", "dialogue", "optionsButtons")]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,6 +68,7 @@ offset_right = 308.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = SubResource("Theme_tik1n")
 script = ExtResource("4_yb1yx")
 speaker = NodePath("MarginContainer/HBoxContainer/VBoxContainer/SpeakerLabel")
@@ -63,69 +76,82 @@ speakerPortrait = NodePath("MarginContainer/HBoxContainer/PortraitTexture")
 dialogue = NodePath("MarginContainer/HBoxContainer/VBoxContainer/DialogueTxt")
 optionsButtons = [NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button2"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button3"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button4")]
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogueUI"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox/DialogueUI"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_edit_lock_ = true
 
-[node name="DialogueInput" type="Control" parent="DialogueUI/MarginContainer"]
+[node name="DialogueInput" type="Control" parent="DialogueBox/DialogueUI/MarginContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
+mouse_filter = 1
 script = ExtResource("5_rbbw8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox/DialogueUI/MarginContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
-mouse_filter = 2
 
-[node name="PortraitTexture" type="TextureRect" parent="DialogueUI/MarginContainer/HBoxContainer"]
+[node name="PortraitTexture" type="TextureRect" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-mouse_filter = 2
 texture = ExtResource("6_k1ewk")
 expand_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUI/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="SpeakerLabel" type="Label" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="SpeakerLabel" type="Label" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
+mouse_filter = 1
 text = "Speaker"
 
-[node name="DialogueTxt" type="RichTextLabel" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="DialogueTxt" type="RichTextLabel" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "This is a test  dialogue"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
-mouse_filter = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
+mouse_filter = 1
 text = "Option 1"
 
-[node name="Button2" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
+mouse_filter = 1
 text = "Option 2"
 
-[node name="Button3" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Button3" type="Button" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
+mouse_filter = 1
 text = "Option 3"
 
-[node name="Button4" type="Button" parent="DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="DialogueBox/DialogueUI/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+material = SubResource("CanvasItemMaterial_vpey2")
 layout_mode = 2
+mouse_filter = 1
 text = "Option 4"

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 
 [GlobalClass]
-public partial class DialogueRunner : Control
+public partial class DialogueRunnerPlasticSunTest : Control
 {	
 	[Export] private DialogueData dialogueData;
 	[Export] private DialogueManager dialogueBox;
@@ -20,8 +20,7 @@ public partial class DialogueRunner : Control
 	private int charCounter = 0;
 
 	public override void _Ready()
-	{
-		dialogueBox = DialogueManager.Instance;
+	{	
 		dialogueBox.Initialize();
 		//dialogueBox.AddExternalVariable(externalVariablesDemo);
 		connectSignals();

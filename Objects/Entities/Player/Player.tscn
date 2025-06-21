@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=171 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaSpecialMenu.cs" id="18_10f7p"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerSpeedState.cs" id="21_1hpld"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="21_2pqk3"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/PlayerInteract.cs" id="21_oo5rj"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="22_jk1sa"]
 [ext_resource type="AudioStream" uid="uid://c6qt65favljje" path="res://Audio/Sounds/Player/SkidStop.wav" id="22_sly4j"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
@@ -41,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://cgsu02iieh4m2" path="res://Audio/Sounds/Player/OrbReform.wav" id="31_3ft4o"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerWallStickState.cs" id="39_4cwik"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="40_0teus"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/StickToSurface.cs" id="40_7rhto"]
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
 resource_name = "Duck"
@@ -90,6 +92,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [25]
+}
+
+[sub_resource type="Animation" id="Animation_c5pnh"]
+resource_name = "FastRun"
+length = 0.66
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 59, 60, 61, 62, 63]
 }
 
 [sub_resource type="Animation" id="Animation_aev23"]
@@ -414,24 +434,6 @@ tracks/0/keys = {
 "values": [14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_c5pnh"]
-resource_name = "FastRun"
-length = 0.66
-loop_mode = 1
-step = 0.0833
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Art:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [56, 57, 58, 59, 60, 61, 62, 63]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjstx"]
 _data = {
 "Duck": SubResource("Animation_hq2ft"),
@@ -456,8 +458,8 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_cgv2g"]
-length = 0.4165
-step = 0.0833
+length = 0.3125
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -465,7 +467,7 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [27, 28, 29, 30, 31]
@@ -483,8 +485,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_o8xra"]
 resource_name = "Combo2"
-length = 0.4998
-step = 0.0833
+length = 0.375
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -492,7 +494,7 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25, 0.3125),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [32, 33, 34, 35, 36, 37]
@@ -505,13 +507,13 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": PackedStringArray("Hitbox"),
-"times": PackedFloat32Array(0.0833333)
+"times": PackedFloat32Array(0.0625)
 }
 
 [sub_resource type="Animation" id="Animation_swsgs"]
 resource_name = "Combo3"
-length = 0.5831
-step = 0.0833
+length = 0.4375
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -519,7 +521,7 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25, 0.3125, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [38, 39, 40, 41, 42, 43, 44]
@@ -532,7 +534,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": PackedStringArray("Hitbox"),
-"times": PackedFloat32Array(0.0833333)
+"times": PackedFloat32Array(0.0625)
 }
 
 [sub_resource type="Animation" id="Animation_ekx5p"]
@@ -968,6 +970,9 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_l20i6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.10768, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3chk"]
+radius = 14.0
 
 [sub_resource type="Resource" id="Resource_l3uw4"]
 script = ExtResource("10_b8sdc")
@@ -1699,6 +1704,42 @@ maxRange = -1.0
 maxTime = 0.1
 timeFalloffCurve = SubResource("Curve_l20i6")
 
+[node name="CutsceneState" type="Node2D" parent="States"]
+script = ExtResource("2_2h7nr")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/CutsceneState"]
+script = ExtResource("6_mm0tc")
+
+[node name="AccelAndDecel" type="Node2D" parent="States/CutsceneState/ActiveScriptGroup"]
+script = ExtResource("7_ywl3w")
+speed = 90.0
+initSpeed = 30.0
+initSpeedAir = 10.0
+accel = 900.0
+decel = 480.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecel = 60.0
+airDecelTooFast = 60.0
+
+[node name="FlipToFaceDirection" type="Node2D" parent="States/CutsceneState/ActiveScriptGroup"]
+script = ExtResource("5_524kh")
+mustBeGrounded = true
+
+[node name="PlayerNormalAnimations" type="Node2D" parent="States/CutsceneState/ActiveScriptGroup"]
+script = ExtResource("6_apovy")
+
+[node name="Jump" type="Node2D" parent="States/CutsceneState/ActiveScriptGroup"]
+script = ExtResource("7_5n0yb")
+jumpVelocity = 230.0
+gravity = 230.0
+normalGravScale = 1.2
+risingGravScale = 2.0
+fallingGravScale = 1.6
+shortHopGravScale = 5.0
+riseThresh = 30.0
+fallThresh = -10.0
+
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("2_2h7nr")
 
@@ -1744,6 +1785,14 @@ allowOrb = true
 
 [node name="AutaSpecialMenu" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("18_10f7p")
+
+[node name="PlayerInteract" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+script = ExtResource("21_oo5rj")
+
+[node name="InteractionTrigger" type="Area2D" parent="States/NormalState/ActiveScriptGroup/PlayerInteract"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/NormalState/ActiveScriptGroup/PlayerInteract/InteractionTrigger"]
+shape = SubResource("CircleShape2D_s3chk")
 
 [node name="SpeedState" type="Node2D" parent="States" node_paths=PackedStringArray("wallRayArray")]
 script = ExtResource("21_1hpld")
@@ -1872,6 +1921,7 @@ hframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_owpus")
 }
+speed_scale = 1.333
 
 [node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Blade-WeakHit"]
 position = Vector2(30, -4)
@@ -1906,6 +1956,7 @@ hframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_x8gsr")
 }
+speed_scale = 1.333
 
 [node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Blade-StrongHit"]
 position = Vector2(30, -4)
@@ -2231,6 +2282,8 @@ decelUp = 120.0
 decelUpSlow = 50.0
 UpSlowThreshold = 35.0
 wallRayArray = NodePath("../../WallRayArray")
+normalShape = NodePath("../../NormalEnvironmentBox")
+duckShape = NodePath("../../DuckEnvironmentBox")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/WallStickState"]
 script = ExtResource("6_mm0tc")
@@ -2246,6 +2299,14 @@ shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
 requireGrounded = false
+
+[node name="StickToSurface" type="Node2D" parent="States/WallStickState/ActiveScriptGroup" node_paths=PackedStringArray("rayArray")]
+script = ExtResource("40_7rhto")
+rayArray = NodePath("../../../../WallRayArray")
+attachedCheckDistance = 16.0
+detachedCheckDistance = 8.0
+attachedOffsetDistance = 8.0
+stickLerpRateRamp = 10.0
 
 [node name="SignalScriptGroup" type="Node2D" parent="States/WallStickState"]
 script = ExtResource("6_mm0tc")
@@ -2349,7 +2410,10 @@ target_position = Vector2(0, 8)
 [connection signal="Hurt" from="States/BaseState/ActiveScriptGroup/ProcessHitbox" to="States/AttackState" method="_on_process_hitbox_hurt"]
 [connection signal="knockbackRecovered" from="States/BaseState/ActiveScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/SwitchStateOnSignal - KnockbackRecovered -> NormalState" method="_on_signal"]
 [connection signal="knockbackRecovered" from="States/BaseState/ActiveScriptGroup/ProcessKnockback" to="States/HurtState/SignalScriptGroup/PlayAnimationOnSignal - KnockbackRecovered -> Grounded" method="_on_signal"]
+[connection signal="FlipSprite" from="States/CutsceneState/ActiveScriptGroup/FlipToFaceDirection" to="States/CutsceneState/ActiveScriptGroup/PlayerNormalAnimations" method="_on_flip_sprite"]
 [connection signal="FlipSprite" from="States/NormalState/ActiveScriptGroup/FlipToFaceDirection" to="States/NormalState/ActiveScriptGroup/PlayerNormalAnimations" method="_on_flip_sprite"]
+[connection signal="area_entered" from="States/NormalState/ActiveScriptGroup/PlayerInteract/InteractionTrigger" to="States/NormalState/ActiveScriptGroup/PlayerInteract" method="_on_interaction_trigger_area_entered"]
+[connection signal="area_exited" from="States/NormalState/ActiveScriptGroup/PlayerInteract/InteractionTrigger" to="States/NormalState/ActiveScriptGroup/PlayerInteract" method="_on_interaction_trigger_area_exited"]
 [connection signal="FlipSprite" from="States/SpeedState/ActiveScriptGroup/FlipToFaceDirection" to="States/SpeedState/ActiveScriptGroup/PlayerNormalAnimations" method="_on_flip_sprite"]
 [connection signal="Jumped" from="States/DuckState/ActiveScriptGroup/Jump" to="States/DuckState/SignalStateGroup/SwitchStateOnSignal - Jump -> NormalState" method="_on_signal"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Blade-WeakHit" to="States/AttackState" method="_on_hitbox_area_entered"]

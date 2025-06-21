@@ -23,7 +23,7 @@ public partial class Agent : CharacterBody2D
 	[Export] public float slopeLandInfluence; //How much momentum is added to horizontal speed when landing on a slope
 
 	// Member Variables
-	[Export] RayArray2D rayArray;
+	[Export] public RayArray2D rayArray;
 	[Export] public bool applyPhysics = true;
 	public bool grounded;
 	public bool previouslyGrounded;
@@ -61,7 +61,6 @@ public partial class Agent : CharacterBody2D
 			}
 		}
 		else if(collisionMode == CollisionMode.FREE) {
-			GD.Print("Moveslide");
 			MoveAndSlide();
 			if(writeback) {
 				horSpeed = Velocity.X;
