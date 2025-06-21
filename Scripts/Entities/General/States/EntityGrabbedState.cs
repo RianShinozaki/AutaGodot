@@ -19,6 +19,8 @@ public partial class EntityGrabbedState : EntityState
 	}
 
 	public void Thrown(float angle, float speed) {
+		GD.Print("THROW ANGLE: " + angle.ToString());
+		GD.Print("THROW VEC: " + (new Vector2(Mathf.Cos(angle) * speed, Mathf.Sin(angle) * speed)).ToString());
 		entity.SetHor(Mathf.Cos(angle) * speed);
 		entity.SetVert(Mathf.Sin(angle) * speed);
 		entity.SwitchState("ThrownState");

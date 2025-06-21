@@ -320,11 +320,7 @@ visible = false
 [node name="EnemyBaseState" type="Node2D" parent="States"]
 script = ExtResource("3_hovqr")
 
-[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" node_paths=PackedStringArray("state") instance=ExtResource("7_y2wtr")]
-state = NodePath("")
-
-[node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
-ignoreAreas = [NodePath("")]
+[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("7_y2wtr")]
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("8_de1pw")
@@ -406,7 +402,8 @@ disabled = true
 
 [node name="GrabbedState" parent="States" instance=ExtResource("20_m7hh1")]
 
-[node name="ThrownState" parent="States" instance=ExtResource("21_r3xx2")]
+[node name="ThrownState" parent="States" node_paths=PackedStringArray("ignoreAreas") instance=ExtResource("21_r3xx2")]
+ignoreAreas = [NodePath("../../Hurtbox")]
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 visible = false
@@ -454,3 +451,4 @@ debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 
 [editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]
+[editable path="States/ThrownState"]

@@ -34,7 +34,7 @@ height = 20.0
 
 [node name="ThrownState" type="Node2D" node_paths=PackedStringArray("ignoreAreas")]
 script = ExtResource("1_07uct")
-ignoreAreas = [NodePath("")]
+ignoreAreas = [null]
 
 [node name="ActiveScriptGroup" type="Node2D" parent="."]
 script = ExtResource("2_w557h")
