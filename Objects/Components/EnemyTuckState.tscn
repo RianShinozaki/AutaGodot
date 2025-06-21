@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jq5m358k23k6"]
+[gd_scene load_steps=7 format=3 uid="uid://b150mpdv8riyj"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="1_dhdqr"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_etk1s"]

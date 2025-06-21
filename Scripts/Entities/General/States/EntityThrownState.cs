@@ -35,11 +35,9 @@ public partial class EntityThrownState : EntityState
 		base._Process(delta);
 	}
 	private void _on_attack_area_entered(Area2D area) {
-
 		if(ignoreAreas.Contains(area)) {
 			return;
 		}
-		GD.Print("COLLISION");
 		GameManager.Instance.FrameFreeze(0.05f, 0.2f);
 		float totalSpeed = new Vector2(entity.horSpeed, entity.vertSpeed).Length();
 		float angle = Mathf.Atan2(GlobalPosition.Y - area.GlobalPosition.Y, GlobalPosition.X - area.GlobalPosition.Y);

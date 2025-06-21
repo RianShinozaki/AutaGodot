@@ -103,6 +103,7 @@ debug_color = Color(0.718304, 0.476361, 0.183496, 0.42)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.959963, 0.879169, 0.67813, 1)
+range_item_cull_mask = 3
 texture = ExtResource("2_bbtbr")
 texture_scale = 1.68
 

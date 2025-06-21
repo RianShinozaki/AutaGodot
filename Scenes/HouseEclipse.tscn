@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bo382opbg1lma" path="res://Art Assets/Environment/Misc/Tilesets/TestTileset.png" id="15_tya3s"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="16_rj662"]
 [ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="17_km0gt"]
-[ext_resource type="Resource" uid="uid://dr8vdwwjlc1kd" path="res://Data/Dialogue/Test/TessNPC.tres" id="18_aac1y"]
+[ext_resource type="Resource" path="res://Data/Dialogue/Test/TessNPC.tres" id="18_aac1y"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="18_nru8o"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="19_82gtu"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="21_bsv6k"]
@@ -1023,7 +1023,7 @@ shape = SubResource("RectangleShape2D_1mnk7")
 
 [node name="Player" parent="." instance=ExtResource("14_ph4g8")]
 light_mask = 2
-position = Vector2(577, -46)
+position = Vector2(575, -40)
 
 [node name="Environment-Over" type="Node2D" parent="."]
 visible = false

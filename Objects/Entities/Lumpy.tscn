@@ -19,10 +19,10 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="12_xtvbw"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="13_1dilq"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="14_oub3d"]
-[ext_resource type="PackedScene" uid="uid://bygolch5gnrqk" path="res://Objects/Components/EnemyHurtState.tscn" id="18_qiytl"]
-[ext_resource type="PackedScene" uid="uid://jq5m358k23k6" path="res://Objects/Components/EnemyTuckstate.tscn" id="19_ywkuj"]
+[ext_resource type="PackedScene" path="res://Objects/Components/EnemyHurtState.tscn" id="18_qiytl"]
 [ext_resource type="PackedScene" uid="uid://clwj6dgm0myvh" path="res://Objects/Components/EnemyGrabbedState.tscn" id="20_m7hh1"]
 [ext_resource type="PackedScene" uid="uid://db0ov7bqn51kr" path="res://Objects/Components/EnemyThrownState.tscn" id="21_r3xx2"]
+[ext_resource type="PackedScene" uid="uid://b150mpdv8riyj" path="res://Objects/Components/EnemyTuckState.tscn" id="21_u835f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rbaw3"]
 diffuse_texture = ExtResource("3_asvle")
@@ -322,6 +322,9 @@ script = ExtResource("3_hovqr")
 
 [node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("7_y2wtr")]
 
+[node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
+ignoreAreas = [NodePath("../../../ThrownState/ActiveComponentGroup/ColliderSetActive/Attack")]
+
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("8_de1pw")
 
@@ -398,12 +401,12 @@ disabled = true
 
 [node name="HurtState" parent="States" instance=ExtResource("18_qiytl")]
 
-[node name="TuckState" parent="States" instance=ExtResource("19_ywkuj")]
-
 [node name="GrabbedState" parent="States" instance=ExtResource("20_m7hh1")]
 
 [node name="ThrownState" parent="States" node_paths=PackedStringArray("ignoreAreas") instance=ExtResource("21_r3xx2")]
 ignoreAreas = [NodePath("../../Hurtbox")]
+
+[node name="TuckState" parent="States" instance=ExtResource("21_u835f")]
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 visible = false
@@ -448,6 +451,7 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
+[connection signal="Bounce" from="." to="States/ThrownState" method="_on_bounce"]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 
 [editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]
