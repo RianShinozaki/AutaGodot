@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=172 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="11_03o8e"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/SpawnOnSignal.cs" id="13_yv1xd"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="14_6s213"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerInteractingState.cs" id="15_21wub"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerDuckState.cs" id="15_c8jlq"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaAbilityTransitions.cs" id="15_mntrl"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
@@ -1705,7 +1706,7 @@ maxTime = 0.1
 timeFalloffCurve = SubResource("Curve_l20i6")
 
 [node name="CutsceneState" type="Node2D" parent="States"]
-script = ExtResource("2_2h7nr")
+script = ExtResource("15_21wub")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/CutsceneState"]
 script = ExtResource("6_mm0tc")

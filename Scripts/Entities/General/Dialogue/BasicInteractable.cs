@@ -6,6 +6,8 @@ public partial class BasicInteractable : Area2D
 	DialogueRunner runner;
 
 	[Export] public bool conditionGrounded = true;
+	[Export] public bool repositionPlayer = true;
+	[Export] public bool facePlayer = false;
 
 	public override void _Ready()
 	{

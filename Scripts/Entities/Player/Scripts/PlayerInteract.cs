@@ -19,8 +19,9 @@ public partial class PlayerInteract : StateScript
 		if (GameManager.gameState != GameState.Play) return;
 		if (interactables[0].conditionGrounded && !entity.grounded) return;
 
-			GD.Print("StartDialogue");
-			interactables[0].Trigger();
+		GD.Print("StartDialogue");
+		interactables[0].Trigger();
+		((PlayerInteractingState)entity.GetState("CutsceneState")).theInteractable = interactables[0];
 	}
 
 	private void _on_interaction_trigger_area_entered(Area2D area)
