@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=51 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
@@ -19,11 +19,10 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="12_xtvbw"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="13_1dilq"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="14_oub3d"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="16_btju7"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="17_o5wty"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityGrabbedState.cs" id="18_qcf61"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="20_b5tuk"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityThrownState.cs" id="20_i7suw"]
+[ext_resource type="PackedScene" uid="uid://bygolch5gnrqk" path="res://Objects/Components/EnemyHurtState.tscn" id="18_qiytl"]
+[ext_resource type="PackedScene" uid="uid://jq5m358k23k6" path="res://Objects/Components/EnemyTuckstate.tscn" id="19_ywkuj"]
+[ext_resource type="PackedScene" uid="uid://clwj6dgm0myvh" path="res://Objects/Components/EnemyGrabbedState.tscn" id="20_m7hh1"]
+[ext_resource type="PackedScene" uid="uid://db0ov7bqn51kr" path="res://Objects/Components/EnemyThrownState.tscn" id="21_r3xx2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rbaw3"]
 diffuse_texture = ExtResource("3_asvle")
@@ -270,27 +269,6 @@ HitFX = "Slice"
 radius = 4.00001
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xw20l"]
-
-[sub_resource type="Curve" id="Curve_ow81l"]
-_data = [Vector2(0, 0.987843), 0.0, 0.0, 0, 0, Vector2(1, 0.000956655), -2.6344, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_1x2qc"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0071696), -1.54418, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_ccjcc"]
-script = ExtResource("14_oub3d")
-damage = 6.0
-hitstun = 0.5
-xKnockback = 180.0
-yKnockback = 45.0
-damageType = 2
-flip = true
-weight = 0
-HitFX = "BigSlam"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 4.0
 height = 8.0
@@ -343,10 +321,10 @@ visible = false
 script = ExtResource("3_hovqr")
 
 [node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" node_paths=PackedStringArray("state") instance=ExtResource("7_y2wtr")]
-state = NodePath("../../HurtState")
+state = NodePath("")
 
 [node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
-ignoreAreas = [NodePath("../../../ThrownState/ActiveComponentGroup/ColliderSetActive/Attack")]
+ignoreAreas = [NodePath("")]
 
 [node name="NormalState" type="Node2D" parent="States"]
 script = ExtResource("8_de1pw")
@@ -422,90 +400,13 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_vm1vm")
 disabled = true
 
-[node name="HurtState" type="Node2D" parent="States"]
-script = ExtResource("8_de1pw")
+[node name="HurtState" parent="States" instance=ExtResource("18_qiytl")]
 
-[node name="ActiveScriptGroup" type="Node2D" parent="States/HurtState"]
-script = ExtResource("4_hx0a2")
+[node name="TuckState" parent="States" instance=ExtResource("19_ywkuj")]
 
-[node name="AccelAndDecel" type="Node2D" parent="States/HurtState/ActiveScriptGroup"]
-script = ExtResource("8_84q3h")
-speed = 30.0
-accel = 900.0
-decel = 120.0
-decelTooFast = 120.0
-airAccel = 480.0
-airDecelTooFast = 60.0
+[node name="GrabbedState" parent="States" instance=ExtResource("20_m7hh1")]
 
-[node name="TuckState" type="Node2D" parent="States"]
-script = ExtResource("8_de1pw")
-
-[node name="ActiveScriptGroup" type="Node2D" parent="States/TuckState"]
-script = ExtResource("4_hx0a2")
-
-[node name="AccelAndDecel" type="Node2D" parent="States/TuckState/ActiveScriptGroup"]
-script = ExtResource("8_84q3h")
-speed = 30.0
-accel = 900.0
-decel = 480.0
-decelTooFast = 120.0
-airAccel = 480.0
-airDecelTooFast = 60.0
-
-[node name="ActiveComponentGroup" type="Node2D" parent="States/TuckState"]
-script = ExtResource("16_btju7")
-
-[node name="ColliderSetActive" type="Node2D" parent="States/TuckState/ActiveComponentGroup"]
-script = ExtResource("17_o5wty")
-
-[node name="Area2D" type="Area2D" parent="States/TuckState/ActiveComponentGroup/ColliderSetActive"]
-collision_layer = 16384
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/TuckState/ActiveComponentGroup/ColliderSetActive/Area2D"]
-shape = SubResource("CircleShape2D_xw20l")
-debug_color = Color(0.854176, 0.258141, 0.66403, 0.42)
-
-[node name="GrabbedState" type="Node2D" parent="States"]
-script = ExtResource("18_qcf61")
-
-[node name="ActiveScriptGroup" type="Node2D" parent="States/GrabbedState"]
-script = ExtResource("4_hx0a2")
-
-[node name="ThrownState" type="Node2D" parent="States" node_paths=PackedStringArray("ignoreAreas")]
-script = ExtResource("20_i7suw")
-ignoreAreas = [NodePath("../../Hurtbox")]
-
-[node name="ActiveScriptGroup" type="Node2D" parent="States/ThrownState"]
-script = ExtResource("4_hx0a2")
-
-[node name="FlipToFaceDirection" type="Node2D" parent="States/ThrownState/ActiveScriptGroup"]
-script = ExtResource("9_veaq1")
-
-[node name="ScreenshakeEmitter" type="Node2D" parent="States/ThrownState/ActiveScriptGroup"]
-script = ExtResource("20_b5tuk")
-shake = 5.0
-distanceFalloffCurve = SubResource("Curve_ow81l")
-maxRange = 540.0
-maxTime = 1.0
-timeFalloffCurve = SubResource("Curve_1x2qc")
-
-[node name="ActiveComponentGroup" type="Node2D" parent="States/ThrownState"]
-script = ExtResource("16_btju7")
-
-[node name="ColliderSetActive" type="Node2D" parent="States/ThrownState/ActiveComponentGroup"]
-script = ExtResource("17_o5wty")
-
-[node name="Attack" type="Area2D" parent="States/ThrownState/ActiveComponentGroup/ColliderSetActive"]
-collision_layer = 256
-collision_mask = 2048
-script = ExtResource("13_1dilq")
-hitboxData = SubResource("Resource_ccjcc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/ThrownState/ActiveComponentGroup/ColliderSetActive/Attack"]
-rotation = -1.57079
-shape = SubResource("CapsuleShape2D_vm1vm")
-disabled = true
+[node name="ThrownState" parent="States" instance=ExtResource("21_r3xx2")]
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 visible = false
@@ -550,8 +451,6 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_w5red")
 debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
 
-[connection signal="Bounce" from="." to="States/ThrownState" method="_on_bounce"]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-[connection signal="area_entered" from="States/ThrownState/ActiveComponentGroup/ColliderSetActive/Attack" to="States/ThrownState" method="_on_attack_area_entered"]
 
 [editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]

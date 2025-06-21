@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bygolch5gnrqk"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="1_2vgev"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_a3tya"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="3_x00cl"]
+
+[node name="HurtState" type="Node2D"]
+script = ExtResource("1_2vgev")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="."]
+script = ExtResource("2_a3tya")
+
+[node name="AccelAndDecel" type="Node2D" parent="ActiveScriptGroup"]
+script = ExtResource("3_x00cl")
+speed = 30.0
+accel = 900.0
+decel = 120.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecelTooFast = 60.0

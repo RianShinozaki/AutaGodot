@@ -10,7 +10,8 @@ public partial class BouncingParticle : RigidBody2D
 	public override void _Ready()
 	{
 		t = 0.01f;
-		opo = GetNode<ObjectPoolObject>("ObjectPoolObject");
+		if(GetNodeOrNull<ObjectPoolObject>("ObjectPoolObject") != null)
+			opo = GetNode<ObjectPoolObject>("ObjectPoolObject");
 		active = false;
 		rand = new RandomNumberGenerator();
 		Visible = false;
@@ -32,7 +33,10 @@ public partial class BouncingParticle : RigidBody2D
 		Scale = (1-t) * Vector2.One;
 		if(t > 1) {
 			Scale = Godot.Vector2.One;
-			opo.Despawn();
+			if (opo != null)
+				opo.Despawn();
+			else
+				CallDeferred(MethodName.QueueFree);
 			SetDeferred("freeze", true);
 			Visible = false;
 			active = false;

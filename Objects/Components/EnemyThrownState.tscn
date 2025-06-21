@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://db0ov7bqn51kr"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityThrownState.cs" id="1_07uct"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_w557h"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="3_6d7hn"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="4_0il0a"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="5_hiejy"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="6_vkrj5"]
+[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="7_4p1h7"]
+[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="8_mj6dq"]
+
+[sub_resource type="Curve" id="Curve_ow81l"]
+_data = [Vector2(0, 0.987843), 0.0, 0.0, 0, 0, Vector2(1, 0.000956655), -2.6344, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1x2qc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0071696), -1.54418, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_ccjcc"]
+script = ExtResource("8_mj6dq")
+damage = 6.0
+hitstun = 0.5
+xKnockback = 180.0
+yKnockback = 45.0
+damageType = 2
+flip = true
+weight = 0
+HitFX = "BigSlam"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm1vm"]
+radius = 4.00001
+height = 20.0
+
+[node name="ThrownState" type="Node2D" node_paths=PackedStringArray("ignoreAreas")]
+script = ExtResource("1_07uct")
+ignoreAreas = [NodePath("")]
+
+[node name="ActiveScriptGroup" type="Node2D" parent="."]
+script = ExtResource("2_w557h")
+
+[node name="FlipToFaceDirection" type="Node2D" parent="ActiveScriptGroup"]
+script = ExtResource("3_6d7hn")
+
+[node name="ScreenshakeEmitter" type="Node2D" parent="ActiveScriptGroup"]
+script = ExtResource("4_0il0a")
+shake = 5.0
+distanceFalloffCurve = SubResource("Curve_ow81l")
+maxRange = 540.0
+maxTime = 1.0
+timeFalloffCurve = SubResource("Curve_1x2qc")
+
+[node name="ActiveComponentGroup" type="Node2D" parent="."]
+script = ExtResource("5_hiejy")
+
+[node name="ColliderSetActive" type="Node2D" parent="ActiveComponentGroup"]
+script = ExtResource("6_vkrj5")
+
+[node name="Attack" type="Area2D" parent="ActiveComponentGroup/ColliderSetActive"]
+collision_layer = 256
+collision_mask = 2048
+script = ExtResource("7_4p1h7")
+hitboxData = SubResource("Resource_ccjcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveComponentGroup/ColliderSetActive/Attack"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_vm1vm")
+disabled = true
+
+[connection signal="area_entered" from="ActiveComponentGroup/ColliderSetActive/Attack" to="." method="_on_attack_area_entered"]

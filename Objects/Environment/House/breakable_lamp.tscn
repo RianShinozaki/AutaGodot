@@ -1,0 +1,181 @@
+[gd_scene load_steps=18 format=3 uid="uid://boqe2j51w041b"]
+
+[ext_resource type="Texture2D" uid="uid://28mj3fvw13kx" path="res://Art Assets/Environment/House/Objects/BreakableLamp.png" id="1_s6hg1"]
+[ext_resource type="Script" path="res://Scripts/Environment/Interactables/Breakable.cs" id="1_utubm"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_bbtbr"]
+[ext_resource type="Texture2D" uid="uid://0vjph16g6rfv" path="res://Art Assets/Environment/House/Objects/BreakableLampShards.png" id="4_gyc13"]
+[ext_resource type="Script" path="res://Scripts/Effects/BouncingParticle.cs" id="4_npl5r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkgc0"]
+atlas = ExtResource("1_s6hg1")
+region = Rect2(0, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gukf8"]
+atlas = ExtResource("1_s6hg1")
+region = Rect2(16, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv2nb"]
+atlas = ExtResource("1_s6hg1")
+region = Rect2(32, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5i5t"]
+atlas = ExtResource("1_s6hg1")
+region = Rect2(48, 0, 16, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnd4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkgc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gukf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv2nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5i5t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cab3a"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3v3u"]
+atlas = ExtResource("4_gyc13")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lkc"]
+atlas = ExtResource("4_gyc13")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmfyd"]
+atlas = ExtResource("4_gyc13")
+region = Rect2(12, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fosch"]
+atlas = ExtResource("4_gyc13")
+region = Rect2(18, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bob0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3v3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0lkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmfyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fosch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjlid"]
+radius = 4.0
+
+[node name="BreakableLamp" type="Area2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_utubm")
+
+[node name="BreakableLamp" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2.5)
+sprite_frames = SubResource("SpriteFrames_jnd4c")
+frame_progress = 0.816107
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_cab3a")
+debug_color = Color(0.718304, 0.476361, 0.183496, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.959963, 0.879169, 0.67813, 1)
+texture = ExtResource("2_bbtbr")
+texture_scale = 1.68
+
+[node name="Shards" type="Node2D" parent="."]
+
+[node name="Shard" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+freeze = true
+script = ExtResource("4_npl5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Shard"]
+sprite_frames = SubResource("SpriteFrames_5bob0")
+autoplay = "default"
+frame_progress = 0.429979
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Shard"]
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="Shard2" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+freeze = true
+script = ExtResource("4_npl5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Shard2"]
+sprite_frames = SubResource("SpriteFrames_5bob0")
+autoplay = "default"
+frame_progress = 0.997766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Shard2"]
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="Shard3" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+freeze = true
+script = ExtResource("4_npl5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Shard3"]
+sprite_frames = SubResource("SpriteFrames_5bob0")
+autoplay = "default"
+frame_progress = 0.997766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Shard3"]
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="Shard4" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+freeze = true
+script = ExtResource("4_npl5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Shard4"]
+sprite_frames = SubResource("SpriteFrames_5bob0")
+autoplay = "default"
+frame_progress = 0.997766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Shard4"]
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="Shard5" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+freeze = true
+script = ExtResource("4_npl5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Shard5"]
+sprite_frames = SubResource("SpriteFrames_5bob0")
+autoplay = "default"
+frame_progress = 0.997766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Shard5"]
+shape = SubResource("CircleShape2D_gjlid")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://clwj6dgm0myvh"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityGrabbedState.cs" id="1_c8f7m"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_r5t5t"]
+
+[node name="GrabbedState" type="Node2D"]
+script = ExtResource("1_c8f7m")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="."]
+script = ExtResource("2_r5t5t")
