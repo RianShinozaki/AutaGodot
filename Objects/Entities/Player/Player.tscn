@@ -2387,7 +2387,7 @@ range_item_cull_mask = 3
 texture = ExtResource("40_0teus")
 
 [node name="WallRayArray" type="Node2D" parent="."]
-rotation = -1.57079
+rotation = -1.58825
 script = ExtResource("4_a2cge")
 maxAngle = -1.0
 floorOffset = 8

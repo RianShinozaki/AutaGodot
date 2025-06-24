@@ -47,15 +47,24 @@ public partial class PlayerOrbState : EntityState
 			inputDir.X = Mathf.Sign(inputDir.X);
 			if(inputDir.X == 0) inputDir.X = player.sprite.FlipH ? -1 : 1;
 
-			player.horSpeed = inputDir.X * speed;
+			if (inputDir.X > 0.5f) player.horSpeed = Mathf.Max(player.horSpeed, inputDir.X * speed);
+			else if (inputDir.X < -0.5f) player.horSpeed = Mathf.Min(player.horSpeed, inputDir.X * speed);
+			else player.horSpeed = inputDir.X * speed;
 		}
 		else {
 			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 			if(inputDir == Vector2.Zero) inputDir.X = player.sprite.FlipH ? -1 : 1;
 
-			player.horSpeed = inputDir.X * speed;
-			player.vertSpeed = inputDir.Y * speed;
-			if(player.vertSpeed == 0 && player.grounded) {
+			if (inputDir.X > 0.5f) player.horSpeed = Mathf.Max(player.horSpeed, inputDir.X * speed);
+			else if (inputDir.X < -0.5f) player.horSpeed = Mathf.Min(player.horSpeed, inputDir.X * speed);
+			else player.horSpeed = inputDir.X * speed;
+
+			if (inputDir.Y > 0.5f) player.vertSpeed = Mathf.Max(player.vertSpeed, inputDir.Y * speed);
+			else if (inputDir.Y < -0.5f) player.vertSpeed = Mathf.Min(player.vertSpeed, inputDir.Y * speed);
+			else player.vertSpeed = inputDir.Y * speed;
+			
+			if (player.vertSpeed == 0 && player.grounded)
+			{
 				player.vertSpeed = initYSpeed;
 			}
 			if(player.vertSpeed == 0 && !player.grounded) {
