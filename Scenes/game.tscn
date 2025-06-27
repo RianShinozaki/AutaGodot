@@ -9,6 +9,7 @@
 [node name="Game" type="Node"]
 
 [node name="PlayerUI" parent="." instance=ExtResource("1_v3dwl")]
+visible = false
 
 [node name="SFXController" type="Node" parent="."]
 script = ExtResource("6_o47f1")

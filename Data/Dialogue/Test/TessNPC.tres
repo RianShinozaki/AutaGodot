@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dr8vdwwjlc1kd"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bi40bt8omdpdo"]
 
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_swl2g"]
 
@@ -15,7 +15,7 @@ Nodes = {
 "start_id": "Start"
 },
 "1_1": {
-"dialogue": "I've lived on this planet for my whole life, you know?",
+"dialogue": "Like, uh, hey, maybe we [b][color=magenta]A[/color]U[color=cyan]T[/color]A[/b] get the hell out of here, Kris.",
 "offset": Vector2(-60, 260),
 "options": {
 0: {
@@ -24,7 +24,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 2
 },
 "1_2": {
@@ -37,7 +37,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 2
 },
 "1_3": {
@@ -50,7 +50,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 2
 },
 "1_4": {
@@ -63,7 +63,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 1
 },
 "1_5": {
@@ -76,7 +76,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 1
 },
 "1_6": {
@@ -89,7 +89,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 2
 },
 "1_7": {
@@ -102,7 +102,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 1
 },
 "1_8": {
@@ -115,7 +115,7 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 256),
+"size": Vector2(300, 289),
 "speaker": 2
 }
 }

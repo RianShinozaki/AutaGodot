@@ -1,12 +1,8 @@
-[gd_resource type="CanvasTexture" load_steps=4 format=3 uid="uid://b572get7u4s24"]
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://b572get7u4s24"]
 
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="1_sp07g"]
-[ext_resource type="Texture2D" uid="uid://5xt11tblfi5f" path="res://Art Assets/Characters/Auta/AutaSheet1_n.png" id="2_sxp13"]
-[ext_resource type="Texture2D" uid="uid://dhd2qft8c2ib" path="res://Art Assets/Characters/Auta/AutaSheet1_s.png" id="3_x2rb6"]
 
 [resource]
 diffuse_texture = ExtResource("1_sp07g")
-normal_texture = ExtResource("2_sxp13")
-specular_texture = ExtResource("3_x2rb6")
 texture_filter = 1
 texture_repeat = 1

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
+[ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="3_pxw74"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="4_25evr"]
-[ext_resource type="Texture2D" uid="uid://b572get7u4s24" path="res://Art Assets/Characters/Auta/Auta1.tres" id="4_46p0d"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="5_524kh"]
 [ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="5_ijq85"]
@@ -175,10 +175,10 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 9, 10, 11, 10, 12, 0]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_eap1r"]
@@ -1633,7 +1633,7 @@ light_mask = 2
 texture_filter = 1
 material = ExtResource("4_25evr")
 use_parent_material = true
-texture = ExtResource("4_46p0d")
+texture = ExtResource("3_pxw74")
 offset = Vector2(0, -8)
 hframes = 8
 vframes = 15
