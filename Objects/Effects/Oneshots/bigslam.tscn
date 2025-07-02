@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c6aa4air53ipd" path="res://Art Assets/Effects/Impact/BigBash.png" id="1_uhdbq"]
 [ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_uqh2g"]
-[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="3_heuun"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_heuun"]
 
 [sub_resource type="Animation" id="Animation_a5o3o"]
 resource_name = "Effect"

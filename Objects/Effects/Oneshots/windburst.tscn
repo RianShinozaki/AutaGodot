@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba4f0yh1pdnvh" path="res://Art Assets/Effects/Impact/Windburst.png" id="1_kd6q0"]
 [ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_276dw"]
-[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="4_byd41"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="4_byd41"]
 
 [sub_resource type="Animation" id="Animation_cugoa"]
 resource_name = "Effect"

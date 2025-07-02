@@ -7,15 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bc8q57121ho27" path="res://Art Assets/Environment/Underground/Backgrounds/Distance.png" id="6_i7aha"]
 [ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="7_8pefs"]
 [ext_resource type="TileSet" uid="uid://uw8pl1jwlrb4" path="res://Tilesets/Underground/WeaponsBunker.tres" id="8_dt3ev"]
-[ext_resource type="Script" path="res://Scripts/System/ParallaxController.cs" id="8_e45kp"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ParallaxController.cs" id="8_e45kp"]
 [ext_resource type="PackedScene" uid="uid://d3g30r1oyug18" path="res://Objects/Effects/Lighting/gradient_light.tscn" id="14_ftqju"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="14_o4jpm"]
-[ext_resource type="Script" path="res://Scripts/System/ObjectPool.cs" id="15_j20w2"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPool.cs" id="15_j20w2"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="15_u6vit"]
 [ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="15_xjind"]
 [ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="16_urifl"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="16_xd0qn"]
-[ext_resource type="Script" path="res://Scripts/System/GameManager.cs" id="17_87ao1"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="17_87ao1"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3

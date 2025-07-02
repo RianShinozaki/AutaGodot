@@ -48,7 +48,7 @@ public partial class PlayerGrabState : EntityState
 		PlayerController player = (PlayerController)entity;
 
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		aimPos += inputDir*2f;
+		aimPos += inputDir*360f*(float)delta;
 
 		compGroup.GetNode<Sprite2D>("Reticle").Position = aimPos;
 		compGroup.GetNode<Sprite2D>("Arrow").Rotation = Mathf.Atan2(aimPos.Y, aimPos.X);

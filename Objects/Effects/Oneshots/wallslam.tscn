@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://grgc2w7fk0hy" path="res://Art Assets/Effects/Impact/WallSlam.png" id="1_3qosl"]
 [ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_xpes4"]
-[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="3_rcaro"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_rcaro"]
 
 [sub_resource type="Animation" id="Animation_llm5k"]
 resource_name = "Effect"

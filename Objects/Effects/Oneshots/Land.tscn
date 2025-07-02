@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c4g0sm7feuj5i" path="res://Art Assets/Effects/Movement/Land.png" id="1_7nftk"]
 [ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_2upmm"]
-[ext_resource type="Script" path="res://Scripts/System/ObjectPoolObject.cs" id="3_w8uwu"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_w8uwu"]
 
 [sub_resource type="Animation" id="Animation_llm5k"]
 resource_name = "Effect"
