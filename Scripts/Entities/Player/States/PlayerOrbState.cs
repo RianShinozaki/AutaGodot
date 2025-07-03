@@ -116,7 +116,7 @@ public partial class PlayerOrbState : EntityState
 				player.SwitchState("DuckState");
 			}
 			else {
-				if(Mathf.Abs(entity.horSpeed) > minSpeedThresholdForSpeedState) {
+				if(Mathf.Abs(entity.horSpeed) > minSpeedThresholdForSpeedState && false) {
 					player.SwitchState("SpeedState");
 				}
 				else {

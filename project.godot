@@ -24,8 +24,6 @@ config/icon="res://Scripts/icon.svg"
 
 window/size/viewport_width=896
 window/size/viewport_height=504
-window/size/window_width_override=1600
-window/size/window_height_override=900
 window/stretch/mode="viewport"
 
 [dotnet]

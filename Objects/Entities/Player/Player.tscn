@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=171 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -1599,15 +1599,11 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 6.0
-height = 20.0
+height = 25.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2oiyr"]
 radius = 6.0
-height = 12.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7536"]
-radius = 5.5
-height = 26.0
+height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icj15"]
 radius = 7.0
@@ -1621,6 +1617,8 @@ radius = 16.0
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 10
+floor_snap_length = 8.0
+safe_margin = 0.5
 script = ExtResource("1_uqxb3")
 GroundedFloorCheckDist = 16
 AirFloorCheckDist = 8
@@ -2314,43 +2312,17 @@ script = ExtResource("6_mm0tc")
 runIfInactive = true
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -8)
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
 [node name="DuckEnvironmentBox" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_2oiyr")
-
-[node name="MovingPlatCollider" type="Area2D" parent="."]
-visible = false
-collision_layer = 16
-collision_mask = 0
-
-[node name="MovingPlatCollider" type="CollisionShape2D" parent="MovingPlatCollider"]
-position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_e7536")
 
 [node name="OrbEnvironmentBox" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_icj15")
 disabled = true
-
-[node name="RayArray" type="Node2D" parent="."]
-visible = false
-script = ExtResource("4_a2cge")
-floorOffset = 8
-
-[node name="RayCast2D2" type="RayCast2D" parent="RayArray"]
-position = Vector2(-5, 0)
-target_position = Vector2(0, 8)
-
-[node name="RayCast2D" type="RayCast2D" parent="RayArray"]
-target_position = Vector2(0, 8)
-
-[node name="RayCast2D3" type="RayCast2D" parent="RayArray"]
-position = Vector2(5, 0)
-target_position = Vector2(0, 8)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 visible = false

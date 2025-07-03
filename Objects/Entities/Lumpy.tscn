@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_sk50q"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_psv42"]
 [ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_shbdi"]
-[ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="7_mp0wg"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y2wtr"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="8_84q3h"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_de1pw"]
@@ -271,7 +270,7 @@ height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 4.0
-height = 8.0
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0b30"]
 size = Vector2(16, 9)
@@ -281,7 +280,7 @@ radius = 16.0
 
 [node name="Lumpy" type="CharacterBody2D" node_paths=PackedStringArray("currentState")]
 collision_layer = 2
-motion_mode = 1
+floor_snap_length = 8.0
 script = ExtResource("1_q4he1")
 currentState = NodePath("States/NormalState")
 GroundedFloorCheckDist = 16
@@ -409,26 +408,8 @@ ignoreAreas = [NodePath("../../Hurtbox")]
 [node name="TuckState" parent="States" instance=ExtResource("21_u835f")]
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -2)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hv6ar")
-
-[node name="RayArray" type="Node2D" parent="."]
-visible = false
-position = Vector2(0, -4)
-script = ExtResource("7_mp0wg")
-floorOffset = 8
-
-[node name="RayCast2D2" type="RayCast2D" parent="RayArray"]
-position = Vector2(-7, 0)
-target_position = Vector2(0, 8)
-
-[node name="RayCast2D" type="RayCast2D" parent="RayArray"]
-target_position = Vector2(0, 8)
-
-[node name="RayCast2D3" type="RayCast2D" parent="RayArray"]
-position = Vector2(7, 0)
-target_position = Vector2(0, 8)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 visible = false

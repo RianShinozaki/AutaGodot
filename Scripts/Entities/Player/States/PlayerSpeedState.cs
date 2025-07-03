@@ -41,7 +41,7 @@ public partial class PlayerSpeedState : EntityState
 
 		// Try Wall stick
 		wallRayArray.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
-		if(wallRayArray.IsColliding() && !entity.rayArray.IsColliding()) {
+		if(wallRayArray.IsColliding() && !entity.grounded) {
 			WallStick(entity.sprite.FlipH ? StickDir.LEFT : StickDir.RIGHT);
 			entity.GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X + 8 * (entity.sprite.FlipH ? 1 : -1), GlobalPosition.Y);
 

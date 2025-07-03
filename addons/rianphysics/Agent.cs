@@ -40,7 +40,6 @@ public partial class Agent : CharacterBody2D
 
 	public override void _Ready()
 	{
-		rayArray = GetNode<RayArray2D>("RayArray");
 	}
 
 	public void Move(float x, float y, float delta, bool writeback = false) {		
@@ -52,7 +51,10 @@ public partial class Agent : CharacterBody2D
 			Velocity = new Vector2(x, y);
 		}
 
+		Velocity = new Vector2(x, y);
+
 		if(collisionMode == CollisionMode.FLOOR) {
+			MotionMode = MotionModeEnum.Grounded;
 			MoveAndSlide();
 			if(writeback) {
 				horSpeed = Velocity.X;
@@ -61,6 +63,7 @@ public partial class Agent : CharacterBody2D
 			}
 		}
 		else if(collisionMode == CollisionMode.FREE) {
+			MotionMode = MotionModeEnum.Floating;
 			MoveAndSlide();
 			if(writeback) {
 				horSpeed = Velocity.X;
@@ -69,16 +72,30 @@ public partial class Agent : CharacterBody2D
 		}
 		else if (collisionMode == CollisionMode.BOUNCE)
 		{
+			MotionMode = MotionModeEnum.Floating;
 			Vector2 vel = Velocity;
 			KinematicCollision2D kc = MoveAndCollide(vel * delta, true);
 			if (kc != null)
 			{
+
 				vel = -vel.Reflect(kc.GetNormal());
 				vel.Y += gravity * (float)delta;
 
 				Vector2 lossFactor = new Vector2(Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (1 - bounceFactor);
+				Vector2 impactFactor = new Vector2(Mathf.Abs(kc.GetNormal().X), Mathf.Abs(kc.GetNormal().Y)) * (bounceFactor);
 				vel.X -= lossFactor.X * vel.X;
 				vel.Y -= lossFactor.Y * vel.Y;
+
+				//vel.X = Mathf.Lerp(vel.X, kc.GetColliderVelocity().X, lossFactor.X);
+				//vel.Y = Mathf.Lerp(vel.Y, kc.GetColliderVelocity().Y, lossFactor.Y);
+
+				GD.Print("BEFORE: " + vel.Y.ToString());
+
+				vel.X += kc.GetColliderVelocity().X * impactFactor.X*2;
+				vel.Y += kc.GetColliderVelocity().Y * impactFactor.Y*2;
+
+				GD.Print("AFTER: " + vel.Y.ToString());
+
 				EmitSignal(SignalName.Bounce, kc.GetNormal(), new Vector2(vel.X, vel.Y));
 			}
 			if (writeback)
@@ -109,29 +126,25 @@ public partial class Agent : CharacterBody2D
 		if(!applyPhysics) return;
 		
 		if(collisionMode == CollisionMode.FLOOR) {
-			if(rayArray.IsColliding() && vertSpeed >= 0) {
+			if(IsOnFloor() && vertSpeed >= 0) {
 				if(!grounded) {
 					horSpeed += vertSpeed * lastFloorNormal.Rotated(Mathf.DegToRad(90f)).Y * slopeLandInfluence;
                     EmitSignal(SignalName.Grounded, lastFloorNormal, new Vector2(horSpeed, vertSpeed));
 				}
-				GlobalPosition = GlobalPosition.Lerp(new Vector2(GlobalPosition.X, rayArray.GetCollisionPoint().Y - floorOffset),lerpRate);
-				lerpRate = Mathf.MoveToward(lerpRate, 1, (float)delta * 10f);
 				grounded = true;
-				rayArray.TargetPosition = new Vector2(0, GroundedFloorCheckDist);
 				vertSpeed = 0;
-				lastFloorNormal = rayArray.GetCollisionNormal();
+				lastFloorNormal = GetFloorNormal();
 			}
 			else {
 				if(grounded == true) {
 					vertSpeed += horSpeed * lastFloorNormal.Rotated(Mathf.DegToRad(90f)).Y * slopeLeaveInfluence;
 				}
 				grounded = false;
-				rayArray.TargetPosition = new Vector2(0, AirFloorCheckDist);
 				vertSpeed += gravity * (float)delta;
 				lerpRate = 0.5f;
 			}
 		} else {
-			//grounded = false;
+			grounded = IsOnFloor();
 			vertSpeed += gravity * (float)delta;
 		}
 
