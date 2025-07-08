@@ -10,8 +10,8 @@ public partial class PlayerNormalState : EntityState
 	float cachedRot = 0;
 
 	public override void Start() {
-		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
-		stateMachine.Start("Grounded", true);
+		//var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		//stateMachine.Start("Grounded", true);
 		base.Start();	
 	}
 	public override void _Process(double delta) {

@@ -13,15 +13,25 @@ public partial class AutaSpecialMenu : StateScript
 
 	public override void _Process(double delta)
 	{
-		if(Input.IsActionPressed("SpecialMenu") && !menuActive && !menuLock) {
+		if (Input.IsActionPressed("SpecialMenu") && !menuActive && !menuLock)
+		{
 			CallDeferred("AcquireLock");
 			GameManager.Instance.TSChangeSuccess += onTSChangeSuccess;
 			GameManager.Instance.TransitionTimeScale(0.001f, 0.25f);
 		}
-		if(!Input.IsActionPressed("SpecialMenu") && menuActive && !menuLock) {
+		if (!Input.IsActionPressed("SpecialMenu") && menuActive && !menuLock)
+		{
 			CallDeferred("AcquireLock");
 			GameManager.Instance.TSChangeSuccess += onTSChangeSuccess;
 			GameManager.Instance.TransitionTimeScale(1, 0.25f);
+		}
+
+		if (Input.IsActionPressed("1"))
+		{
+			Engine.TimeScale = 0.5;
+		}
+		if(Input.IsActionPressed("2") ) {
+			Engine.TimeScale = 0.5;
 		}
 	}
 	

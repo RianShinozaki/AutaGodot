@@ -120,6 +120,8 @@ public partial class PlayerOrbState : EntityState
 					player.SwitchState("SpeedState");
 				}
 				else {
+					var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+					stateMachine.Start("Grounded", true);
 					player.SwitchState("NormalState");
 				}
 			}

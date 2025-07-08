@@ -48,7 +48,7 @@ public partial class PlayerGrabState : EntityState
 		PlayerController player = (PlayerController)entity;
 
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		aimPos += inputDir*360f*(float)delta;
+		aimPos += inputDir*720f*(float)delta;
 
 		compGroup.GetNode<Sprite2D>("Reticle").Position = aimPos;
 		compGroup.GetNode<Sprite2D>("Arrow").Rotation = Mathf.Atan2(aimPos.Y, aimPos.X);
@@ -66,7 +66,10 @@ public partial class PlayerGrabState : EntityState
 		entity.SetVert(-recoilPower);
 		entity.SetHor(-Mathf.Cos(angle)*recoilPower);
 		
-		var stateMachine = entity.anim.Get("parameters/Jump/playback").As<AnimationNodeStateMachinePlayback>();
+		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		stateMachine.Start("Grounded", true);
+					
+		stateMachine = entity.anim.Get("parameters/Jump/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("ThrowFlip", true);
 
 		Node2D fx = ObjectPool.Instance.Spawn("Windburst") as Node2D;
