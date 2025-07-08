@@ -6,13 +6,14 @@ public partial class FlipToFaceDirection : StateScript
 {
 	[Signal]
 	public delegate void FlipSpriteEventHandler(bool newFlip);
+	[Export] bool canFlip=true;
 	[Export] public bool mustBeGrounded;
 	[Export] public Node2D flipObject;
 	public override void _Process(double delta)
 	{
 		if(!active) return;
 		//Flip sprite based on direction if grounded  
-		if(Mathf.Abs(entity.horProj) > 0.1f && (!mustBeGrounded || (mustBeGrounded && entity.grounded))) {
+		if(canFlip && Mathf.Abs(entity.horProj) > 0.1f && (!mustBeGrounded || (mustBeGrounded && entity.grounded))) {
 			bool toFlipH = (entity.horProj < 0) ? true : false;
 			if(toFlipH != entity.sprite.FlipH) {
 				EmitSignal(SignalName.FlipSprite, toFlipH);

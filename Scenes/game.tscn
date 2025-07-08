@@ -14,8 +14,6 @@
 script = ExtResource("6_o47f1")
 numChannels = 8
 
-[node name="CanvasModulate" parent="." instance=ExtResource("3_f2i41")]
-
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("4_0qlmu")
 
@@ -23,3 +21,5 @@ script = ExtResource("4_0qlmu")
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_ximvb")]
 layer = 0
+
+[node name="HouseEclipse" parent="." instance=ExtResource("3_f2i41")]

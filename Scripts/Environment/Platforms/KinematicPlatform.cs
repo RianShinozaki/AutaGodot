@@ -4,6 +4,7 @@ using System;
 public partial class KinematicPlatform : AnimatableBody2D
 {
 	[Export] public Vector2 velocity;	
+	
 	public override void _Ready()
 	{
 	}

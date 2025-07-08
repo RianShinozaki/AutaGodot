@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=171 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
@@ -459,8 +459,8 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_cgv2g"]
-length = 0.3125
-step = 0.0625
+length = 0.4
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -468,10 +468,10 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25),
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.32),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [27, 28, 29, 30, 31]
+"values": [26, 27, 28, 29, 30]
 }
 tracks/1/type = "animation"
 tracks/1/imported = false
@@ -482,6 +482,20 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": PackedStringArray("Hitbox"),
 "times": PackedFloat32Array(0)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("States/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.307692),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AnimationCancel"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_o8xra"]
@@ -995,8 +1009,8 @@ blend_mode = 1
 
 [sub_resource type="Animation" id="Animation_mvahx"]
 resource_name = "Hitbox"
-length = 0.4165
-step = 0.0833
+length = 0.4
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1004,7 +1018,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.32),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
@@ -1016,7 +1030,7 @@ tracks/1/path = NodePath("..:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.396481),
+"times": PackedFloat32Array(0, 0.384615),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1028,7 +1042,7 @@ tracks/2/path = NodePath("../PointLight2D:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.333333),
+"times": PackedFloat32Array(0, 0.384615),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1040,7 +1054,7 @@ tracks/3/path = NodePath("../PointLight2D:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.166667, 0.333333, 0.410585),
+"times": PackedFloat32Array(0, 0.06, 0.230769, 0.307692, 0.384615),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.5, 0.5, 0.5, 0.0]
@@ -1599,15 +1613,11 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 6.0
-height = 20.0
+height = 25.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2oiyr"]
 radius = 6.0
-height = 12.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7536"]
-radius = 5.5
-height = 26.0
+height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icj15"]
 radius = 7.0
@@ -1621,6 +1631,8 @@ radius = 16.0
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 10
+floor_snap_length = 8.0
+safe_margin = 0.5
 script = ExtResource("1_uqxb3")
 GroundedFloorCheckDist = 16
 AirFloorCheckDist = 8
@@ -2112,18 +2124,9 @@ script = ExtResource("6_mm0tc")
 
 [node name="FlipToFaceDirection" type="Node2D" parent="States/AttackState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
 script = ExtResource("5_524kh")
+canFlip = false
 mustBeGrounded = true
 flipObject = NodePath("../../Attacks")
-
-[node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
-script = ExtResource("7_ywl3w")
-directControl = true
-speed = 90.0
-decel = 180.0
-decelTooFast = 120.0
-airAccel = 240.0
-airDecel = 60.0
-airDecelTooFast = 120.0
 
 [node name="Jump" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
 script = ExtResource("7_5n0yb")
@@ -2135,6 +2138,19 @@ fallingGravScale = 1.6
 shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
+
+[node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
+script = ExtResource("7_ywl3w")
+directControl = true
+speed = 90.0
+initSpeed = 30.0
+initSpeedAir = 10.0
+accel = 900.0
+decel = 480.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecel = 60.0
+airDecelTooFast = 60.0
 
 [node name="OrbState" type="Node2D" parent="States"]
 visible = false
@@ -2314,43 +2330,17 @@ script = ExtResource("6_mm0tc")
 runIfInactive = true
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -8)
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
 [node name="DuckEnvironmentBox" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_2oiyr")
-
-[node name="MovingPlatCollider" type="Area2D" parent="."]
-visible = false
-collision_layer = 16
-collision_mask = 0
-
-[node name="MovingPlatCollider" type="CollisionShape2D" parent="MovingPlatCollider"]
-position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_e7536")
 
 [node name="OrbEnvironmentBox" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_icj15")
 disabled = true
-
-[node name="RayArray" type="Node2D" parent="."]
-visible = false
-script = ExtResource("4_a2cge")
-floorOffset = 8
-
-[node name="RayCast2D2" type="RayCast2D" parent="RayArray"]
-position = Vector2(-5, 0)
-target_position = Vector2(0, 8)
-
-[node name="RayCast2D" type="RayCast2D" parent="RayArray"]
-target_position = Vector2(0, 8)
-
-[node name="RayCast2D3" type="RayCast2D" parent="RayArray"]
-position = Vector2(5, 0)
-target_position = Vector2(0, 8)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 visible = false

@@ -35,7 +35,7 @@ public partial class PlayerAttackState : EntityState
 			switch(comboNum) {
 			case 0:
 				stateMachine.Start("Attack_Combo1", true);
-				comboNum++;
+				//comboNum++;
 				comboTimer = comboTimeMax;
 				break;
 			case 1:
@@ -74,9 +74,17 @@ public partial class PlayerAttackState : EntityState
 			PlayerController player = (PlayerController)entity;
 			player.SwitchState("NormalState");
     }
-	public void _on_hitbox_area_entered(Area2D area) {
+	public void AnimationCancel()
+    {
+		if(!active) return;
+			PlayerController player = (PlayerController)entity;
+			player.SwitchState("NormalState");
+    }
+	public void _on_hitbox_area_entered(Area2D area)
+	{
 		GameManager.Instance.FrameFreeze(0.05f, 0.2f);
-		if(!entity.grounded) {
+		if (!entity.grounded)
+		{
 			entity.vertSpeed = -GetNode<Jump>("ActiveScriptGroup/Jump").riseThresh;
 			GetNode<Jump>("ActiveScriptGroup/Jump").extraMult = gravityFloatMult;
 		}
