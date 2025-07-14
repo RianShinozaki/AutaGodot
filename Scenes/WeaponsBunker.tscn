@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="14_o4jpm"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPool.cs" id="15_j20w2"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="15_u6vit"]
-[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="15_xjind"]
+[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="15_xjind"]
 [ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="16_urifl"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="16_xd0qn"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="17_87ao1"]

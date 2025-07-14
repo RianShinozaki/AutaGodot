@@ -1,0 +1,389 @@
+[gd_scene load_steps=41 format=3 uid="uid://fojsq0umiwdx"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_1flec"]
+[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_n4sfi"]
+[ext_resource type="Texture2D" uid="uid://baone4ljqq8fv" path="res://Art Assets/Environment/Misc/Objects/Dog.png" id="3_3g0cg"]
+[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_qjiua"]
+[ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_bwtb3"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="6_b0g58"]
+[ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y86nq"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_wafxr"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="9_i2qlq"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="10_jnv0d"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="11_rwvbd"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="12_bjgaj"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="13_ktem1"]
+[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="14_ipiis"]
+[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="15_uurb2"]
+[ext_resource type="PackedScene" path="res://Objects/Components/EnemyHurtState.tscn" id="16_rvqrl"]
+
+[sub_resource type="Animation" id="Animation_k40gc"]
+resource_name = "Attack"
+length = 0.8
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.307692, 0.461538, 0.615385),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/NormalState/ActiveScriptGroup/AccelAndDecel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.153846),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [5.0, 0.0, true],
+"method": &"BurstSpeed"
+}, {
+"args": [100.0, 0.0, true],
+"method": &"BurstSpeed"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.769231),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["NormalState"],
+"method": &"SwitchState"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../States/AttackState/Attack/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.769231),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_q1x7s"]
+resource_name = "Hurt"
+length = 0.32
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_gws86"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6wrhy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/AttackState/Attack/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_64llm"]
+resource_name = "Tuck"
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_ycjq8"]
+resource_name = "Walk"
+length = 0.64
+loop_mode = 1
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5c5"]
+_data = {
+"Attack": SubResource("Animation_k40gc"),
+"Hurt": SubResource("Animation_q1x7s"),
+"Idle": SubResource("Animation_gws86"),
+"RESET": SubResource("Animation_6wrhy"),
+"Tuck": SubResource("Animation_64llm"),
+"Walk": SubResource("Animation_ycjq8")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tiyy2"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rlc4f"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6u1u6"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yxo1k"]
+advance_mode = 2
+advance_expression = "abs(horProj) > 0.5f"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fgolq"]
+advance_mode = 2
+advance_expression = "abs(horProj) < 0.5f"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r1kc3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_en1n3"]
+states/Idle/node = SubResource("AnimationNodeAnimation_rlc4f")
+states/Idle/position = Vector2(305, 82)
+states/Walk/node = SubResource("AnimationNodeAnimation_6u1u6")
+states/Walk/position = Vector2(495, 82)
+transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_yxo1k"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_fgolq"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_r1kc3")]
+graph_offset = Vector2(29, -16)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c30ay"]
+animation = &"Hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qgulu"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq8sd"]
+animation = &"Tuck"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qex3u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h1tvb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_83c1s"]
+states/Attack/node = SubResource("AnimationNodeAnimation_tiyy2")
+states/Attack/position = Vector2(343, 5)
+states/Grounded/node = SubResource("AnimationNodeStateMachine_en1n3")
+states/Grounded/position = Vector2(391, 100)
+states/Hurt/node = SubResource("AnimationNodeAnimation_c30ay")
+states/Hurt/position = Vector2(477, 5)
+states/RESET/node = SubResource("AnimationNodeAnimation_qgulu")
+states/RESET/position = Vector2(562, 100)
+states/Tuck/node = SubResource("AnimationNodeAnimation_dq8sd")
+states/Tuck/position = Vector2(556, 8)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb")]
+graph_offset = Vector2(-28, -95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruk6c"]
+size = Vector2(136, 19)
+
+[sub_resource type="Resource" id="Resource_5i24x"]
+script = ExtResource("15_uurb2")
+damage = 3.0
+hitstun = 0.5
+xKnockback = 90.0
+yKnockback = 0.0
+damageType = 0
+flip = true
+weight = 0
+HitFX = "Slice"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm1vm"]
+radius = 4.00001
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
+radius = 8.0
+height = 26.0
+
+[node name="Lumpy" type="CharacterBody2D" node_paths=PackedStringArray("currentState")]
+collision_layer = 2
+floor_snap_length = 8.0
+script = ExtResource("1_1flec")
+currentState = NodePath("States/NormalState")
+GroundedFloorCheckDist = 16
+AirFloorCheckDist = 8
+floorOffset = 4
+gravity = 300.0
+
+[node name="Art" type="Sprite2D" parent="."]
+light_mask = 2
+texture_filter = 1
+material = ExtResource("2_n4sfi")
+position = Vector2(-8, -16)
+texture = ExtResource("3_3g0cg")
+offset = Vector2(3, 2)
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
+libraries = {
+"": SubResource("AnimationLibrary_6m5c5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Art"]
+tree_root = SubResource("AnimationNodeStateMachine_83c1s")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AfterImageGenerator" type="Node" parent="Art"]
+script = ExtResource("4_qjiua")
+
+[node name="Attributes" parent="." instance=ExtResource("5_bwtb3")]
+
+[node name="States" type="Node2D" parent="."]
+
+[node name="EnemyBaseState" type="Node2D" parent="States"]
+script = ExtResource("6_b0g58")
+
+[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("7_y86nq")]
+
+[node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
+ignoreAreas = [NodePath("")]
+
+[node name="NormalState" type="Node2D" parent="States"]
+script = ExtResource("8_wafxr")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/NormalState"]
+script = ExtResource("9_i2qlq")
+
+[node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+script = ExtResource("10_jnv0d")
+speed = 30.0
+accel = 900.0
+decel = 480.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecel = 240.0
+airDecelTooFast = 60.0
+
+[node name="FlipToFaceDirection" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+script = ExtResource("11_rwvbd")
+
+[node name="PatrolRandomly" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+script = ExtResource("12_bjgaj")
+patrolRange = 100
+waitTimeRange = Vector2(2, 3)
+moveTimeRange = Vector2(1, 2)
+
+[node name="TriggerEnterAct" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
+process_priority = -1
+script = ExtResource("13_ktem1")
+toState = "NormalState"
+playAnim = &"Attack"
+faceTarget = true
+triggerWaitRange = Vector2(0, 1)
+SubseqTriggerWaitRange = Vector2(1, 2)
+
+[node name="Area2D" type="Area2D" parent="States/NormalState/ActiveScriptGroup/TriggerEnterAct"]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/NormalState/ActiveScriptGroup/TriggerEnterAct/Area2D"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_ruk6c")
+
+[node name="AttackState" type="Node2D" parent="States"]
+script = ExtResource("8_wafxr")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/AttackState"]
+script = ExtResource("9_i2qlq")
+
+[node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
+script = ExtResource("10_jnv0d")
+horReset = true
+speed = 30.0
+accel = 900.0
+decel = 60.0
+decelTooFast = 120.0
+airAccel = 480.0
+airDecel = 240.0
+airDecelTooFast = 60.0
+
+[node name="InitScriptGroup" type="Node2D" parent="States/AttackState"]
+script = ExtResource("9_i2qlq")
+
+[node name="Attack" type="Area2D" parent="States/AttackState"]
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("14_ipiis")
+hitboxData = SubResource("Resource_5i24x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/AttackState/Attack"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_vm1vm")
+disabled = true
+
+[node name="HurtState" parent="States" instance=ExtResource("16_rvqrl")]
+
+[node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
+position = Vector2(1, -13)
+shape = SubResource("CapsuleShape2D_hv6ar")
+
+[connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+
+[editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]

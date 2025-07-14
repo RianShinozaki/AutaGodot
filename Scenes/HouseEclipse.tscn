@@ -15,23 +15,24 @@
 [ext_resource type="PackedScene" uid="uid://boqe2j51w041b" path="res://Objects/Environment/House/breakable_lamp.tscn" id="14_vu0vq"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="14_wg77r"]
 [ext_resource type="PackedScene" uid="uid://dxflhd836je40" path="res://Objects/System/fxPool.tscn" id="15_1dgeo"]
+[ext_resource type="PackedScene" uid="uid://daailb8lshm22" path="res://Objects/Environment/House/starflower.tscn" id="15_e48ao"]
 [ext_resource type="Texture2D" uid="uid://05q0wo2u2su0" path="res://Art Assets/Enemies/Test/CrystalWall.png" id="15_tg8b0"]
 [ext_resource type="Texture2D" uid="uid://bo382opbg1lma" path="res://Art Assets/Environment/Misc/Tilesets/TestTileset.png" id="15_tya3s"]
+[ext_resource type="PackedScene" uid="uid://cyj3ulyws4ofg" path="res://Objects/Environment/House/voidboble.tscn" id="16_a3hpn"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="16_rj662"]
 [ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="17_km0gt"]
 [ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="18_aac1y"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="18_nru8o"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="19_82gtu"]
-[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="20_st84h"]
-[ext_resource type="Script" path="res://Scripts/Environment/Platforms/KinematicPlatform.cs" id="21_8g7bc"]
+[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="20_st84h"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="21_bsv6k"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="25_rbcmk"]
+[ext_resource type="Script" path="res://Scripts/System/Camera/CamRegion.cs" id="26_mddoa"]
 [ext_resource type="Texture2D" uid="uid://dum8gf87nacu3" path="res://Art Assets/Environment/House/CrystalWallsBlue.png" id="27_i4iax"]
 [ext_resource type="Texture2D" uid="uid://bouw715ol1q78" path="res://Art Assets/Environment/Misc/Objects/SimpleTrigger.png" id="27_yrjna"]
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/HitboxTrigger.cs" id="28_j7wuk"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="28_yh1di"]
 [ext_resource type="Script" path="res://Scripts/Helpers/AnimPlayerSignalHelper.cs" id="30_5hpk8"]
-[ext_resource type="Texture2D" uid="uid://da5tqx8qs8xie" path="res://Art Assets/Environment/Misc/Objects/MovingPlat.png" id="31_154fc"]
 
 [sub_resource type="Environment" id="Environment_etjc1"]
 background_mode = 3
@@ -672,49 +673,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mnk7"]
 size = Vector2(24, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvam0"]
-size = Vector2(32, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooe23"]
+size = Vector2(456, 336)
 
-[sub_resource type="Animation" id="Animation_b462n"]
-resource_name = "Move"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(956, -58), Vector2(956, -121.795), Vector2(956, -58)]
-}
-
-[sub_resource type="Animation" id="Animation_twpn8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(956, -58)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvsan"]
-_data = {
-"Move": SubResource("Animation_b462n"),
-"RESET": SubResource("Animation_twpn8")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orblm"]
+size = Vector2(732, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jsgr"]
-size = Vector2(2480, 49)
+size = Vector2(760, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ryd2"]
+size = Vector2(584, 272)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3gcr1"]
 blend_mode = 1
@@ -1757,12 +1726,64 @@ position = Vector2(2008, -248)
 [node name="BreakableLamp26" parent="Environment-Under/Breakables" instance=ExtResource("14_vu0vq")]
 position = Vector2(2056, -248)
 
+[node name="StarFlower" parent="Environment-Under/Breakables" instance=ExtResource("15_e48ao")]
+position = Vector2(840, -64)
+
+[node name="StarFlower2" parent="Environment-Under/Breakables" instance=ExtResource("15_e48ao")]
+position = Vector2(792, -64)
+
+[node name="StarFlower3" parent="Environment-Under/Breakables" instance=ExtResource("15_e48ao")]
+position = Vector2(1384, -272)
+
+[node name="StarFlower" parent="Environment-Under" instance=ExtResource("15_e48ao")]
+position = Vector2(1680, -144)
+
+[node name="StarFlower2" parent="Environment-Under" instance=ExtResource("15_e48ao")]
+position = Vector2(2040, -208)
+
+[node name="StarFlower3" parent="Environment-Under" instance=ExtResource("15_e48ao")]
+position = Vector2(2128, -240)
+
+[node name="StarFlower4" parent="Environment-Under" instance=ExtResource("15_e48ao")]
+position = Vector2(2512, -112)
+
+[node name="StarFlower5" parent="Environment-Under" instance=ExtResource("15_e48ao")]
+position = Vector2(2592, -168)
+rotation = 1.57079
+
+[node name="VoidBoble" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(656, -128)
+
+[node name="VoidBoble2" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(680, -160)
+
+[node name="VoidBoble3" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(712, -200)
+
+[node name="VoidBoble4" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(632, -168)
+
+[node name="VoidBoble5" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(720, -152)
+
+[node name="VoidBoble6" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(704, -112)
+
+[node name="VoidBoble7" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(752, -176)
+
+[node name="VoidBoble8" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(664, -208)
+
+[node name="VoidBoble9" parent="Environment-Under" instance=ExtResource("16_a3hpn")]
+position = Vector2(704, -232)
+
 [node name="Entities" type="Node2D" parent="."]
 texture_filter = 1
 
 [node name="CrystalWall" type="AnimatedSprite2D" parent="Entities"]
 light_mask = 2
-position = Vector2(805, -81)
+position = Vector2(816, -80)
 sprite_frames = SubResource("SpriteFrames_daka8")
 autoplay = "default"
 frame_progress = 0.728957
@@ -1790,32 +1811,13 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_1mnk7")
 
 [node name="Lumpy" parent="Entities" instance=ExtResource("20_st84h")]
-position = Vector2(456, -48)
+position = Vector2(208, -56)
 
 [node name="Lumpy2" parent="Entities" instance=ExtResource("20_st84h")]
-position = Vector2(488, -64)
+position = Vector2(656, -40)
 
 [node name="Lumpy3" parent="Entities" instance=ExtResource("20_st84h")]
-position = Vector2(552, -112)
-
-[node name="KinematicPlatform" type="AnimatableBody2D" parent="."]
-visible = false
-position = Vector2(956, -58)
-scale = Vector2(5, 1)
-script = ExtResource("21_8g7bc")
-
-[node name="MovingPlat" type="Sprite2D" parent="KinematicPlatform"]
-texture = ExtResource("31_154fc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicPlatform"]
-shape = SubResource("RectangleShape2D_wvam0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicPlatform"]
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_kvsan")
-}
-autoplay = "Move"
+position = Vector2(304, -120)
 
 [node name="Player" parent="." instance=ExtResource("14_ph4g8")]
 light_mask = 2
@@ -1836,33 +1838,58 @@ script = ExtResource("25_rbcmk")
 [node name="FXPool" parent="System" instance=ExtResource("15_1dgeo")]
 
 [node name="Cam" type="Node2D" parent="."]
+visible = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Cam"]
-position = Vector2(0, -24)
+[node name="CamRegion2" type="Area2D" parent="Cam"]
+position = Vector2(1160, -232)
 collision_layer = 131072
 collision_mask = 65536
+script = ExtResource("26_mddoa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/StaticBody2D"]
-position = Vector2(160, 72)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/CamRegion2"]
+position = Vector2(28, 32)
+shape = SubResource("RectangleShape2D_ooe23")
+debug_color = Color(0.983454, 0, 0.35288, 0.42)
+
+[node name="CamRegion3" type="Area2D" parent="Cam"]
+position = Vector2(1160, -232)
+collision_layer = 131072
+collision_mask = 65536
+script = ExtResource("26_mddoa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/CamRegion3"]
+position = Vector2(626, 0)
+shape = SubResource("RectangleShape2D_orblm")
+debug_color = Color(0.983454, 0, 0.35288, 0.42)
+
+[node name="CamRegion" type="Area2D" parent="Cam"]
+position = Vector2(600, -144)
+collision_layer = 131072
+collision_mask = 65536
+script = ExtResource("26_mddoa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/CamRegion"]
+position = Vector2(-20, 0)
 shape = SubResource("RectangleShape2D_2jsgr")
 debug_color = Color(0.983454, 0, 0.35288, 0.42)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Cam"]
-position = Vector2(2488, -136)
+[node name="CamRegion4" type="Area2D" parent="Cam"]
+position = Vector2(2552, -232)
 collision_layer = 131072
 collision_mask = 65536
+script = ExtResource("26_mddoa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/StaticBody2D2"]
-position = Vector2(160, 72)
-shape = SubResource("RectangleShape2D_2jsgr")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/CamRegion4"]
+position = Vector2(-108, 0)
+shape = SubResource("RectangleShape2D_4ryd2")
 debug_color = Color(0.983454, 0, 0.35288, 0.42)
 
 [node name="Camera2D" parent="Cam" node_paths=PackedStringArray("target") instance=ExtResource("18_nru8o")]
 target = NodePath("../CameraCenter")
 
 [node name="CameraCenter" parent="Cam" instance=ExtResource("19_82gtu")]
-visible = true
-position = Vector2(2208, -256)
+position = Vector2(712, -168)
+cameraSize = Vector2(180, 100)
 
 [node name="CrystalPathSection" type="Node2D" parent="."]
 

@@ -1,0 +1,749 @@
+[gd_scene load_steps=23 format=3 uid="uid://daailb8lshm22"]
+
+[ext_resource type="Script" path="res://Scripts/Environment/Interactables/OrbBreakable.cs" id="1_u24fw"]
+[ext_resource type="Texture2D" uid="uid://cqibf5p6e3ask" path="res://Art Assets/Environment/Misc/Objects/StarFlowerYellow.png" id="2_tq876"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_hi0jn"]
+[ext_resource type="Script" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_6pteb"]
+[ext_resource type="Script" path="res://Scripts/Effects/Trail.cs" id="6_5cvhm"]
+[ext_resource type="Texture2D" uid="uid://dexbrg65x7hyf" path="res://Art Assets/Environment/Misc/Objects/StarPetalYellow.png" id="6_a5j23"]
+
+[sub_resource type="Animation" id="Animation_rf0ue"]
+resource_name = "Default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ujpvi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.966987, 0.843981, 0.539491, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D:texture_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.45]
+}
+
+[sub_resource type="Animation" id="Animation_nkgyy"]
+resource_name = "Burst"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.13, 0.785), Vector2(0.555, 1.105), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Burst"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.966987, 0.843981, 0.539491, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.05, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.25, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D:enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D:texture_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.45, 1.05]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmsi7"]
+_data = {
+"Burst": SubResource("Animation_nkgyy"),
+"Default": SubResource("Animation_rf0ue"),
+"RESET": SubResource("Animation_ujpvi")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cab3a"]
+radius = 8.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mggux"]
+friction = 0.5
+
+[sub_resource type="Curve" id="Curve_1scsa"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mbp61"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvor2"]
+atlas = ExtResource("6_a5j23")
+region = Rect2(0, 0, 6, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmt2s"]
+atlas = ExtResource("6_a5j23")
+region = Rect2(6, 0, 6, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxy4j"]
+atlas = ExtResource("6_a5j23")
+region = Rect2(12, 0, 6, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qbqb"]
+atlas = ExtResource("6_a5j23")
+region = Rect2(18, 0, 6, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsalq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvor2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmt2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxy4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qbqb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjlid"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37250"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfd5t"]
+radius = 64.0703
+
+[node name="StarFlower" type="Area2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 33024
+script = ExtResource("1_u24fw")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+position = Vector2(-1, -16)
+texture = ExtResource("2_tq876")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wmsi7")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_cab3a")
+debug_color = Color(0.718304, 0.476361, 0.183496, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-0.400002, -16.4)
+color = Color(0.966987, 0.843981, 0.539491, 1)
+energy = 0.6
+range_item_cull_mask = 3
+texture = ExtResource("3_hi0jn")
+texture_scale = 0.45
+
+[node name="Shards" type="Node2D" parent="."]
+position = Vector2(-0.400002, -16.4)
+
+[node name="Petal" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal2" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal2"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal2"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal2"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal2"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal2/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal2"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal2/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal3" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal3"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal3"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal3"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal3"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal3/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal3"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal3/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal4" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal4"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal4"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal4"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal4"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal4/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal4"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal4/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal5" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal5"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal5"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal5"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal5"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal5/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal5"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal5/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal6" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal6"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal6"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal6"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal6"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal6/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal6"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal6/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal7" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal7"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal7"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal7"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal7"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal7/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal7"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal7/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal8" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal8"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal8"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal8"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal8"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal8/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal8"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal8/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal9" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal9"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal9"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal9"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal9"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal9/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal9"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal9/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[node name="Petal10" type="RigidBody2D" parent="Shards"]
+position = Vector2(0, 3)
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_mggux")
+gravity_scale = 0.3
+lock_rotation = true
+freeze = true
+linear_damp = 1.0
+script = ExtResource("4_6pteb")
+
+[node name="Line2D" type="Line2D" parent="Shards/Petal10"]
+visible = false
+width = 2.0
+width_curve = SubResource("Curve_1scsa")
+default_color = Color(1, 1, 0.560784, 0.482353)
+script = ExtResource("6_5cvhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shards/Petal10"]
+material = SubResource("CanvasItemMaterial_mbp61")
+sprite_frames = SubResource("SpriteFrames_gsalq")
+autoplay = "default"
+frame_progress = 0.816704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal10"]
+visible = false
+shape = SubResource("CircleShape2D_gjlid")
+
+[node name="CollisionDetector" type="Area2D" parent="Shards/Petal10"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal10/CollisionDetector"]
+shape = SubResource("CircleShape2D_37250")
+
+[node name="RangeDetector" type="Area2D" parent="Shards/Petal10"]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal10/RangeDetector"]
+shape = SubResource("CircleShape2D_lfd5t")
+disabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="Shards/Petal/CollisionDetector" to="Shards/Petal" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal/RangeDetector" to="Shards/Petal" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal2/CollisionDetector" to="Shards/Petal2" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal2/RangeDetector" to="Shards/Petal2" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal3/CollisionDetector" to="Shards/Petal3" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal3/RangeDetector" to="Shards/Petal3" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal4/CollisionDetector" to="Shards/Petal4" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal4/RangeDetector" to="Shards/Petal4" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal5/CollisionDetector" to="Shards/Petal5" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal5/RangeDetector" to="Shards/Petal5" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal6/CollisionDetector" to="Shards/Petal6" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal6/RangeDetector" to="Shards/Petal6" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal7/CollisionDetector" to="Shards/Petal7" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal7/RangeDetector" to="Shards/Petal7" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal8/CollisionDetector" to="Shards/Petal8" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal8/RangeDetector" to="Shards/Petal8" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal9/CollisionDetector" to="Shards/Petal9" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal9/RangeDetector" to="Shards/Petal9" method="_on_range_detector_area_entered"]
+[connection signal="body_entered" from="Shards/Petal10/CollisionDetector" to="Shards/Petal10" method="_on_collision_detector_body_entered"]
+[connection signal="area_entered" from="Shards/Petal10/RangeDetector" to="Shards/Petal10" method="_on_range_detector_area_entered"]

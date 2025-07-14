@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="9_6kl2a"]
 [ext_resource type="Script" path="res://Scripts/System/EnableOnPlayerTrigger.cs" id="9_shr3j"]
 [ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="10_y7vku"]
-[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="11_8hd7b"]
+[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="11_8hd7b"]
 [ext_resource type="PackedScene" uid="uid://dxflhd836je40" path="res://Objects/System/fxPool.tscn" id="20_a8dmm"]
 [ext_resource type="Texture2D" uid="uid://6armilotcurd" path="res://Art Assets/Effects/Lighting/Gradient.png" id="20_geflv"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="21_leev1"]

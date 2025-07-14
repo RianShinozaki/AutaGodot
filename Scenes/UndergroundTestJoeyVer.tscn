@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Controllers/ParallaxController.cs" id="12_tmqv2"]
 [ext_resource type="PackedScene" uid="uid://c2jdfhmn0xuo0" path="res://Objects/Effects/Lighting/point_light_2d.tscn" id="13_yrojb"]
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="14_y8mha"]
-[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Lumpy.tscn" id="15_tlr0a"]
+[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="15_tlr0a"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="16_ggjuy"]
 [ext_resource type="Shader" path="res://Shaders/2D-Default.gdshader" id="17_bt1kt"]
 [ext_resource type="Texture2D" uid="uid://kfb0yyq3vsv" path="res://Art Assets/Characters/Misc/Ruin King Big.png" id="18_ma4w8"]
