@@ -89,12 +89,8 @@ public partial class Agent : CharacterBody2D
 				//vel.X = Mathf.Lerp(vel.X, kc.GetColliderVelocity().X, lossFactor.X);
 				//vel.Y = Mathf.Lerp(vel.Y, kc.GetColliderVelocity().Y, lossFactor.Y);
 
-				GD.Print("BEFORE: " + vel.Y.ToString());
-
 				vel.X += kc.GetColliderVelocity().X * impactFactor.X*2;
 				vel.Y += kc.GetColliderVelocity().Y * impactFactor.Y*2;
-
-				GD.Print("AFTER: " + vel.Y.ToString());
 
 				EmitSignal(SignalName.Bounce, kc.GetNormal(), new Vector2(vel.X, vel.Y));
 			}

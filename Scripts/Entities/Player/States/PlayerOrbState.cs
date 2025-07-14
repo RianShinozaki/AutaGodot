@@ -26,7 +26,7 @@ public partial class PlayerOrbState : EntityState
 	[Export] public AudioStream orbThrow;
 	[Export] public AudioStream orbBounce;
 	[Export] public AudioStream orbReform;
-	float orbTime;
+	public float orbTime;
 	Vector3 prevVelocity;
 
 	Vector2 cachedInput;

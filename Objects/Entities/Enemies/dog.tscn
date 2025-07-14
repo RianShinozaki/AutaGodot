@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://fojsq0umiwdx"]
+[gd_scene load_steps=37 format=3 uid="uid://fojsq0umiwdx"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_1flec"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_n4sfi"]
@@ -11,91 +11,17 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="9_i2qlq"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="10_jnv0d"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="11_rwvbd"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="12_bjgaj"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="13_ktem1"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="14_ipiis"]
-[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="15_uurb2"]
-[ext_resource type="PackedScene" path="res://Objects/Components/EnemyHurtState.tscn" id="16_rvqrl"]
-
-[sub_resource type="Animation" id="Animation_k40gc"]
-resource_name = "Attack"
-length = 0.8
-step = 0.08
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.307692, 0.461538, 0.615385),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8, 9, 10]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../States/NormalState/ActiveScriptGroup/AccelAndDecel")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.153846),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [5.0, 0.0, true],
-"method": &"BurstSpeed"
-}, {
-"args": [100.0, 0.0, true],
-"method": &"BurstSpeed"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.769231),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["NormalState"],
-"method": &"SwitchState"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../States/AttackState/Attack/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.16, 0.769231),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_q1x7s"]
-resource_name = "Hurt"
-length = 0.32
-step = 0.16
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [11, 12]
-}
+[ext_resource type="Script" path="res://Scripts/Entities/Enemies/Dog/DogAttack.cs" id="13_nc65w"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFacePlayer.cs" id="14_c10ra"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="15_2788y"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="15_sh5cu"]
 
 [sub_resource type="Animation" id="Animation_gws86"]
 resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -103,10 +29,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_6wrhy"]
@@ -126,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../States/AttackState/Attack/CollisionShape2D:disabled")
+tracks/1/path = NodePath("../States/RunState/Attack/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -136,8 +62,39 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_64llm"]
-resource_name = "Tuck"
+[sub_resource type="Animation" id="Animation_ycjq8"]
+resource_name = "Walk"
+length = 0.125
+loop_mode = 1
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/RunState/Attack/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vy664"]
+resource_name = "Attack"
+length = 0.8
 step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -146,17 +103,48 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0769231, 0.384615, 0.461538),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [13]
+"values": [8, 9, 10, 11]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/NormalState/ActiveScriptGroup/AccelAndDecel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [5.0, 0.0, true],
+"method": &"BurstSpeed"
+}, {
+"args": [300.0, 0.0, true],
+"method": &"BurstSpeed"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RunState"],
+"method": &"SwitchState"
+}]
 }
 
-[sub_resource type="Animation" id="Animation_ycjq8"]
-resource_name = "Walk"
-length = 0.64
+[sub_resource type="Animation" id="Animation_05cr4"]
+resource_name = "RunAttack"
+length = 0.125
 loop_mode = 1
-step = 0.16
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -164,38 +152,35 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0625),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 2, 3, 0]
+"values": [14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/RunState/Attack/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5c5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqax5"]
 _data = {
-"Attack": SubResource("Animation_k40gc"),
-"Hurt": SubResource("Animation_q1x7s"),
 "Idle": SubResource("Animation_gws86"),
 "RESET": SubResource("Animation_6wrhy"),
-"Tuck": SubResource("Animation_64llm"),
-"Walk": SubResource("Animation_ycjq8")
+"Ready": SubResource("Animation_vy664"),
+"Run": SubResource("Animation_ycjq8"),
+"RunAttack": SubResource("Animation_05cr4")
 }
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tiyy2"]
-animation = &"Attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rlc4f"]
 animation = &"Idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6u1u6"]
-animation = &"Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yxo1k"]
-advance_mode = 2
-advance_expression = "abs(horProj) > 0.5f"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fgolq"]
-advance_mode = 2
-advance_expression = "abs(horProj) < 0.5f"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r1kc3"]
 advance_mode = 2
@@ -203,64 +188,57 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_en1n3"]
 states/Idle/node = SubResource("AnimationNodeAnimation_rlc4f")
 states/Idle/position = Vector2(305, 82)
-states/Walk/node = SubResource("AnimationNodeAnimation_6u1u6")
-states/Walk/position = Vector2(495, 82)
-transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_yxo1k"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_fgolq"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_r1kc3")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_r1kc3")]
 graph_offset = Vector2(29, -16)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c30ay"]
-animation = &"Hurt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qgulu"]
 animation = &"RESET"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq8sd"]
-animation = &"Tuck"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tiyy2"]
+animation = &"Ready"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3y3x"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a5mvc"]
+animation = &"RunAttack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qex3u"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h1tvb"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_agdx0"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_83c1s"]
-states/Attack/node = SubResource("AnimationNodeAnimation_tiyy2")
-states/Attack/position = Vector2(343, 5)
 states/Grounded/node = SubResource("AnimationNodeStateMachine_en1n3")
 states/Grounded/position = Vector2(391, 100)
-states/Hurt/node = SubResource("AnimationNodeAnimation_c30ay")
-states/Hurt/position = Vector2(477, 5)
 states/RESET/node = SubResource("AnimationNodeAnimation_qgulu")
 states/RESET/position = Vector2(562, 100)
-states/Tuck/node = SubResource("AnimationNodeAnimation_dq8sd")
-states/Tuck/position = Vector2(556, 8)
-transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb")]
-graph_offset = Vector2(-28, -95)
+states/Ready/node = SubResource("AnimationNodeAnimation_tiyy2")
+states/Ready/position = Vector2(305, -30)
+states/Run/node = SubResource("AnimationNodeAnimation_t3y3x")
+states/Run/position = Vector2(577, -16)
+states/RunAttack/node = SubResource("AnimationNodeAnimation_a5mvc")
+states/RunAttack/position = Vector2(687, 34)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_agdx0")]
+graph_offset = Vector2(147, -99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruk6c"]
 size = Vector2(136, 19)
-
-[sub_resource type="Resource" id="Resource_5i24x"]
-script = ExtResource("15_uurb2")
-damage = 3.0
-hitstun = 0.5
-xKnockback = 90.0
-yKnockback = 0.0
-damageType = 0
-flip = true
-weight = 0
-HitFX = "Slice"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm1vm"]
 radius = 4.00001
 height = 20.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh60k"]
+size = Vector2(103, 27)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
 radius = 8.0
 height = 26.0
 
-[node name="Lumpy" type="CharacterBody2D" node_paths=PackedStringArray("currentState")]
+[node name="Dog" type="CharacterBody2D" node_paths=PackedStringArray("currentState")]
 collision_layer = 2
 floor_snap_length = 8.0
 script = ExtResource("1_1flec")
@@ -282,7 +260,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
 libraries = {
-"": SubResource("AnimationLibrary_6m5c5")
+"": SubResource("AnimationLibrary_pqax5")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Art"]
@@ -296,6 +274,7 @@ script = ExtResource("4_qjiua")
 [node name="Attributes" parent="." instance=ExtResource("5_bwtb3")]
 
 [node name="States" type="Node2D" parent="."]
+visible = false
 
 [node name="EnemyBaseState" type="Node2D" parent="States"]
 script = ExtResource("6_b0g58")
@@ -303,6 +282,7 @@ script = ExtResource("6_b0g58")
 [node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("7_y86nq")]
 
 [node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
+autoHookToHitBox = false
 ignoreAreas = [NodePath("")]
 
 [node name="NormalState" type="Node2D" parent="States"]
@@ -324,20 +304,12 @@ airDecelTooFast = 60.0
 [node name="FlipToFaceDirection" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("11_rwvbd")
 
-[node name="PatrolRandomly" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("12_bjgaj")
-patrolRange = 100
-waitTimeRange = Vector2(2, 3)
-moveTimeRange = Vector2(1, 2)
-
 [node name="TriggerEnterAct" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 process_priority = -1
 script = ExtResource("13_ktem1")
-toState = "NormalState"
-playAnim = &"Attack"
+toState = "ReadyState"
+playAnim = &"Ready"
 faceTarget = true
-triggerWaitRange = Vector2(0, 1)
-SubseqTriggerWaitRange = Vector2(1, 2)
 
 [node name="Area2D" type="Area2D" parent="States/NormalState/ActiveScriptGroup/TriggerEnterAct"]
 collision_layer = 0
@@ -347,43 +319,79 @@ collision_mask = 32768
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_ruk6c")
 
-[node name="AttackState" type="Node2D" parent="States"]
+[node name="ReadyState" type="Node2D" parent="States"]
 script = ExtResource("8_wafxr")
 
-[node name="ActiveScriptGroup" type="Node2D" parent="States/AttackState"]
+[node name="ActiveScriptGroup" type="Node2D" parent="States/ReadyState"]
 script = ExtResource("9_i2qlq")
 
-[node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
+[node name="AccelAndDecel" type="Node2D" parent="States/ReadyState/ActiveScriptGroup"]
 script = ExtResource("10_jnv0d")
-horReset = true
-speed = 30.0
+speed = 200.0
 accel = 900.0
-decel = 60.0
+decel = 480.0
 decelTooFast = 120.0
 airAccel = 480.0
 airDecel = 240.0
 airDecelTooFast = 60.0
 
-[node name="InitScriptGroup" type="Node2D" parent="States/AttackState"]
+[node name="FlipToFacePlayer" type="Node2D" parent="States/ReadyState/ActiveScriptGroup"]
+script = ExtResource("14_c10ra")
+
+[node name="RunState" type="Node2D" parent="States"]
+script = ExtResource("13_nc65w")
+
+[node name="ActiveScriptGroup" type="Node2D" parent="States/RunState"]
 script = ExtResource("9_i2qlq")
 
-[node name="Attack" type="Area2D" parent="States/AttackState"]
-collision_layer = 1024
-collision_mask = 512
-script = ExtResource("14_ipiis")
-hitboxData = SubResource("Resource_5i24x")
+[node name="AccelAndDecel" type="Node2D" parent="States/RunState/ActiveScriptGroup"]
+script = ExtResource("10_jnv0d")
+horReset = true
+speed = 200.0
+accel = 900.0
+decel = 60.0
+decelTooFast = 60.0
+airAccel = 480.0
+airDecel = 240.0
+airDecelTooFast = 60.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/AttackState/Attack"]
+[node name="FlipToFacePlayer" type="Node2D" parent="States/RunState/ActiveScriptGroup" node_paths=PackedStringArray("flipObject")]
+script = ExtResource("14_c10ra")
+flipObject = NodePath("../../Attack")
+
+[node name="Attack" type="Area2D" parent="States/RunState"]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/RunState/Attack"]
+position = Vector2(11, -7)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_vm1vm")
 disabled = true
 
-[node name="HurtState" parent="States" instance=ExtResource("16_rvqrl")]
+[node name="ActiveComponentGroup" type="Node2D" parent="States/RunState"]
+script = ExtResource("15_2788y")
+
+[node name="ColliderSetActive" type="Node2D" parent="States/RunState/ActiveComponentGroup"]
+script = ExtResource("15_sh5cu")
+
+[node name="Range" type="Area2D" parent="States/RunState/ActiveComponentGroup/ColliderSetActive"]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/RunState/ActiveComponentGroup/ColliderSetActive/Range"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_xh60k")
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, -13)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="area_entered" from="States/RunState/Attack" to="States/RunState" method="attack_entered"]
+[connection signal="area_entered" from="States/RunState/ActiveComponentGroup/ColliderSetActive/Range" to="States/RunState" method="range_entered"]
+[connection signal="area_exited" from="States/RunState/ActiveComponentGroup/ColliderSetActive/Range" to="States/RunState" method="range_exited"]
 
+[editable path="Attributes"]
 [editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]

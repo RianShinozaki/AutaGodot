@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://rv7xg4obnm88"]
+[gd_scene load_steps=92 format=4 uid="uid://rv7xg4obnm88"]
 
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameWorld.cs" id="1_22rn6"]
 [ext_resource type="AudioStream" uid="uid://dednlybc8e86c" path="res://Audio/Music/Temp/Wish Upon a Star.mp3" id="2_tcpc6"]
@@ -24,7 +24,6 @@
 [ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="18_aac1y"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="18_nru8o"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="19_82gtu"]
-[ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="20_st84h"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="21_bsv6k"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="25_rbcmk"]
 [ext_resource type="Script" path="res://Scripts/System/Camera/CamRegion.cs" id="26_mddoa"]
@@ -33,6 +32,7 @@
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/HitboxTrigger.cs" id="28_j7wuk"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="28_yh1di"]
 [ext_resource type="Script" path="res://Scripts/Helpers/AnimPlayerSignalHelper.cs" id="30_5hpk8"]
+[ext_resource type="PackedScene" uid="uid://fojsq0umiwdx" path="res://Objects/Entities/Enemies/dog.tscn" id="33_hmi24"]
 
 [sub_resource type="Environment" id="Environment_etjc1"]
 background_mode = 3
@@ -673,14 +673,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mnk7"]
 size = Vector2(24, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooe23"]
-size = Vector2(456, 336)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orblm"]
 size = Vector2(732, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jsgr"]
-size = Vector2(760, 224)
+size = Vector2(1000, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ryd2"]
 size = Vector2(584, 272)
@@ -1810,14 +1807,8 @@ audioStreamPlayer = NodePath("AudioStreamPlayer")
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_1mnk7")
 
-[node name="Lumpy" parent="Entities" instance=ExtResource("20_st84h")]
-position = Vector2(208, -56)
-
-[node name="Lumpy2" parent="Entities" instance=ExtResource("20_st84h")]
-position = Vector2(656, -40)
-
-[node name="Lumpy3" parent="Entities" instance=ExtResource("20_st84h")]
-position = Vector2(304, -120)
+[node name="Dog" parent="." instance=ExtResource("33_hmi24")]
+position = Vector2(400, -32)
 
 [node name="Player" parent="." instance=ExtResource("14_ph4g8")]
 light_mask = 2
@@ -1839,17 +1830,6 @@ script = ExtResource("25_rbcmk")
 
 [node name="Cam" type="Node2D" parent="."]
 visible = false
-
-[node name="CamRegion2" type="Area2D" parent="Cam"]
-position = Vector2(1160, -232)
-collision_layer = 131072
-collision_mask = 65536
-script = ExtResource("26_mddoa")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cam/CamRegion2"]
-position = Vector2(28, 32)
-shape = SubResource("RectangleShape2D_ooe23")
-debug_color = Color(0.983454, 0, 0.35288, 0.42)
 
 [node name="CamRegion3" type="Area2D" parent="Cam"]
 position = Vector2(1160, -232)

@@ -1,32 +1,32 @@
 [gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_q4he1"]
-[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_8tc4j"]
-[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_asvle"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_hovqr"]
-[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_fjlw8"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_hx0a2"]
-[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_sk50q"]
-[ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_psv42"]
-[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_shbdi"]
-[ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y2wtr"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="8_84q3h"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_de1pw"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="8_h5yuc"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="9_veaq1"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="11_1muus"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="12_xtvbw"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="13_1dilq"]
-[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="14_oub3d"]
-[ext_resource type="PackedScene" path="res://Objects/Components/EnemyHurtState.tscn" id="18_qiytl"]
-[ext_resource type="PackedScene" uid="uid://clwj6dgm0myvh" path="res://Objects/Components/EnemyGrabbedState.tscn" id="20_m7hh1"]
-[ext_resource type="PackedScene" uid="uid://db0ov7bqn51kr" path="res://Objects/Components/EnemyThrownState.tscn" id="21_r3xx2"]
-[ext_resource type="PackedScene" uid="uid://b150mpdv8riyj" path="res://Objects/Components/EnemyTuckState.tscn" id="21_u835f"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_5mmnx"]
+[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_i2ob7"]
+[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_kqnyo"]
+[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_ouqjm"]
+[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_gruas"]
+[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="6_r4v4u"]
+[ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="7_xbsis"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="8_pqpgr"]
+[ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="9_7f2kx"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="10_sab7k"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="11_6i11l"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="12_cp4kx"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="13_wowl5"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="14_8hl3p"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="15_aliyx"]
+[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="16_dneiw"]
+[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="17_i2vf5"]
+[ext_resource type="PackedScene" path="res://Objects/Components/EnemyHurtState.tscn" id="18_4474c"]
+[ext_resource type="PackedScene" uid="uid://clwj6dgm0myvh" path="res://Objects/Components/EnemyGrabbedState.tscn" id="19_mp5gu"]
+[ext_resource type="PackedScene" uid="uid://db0ov7bqn51kr" path="res://Objects/Components/EnemyThrownState.tscn" id="20_ula41"]
+[ext_resource type="PackedScene" uid="uid://b150mpdv8riyj" path="res://Objects/Components/EnemyTuckState.tscn" id="21_pyoey"]
+[ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="22_50a61"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rbaw3"]
-diffuse_texture = ExtResource("3_asvle")
-normal_texture = ExtResource("4_fjlw8")
-specular_texture = ExtResource("5_shbdi")
+diffuse_texture = ExtResource("3_kqnyo")
+normal_texture = ExtResource("4_ouqjm")
+specular_texture = ExtResource("5_gruas")
 texture_filter = 1
 
 [sub_resource type="Animation" id="Animation_k40gc"]
@@ -254,7 +254,7 @@ graph_offset = Vector2(-28, -95)
 size = Vector2(136, 19)
 
 [sub_resource type="Resource" id="Resource_5i24x"]
-script = ExtResource("14_oub3d")
+script = ExtResource("17_i2vf5")
 damage = 3.0
 hitstun = 0.5
 xKnockback = 90.0
@@ -281,7 +281,7 @@ radius = 16.0
 [node name="Lumpy" type="CharacterBody2D" node_paths=PackedStringArray("currentState")]
 collision_layer = 2
 floor_snap_length = 8.0
-script = ExtResource("1_q4he1")
+script = ExtResource("1_5mmnx")
 currentState = NodePath("States/NormalState")
 GroundedFloorCheckDist = 16
 AirFloorCheckDist = 8
@@ -291,7 +291,7 @@ gravity = 300.0
 [node name="Art" type="Sprite2D" parent="."]
 light_mask = 2
 texture_filter = 1
-material = ExtResource("2_8tc4j")
+material = ExtResource("2_i2ob7")
 position = Vector2(0, -4)
 texture = SubResource("CanvasTexture_rbaw3")
 offset = Vector2(-1, 0)
@@ -309,29 +309,29 @@ advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AfterImageGenerator" type="Node" parent="Art"]
-script = ExtResource("4_sk50q")
+script = ExtResource("6_r4v4u")
 
-[node name="Attributes" parent="." instance=ExtResource("5_psv42")]
+[node name="Attributes" parent="." instance=ExtResource("7_xbsis")]
 
 [node name="States" type="Node2D" parent="."]
 visible = false
 
 [node name="EnemyBaseState" type="Node2D" parent="States"]
-script = ExtResource("3_hovqr")
+script = ExtResource("8_pqpgr")
 
-[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("7_y2wtr")]
+[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("9_7f2kx")]
 
 [node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
 ignoreAreas = [NodePath("../../../ThrownState/ActiveComponentGroup/ColliderSetActive/Attack")]
 
 [node name="NormalState" type="Node2D" parent="States"]
-script = ExtResource("8_de1pw")
+script = ExtResource("10_sab7k")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/NormalState"]
-script = ExtResource("4_hx0a2")
+script = ExtResource("11_6i11l")
 
 [node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("8_84q3h")
+script = ExtResource("12_cp4kx")
 speed = 30.0
 accel = 900.0
 decel = 480.0
@@ -341,17 +341,17 @@ airDecel = 240.0
 airDecelTooFast = 60.0
 
 [node name="FlipToFaceDirection" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("9_veaq1")
+script = ExtResource("13_wowl5")
 
 [node name="PatrolRandomly" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("11_1muus")
+script = ExtResource("14_8hl3p")
 patrolRange = 100
 waitTimeRange = Vector2(2, 3)
 moveTimeRange = Vector2(1, 2)
 
 [node name="TriggerEnterAct" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 process_priority = -1
-script = ExtResource("12_xtvbw")
+script = ExtResource("15_aliyx")
 toState = "AttackState"
 playAnim = &"Attack"
 faceTarget = true
@@ -368,13 +368,13 @@ position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_ruk6c")
 
 [node name="AttackState" type="Node2D" parent="States"]
-script = ExtResource("8_de1pw")
+script = ExtResource("10_sab7k")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/AttackState"]
-script = ExtResource("4_hx0a2")
+script = ExtResource("11_6i11l")
 
 [node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
-script = ExtResource("8_84q3h")
+script = ExtResource("12_cp4kx")
 horReset = true
 speed = 30.0
 accel = 900.0
@@ -385,12 +385,12 @@ airDecel = 240.0
 airDecelTooFast = 60.0
 
 [node name="InitScriptGroup" type="Node2D" parent="States/AttackState"]
-script = ExtResource("4_hx0a2")
+script = ExtResource("11_6i11l")
 
 [node name="Attack" type="Area2D" parent="States/AttackState"]
 collision_layer = 1024
 collision_mask = 512
-script = ExtResource("13_1dilq")
+script = ExtResource("16_dneiw")
 hitboxData = SubResource("Resource_5i24x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="States/AttackState/Attack"]
@@ -398,14 +398,14 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_vm1vm")
 disabled = true
 
-[node name="HurtState" parent="States" instance=ExtResource("18_qiytl")]
+[node name="HurtState" parent="States" instance=ExtResource("18_4474c")]
 
-[node name="GrabbedState" parent="States" instance=ExtResource("20_m7hh1")]
+[node name="GrabbedState" parent="States" instance=ExtResource("19_mp5gu")]
 
-[node name="ThrownState" parent="States" node_paths=PackedStringArray("ignoreAreas") instance=ExtResource("21_r3xx2")]
+[node name="ThrownState" parent="States" node_paths=PackedStringArray("ignoreAreas") instance=ExtResource("20_ula41")]
 ignoreAreas = [NodePath("../../Hurtbox")]
 
-[node name="TuckState" parent="States" instance=ExtResource("21_u835f")]
+[node name="TuckState" parent="States" instance=ExtResource("21_pyoey")]
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -416,7 +416,7 @@ visible = false
 position = Vector2(0, 4)
 collision_layer = 2048
 collision_mask = 260
-script = ExtResource("8_h5yuc")
+script = ExtResource("22_50a61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -4.5)
