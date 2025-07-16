@@ -10,6 +10,7 @@ public partial class TriggerEnterAct : StateScript
 	[Export] public bool faceTarget;
 	[Export] public Vector2 triggerWaitRange;
 	[Export] public Vector2 SubseqTriggerWaitRange;
+	[Export] public bool cannotTriggerWhenAlreadyOnAnim = true;
 	RandomNumberGenerator rand;
 	Node2D inContact;
 	public float waitTime;
@@ -54,7 +55,8 @@ public partial class TriggerEnterAct : StateScript
 				if (playAnim != "")
 				{
 					var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
-					stateMachine.Start(playAnim, true);
+					if(!(cannotTriggerWhenAlreadyOnAnim && stateMachine.GetCurrentNode() == playAnim))
+						stateMachine.Start(playAnim, true);
 				}
 				if (faceTarget)
 				{

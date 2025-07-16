@@ -4,6 +4,9 @@ using System;
 [GlobalClass]
 public partial class AccelAndDecel : StateScript
 {
+	[Signal]
+	public delegate void StoppedEventHandler();
+
 	[Export] public float hor;
 	[Export] public bool horReset;
 	[Export] bool directControl;
@@ -24,21 +27,29 @@ public partial class AccelAndDecel : StateScript
 		
 		if(directControl) hor = Input.GetAxis("ui_left", "ui_right");
 
-		if(Mathf.Abs(hor) > 0.1f && !(entity.grounded && accel == 0)) {
+		if (Mathf.Abs(hor) > 0.1f && !(entity.grounded && accel == 0))
+		{
 			int sign = Mathf.Sign(hor);
-			if(entity.horSpeed * hor < speed)
+			if (entity.horSpeed * hor < speed)
 				entity.AccelerateHor((entity.grounded ? accel : airAccel) * hor * (float)delta, speed * hor, true);
 
-				float thisInitSpeed = entity.grounded ? initSpeed : initSpeedAir;
-				if( Mathf.Abs(entity.horSpeed) < thisInitSpeed) {
-					entity.SetHor(hor*thisInitSpeed);
-				}
-			else {
+			float thisInitSpeed = entity.grounded ? initSpeed : initSpeedAir;
+			if (Mathf.Abs(entity.horSpeed) < thisInitSpeed)
+			{
+				entity.SetHor(hor * thisInitSpeed);
+			}
+			else
+			{
 				entity.AccelerateHor((entity.grounded ? decelTooFast : airDecelTooFast) * hor * (float)delta, speed * hor, true);
 			}
 		}
-		else {
-			entity.AccelerateHor( (entity.grounded ? decel : airDecel) * (float)delta, 0);
+		else
+		{
+			entity.AccelerateHor((entity.grounded ? decel : airDecel) * (float)delta, 0);
+			if (entity.horSpeed == 0)
+			{
+				EmitSignal(SignalName.Stopped);
+			}
 		}
 
 		if(horReset)

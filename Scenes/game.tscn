@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bb7vw7fvmejei"]
 
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="1_v3dwl"]
-[ext_resource type="PackedScene" uid="uid://rv7xg4obnm88" path="res://Scenes/HouseEclipse.tscn" id="3_f2i41"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/MusicController.cs" id="4_0qlmu"]
+[ext_resource type="PackedScene" uid="uid://yau4bo61kkf3" path="res://Scenes/HouseEclipseLDTKTest.tscn" id="5_sdqnh"]
 [ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="5_ximvb"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/SFXController.cs" id="6_o47f1"]
 
@@ -22,4 +22,4 @@ script = ExtResource("4_0qlmu")
 [node name="DialogueBox" parent="." instance=ExtResource("5_ximvb")]
 layer = 0
 
-[node name="HouseEclipse" parent="." instance=ExtResource("3_f2i41")]
+[node name="HouseEclipse" parent="." instance=ExtResource("5_sdqnh")]

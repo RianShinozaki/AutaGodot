@@ -1,0 +1,37 @@
+[remap]
+
+importer="ldtk.import"
+type="PackedScene"
+uid="uid://bqj8ydrdn64lx"
+path="res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"
+
+[deps]
+
+files=["res://LDTK/tilesets/tileset_16px.res", "res://LDTK/levels/Level_0.scn", "res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"]
+
+source_file="res://LDTK/TestUnderground.ldtk"
+dest_files=["res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn", "res://LDTK/tilesets/tileset_16px.res", "res://LDTK/levels/Level_0.scn", "res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"]
+
+[params]
+
+World=""
+group_world_layers=false
+Level=""
+pack_levels=true
+Layer=""
+layers_always_visible=false
+Tileset=""
+tileset_custom_data=false
+integer_grid_tilesets=false
+atlas_texture_type=0
+Entity=""
+resolve_entityrefs=true
+use_entity_placeholders=false
+Post Import=""
+tileset_post_import=""
+entities_post_import=""
+level_post_import=""
+world_post_import=""
+Debug=""
+force_tileset_reimport=false
+verbose_output=false
