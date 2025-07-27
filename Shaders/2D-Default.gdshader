@@ -36,10 +36,12 @@ void fragment() {
 }
 
 void light() {
-	float light = dot(normalize(NORMAL), LIGHT_DIRECTION) * LIGHT_ENERGY;
-	float gradient = texture(LightGradient, vec2(light, light)).r;
-	float cNdotL = max(0.0, gradient);
-  	LIGHT = mix(vec4((LIGHT_COLOR.rgb * LIGHT_ENERGY) * cNdotL, LIGHT_COLOR.a), vec4(0,0,0,0), stunFX);
+	//float light = dot(normalize(NORMAL), LIGHT_DIRECTION) * LIGHT_ENERGY;
+	//float gradient = texture(LightGradient, vec2(light, light)).r;
+	//float cNdotL = max(0.0, gradient);
+  	//LIGHT = mix(vec4((LIGHT_COLOR.rgb * LIGHT_ENERGY) * cNdotL, LIGHT_COLOR.a), vec4(0,0,0,0), stunFX);
 	
-	//LIGHT=COLOR;
+	
+	 LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY, LIGHT_COLOR.a);
+	
 }

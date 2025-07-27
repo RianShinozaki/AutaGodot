@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://c5xad8auwqo6q"]
+[gd_scene load_steps=51 format=3 uid="uid://c5xad8auwqo6q"]
 
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameWorld.cs" id="1_3ta8m"]
 [ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Art Assets/Environment/Underground/Backgrounds/spr_RockyBG_TC.png" id="3_2qwfn"]
@@ -18,9 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="19_iay6d"]
 [ext_resource type="Shader" uid="uid://crij0fawgr8t6" path="res://Shaders/Desaturate.tres" id="21_bwwqa"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="21_vnndc"]
-[ext_resource type="Material" uid="uid://b1q2muuw2g5v0" path="res://Art Assets/Environment/WeaponsBunker/LiquidStardust.tres" id="23_phpbi"]
 [ext_resource type="PackedScene" uid="uid://clsap8kuficb3" path="res://LDTK/DeepRuins/DeepRuins.ldtk" id="23_xldb1"]
-[ext_resource type="Texture2D" uid="uid://dy5hml5cirtwk" path="res://Art Assets/Environment/WeaponsBunker/SpecialTiles/LiquidWasteCenter.png" id="24_dfrou"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -139,29 +137,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxfxg"]
-texture = ExtResource("24_dfrou")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_5hv3q"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_sxfxg")
-
-[sub_resource type="Gradient" id="Gradient_g55b7"]
-offsets = PackedFloat32Array(0, 0.326531, 0.390671, 0.533528, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.0768358, 0.0768358, 0.0768358, 1, 1, 1, 1, 1, 0.770335, 0.770335, 0.770335, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nokhd"]
-gradient = SubResource("Gradient_g55b7")
-width = 424
-height = 139
-fill_from = Vector2(0.508547, 1)
-fill_to = Vector2(0.517094, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1w4b"]
 shader = ExtResource("21_bwwqa")
@@ -360,6 +335,7 @@ color = Color(0.604093, 0.441253, 0.603261, 1)
 energy = 0.71
 range_layer_min = -100
 range_layer_max = 100
+range_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_jvnoa")
 texture_scale = 7.39
 
@@ -390,14 +366,14 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5xne8")
 
 [node name="Player" parent="." instance=ExtResource("16_1ihio")]
-light_mask = 2
-position = Vector2(233, 198)
+light_mask = 0
+position = Vector2(254, 199)
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player"]
 material = SubResource("CanvasItemMaterial_fjxv6")
 position = Vector2(2, 9)
-color = Color(0.766363, 0.58413, 0.828211, 1)
-energy = 0.53
+color = Color(0.780545, 0.584747, 0.789614, 1)
+energy = 0.44
 range_layer_min = -100
 range_layer_max = 100
 range_item_cull_mask = 3
@@ -414,19 +390,6 @@ texture_filter = 1
 script = ExtResource("17_4f0bv")
 
 [node name="FXPool" parent="System" instance=ExtResource("18_36nyi")]
-
-[node name="Liquid" type="TileMapLayer" parent="."]
-z_index = 10
-material = ExtResource("23_phpbi")
-position = Vector2(286, -200)
-tile_map_data = PackedByteArray("AAAiAAUAAAAAAAAAAAAiAAYAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAUAAAAAAAAAAAAkAAYAAAAAAAAAAAAkAAUAAAAAAAAAAAAlAAUAAAAAAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAAAAAAAAAAnAAUAAAAAAAAAAAAmAAUAAAAAAAAAAAAoAAUAAAAAAAAAAAAoAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAiAAcAAAAAAAAAAAAiAAgAAAAAAAAAAAAjAAgAAAAAAAAAAAAjAAcAAAAAAAAAAAAkAAcAAAAAAAAAAAAlAAcAAAAAAAAAAAAmAAcAAAAAAAAAAAAmAAgAAAAAAAAAAAAlAAgAAAAAAAAAAAAkAAgAAAAAAAAAAAAnAAcAAAAAAAAAAAAoAAcAAAAAAAAAAAAoAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAnAAkAAAAAAAAAAAAmAAkAAAAAAAAAAAAlAAkAAAAAAAAAAAAkAAkAAAAAAAAAAAAjAAkAAAAAAAAAAAAiAAkAAAAAAAAAAAAoAAkAAAAAAAAAAAAuAAUAAAAAAAAAAAAuAAYAAAAAAAAAAAAtAAYAAAAAAAAAAAAsAAYAAAAAAAAAAAArAAYAAAAAAAAAAAAqAAYAAAAAAAAAAAApAAYAAAAAAAAAAAArAAUAAAAAAAAAAAAsAAUAAAAAAAAAAAAtAAUAAAAAAAAAAAAqAAUAAAAAAAAAAAApAAUAAAAAAAAAAAApAAcAAAAAAAAAAAAqAAcAAAAAAAAAAAArAAcAAAAAAAAAAAAsAAcAAAAAAAAAAAAtAAcAAAAAAAAAAAAtAAgAAAAAAAAAAAAsAAgAAAAAAAAAAAArAAgAAAAAAAAAAAAqAAgAAAAAAAAAAAApAAgAAAAAAAAAAAAuAAgAAAAAAAAAAAAuAAkAAAAAAAAAAAAtAAkAAAAAAAAAAAAsAAkAAAAAAAAAAAArAAkAAAAAAAAAAAAqAAkAAAAAAAAAAAAuAAcAAAAAAAAAAAApAAkAAAAAAAAAAAAuAAQAAAAAAAAAAAAtAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAArAAQAAAAAAAAAAAAqAAQAAAAAAAAAAAApAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAmAAQAAAAAAAAAAAAlAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAjAAQAAAAAAAAAAAAiAAQAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_5hv3q")
-
-[node name="PointLight2D" type="PointLight2D" parent="Liquid"]
-position = Vector2(1298, 128)
-color = Color(0.0666667, 1, 1, 1)
-energy = 2.37
-texture = SubResource("GradientTexture2D_nokhd")
 
 [node name="Cam" type="Node2D" parent="."]
 position = Vector2(229, 127)
