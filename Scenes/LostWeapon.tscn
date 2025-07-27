@@ -1,0 +1,449 @@
+[gd_scene load_steps=59 format=4 uid="uid://rtss4xgk0676"]
+
+[ext_resource type="Script" path="res://Scripts/System/Controllers/GameWorld.cs" id="1_eoe1r"]
+[ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Art Assets/Environment/Underground/Backgrounds/spr_RockyBG_TC.png" id="2_cxm0n"]
+[ext_resource type="AudioStream" uid="uid://dgquiafdci3qr" path="res://Audio/Music/auta_ambient.wav" id="2_gx0ee"]
+[ext_resource type="Texture2D" uid="uid://cw2p77tl28ann" path="res://Art Assets/Environment/Underground/Backgrounds/FarBuildings.png" id="3_08wba"]
+[ext_resource type="Texture2D" uid="uid://lhiwo17607ix" path="res://Art Assets/Environment/Underground/Backgrounds/CloseBuildings.png" id="4_td3hi"]
+[ext_resource type="Texture2D" uid="uid://f5jkjnuwqu70" path="res://Art Assets/Environment/Underground/Backgrounds/CloserStal.png" id="5_nrota"]
+[ext_resource type="Texture2D" uid="uid://chb8txanurvh3" path="res://Art Assets/Environment/WeaponsBunker/Backgrounds/CloserSpikes.png" id="7_5bqn7"]
+[ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="7_8pefs"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/ParallaxController.cs" id="8_e45kp"]
+[ext_resource type="Script" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="10_cq7us"]
+[ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="11_8dgx1"]
+[ext_resource type="Material" uid="uid://b1q2muuw2g5v0" path="res://Art Assets/Environment/WeaponsBunker/LiquidStardust.tres" id="11_kxtx1"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="12_7qnki"]
+[ext_resource type="Texture2D" uid="uid://dy5hml5cirtwk" path="res://Art Assets/Environment/WeaponsBunker/SpecialTiles/LiquidWasteCenter.png" id="12_um36s"]
+[ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="13_4kbrm"]
+[ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="14_o4jpm"]
+[ext_resource type="PackedScene" uid="uid://dxflhd836je40" path="res://Objects/System/fxPool.tscn" id="15_p2ybd"]
+[ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="15_u6vit"]
+[ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="16_xd0qn"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="17_87ao1"]
+[ext_resource type="PackedScene" uid="uid://cyxhusp5ppcjy" path="res://LDTK/LostWeapon/LostWeaponWorld.ldtk" id="17_msa5o"]
+[ext_resource type="PackedScene" uid="uid://cnbsg2ejcl4ls" path="res://Objects/System/cam_region.tscn" id="20_c1gey"]
+[ext_resource type="PackedScene" uid="uid://fojsq0umiwdx" path="res://Objects/Entities/Enemies/dog.tscn" id="21_bomjw"]
+[ext_resource type="Shader" path="res://Shaders/FunnyScreenShader.gdshader" id="24_whcwo"]
+
+[sub_resource type="Environment" id="Environment_02j3j"]
+background_mode = 3
+tonemap_exposure = 1.01
+tonemap_white = 0.82
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/6 = 3.5
+glow_levels/7 = 2.05
+glow_intensity = 1.12
+glow_strength = 0.57
+glow_bloom = 0.7
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 21.95
+adjustment_enabled = true
+adjustment_saturation = 1.24
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v4h1l"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sp2nr"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q0fgd"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h3qae"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjmet"]
+blend_mode = 1
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_hswq2"]
+offsets = PackedFloat32Array(0.471299, 0.681979)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uanf8"]
+gradient = SubResource("Gradient_hswq2")
+fill = 1
+fill_from = Vector2(0.523077, 0.487179)
+
+[sub_resource type="Gradient" id="Gradient_25qwu"]
+offsets = PackedFloat32Array(0.0136519, 0.221843, 0.672566, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.337255, 1, 1, 1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gsxy"]
+atlas = ExtResource("11_8dgx1")
+region = Rect2(0, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35yqp"]
+atlas = ExtResource("11_8dgx1")
+region = Rect2(16, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6o0m"]
+atlas = ExtResource("11_8dgx1")
+region = Rect2(32, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4nek"]
+atlas = ExtResource("11_8dgx1")
+region = Rect2(48, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrvu1"]
+atlas = ExtResource("11_8dgx1")
+region = Rect2(64, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcy67"]
+atlas = ExtResource("11_8dgx1")
+region = Rect2(80, 0, 16, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uikoh"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5gsxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35yqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6o0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4nek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrvu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcy67")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
+size = Vector2(24, 10)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjxv6"]
+
+[sub_resource type="Gradient" id="Gradient_t75hp"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jvnoa"]
+gradient = SubResource("Gradient_t75hp")
+fill = 1
+fill_from = Vector2(0.525641, 0.5)
+fill_to = Vector2(0.888889, 0.128205)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtm8j"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_euxu7"]
+colors = PackedColorArray(0, 0, 0.470588, 0, 1, 0.784314, 1, 0.2)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ajp8n"]
+gradient = SubResource("Gradient_euxu7")
+width = 454
+height = 259
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.512195, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvfxt"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_ls5kl"]
+offsets = PackedFloat32Array(0, 0.540462)
+colors = PackedColorArray(0.00784314, 0, 0.121569, 1, 0.204035, 0.0178255, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k1pnl"]
+gradient = SubResource("Gradient_ls5kl")
+width = 454
+height = 259
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.512195, 0)
+
+[sub_resource type="Gradient" id="Gradient_4vh4o"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_te82h"]
+gradient = SubResource("Gradient_4vh4o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tfdg"]
+shader = ExtResource("24_whcwo")
+shader_parameter/outline_color_left = Color(0.973114, 0.649204, 0.84163, 1)
+shader_parameter/outline_color_right = Color(0.710376, 0.204144, 1, 1)
+shader_parameter/stunFX = 1.0
+shader_parameter/LightGradient = SubResource("GradientTexture1D_te82h")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bvioy"]
+size = Vector2(480, 256)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxfxg"]
+texture = ExtResource("12_um36s")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5hv3q"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_sxfxg")
+
+[sub_resource type="Gradient" id="Gradient_g55b7"]
+offsets = PackedFloat32Array(0, 0.326531, 0.390671, 0.533528, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0768358, 0.0768358, 0.0768358, 1, 1, 1, 1, 1, 0.770335, 0.770335, 0.770335, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nokhd"]
+gradient = SubResource("Gradient_g55b7")
+width = 424
+height = 139
+fill_from = Vector2(0.508547, 1)
+fill_to = Vector2(0.517094, 0)
+
+[node name="CanvasModulate" type="CanvasModulate"]
+texture_filter = 1
+color = Color(0.579767, 0.491649, 0.506706, 1)
+script = ExtResource("1_eoe1r")
+bgMusic = ExtResource("2_gx0ee")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_02j3j")
+
+[node name="DebugLight" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(449, -437)
+editor_only = true
+energy = 2.64
+
+[node name="Environment-Under" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Backgrounds" type="Node2D" parent="Environment-Under"]
+light_mask = 9
+z_index = -1000
+texture_filter = 1
+
+[node name="FarBG" type="Node2D" parent="Environment-Under/Backgrounds"]
+z_index = -4000
+
+[node name="Back" type="Parallax2D" parent="Environment-Under/Backgrounds/FarBG"]
+light_mask = 8
+scroll_scale = Vector2(0.02, 0.02)
+repeat_size = Vector2(190, 190)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment-Under/Backgrounds/FarBG/Back"]
+modulate = Color(0.32805, 0.296552, 0.228955, 1)
+material = SubResource("CanvasItemMaterial_v4h1l")
+texture = ExtResource("2_cxm0n")
+
+[node name="FarBuildings" type="Parallax2D" parent="Environment-Under/Backgrounds/FarBG"]
+visible = false
+light_mask = 8
+scroll_scale = Vector2(0.02, 0)
+scroll_offset = Vector2(448, 252)
+repeat_size = Vector2(448, 0)
+repeat_times = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment-Under/Backgrounds/FarBG/FarBuildings"]
+modulate = Color(0.65696, 0.447501, 0.518809, 1)
+material = SubResource("CanvasItemMaterial_sp2nr")
+texture = ExtResource("3_08wba")
+
+[node name="CloserBuildings" type="Parallax2D" parent="Environment-Under/Backgrounds/FarBG"]
+visible = false
+light_mask = 8
+scroll_scale = Vector2(0.04, 0)
+scroll_offset = Vector2(448, 252)
+repeat_size = Vector2(448, 0)
+repeat_times = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment-Under/Backgrounds/FarBG/CloserBuildings"]
+modulate = Color(0.65696, 0.447501, 0.518809, 1)
+material = SubResource("CanvasItemMaterial_q0fgd")
+texture = ExtResource("4_td3hi")
+
+[node name="CloserStal" type="Parallax2D" parent="Environment-Under/Backgrounds/FarBG"]
+visible = false
+light_mask = 8
+scroll_scale = Vector2(0.1, 0)
+scroll_offset = Vector2(448, 252)
+repeat_size = Vector2(448, 0)
+repeat_times = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment-Under/Backgrounds/FarBG/CloserStal"]
+modulate = Color(0.526746, 0.416993, 0.058068, 1)
+material = SubResource("CanvasItemMaterial_h3qae")
+texture = ExtResource("5_nrota")
+
+[node name="CloserStal2" type="Parallax2D" parent="Environment-Under/Backgrounds/FarBG"]
+light_mask = 8
+scroll_scale = Vector2(0.15, 0.15)
+scroll_offset = Vector2(448, 194.5)
+repeat_size = Vector2(448, 0)
+repeat_times = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment-Under/Backgrounds/FarBG/CloserStal2"]
+texture = ExtResource("7_5bqn7")
+
+[node name="ClosestStal" type="Parallax2D" parent="Environment-Under/Backgrounds/FarBG"]
+visible = false
+light_mask = 8
+scroll_scale = Vector2(0.2, 0)
+scroll_offset = Vector2(448, 252)
+repeat_size = Vector2(448, 0)
+repeat_times = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment-Under/Backgrounds/FarBG/ClosestStal"]
+texture = ExtResource("7_8pefs")
+
+[node name="NearBG" type="Node2D" parent="Environment-Under/Backgrounds"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Environment-Under"]
+material = SubResource("CanvasItemMaterial_fjmet")
+amount = 512
+lifetime = 10.0
+preprocess = 10.0
+randomness = 0.35
+lifetime_randomness = 0.21
+texture = SubResource("GradientTexture2D_uanf8")
+emission_shape = 3
+emission_rect_extents = Vector2(640, 360)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 2)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+scale_amount_min = 0.02
+scale_amount_max = 0.03
+color_ramp = SubResource("Gradient_25qwu")
+script = ExtResource("8_e45kp")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Environment-Under"]
+visible = false
+material = SubResource("CanvasItemMaterial_fjmet")
+amount = 32
+lifetime = 10.0
+preprocess = 10.0
+texture = SubResource("GradientTexture2D_uanf8")
+emission_shape = 3
+emission_rect_extents = Vector2(320, 180)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -2)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+scale_amount_min = 0.03
+scale_amount_max = 0.06
+color_ramp = SubResource("Gradient_25qwu")
+script = ExtResource("8_e45kp")
+
+[node name="LostWeaponWorld" parent="." instance=ExtResource("17_msa5o")]
+z_index = -60
+
+[node name="Lighting-Under" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting-Under"]
+visible = false
+color = Color(0.118609, 0.264996, 0.27056, 1)
+energy = 0.4
+blend_mode = 1
+range_layer_min = -32
+range_layer_max = 1
+range_item_cull_mask = 0
+max_distance = 0.0
+
+[node name="Entities" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="BasicDialogueEntity" type="Area2D" parent="Entities"]
+position = Vector2(-318, -11)
+script = ExtResource("10_cq7us")
+
+[node name="Tess" type="AnimatedSprite2D" parent="Entities/BasicDialogueEntity"]
+sprite_frames = SubResource("SpriteFrames_uikoh")
+autoplay = "default"
+
+[node name="DialogueRunner" type="Control" parent="Entities/BasicDialogueEntity" node_paths=PackedStringArray("audioStreamPlayer")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("12_7qnki")
+dialogueData = ExtResource("13_4kbrm")
+audioStreamPlayer = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Entities/BasicDialogueEntity/DialogueRunner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/BasicDialogueEntity"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_5xne8")
+
+[node name="Dog" parent="Entities" instance=ExtResource("21_bomjw")]
+position = Vector2(559, 221)
+
+[node name="Player" parent="." instance=ExtResource("14_o4jpm")]
+light_mask = 2
+position = Vector2(117, 210)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Player"]
+visible = false
+material = SubResource("CanvasItemMaterial_fjxv6")
+position = Vector2(0, -8)
+color = Color(1.92523e-06, 0.756913, 0.831217, 1)
+energy = 0.75
+texture = SubResource("GradientTexture2D_jvnoa")
+texture_scale = 2.0
+
+[node name="Environment-Over" type="Node2D" parent="."]
+visible = false
+texture_filter = 1
+
+[node name="System" type="Node" parent="."]
+
+[node name="Node" type="Node" parent="System"]
+script = ExtResource("17_87ao1")
+
+[node name="FXPool" parent="System" instance=ExtResource("15_p2ybd")]
+
+[node name="Cam" type="Node2D" parent="."]
+
+[node name="Camera2D" parent="Cam" node_paths=PackedStringArray("target") instance=ExtResource("15_u6vit")]
+position = Vector2(220, 123)
+target = NodePath("../CameraCenter")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cam/Camera2D"]
+light_mask = 0
+z_index = -3999
+material = SubResource("CanvasItemMaterial_jtm8j")
+position = Vector2(0, -2.74999)
+scale = Vector2(1, 0.978764)
+texture = SubResource("GradientTexture2D_ajp8n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cam/Camera2D"]
+light_mask = 0
+z_index = -3999
+material = SubResource("CanvasItemMaterial_yvfxt")
+position = Vector2(0, 26)
+scale = Vector2(1, 0.795367)
+texture = SubResource("GradientTexture2D_k1pnl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Cam/Camera2D"]
+visible = false
+z_index = 100
+material = SubResource("ShaderMaterial_2tfdg")
+texture = SubResource("PlaceholderTexture2D_bvioy")
+
+[node name="CameraCenter" parent="Cam" instance=ExtResource("16_xd0qn")]
+position = Vector2(712, -168)
+
+[node name="CamRegion" parent="Cam" instance=ExtResource("20_c1gey")]
+
+[node name="Liquid" type="TileMapLayer" parent="."]
+z_index = 10
+material = ExtResource("11_kxtx1")
+position = Vector2(286, -200)
+tile_map_data = PackedByteArray("AAAiAAUAAAAAAAAAAAAiAAYAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAUAAAAAAAAAAAAkAAYAAAAAAAAAAAAkAAUAAAAAAAAAAAAlAAUAAAAAAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAAAAAAAAAAnAAUAAAAAAAAAAAAmAAUAAAAAAAAAAAAoAAUAAAAAAAAAAAAoAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAiAAcAAAAAAAAAAAAiAAgAAAAAAAAAAAAjAAgAAAAAAAAAAAAjAAcAAAAAAAAAAAAkAAcAAAAAAAAAAAAlAAcAAAAAAAAAAAAmAAcAAAAAAAAAAAAmAAgAAAAAAAAAAAAlAAgAAAAAAAAAAAAkAAgAAAAAAAAAAAAnAAcAAAAAAAAAAAAoAAcAAAAAAAAAAAAoAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAnAAkAAAAAAAAAAAAmAAkAAAAAAAAAAAAlAAkAAAAAAAAAAAAkAAkAAAAAAAAAAAAjAAkAAAAAAAAAAAAiAAkAAAAAAAAAAAAoAAkAAAAAAAAAAAAuAAUAAAAAAAAAAAAuAAYAAAAAAAAAAAAtAAYAAAAAAAAAAAAsAAYAAAAAAAAAAAArAAYAAAAAAAAAAAAqAAYAAAAAAAAAAAApAAYAAAAAAAAAAAArAAUAAAAAAAAAAAAsAAUAAAAAAAAAAAAtAAUAAAAAAAAAAAAqAAUAAAAAAAAAAAApAAUAAAAAAAAAAAApAAcAAAAAAAAAAAAqAAcAAAAAAAAAAAArAAcAAAAAAAAAAAAsAAcAAAAAAAAAAAAtAAcAAAAAAAAAAAAtAAgAAAAAAAAAAAAsAAgAAAAAAAAAAAArAAgAAAAAAAAAAAAqAAgAAAAAAAAAAAApAAgAAAAAAAAAAAAuAAgAAAAAAAAAAAAuAAkAAAAAAAAAAAAtAAkAAAAAAAAAAAAsAAkAAAAAAAAAAAArAAkAAAAAAAAAAAAqAAkAAAAAAAAAAAAuAAcAAAAAAAAAAAApAAkAAAAAAAAAAAAuAAQAAAAAAAAAAAAtAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAArAAQAAAAAAAAAAAAqAAQAAAAAAAAAAAApAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAmAAQAAAAAAAAAAAAlAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAjAAQAAAAAAAAAAAAiAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_5hv3q")
+
+[node name="PointLight2D" type="PointLight2D" parent="Liquid"]
+position = Vector2(1298, 128)
+color = Color(0.0666667, 1, 1, 1)
+energy = 2.37
+texture = SubResource("GradientTexture2D_nokhd")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://yau4bo61kkf3"]
+[gd_scene load_steps=38 format=3 uid="uid://yau4bo61kkf3"]
 
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameWorld.cs" id="1_linh1"]
 [ext_resource type="AudioStream" uid="uid://dednlybc8e86c" path="res://Audio/Music/Temp/Wish Upon a Star.mp3" id="2_u1c4w"]
@@ -9,12 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="7_1btep"]
 [ext_resource type="Texture2D" uid="uid://cn3416vu8wta6" path="res://Art Assets/Environment/House/Backgrounds/HallWall.png" id="8_osik0"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/ParallaxController.cs" id="9_lrad4"]
-[ext_resource type="PackedScene" uid="uid://daailb8lshm22" path="res://Objects/Environment/House/starflower.tscn" id="15_ictq6"]
-[ext_resource type="PackedScene" uid="uid://cyj3ulyws4ofg" path="res://Objects/Environment/House/voidboble.tscn" id="16_babga"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="23_lqlgb"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="24_8nayb"]
 [ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="25_2u5e3"]
 [ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="26_61o4h"]
+[ext_resource type="PackedScene" uid="uid://fojsq0umiwdx" path="res://Objects/Entities/Enemies/dog.tscn" id="27_xl7ts"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="28_4k8lp"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="29_ldbci"]
 [ext_resource type="PackedScene" uid="uid://dxflhd836je40" path="res://Objects/System/fxPool.tscn" id="30_dsr7e"]
@@ -121,6 +120,7 @@ size = Vector2(24, 10)
 
 [node name="HouseEclipse" type="CanvasModulate"]
 texture_filter = 1
+position = Vector2(0, -1)
 color = Color(0.926533, 0.877209, 0.927997, 1)
 script = ExtResource("1_linh1")
 bgMusic = ExtResource("2_u1c4w")
@@ -457,65 +457,36 @@ texture_filter = 1
 
 [node name="ObjectsUnder" type="Node2D" parent="Environment-Under"]
 
-[node name="StarFlower" parent="Environment-Under" instance=ExtResource("15_ictq6")]
-position = Vector2(1680, -144)
-
-[node name="StarFlower2" parent="Environment-Under" instance=ExtResource("15_ictq6")]
-position = Vector2(2040, -208)
-
-[node name="StarFlower3" parent="Environment-Under" instance=ExtResource("15_ictq6")]
-position = Vector2(2128, -240)
-
-[node name="StarFlower4" parent="Environment-Under" instance=ExtResource("15_ictq6")]
-position = Vector2(2512, -112)
-
-[node name="StarFlower5" parent="Environment-Under" instance=ExtResource("15_ictq6")]
-position = Vector2(2592, -168)
-rotation = 1.57079
-
-[node name="VoidBoble" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(656, -128)
-
-[node name="VoidBoble2" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(680, -160)
-
-[node name="VoidBoble3" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(712, -200)
-
-[node name="VoidBoble4" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(632, -168)
-
-[node name="VoidBoble5" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(720, -152)
-
-[node name="VoidBoble6" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(704, -112)
-
-[node name="VoidBoble7" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(752, -176)
-
-[node name="VoidBoble8" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(664, -208)
-
-[node name="VoidBoble9" parent="Environment-Under" instance=ExtResource("16_babga")]
-position = Vector2(704, -232)
-
 [node name="TestUnderground" parent="." instance=ExtResource("34_3mudx")]
 position = Vector2(-624, -288)
 
 [node name="Entities" type="Node2D" parent="."]
 texture_filter = 1
 
-[node name="Player" parent="." instance=ExtResource("28_4k8lp")]
+[node name="BasicDialogueEntity" type="Area2D" parent="Entities"]
+position = Vector2(-208, -155)
+script = ExtResource("23_lqlgb")
+
+[node name="Tess" type="AnimatedSprite2D" parent="Entities/BasicDialogueEntity"]
+sprite_frames = SubResource("SpriteFrames_6n5ui")
+autoplay = "default"
+
+[node name="DialogueRunner" type="Control" parent="Entities/BasicDialogueEntity" node_paths=PackedStringArray("audioStreamPlayer")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("25_2u5e3")
+dialogueData = ExtResource("26_61o4h")
+audioStreamPlayer = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Entities/BasicDialogueEntity/DialogueRunner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/BasicDialogueEntity"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_xrnex")
+
+[node name="Player" parent="Entities" instance=ExtResource("28_4k8lp")]
 light_mask = 2
 position = Vector2(-336, -104)
-
-[node name="Environment-Over" type="Node2D" parent="."]
-visible = false
-texture_filter = 1
-
-[node name="Lighting-Over" type="Node2D" parent="."]
-texture_filter = 1
 
 [node name="System" type="Node" parent="."]
 
@@ -534,23 +505,8 @@ target = NodePath("../CameraCenter")
 position = Vector2(712, -168)
 cameraSize = Vector2(180, 100)
 
-[node name="BasicDialogueEntity" type="Area2D" parent="."]
-position = Vector2(-208, -155)
-script = ExtResource("23_lqlgb")
+[node name="Dog" parent="." instance=ExtResource("27_xl7ts")]
+position = Vector2(-880, -336)
 
-[node name="Tess" type="AnimatedSprite2D" parent="BasicDialogueEntity"]
-sprite_frames = SubResource("SpriteFrames_6n5ui")
-autoplay = "default"
-
-[node name="DialogueRunner" type="Control" parent="BasicDialogueEntity" node_paths=PackedStringArray("audioStreamPlayer")]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("25_2u5e3")
-dialogueData = ExtResource("26_61o4h")
-audioStreamPlayer = NodePath("AudioStreamPlayer")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BasicDialogueEntity/DialogueRunner"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicDialogueEntity"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_xrnex")
+[node name="Dog2" parent="." instance=ExtResource("27_xl7ts")]
+position = Vector2(240, -96)

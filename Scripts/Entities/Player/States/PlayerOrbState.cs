@@ -32,28 +32,40 @@ public partial class PlayerOrbState : EntityState
 	Vector2 cachedInput;
 	float cachedDirection;
 	float cachedRot;
+	bool canDeOrb;
+	Godot.Collections.Array<Node> staticBodies;
+	public override void _Ready()
+	{
+		base._Ready();
+		entity.Bounce += on_bounce;
+		staticBodies = new Godot.Collections.Array<Node>();
+	}
 
-	public override void Start() {
+	public override void Start()
+	{
 		PlayerController player = (PlayerController)entity;
 
 		orbTime = 0;
+		canDeOrb = true;
 		player.collisionMode = Agent.CollisionMode.BOUNCE;
 
 		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("Orb", true);
 
-		if(entity.lastState.Name == "DuckState") {
+		if (entity.lastState.Name == "DuckState")
+		{
 			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 			inputDir.X = Mathf.Sign(inputDir.X);
-			if(inputDir.X == 0) inputDir.X = player.sprite.FlipH ? -1 : 1;
+			if (inputDir.X == 0) inputDir.X = player.sprite.FlipH ? -1 : 1;
 
 			if (inputDir.X > 0.5f) player.horSpeed = Mathf.Max(player.horSpeed, inputDir.X * speed);
 			else if (inputDir.X < -0.5f) player.horSpeed = Mathf.Min(player.horSpeed, inputDir.X * speed);
 			else player.horSpeed = inputDir.X * speed;
 		}
-		else {
+		else
+		{
 			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-			if(inputDir == Vector2.Zero) inputDir.X = player.sprite.FlipH ? -1 : 1;
+			if (inputDir == Vector2.Zero) inputDir.X = player.sprite.FlipH ? -1 : 1;
 
 			if (inputDir.X > 0.5f) player.horSpeed = Mathf.Max(player.horSpeed, inputDir.X * speed);
 			else if (inputDir.X < -0.5f) player.horSpeed = Mathf.Min(player.horSpeed, inputDir.X * speed);
@@ -62,17 +74,17 @@ public partial class PlayerOrbState : EntityState
 			if (inputDir.Y > 0.5f) player.vertSpeed = Mathf.Max(player.vertSpeed, inputDir.Y * speed);
 			else if (inputDir.Y < -0.5f) player.vertSpeed = Mathf.Min(player.vertSpeed, inputDir.Y * speed);
 			else player.vertSpeed = inputDir.Y * speed;
-			
+
 			if (player.vertSpeed == 0 && player.grounded)
 			{
 				player.vertSpeed = initYSpeed;
 			}
-			if(player.vertSpeed == 0 && !player.grounded) {
-				player.vertSpeed = initYSpeed*0.3f;
+			if (player.vertSpeed == 0 && !player.grounded)
+			{
+				player.vertSpeed = initYSpeed * 0.3f;
 			}
 		}
 
-		
 		GetNode<CollisionShape2D>(orbShape).Disabled = false;
 		GetNode<CollisionShape2D>(normalShape).Disabled = true;
 		GetNode<CollisionShape2D>(duckShape).Disabled = true;
@@ -80,7 +92,8 @@ public partial class PlayerOrbState : EntityState
 		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
 		Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
-		if(fx != null) {
+		if (fx != null)
+		{
 			fx.GlobalPosition = GlobalPosition;
 		}
 
@@ -99,27 +112,34 @@ public partial class PlayerOrbState : EntityState
 			mat.SetShaderParameter("VFrame", player.sprite.Vframes);
 			mat.SetShaderParameter("HFrame", player.sprite.Hframes);
 		}*/
+		staticBodies.Clear();
 
-		SFXController.PlaySound(orbThrow, 1.4f);
+		SFXController.PlaySound(orbThrow, GlobalPosition, 1.4f);
 
-		base.Start();	
+		base.Start();
 	}
-	public override void _Process(double delta) {
+	public override void _Process(double delta)
+	{
 		PlayerController player = (PlayerController)entity;
-		if(player.grounded) player.canOrb = true;
-		
-		if(!active) return;
+		if (player.grounded) player.canOrb = true;
 
-		if(orbTime >= minOrbTime && !Input.IsActionPressed("Orb")) {
+		if (!active) return;
+
+		if (orbTime >= minOrbTime && !Input.IsActionPressed("Orb") )
+		{
 			float vert = Input.GetAxis("ui_down", "ui_up");
-			if(entity.IsOnFloor() && vert == -1){
+			if (entity.IsOnFloor() && (vert == -1 || !canDeOrb))
+			{
 				player.SwitchState("DuckState");
 			}
-			else {
-				if(Mathf.Abs(entity.horSpeed) > minSpeedThresholdForSpeedState && false) {
+			else if(canDeOrb)
+			{
+				if (Mathf.Abs(entity.horSpeed) > minSpeedThresholdForSpeedState && false)
+				{
 					player.SwitchState("SpeedState");
 				}
-				else {
+				else
+				{
 					var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 					stateMachine.Start("Grounded", true);
 					player.SwitchState("NormalState");
@@ -127,22 +147,27 @@ public partial class PlayerOrbState : EntityState
 			}
 		}
 
-		if(orbTime > gravityMultWaitTime) {
+		if (orbTime > gravityMultWaitTime)
+		{
 			player.gravity = gravity;
-		} else {
+		}
+		else
+		{
 			player.gravity = gravity * initialGravScale;
 		}
 
 		orbTime += (float)delta;
 	}
-	public override void End() {
+	public override void End()
+	{
 		PlayerController player = (PlayerController)entity;
 		player.orb = false;
 		player.canOrb = false;
 		player.collisionMode = Agent.CollisionMode.FLOOR;
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
-		if(inputDir != Vector2.Zero) {
+		if (inputDir != Vector2.Zero)
+		{
 			int sign = Mathf.Sign(inputDir.X);
 			player.horSpeed = sign * Mathf.Max(player.horSpeed * sign, exitMoveSpeed);
 
@@ -150,22 +175,48 @@ public partial class PlayerOrbState : EntityState
 			player.vertSpeed = sign * Mathf.Max(player.vertSpeed * sign, exitMoveSpeed);
 		}
 
-		Callable.From(() => {
+		Callable.From(() =>
+		{
 			GetNode<CollisionShape2D>(orbShape).Disabled = true;
 			GetNode<CollisionShape2D>(normalShape).Disabled = false;
 		}).CallDeferred();
 
-		SFXController.PlaySound(orbReform, 1.4f);
+		SFXController.PlaySound(orbReform, GlobalPosition, 1.4f);
 		base.End();
 	}
 
-	private void _on_orb_grab_area_entered(Area2D area) {
-		if(!active) return;
-		
+	private void _on_orb_grab_area_entered(Area2D area)
+	{
+		if (!active) return;
+
 		StateEntity enemyEnt = area.GetParent().GetParent<StateComponentGroup>().entity;
 		enemyEnt.SwitchState("GrabbedState");
 		entity.SwitchState("GrabState");
 		EmitSignal(SignalName.GrabbedEntity, (Node2D)enemyEnt);
+	}
+
+	private void on_bounce(Vector2 normal, Vector2 velocity)
+	{
+		float speed = normal.Dot(velocity);
+		GD.Print(speed);
+		if (speed > 20)
+			SFXController.PlaySound(orbBounce, GlobalPosition, 1.0f);
+	}
+
+	private void on_environment_body_entered(Node body)
+	{
+		canDeOrb = false;
+		if (!staticBodies.Contains(body))
+			staticBodies.Add(body);
+	}
+	private void on_environment_body_exited(Node body)
+	{
+		if (staticBodies.Contains(body))
+			staticBodies.Remove(body);
+		if (staticBodies.Count == 0)
+		{
+			canDeOrb = true;
+		}
 	}
 	
 }

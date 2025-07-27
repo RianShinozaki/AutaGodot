@@ -7,10 +7,10 @@ path="res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65
 
 [deps]
 
-files=["res://LDTK/tilesets/tileset_16px.res", "res://LDTK/levels/Level_0.scn", "res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"]
+files=["res://LDTK/tilesets/tileset_16px.res", "res://LDTK/levels/Level_0.scn", "res://LDTK/levels/Level_1.scn", "res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"]
 
 source_file="res://LDTK/TestUnderground.ldtk"
-dest_files=["res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn", "res://LDTK/tilesets/tileset_16px.res", "res://LDTK/levels/Level_0.scn", "res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"]
+dest_files=["res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn", "res://LDTK/tilesets/tileset_16px.res", "res://LDTK/levels/Level_0.scn", "res://LDTK/levels/Level_1.scn", "res://.godot/imported/TestUnderground.ldtk-e12b98ec5e2a89185f06cb2d05c2e65d.scn"]
 
 [params]
 
@@ -29,7 +29,7 @@ resolve_entityrefs=true
 use_entity_placeholders=false
 Post Import=""
 tileset_post_import=""
-entities_post_import=""
+entities_post_import="res://LDTK/EntityImport.gd"
 level_post_import=""
 world_post_import=""
 Debug=""

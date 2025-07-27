@@ -14,10 +14,10 @@ layer = 100
 [node name="AutaUI" type="TextureRect" parent="."]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_db4av")
-offset_left = 46.0
-offset_top = 39.0
-offset_right = 168.0
-offset_bottom = 80.0
+offset_left = 22.0
+offset_top = -12.0
+offset_right = 144.0
+offset_bottom = 52.0
 scale = Vector2(2, 2)
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -25,20 +25,22 @@ texture = ExtResource("1_f1pw7")
 script = ExtResource("2_yy0te")
 
 [node name="HealthBar" type="TextureProgressBar" parent="AutaUI"]
+show_behind_parent = true
 layout_mode = 0
 offset_left = 38.0
-offset_top = 20.0
+offset_top = 43.0
 offset_right = 118.0
-offset_bottom = 60.0
+offset_bottom = 83.0
 value = 100.0
 texture_progress = ExtResource("3_0ndgo")
 
 [node name="HealthBar2" type="TextureProgressBar" parent="AutaUI"]
+show_behind_parent = true
 layout_mode = 0
 offset_left = 38.0
-offset_top = 32.0
+offset_top = 55.0
 offset_right = 118.0
-offset_bottom = 72.0
+offset_bottom = 95.0
 value = 100.0
 texture_progress = ExtResource("4_6qwfq")
 

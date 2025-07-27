@@ -1,12 +1,16 @@
-[gd_scene load_steps=172 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=181 format=3 uid="uid://bey8xr18nomep"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
+[ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="3_ymptp"]
+[ext_resource type="AudioStream" uid="uid://b6cn8tg7ip7t3" path="res://Audio/Sounds/Player/Jump.wav" id="4_07g4p"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="4_25evr"]
-[ext_resource type="Texture2D" uid="uid://b572get7u4s24" path="res://Art Assets/Characters/Auta/Auta1.tres" id="4_46p0d"]
 [ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
+[ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Audio/Sounds/Player/Step1.wav" id="4_ureol"]
+[ext_resource type="AudioStream" uid="uid://tfnqofi6xosl" path="res://Audio/Sounds/Player/Step2.wav" id="5_21ga3"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="5_524kh"]
 [ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="5_ijq85"]
+[ext_resource type="AudioStream" uid="uid://bix4yxfe1gw0b" path="res://Audio/Sounds/Player/Land.wav" id="5_vw38t"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/PlayerNormalAnimations.cs" id="6_apovy"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="6_mm0tc"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/Jump.cs" id="7_5n0yb"]
@@ -36,12 +40,16 @@
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
 [ext_resource type="Texture2D" uid="uid://qvvkw3s402xi" path="res://Art Assets/Characters/Auta/AutaAttackFXHand.png" id="25_jqwbh"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerGrabState.cs" id="28_jq8db"]
+[ext_resource type="AudioStream" uid="uid://cxtxmh6esng6k" path="res://Audio/Sounds/Impact/Slice-Impact.wav" id="28_yqpct"]
 [ext_resource type="Texture2D" uid="uid://dt4hy3av0h1mi" path="res://Art Assets/Characters/Auta/AimArrow.png" id="29_d0e11"]
 [ext_resource type="AudioStream" uid="uid://vtkg1d7ul1bm" path="res://Audio/Sounds/Player/OrbThrow.wav" id="29_od4ne"]
 [ext_resource type="Texture2D" uid="uid://djybc0421wa7a" path="res://Art Assets/Characters/Auta/AimReticle.png" id="30_boeqv"]
-[ext_resource type="AudioStream" uid="uid://d4ex0rqqrshku" path="res://Audio/Sounds/Player/OrbBounce.wav" id="30_ss7dt"]
 [ext_resource type="AudioStream" uid="uid://cgsu02iieh4m2" path="res://Audio/Sounds/Player/OrbReform.wav" id="31_3ft4o"]
+[ext_resource type="AudioStream" uid="uid://do28j3aju34af" path="res://Audio/Sounds/Player/Slash-Attack.wav" id="31_iybfl"]
+[ext_resource type="AudioStream" uid="uid://5xjocl68r7yu" path="res://Audio/Sounds/Player/OrbBounce.ogg" id="33_5d7ij"]
+[ext_resource type="AudioStream" uid="uid://xyx8xsff5kha" path="res://Audio/Sounds/Player/Throw.wav" id="38_xlr1c"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerWallStickState.cs" id="39_4cwik"]
+[ext_resource type="AudioStream" uid="uid://dkv0jnn6t7sjr" path="res://Audio/Sounds/Player/grabbity.wav" id="39_68qov"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="40_0teus"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/StickToSurface.cs" id="40_7rhto"]
 
@@ -230,6 +238,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [16, 17]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_vw38t")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_dqf4c"]
 resource_name = "Orb"
@@ -315,6 +338,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7, 8]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_ureol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_21ga3")
+}],
+"times": PackedFloat32Array(0.3, 0.7)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ek8y2"]
 resource_name = "Skate"
@@ -1003,6 +1045,9 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3chk"]
 radius = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4w6w"]
+size = Vector2(10, 23)
+
 [sub_resource type="Resource" id="Resource_l3uw4"]
 script = ExtResource("10_b8sdc")
 damage = 2.0
@@ -1013,6 +1058,7 @@ damageType = 0
 flip = true
 weight = 0
 HitFX = "Slice"
+impactSound = ExtResource("28_yqpct")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61npd"]
 radius = 11.0
@@ -1097,6 +1143,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_iybfl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_eq7e2"]
 resource_name = "Hitbox_2"
@@ -1174,6 +1235,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(1, -1)]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_iybfl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_pvjgl"]
 length = 0.001
@@ -1289,6 +1365,7 @@ damageType = 0
 flip = true
 weight = 0
 HitFX = "Slice"
+impactSound = ExtResource("28_yqpct")
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8gsr"]
 _data = {
@@ -1306,6 +1383,7 @@ damageType = 0
 flip = true
 weight = 0
 HitFX = "Slice"
+impactSound = ExtResource("28_yqpct")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7cse"]
 radius = 11.0
@@ -1375,6 +1453,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_iybfl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlqr3"]
 _data = {
@@ -1745,6 +1838,7 @@ radius = 8.0
 radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
+light_mask = 3
 texture_filter = 1
 collision_layer = 10
 floor_snap_length = 8.0
@@ -1761,7 +1855,7 @@ light_mask = 2
 texture_filter = 1
 material = ExtResource("4_25evr")
 use_parent_material = true
-texture = ExtResource("4_46p0d")
+texture = ExtResource("3_ymptp")
 offset = Vector2(0, -8)
 hframes = 12
 vframes = 10
@@ -1781,6 +1875,8 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="AfterImageGenerator" type="Node" parent="Art"]
 script = ExtResource("8_fumsl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Art"]
 
 [node name="Attributes" type="Node2D" parent="."]
 
@@ -1870,6 +1966,7 @@ riseThresh = 30.0
 fallThresh = -10.0
 
 [node name="NormalState" type="Node2D" parent="States"]
+visible = false
 script = ExtResource("2_2h7nr")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/NormalState"]
@@ -1906,6 +2003,7 @@ fallingGravScale = 1.6
 shortHopGravScale = 5.0
 riseThresh = 30.0
 fallThresh = -10.0
+jumpSound = ExtResource("4_07g4p")
 
 [node name="AutaAbilityTransitions" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("15_mntrl")
@@ -2018,9 +2116,26 @@ script = ExtResource("6_mm0tc")
 script = ExtResource("16_1meyx")
 toState = "NormalState"
 
+[node name="ActiveComponentGroup" type="Node2D" parent="States/DuckState"]
+script = ExtResource("21_2pqk3")
+
+[node name="EnvironmentColliderSetActive" type="Node2D" parent="States/DuckState/ActiveComponentGroup"]
+script = ExtResource("22_jk1sa")
+
+[node name="EnvironmentBox" type="Area2D" parent="States/DuckState/ActiveComponentGroup/EnvironmentColliderSetActive"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/DuckState/ActiveComponentGroup/EnvironmentColliderSetActive/EnvironmentBox"]
+visible = false
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_m4w6w")
+debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
+
 [node name="AttackState" type="Node2D" parent="States"]
 script = ExtResource("9_7hcsp")
 gravityFloatMult = 0.6
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="States/AttackState"]
 
 [node name="Attacks" type="Node2D" parent="States/AttackState"]
 
@@ -2269,7 +2384,6 @@ airDecel = 60.0
 airDecelTooFast = 60.0
 
 [node name="OrbState" type="Node2D" parent="States"]
-visible = false
 script = ExtResource("8_tjto1")
 speed = 180.0
 initSpeed = 150.0
@@ -2284,7 +2398,7 @@ orbShape = NodePath("../../OrbEnvironmentBox")
 normalShape = NodePath("../../NormalEnvironmentBox")
 duckShape = NodePath("../../DuckEnvironmentBox")
 orbThrow = ExtResource("29_od4ne")
-orbBounce = ExtResource("30_ss7dt")
+orbBounce = ExtResource("33_5d7ij")
 orbReform = ExtResource("31_3ft4o")
 
 [node name="ActiveScriptGroup" type="Node2D" parent="States/OrbState"]
@@ -2310,14 +2424,28 @@ allowAttack = true
 script = ExtResource("21_2pqk3")
 
 [node name="ColliderSetActive" type="Node2D" parent="States/OrbState/ActiveComponentGroup"]
+visible = false
 script = ExtResource("22_jk1sa")
 
 [node name="OrbGrab" type="Area2D" parent="States/OrbState/ActiveComponentGroup/ColliderSetActive"]
+visible = false
 collision_layer = 32768
 collision_mask = 16384
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="States/OrbState/ActiveComponentGroup/ColliderSetActive/OrbGrab"]
 shape = SubResource("CircleShape2D_t3mj2")
+debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
+
+[node name="EnvironmentColliderSetActive" type="Node2D" parent="States/OrbState/ActiveComponentGroup"]
+visible = false
+script = ExtResource("22_jk1sa")
+
+[node name="EnvironmentBox" type="Area2D" parent="States/OrbState/ActiveComponentGroup/EnvironmentColliderSetActive"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/OrbState/ActiveComponentGroup/EnvironmentColliderSetActive/EnvironmentBox"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_m4w6w")
 debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 
 [node name="GrabState" type="Node2D" parent="States"]
@@ -2328,6 +2456,8 @@ timescale = 0.3
 minGrabTime = 0.1
 throwPower = 250.0
 recoilPower = 175.0
+throwSound = ExtResource("38_xlr1c")
+grabSound = ExtResource("39_68qov")
 
 [node name="FlipPivot" type="Node2D" parent="States/GrabState"]
 
@@ -2446,10 +2576,12 @@ script = ExtResource("6_mm0tc")
 runIfInactive = true
 
 [node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_hv6ar")
 
 [node name="DuckEnvironmentBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_2oiyr")
 
@@ -2523,6 +2655,8 @@ target_position = Vector2(0, 8)
 [connection signal="area_exited" from="States/NormalState/ActiveScriptGroup/PlayerInteract/InteractionTrigger" to="States/NormalState/ActiveScriptGroup/PlayerInteract" method="_on_interaction_trigger_area_exited"]
 [connection signal="FlipSprite" from="States/SpeedState/ActiveScriptGroup/FlipToFaceDirection" to="States/SpeedState/ActiveScriptGroup/PlayerNormalAnimations" method="_on_flip_sprite"]
 [connection signal="Jumped" from="States/DuckState/ActiveScriptGroup/Jump" to="States/DuckState/SignalStateGroup/SwitchStateOnSignal - Jump -> NormalState" method="_on_signal"]
+[connection signal="body_entered" from="States/DuckState/ActiveComponentGroup/EnvironmentColliderSetActive/EnvironmentBox" to="States/DuckState" method="on_environment_body_entered"]
+[connection signal="body_exited" from="States/DuckState/ActiveComponentGroup/EnvironmentColliderSetActive/EnvironmentBox" to="States/DuckState" method="on_environment_body_exited"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Blade-WeakHit" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Blade-StrongHit" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="States/AttackState/Attacks/Blade-Launch" to="States/AttackState" method="_on_hitbox_area_entered"]
@@ -2531,5 +2665,7 @@ target_position = Vector2(0, 8)
 [connection signal="area_entered" from="States/AttackState/Attacks/Hand-StrongHit" to="States/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="GrabbedEntity" from="States/OrbState" to="States/GrabState" method="OnEnemyGrabbed"]
 [connection signal="area_entered" from="States/OrbState/ActiveComponentGroup/ColliderSetActive/OrbGrab" to="States/OrbState" method="_on_orb_grab_area_entered"]
+[connection signal="body_entered" from="States/OrbState/ActiveComponentGroup/EnvironmentColliderSetActive/EnvironmentBox" to="States/OrbState" method="on_environment_body_entered"]
+[connection signal="body_exited" from="States/OrbState/ActiveComponentGroup/EnvironmentColliderSetActive/EnvironmentBox" to="States/OrbState" method="on_environment_body_exited"]
 [connection signal="Jumped" from="States/WallStickState/ActiveScriptGroup/Jump" to="States/WallStickState" method="_on_jump_jumped"]
 [connection signal="area_entered" from="Hurtbox" to="States/BaseState/ActiveScriptGroup/ProcessHitbox" method="_on_hurtbox_area_entered"]

@@ -35,7 +35,7 @@ public partial class CameraCenter : Area2D
 
 		velocity.X = (toPos.X - GlobalPosition.X) * 5;
 		velocity.Y = (playerYCache - GlobalPosition.Y) * 5;
-		if (player.grounded || currentCamMode == CamMode.Free)
+		if (true || player.grounded || currentCamMode == CamMode.Free)
 		{
 			playerYCache = toPos.Y;
 			currentCamMode = CamMode.LockY;
@@ -55,8 +55,8 @@ public partial class CameraCenter : Area2D
 		if (camRegions.Count > 0)
 		{
 			CamRegion cr = camRegions[0];
-			boundsX = cr.boundsX + new Vector2(cameraSize.X, -cameraSize.X);
-			boundsY = cr.boundsY + new Vector2(cameraSize.Y, -cameraSize.Y);
+			boundsX = cr.boundsX + new Vector2(cameraSize.X/2, -cameraSize.X/2);
+			boundsY = cr.boundsY + new Vector2(cameraSize.Y/2, -cameraSize.Y/2);
 		}
 
 	}

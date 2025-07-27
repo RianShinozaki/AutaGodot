@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://db0ov7bqn51kr"]
+[gd_scene load_steps=15 format=3 uid="uid://db0ov7bqn51kr"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/General/States/EntityThrownState.cs" id="1_07uct"]
+[ext_resource type="AudioStream" uid="uid://d1kvfiltoylrr" path="res://Audio/Sounds/Impact/CannonballCrash.wav" id="2_el3cb"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_w557h"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="3_6d7hn"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="4_0il0a"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="5_hiejy"]
 [ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="6_vkrj5"]
 [ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="7_4p1h7"]
+[ext_resource type="AudioStream" uid="uid://ck4b6m41vc0an" path="res://Audio/Sounds/Impact/Bash-Impact.wav" id="8_fvevc"]
 [ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="8_mj6dq"]
 
 [sub_resource type="Curve" id="Curve_ow81l"]
@@ -27,6 +29,7 @@ damageType = 2
 flip = true
 weight = 0
 HitFX = "BigSlam"
+impactSound = ExtResource("8_fvevc")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm1vm"]
 radius = 4.00001
@@ -34,6 +37,7 @@ height = 20.0
 
 [node name="ThrownState" type="Node2D" node_paths=PackedStringArray("ignoreAreas")]
 script = ExtResource("1_07uct")
+wallCrashSound = ExtResource("2_el3cb")
 ignoreAreas = [null]
 
 [node name="ActiveScriptGroup" type="Node2D" parent="."]

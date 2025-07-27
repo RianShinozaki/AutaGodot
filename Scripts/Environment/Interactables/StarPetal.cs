@@ -10,6 +10,9 @@ public partial class StarPetal : RigidBody2D
 	bool collectable = false;
 	bool attracted = false;
 	float attractionSpeed = 720f;
+	AudioStreamPlayer2D audio;
+	bool toDestroy = false;
+	[Export] AudioStream pickupSound;
 	public override void _Ready()
 	{
 		t = 0.01f;
@@ -19,6 +22,7 @@ public partial class StarPetal : RigidBody2D
 		rand = new RandomNumberGenerator();
 		Visible = false;
 		SetDeferred("freeze", true);
+
 	}
 	public void OnSpawn()
 	{
@@ -73,7 +77,12 @@ public partial class StarPetal : RigidBody2D
 	private void _on_collision_detector_body_entered(Node body)
 	{
 		if (collectable)
+		{
+			SFXController.PlaySound(pickupSound, GlobalPosition);
 			CallDeferred(MethodName.QueueFree);
+			Visible = false;
+			collectable = false;
+		}
 	}
 
 	private void _on_range_detector_area_entered(Area2D area)

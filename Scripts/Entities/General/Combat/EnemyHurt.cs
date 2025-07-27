@@ -22,17 +22,21 @@ public partial class EnemyHurt : StateScript
 	[Export] public string tuckState = "TuckState";
 	[Export] public string tuckAnim = "Tuck";
 
+	RandomNumberGenerator rand;
+
 
 	public float horKnockbackSpeed;
 	public bool canRecoverInAir;
 	private bool tucked;
 
-    public override void Init()
-    {
-        base.Init();
-		if(autoHookToHitBox) {
+	public override void Init()
+	{
+		base.Init();
+		if (autoHookToHitBox)
+		{
 			entity.GetNode<Area2D>("Hurtbox").AreaEntered += _on_hurtbox_area_entered;
 		}
+		rand = new RandomNumberGenerator();
     }
 
 	//Knockback proc
@@ -72,6 +76,7 @@ public partial class EnemyHurt : StateScript
 			entity.SetHor(dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1));
 			entity.SetVert(-dat.yKnockback);
 			entity.GetNode<EntityHealth>("Attributes/EntityHealth").ChangeHealth(-dat.damage);
+			SFXController.PlaySound(dat.impactSound, GlobalPosition, 1.0f, rand.RandfRange(1.0f, 1.4f));
 
 			float hp = entity.GetNode<EntityHealth>("Attributes/EntityHealth").health;
 			if(hp > 0) {

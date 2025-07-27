@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="1_v3dwl"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/MusicController.cs" id="4_0qlmu"]
-[ext_resource type="PackedScene" uid="uid://yau4bo61kkf3" path="res://Scenes/HouseEclipseLDTKTest.tscn" id="5_sdqnh"]
+[ext_resource type="PackedScene" uid="uid://c5xad8auwqo6q" path="res://Scenes/DeepRuins.tscn" id="5_8dsd5"]
 [ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="5_ximvb"]
 [ext_resource type="Script" path="res://Scripts/System/Controllers/SFXController.cs" id="6_o47f1"]
 
 [node name="Game" type="Node"]
 
 [node name="PlayerUI" parent="." instance=ExtResource("1_v3dwl")]
+visible = false
 
 [node name="SFXController" type="Node" parent="."]
 script = ExtResource("6_o47f1")
@@ -22,4 +23,4 @@ script = ExtResource("4_0qlmu")
 [node name="DialogueBox" parent="." instance=ExtResource("5_ximvb")]
 layer = 0
 
-[node name="HouseEclipse" parent="." instance=ExtResource("5_sdqnh")]
+[node name="CanvasModulate" parent="." instance=ExtResource("5_8dsd5")]

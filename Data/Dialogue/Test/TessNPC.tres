@@ -15,99 +15,8 @@ Nodes = {
 "start_id": "Start"
 },
 "1_1": {
-"dialogue": "Like, uh, hey, maybe we [b][color=magenta]A[/color]U[color=cyan]T[/color]A[/b] get the hell out of here, Kris.",
-"offset": Vector2(-60, 260),
-"options": {
-0: {
-"condition": {},
-"link": &"1_8",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 2
-},
-"1_2": {
-"dialogue": "It's like time never moves here. And I always feel a little out of place.",
-"offset": Vector2(600, 260),
-"options": {
-0: {
-"condition": {},
-"link": &"1_3",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 2
-},
-"1_3": {
-"dialogue": "You think somewhere out there.. I don't know...",
-"offset": Vector2(920, 260),
-"options": {
-0: {
-"condition": {},
-"link": &"1_4",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 2
-},
-"1_4": {
-"dialogue": "We'll get ya out of here, Tess. Promise.",
-"offset": Vector2(1240, 260),
-"options": {
-0: {
-"condition": {},
-"link": &"1_5",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 1
-},
-"1_5": {
-"dialogue": "And once we do, we're on a non-stop adventure to the center of the universe!",
-"offset": Vector2(1560, 260),
-"options": {
-0: {
-"condition": {},
-"link": &"1_7",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 1
-},
-"1_6": {
-"dialogue": "Ok. But if you get my hopes up for nothing...",
-"offset": Vector2(2240, 260),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 2
-},
-"1_7": {
-"dialogue": "So many new planets to see, so many people we'll meet together!",
-"offset": Vector2(1900, 260),
-"options": {
-0: {
-"condition": {},
-"link": &"1_6",
-"text": ""
-}
-},
-"size": Vector2(300, 289),
-"speaker": 1
-},
-"1_8": {
-"dialogue": "So it' s weird that it still feels... it just feels unfamiliar.",
-"offset": Vector2(260, 260),
+"dialogue": "You'd better be on your best behavior in the mistress's house, okay?",
+"offset": Vector2(20, 160),
 "options": {
 0: {
 "condition": {},
@@ -115,8 +24,21 @@ Nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 289),
+"size": Vector2(300, 256),
 "speaker": 2
+},
+"1_2": {
+"dialogue": "...",
+"offset": Vector2(380, 160),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": 1
 }
 }
 Variables = {}

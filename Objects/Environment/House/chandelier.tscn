@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4einn7nkqtw5"]
+
+[ext_resource type="Texture2D" uid="uid://onvjpxb8k8es" path="res://Art Assets/Environment/House/Objects/Chandelier.png" id="1_7u18u"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_opdct"]
+
+[node name="Chandelier" type="Node2D"]
+
+[node name="Chandelier" type="Sprite2D" parent="."]
+position = Vector2(16, 48)
+texture = ExtResource("1_7u18u")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 72)
+color = Color(1, 0.678431, 0.431373, 1)
+energy = 1.18
+range_layer_min = -18
+range_item_cull_mask = 3
+texture = ExtResource("2_opdct")
+texture_scale = 1.55

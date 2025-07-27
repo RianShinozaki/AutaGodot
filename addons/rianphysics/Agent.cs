@@ -92,6 +92,11 @@ public partial class Agent : CharacterBody2D
 				vel.X += kc.GetColliderVelocity().X * impactFactor.X*2;
 				vel.Y += kc.GetColliderVelocity().Y * impactFactor.Y*2;
 
+				if (Mathf.Abs(vel.Y) < 20)
+				{
+					vel.Y = 0;
+				}
+
 				EmitSignal(SignalName.Bounce, kc.GetNormal(), new Vector2(vel.X, vel.Y));
 			}
 			if (writeback)

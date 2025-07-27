@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cyj3ulyws4ofg"]
+[gd_scene load_steps=35 format=3 uid="uid://cyj3ulyws4ofg"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/OrbBreakable.cs" id="1_sev40"]
 [ext_resource type="Texture2D" uid="uid://bknnkq0wqudcq" path="res://Art Assets/Environment/Misc/Objects/VoidBubble.png" id="2_dwefw"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_hytyi"]
 [ext_resource type="Script" path="res://Scripts/Effects/Trail.cs" id="5_xbkqn"]
 [ext_resource type="Texture2D" uid="uid://vmf25qoaiqh2" path="res://Art Assets/Environment/Misc/Objects/VoidStar.png" id="6_4h07p"]
+[ext_resource type="AudioStream" uid="uid://sfoql6405y1p" path="res://Audio/Sounds/Item/PowerBubble.mp3" id="7_5r5ri"]
 [ext_resource type="Texture2D" uid="uid://cct6sp383ydp2" path="res://Art Assets/Environment/Misc/Objects/VoidBoblePop.png" id="7_u7p2u"]
+[ext_resource type="AudioStream" uid="uid://ddcirhcl7psae" path="res://Audio/Sounds/Item/BubblePop.wav" id="8_lphre"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yytik"]
 atlas = ExtResource("2_dwefw")
@@ -183,6 +185,21 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.5, 1.5)]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PopAudio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_lphre")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_rf0ue"]
 resource_name = "Default"
@@ -400,7 +417,6 @@ script = ExtResource("1_sev40")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Pivot"]
 sprite_frames = SubResource("SpriteFrames_5ljxn")
 autoplay = "default"
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -436,6 +452,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_hytyi")
+pickupSound = ExtResource("7_5r5ri")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal"]
 visible = false
@@ -480,6 +497,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_hytyi")
+pickupSound = ExtResource("7_5r5ri")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal2"]
 visible = false
@@ -492,7 +510,7 @@ script = ExtResource("5_xbkqn")
 material = SubResource("CanvasItemMaterial_mbp61")
 sprite_frames = SubResource("SpriteFrames_gsalq")
 autoplay = "default"
-frame_progress = 0.917109
+frame_progress = 0.682198
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal2"]
 visible = false
@@ -524,6 +542,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_hytyi")
+pickupSound = ExtResource("7_5r5ri")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal3"]
 visible = false
@@ -536,7 +555,7 @@ script = ExtResource("5_xbkqn")
 material = SubResource("CanvasItemMaterial_mbp61")
 sprite_frames = SubResource("SpriteFrames_gsalq")
 autoplay = "default"
-frame_progress = 0.917109
+frame_progress = 0.682198
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal3"]
 visible = false
@@ -568,6 +587,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_hytyi")
+pickupSound = ExtResource("7_5r5ri")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal4"]
 visible = false
@@ -580,7 +600,7 @@ script = ExtResource("5_xbkqn")
 material = SubResource("CanvasItemMaterial_mbp61")
 sprite_frames = SubResource("SpriteFrames_gsalq")
 autoplay = "default"
-frame_progress = 0.917109
+frame_progress = 0.682198
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal4"]
 visible = false
@@ -612,6 +632,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_hytyi")
+pickupSound = ExtResource("7_5r5ri")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal5"]
 visible = false
@@ -624,7 +645,7 @@ script = ExtResource("5_xbkqn")
 material = SubResource("CanvasItemMaterial_mbp61")
 sprite_frames = SubResource("SpriteFrames_gsalq")
 autoplay = "default"
-frame_progress = 0.917109
+frame_progress = 0.682198
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shards/Petal5"]
 visible = false
@@ -647,7 +668,9 @@ collision_mask = 32768
 shape = SubResource("CircleShape2D_lfd5t")
 disabled = true
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="PopAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 1.035
+
 [connection signal="body_entered" from="Shards/Petal/CollisionDetector" to="Shards/Petal" method="_on_collision_detector_body_entered"]
 [connection signal="area_entered" from="Shards/Petal/RangeDetector" to="Shards/Petal" method="_on_range_detector_area_entered"]
 [connection signal="body_entered" from="Shards/Petal2/CollisionDetector" to="Shards/Petal2" method="_on_collision_detector_body_entered"]

@@ -19,5 +19,6 @@ public partial class HitboxData : Resource
 	[Export] public bool flip;
 	[Export] public int weight;
 	[Export] public string HitFX;
+	[Export] public AudioStream impactSound;
 
 }

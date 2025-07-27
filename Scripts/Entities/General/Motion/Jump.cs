@@ -23,6 +23,7 @@ public partial class Jump : StateScript
 	[Export] float fallSpeedMax;
 	[Export] public float extraMult = 1;
 	[Export] public bool requireGrounded = true;
+	[Export] AudioStream jumpSound;
 	bool canShortHop;
 
 	[Signal]
@@ -47,6 +48,7 @@ public partial class Jump : StateScript
 			entity.vertProj = -entity.vertSpeed;
 			entity.grounded = false;
 			canShortHop = true;
+			if (jumpSound != null) SFXController.PlaySound(jumpSound, GlobalPosition);
 			EmitSignal(SignalName.Jumped);
 		}
 

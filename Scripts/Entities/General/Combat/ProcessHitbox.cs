@@ -5,6 +5,7 @@ using System;
 public partial class ProcessHitbox : StateScript
 {
 	ProcessKnockback procKnock;
+	RandomNumberGenerator rand;
 
 	[Signal]
 	public delegate void HurtEventHandler();
@@ -12,6 +13,7 @@ public partial class ProcessHitbox : StateScript
     public override void Init()
     {
 		procKnock = GetParent().GetNode<ProcessKnockback>("ProcessKnockback");
+		rand = new RandomNumberGenerator();
         base.Init();
     }
     public virtual void _on_hurtbox_area_entered(Area2D area) {
@@ -23,7 +25,7 @@ public partial class ProcessHitbox : StateScript
 			entity.SetHor(dat.xKnockback * (dat.flip ? hitB.GlobalScale.Y : 1));
 			entity.vertSpeed = -dat.yKnockback;
 			entity.GetNode<EntityHealth>("Attributes/EntityHealth").ChangeHealth(-dat.damage);
-			
+			SFXController.PlaySound(dat.impactSound, GlobalPosition, 1.0f, rand.RandfRange(1.0f, 1.4f));
 			if(entity.GetNode<EntityHealth>("Attributes/EntityHealth").health > 0)
 				EmitSignal(SignalName.Hurt);
 

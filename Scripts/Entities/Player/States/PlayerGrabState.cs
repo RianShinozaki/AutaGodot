@@ -18,12 +18,14 @@ public partial class PlayerGrabState : EntityState
 	StateEntity heldEntity;
 	private Vector2 aimPos;
 	StateComponentGroup compGroup;
+	[Export] AudioStream throwSound;
+	[Export] AudioStream grabSound;
     public override void _Ready()
-    {
-        base._Ready();
+	{
+		base._Ready();
 		compGroup = GetNode<StateComponentGroup>("ActiveComponentGroup");
 		compGroup.Visible = false;
-    }
+	}
 
 	public override void Start() {
 		PlayerController player = (PlayerController)entity;
@@ -34,7 +36,7 @@ public partial class PlayerGrabState : EntityState
 		player.SetHor(player.horSpeed/2);
 		GameManager.Instance.TransitionTimeScale(timescale, 0.1f);
 		GameCamera.Instance.TransitionLinesAlpha(0.2f, 0.1f);
-
+		SFXController.PlaySound(grabSound, GlobalPosition, 1);
 		aimPos = Vector2.Right * (entity.sprite.FlipH ? -48 : 48);
 		compGroup.Visible = true;
 
@@ -80,7 +82,7 @@ public partial class PlayerGrabState : EntityState
 		((EntityGrabbedState)heldEntity.GetState("GrabbedState")).Thrown(angle, throwPower);
 
 		player.canOrb = true;
-		
+		SFXController.PlaySound(throwSound, GlobalPosition, 1);
 
 		entity.SwitchState("NormalState");
 	}

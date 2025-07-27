@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://daailb8lshm22"]
+[gd_scene load_steps=25 format=3 uid="uid://daailb8lshm22"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/OrbBreakable.cs" id="1_u24fw"]
 [ext_resource type="Texture2D" uid="uid://cqibf5p6e3ask" path="res://Art Assets/Environment/Misc/Objects/StarFlowerYellow.png" id="2_tq876"]
+[ext_resource type="AudioStream" uid="uid://cmq7eli3mwwhf" path="res://Audio/Sounds/Item/FlowerPop.wav" id="3_8px60"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_hi0jn"]
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_6pteb"]
 [ext_resource type="Script" path="res://Scripts/Effects/Trail.cs" id="6_5cvhm"]
 [ext_resource type="Texture2D" uid="uid://dexbrg65x7hyf" path="res://Art Assets/Environment/Misc/Objects/StarPetalYellow.png" id="6_a5j23"]
+[ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Audio/Sounds/Item/flowerpickup.wav" id="8_3vkn3"]
 
 [sub_resource type="Animation" id="Animation_nkgyy"]
 resource_name = "Burst"
@@ -96,6 +98,21 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.45, 1.05]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PopAudio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_8px60")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_rf0ue"]
 resource_name = "Default"
@@ -295,6 +312,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal"]
 visible = false
@@ -339,6 +357,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal2"]
 visible = false
@@ -383,6 +402,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal3"]
 visible = false
@@ -427,6 +447,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal4"]
 visible = false
@@ -471,6 +492,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal5"]
 visible = false
@@ -515,6 +537,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal6"]
 visible = false
@@ -559,6 +582,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal7"]
 visible = false
@@ -603,6 +627,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal8"]
 visible = false
@@ -647,6 +672,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal9"]
 visible = false
@@ -691,6 +717,7 @@ lock_rotation = true
 freeze = true
 linear_damp = 1.0
 script = ExtResource("4_6pteb")
+pickupSound = ExtResource("8_3vkn3")
 
 [node name="Line2D" type="Line2D" parent="Shards/Petal10"]
 visible = false
@@ -726,7 +753,9 @@ collision_mask = 32768
 shape = SubResource("CircleShape2D_lfd5t")
 disabled = true
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="PopAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 1.035
+
 [connection signal="body_entered" from="Shards/Petal/CollisionDetector" to="Shards/Petal" method="_on_collision_detector_body_entered"]
 [connection signal="area_entered" from="Shards/Petal/RangeDetector" to="Shards/Petal" method="_on_range_detector_area_entered"]
 [connection signal="body_entered" from="Shards/Petal2/CollisionDetector" to="Shards/Petal2" method="_on_collision_detector_body_entered"]
