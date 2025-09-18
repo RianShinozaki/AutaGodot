@@ -3,7 +3,8 @@ using System;
 
 public partial class Agent : CharacterBody2D
 {
-	public enum CollisionMode {
+	public enum CollisionMode
+	{
 		FLOOR,
 		FREE,
 		BOUNCE
@@ -42,30 +43,37 @@ public partial class Agent : CharacterBody2D
 	{
 	}
 
-	public void Move(float x, float y, float delta, bool writeback = false) {		
-		if(grounded && collisionMode == CollisionMode.FLOOR) {
+	public void Move(float x, float y, float delta, bool writeback = false)
+	{
+		if (grounded && collisionMode == CollisionMode.FLOOR)
+		{
 			Vector2 moveDir = lastFloorNormal.Rotated(Mathf.DegToRad(90f));
 			Velocity = new Vector2(x * moveDir.X, x * moveDir.Y);
 		}
-		else {
+		else
+		{
 			Velocity = new Vector2(x, y);
 		}
 
 		Velocity = new Vector2(x, y);
 
-		if(collisionMode == CollisionMode.FLOOR) {
+		if (collisionMode == CollisionMode.FLOOR)
+		{
 			MotionMode = MotionModeEnum.Grounded;
 			MoveAndSlide();
-			if(writeback) {
+			if (writeback)
+			{
 				horSpeed = Velocity.X;
-				if(!grounded)
+				if (!grounded)
 					vertSpeed = Velocity.Y;
 			}
 		}
-		else if(collisionMode == CollisionMode.FREE) {
+		else if (collisionMode == CollisionMode.FREE)
+		{
 			MotionMode = MotionModeEnum.Floating;
 			MoveAndSlide();
-			if(writeback) {
+			if (writeback)
+			{
 				horSpeed = Velocity.X;
 				vertSpeed = Velocity.Y;
 			}
@@ -89,8 +97,8 @@ public partial class Agent : CharacterBody2D
 				//vel.X = Mathf.Lerp(vel.X, kc.GetColliderVelocity().X, lossFactor.X);
 				//vel.Y = Mathf.Lerp(vel.Y, kc.GetColliderVelocity().Y, lossFactor.Y);
 
-				vel.X += kc.GetColliderVelocity().X * impactFactor.X*2;
-				vel.Y += kc.GetColliderVelocity().Y * impactFactor.Y*2;
+				vel.X += kc.GetColliderVelocity().X * impactFactor.X * 2;
+				vel.Y += kc.GetColliderVelocity().Y * impactFactor.Y * 2;
 
 				if (Mathf.Abs(vel.Y) < 20)
 				{
@@ -109,48 +117,67 @@ public partial class Agent : CharacterBody2D
 		}
 		previouslyGrounded = grounded;
 	}
-	public void AccelerateHor(float x, float limit = int.MaxValue, bool signCorrect = false) {
-		horSpeed = Mathf.MoveToward(horSpeed , limit, x * (signCorrect ? Mathf.Sign(limit) : 1));
+	public void AccelerateHor(float x, float limit = int.MaxValue, bool signCorrect = false)
+	{
+		horSpeed = Mathf.MoveToward(horSpeed, limit, x * (signCorrect ? Mathf.Sign(limit) : 1));
 	}
-	public void SetHor(float value) {
+	public void SetHor(float value)
+	{
 		horSpeed = value;
 	}
-	public void SetVert(float value) {
+	public void SetVert(float value)
+	{
 		vertSpeed = value;
 	}
-	public void AccelerateVert(float y, float limit = int.MaxValue, bool signCorrect = false) {
-		vertSpeed = Mathf.MoveToward(vertSpeed , limit, y * (signCorrect ? Mathf.Sign(limit) : 1));
+	public void AccelerateVert(float y, float limit = int.MaxValue, bool signCorrect = false)
+	{
+		vertSpeed = Mathf.MoveToward(vertSpeed, limit, y * (signCorrect ? Mathf.Sign(limit) : 1));
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		if(!applyPhysics) return;
-		
-		if(collisionMode == CollisionMode.FLOOR) {
-			if(IsOnFloor() && vertSpeed >= 0) {
-				if(!grounded) {
+		if (!applyPhysics) return;
+
+		if (collisionMode == CollisionMode.FLOOR)
+		{
+			if (IsOnFloor() && vertSpeed >= 0)
+			{
+				if (!grounded)
+				{
 					horSpeed += vertSpeed * lastFloorNormal.Rotated(Mathf.DegToRad(90f)).Y * slopeLandInfluence;
-                    EmitSignal(SignalName.Grounded, lastFloorNormal, new Vector2(horSpeed, vertSpeed));
+					EmitSignal(SignalName.Grounded, lastFloorNormal, new Vector2(horSpeed, vertSpeed));
 				}
 				grounded = true;
 				vertSpeed = 0;
 				lastFloorNormal = GetFloorNormal();
 			}
-			else {
-				if(grounded == true) {
+			else
+			{
+				if (grounded == true)
+				{
 					vertSpeed += horSpeed * lastFloorNormal.Rotated(Mathf.DegToRad(90f)).Y * slopeLeaveInfluence;
 				}
 				grounded = false;
 				vertSpeed += gravity * (float)delta;
 				lerpRate = 0.5f;
 			}
-		} else {
+		}
+		else
+		{
 			grounded = IsOnFloor();
 			vertSpeed += gravity * (float)delta;
 		}
 
 
 		Move(horSpeed, vertSpeed, (float)delta, true);
-		
+
+	}
+	public void ActivatePhysics()
+	{
+		applyPhysics = true;
+	}
+	public void DeactivatePhysics()
+	{
+		applyPhysics = false;
 	}
 }

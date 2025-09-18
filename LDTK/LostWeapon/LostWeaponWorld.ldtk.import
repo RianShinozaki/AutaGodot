@@ -7,10 +7,10 @@ path="res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673
 
 [deps]
 
-files=["res://LDTK/LostWeapon/tilesets/tileset_16px.res", "res://LDTK/LostWeapon/levels/Level_0.scn", "res://LDTK/LostWeapon/levels/Level_1.scn", "res://LDTK/LostWeapon/levels/Level_2.scn", "res://LDTK/LostWeapon/levels/Level_3.scn", "res://LDTK/LostWeapon/levels/Level_4.scn", "res://LDTK/LostWeapon/levels/Level_5.scn", "res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673c.scn"]
+files=["res://LDTK/LostWeapon/tilesets/tileset_16px.res", "res://LDTK/LostWeapon/levels/Level_0.scn", "res://LDTK/LostWeapon/levels/Level_1.scn", "res://LDTK/LostWeapon/levels/Level_2.scn", "res://LDTK/LostWeapon/levels/Level_3.scn", "res://LDTK/LostWeapon/levels/Level_4.scn", "res://LDTK/LostWeapon/levels/Level_5.scn", "res://LDTK/LostWeapon/levels/Level_6.scn", "res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673c.scn"]
 
 source_file="res://LDTK/LostWeapon/LostWeaponWorld.ldtk"
-dest_files=["res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673c.scn", "res://LDTK/LostWeapon/tilesets/tileset_16px.res", "res://LDTK/LostWeapon/levels/Level_0.scn", "res://LDTK/LostWeapon/levels/Level_1.scn", "res://LDTK/LostWeapon/levels/Level_2.scn", "res://LDTK/LostWeapon/levels/Level_3.scn", "res://LDTK/LostWeapon/levels/Level_4.scn", "res://LDTK/LostWeapon/levels/Level_5.scn", "res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673c.scn"]
+dest_files=["res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673c.scn", "res://LDTK/LostWeapon/tilesets/tileset_16px.res", "res://LDTK/LostWeapon/levels/Level_0.scn", "res://LDTK/LostWeapon/levels/Level_1.scn", "res://LDTK/LostWeapon/levels/Level_2.scn", "res://LDTK/LostWeapon/levels/Level_3.scn", "res://LDTK/LostWeapon/levels/Level_4.scn", "res://LDTK/LostWeapon/levels/Level_5.scn", "res://LDTK/LostWeapon/levels/Level_6.scn", "res://.godot/imported/LostWeaponWorld.ldtk-c21ffe6ea5101919672dc91f0913673c.scn"]
 
 [params]
 

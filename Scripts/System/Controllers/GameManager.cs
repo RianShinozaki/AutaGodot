@@ -40,10 +40,12 @@ public partial class GameManager : Node
 	{
 		if (timeLock)
 		{
-			EmitSignal(SignalName.TSChangeSuccess, false);
+			EmitSignal(SignalName.TSChangeSuccess, true);
+			timeScaleTween.Kill();
+			//EmitSignal(SignalName.TSChangeSuccess, false);
 		}
-		else
-		{
+		//else
+		//{
 			timeLock = true;
 			timeScaleTween = GetTree().CreateTween().BindNode(this);
 			timeScaleTween.SetSpeedScale((float)(1 / Engine.TimeScale));
@@ -51,7 +53,7 @@ public partial class GameManager : Node
 			await ToSignal(timeScaleTween, "finished");
 			timeLock = false;
 			EmitSignal(SignalName.TSChangeSuccess, true);
-		}
+		//}
 	}
 	public void SetGameSpeed(float timeScale)
 	{

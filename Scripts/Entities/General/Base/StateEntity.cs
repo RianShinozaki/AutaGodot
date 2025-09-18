@@ -36,8 +36,8 @@ public partial class StateEntity : Agent
 			currentState.End();
 		}
 		lastState = currentState;
-		currentState = GetNode<EntityState>("States/" + newState);
-		currentState.Start();
+		currentState = GetNodeOrNull<EntityState>("States/" + newState);
+		if(currentState != null) currentState.Start();
 	}
 	public EntityState GetState(String stateName) {
 		return GetNode<EntityState>("States/" + stateName);

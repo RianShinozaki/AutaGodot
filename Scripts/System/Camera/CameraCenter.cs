@@ -26,6 +26,8 @@ public partial class CameraCenter : Area2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		currentCamMode = CamMode.Free;
+		
 		PlayerController player = PlayerController.Instance;
 		Vector2 velocity = Vector2.Zero;
 		Vector2 toPos = player.GlobalPosition;
@@ -40,7 +42,7 @@ public partial class CameraCenter : Area2D
 			playerYCache = toPos.Y;
 			currentCamMode = CamMode.LockY;
 		}
-		if (Mathf.Abs(GlobalPosition.Y - toPos.Y) > 64)
+		else if (Mathf.Abs(GlobalPosition.Y - toPos.Y) > 64)
 		{
 			currentCamMode = CamMode.Free;
 		}

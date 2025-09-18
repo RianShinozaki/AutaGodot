@@ -53,17 +53,21 @@ public partial class GameCamera : Camera2D
 	}
 
 	public async void TransitionLinesAlpha(float linesAlpha, float transTime) {
-		if(speedtranslock) {
-			EmitSignal(SignalName.SpeedLinesSuccess, false);
+		if (speedtranslock)
+		{
+			EmitSignal(SignalName.SpeedLinesSuccess, true);
+			speedtransTween.Kill();
+			//EmitSignal(SignalName.SpeedLinesSuccess, false);
 		}
-		else {
+		//else
+		//{
 			speedtranslock = true;
 			speedtransTween = GetTree().CreateTween().BindNode(this);
-			speedtransTween.SetSpeedScale( (float)(1/Engine.TimeScale));
+			speedtransTween.SetSpeedScale((float)(1 / Engine.TimeScale));
 			speedtransTween.TweenMethod(Callable.From<float>(SetLinesAlpha), Instance.GetNode<AnimatedSprite2D>("SpeedLines").Modulate.A, linesAlpha, transTime);
 			await ToSignal(speedtransTween, "finished");
 			speedtranslock = false;
 			EmitSignal(SignalName.SpeedLinesSuccess, true);
-		}
+		//}
 	}
 }

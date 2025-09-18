@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://boqe2j51w041b"]
 
 [ext_resource type="Texture2D" uid="uid://28mj3fvw13kx" path="res://Art Assets/Environment/House/Objects/BreakableLamp.png" id="1_s6hg1"]
-[ext_resource type="Script" path="res://Scripts/Environment/Interactables/Breakable.cs" id="1_utubm"]
+[ext_resource type="Script" uid="uid://cjkt2evdc5qeo" path="res://Scripts/Environment/Interactables/Breakable.cs" id="1_utubm"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_bbtbr"]
 [ext_resource type="Texture2D" uid="uid://0vjph16g6rfv" path="res://Art Assets/Environment/House/Objects/BreakableLampShards.png" id="4_gyc13"]
-[ext_resource type="Script" path="res://Scripts/Effects/BouncingParticle.cs" id="4_npl5r"]
+[ext_resource type="Script" uid="uid://bidx22qk6ughi" path="res://Scripts/Effects/BouncingParticle.cs" id="4_npl5r"]
 [ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Audio/Sounds/Impact/SmallShatter.mp3" id="6_iv7xl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gkgc0"]

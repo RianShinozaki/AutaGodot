@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c5db1ofb4p1qx"]
 
 [ext_resource type="Texture2D" uid="uid://c4g0sm7feuj5i" path="res://Art Assets/Effects/Movement/Land.png" id="1_7nftk"]
-[ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_2upmm"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_w8uwu"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_2upmm"]
+[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_w8uwu"]
 
 [sub_resource type="Animation" id="Animation_llm5k"]
 resource_name = "Effect"
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wcon5"]
 _data = {
-"Effect": SubResource("Animation_llm5k"),
-"RESET": SubResource("Animation_qq5yl")
+&"Effect": SubResource("Animation_llm5k"),
+&"RESET": SubResource("Animation_qq5yl")
 }
 
 [node name="Land" type="Sprite2D"]

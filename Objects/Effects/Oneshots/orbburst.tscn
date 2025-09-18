@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ct6pqwkiwhpf5"]
 
 [ext_resource type="Texture2D" uid="uid://bookg7or8t1xj" path="res://Art Assets/Characters/Auta/OrbBurst.png" id="1_8k1sy"]
-[ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_1vcsb"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_bh7dx"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_1vcsb"]
+[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_bh7dx"]
 
 [sub_resource type="Animation" id="Animation_3mcd5"]
 resource_name = "Effect"
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a42ke"]
 _data = {
-"Effect": SubResource("Animation_3mcd5"),
-"RESET": SubResource("Animation_24w60")
+&"Effect": SubResource("Animation_3mcd5"),
+&"RESET": SubResource("Animation_24w60")
 }
 
 [node name="OrbBurst" type="Sprite2D"]

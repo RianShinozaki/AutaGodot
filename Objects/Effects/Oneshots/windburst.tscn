@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cimwbi0rmsxca"]
 
 [ext_resource type="Texture2D" uid="uid://ba4f0yh1pdnvh" path="res://Art Assets/Effects/Impact/Windburst.png" id="1_kd6q0"]
-[ext_resource type="Script" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_276dw"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="4_byd41"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_276dw"]
+[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="4_byd41"]
 
 [sub_resource type="Animation" id="Animation_cugoa"]
 resource_name = "Effect"
@@ -82,8 +82,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_up6xp"]
 _data = {
-"Effect": SubResource("Animation_cugoa"),
-"RESET": SubResource("Animation_ska34")
+&"Effect": SubResource("Animation_cugoa"),
+&"RESET": SubResource("Animation_ska34")
 }
 
 [node name="Windburst" type="Sprite2D"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://db8l7ltwxxsjp"]
+
+[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/GameManager.cs" id="1_abg3g"]
+[ext_resource type="PackedScene" uid="uid://dxflhd836je40" path="res://Objects/System/fxPool.tscn" id="2_j0hw4"]
+[ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="3_xw6ph"]
+[ext_resource type="Shader" uid="uid://crij0fawgr8t6" path="res://Shaders/Desaturate.tres" id="4_x75ph"]
+[ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="5_o0guj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1w4b"]
+shader = ExtResource("4_x75ph")
+shader_parameter/ColorParameter = Color(0.475732, 0.504622, 0.461314, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t1264"]
+size = Vector2(480, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtm8j"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_euxu7"]
+offsets = PackedFloat32Array(0.134111, 0.314869, 0.655977, 0.784257)
+colors = PackedColorArray(0.717647, 0.333333, 0.266667, 0.215686, 0, 0, 0.470588, 0, 0.470588, 0.556863, 0.843137, 0.0745098, 0.470588, 0.556863, 0.843137, 0.0745098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ajp8n"]
+gradient = SubResource("Gradient_euxu7")
+width = 454
+height = 259
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.512195, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvfxt"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_ls5kl"]
+offsets = PackedFloat32Array(0.00874636, 0.399417)
+colors = PackedColorArray(0.278431, 0.0156863, 0.109804, 0.431373, 0.204035, 0.0178255, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k1pnl"]
+gradient = SubResource("Gradient_ls5kl")
+width = 454
+height = 259
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.512195, 0)
+
+[node name="GameSystem" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_abg3g")
+
+[node name="FXPool" parent="." instance=ExtResource("2_j0hw4")]
+
+[node name="Cam" type="Node2D" parent="."]
+position = Vector2(223, -207)
+
+[node name="Camera2D" parent="Cam" node_paths=PackedStringArray("target") instance=ExtResource("3_xw6ph")]
+zoom = Vector2(4, 4)
+target = NodePath("../CameraCenter")
+
+[node name="SharpShader" type="Sprite2D" parent="Cam/Camera2D"]
+visible = false
+material = SubResource("ShaderMaterial_c1w4b")
+texture = SubResource("PlaceholderTexture2D_t1264")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cam/Camera2D"]
+visible = false
+light_mask = 0
+z_index = -3997
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_jtm8j")
+position = Vector2(2, -12)
+scale = Vector2(1, 0.978764)
+texture = SubResource("GradientTexture2D_ajp8n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cam/Camera2D"]
+visible = false
+light_mask = 0
+material = SubResource("CanvasItemMaterial_yvfxt")
+position = Vector2(0, 26)
+scale = Vector2(1, 0.795367)
+texture = SubResource("GradientTexture2D_k1pnl")
+
+[node name="CameraCenter" parent="Cam" instance=ExtResource("5_o0guj")]
+position = Vector2(712, -168)
+cameraSize = Vector2(336, 173)

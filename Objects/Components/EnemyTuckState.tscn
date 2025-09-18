@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b150mpdv8riyj"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="1_dhdqr"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_etk1s"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="3_i1cgk"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="4_nk0rg"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="5_mxleh"]
+[ext_resource type="Script" uid="uid://dbt54swsxqpja" path="res://Scripts/Entities/General/Base/EntityState.cs" id="1_dhdqr"]
+[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="2_etk1s"]
+[ext_resource type="Script" uid="uid://rrc8rviiy8m6" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="3_i1cgk"]
+[ext_resource type="Script" uid="uid://ddyjapcdv3olx" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="4_nk0rg"]
+[ext_resource type="Script" uid="uid://bw7acu3wj8b00" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="5_mxleh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xw20l"]
 

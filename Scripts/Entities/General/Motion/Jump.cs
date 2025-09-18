@@ -20,7 +20,7 @@ public partial class Jump : StateScript
 	[Export] float shortHopGravScale;
 	[Export] public float riseThresh;
 	[Export] float fallThresh;
-	[Export] float fallSpeedMax;
+	[Export] float fallSpeedMax = 300;
 	[Export] public float extraMult = 1;
 	[Export] public bool requireGrounded = true;
 	[Export] AudioStream jumpSound;
@@ -29,13 +29,15 @@ public partial class Jump : StateScript
 	[Signal]
 	public delegate void JumpedEventHandler();
 
-    public override void _Process(double delta)
+	public override void _Process(double delta)
 	{
-		if(!active) {
-			canShortHop = false; 
+		if (!active)
+		{
+			canShortHop = false;
 
 			//Why?
-			if(allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded)) {
+			if (allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded))
+			{
 				canShortHop = true;
 				//EmitSignal(SignalName.Jumped);
 			}
@@ -43,7 +45,8 @@ public partial class Jump : StateScript
 			return;
 		}
 
-		if(allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded)) {
+		if (allowInitiation && Input.IsActionJustPressed("Jump") && (entity.grounded || !requireGrounded))
+		{
 			entity.vertSpeed = -jumpVelocity;
 			entity.vertProj = -entity.vertSpeed;
 			entity.grounded = false;
@@ -52,20 +55,21 @@ public partial class Jump : StateScript
 			EmitSignal(SignalName.Jumped);
 		}
 
-		JumpingState js = entity.grounded ? JumpingState.Grounded : 
+		JumpingState js = entity.grounded ? JumpingState.Grounded :
 					entity.vertProj > riseThresh ? JumpingState.Rising :
 					entity.vertProj < fallThresh ? JumpingState.Falling :
 					JumpingState.Peak;
 
 		//Set gravity
-		switch(js) {
+		switch (js)
+		{
 			case JumpingState.Grounded:
 				entity.gravity = gravity;
 				canShortHop = false;
 				break;
 			case JumpingState.Rising:
 				entity.gravity = gravity * risingGravScale;
-				if(!Input.IsActionPressed("Jump") && canShortHop)
+				if (!Input.IsActionPressed("Jump") && canShortHop)
 					entity.gravity = gravity * shortHopGravScale;
 				break;
 			case JumpingState.Peak:
@@ -78,5 +82,7 @@ public partial class Jump : StateScript
 				break;
 		}
 		entity.gravity *= extraMult;
+
+		entity.vertSpeed = Mathf.Min(entity.vertSpeed, fallSpeedMax);
 	}
 }

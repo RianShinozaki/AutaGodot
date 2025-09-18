@@ -1,45 +1,46 @@
-[gd_scene load_steps=181 format=3 uid="uid://bey8xr18nomep"]
+[gd_scene load_steps=186 format=3 uid="uid://bey8xr18nomep"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
+[ext_resource type="Script" uid="uid://rmkm0tbwp2xa" path="res://Scripts/Entities/Player/States/PlayerController.cs" id="1_uqxb3"]
+[ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="2_2h7nr"]
+[ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="2_4p32u"]
+[ext_resource type="Texture2D" uid="uid://07pc0b3pntrm" path="res://Art Assets/Characters/Auta/AutaSheet1Eyes.png" id="3_57alc"]
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="3_ymptp"]
 [ext_resource type="AudioStream" uid="uid://b6cn8tg7ip7t3" path="res://Audio/Sounds/Player/Jump.wav" id="4_07g4p"]
-[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="4_25evr"]
-[ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
+[ext_resource type="Script" uid="uid://ywgvcvpgfif0" path="res://addons/rianphysics/RayArray2D.cs" id="4_a2cge"]
 [ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Audio/Sounds/Player/Step1.wav" id="4_ureol"]
 [ext_resource type="AudioStream" uid="uid://tfnqofi6xosl" path="res://Audio/Sounds/Player/Step2.wav" id="5_21ga3"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="5_524kh"]
-[ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="5_ijq85"]
+[ext_resource type="Script" uid="uid://daepulrmfw6l2" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="5_524kh"]
+[ext_resource type="Script" uid="uid://b823p1atvi7hc" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="5_ijq85"]
 [ext_resource type="AudioStream" uid="uid://bix4yxfe1gw0b" path="res://Audio/Sounds/Player/Land.wav" id="5_vw38t"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/PlayerNormalAnimations.cs" id="6_apovy"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="6_mm0tc"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/Jump.cs" id="7_5n0yb"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="7_7nrjr"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="7_ywl3w"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ProcessGravityRegions.cs" id="8_fa06a"]
-[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="8_fumsl"]
+[ext_resource type="Script" uid="uid://bbv3dbr56mui2" path="res://Scripts/Entities/Player/Scripts/PlayerNormalAnimations.cs" id="6_apovy"]
+[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="6_mm0tc"]
+[ext_resource type="Script" uid="uid://b1ihds5tji603" path="res://Scripts/Entities/General/Motion/Jump.cs" id="7_5n0yb"]
+[ext_resource type="Script" uid="uid://krgw605qmekj" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="7_7nrjr"]
+[ext_resource type="Script" uid="uid://rrc8rviiy8m6" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="7_ywl3w"]
+[ext_resource type="Script" uid="uid://csxu2fxonmfgq" path="res://Scripts/Entities/General/Motion/ProcessGravityRegions.cs" id="8_fa06a"]
+[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/AfterImageGenerator.cs" id="8_fumsl"]
 [ext_resource type="Texture2D" uid="uid://ctmy0sgjf47p3" path="res://Art Assets/Characters/Auta/AutaAttackFX.png" id="8_rtcfq"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerOrbState.cs" id="8_tjto1"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerAttackState.cs" id="9_7hcsp"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="9_grlvd"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="9_s3pnp"]
-[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="10_b8sdc"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="11_03o8e"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/SpawnOnSignal.cs" id="13_yv1xd"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="14_6s213"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerInteractingState.cs" id="15_21wub"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerDuckState.cs" id="15_c8jlq"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaAbilityTransitions.cs" id="15_mntrl"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/AutaSpecialMenu.cs" id="18_10f7p"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerSpeedState.cs" id="21_1hpld"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="21_2pqk3"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/Scripts/PlayerInteract.cs" id="21_oo5rj"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="22_jk1sa"]
+[ext_resource type="Script" uid="uid://6m6p8v8m422r" path="res://Scripts/Entities/Player/States/PlayerOrbState.cs" id="8_tjto1"]
+[ext_resource type="Script" uid="uid://cg4ed0eieeifi" path="res://Scripts/Entities/Player/States/PlayerAttackState.cs" id="9_7hcsp"]
+[ext_resource type="Script" uid="uid://mvuysq6wbp8f" path="res://Scripts/System/Combat/Hitbox.cs" id="9_grlvd"]
+[ext_resource type="Script" uid="uid://dny382njbrxbm" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="9_s3pnp"]
+[ext_resource type="Script" uid="uid://cwv6dukb6l4fe" path="res://Data/Combat/HitboxData.cs" id="10_b8sdc"]
+[ext_resource type="Script" uid="uid://ddy8engfhab51" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="11_03o8e"]
+[ext_resource type="Script" uid="uid://dychm8njxm50a" path="res://Scripts/Entities/General/States/SpawnOnSignal.cs" id="13_yv1xd"]
+[ext_resource type="Script" uid="uid://bq4gmeosskuxp" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="14_6s213"]
+[ext_resource type="Script" uid="uid://xk2fbj7mbcdj" path="res://Scripts/Entities/Player/States/PlayerInteractingState.cs" id="15_21wub"]
+[ext_resource type="Script" uid="uid://20vqyekqvb1v" path="res://Scripts/Entities/Player/States/PlayerDuckState.cs" id="15_c8jlq"]
+[ext_resource type="Script" uid="uid://6107n5rnww6s" path="res://Scripts/Entities/Player/Scripts/AutaAbilityTransitions.cs" id="15_mntrl"]
+[ext_resource type="Script" uid="uid://cvjxdhpgs4vl6" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_1meyx"]
+[ext_resource type="Script" uid="uid://dgyu4y7eksjh3" path="res://Scripts/Entities/Player/Scripts/AutaSpecialMenu.cs" id="18_10f7p"]
+[ext_resource type="Script" uid="uid://xh8sbue7kjhx" path="res://Scripts/Entities/Player/States/PlayerSpeedState.cs" id="21_1hpld"]
+[ext_resource type="Script" uid="uid://ddyjapcdv3olx" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="21_2pqk3"]
+[ext_resource type="Script" uid="uid://ce5rxapu64uwf" path="res://Scripts/Entities/Player/Scripts/PlayerInteract.cs" id="21_oo5rj"]
+[ext_resource type="Script" uid="uid://bw7acu3wj8b00" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="22_jk1sa"]
 [ext_resource type="AudioStream" uid="uid://c6qt65favljje" path="res://Audio/Sounds/Player/SkidStop.wav" id="22_sly4j"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
+[ext_resource type="Script" uid="uid://dbt54swsxqpja" path="res://Scripts/Entities/General/Base/EntityState.cs" id="23_5rue2"]
 [ext_resource type="Texture2D" uid="uid://qvvkw3s402xi" path="res://Art Assets/Characters/Auta/AutaAttackFXHand.png" id="25_jqwbh"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerGrabState.cs" id="28_jq8db"]
+[ext_resource type="Script" uid="uid://dwfl4gpnun6rn" path="res://Scripts/Entities/Player/States/PlayerGrabState.cs" id="28_jq8db"]
 [ext_resource type="AudioStream" uid="uid://cxtxmh6esng6k" path="res://Audio/Sounds/Impact/Slice-Impact.wav" id="28_yqpct"]
 [ext_resource type="Texture2D" uid="uid://dt4hy3av0h1mi" path="res://Art Assets/Characters/Auta/AimArrow.png" id="29_d0e11"]
 [ext_resource type="AudioStream" uid="uid://vtkg1d7ul1bm" path="res://Audio/Sounds/Player/OrbThrow.wav" id="29_od4ne"]
@@ -48,10 +49,26 @@
 [ext_resource type="AudioStream" uid="uid://do28j3aju34af" path="res://Audio/Sounds/Player/Slash-Attack.wav" id="31_iybfl"]
 [ext_resource type="AudioStream" uid="uid://5xjocl68r7yu" path="res://Audio/Sounds/Player/OrbBounce.ogg" id="33_5d7ij"]
 [ext_resource type="AudioStream" uid="uid://xyx8xsff5kha" path="res://Audio/Sounds/Player/Throw.wav" id="38_xlr1c"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerWallStickState.cs" id="39_4cwik"]
+[ext_resource type="Script" uid="uid://cteg7ppsg3qqp" path="res://Scripts/Entities/Player/States/PlayerWallStickState.cs" id="39_4cwik"]
 [ext_resource type="AudioStream" uid="uid://dkv0jnn6t7sjr" path="res://Audio/Sounds/Player/grabbity.wav" id="39_68qov"]
-[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="40_0teus"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/StickToSurface.cs" id="40_7rhto"]
+[ext_resource type="Script" uid="uid://di3edikwc4uoa" path="res://Scripts/Entities/General/Motion/StickToSurface.cs" id="40_7rhto"]
+
+[sub_resource type="Gradient" id="Gradient_qgkbr"]
+colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jyuvq"]
+gradient = SubResource("Gradient_qgkbr")
+width = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrix0"]
+resource_local_to_scene = true
+shader = ExtResource("2_4p32u")
+shader_parameter/LightGradient = SubResource("GradientTexture1D_jyuvq")
+shader_parameter/emission_map = ExtResource("3_57alc")
+shader_parameter/emission_strength = 1.0
+shader_parameter/outline_color_left = Color(1, 0, 1, 1)
+shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/stunFX = 0.0
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
 resource_name = "Duck"
@@ -479,25 +496,25 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjstx"]
 _data = {
-"Duck": SubResource("Animation_hq2ft"),
-"Fall": SubResource("Animation_oogdo"),
-"Fall_Done": SubResource("Animation_g74bq"),
-"FastRun": SubResource("Animation_c5pnh"),
-"FromDuck": SubResource("Animation_aev23"),
-"FromSlide": SubResource("Animation_g0kfn"),
-"Hurt": SubResource("Animation_hcra8"),
-"Idle": SubResource("Animation_wvn26"),
-"Jump": SubResource("Animation_eap1r"),
-"JumpToFall": SubResource("Animation_068nl"),
-"Land": SubResource("Animation_pkp4k"),
-"Orb": SubResource("Animation_dqf4c"),
-"RESET": SubResource("Animation_q4vwf"),
-"Run": SubResource("Animation_5hoco"),
-"Skate": SubResource("Animation_ek8y2"),
-"Slide": SubResource("Animation_310b7"),
-"ThrowFlip": SubResource("Animation_1pfnt"),
-"ThrowSpin": SubResource("Animation_ln1gp"),
-"Turn": SubResource("Animation_2r0hl")
+&"Duck": SubResource("Animation_hq2ft"),
+&"Fall": SubResource("Animation_oogdo"),
+&"Fall_Done": SubResource("Animation_g74bq"),
+&"FastRun": SubResource("Animation_c5pnh"),
+&"FromDuck": SubResource("Animation_aev23"),
+&"FromSlide": SubResource("Animation_g0kfn"),
+&"Hurt": SubResource("Animation_hcra8"),
+&"Idle": SubResource("Animation_wvn26"),
+&"Jump": SubResource("Animation_eap1r"),
+&"JumpToFall": SubResource("Animation_068nl"),
+&"Land": SubResource("Animation_pkp4k"),
+&"Orb": SubResource("Animation_dqf4c"),
+&"RESET": SubResource("Animation_q4vwf"),
+&"Run": SubResource("Animation_5hoco"),
+&"Skate": SubResource("Animation_ek8y2"),
+&"Slide": SubResource("Animation_310b7"),
+&"ThrowFlip": SubResource("Animation_1pfnt"),
+&"ThrowSpin": SubResource("Animation_ln1gp"),
+&"Turn": SubResource("Animation_2r0hl")
 }
 
 [sub_resource type="Animation" id="Animation_cgv2g"]
@@ -718,8 +735,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_fc73j"]
 resource_name = "Launch"
-length = 0.5
-step = 0.0833
+length = 0.4
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -727,10 +744,10 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [112, 113, 114, 115, 116, 117]
+"values": [113, 114, 115, 116, 117]
 }
 tracks/1/type = "animation"
 tracks/1/imported = false
@@ -740,19 +757,19 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": PackedStringArray("Hitbox"),
-"times": PackedFloat32Array(0.166667)
+"times": PackedFloat32Array(0.0769231)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b056u"]
 _data = {
-"Combo1": SubResource("Animation_cgv2g"),
-"Combo2": SubResource("Animation_o8xra"),
-"Combo3": SubResource("Animation_swsgs"),
-"HandCombo1": SubResource("Animation_ekx5p"),
-"HandCombo2": SubResource("Animation_y2ioo"),
-"HandCombo3": SubResource("Animation_sxcoc"),
-"HandLaunch": SubResource("Animation_1njww"),
-"Launch": SubResource("Animation_fc73j")
+&"Combo1": SubResource("Animation_cgv2g"),
+&"Combo2": SubResource("Animation_o8xra"),
+&"Combo3": SubResource("Animation_swsgs"),
+&"HandCombo1": SubResource("Animation_ekx5p"),
+&"HandCombo2": SubResource("Animation_y2ioo"),
+&"HandCombo3": SubResource("Animation_sxcoc"),
+&"HandLaunch": SubResource("Animation_1njww"),
+&"Launch": SubResource("Animation_fc73j")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q3qwu"]
@@ -1340,9 +1357,9 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owpus"]
 _data = {
-"Hitbox": SubResource("Animation_mvahx"),
-"Hitbox_2": SubResource("Animation_eq7e2"),
-"RESET": SubResource("Animation_pvjgl")
+&"Hitbox": SubResource("Animation_mvahx"),
+&"Hitbox_2": SubResource("Animation_eq7e2"),
+&"RESET": SubResource("Animation_pvjgl")
 }
 
 [sub_resource type="Gradient" id="Gradient_qr2vu"]
@@ -1369,8 +1386,8 @@ impactSound = ExtResource("28_yqpct")
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8gsr"]
 _data = {
-"Hitbox": SubResource("Animation_mvahx"),
-"RESET": SubResource("Animation_pvjgl")
+&"Hitbox": SubResource("Animation_mvahx"),
+&"RESET": SubResource("Animation_pvjgl")
 }
 
 [sub_resource type="Resource" id="Resource_rt6j5"]
@@ -1392,7 +1409,7 @@ height = 46.0
 [sub_resource type="Animation" id="Animation_6vx4f"]
 resource_name = "Hitbox"
 length = 0.25
-step = 0.0833
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1400,7 +1417,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"times": PackedFloat32Array(0, 0.0769231, 0.153846),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [5, 6, 7]
@@ -1412,7 +1429,7 @@ tracks/1/path = NodePath("..:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.24566),
+"times": PackedFloat32Array(0, 0.230769),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1424,7 +1441,7 @@ tracks/2/path = NodePath("../PointLight2D:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.240028),
+"times": PackedFloat32Array(0, 0.230769),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1448,7 +1465,7 @@ tracks/4/path = NodePath("../CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.166667),
+"times": PackedFloat32Array(0, 0.153846),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -1471,8 +1488,8 @@ tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlqr3"]
 _data = {
-"Hitbox": SubResource("Animation_6vx4f"),
-"RESET": SubResource("Animation_pvjgl")
+&"Hitbox": SubResource("Animation_6vx4f"),
+&"RESET": SubResource("Animation_pvjgl")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ntgs"]
@@ -1635,9 +1652,9 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dm0we"]
 _data = {
-"Hitbox": SubResource("Animation_lwbou"),
-"Hitbox_2": SubResource("Animation_db7i6"),
-"RESET": SubResource("Animation_pvjgl")
+&"Hitbox": SubResource("Animation_lwbou"),
+&"Hitbox_2": SubResource("Animation_db7i6"),
+&"RESET": SubResource("Animation_pvjgl")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exb1d"]
@@ -1711,8 +1728,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rv653"]
 _data = {
-"Hitbox": SubResource("Animation_dhh70"),
-"RESET": SubResource("Animation_pvjgl")
+&"Hitbox": SubResource("Animation_dhh70"),
+&"RESET": SubResource("Animation_pvjgl")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3mj2"]
@@ -1753,8 +1770,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbwes"]
 _data = {
-"RESET": SubResource("Animation_ndww4"),
-"default": SubResource("Animation_2jls2")
+&"RESET": SubResource("Animation_ndww4"),
+&"default": SubResource("Animation_2jls2")
 }
 
 [sub_resource type="Animation" id="Animation_lmydw"]
@@ -1816,8 +1833,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0p6x7"]
 _data = {
-"RESET": SubResource("Animation_lmydw"),
-"default": SubResource("Animation_47hjo")
+&"RESET": SubResource("Animation_lmydw"),
+&"default": SubResource("Animation_47hjo")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
@@ -1837,6 +1854,15 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5red"]
 radius = 16.0
 
+[sub_resource type="Gradient" id="Gradient_0vkrt"]
+offsets = PackedFloat32Array(0.0991254, 0.784257)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u2l20"]
+gradient = SubResource("Gradient_0vkrt")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D"]
 light_mask = 3
 texture_filter = 1
@@ -1853,8 +1879,7 @@ slopeLeaveInfluence = 0.5
 [node name="Art" type="Sprite2D" parent="."]
 light_mask = 2
 texture_filter = 1
-material = ExtResource("4_25evr")
-use_parent_material = true
+material = SubResource("ShaderMaterial_qrix0")
 texture = ExtResource("3_ymptp")
 offset = Vector2(0, -8)
 hframes = 12
@@ -1863,8 +1888,8 @@ vframes = 10
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_qjstx"),
-"Attack": SubResource("AnimationLibrary_b056u")
+&"": SubResource("AnimationLibrary_qjstx"),
+&"Attack": SubResource("AnimationLibrary_b056u")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Art"]
@@ -2163,7 +2188,7 @@ hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/AttackState/Attacks/Blade-WeakHit/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_owpus")
+&"": SubResource("AnimationLibrary_owpus")
 }
 speed_scale = 1.333
 
@@ -2198,7 +2223,7 @@ hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/AttackState/Attacks/Blade-StrongHit/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_x8gsr")
+&"": SubResource("AnimationLibrary_x8gsr")
 }
 speed_scale = 1.333
 
@@ -2233,7 +2258,7 @@ hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/AttackState/Attacks/Blade-Launch/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_xlqr3")
+&"": SubResource("AnimationLibrary_xlqr3")
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Blade-Launch"]
@@ -2268,7 +2293,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/AttackState/Attacks/Hand-WeakHit/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_dm0we")
+&"": SubResource("AnimationLibrary_dm0we")
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Hand-WeakHit"]
@@ -2303,7 +2328,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/AttackState/Attacks/Hand-Launch/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_rv653")
+&"": SubResource("AnimationLibrary_rv653")
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Hand-Launch"]
@@ -2339,7 +2364,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/AttackState/Attacks/Hand-StrongHit/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_x8gsr")
+&"": SubResource("AnimationLibrary_x8gsr")
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="States/AttackState/Attacks/Hand-StrongHit"]
@@ -2451,11 +2476,12 @@ debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 [node name="GrabState" type="Node2D" parent="States"]
 process_priority = 1
 script = ExtResource("28_jq8db")
-initVertSpeed = 70.0
-timescale = 0.3
+initVertSpeed = 80.0
+timescale = 0.2
 minGrabTime = 0.1
 throwPower = 250.0
 recoilPower = 175.0
+ySpeedThreshToThrow = -50.0
 throwSound = ExtResource("38_xlr1c")
 grabSound = ExtResource("39_68qov")
 
@@ -2476,9 +2502,7 @@ flipObject = NodePath("../../FlipPivot")
 script = ExtResource("7_ywl3w")
 speed = 90.0
 decel = 180.0
-decelTooFast = 120.0
 airAccel = 240.0
-airDecel = 60.0
 airDecelTooFast = 120.0
 
 [node name="ActiveComponentGroup" type="Node2D" parent="States/GrabState"]
@@ -2493,7 +2517,7 @@ offset = Vector2(19.775, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/GrabState/ActiveComponentGroup/Arrow"]
 libraries = {
-"": SubResource("AnimationLibrary_tbwes")
+&"": SubResource("AnimationLibrary_tbwes")
 }
 autoplay = "default"
 speed_scale = 3.0
@@ -2504,7 +2528,7 @@ texture = ExtResource("30_boeqv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="States/GrabState/ActiveComponentGroup/Reticle"]
 libraries = {
-"": SubResource("AnimationLibrary_0p6x7")
+&"": SubResource("AnimationLibrary_0p6x7")
 }
 autoplay = "default"
 speed_scale = 3.0
@@ -2617,13 +2641,6 @@ offset_bottom = -19.0
 text = "da"
 horizontal_alignment = 1
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(19, -11)
-energy = 1.09
-range_item_cull_mask = 3
-texture = ExtResource("40_0teus")
-
 [node name="WallRayArray" type="Node2D" parent="."]
 rotation = -1.58825
 script = ExtResource("4_a2cge")
@@ -2640,6 +2657,18 @@ target_position = Vector2(0, 8)
 [node name="RayCast2D3" type="RayCast2D" parent="WallRayArray"]
 position = Vector2(5, 0)
 target_position = Vector2(0, 8)
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(5.77569e-06, 0.922705, 0.927308, 1)
+energy = 0.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_u2l20")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+color = Color(5.77569e-06, 0.922705, 0.927308, 1)
+energy = 0.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_u2l20")
 
 [connection signal="Grounded" from="." to="States/BaseState/SignalScriptGroup/SpawnSig - Grounded -> Land" method="_on_signal" unbinds=2]
 [connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]

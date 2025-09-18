@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bpck7bfkynclm"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueManager.cs" id="1_0l1lm"]
+[ext_resource type="Script" uid="uid://byrj5xfltuk0i" path="res://addons/dialogue_nodes/objects/DialogueManager.cs" id="1_0l1lm"]
 [ext_resource type="Resource" uid="uid://dvaxnhtmo01o" path="res://addons/dialogue_nodes/Preloader.tres" id="2_ygp7a"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueCore.cs" id="3_vj5q0"]
+[ext_resource type="Script" uid="uid://bybo3cbxj5iuk" path="res://addons/dialogue_nodes/objects/DialogueCore.cs" id="3_vj5q0"]
 [ext_resource type="FontFile" uid="uid://bwn2jpwxj6ugi" path="res://Art Assets/Fonts/Not Jam Mono Clean 16.ttf" id="4_4hf1q"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueUI.cs" id="4_yb1yx"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueInput.cs" id="5_rbbw8"]
+[ext_resource type="Script" uid="uid://5kteuup2tdkt" path="res://addons/dialogue_nodes/objects/DialogueUI.cs" id="4_yb1yx"]
+[ext_resource type="Script" uid="uid://b5h3kcrgujtq7" path="res://addons/dialogue_nodes/objects/DialogueInput.cs" id="5_rbbw8"]
 [ext_resource type="Texture2D" uid="uid://dla76qr5vqp1r" path="res://addons/dialogue_nodes/icons/Character.svg" id="6_k1ewk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vpey2"]
@@ -33,6 +33,8 @@ Panel/styles/panel = SubResource("StyleBoxTexture_jl84a")
 RichTextLabel/fonts/normal_font = ExtResource("4_4hf1q")
 
 [node name="DialogueLayer" type="CanvasLayer"]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 
 [node name="DialogueBox" type="Control" parent="."]
 texture_filter = 1

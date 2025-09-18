@@ -1,27 +1,27 @@
 [gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_5mmnx"]
+[ext_resource type="Script" uid="uid://7fyraj5eai8g" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_5mmnx"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_i2ob7"]
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_kqnyo"]
 [ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_ouqjm"]
 [ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_gruas"]
-[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="6_r4v4u"]
+[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/AfterImageGenerator.cs" id="6_r4v4u"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="7_xbsis"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="8_pqpgr"]
+[ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="8_pqpgr"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="9_7f2kx"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="10_sab7k"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="11_6i11l"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="12_cp4kx"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="13_wowl5"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="14_8hl3p"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="15_aliyx"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hitbox.cs" id="16_dneiw"]
-[ext_resource type="Script" path="res://Data/Combat/HitboxData.cs" id="17_i2vf5"]
-[ext_resource type="PackedScene" path="res://Objects/Components/EnemyHurtState.tscn" id="18_4474c"]
+[ext_resource type="Script" uid="uid://dbt54swsxqpja" path="res://Scripts/Entities/General/Base/EntityState.cs" id="10_sab7k"]
+[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="11_6i11l"]
+[ext_resource type="Script" uid="uid://rrc8rviiy8m6" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="12_cp4kx"]
+[ext_resource type="Script" uid="uid://daepulrmfw6l2" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="13_wowl5"]
+[ext_resource type="Script" uid="uid://dxq8yhjrp7bsm" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="14_8hl3p"]
+[ext_resource type="Script" uid="uid://brfk75wk3idmq" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="15_aliyx"]
+[ext_resource type="Script" uid="uid://mvuysq6wbp8f" path="res://Scripts/System/Combat/Hitbox.cs" id="16_dneiw"]
+[ext_resource type="Script" uid="uid://cwv6dukb6l4fe" path="res://Data/Combat/HitboxData.cs" id="17_i2vf5"]
+[ext_resource type="PackedScene" uid="uid://bygolch5gnrqk" path="res://Objects/Components/EnemyHurtState.tscn" id="18_4474c"]
 [ext_resource type="PackedScene" uid="uid://clwj6dgm0myvh" path="res://Objects/Components/EnemyGrabbedState.tscn" id="19_mp5gu"]
 [ext_resource type="PackedScene" uid="uid://db0ov7bqn51kr" path="res://Objects/Components/EnemyThrownState.tscn" id="20_ula41"]
 [ext_resource type="PackedScene" uid="uid://b150mpdv8riyj" path="res://Objects/Components/EnemyTuckState.tscn" id="21_pyoey"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="22_50a61"]
+[ext_resource type="Script" uid="uid://oamv1u5fuf7j" path="res://Scripts/System/Combat/Hurtbox.cs" id="22_50a61"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rbaw3"]
 diffuse_texture = ExtResource("3_kqnyo")
@@ -184,12 +184,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5c5"]
 _data = {
-"Attack": SubResource("Animation_k40gc"),
-"Hurt": SubResource("Animation_q1x7s"),
-"Idle": SubResource("Animation_gws86"),
-"RESET": SubResource("Animation_6wrhy"),
-"Tuck": SubResource("Animation_64llm"),
-"Walk": SubResource("Animation_ycjq8")
+&"Attack": SubResource("Animation_k40gc"),
+&"Hurt": SubResource("Animation_q1x7s"),
+&"Idle": SubResource("Animation_gws86"),
+&"RESET": SubResource("Animation_6wrhy"),
+&"Tuck": SubResource("Animation_64llm"),
+&"Walk": SubResource("Animation_ycjq8")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tiyy2"]
@@ -300,7 +300,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
 libraries = {
-"": SubResource("AnimationLibrary_6m5c5")
+&"": SubResource("AnimationLibrary_6m5c5")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Art"]
@@ -332,6 +332,7 @@ script = ExtResource("11_6i11l")
 
 [node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("12_cp4kx")
+directControl = true
 speed = 30.0
 accel = 900.0
 decel = 480.0

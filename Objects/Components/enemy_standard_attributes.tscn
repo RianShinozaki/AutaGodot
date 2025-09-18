@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cm2fc327odcxe"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="1_0ss2m"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessDeathEnemyBasic.cs" id="2_cxxw3"]
+[ext_resource type="Script" uid="uid://b823p1atvi7hc" path="res://Scripts/Entities/Attributes/EntityHealth.cs" id="1_0ss2m"]
+[ext_resource type="Script" uid="uid://c8vvxdaslg8xf" path="res://Scripts/Entities/General/Combat/ProcessDeathEnemyBasic.cs" id="2_cxxw3"]
 [ext_resource type="AudioStream" uid="uid://ca8g22inqsyl8" path="res://Audio/Sounds/Impact/EnemyDie.wav" id="3_33tu7"]
 
 [node name="Attributes" type="Node2D"]

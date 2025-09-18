@@ -1,5 +1,7 @@
 shader_type canvas_item;
 uniform sampler2D LightGradient : filter_nearest, repeat_disable;
+uniform sampler2D emission_map : filter_nearest, repeat_disable;
+uniform float emission_strength = 0.0;
 uniform vec4 outline_color_left : source_color;
 uniform vec4 outline_color_right : source_color;
 uniform float stunFX;
@@ -42,6 +44,7 @@ void light() {
   	//LIGHT = mix(vec4((LIGHT_COLOR.rgb * LIGHT_ENERGY) * cNdotL, LIGHT_COLOR.a), vec4(0,0,0,0), stunFX);
 	
 	
-	 LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY, LIGHT_COLOR.a);
-	
+	LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY, LIGHT_COLOR.a);
+	vec4 emission_color = texture(emission_map, UV);
+	LIGHT = mix(LIGHT, emission_color, emission_strength*emission_color.a);
 }

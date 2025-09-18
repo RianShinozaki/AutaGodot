@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://x5ri42qjt5rx"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="1_gv2at"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/EnemyHurt.cs" id="2_yd4bk"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/SetGravityThresh.cs" id="3_b8lf4"]
+[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="1_gv2at"]
+[ext_resource type="Script" uid="uid://drlpsgq1ox7fj" path="res://Scripts/Entities/General/Combat/EnemyHurt.cs" id="2_yd4bk"]
+[ext_resource type="Script" uid="uid://dlybfii27twfd" path="res://Scripts/Entities/General/Motion/SetGravityThresh.cs" id="3_b8lf4"]
 
 [node name="EnemyStandardScriptGroup" type="Node2D"]
 script = ExtResource("1_gv2at")

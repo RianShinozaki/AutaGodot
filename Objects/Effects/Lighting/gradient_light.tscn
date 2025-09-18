@@ -13,7 +13,7 @@ scale = Vector2(1, 2)
 light_mask = 15
 position = Vector2(32, 32)
 rotation = 3.14159
-color = Color(0.892673, 0.527295, 0.790482, 1)
+color = Color(0.94902, 0, 0.25098, 1)
 energy = 0.77
 range_layer_min = -200
 range_layer_max = 200
@@ -22,7 +22,7 @@ texture = ExtResource("1_c6mey")
 height = 100.0
 
 [node name="Gradient" type="Sprite2D" parent="GradientLight"]
-modulate = Color(0.701961, 0.0235294, 0.243137, 0.141176)
+modulate = Color(0.929122, 0.0714178, 0.336165, 0.141176)
 material = SubResource("CanvasItemMaterial_1opim")
 texture = ExtResource("1_c6mey")
 
@@ -31,6 +31,6 @@ color = Color(0.825431, 0.204924, 0.296902, 1)
 energy = 0.41
 range_layer_min = -200
 range_layer_max = 200
-range_item_cull_mask = 11
+range_item_cull_mask = 15
 texture = ExtResource("2_eqejk")
 texture_scale = 2.55

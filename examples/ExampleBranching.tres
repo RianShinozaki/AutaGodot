@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://cjgko337t5am4"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_hokb8"]
+[ext_resource type="Script" uid="uid://cx6kx7w4vdj4f" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_hokb8"]
 
 [resource]
 script = ExtResource("1_hokb8")
@@ -69,6 +69,6 @@ Variables = {
 "value": false
 }
 }
-Comments = []
-Strays = []
+Comments = Array[String]([])
+Strays = Array[String]([])
 Characters = ""

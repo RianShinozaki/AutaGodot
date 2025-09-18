@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb7vw7fvmejei"]
+[gd_scene load_steps=7 format=3 uid="uid://bb7vw7fvmejei"]
 
+[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/GameManager.cs" id="1_dssc1"]
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="1_v3dwl"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/MusicController.cs" id="4_0qlmu"]
-[ext_resource type="PackedScene" uid="uid://c5xad8auwqo6q" path="res://Scenes/DeepRuins.tscn" id="5_8dsd5"]
+[ext_resource type="Script" uid="uid://crtfw650p8ob8" path="res://Scripts/System/Controllers/MusicController.cs" id="4_0qlmu"]
 [ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="5_ximvb"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/SFXController.cs" id="6_o47f1"]
+[ext_resource type="PackedScene" uid="uid://brxaes03pptyu" path="res://Scenes/TestRoom.tscn" id="6_i6g32"]
+[ext_resource type="Script" uid="uid://2mmeece63pi7" path="res://Scripts/System/Controllers/SFXController.cs" id="6_o47f1"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_dssc1")
 
 [node name="PlayerUI" parent="." instance=ExtResource("1_v3dwl")]
 visible = false
@@ -21,6 +23,12 @@ script = ExtResource("4_0qlmu")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicController"]
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_ximvb")]
-layer = 0
+layer = 6
 
-[node name="CanvasModulate" parent="." instance=ExtResource("5_8dsd5")]
+[node name="DialogueUI" parent="DialogueBox/DialogueBox" index="1"]
+self_modulate = Color(0, 0, 0, 1)
+
+[node name="GameWorld" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(178, 295)
+
+[editable path="DialogueBox"]

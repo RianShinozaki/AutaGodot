@@ -1,11 +1,11 @@
 [gd_scene load_steps=25 format=3 uid="uid://daailb8lshm22"]
 
-[ext_resource type="Script" path="res://Scripts/Environment/Interactables/OrbBreakable.cs" id="1_u24fw"]
+[ext_resource type="Script" uid="uid://fpcroa210tmi" path="res://Scripts/Environment/Interactables/OrbBreakable.cs" id="1_u24fw"]
 [ext_resource type="Texture2D" uid="uid://cqibf5p6e3ask" path="res://Art Assets/Environment/Misc/Objects/StarFlowerYellow.png" id="2_tq876"]
 [ext_resource type="AudioStream" uid="uid://cmq7eli3mwwhf" path="res://Audio/Sounds/Item/FlowerPop.wav" id="3_8px60"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_hi0jn"]
-[ext_resource type="Script" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_6pteb"]
-[ext_resource type="Script" path="res://Scripts/Effects/Trail.cs" id="6_5cvhm"]
+[ext_resource type="Script" uid="uid://cpt5tatohbsl1" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_6pteb"]
+[ext_resource type="Script" uid="uid://ubgi76algbag" path="res://Scripts/Effects/Trail.cs" id="6_5cvhm"]
 [ext_resource type="Texture2D" uid="uid://dexbrg65x7hyf" path="res://Art Assets/Environment/Misc/Objects/StarPetalYellow.png" id="6_a5j23"]
 [ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Audio/Sounds/Item/flowerpickup.wav" id="8_3vkn3"]
 
@@ -206,9 +206,9 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wmsi7"]
 _data = {
-"Burst": SubResource("Animation_nkgyy"),
-"Default": SubResource("Animation_rf0ue"),
-"RESET": SubResource("Animation_ujpvi")
+&"Burst": SubResource("Animation_nkgyy"),
+&"Default": SubResource("Animation_rf0ue"),
+&"RESET": SubResource("Animation_ujpvi")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cab3a"]

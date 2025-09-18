@@ -1,0 +1,177 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cwj2735ga6vxw"]
+
+[ext_resource type="Script" uid="uid://cx6kx7w4vdj4f" path="res://addons/dialogue_nodes/objects/DialogueData.cs" id="1_0mmy0"]
+
+[resource]
+script = ExtResource("1_0mmy0")
+FileName = "InitFlashback"
+Starts = {
+"Start": &"0_1"
+}
+Nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(63, 122),
+"start_id": "Start"
+},
+"1_1": {
+"dialogue": "[color=#f7f56d]...You know we're behind you, no matter what, right?[/color]",
+"offset": Vector2(340, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(400, 280),
+"speaker": ""
+},
+"1_10": {
+"dialogue": "[color=#f1b7f7]I'll get up over and over if I have to...  [/color]",
+"offset": Vector2(3760, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_11": {
+"dialogue": "[color=#f1b7f7]If it means I'll see all of you again tomorrow. [/color]",
+"offset": Vector2(4080, 100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_12": {
+"dialogue": "[color=#8d8e8f]I don't want to live in a world without you, Auta. [/color]",
+"offset": Vector2(2800, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_2": {
+"dialogue": "[color=#f7f56d]So you don't need to be scared. Even if you feel alone out there, you're not. You never are. [/color]",
+"offset": Vector2(760, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_3": {
+"dialogue": "[color=#67d6f5]As if this is something you can't handle. I know you're capable of surprising every one of us. [/color]",
+"offset": Vector2(1100, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_4": {
+"dialogue": "[color=#8d8e8f] ... [/color]",
+"offset": Vector2(2120, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_5": {
+"dialogue": "[color=#8d8e8f]Just make sure you come back to us when it's over. Promise? [/color]",
+"offset": Vector2(2480, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_12",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_6": {
+"dialogue": "[color=#f7f56d]Did you hear that? She just actually, genuinely, tried to encourage you. It's gotta be true, then.[/color]",
+"offset": Vector2(1440, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_7": {
+"dialogue": "[color=#67d6f5]I never say a thing I don't mean. [/color]",
+"offset": Vector2(1780, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_8": {
+"dialogue": "[color=#f1b7f7] ...You guys...  [/color]",
+"offset": Vector2(3140, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_9",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+},
+"1_9": {
+"dialogue": "[color=#f1b7f7] C'mon, you know me. I don't quit 'till it's over.  [/color]",
+"offset": Vector2(3460, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(300, 255),
+"speaker": ""
+}
+}
+Variables = {}
+Comments = Array[String]([])
+Strays = Array[String]([])
+Characters = ""

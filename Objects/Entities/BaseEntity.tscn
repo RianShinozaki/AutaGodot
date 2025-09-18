@@ -1,12 +1,12 @@
 [gd_scene load_steps=61 format=3 uid="uid://c4utwgyn4y7hs"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_f4s6w"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_3y45a"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_s737c"]
-[ext_resource type="Script" path="res://Scripts/System/Combat/Hurtbox.cs" id="4_x7mmj"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="5_kd6w5"]
-[ext_resource type="Script" path="res://addons/rianphysics/RayArray2D.cs" id="5_n4c7d"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="6_64w8n"]
+[ext_resource type="Script" uid="uid://7fyraj5eai8g" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_f4s6w"]
+[ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="3_3y45a"]
+[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="4_s737c"]
+[ext_resource type="Script" uid="uid://oamv1u5fuf7j" path="res://Scripts/System/Combat/Hurtbox.cs" id="4_x7mmj"]
+[ext_resource type="Script" uid="uid://krgw605qmekj" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="5_kd6w5"]
+[ext_resource type="Script" uid="uid://ywgvcvpgfif0" path="res://addons/rianphysics/RayArray2D.cs" id="5_n4c7d"]
+[ext_resource type="Script" uid="uid://dny382njbrxbm" path="res://Scripts/Entities/General/Combat/ProcessKnockback.cs" id="6_64w8n"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="6_ehwrf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8qqqs"]
@@ -178,15 +178,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjstx"]
 _data = {
-"Fall": SubResource("Animation_oogdo"),
-"Idle": SubResource("Animation_wvn26"),
-"Jump": SubResource("Animation_eap1r"),
-"JumpToFall": SubResource("Animation_068nl"),
-"Land": SubResource("Animation_pkp4k"),
-"Orb": SubResource("Animation_dqf4c"),
-"RESET": SubResource("Animation_q4vwf"),
-"Run": SubResource("Animation_5hoco"),
-"Turn": SubResource("Animation_2r0hl")
+&"Fall": SubResource("Animation_oogdo"),
+&"Idle": SubResource("Animation_wvn26"),
+&"Jump": SubResource("Animation_eap1r"),
+&"JumpToFall": SubResource("Animation_068nl"),
+&"Land": SubResource("Animation_pkp4k"),
+&"Orb": SubResource("Animation_dqf4c"),
+&"RESET": SubResource("Animation_q4vwf"),
+&"Run": SubResource("Animation_5hoco"),
+&"Turn": SubResource("Animation_2r0hl")
 }
 
 [sub_resource type="Animation" id="Animation_cgv2g"]
@@ -253,9 +253,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b056u"]
 _data = {
-"Combo1": SubResource("Animation_cgv2g"),
-"Combo2": SubResource("Animation_o8xra"),
-"Combo3": SubResource("Animation_swsgs")
+&"Combo1": SubResource("Animation_cgv2g"),
+&"Combo2": SubResource("Animation_o8xra"),
+&"Combo3": SubResource("Animation_swsgs")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q3qwu"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cqx3d6x3e06hm"]
 
-[ext_resource type="Script" path="res://Scripts/System/Controllers/GameCamera.cs" id="1_kiqqg"]
+[ext_resource type="Script" uid="uid://dnp2iri6vntd6" path="res://Scripts/System/Controllers/GameCamera.cs" id="1_kiqqg"]
 [ext_resource type="Texture2D" uid="uid://ca68imfs5y3y" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_0.png" id="2_exsfn"]
 [ext_resource type="Texture2D" uid="uid://cbto7t4bu32fp" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_1.png" id="3_4y0ag"]
 [ext_resource type="Texture2D" uid="uid://butkiw82s6a0o" path="res://Art Assets/Effects/Screen/SpeedLines/spr_SpeedLines_2.png" id="4_akgs2"]

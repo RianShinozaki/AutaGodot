@@ -8,9 +8,8 @@ using System.Linq;
 public partial class DialogueRunner : Control
 {	
 	[Export] private DialogueData dialogueData;
-	[Export] private DialogueManager dialogueBox;
+	private DialogueManager dialogueBox;
 	[Export] private AudioStreamPlayer audioStreamPlayer;
-	[Export] private ExternalVariablesDemo externalVariablesDemo;
 	[Export] private AnimationPlayer anim;
 
 	[ExportCategory("SFX Options")]
@@ -23,7 +22,6 @@ public partial class DialogueRunner : Control
 	{
 		dialogueBox = DialogueManager.Instance;
 		dialogueBox.Initialize();
-		//dialogueBox.AddExternalVariable(externalVariablesDemo);
 		connectSignals();
 	}
 

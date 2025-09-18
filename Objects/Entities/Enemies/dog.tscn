@@ -1,23 +1,23 @@
 [gd_scene load_steps=46 format=3 uid="uid://fojsq0umiwdx"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_1flec"]
+[ext_resource type="Script" uid="uid://7fyraj5eai8g" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_1flec"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_n4sfi"]
 [ext_resource type="Texture2D" uid="uid://baone4ljqq8fv" path="res://Art Assets/Environment/Misc/Objects/Dog.png" id="3_3g0cg"]
-[ext_resource type="Script" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_qjiua"]
+[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/AfterImageGenerator.cs" id="4_qjiua"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_bwtb3"]
-[ext_resource type="Script" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="6_b0g58"]
+[ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="6_b0g58"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y86nq"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_wafxr"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="9_i2qlq"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="10_jnv0d"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="11_rwvbd"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="13_ktem1"]
-[ext_resource type="Script" path="res://Scripts/Entities/Enemies/Dog/DogAttack.cs" id="13_nc65w"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Motion/FlipToFacePlayer.cs" id="14_c10ra"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="15_21tam"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="15_2788y"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="15_sh5cu"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_bvv2n"]
+[ext_resource type="Script" uid="uid://dbt54swsxqpja" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_wafxr"]
+[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="9_i2qlq"]
+[ext_resource type="Script" uid="uid://rrc8rviiy8m6" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="10_jnv0d"]
+[ext_resource type="Script" uid="uid://daepulrmfw6l2" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="11_rwvbd"]
+[ext_resource type="Script" uid="uid://brfk75wk3idmq" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="13_ktem1"]
+[ext_resource type="Script" uid="uid://cmn5mutfrw2p0" path="res://Scripts/Entities/Enemies/Dog/DogAttack.cs" id="13_nc65w"]
+[ext_resource type="Script" uid="uid://cebmae4jm7jt3" path="res://Scripts/Entities/General/Motion/FlipToFacePlayer.cs" id="14_c10ra"]
+[ext_resource type="Script" uid="uid://ddy8engfhab51" path="res://Scripts/Entities/General/States/PlayAnimationOnSignal.cs" id="15_21tam"]
+[ext_resource type="Script" uid="uid://ddyjapcdv3olx" path="res://Scripts/Entities/General/Base/StateComponentGroup.cs" id="15_2788y"]
+[ext_resource type="Script" uid="uid://bw7acu3wj8b00" path="res://Scripts/Entities/General/Component Helper/ColliderSetActive.cs" id="15_sh5cu"]
+[ext_resource type="Script" uid="uid://cvjxdhpgs4vl6" path="res://Scripts/Entities/General/States/SwitchStateOnSignal.cs" id="16_bvv2n"]
 [ext_resource type="AudioStream" uid="uid://bt714lhsqmkde" path="res://Audio/Sounds/Entity/WhipCrack.mp3" id="17_l5fwr"]
 
 [sub_resource type="Animation" id="Animation_gws86"]
@@ -250,13 +250,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pqax5"]
 _data = {
-"Idle": SubResource("Animation_gws86"),
-"IdleAttack": SubResource("Animation_p82x5"),
-"RESET": SubResource("Animation_6wrhy"),
-"Ready": SubResource("Animation_vy664"),
-"Run": SubResource("Animation_ycjq8"),
-"RunAttack": SubResource("Animation_05cr4"),
-"Slip": SubResource("Animation_vjgc6")
+&"Idle": SubResource("Animation_gws86"),
+&"IdleAttack": SubResource("Animation_p82x5"),
+&"RESET": SubResource("Animation_6wrhy"),
+&"Ready": SubResource("Animation_vy664"),
+&"Run": SubResource("Animation_ycjq8"),
+&"RunAttack": SubResource("Animation_05cr4"),
+&"Slip": SubResource("Animation_vjgc6")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rlc4f"]

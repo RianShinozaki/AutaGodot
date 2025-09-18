@@ -7,10 +7,10 @@ path="res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn"
 
 [deps]
 
-files=["res://LDTK/DeepRuins/tilesets/tileset_16px.res", "res://LDTK/DeepRuins/levels/Level_0.scn", "res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn"]
+files=["res://LDTK/DeepRuins/tilesets/tileset_16px.res", "res://LDTK/DeepRuins/levels/Level_0.scn", "res://LDTK/DeepRuins/levels/Level_1.scn", "res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn"]
 
 source_file="res://LDTK/DeepRuins/DeepRuins.ldtk"
-dest_files=["res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn", "res://LDTK/DeepRuins/tilesets/tileset_16px.res", "res://LDTK/DeepRuins/levels/Level_0.scn", "res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn"]
+dest_files=["res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn", "res://LDTK/DeepRuins/tilesets/tileset_16px.res", "res://LDTK/DeepRuins/levels/Level_0.scn", "res://LDTK/DeepRuins/levels/Level_1.scn", "res://.godot/imported/DeepRuins.ldtk-f6de589121a69c74a64f6dbe0483b560.scn"]
 
 [params]
 

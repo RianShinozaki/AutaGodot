@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dxflhd836je40"]
 
-[ext_resource type="Script" path="res://Scripts/System/Controllers/ObjectPool.cs" id="1_vy6vj"]
-[ext_resource type="Script" path="res://Data/Misc Resources/PooledObject.cs" id="2_8t6pi"]
+[ext_resource type="Script" uid="uid://cikgwqyhlyxnu" path="res://Scripts/System/Controllers/ObjectPool.cs" id="1_vy6vj"]
+[ext_resource type="Script" uid="uid://sdw1kq6juycq" path="res://Data/Misc Resources/PooledObject.cs" id="2_8t6pi"]
 
 [sub_resource type="Resource" id="Resource_2rxvv"]
 script = ExtResource("2_8t6pi")

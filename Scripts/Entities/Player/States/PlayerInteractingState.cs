@@ -22,7 +22,7 @@ public partial class PlayerInteractingState : EntityState
 
 		PlayerController player = (PlayerController)entity;
 
-		if (theInteractable.repositionPlayer)
+		if (theInteractable != null && theInteractable.repositionPlayer)
 		{
 			float targetX = theInteractable.GlobalPosition.X + theInteractable.Scale.X * 16;
 			if (targetX - GlobalPosition.X > 8)

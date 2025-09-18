@@ -6,25 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://f5jkjnuwqu70" path="res://Art Assets/Environment/Underground/Backgrounds/CloserStal.png" id="4_cpn5m"]
 [ext_resource type="Texture2D" uid="uid://bc8q57121ho27" path="res://Art Assets/Environment/Underground/Backgrounds/Distance.png" id="5_d31lm"]
 [ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="6_hpbul"]
-[ext_resource type="Script" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="7_kdeme"]
+[ext_resource type="Script" uid="uid://dqme5rsfgh03c" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="7_kdeme"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="8_5k1nm"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/DialogueRunner.cs" id="9_3y71p"]
+[ext_resource type="Script" uid="uid://vcgent31weyp" path="res://Scripts/Dialogue/DialogueRunner.cs" id="9_3y71p"]
 [ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="10_04ufv"]
 [ext_resource type="TileSet" uid="uid://biyk13yov233s" path="res://Tilesets/Underground/WarpTerminal.tres" id="11_s7syb"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/ParallaxController.cs" id="12_tmqv2"]
+[ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/ParallaxController.cs" id="12_tmqv2"]
 [ext_resource type="PackedScene" uid="uid://c2jdfhmn0xuo0" path="res://Objects/Effects/Lighting/point_light_2d.tscn" id="13_yrojb"]
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="14_y8mha"]
 [ext_resource type="PackedScene" uid="uid://c0xpkc5fuun44" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="15_tlr0a"]
 [ext_resource type="PackedScene" uid="uid://bey8xr18nomep" path="res://Objects/Entities/Player/Player.tscn" id="16_ggjuy"]
-[ext_resource type="Shader" path="res://Shaders/2D-Default.gdshader" id="17_bt1kt"]
+[ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="17_bt1kt"]
 [ext_resource type="Texture2D" uid="uid://kfb0yyq3vsv" path="res://Art Assets/Characters/Misc/Ruin King Big.png" id="18_ma4w8"]
 [ext_resource type="Texture2D" uid="uid://wcidcfa3acbr" path="res://Art Assets/Characters/Misc/Ruin King Big_n.png" id="19_fo21y"]
-[ext_resource type="Script" path="res://Scripts/System/EnableOnPlayerTrigger.cs" id="20_ygm2d"]
+[ext_resource type="Script" uid="uid://dmjm3k7sn1jm" path="res://Scripts/System/EnableOnPlayerTrigger.cs" id="20_ygm2d"]
 [ext_resource type="Material" uid="uid://dilj3elssfbc4" path="res://Art Assets/Materials/2D_Unlit_Additive.tres" id="21_ia5n0"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="22_jagrw"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/GameManager.cs" id="23_4rps7"]
+[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/GameManager.cs" id="23_4rps7"]
 [ext_resource type="PackedScene" uid="uid://dxflhd836je40" path="res://Objects/System/fxPool.tscn" id="24_gmss5"]
-[ext_resource type="Script" path="res://Scripts/Environment/Platforms/PathPlatform.cs" id="25_mi7bc"]
+[ext_resource type="Script" uid="uid://bn1227pkl0541" path="res://Scripts/Environment/Platforms/PathPlatform.cs" id="25_mi7bc"]
 [ext_resource type="Texture2D" uid="uid://da5tqx8qs8xie" path="res://Art Assets/Environment/Misc/Objects/MovingPlat.png" id="26_0vw8t"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="27_18075"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="28_kjt3y"]
@@ -166,10 +166,11 @@ width = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vw4rb"]
 shader = ExtResource("17_bt1kt")
-shader_parameter/outline_color_left = null
-shader_parameter/outline_color_right = null
-shader_parameter/stunFX = null
 shader_parameter/LightGradient = SubResource("GradientTexture1D_7l1eo")
+shader_parameter/emission_strength = 0.0
+shader_parameter/outline_color_left = Color(0, 0, 0, 1)
+shader_parameter/outline_color_right = Color(0, 0, 0, 1)
+shader_parameter/stunFX = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x7eyc"]
 diffuse_texture = ExtResource("18_ma4w8")

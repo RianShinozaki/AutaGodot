@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dymew1b2ekylv"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueManager.cs" id="1_hel5a"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueCore.cs" id="2_6i725"]
+[ext_resource type="Script" uid="uid://byrj5xfltuk0i" path="res://addons/dialogue_nodes/objects/DialogueManager.cs" id="1_hel5a"]
+[ext_resource type="Script" uid="uid://bybo3cbxj5iuk" path="res://addons/dialogue_nodes/objects/DialogueCore.cs" id="2_6i725"]
 [ext_resource type="Resource" uid="uid://dvaxnhtmo01o" path="res://addons/dialogue_nodes/Preloader.tres" id="2_amhtc"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueUI.cs" id="3_gcl0s"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueInput.cs" id="6_3yo6x"]
+[ext_resource type="Script" uid="uid://5kteuup2tdkt" path="res://addons/dialogue_nodes/objects/DialogueUI.cs" id="3_gcl0s"]
+[ext_resource type="Script" uid="uid://b5h3kcrgujtq7" path="res://addons/dialogue_nodes/objects/DialogueInput.cs" id="6_3yo6x"]
 [ext_resource type="Texture2D" uid="uid://dla76qr5vqp1r" path="res://addons/dialogue_nodes/icons/Character.svg" id="7_qm32g"]
 
 [node name="DialogueBox" type="Control"]

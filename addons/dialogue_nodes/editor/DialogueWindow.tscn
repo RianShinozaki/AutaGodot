@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfx67xt0p3i2j"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/GDScript/dialogueManager.gd" id="1_uc001"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/GDScript/dialogueCore.gd" id="2_iarht"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/GDScript/dialogueUI.gd" id="4_cg41r"]
+[ext_resource type="Script" uid="uid://bpf53jkgnypt5" path="res://addons/dialogue_nodes/objects/GDScript/dialogueManager.gd" id="1_uc001"]
+[ext_resource type="Script" uid="uid://ciwxt0c5ylsrv" path="res://addons/dialogue_nodes/objects/GDScript/dialogueCore.gd" id="2_iarht"]
+[ext_resource type="Script" uid="uid://cau5oklq6fo3u" path="res://addons/dialogue_nodes/objects/GDScript/dialogueUI.gd" id="4_cg41r"]
 [ext_resource type="Texture2D" uid="uid://bucad3kf5mxvp" path="res://addons/dialogue_nodes/icons/Play.svg" id="5_dn2to"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/GDScript/dialogueInput.gd" id="10_2l4cv"]
+[ext_resource type="Script" uid="uid://q3njkb5ofe2s" path="res://addons/dialogue_nodes/objects/GDScript/dialogueInput.gd" id="10_2l4cv"]
 
 [node name="DialogueWindow" type="Control"]
 visible = false

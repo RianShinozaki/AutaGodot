@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0ojvt677hwxq"]
+
+[ext_resource type="Script" uid="uid://vcgent31weyp" path="res://Scripts/Dialogue/DialogueRunner.cs" id="1_046v1"]
+[ext_resource type="Resource" uid="uid://cwj2735ga6vxw" path="res://Data/Dialogue/StoryEvents/Act1/InitFlashback.tres" id="2_0a8v6"]
+[ext_resource type="Texture2D" uid="uid://do1bp2bposiaj" path="res://Art Assets/Environment/Underground/Backgrounds/Back.png" id="3_4jweq"]
+[ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Art Assets/Effects/Particles/Stardust.png" id="3_arw5b"]
+[ext_resource type="Texture2D" uid="uid://f5jkjnuwqu70" path="res://Art Assets/Environment/Underground/Backgrounds/CloserStal.png" id="4_fdq35"]
+[ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="5_xnppx"]
+
+[sub_resource type="Environment" id="Environment_0n4h5"]
+background_mode = 3
+background_canvas_max_layer = 3
+tonemap_mode = 2
+tonemap_exposure = 0.65
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/6 = 3.5
+glow_levels/7 = 2.05
+glow_strength = 0.57
+glow_bloom = 0.32
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 21.95
+adjustment_enabled = true
+adjustment_saturation = 1.24
+
+[sub_resource type="Animation" id="Animation_omgel"]
+resource_name = "Init"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueRunner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnStartDialogue"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_or5fx"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pno2y"]
+_data = {
+&"Init": SubResource("Animation_omgel"),
+&"RESET": SubResource("Animation_or5fx")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqqg7"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_3ynvp"]
+_data = [Vector2(0.00544959, 0.0184795), 0.0, 0.0, 0, 0, Vector2(0.182561, 1), 0.0, 0.0, 0, 0, Vector2(0.332425, 0.498944), -1.40768, -1.40768, 0, 0, Vector2(0.991826, 0.0665259), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_vhn57"]
+offsets = PackedFloat32Array(0.0136519, 0.221843, 0.672566, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.545098, 0.423529, 0.380392, 0.662745, 1, 1, 1, 0.337255, 1, 1, 1, 0)
+
+[node name="GameWorld" type="CanvasModulate"]
+texture_filter = 1
+position = Vector2(-103, -60)
+color = Color(0.835352, 0.785723, 0.84837, 1)
+
+[node name="Node2D" type="CanvasLayer" parent="."]
+layer = 3
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D"]
+environment = SubResource("Environment_0n4h5")
+
+[node name="DialogueRunner" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_046v1")
+dialogueData = ExtResource("2_0a8v6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+root_node = NodePath("../Back")
+libraries = {
+&"": SubResource("AnimationLibrary_pno2y")
+}
+autoplay = "Init"
+
+[node name="Back" type="Sprite2D" parent="Node2D"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(344, 192)
+scale = Vector2(2, 2)
+texture = ExtResource("3_4jweq")
+
+[node name="CloserStal" type="Sprite2D" parent="Node2D/Back"]
+position = Vector2(1, 0)
+texture = ExtResource("4_fdq35")
+
+[node name="ForegroundRocks" type="Sprite2D" parent="Node2D/Back/CloserStal"]
+texture = ExtResource("5_xnppx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
+material = SubResource("CanvasItemMaterial_sqqg7")
+position = Vector2(344, 198)
+amount = 512
+texture = ExtResource("3_arw5b")
+lifetime = 4.0
+preprocess = 10.0
+randomness = 0.35
+lifetime_randomness = 0.21
+emission_shape = 3
+emission_rect_extents = Vector2(320, 270)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 4)
+initial_velocity_min = 5.18
+initial_velocity_max = 20.73
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_3ynvp")
+color_ramp = SubResource("Gradient_vhn57")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Node2D"]
+material = SubResource("CanvasItemMaterial_sqqg7")
+position = Vector2(344, 198)
+amount = 512
+texture = ExtResource("3_arw5b")
+lifetime = 4.0
+preprocess = 10.0
+randomness = 0.35
+lifetime_randomness = 0.21
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(320, 270)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 4)
+initial_velocity_min = 5.18
+initial_velocity_max = 20.73
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_3ynvp")
+color = Color(0.568973, 0.568973, 0.568973, 1)
+color_ramp = SubResource("Gradient_vhn57")

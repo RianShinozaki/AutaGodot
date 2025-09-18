@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3rj01we5ks3v"]
 
 [ext_resource type="Texture2D" uid="uid://bekxhwfhunnr5" path="res://Art Assets/Environment/Underground/Objects/Planet.png" id="1_t5va4"]
-[ext_resource type="Script" path="res://Scripts/Environment/Gravity Regions/CircularGravityRegion.cs" id="2_lr3wb"]
+[ext_resource type="Script" uid="uid://cuyjsexhkyj3a" path="res://Scripts/Environment/Gravity Regions/CircularGravityRegion.cs" id="2_lr3wb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4458"]
 radius = 48.0

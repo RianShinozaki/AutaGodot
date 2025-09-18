@@ -10,6 +10,7 @@ public partial class PlayerGrabState : EntityState
 	[Export] public float minGrabTime = 0.25f;
 	[Export] public float throwPower = 50;
 	[Export] public float recoilPower = 100;
+	[Export] public float ySpeedThreshToThrow = -20;
 	Vector2 cachedInput = Vector2.Zero;
 	float cachedDirection = 0;
 	float cachedRot = 0;
@@ -20,6 +21,9 @@ public partial class PlayerGrabState : EntityState
 	StateComponentGroup compGroup;
 	[Export] AudioStream throwSound;
 	[Export] AudioStream grabSound;
+
+	bool initSlowdown = false;
+	
     public override void _Ready()
 	{
 		base._Ready();
@@ -33,32 +37,45 @@ public partial class PlayerGrabState : EntityState
 		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("ThrowSpin", true);
 		player.SetVert(-initVertSpeed);
-		player.SetHor(player.horSpeed/2);
-		GameManager.Instance.TransitionTimeScale(timescale, 0.1f);
-		GameCamera.Instance.TransitionLinesAlpha(0.2f, 0.1f);
+		player.SetHor(player.horSpeed/4);
 		SFXController.PlaySound(grabSound, GlobalPosition, 1);
-		aimPos = Vector2.Right * (entity.sprite.FlipH ? -48 : 48);
-		compGroup.Visible = true;
-
+		
+		initSlowdown = false;
 
 		base.Start();	
 	}
 	public override void _Process(double delta) {
 
 		if(!active) return;
-
 		PlayerController player = (PlayerController)entity;
+		
 
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		aimPos += inputDir*720f*(float)delta;
-
-		compGroup.GetNode<Sprite2D>("Reticle").Position = aimPos;
-		compGroup.GetNode<Sprite2D>("Arrow").Rotation = Mathf.Atan2(aimPos.Y, aimPos.X);
-
-		if(grabTime >= minGrabTime && !Input.IsActionPressed("Orb")) {
-			Throw();
+		if (initSlowdown == false)
+		{
+			if (player.vertSpeed > ySpeedThreshToThrow)
+			{
+				initSlowdown = true;
+				GameManager.Instance.TransitionTimeScale(timescale, 0.4f);
+				GameCamera.Instance.TransitionLinesAlpha(0.2f, 0.4f);
+				aimPos = Vector2.Right * (entity.sprite.FlipH ? -48 : 48);
+				compGroup.Visible = true;
+			}
 		}
-		grabTime += (float)delta;
+		else
+		{
+
+			Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+			aimPos += inputDir * 720f * (float)delta;
+
+			compGroup.GetNode<Sprite2D>("Reticle").Position = aimPos;
+			compGroup.GetNode<Sprite2D>("Arrow").Rotation = Mathf.Atan2(aimPos.Y, aimPos.X);
+
+			if (grabTime >= minGrabTime && !Input.IsActionPressed("Orb")) {
+				Throw();
+			}
+			grabTime += (float)delta;
+		}
+
 	}
 	private void Throw() {
 		GD.Print("TryThrow");
