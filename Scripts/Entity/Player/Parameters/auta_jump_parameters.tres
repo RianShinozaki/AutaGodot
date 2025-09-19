@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EntityJumpParameters" load_steps=2 format=3 uid="uid://dds83antj5nu5"]
+
+[ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Scripts/Entity/Parameters/EntityJumpParameters.gd" id="1_vu7wl"]
+
+[resource]
+script = ExtResource("1_vu7wl")
+jump_power = -230.0
+gravity = 230.0
+normal_gravity_scale = 1.2
+short_hop_gravity_scale = 3.0
+rising_gravity_scale = 2.0
+falling_gravity_scale = 1.6
+rising_threshold = -30.0
+falling_threshold = 10.0
+max_falling_speed = 300.0
+mult = 1.0
+metadata/_custom_type_script = "uid://dymrp8farfsle"
