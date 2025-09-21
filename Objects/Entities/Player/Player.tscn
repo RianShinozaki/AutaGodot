@@ -2411,7 +2411,6 @@ airDecelTooFast = 60.0
 [node name="OrbState" type="Node2D" parent="States"]
 script = ExtResource("8_tjto1")
 speed = 180.0
-initSpeed = 150.0
 initYSpeed = -60.0
 minOrbTime = 0.35
 bounce = 1.0

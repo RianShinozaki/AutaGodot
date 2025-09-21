@@ -267,8 +267,9 @@ position = Vector2(1014, -394)
 [node name="Camera2D" parent="GameSystem/Cam" index="0"]
 zoom = Vector2(3, 3)
 
-[node name="CameraCenter" parent="GameSystem/Cam" index="1"]
+[node name="CameraCenter" parent="GameSystem/Cam" index="1" node_paths=PackedStringArray("target")]
 cameraSize = Vector2(448, 248)
+target = NodePath("../../../Player")
 
 [node name="Liquid" type="TileMapLayer" parent="."]
 z_index = 10

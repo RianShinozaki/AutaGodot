@@ -17,6 +17,9 @@ func _start() -> void:
 	active = true
 	emit_signal("state_begun")	
 
+func _process(_delta: float) -> void:
+	pass
+
 func _end() -> void:
 	active = false
 	emit_signal("state_ended")

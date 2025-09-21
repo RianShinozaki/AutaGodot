@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EntityMovementParameters" load_steps=3 format=3 uid="uid://b6nf7ajycjq30"]
+
+[ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/entity_movement_parameters.gd" id="1_prx2n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_junhl"]
+radius = 6.0
+height = 25.0
+
+[resource]
+script = ExtResource("1_prx2n")
+max_speed = 90.0
+initial_speed = 30.0
+initial_speed_in_air = 10.0
+acceleration = 900.0
+acceleration_in_air = 480.0
+deceleration = 480.0
+deceleration_in_air = 60.0
+deceleration_above_speed = 120.0
+deceleration_above_speed_in_air = 60.0
+collision_shape = SubResource("CapsuleShape2D_junhl")
+collision_shape_position = Vector2(0, -5)
+metadata/_custom_type_script = "uid://bw6pvvkl3qgmo"

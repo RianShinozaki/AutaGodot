@@ -7,7 +7,6 @@ public partial class PlayerOrbState : EntityState
 {
 	[Signal] public delegate void GrabbedEntityEventHandler(Node2D node);
 	[Export] float speed;
-	[Export] float initSpeed;
 	[Export] float initYSpeed;
 	[Export] float minBounceSpeed;
 	[Export] float minOrbTime;

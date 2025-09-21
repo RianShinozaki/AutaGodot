@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EntityJumpParameters" load_steps=2 format=3 uid="uid://dds83antj5nu5"]
 
-[ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Scripts/Entity/Parameters/EntityJumpParameters.gd" id="1_vu7wl"]
+[ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Scripts/Entity/Parameters/entity_jump_parameters.gd" id="1_vu7wl"]
 
 [resource]
 script = ExtResource("1_vu7wl")

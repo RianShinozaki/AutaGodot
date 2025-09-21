@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="AutaOrbParameters" load_steps=3 format=3 uid="uid://bb7h2qh4ngy0n"]
+
+[ext_resource type="Script" uid="uid://cs7b24ogtxvhl" path="res://Scripts/Entity/Player/Parameter Scripts/auta_orb_parameters.gd" id="1_571r1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_icj15"]
+radius = 7.0
+
+[resource]
+script = ExtResource("1_571r1")
+launch_speed = 180.0
+launch_y_speed = -60.0
+minimum_time = 0.35
+gravity = 500.0
+initial_gravity = 100.0
+initial_gravity_time = 0.2
+exit_speed = 110.0
+max_speed = 100.0
+initial_speed = 0.0
+initial_speed_in_air = 0.0
+acceleration = 160.0
+acceleration_in_air = 120.0
+deceleration = 60.0
+deceleration_in_air = 60.0
+deceleration_above_speed = 40.0
+deceleration_above_speed_in_air = 0.0
+collision_shape = SubResource("CircleShape2D_icj15")
+collision_shape_position = Vector2(0, 0)
+metadata/_custom_type_script = "uid://cs7b24ogtxvhl"

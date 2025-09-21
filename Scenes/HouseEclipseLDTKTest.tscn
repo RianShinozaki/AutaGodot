@@ -438,9 +438,9 @@ texture = ExtResource("7_1btep")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Environment-Under"]
 material = SubResource("CanvasItemMaterial_fjmet")
 amount = 32
+texture = SubResource("GradientTexture2D_uanf8")
 lifetime = 10.0
 preprocess = 10.0
-texture = SubResource("GradientTexture2D_uanf8")
 emission_shape = 3
 emission_rect_extents = Vector2(320, 180)
 direction = Vector2(0, -1)

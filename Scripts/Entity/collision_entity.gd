@@ -17,6 +17,8 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 @export_group("States")
 @export var apply_physics: bool
 @export var previously_grounded: bool
+@export var current_action_state: ActionState
+@export var last_action_state: ActionState
 
 @export_group("Parameters")
 @export var parameters: Dictionary[String, ParameterSet]
@@ -43,8 +45,8 @@ func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 				_velocity.y += gravity * _delta
 				var _loss_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (1 - bounce_factor)
 				var _impact_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (bounce_factor)
-				_velocity.x -= _impact_factor * _velocity.x
-				_velocity.y -= _impact_factor * _velocity.y
+				_velocity.x -= _loss_factor.x * _velocity.x
+				_velocity.y -= _loss_factor.y * _velocity.y
 				if(absf(_velocity.y) < 20): _velocity.y = 0
 				emit_signal("just_bounced")
 			velocity = _velocity
@@ -70,3 +72,13 @@ func _physics_process(delta: float) -> void:
 
 func accelerate_x(_amount: float, _limit: float, _toward: bool):
 	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_limit) if _toward else 1))
+
+func switch_action_state_name(_state: String):
+	var _action_state = get_node("ActionStates/"+_state)
+	switch_action_state(_action_state)
+	
+func switch_action_state(_state: ActionState):
+	last_action_state = current_action_state
+	current_action_state = _state
+	last_action_state._end()
+	current_action_state._start()

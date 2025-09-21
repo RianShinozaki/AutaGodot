@@ -1161,9 +1161,9 @@ tile_set = SubResource("TileSet_uabg6")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Environment-Under"]
 material = SubResource("CanvasItemMaterial_fjmet")
 amount = 32
+texture = SubResource("GradientTexture2D_uanf8")
 lifetime = 10.0
 preprocess = 10.0
-texture = SubResource("GradientTexture2D_uanf8")
 emission_shape = 3
 emission_rect_extents = Vector2(320, 180)
 direction = Vector2(0, -1)
@@ -1392,7 +1392,7 @@ animName = "untrigger"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection/CrystalPath"]
 libraries = {
-"": SubResource("AnimationLibrary_wyxpx")
+&"": SubResource("AnimationLibrary_wyxpx")
 }
 autoplay = "untriggered"
 
@@ -1407,7 +1407,7 @@ ignoreAreas = []
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection/SimpleHitboxTrigger"]
 libraries = {
-"": SubResource("AnimationLibrary_e42cb")
+&"": SubResource("AnimationLibrary_e42cb")
 }
 autoplay = "untrigger"
 
@@ -1482,7 +1482,7 @@ animName = "untrigger"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection2/CrystalPath"]
 libraries = {
-"": SubResource("AnimationLibrary_wyxpx")
+&"": SubResource("AnimationLibrary_wyxpx")
 }
 autoplay = "untriggered"
 
@@ -1497,7 +1497,7 @@ ignoreAreas = []
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection2/SimpleHitboxTrigger"]
 libraries = {
-"": SubResource("AnimationLibrary_e42cb")
+&"": SubResource("AnimationLibrary_e42cb")
 }
 autoplay = "untrigger"
 
@@ -1573,7 +1573,7 @@ animName = "untrigger"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection3/CrystalPath"]
 libraries = {
-"": SubResource("AnimationLibrary_wyxpx")
+&"": SubResource("AnimationLibrary_wyxpx")
 }
 autoplay = "untriggered"
 
@@ -1588,7 +1588,7 @@ ignoreAreas = []
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection3/SimpleHitboxTrigger"]
 libraries = {
-"": SubResource("AnimationLibrary_e42cb")
+&"": SubResource("AnimationLibrary_e42cb")
 }
 autoplay = "untrigger"
 
