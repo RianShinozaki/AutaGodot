@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c5db1ofb4p1qx"]
 
 [ext_resource type="Texture2D" uid="uid://c4g0sm7feuj5i" path="res://Art Assets/Effects/Movement/Land.png" id="1_7nftk"]
-[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_2upmm"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_2upmm"]
 [ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="3_snqk2"]
 
 [sub_resource type="Animation" id="Animation_llm5k"]

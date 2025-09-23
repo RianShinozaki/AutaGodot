@@ -48,7 +48,7 @@ func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 				_velocity.x -= _loss_factor.x * _velocity.x
 				_velocity.y -= _loss_factor.y * _velocity.y
 				if(absf(_velocity.y) < 20): _velocity.y = 0
-				emit_signal("just_bounced")
+				emit_signal("just_bounced", _normal, _velocity)
 			velocity = _velocity
 			move_and_slide()
 	

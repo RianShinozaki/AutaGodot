@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cmq7eli3mwwhf" path="res://Audio/Sounds/Item/FlowerPop.wav" id="3_8px60"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_hi0jn"]
 [ext_resource type="Script" uid="uid://cpt5tatohbsl1" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_6pteb"]
-[ext_resource type="Script" uid="uid://ubgi76algbag" path="res://Scripts/Effects/Trail.cs" id="6_5cvhm"]
+[ext_resource type="Script" uid="uid://ubgi76algbag" path="res://Scripts/Effects/C-Sharp/Trail.cs" id="6_5cvhm"]
 [ext_resource type="Texture2D" uid="uid://dexbrg65x7hyf" path="res://Art Assets/Environment/Misc/Objects/StarPetalYellow.png" id="6_a5j23"]
 [ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Audio/Sounds/Item/flowerpickup.wav" id="8_3vkn3"]
 

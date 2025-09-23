@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://krgw605qmekj" path="res://Scripts/Entities/General/Combat/ProcessHitbox.cs" id="7_7nrjr"]
 [ext_resource type="Script" uid="uid://rrc8rviiy8m6" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="7_ywl3w"]
 [ext_resource type="Script" uid="uid://csxu2fxonmfgq" path="res://Scripts/Entities/General/Motion/ProcessGravityRegions.cs" id="8_fa06a"]
-[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/AfterImageGenerator.cs" id="8_fumsl"]
+[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/C-Sharp/AfterImageGenerator.cs" id="8_fumsl"]
 [ext_resource type="Texture2D" uid="uid://ctmy0sgjf47p3" path="res://Art Assets/Characters/Auta/AutaAttackFX.png" id="8_rtcfq"]
 [ext_resource type="Script" uid="uid://6m6p8v8m422r" path="res://Scripts/Entities/Player/States/PlayerOrbState.cs" id="8_tjto1"]
 [ext_resource type="Script" uid="uid://cg4ed0eieeifi" path="res://Scripts/Entities/Player/States/PlayerAttackState.cs" id="9_7hcsp"]

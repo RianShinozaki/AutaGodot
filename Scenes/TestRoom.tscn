@@ -1,10 +1,9 @@
-[gd_scene load_steps=32 format=4 uid="uid://brxaes03pptyu"]
+[gd_scene load_steps=20 format=4 uid="uid://brxaes03pptyu"]
 
 [ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_er7xc"]
 [ext_resource type="PackedScene" uid="uid://ckxjom1hk78wb" path="res://Objects/Entities/Player/auta.tscn" id="3_vib5v"]
 [ext_resource type="Script" uid="uid://dqme5rsfgh03c" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="7_yrvrp"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="8_t2ft3"]
-[ext_resource type="Script" uid="uid://sdw1kq6juycq" path="res://Data/Misc Resources/PooledObject.cs" id="9_frn6d"]
 [ext_resource type="Script" uid="uid://vcgent31weyp" path="res://Scripts/Dialogue/DialogueRunner.cs" id="9_wq5w6"]
 [ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="10_nukfv"]
 [ext_resource type="Texture2D" uid="uid://bo382opbg1lma" path="res://Art Assets/Environment/Misc/Tilesets/TestTileset.png" id="10_qwyu3"]
@@ -126,104 +125,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
 
-[sub_resource type="CSharpScript" id="CSharpScript_qwyu3"]
-script/source = "using Godot;
-using System;
-
-public partial class ObjectPool : Node2D
-{
-	[Export] private Godot.Collections.Array<PooledObject> pool;
-	[Export] private Godot.Collections.Dictionary<string, Godot.Collections.Array<Node>> standBy;
-
-	public static ObjectPool Instance;
-    public override void _Ready()
-    {
-        base._Ready();
-		Instance = this;
-		standBy = new Godot.Collections.Dictionary<string, Godot.Collections.Array<Node>>();
-		String theName = \"ERR\";
-		foreach(PooledObject po in pool) {
-			Godot.Collections.Array<Node> newObjectArray = new Godot.Collections.Array<Node>();
-			PackedScene scene = GD.Load<PackedScene>(po.objectToPool);
-			for(int i = 0; i < po.number; i++) {
-				Node newObject = scene.Instantiate();
-				theName = newObject.Name;
-				AddChild(newObject);
-				newObjectArray.Add(newObject);
-			}
-			standBy.Add(theName, newObjectArray);
-		}
-    }
-
-	public Node Spawn(String objectName) {
-		if(standBy[objectName].Count > 0) {
-			Node theNode = standBy[objectName][0];
-			standBy[objectName].RemoveAt(0);
-			theNode.GetNode<ObjectPoolObject>(\"ObjectPoolObject\").Spawn(this, objectName);
-			//AddChild(theNode);
-			return theNode;
-		}
-		return null;
-	}
-	public void ReturnToPool(Node node, String name) {
-		//RemoveChild(node);
-		node.GetParent().RemoveChild(node);
-		AddChild(node);
-		standBy[name].Add(node);
-	}
-}
-"
-
-[sub_resource type="Resource" id="Resource_2rxvv"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://cqa8tytdncd0s"
-number = 20
-
-[sub_resource type="Resource" id="Resource_nep2b"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://bjf0v8ser86o1"
-number = 5
-
-[sub_resource type="Resource" id="Resource_43p07"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://bumxjqlecahob"
-number = 30
-
-[sub_resource type="Resource" id="Resource_el2gh"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://dj3pyv3wewpob"
-number = 10
-
-[sub_resource type="Resource" id="Resource_0y6de"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://8ubg2fxdl1ve"
-number = 5
-
-[sub_resource type="Resource" id="Resource_ply2y"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://cimwbi0rmsxca"
-number = 3
-
-[sub_resource type="Resource" id="Resource_51q3c"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://bimjw7qqi3lmu"
-number = 10
-
-[sub_resource type="Resource" id="Resource_um4ym"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://ct6pqwkiwhpf5"
-number = 3
-
-[sub_resource type="Resource" id="Resource_eact5"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://drky8ra3vdtni"
-number = 4
-
-[sub_resource type="Resource" id="Resource_1y8m3"]
-script = ExtResource("9_frn6d")
-objectToPool = "uid://c5db1ofb4p1qx"
-number = 10
-
 [node name="GameWorld" type="CanvasModulate"]
 texture_filter = 1
 script = ExtResource("1_er7xc")
@@ -271,19 +172,6 @@ shape = SubResource("RectangleShape2D_5xne8")
 
 [node name="GameSystem" parent="." instance=ExtResource("14_mjkkm")]
 position = Vector2(1014, -394)
-
-[node name="FXPool" parent="GameSystem" index="1"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = SubResource("CSharpScript_qwyu3")
-pool = Array[Object]([SubResource("Resource_2rxvv"), SubResource("Resource_nep2b"), SubResource("Resource_43p07"), SubResource("Resource_el2gh"), SubResource("Resource_0y6de"), SubResource("Resource_ply2y"), SubResource("Resource_51q3c"), SubResource("Resource_um4ym"), SubResource("Resource_eact5"), SubResource("Resource_1y8m3")])
 
 [node name="Camera2D" parent="GameSystem/Cam" index="0"]
 zoom = Vector2(3, 3)

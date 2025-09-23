@@ -8,15 +8,15 @@ height = 25.0
 
 [resource]
 script = ExtResource("1_prx2n")
-max_speed = 100.0
-initial_speed = 50.0
-initial_speed_in_air = 30.0
+max_speed = 110.0
+initial_speed = 60.0
+initial_speed_in_air = 35.0
 minimum_speed = 50.0
 minimum_speed_in_air = 0.0
 acceleration = 900.0
-acceleration_in_air = 600.0
+acceleration_in_air = 450.0
 deceleration = 480.0
-deceleration_in_air = 300.0
+deceleration_in_air = 70.0
 deceleration_above_speed = 120.0
 deceleration_above_speed_in_air = 60.0
 collision_shape = SubResource("CapsuleShape2D_junhl")

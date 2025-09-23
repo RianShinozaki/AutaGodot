@@ -58,9 +58,10 @@ func _process(delta: float) -> void:
 	entity.velocity.y = min(entity.velocity.y, jmp_param.max_falling_speed)
 	
 	if entity.is_on_floor(): 
-		entity.get_node("Art/AfterImageGenerator").call("StopCreatingAfterImgs")
-		if inp.input_direction.y > 0.3:
-			entity.switch_action_state_name("DuckState")
+		pass
+		#entity.get_node("Art/AfterImageGenerator").call("StopCreatingAfterImgs")
+		#if inp.input_direction.y > 0.3:
+		#	entity.switch_action_state_name("DuckState")
 
 func _end() -> void:
 	super._end()

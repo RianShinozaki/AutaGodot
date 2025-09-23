@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bknnkq0wqudcq" path="res://Art Assets/Environment/Misc/Objects/VoidBubble.png" id="2_dwefw"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_uhru0"]
 [ext_resource type="Script" uid="uid://cpt5tatohbsl1" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_hytyi"]
-[ext_resource type="Script" uid="uid://ubgi76algbag" path="res://Scripts/Effects/Trail.cs" id="5_xbkqn"]
+[ext_resource type="Script" uid="uid://ubgi76algbag" path="res://Scripts/Effects/C-Sharp/Trail.cs" id="5_xbkqn"]
 [ext_resource type="Texture2D" uid="uid://vmf25qoaiqh2" path="res://Art Assets/Environment/Misc/Objects/VoidStar.png" id="6_4h07p"]
 [ext_resource type="AudioStream" uid="uid://sfoql6405y1p" path="res://Audio/Sounds/Item/PowerBubble.mp3" id="7_5r5ri"]
 [ext_resource type="Texture2D" uid="uid://cct6sp383ydp2" path="res://Art Assets/Environment/Misc/Objects/VoidBoblePop.png" id="7_u7p2u"]

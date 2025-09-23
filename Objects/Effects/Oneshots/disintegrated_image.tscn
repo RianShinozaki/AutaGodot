@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://cwgau5yvosgkc" path="res://Objects/Effects/WarpOut.tres" id="1_ahbtx"]
 [ext_resource type="Texture2D" uid="uid://kfb0yyq3vsv" path="res://Art Assets/Characters/Misc/Ruin King Big.png" id="2_sw4x3"]
-[ext_resource type="Script" uid="uid://clqtbkklhkxp5" path="res://Scripts/Effects/AfterImage.cs" id="3_hewn2"]
-[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_02mtd"]
+[ext_resource type="Script" uid="uid://clqtbkklhkxp5" path="res://Scripts/Effects/C-Sharp/AfterImage.cs" id="3_hewn2"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_02mtd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7mg0r"]
 shader = ExtResource("1_ahbtx")

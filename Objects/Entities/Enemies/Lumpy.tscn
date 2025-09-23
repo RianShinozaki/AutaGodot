@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_kqnyo"]
 [ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_ouqjm"]
 [ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_gruas"]
-[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/AfterImageGenerator.cs" id="6_r4v4u"]
+[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/C-Sharp/AfterImageGenerator.cs" id="6_r4v4u"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="7_xbsis"]
 [ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="8_pqpgr"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="9_7f2kx"]

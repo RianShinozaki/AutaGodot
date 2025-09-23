@@ -7,6 +7,14 @@ var anim: AnimationTree
 var orb_time: float
 var can_unorb: bool
 var orb_param: AutaOrbParameters
+var jmp_param: EntityJumpParameters
+var time_since_last_bounce: float
+
+var can_short_hop:
+	get:
+		return entity.get_node("ActionStates/NormalState").can_short_hop
+	set(_value):
+		entity.get_node("ActionStates/NormalState").can_short_hop = _value
 
 @onready var orb_area_shape = $OrbGrab/CollisionShape2D
 @onready var orb_burst_fx_pool = $"../../SpecialAttributes/ObjectPools/OrbBurst"
@@ -17,7 +25,11 @@ func _ready() -> void:
 	inp = entity.get_node("GenericAttributes/InputManager")
 	anim = entity.get_node("Art/AnimationTree")
 	orb_param = entity.parameters["orb"]
+	jmp_param = entity.parameters["jump"]
+	inp.action_a_just_pressed.connect(on_jump)
 	inp.action_b_just_pressed.connect(on_attack)
+	time_since_last_bounce = 100
+	entity.just_bounced.connect(on_bounce)
 	
 func _start() -> void:
 	super._start()
@@ -28,7 +40,7 @@ func _start() -> void:
 	anim.get("parameters/playback").start("Orb", true)
 	entity.get_node("EnvironmentBox").shape = orb_param.collision_shape
 	entity.get_node("EnvironmentBox").position = orb_param.collision_shape_position
-	entity.get_node("Art/AfterImageGenerator").call("StartCreatingAfterImgs")
+	#entity.get_node("Art/AfterImageGenerator").call("StartCreatingAfterImgs")
 	orb_area_shape.disabled = false
 	var fx: Node2D = orb_burst_fx_pool.spawn_object()
 	if fx != null:
@@ -69,6 +81,9 @@ func _start() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	if not active: return
+	
+	time_since_last_bounce += delta
+	
 	if not inp.action_c_pressed and orb_time > orb_param.minimum_time:
 		entity.switch_action_state_name("NormalState")
 	if orb_time <= orb_param.initial_gravity_time:
@@ -117,8 +132,16 @@ func _end() -> void:
 	else:
 		entity.velocity.y = 0
 	
-	
+func on_jump():
+	if not active: return
+	if time_since_last_bounce <= orb_param.orb_to_jump_buffer_time:
+		entity.switch_action_state_name("NormalState")
+		can_short_hop = true
+		entity.velocity.y = jmp_param.get_jump_power()
 
 func on_attack():
 	if not active: return
 	entity.switch_action_state_name("AttackState")
+
+func on_bounce(_normal: Vector2, _velocity: Vector2):
+	time_since_last_bounce = 0

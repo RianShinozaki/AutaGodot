@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Objects/System/game_system.tscn" id="20_n0ick"]
 [ext_resource type="AudioStream" uid="uid://fj7jcj1a1utu" path="res://Audio/Sounds/Cutscene/FastFall.mp3" id="22_3mtfb"]
 [ext_resource type="Texture2D" uid="uid://b3tk0m2xqxf11" path="res://Art Assets/Characters/Auta/AutaFalling.png" id="22_ks52t"]
-[ext_resource type="Script" uid="uid://bfsbvrgyx2ww0" path="res://Scripts/Effects/SimpleShake.cs" id="23_0bfxl"]
+[ext_resource type="Script" uid="uid://bfsbvrgyx2ww0" path="res://Scripts/Effects/C-Sharp/SimpleShake.cs" id="23_0bfxl"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="23_x3ldi"]
 [ext_resource type="PackedScene" uid="uid://clsap8kuficb3" path="res://LDTK/DeepRuins/DeepRuins.ldtk" id="23_xldb1"]
 [ext_resource type="FontFile" uid="uid://bwn2jpwxj6ugi" path="res://Art Assets/Fonts/Not Jam Mono Clean 16.ttf" id="25_esuwy"]

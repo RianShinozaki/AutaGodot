@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dj3pyv3wewpob"]
 
 [ext_resource type="Texture2D" uid="uid://cv2qisbmfssud" path="res://Art Assets/Characters/Auta/Slice.png" id="1_7g8ma"]
-[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_fbc0h"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_fbc0h"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_fwart"]
-[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_0vn65"]
+[ext_resource type="Script" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_0vn65"]
 
 [sub_resource type="Animation" id="Animation_wv7ug"]
 resource_name = "Effect"
