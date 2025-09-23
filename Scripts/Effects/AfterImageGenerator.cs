@@ -18,7 +18,7 @@ public partial class AfterImageGenerator : Node
 	{
 		if(active) afterImgTimer += (float)delta;
 		if(afterImgTimer > 0.07f) {
-			AfterImage afterImg = ObjectPool.Instance.Spawn("AfterImage") as AfterImage;
+			/*AfterImage afterImg = ObjectPool.Instance.Spawn("AfterImage") as AfterImage;
 			if(afterImg != null) {
 				afterImg.Texture = sprite.Texture;
 				afterImg.Hframes = sprite.Hframes;
@@ -34,7 +34,7 @@ public partial class AfterImageGenerator : Node
 				}
 				else mat.SetShaderParameter("Texture", sprite.Texture);
 			}
-			afterImgTimer = 0;
+			afterImgTimer = 0;*/
 		}
 	}
 

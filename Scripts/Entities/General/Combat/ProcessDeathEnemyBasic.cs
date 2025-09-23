@@ -16,10 +16,10 @@ public partial class ProcessDeathEnemyBasic : Node
 	}
 
 	public void Death() {
-		Node2D fx = ObjectPool.Instance.Spawn("Burst") as Node2D;
-		if(fx != null) {
-			fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, entity.GlobalPosition.Y);
-		}
+		//Node2D fx = ObjectPool.Instance.Spawn("Burst") as Node2D;
+		//if(fx != null) {
+			//fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, entity.GlobalPosition.Y);
+		//}
 		EmitSignal(SignalName.Died);
 		SFXController.PlaySound(death, entity.GlobalPosition);
 		entity.QueueFree();

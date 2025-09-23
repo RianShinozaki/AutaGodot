@@ -90,11 +90,11 @@ public partial class PlayerOrbState : EntityState
 
 		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
-		Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
-		if (fx != null)
-		{
-			fx.GlobalPosition = GlobalPosition;
-		}
+		//Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
+		//if (fx != null)
+		//{
+			//fx.GlobalPosition = GlobalPosition;
+		//}
 
 		/*AfterImage afterImg = ObjectPool.Instance.Spawn("DisintegratedImage") as AfterImage;
 		if(afterImg != null) {

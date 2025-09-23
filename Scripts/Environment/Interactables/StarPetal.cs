@@ -4,7 +4,7 @@ using System;
 public partial class StarPetal : RigidBody2D
 {
 	float t;
-	ObjectPoolObject opo;
+	Node opo;
 	bool active;
 	RandomNumberGenerator rand;
 	bool collectable = false;
@@ -16,8 +16,8 @@ public partial class StarPetal : RigidBody2D
 	public override void _Ready()
 	{
 		t = 0.01f;
-		if (GetNodeOrNull<ObjectPoolObject>("ObjectPoolObject") != null)
-			opo = GetNode<ObjectPoolObject>("ObjectPoolObject");
+		if (GetNodeOrNull<Node>("ObjectPoolObject") != null)
+			opo = GetNode<Node>("ObjectPoolObject");
 		active = false;
 		rand = new RandomNumberGenerator();
 		Visible = false;
@@ -57,7 +57,7 @@ public partial class StarPetal : RigidBody2D
 		{
 			Scale = Godot.Vector2.One;
 			if (opo != null)
-				opo.Despawn();
+				opo.Call("Despawn");
 			else
 				CallDeferred(MethodName.QueueFree);
 			SetDeferred("freeze", true);

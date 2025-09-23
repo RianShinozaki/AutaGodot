@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bidx22qk6ughi" path="res://Scripts/Effects/BouncingParticle.cs" id="1_n6mbf"]
 [ext_resource type="Texture2D" uid="uid://cmwu8suaga0br" path="res://Art Assets/Effects/Particles/BloodGem.png" id="2_6to3h"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_8xhl6"]
-[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="4_25j3a"]
+[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_25j3a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yumdx"]
 friction = 0.0

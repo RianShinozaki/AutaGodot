@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://ckxjom1hk78wb"]
+[gd_scene load_steps=110 format=3 uid="uid://ckxjom1hk78wb"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://cskmw6maro1fx" path="res://Scripts/Entity/Player/Action States/player_orb_state.gd" id="15_aa1rq"]
 [ext_resource type="PackedScene" uid="uid://ct6pqwkiwhpf5" path="res://Objects/Effects/Oneshots/orbburst.tscn" id="15_sqgqn"]
 [ext_resource type="Script" uid="uid://biru1hnsfid77" path="res://Scripts/Entity/Player/Action States/player_duck_state.gd" id="16_pbapi"]
-[ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Objects/Effects/Oneshots/Land.tscn" id="17_06ssu"]
 [ext_resource type="Script" uid="uid://duyft4418juqr" path="res://Scripts/Entity/Player/Action States/player_attack_state.gd" id="18_m2fwl"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
@@ -923,6 +922,13 @@ script = ExtResource("13_4h77s")
 read_controller_input = true
 input_deadzone = 0.3
 
+[node name="ObjectPools" type="Node2D" parent="GenericAttributes"]
+
+[node name="OrbBurst" type="Node2D" parent="GenericAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("15_sqgqn")
+count = 2
+
 [node name="SpecialAttributes" type="Node2D" parent="."]
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes"]
@@ -941,18 +947,6 @@ position = Vector2(17, -6)
 texture = ExtResource("10_s0xk6")
 hframes = 8
 frame = 1
-
-[node name="ObjectPools" type="Node2D" parent="SpecialAttributes"]
-
-[node name="OrbBurst" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("15_sqgqn")
-count = 2
-
-[node name="Land" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("17_06ssu")
-count = 2
 
 [node name="ActionStates" type="Node2D" parent="."]
 

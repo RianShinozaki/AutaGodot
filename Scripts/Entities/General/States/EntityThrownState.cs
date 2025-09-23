@@ -54,11 +54,11 @@ public partial class EntityThrownState : EntityState
 		GD.Print(speed);
 		if (speed > 20) {
 			SFXController.PlaySound(wallCrashSound, GlobalPosition, 1.0f);
-			Node2D fx = ObjectPool.Instance.Spawn("WallSlam") as Node2D;
-			if(fx != null) {
-				fx.GlobalPosition = GlobalPosition - normal*4;
-				fx.Rotation = Mathf.Atan2(normal.X, -normal.Y);
-			}
+			//Node2D fx = ObjectPool.Instance.Spawn("WallSlam") as Node2D;
+			//if(fx != null) {
+				//fx.GlobalPosition = GlobalPosition - normal*4;
+				//fx.Rotation = Mathf.Atan2(normal.X, -normal.Y);
+			//}
 			GetNode<ScreenshakeEmitter>("ActiveScriptGroup/ScreenshakeEmitter").EmitShake();
 		}
 		

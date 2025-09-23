@@ -4,14 +4,14 @@ using System;
 public partial class BouncingParticle : RigidBody2D
 {
 	float t;
-	ObjectPoolObject opo;
+	Node opo;
 	bool active;
 	RandomNumberGenerator rand;
 	public override void _Ready()
 	{
 		t = 0.01f;
-		if(GetNodeOrNull<ObjectPoolObject>("ObjectPoolObject") != null)
-			opo = GetNode<ObjectPoolObject>("ObjectPoolObject");
+		if(GetNodeOrNull<Node>("ObjectPoolObject") != null)
+			opo = GetNode<Node>("ObjectPoolObject");
 		active = false;
 		rand = new RandomNumberGenerator();
 		Visible = false;
@@ -34,7 +34,7 @@ public partial class BouncingParticle : RigidBody2D
 		if(t > 1) {
 			Scale = Godot.Vector2.One;
 			if (opo != null)
-				opo.Despawn();
+				opo.Call("Despawn");
 			else
 				CallDeferred(MethodName.QueueFree);
 			SetDeferred("freeze", true);

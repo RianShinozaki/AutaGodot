@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="1_25hs3"]
 [ext_resource type="Script" uid="uid://clqtbkklhkxp5" path="res://Scripts/Effects/AfterImage.cs" id="1_j6tdd"]
 [ext_resource type="Shader" uid="uid://4fhxa2eg78jg" path="res://Shaders/BrightColorShift.tres" id="1_suut3"]
-[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="4_767ae"]
+[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_767ae"]
 
 [sub_resource type="Gradient" id="Gradient_wpw4y"]
 offsets = PackedFloat32Array(0, 0.505593, 0.997763)

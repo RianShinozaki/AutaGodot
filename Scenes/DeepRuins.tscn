@@ -1,6 +1,6 @@
 [gd_scene load_steps=80 format=3 uid="uid://c5xad8auwqo6q"]
 
-[ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/GameWorld.cs" id="1_3ta8m"]
+[ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_3ta8m"]
 [ext_resource type="AudioStream" uid="uid://ddb26oi68mk5m" path="res://Audio/Music/Temp/Area Zero - Pokémon Scarlet and Violet OST (Gamerip) 4.mp3" id="2_7rstg"]
 [ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Art Assets/Environment/Underground/Backgrounds/spr_RockyBG_TC.png" id="3_2qwfn"]
 [ext_resource type="Texture2D" uid="uid://cw2p77tl28ann" path="res://Art Assets/Environment/Underground/Backgrounds/FarBuildings.png" id="4_72ohu"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chb8txanurvh3" path="res://Art Assets/Environment/WeaponsBunker/Backgrounds/CloserSpikes.png" id="7_1y3ku"]
 [ext_resource type="Texture2D" uid="uid://cadjpqeo7rm7h" path="res://Art Assets/Environment/DeepRuins/CrystalCaves.png" id="8_5xcby"]
 [ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Art Assets/Effects/Particles/Stardust.png" id="8_subhk"]
-[ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/ParallaxController.cs" id="9_5584w"]
+[ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/C-sharp/ParallaxController.cs" id="9_5584w"]
 [ext_resource type="Texture2D" uid="uid://3xn7otcbqfii" path="res://Art Assets/Effects/Lighting/Spotlight.png" id="10_47dm6"]
 [ext_resource type="Texture2D" uid="uid://6armilotcurd" path="res://Art Assets/Effects/Lighting/Gradient.png" id="11_ac8ox"]
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="11_t072t"]

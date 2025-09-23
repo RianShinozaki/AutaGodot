@@ -3,12 +3,12 @@ using System;
 
 public partial class AnimatedEffect : Sprite2D
 {
-	ObjectPoolObject opo;
+	Node opo;
 	RandomNumberGenerator rand;
 	[Export] public float rotRange;
 	public override void _Ready()
 	{
-		opo = GetNode<ObjectPoolObject>("ObjectPoolObject");
+		opo = GetNode<Node>("ObjectPoolObject");
 		rand = new RandomNumberGenerator();
 		Visible = false;
 	}
@@ -18,7 +18,7 @@ public partial class AnimatedEffect : Sprite2D
 		Visible = true;
 	}
 	public void _on_animation_player_animation_finished(StringName anim_name) {
-		opo.Despawn();
+		opo.Call("despawn");
 		Visible = false;
 	}	
 }

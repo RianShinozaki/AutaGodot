@@ -1,5 +1,6 @@
 extends ActionState
 
+@onready var land_fx_pool = $"../../SpecialAttributes/ObjectPools/Land"
 var auta: Auta
 var inp: InputManager
 var anim: AnimationTree
@@ -81,6 +82,9 @@ func on_orb():
 
 #Grounded animation handler
 func just_grounded(_normal: Vector2, _velocity: Vector2):
+	var fx: Node2D = land_fx_pool.spawn_object()
+	if fx != null:
+		fx.global_position = entity.global_position + Vector2.DOWN*8;
 	if not active: return
 	play_animation_oneshot("Land")
 

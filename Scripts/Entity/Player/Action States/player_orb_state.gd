@@ -9,6 +9,7 @@ var can_unorb: bool
 var orb_param: AutaOrbParameters
 
 @onready var orb_area_shape = $OrbGrab/CollisionShape2D
+@onready var orb_burst_fx_pool = $"../../SpecialAttributes/ObjectPools/OrbBurst"
 
 func _ready() -> void:
 	super._ready()
@@ -29,6 +30,10 @@ func _start() -> void:
 	entity.get_node("EnvironmentBox").position = orb_param.collision_shape_position
 	entity.get_node("Art/AfterImageGenerator").call("StartCreatingAfterImgs")
 	orb_area_shape.disabled = false
+	var fx: Node2D = orb_burst_fx_pool.spawn_object()
+	if fx != null:
+		fx.global_position = entity.global_position;
+		
 	var _input = inp.input_direction
 	
 	if entity.last_action_state.name == "DuckState":

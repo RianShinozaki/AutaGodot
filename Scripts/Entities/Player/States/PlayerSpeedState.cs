@@ -45,12 +45,12 @@ public partial class PlayerSpeedState : EntityState
 			WallStick(entity.sprite.FlipH ? StickDir.LEFT : StickDir.RIGHT);
 			entity.GlobalPosition = new Vector2(wallRayArray.GetCollisionPoint().X + 8 * (entity.sprite.FlipH ? 1 : -1), GlobalPosition.Y);
 
-			Node2D fx = ObjectPool.Instance.Spawn("Land") as Node2D;
-			if (fx != null)
-			{
-				fx.GlobalPosition = wallRayArray.GetCollisionPoint();
-				fx.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
-			}
+			//Node2D fx = ObjectPool.Instance.Spawn("Land") as Node2D;
+			//if (fx != null)
+			//{
+				//fx.GlobalPosition = wallRayArray.GetCollisionPoint();
+				//fx.RotationDegrees = entity.sprite.FlipH ? 90 : -90;
+			//}
 			return;
 		}
 		if(Mathf.Abs(entity.horSpeed) <= minSpeedThreshold) {

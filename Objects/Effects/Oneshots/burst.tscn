@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://brvjrhmsyals6" path="res://Art Assets/Effects/Impact/Burst.png" id="1_ouvsw"]
 [ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_ar4hp"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_1ekyr"]
-[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="4_tlciq"]
+[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_tlciq"]
 
 [sub_resource type="Animation" id="Animation_lv10x"]
 resource_name = "Effect"

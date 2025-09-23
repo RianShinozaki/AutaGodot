@@ -118,17 +118,17 @@ public partial class EnemyHurt : StateScript
 			}
 
 			Node2D fx;
-			for(int i = 0; i < dat.damage; i++) {
-				fx = ObjectPool.Instance.Spawn("BloodGem") as Node2D;
-				if(fx != null) {
-					fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, area.GlobalPosition.Y);
-				}
-			}
+			//for(int i = 0; i < dat.damage; i++) {
+				//fx = ObjectPool.Instance.Spawn("BloodGem") as Node2D;
+				//if(fx != null) {
+					//fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, area.GlobalPosition.Y);
+				//}
+			//}
 
-			fx = ObjectPool.Instance.Spawn(dat.HitFX) as Node2D;
-			if(fx != null) {
-				fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, area.GlobalPosition.Y);
-			}
+			//fx = ObjectPool.Instance.Spawn(dat.HitFX) as Node2D;
+			//if(fx != null) {
+				//fx.GlobalPosition = new Vector2(entity.GlobalPosition.X, area.GlobalPosition.Y);
+			//}
 		}
 	}
 
