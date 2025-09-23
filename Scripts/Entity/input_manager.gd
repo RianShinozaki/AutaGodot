@@ -4,6 +4,7 @@ extends Node2D
 
 @export var read_controller_input: bool
 @export var input_direction: Vector2
+@export var input_deadzone: float
 
 signal action_a_just_pressed
 @export var action_a_pressed: bool
@@ -20,6 +21,8 @@ signal action_c_just_released
 func _process(_delta: float) -> void:
 	if read_controller_input:
 		input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		if input_direction.length() < input_deadzone:
+			input_direction = Vector2.ZERO
 		
 		if Input.is_action_just_pressed("A"):
 			emit_signal("action_a_just_pressed")

@@ -918,6 +918,7 @@ shape = SubResource("CapsuleShape2D_junhl")
 [node name="InputManager" type="Node2D" parent="GenericAttributes"]
 script = ExtResource("13_4h77s")
 read_controller_input = true
+input_deadzone = 0.3
 
 [node name="SpecialAttributes" type="Node2D" parent="."]
 

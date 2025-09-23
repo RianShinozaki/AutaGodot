@@ -1,13 +1,22 @@
 class_name EntityJumpParameters extends ParameterSet
 
+##Base vertical speed when jumping
 @export var jump_power: float
+##Base gravity
 @export var gravity: float
+##Gravity scale at the peak of the jump
 @export var normal_gravity_scale: float
+##Gravity scale when jump is released while rising
 @export var short_hop_gravity_scale: float
+##Gravity scale when rising
 @export var rising_gravity_scale: float
+##Gravity scale when falling
 @export var falling_gravity_scale: float
+##The minimum vertical speed to be considered rising
 @export var rising_threshold: float
+##The minimum vertical speed to be considered falling
 @export var falling_threshold: float
+##The maximum falling speed
 @export var max_falling_speed: float
 @export var mult: float = 1
 

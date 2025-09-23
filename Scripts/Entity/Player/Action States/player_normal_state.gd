@@ -39,6 +39,8 @@ func _process(delta: float) -> void:
 	
 	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
+		if abs(entity.velocity.x) < mov_param.get_minimum_speed(entity):
+			entity.velocity.x = 0
 	
 	#Turn the player around
 	var _flip_h = entity.get_node("Art").flip_h
@@ -52,6 +54,7 @@ func _process(delta: float) -> void:
 	if(entity.velocity.y > jmp_param.rising_gravity_scale): can_short_hop = false
 	var _do_short_hop = can_short_hop and not inp.action_a_pressed
 	entity.gravity = jmp_param.get_gravity(entity, jmp_param.short_hop_gravity_scale if _do_short_hop else 1.0)
+	entity.velocity.y = min(entity.velocity.y, jmp_param.max_falling_speed)
 	
 	if entity.is_on_floor(): 
 		entity.get_node("Art/AfterImageGenerator").call("StopCreatingAfterImgs")
