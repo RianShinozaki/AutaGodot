@@ -16,7 +16,7 @@ void fragment() {
 	float size_x = 1.0/float(textureSize(TEXTURE, 0).x);
 	float size_y = 1.0/float(textureSize(TEXTURE, 0).y);
 	
-	vec4 sprite_color = texture(TEXTURE, UV);
+	vec4 sprite_color = COLOR;
 	sprite_color.r = mix(sprite_color.r, round(sprite_color.r), stunFX);
 	sprite_color.g = mix(sprite_color.g, round(sprite_color.g), stunFX);
 	sprite_color.b = mix(sprite_color.b, round(sprite_color.b), stunFX);

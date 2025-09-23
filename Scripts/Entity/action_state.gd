@@ -1,6 +1,6 @@
 class_name ActionState
 
-extends Node
+extends Node2D
 
 signal state_begun()
 signal state_ended()

@@ -22,6 +22,9 @@ func get_acceleration(_entity: CollisionEntity) -> float:
 	
 func get_deceleration(_entity: CollisionEntity) -> float:
 	return deceleration if _entity.is_on_floor() else deceleration_in_air
+	
+func get_initial_speed(_entity: CollisionEntity) -> float:
+	return initial_speed if _entity.is_on_floor() else initial_speed_in_air
 
 func get_deceleration_above_speed(_entity: CollisionEntity) -> float:
 	return deceleration_above_speed if _entity.is_on_floor() else deceleration_above_speed_in_air

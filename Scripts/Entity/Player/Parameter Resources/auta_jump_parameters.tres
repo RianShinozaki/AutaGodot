@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_vu7wl")
-jump_power = -230.0
-gravity = 230.0
-normal_gravity_scale = 1.2
+jump_power = -240.0
+gravity = 260.0
+normal_gravity_scale = 1.0
 short_hop_gravity_scale = 3.0
 rising_gravity_scale = 2.0
 falling_gravity_scale = 1.6

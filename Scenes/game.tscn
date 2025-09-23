@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="1_v3dwl"]
 [ext_resource type="Script" uid="uid://crtfw650p8ob8" path="res://Scripts/System/Controllers/MusicController.cs" id="4_0qlmu"]
 [ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="5_ximvb"]
-[ext_resource type="PackedScene" uid="uid://rtss4xgk0676" path="res://Scenes/LostWeapon.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://brxaes03pptyu" path="res://Scenes/TestRoom.tscn" id="6_i6g32"]
 [ext_resource type="Script" uid="uid://2mmeece63pi7" path="res://Scripts/System/Controllers/SFXController.cs" id="6_o47f1"]
 
 [node name="Game" type="Node"]

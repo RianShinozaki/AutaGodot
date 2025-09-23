@@ -8,6 +8,8 @@ var orb_time: float
 var can_unorb: bool
 var orb_param: AutaOrbParameters
 
+@onready var orb_area_shape = $OrbGrab/CollisionShape2D
+
 func _ready() -> void:
 	super._ready()
 	auta = entity as Auta
@@ -20,14 +22,13 @@ func _start() -> void:
 	super._start()
 	orb_time = 0;
 	can_unorb = false
-	auta.can_orb = false
 	entity.collision_mode = CollisionEntity.COLLISION_MODE_BOUNCE
 	entity.gravity = orb_param.gravity
 	anim.get("parameters/playback").start("Orb", true)
 	entity.get_node("EnvironmentBox").shape = orb_param.collision_shape
 	entity.get_node("EnvironmentBox").position = orb_param.collision_shape_position
 	entity.get_node("Art/AfterImageGenerator").call("StartCreatingAfterImgs")
-	
+	orb_area_shape.disabled = false
 	var _input = inp.input_direction
 	
 	if entity.last_action_state.name == "DuckState":
@@ -88,6 +89,11 @@ func _end() -> void:
 	super._end()
 	entity.collision_mode = CollisionEntity.COLLISION_MODE_FLOOR
 	anim.get("parameters/playback").start("Jump", true)
+	auta.can_orb = false
+	auta.recharge_orb = false
+	auta.orb_timer = orb_param.orb_recharge_time
+	orb_area_shape.disabled = true
+	
 	var _input = inp.input_direction
 	if _input == Vector2.ZERO: return
 	_input = _input.normalized()
@@ -105,6 +111,8 @@ func _end() -> void:
 		entity.velocity.y = min(entity.velocity.y, _input.y * orb_param.exit_speed)
 	else:
 		entity.velocity.y = 0
+	
+	
 
 func on_attack():
 	if not active: return

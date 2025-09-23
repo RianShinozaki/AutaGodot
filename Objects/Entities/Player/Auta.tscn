@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://ckxjom1hk78wb"]
+[gd_scene load_steps=108 format=3 uid="uid://ckxjom1hk78wb"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -862,13 +862,17 @@ height = 25.0
 radius = 11.0
 height = 48.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2fwl"]
+radius = 13.0384
+
 [node name="Auta" type="CharacterBody2D" node_paths=PackedStringArray("current_action_state")]
 texture_filter = 1
+collision_layer = 8
 floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_a6hb8")
 gravity = 240.0
-bounce_factor = 0.8
+bounce_factor = 0.7
 apply_physics = true
 current_action_state = NodePath("ActionStates/NormalState")
 parameters = Dictionary[String, ExtResource("2_s0xk6")]({
@@ -942,6 +946,15 @@ active = true
 
 [node name="OrbState" type="Node2D" parent="ActionStates"]
 script = ExtResource("15_aa1rq")
+
+[node name="OrbGrab" type="Area2D" parent="ActionStates/OrbState"]
+collision_layer = 32768
+collision_mask = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionStates/OrbState/OrbGrab"]
+shape = SubResource("CircleShape2D_m2fwl")
+disabled = true
+debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 
 [node name="DuckState" type="Node2D" parent="ActionStates"]
 script = ExtResource("16_pbapi")

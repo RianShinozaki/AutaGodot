@@ -332,7 +332,6 @@ script = ExtResource("11_6i11l")
 
 [node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("12_cp4kx")
-directControl = true
 speed = 30.0
 accel = 900.0
 decel = 480.0

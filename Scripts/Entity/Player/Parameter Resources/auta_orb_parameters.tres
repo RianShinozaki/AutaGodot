@@ -7,13 +7,14 @@ radius = 7.0
 
 [resource]
 script = ExtResource("1_571r1")
-launch_speed = 180.0
+launch_speed = 200.0
 launch_y_speed = -60.0
 minimum_time = 0.35
-gravity = 500.0
+gravity = 575.0
 initial_gravity = 100.0
 initial_gravity_time = 0.2
 exit_speed = 110.0
+orb_recharge_time = 0.5
 max_speed = 100.0
 initial_speed = 0.0
 initial_speed_in_air = 0.0

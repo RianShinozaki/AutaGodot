@@ -8,7 +8,7 @@ height = 25.0
 
 [resource]
 script = ExtResource("1_prx2n")
-max_speed = 90.0
+max_speed = 100.0
 initial_speed = 30.0
 initial_speed_in_air = 10.0
 acceleration = 900.0
