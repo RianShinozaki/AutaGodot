@@ -22,7 +22,7 @@ public partial class PlayerSpeedState : EntityState
 
 		var stateMachine = entity.anim.Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("Grounded", true);
-		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
+		//entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 		base.Start();	
 	}
 	public override void _Process(double delta) {
@@ -63,7 +63,7 @@ public partial class PlayerSpeedState : EntityState
 		player.skating = false;
 
 		base.End();
-		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
+		//entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
 	}
 
 	private void WallStick(StickDir dir)

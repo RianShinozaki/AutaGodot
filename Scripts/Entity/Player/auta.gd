@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 	
 	if not can_orb and recharge_orb:
 		orb_timer = move_toward(orb_timer, 0.0, delta)
-		print(ceili(orb_timer * 10) % 2)
 		if ceili(orb_timer * 10) % 2 == 1:
 			modulate = Color.CYAN
 		if orb_timer == 0:

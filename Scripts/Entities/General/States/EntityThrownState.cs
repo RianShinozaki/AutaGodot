@@ -13,7 +13,7 @@ public partial class EntityThrownState : EntityState
 	{
 		entity.applyPhysics = true;
 		entity.collisionMode = Agent.CollisionMode.BOUNCE;
-		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
+		//entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 		entity.Bounce += _on_bounce;
 		base.Start();
 	}

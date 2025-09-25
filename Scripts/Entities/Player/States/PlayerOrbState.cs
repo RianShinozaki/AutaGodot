@@ -88,7 +88,7 @@ public partial class PlayerOrbState : EntityState
 		GetNode<CollisionShape2D>(normalShape).Disabled = true;
 		GetNode<CollisionShape2D>(duckShape).Disabled = true;
 
-		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
+		//player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
 		//Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
 		//if (fx != null)
