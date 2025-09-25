@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://ckxjom1hk78wb"]
+[gd_scene load_steps=112 format=3 uid="uid://ckxjom1hk78wb"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -12,7 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Audio/Sounds/Player/Step1.wav" id="10_0j550"]
 [ext_resource type="Texture2D" uid="uid://ctmy0sgjf47p3" path="res://Art Assets/Characters/Auta/AutaAttackFX.png" id="10_s0xk6"]
 [ext_resource type="AudioStream" uid="uid://tfnqofi6xosl" path="res://Audio/Sounds/Player/Step2.wav" id="11_ml1rd"]
+[ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Scripts/Effects/AfterImageGenerator.gd" id="12_74fyi"]
 [ext_resource type="Script" uid="uid://coygks3n2h0jn" path="res://Scripts/Entity/input_manager.gd" id="13_4h77s"]
+[ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Objects/Effects/Oneshots/after_image.tscn" id="13_qfgkc"]
 [ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Scripts/System/Controllers/ObjectPool.gd" id="14_l0f5k"]
 [ext_resource type="Script" uid="uid://deyrx0ieh10h" path="res://Scripts/Entity/Player/Action States/player_normal_state.gd" id="14_s8caf"]
 [ext_resource type="Script" uid="uid://cskmw6maro1fx" path="res://Scripts/Entity/Player/Action States/player_orb_state.gd" id="15_aa1rq"]
@@ -872,6 +874,7 @@ texture_filter = 1
 collision_layer = 8
 floor_constant_speed = true
 floor_max_angle = 0.872665
+floor_snap_length = 4.0
 script = ExtResource("1_a6hb8")
 gravity = 240.0
 bounce_factor = 0.7
@@ -907,6 +910,10 @@ advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AfterImageGenerator" type="Node" parent="Art"]
+script = ExtResource("12_74fyi")
+time_between_after_images = 0.07
+object = ExtResource("13_qfgkc")
+count = 10
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Art"]
 

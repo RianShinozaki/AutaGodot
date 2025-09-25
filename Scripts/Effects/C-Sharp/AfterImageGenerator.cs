@@ -2,7 +2,6 @@ using Godot;
 using System;
 
 //Attach these to a node underneath the sprite
-[GlobalClass]
 public partial class AfterImageGenerator : Node
 {
 	bool active;

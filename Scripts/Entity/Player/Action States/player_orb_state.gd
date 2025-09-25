@@ -40,7 +40,7 @@ func _start() -> void:
 	anim.get("parameters/playback").start("Orb", true)
 	entity.get_node("EnvironmentBox").shape = orb_param.collision_shape
 	entity.get_node("EnvironmentBox").position = orb_param.collision_shape_position
-	#entity.get_node("Art/AfterImageGenerator").call("StartCreatingAfterImgs")
+	entity.get_node("Art/AfterImageGenerator").call("start_afterimages")
 	orb_area_shape.disabled = false
 	var fx: Node2D = orb_burst_fx_pool.spawn_object()
 	if fx != null:

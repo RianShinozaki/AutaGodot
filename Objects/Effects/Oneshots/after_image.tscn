@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqa8tytdncd0s"]
 
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="1_25hs3"]
-[ext_resource type="Script" uid="uid://clqtbkklhkxp5" path="res://Scripts/Effects/C-Sharp/AfterImage.cs" id="1_j6tdd"]
 [ext_resource type="Shader" uid="uid://4fhxa2eg78jg" path="res://Shaders/BrightColorShift.tres" id="1_suut3"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_767ae"]
+[ext_resource type="Script" uid="uid://81fjm2p7a3kk" path="res://Scripts/Effects/AfterImage.gd" id="3_atxib"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="4_je0gy"]
 
 [sub_resource type="Gradient" id="Gradient_wpw4y"]
 offsets = PackedFloat32Array(0, 0.505593, 0.997763)
@@ -28,7 +28,7 @@ material = SubResource("ShaderMaterial_4g2li")
 texture = ExtResource("1_25hs3")
 hframes = 8
 vframes = 8
-script = ExtResource("1_j6tdd")
+script = ExtResource("3_atxib")
 
 [node name="ObjectPoolObject" type="Node" parent="."]
-script = ExtResource("4_767ae")
+script = ExtResource("4_je0gy")
