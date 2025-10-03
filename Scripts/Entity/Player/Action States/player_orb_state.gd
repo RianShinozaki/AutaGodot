@@ -7,6 +7,7 @@ var anim: AnimationTree
 var orb_time: float
 var can_unorb: bool
 var orb_param: AutaOrbParameters
+var speed_param: AutaSpeedParameters
 var jmp_param: EntityJumpParameters
 var time_since_last_bounce: float
 
@@ -26,6 +27,7 @@ func _ready() -> void:
 	anim = entity.get_node("Art/AnimationTree")
 	orb_param = entity.parameters["orb"]
 	jmp_param = entity.parameters["jump"]
+	speed_param = entity.parameters["speed"]
 	inp.action_a_just_pressed.connect(on_jump)
 	inp.action_b_just_pressed.connect(on_attack)
 	time_since_last_bounce = 100
@@ -85,7 +87,13 @@ func _process(delta: float) -> void:
 	time_since_last_bounce += delta
 	
 	if not inp.action_c_pressed and orb_time > orb_param.minimum_time:
-		entity.switch_action_state_name("NormalState")
+		if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
+			entity.switch_action_state_name("SpeedState")
+			print("speed")
+		else:
+			entity.switch_action_state_name("NormalState")
+			print("nospeed")
+			
 	if orb_time <= orb_param.initial_gravity_time:
 		entity.gravity = orb_param.initial_gravity
 	else:

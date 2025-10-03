@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dds83antj5nu5" path="res://Scripts/Entity/Player/Parameter Resources/auta_jump_parameters.tres" id="3_m2fwl"]
 [ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Scripts/Entity/Player/Parameter Resources/auta_movement_parameters.tres" id="4_l0f5k"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Scripts/Entity/Player/Parameter Resources/auta_orb_parameters.tres" id="5_sqgqn"]
-[ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Scripts/Entity/Player/Parameter Resources/auta_duck_parameters.tres" id="6_06ssu"]
+[ext_resource type="Resource" uid="uid://dhkyvptk35rw5" path="res://Scripts/Entity/Player/Parameter Resources/auta_duck_parameters.tres" id="6_06ssu"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="7_74fyi"]
 [ext_resource type="Script" uid="uid://b0kurlubrh4oe" path="res://Scripts/Entity/Player/Parameter Scripts/auta_speed_parameters.gd" id="7_qfgkc"]
 [ext_resource type="Texture2D" uid="uid://07pc0b3pntrm" path="res://Art Assets/Characters/Auta/AutaSheet1Eyes.png" id="8_qfgkc"]
@@ -20,9 +20,9 @@
 [ext_resource type="Script" uid="uid://deyrx0ieh10h" path="res://Scripts/Entity/Player/Action States/player_normal_state.gd" id="14_s8caf"]
 [ext_resource type="Script" uid="uid://cskmw6maro1fx" path="res://Scripts/Entity/Player/Action States/player_orb_state.gd" id="15_aa1rq"]
 [ext_resource type="PackedScene" uid="uid://ct6pqwkiwhpf5" path="res://Objects/Effects/Oneshots/orbburst.tscn" id="15_sqgqn"]
+[ext_resource type="Script" uid="uid://biru1hnsfid77" path="res://Scripts/Entity/Player/Action States/player_duck_state.gd" id="16_pbapi"]
 [ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Objects/Effects/Oneshots/Land.tscn" id="17_06ssu"]
 [ext_resource type="Script" uid="uid://duyft4418juqr" path="res://Scripts/Entity/Player/Action States/player_attack_state.gd" id="18_m2fwl"]
-[ext_resource type="Script" uid="uid://66y2ovckdapm" path="res://Scripts/Entities/Player/States/auta_duck_state.tres.gd" id="22_r3wth"]
 [ext_resource type="Script" uid="uid://e63s53waw8ux" path="res://Scripts/Entity/Player/Action States/player_speed_state.gd" id="24_r3wth"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
@@ -32,10 +32,8 @@ height = 25.0
 [sub_resource type="Resource" id="Resource_0j550"]
 script = ExtResource("7_qfgkc")
 minimum_speed_skating = 110.0
-absolute_limit = 250.0
-slope_influence = 1.5
-slope_land_influence = 0.0
-slope_jump_influence = 0.3
+slope_downhill_influence = 0.5
+slope_uphill_influence = 0.5
 max_speed = 160.0
 initial_speed = 0.0
 initial_speed_in_air = 0.0
@@ -740,7 +738,7 @@ advance_expression = "parameters[\"movement\"].max_speed < abs(velocity.x)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8kc68"]
 advance_mode = 2
-advance_expression = "abs(velocity.x) < 10f"
+advance_expression = "abs(velocity.x) < 0.5f"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r258h"]
 switch_mode = 2
@@ -789,7 +787,7 @@ states/Start/position = Vector2(165, 113.24)
 states/Turn/node = SubResource("AnimationNodeAnimation_2yium")
 states/Turn/position = Vector2(624.2, -31.2)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Duck", "Slide", SubResource("AnimationNodeStateMachineTransition_d61rj"), "Slide", "FromSlide", SubResource("AnimationNodeStateMachineTransition_8kc68"), "FromSlide", "Duck", SubResource("AnimationNodeStateMachineTransition_r258h"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov"), "Run", "Skate", SubResource("AnimationNodeStateMachineTransition_3pwj2"), "Skate", "Run", SubResource("AnimationNodeStateMachineTransition_q4eky")]
-graph_offset = Vector2(-158, -166.831)
+graph_offset = Vector2(-158, -14)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jessi"]
 animation = &"Hurt"
@@ -886,8 +884,9 @@ states/ThrowSpin/position = Vector2(201, -115)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
 graph_offset = Vector2(-30, -53.947)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0j550"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_junhl"]
 radius = 6.0
+height = 25.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6hb8"]
 radius = 11.0
@@ -901,7 +900,7 @@ texture_filter = 1
 collision_layer = 8
 floor_constant_speed = true
 floor_max_angle = 0.872665
-floor_snap_length = 8.0
+floor_snap_length = 4.0
 script = ExtResource("1_a6hb8")
 gravity = 240.0
 bounce_factor = 0.7
@@ -946,8 +945,8 @@ count = 10
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Art"]
 
 [node name="EnvironmentBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_0j550")
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_junhl")
 
 [node name="GenericAttributes" type="Node2D" parent="."]
 
@@ -1006,10 +1005,11 @@ disabled = true
 debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 
 [node name="DuckState" type="Node2D" parent="ActionStates"]
-script = ExtResource("22_r3wth")
+script = ExtResource("16_pbapi")
 
 [node name="AttackState" type="Node2D" parent="ActionStates"]
 script = ExtResource("18_m2fwl")
 
 [node name="SpeedState" type="Node2D" parent="ActionStates"]
 script = ExtResource("24_r3wth")
+active = true

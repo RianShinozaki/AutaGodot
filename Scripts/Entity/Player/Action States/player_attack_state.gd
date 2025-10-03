@@ -52,8 +52,10 @@ func _process(delta: float) -> void:
 	var _do_short_hop = can_short_hop and not inp.action_a_pressed
 	entity.gravity = jmp_param.get_gravity(entity, jmp_param.short_hop_gravity_scale if _do_short_hop else 1.0)
 	entity.velocity.y = min(entity.velocity.y, jmp_param.max_falling_speed)
-	if entity.is_on_floor(): 
-		entity.get_node("Art/AfterImageGenerator").call("StopCreatingAfterImgs")
+	
+	var _art: Sprite2D = entity.get_node("Art")
+	var _to_angle: float = 0
+	_art.global_rotation = lerp_angle(_art.global_rotation,_to_angle,delta * 10)
 
 func _end() -> void:
 	super._end()
