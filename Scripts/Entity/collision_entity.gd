@@ -26,6 +26,13 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 signal just_grounded(normal: Vector2, velocity: Vector2)
 signal just_bounced(normal: Vector2, velocity: Vector2)
 
+var velocity_true: Vector2:
+	get:
+		if is_on_floor():
+			return Vector2(-velocity.x * get_floor_normal().y, velocity.x * get_floor_normal().x)
+		else:
+			return velocity
+
 func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 	var _temp_velocity = velocity
 	match collision_mode:

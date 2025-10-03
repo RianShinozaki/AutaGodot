@@ -9,7 +9,7 @@ var anim_skating := false
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	print(velocity)
+	print(velocity_true)
 	modulate = Color.WHITE
 	if not can_orb and not recharge_orb and is_on_floor() and collision_mode == COLLISION_MODE_FLOOR:
 		recharge_orb = true

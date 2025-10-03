@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="AutaSpeedParameters" load_steps=3 format=3 uid="uid://raaf2alewgfp"]
+
+[ext_resource type="Script" uid="uid://b0kurlubrh4oe" path="res://Scripts/Entity/Player/Parameter Scripts/auta_speed_parameters.gd" id="1_w52yl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
+radius = 6.0
+height = 25.0
+
+[resource]
+script = ExtResource("1_w52yl")
+minimum_speed_skating = 110.0
+absolute_limit = 500.0
+slope_uphill_influence = 0.7
+slope_downhill_influence = 1.5
+slope_land_influence = 0.0
+slope_jump_influence = 0.7
+max_speed = 160.0
+initial_speed = 0.0
+initial_speed_in_air = 0.0
+minimum_speed = 0.0
+minimum_speed_in_air = 0.0
+acceleration = 450.0
+acceleration_in_air = 450.0
+deceleration = 100.0
+deceleration_in_air = 60.0
+deceleration_above_speed = 60.0
+deceleration_above_speed_in_air = 0.0
+collision_shape = SubResource("CapsuleShape2D_r3wth")
+collision_shape_position = Vector2(0, -5)
+metadata/_custom_type_script = "uid://b0kurlubrh4oe"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://c4qvyi42w0qvy"]
+[gd_scene load_steps=114 format=3 uid="uid://c4qvyi42w0qvy"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Scripts/Entity/Player/Parameter Resources/auta_orb_parameters.tres" id="5_sqgqn"]
 [ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Scripts/Entity/Player/Parameter Resources/auta_duck_parameters.tres" id="6_06ssu"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="7_74fyi"]
-[ext_resource type="Script" uid="uid://b0kurlubrh4oe" path="res://Scripts/Entity/Player/Parameter Scripts/auta_speed_parameters.gd" id="7_qfgkc"]
+[ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Scripts/Entity/Player/Parameter Resources/auta_speed_parameters.tres" id="7_r3wth"]
 [ext_resource type="Texture2D" uid="uid://07pc0b3pntrm" path="res://Art Assets/Characters/Auta/AutaSheet1Eyes.png" id="8_qfgkc"]
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="9_r3wth"]
 [ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Audio/Sounds/Player/Step1.wav" id="10_0j550"]
@@ -24,33 +24,6 @@
 [ext_resource type="Script" uid="uid://duyft4418juqr" path="res://Scripts/Entity/Player/Action States/player_attack_state.gd" id="18_m2fwl"]
 [ext_resource type="Script" uid="uid://66y2ovckdapm" path="res://Scripts/Entities/Player/States/auta_duck_state.tres.gd" id="22_r3wth"]
 [ext_resource type="Script" uid="uid://e63s53waw8ux" path="res://Scripts/Entity/Player/Action States/player_speed_state.gd" id="24_r3wth"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
-radius = 6.0
-height = 25.0
-
-[sub_resource type="Resource" id="Resource_0j550"]
-script = ExtResource("7_qfgkc")
-minimum_speed_skating = 110.0
-absolute_limit = 500.0
-slope_uphill_influence = 0.7
-slope_downhill_influence = 1.5
-slope_land_influence = 0.0
-slope_jump_influence = 0.3
-max_speed = 160.0
-initial_speed = 0.0
-initial_speed_in_air = 0.0
-minimum_speed = 0.0
-minimum_speed_in_air = 0.0
-acceleration = 450.0
-acceleration_in_air = 450.0
-deceleration = 100.0
-deceleration_in_air = 60.0
-deceleration_above_speed = 60.0
-deceleration_above_speed_in_air = 0.0
-collision_shape = SubResource("CapsuleShape2D_r3wth")
-collision_shape_position = Vector2(0, -5)
-metadata/_custom_type_script = "uid://b0kurlubrh4oe"
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -913,7 +886,7 @@ parameters = Dictionary[String, ExtResource("2_s0xk6")]({
 "jump": ExtResource("3_m2fwl"),
 "movement": ExtResource("4_l0f5k"),
 "orb": ExtResource("5_sqgqn"),
-"speed": SubResource("Resource_0j550")
+"speed": ExtResource("7_r3wth")
 })
 
 [node name="Art" type="Sprite2D" parent="."]

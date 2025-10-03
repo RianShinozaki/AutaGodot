@@ -75,8 +75,11 @@ func on_jump():
 	if(entity.is_on_floor()):
 		can_short_hop = true
 		var _norm := entity.get_floor_normal()
-		entity.velocity.y = jmp_param.get_jump_power() + entity.velocity.x * _norm.x * mov_param.slope_jump_influence
-		entity.velocity.x += sign(entity.velocity.x) * entity.velocity.x * _norm.x * mov_param.slope_jump_influence
+		var _x: float = entity.velocity_true.x + jmp_param.get_jump_power() * -_norm.x
+		var _y: float = entity.velocity_true.y + jmp_param.get_jump_power() * -_norm.y
+		var _slope_leave_velocity: Vector2 = Vector2(_x, _y)
+		var _noslope_velocity: Vector2 = Vector2(entity.velocity_true.x, jmp_param.get_jump_power())
+		entity.velocity = _noslope_velocity.lerp(_slope_leave_velocity, mov_param.slope_jump_influence)
 
 func on_attack():
 	if not active: return

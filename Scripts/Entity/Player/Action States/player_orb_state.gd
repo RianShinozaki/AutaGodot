@@ -55,13 +55,13 @@ func _start() -> void:
 		var _norm := entity.get_floor_normal()
 		if abs(_input.x) <= 0.3:
 			_input.x = -1 if entity.get_node("Art").flip_h else 1
-		var _velocity: Vector2 = entity.velocity
+		var _velocity: Vector2 = entity.velocity_true
 		entity.velocity.y = 0
 		if _input.x > 0:
-			entity.velocity.x = max(entity.velocity.x, sign(_input.x) * orb_param.launch_speed)
+			entity.velocity.x = max(entity.velocity_true.x, sign(_input.x) * orb_param.launch_speed)
 		else:
-			entity.velocity.x = min(entity.velocity.x, sign(_input.x) * orb_param.launch_speed)
-		_velocity = Vector2(-_norm.y * entity.velocity.x, _norm.x * entity.velocity.x )
+			entity.velocity.x = min(entity.velocity_true.x, sign(_input.x) * orb_param.launch_speed)
+		_velocity = Vector2(-_norm.y * entity.velocity_true.x, _norm.x * entity.velocity_true.x )
 		if(_velocity.y < 0):
 			entity.velocity = _velocity
 		return
@@ -71,15 +71,15 @@ func _start() -> void:
 	_input = _input.normalized()
 	
 	if _input.x > 0.5:
-		entity.velocity.x = max(entity.velocity.x, _input.x * orb_param.launch_speed)
+		entity.velocity.x = max(entity.velocity_true.x, _input.x * orb_param.launch_speed)
 	elif _input.x < -0.5:
-		entity.velocity.x = min(entity.velocity.x, _input.x * orb_param.launch_speed)
+		entity.velocity.x = min(entity.velocity_true.x, _input.x * orb_param.launch_speed)
 	else: entity.velocity.x = 0
 	
 	if _input.y > 0.5:
-		entity.velocity.y = max(entity.velocity.y, _input.y * orb_param.launch_speed)
+		entity.velocity.y = max(entity.velocity_true.y, _input.y * orb_param.launch_speed)
 	elif _input.y < -0.5:
-		entity.velocity.y = min(entity.velocity.y, _input.y * orb_param.launch_speed)
+		entity.velocity.y = min(entity.velocity_true.y, _input.y * orb_param.launch_speed)
 	else: entity.velocity.y = 0
 	
 	if entity.velocity.y == 0 and entity.is_on_floor():
