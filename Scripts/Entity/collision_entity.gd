@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	move(velocity, delta, true)
 
 func accelerate_x(_amount: float, _limit: float, _toward: bool):
-	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_limit) if _toward else 1))
+	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_amount) if _toward else 1))
 
 func switch_action_state_name(_state: String):
 	var _action_state = get_node("ActionStates/"+_state)

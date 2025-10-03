@@ -5,14 +5,14 @@ var auta: Auta
 var inp: InputManager
 var anim: AnimationTree
 
-var mov_param: EntityMovementParameters
+var mov_param: AutaSpeedParameters
 var jmp_param: EntityJumpParameters
 var can_short_hop: bool
 
 func _ready() -> void:
 	super._ready()
 	inp = entity.get_node("GenericAttributes/InputManager")
-	mov_param = entity.parameters["movement"]
+	mov_param = entity.parameters["speed"]
 	jmp_param = entity.parameters["jump"]
 	anim = entity.get_node("Art/AnimationTree")
 	inp.action_a_just_pressed.connect(on_jump)
@@ -26,6 +26,7 @@ func _start() -> void:
 	entity.get_node("EnvironmentBox").shape = mov_param.collision_shape
 	entity.get_node("EnvironmentBox").position = mov_param.collision_shape_position
 	can_short_hop = false
+	entity.anim_skating = true
 	
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -40,16 +41,18 @@ func _process(delta: float) -> void:
 	
 	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
-		if abs(entity.velocity.x) < mov_param.get_minimum_speed(entity):
-			entity.velocity.x = 0
 	
-	#Turn the player around
-	var _flip_h = entity.get_node("Art").flip_h
-	if(entity.velocity.x != 0 and entity.is_on_floor()):
-		entity.get_node("Art").flip_h = entity.velocity.x < 0
-		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(entity.velocity.x), 1.0)
-		if(entity.get_node("Art").flip_h != _flip_h):
-			play_animation_oneshot("Turn")
+	if abs(entity.velocity.x) < mov_param.minimum_speed_skating:
+		entity.switch_action_state_name("NormalState")
+	
+	if entity.is_on_floor(): 
+		if inp.input_direction.y > 0.3:
+			entity.switch_action_state_name("DuckState")
+			
+	#Handle acceleration/deceleration due to slopes
+	var _norm := entity.get_floor_normal()
+	var _amount := _norm.x * entity.gravity * mov_param.slope_influence * delta
+	entity.accelerate_x(_amount, mov_param.absolute_limit * sign(_norm.x), true)
 	
 	#Update gravity
 	if(entity.velocity.y > jmp_param.rising_gravity_scale): can_short_hop = false
@@ -57,24 +60,22 @@ func _process(delta: float) -> void:
 	entity.gravity = jmp_param.get_gravity(entity, jmp_param.short_hop_gravity_scale if _do_short_hop else 1.0)
 	entity.velocity.y = min(entity.velocity.y, jmp_param.max_falling_speed)
 	
-	if entity.is_on_floor(): 
-		entity.get_node("Art/AfterImageGenerator").call("stop_afterimages")
-		if inp.input_direction.y > 0.3:
-			entity.switch_action_state_name("DuckState")
-	
 	var _art: Sprite2D = entity.get_node("Art")
-	var _to_angle: float = 0
+	var _to_angle: float = (entity.get_floor_angle() * sign(entity.get_floor_normal().x)) if entity.is_on_floor() else 0
 	_art.global_rotation = lerp_angle(_art.global_rotation,_to_angle,delta * 10)
-
+	
 
 func _end() -> void:
 	super._end()
+	entity.anim_skating = false
 	
 func on_jump():
 	if not active: return
 	if(entity.is_on_floor()):
 		can_short_hop = true
-		entity.velocity.y = jmp_param.get_jump_power()
+		var _norm := entity.get_floor_normal()
+		entity.velocity.y = jmp_param.get_jump_power() + entity.velocity.x * _norm.x * mov_param.slope_jump_influence
+		entity.velocity.x += sign(entity.velocity.x) * entity.velocity.x * _norm.x * mov_param.slope_jump_influence
 
 func on_attack():
 	if not active: return
