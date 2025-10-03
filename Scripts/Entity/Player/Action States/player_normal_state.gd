@@ -87,9 +87,12 @@ func on_orb():
 
 #Grounded animation handler
 func just_grounded(_normal: Vector2, _velocity: Vector2):
+	print("grounded")
 	var fx: Node2D = land_fx_pool.spawn_object()
 	if fx != null:
 		fx.global_position = entity.global_position + Vector2.DOWN*8;
+		fx.rotation = entity.get_floor_angle() * sign(entity.get_floor_normal().x)
+		
 	if not active: return
 	play_animation_oneshot("Land")
 
