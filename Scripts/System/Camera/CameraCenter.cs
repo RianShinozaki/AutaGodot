@@ -9,6 +9,7 @@ public partial class CameraCenter : Area2D
 {
 	[Export] public Vector2 deadzone;
 	[Export] public Vector2 cameraSize;
+	[Export] public CharacterBody2D target;
 	public Vector2 boundsX = new Vector2(float.MinValue, float.MaxValue);
 	public Vector2 boundsY = new Vector2(float.MinValue, float.MaxValue);
 
@@ -20,7 +21,7 @@ public partial class CameraCenter : Area2D
 	public override void _Ready()
 	{
 		base._Ready();
-		GlobalPosition = PlayerController.Instance.GlobalPosition;
+		GlobalPosition = target.GlobalPosition;
 		camRegions = new Godot.Collections.Array<CamRegion>();
 	}
 
@@ -28,16 +29,15 @@ public partial class CameraCenter : Area2D
 	{
 		currentCamMode = CamMode.Free;
 		
-		PlayerController player = PlayerController.Instance;
 		Vector2 velocity = Vector2.Zero;
-		Vector2 toPos = player.GlobalPosition;
+		Vector2 toPos = target.GlobalPosition;
 		float x = Mathf.Clamp(toPos.X, boundsX.X, boundsX.Y);
 		float y = Mathf.Clamp(toPos.Y, boundsY.X, boundsY.Y);
 		toPos = new Vector2(x, y);
 
 		velocity.X = (toPos.X - GlobalPosition.X) * 5;
 		velocity.Y = (playerYCache - GlobalPosition.Y) * 5;
-		if (true || player.grounded || currentCamMode == CamMode.Free)
+		if (true || target.IsOnFloor() || currentCamMode == CamMode.Free)
 		{
 			playerYCache = toPos.Y;
 			currentCamMode = CamMode.LockY;
@@ -49,7 +49,7 @@ public partial class CameraCenter : Area2D
 		GlobalPosition += velocity * (float)delta;
 
 		//GlobalPosition = new Vector2(x, y);
-		GetNode<CollisionShape2D>("CollisionShape2D").GlobalPosition = player.GlobalPosition;
+		GetNode<CollisionShape2D>("CollisionShape2D").GlobalPosition = target.GlobalPosition;
 	}
 
 	public void resetBounds()

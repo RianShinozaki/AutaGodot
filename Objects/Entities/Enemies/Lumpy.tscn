@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_kqnyo"]
 [ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_ouqjm"]
 [ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_gruas"]
-[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/AfterImageGenerator.cs" id="6_r4v4u"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="7_xbsis"]
 [ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="8_pqpgr"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="9_7f2kx"]
@@ -250,6 +249,57 @@ states/Tuck/position = Vector2(556, 8)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb")]
 graph_offset = Vector2(-28, -95)
 
+[sub_resource type="CSharpScript" id="CSharpScript_bjaog"]
+script/source = "using Godot;
+using System;
+
+//Attach these to a node underneath the sprite
+public partial class AfterImageGenerator : Node
+{
+	bool active;
+	float afterImgTimer = 0;
+	Sprite2D sprite;
+
+	public override void _Ready()
+	{
+		sprite = GetParent<Sprite2D>();
+	}
+
+	public override void _Process(double delta)
+	{
+		if(active) afterImgTimer += (float)delta;
+		if(afterImgTimer > 0.07f) {
+			/*AfterImage afterImg = ObjectPool.Instance.Spawn(\"AfterImage\") as AfterImage;
+			if(afterImg != null) {
+				afterImg.Texture = sprite.Texture;
+				afterImg.Hframes = sprite.Hframes;
+				afterImg.Vframes = sprite.Vframes;
+				afterImg.FlipH = sprite.FlipH;
+				afterImg.Frame = sprite.Frame;
+				afterImg.GlobalPosition = sprite.GlobalPosition;
+				afterImg.Offset = sprite.Offset;
+				afterImg.Rotation = sprite.Rotation;
+				ShaderMaterial mat = afterImg.Material as ShaderMaterial;
+				if(sprite.Texture is CanvasTexture canv) {
+					mat.SetShaderParameter(\"Texture\", canv.DiffuseTexture);
+				}
+				else mat.SetShaderParameter(\"Texture\", sprite.Texture);
+			}
+			afterImgTimer = 0;*/
+		}
+	}
+
+	public void StartCreatingAfterImgs() {
+		afterImgTimer = 0;
+		active = true;
+	}
+	public void StopCreatingAfterImgs() {
+		active = false;
+	}
+	
+}
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruk6c"]
 size = Vector2(136, 19)
 
@@ -309,7 +359,7 @@ advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AfterImageGenerator" type="Node" parent="Art"]
-script = ExtResource("6_r4v4u")
+script = SubResource("CSharpScript_bjaog")
 
 [node name="Attributes" parent="." instance=ExtResource("7_xbsis")]
 
@@ -332,7 +382,6 @@ script = ExtResource("11_6i11l")
 
 [node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
 script = ExtResource("12_cp4kx")
-directControl = true
 speed = 30.0
 accel = 900.0
 decel = 480.0

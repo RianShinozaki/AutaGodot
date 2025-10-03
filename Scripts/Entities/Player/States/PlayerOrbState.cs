@@ -7,7 +7,6 @@ public partial class PlayerOrbState : EntityState
 {
 	[Signal] public delegate void GrabbedEntityEventHandler(Node2D node);
 	[Export] float speed;
-	[Export] float initSpeed;
 	[Export] float initYSpeed;
 	[Export] float minBounceSpeed;
 	[Export] float minOrbTime;
@@ -89,13 +88,13 @@ public partial class PlayerOrbState : EntityState
 		GetNode<CollisionShape2D>(normalShape).Disabled = true;
 		GetNode<CollisionShape2D>(duckShape).Disabled = true;
 
-		player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
+		//player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 
-		Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
-		if (fx != null)
-		{
-			fx.GlobalPosition = GlobalPosition;
-		}
+		//Node2D fx = ObjectPool.Instance.Spawn("OrbBurst") as Node2D;
+		//if (fx != null)
+		//{
+			//fx.GlobalPosition = GlobalPosition;
+		//}
 
 		/*AfterImage afterImg = ObjectPool.Instance.Spawn("DisintegratedImage") as AfterImage;
 		if(afterImg != null) {

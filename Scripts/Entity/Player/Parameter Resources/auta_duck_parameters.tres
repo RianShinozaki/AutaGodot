@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AutaDuckParameters" load_steps=3 format=3 uid="uid://c1104baue8t8u"]
+
+[ext_resource type="Script" uid="uid://c0bqhh0dgadv1" path="res://Scripts/Entity/Player/Parameter Scripts/auta_duck_parameters.gd" id="1_ax31v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r3wth"]
+radius = 6.0
+
+[resource]
+script = ExtResource("1_ax31v")
+slope_influence = 1.5
+max_speed = 200.0
+initial_speed = 0.0
+initial_speed_in_air = 0.0
+minimum_speed = 40.0
+minimum_speed_in_air = 0.0
+acceleration = 180.0
+acceleration_in_air = 0.0
+deceleration = 180.0
+deceleration_in_air = 0.0
+deceleration_above_speed = 180.0
+deceleration_above_speed_in_air = 0.0
+collision_shape = SubResource("CircleShape2D_r3wth")
+collision_shape_position = Vector2(0, 2)
+metadata/_custom_type_script = "uid://c0bqhh0dgadv1"

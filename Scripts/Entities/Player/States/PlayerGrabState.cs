@@ -91,10 +91,10 @@ public partial class PlayerGrabState : EntityState
 		stateMachine = entity.anim.Get("parameters/Jump/playback").As<AnimationNodeStateMachinePlayback>();
 		stateMachine.Start("ThrowFlip", true);
 
-		Node2D fx = ObjectPool.Instance.Spawn("Windburst") as Node2D;
-		if(fx != null) {
-			fx.GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y-8);
-		}
+		//Node2D fx = ObjectPool.Instance.Spawn("Windburst") as Node2D;
+		//if(fx != null) {
+			//fx.GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y-8);
+		//}
 
 		((EntityGrabbedState)heldEntity.GetState("GrabbedState")).Thrown(angle, throwPower);
 

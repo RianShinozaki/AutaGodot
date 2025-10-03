@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ct6pqwkiwhpf5"]
 
 [ext_resource type="Texture2D" uid="uid://bookg7or8t1xj" path="res://Art Assets/Characters/Auta/OrbBurst.png" id="1_8k1sy"]
-[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/AnimatedEffect.cs" id="2_1vcsb"]
-[ext_resource type="Script" uid="uid://bpoe0e6nfd4at" path="res://Scripts/System/Controllers/ObjectPoolObject.cs" id="3_bh7dx"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_1vcsb"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="3_0mluo"]
 
 [sub_resource type="Animation" id="Animation_3mcd5"]
 resource_name = "Effect"
@@ -50,11 +50,11 @@ script = ExtResource("2_1vcsb")
 rotRange = 30.0
 
 [node name="ObjectPoolObject" type="Node" parent="."]
-script = ExtResource("3_bh7dx")
+script = ExtResource("3_0mluo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_a42ke")
+&"": SubResource("AnimationLibrary_a42ke")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

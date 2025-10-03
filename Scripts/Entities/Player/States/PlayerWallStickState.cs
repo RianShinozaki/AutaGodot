@@ -39,7 +39,7 @@ public partial class PlayerWallStickState : EntityState
 		cachedHSpeed = player.GetState("SpeedState").GetNode<AccelAndDecel>("ActiveScriptGroup/AccelAndDecel").speed;
 		player.SetHor(0);
 		subState = WallStickSubState.STICK;
-		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
+		//entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StartCreatingAfterImgs();
 		entity.applyPhysics = false;
 		GetNode<CollisionShape2D>(duckShape).Disabled = false;
 		GetNode<CollisionShape2D>(normalShape).Disabled = true;
@@ -85,7 +85,7 @@ public partial class PlayerWallStickState : EntityState
 	}
 	public override void End() {
 
-		entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
+		//entity.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
 		PlayerController player = (PlayerController)entity;
 		player.duck = false;
 		entity.collisionMode = Agent.CollisionMode.FLOOR;

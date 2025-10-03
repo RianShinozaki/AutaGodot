@@ -1,12 +1,12 @@
 [gd_scene load_steps=79 format=4 uid="uid://rv7xg4obnm88"]
 
-[ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/GameWorld.cs" id="1_22rn6"]
+[ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_22rn6"]
 [ext_resource type="AudioStream" uid="uid://dednlybc8e86c" path="res://Audio/Music/Temp/Wish Upon a Star.mp3" id="2_tcpc6"]
 [ext_resource type="Texture2D" uid="uid://c8op2g4rf720c" path="res://Art Assets/Environment/House/Backgrounds/spr_VoidBG_Space.png" id="2_w6gqj"]
 [ext_resource type="Texture2D" uid="uid://dkju7ehy3w6xb" path="res://Art Assets/Environment/House/Backgrounds/bgr_StarrySky.png" id="4_t68xb"]
 [ext_resource type="Texture2D" uid="uid://bc8q57121ho27" path="res://Art Assets/Environment/Underground/Backgrounds/Distance.png" id="6_i5yow"]
 [ext_resource type="Texture2D" uid="uid://cfwcevieyperx" path="res://Art Assets/Environment/Underground/Backgrounds/ForegroundRocks.png" id="7_em81w"]
-[ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/ParallaxController.cs" id="9_nn2mm"]
+[ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/C-sharp/ParallaxController.cs" id="9_nn2mm"]
 [ext_resource type="Texture2D" uid="uid://cn3416vu8wta6" path="res://Art Assets/Environment/House/Backgrounds/HallWall.png" id="9_w5x63"]
 [ext_resource type="TileSet" uid="uid://c1ryvxri0mnsc" path="res://Art Assets/Environment/House/Tilesets/HouseEclipseTiles.tres" id="10_sgpm8"]
 [ext_resource type="Texture2D" uid="uid://cbdnq058hdip1" path="res://Art Assets/Effects/Lighting/Sunbeam.png" id="12_x5mxa"]
@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="18_nru8o"]
 [ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="19_82gtu"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="21_bsv6k"]
-[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/GameManager.cs" id="25_rbcmk"]
+[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="25_rbcmk"]
 [ext_resource type="Script" uid="uid://ba5g4kvdlm6in" path="res://Scripts/System/Camera/CamRegion.cs" id="26_mddoa"]
 [ext_resource type="Texture2D" uid="uid://dum8gf87nacu3" path="res://Art Assets/Environment/House/CrystalWallsBlue.png" id="27_i4iax"]
 [ext_resource type="Texture2D" uid="uid://bouw715ol1q78" path="res://Art Assets/Environment/Misc/Objects/SimpleTrigger.png" id="27_yrjna"]
@@ -1161,9 +1161,9 @@ tile_set = SubResource("TileSet_uabg6")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Environment-Under"]
 material = SubResource("CanvasItemMaterial_fjmet")
 amount = 32
+texture = SubResource("GradientTexture2D_uanf8")
 lifetime = 10.0
 preprocess = 10.0
-texture = SubResource("GradientTexture2D_uanf8")
 emission_shape = 3
 emission_rect_extents = Vector2(320, 180)
 direction = Vector2(0, -1)
@@ -1392,7 +1392,7 @@ animName = "untrigger"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection/CrystalPath"]
 libraries = {
-"": SubResource("AnimationLibrary_wyxpx")
+&"": SubResource("AnimationLibrary_wyxpx")
 }
 autoplay = "untriggered"
 
@@ -1407,7 +1407,7 @@ ignoreAreas = []
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection/SimpleHitboxTrigger"]
 libraries = {
-"": SubResource("AnimationLibrary_e42cb")
+&"": SubResource("AnimationLibrary_e42cb")
 }
 autoplay = "untrigger"
 
@@ -1482,7 +1482,7 @@ animName = "untrigger"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection2/CrystalPath"]
 libraries = {
-"": SubResource("AnimationLibrary_wyxpx")
+&"": SubResource("AnimationLibrary_wyxpx")
 }
 autoplay = "untriggered"
 
@@ -1497,7 +1497,7 @@ ignoreAreas = []
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection2/SimpleHitboxTrigger"]
 libraries = {
-"": SubResource("AnimationLibrary_e42cb")
+&"": SubResource("AnimationLibrary_e42cb")
 }
 autoplay = "untrigger"
 
@@ -1573,7 +1573,7 @@ animName = "untrigger"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection3/CrystalPath"]
 libraries = {
-"": SubResource("AnimationLibrary_wyxpx")
+&"": SubResource("AnimationLibrary_wyxpx")
 }
 autoplay = "untriggered"
 
@@ -1588,7 +1588,7 @@ ignoreAreas = []
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrystalPathSection3/SimpleHitboxTrigger"]
 libraries = {
-"": SubResource("AnimationLibrary_e42cb")
+&"": SubResource("AnimationLibrary_e42cb")
 }
 autoplay = "untrigger"
 

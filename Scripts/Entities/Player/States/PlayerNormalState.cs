@@ -22,7 +22,7 @@ public partial class PlayerNormalState : EntityState
 
 		if(player.grounded) {
 			player.canOrb = true;
-			player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
+			//player.sprite.GetNode<AfterImageGenerator>("AfterImageGenerator").StopCreatingAfterImgs();
 			float vert = Input.GetAxis("ui_down", "ui_up");
 			if(vert == -1) {
 				player.SwitchState("DuckState");
