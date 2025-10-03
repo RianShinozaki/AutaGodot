@@ -8,7 +8,7 @@ radius = 6.0
 [resource]
 script = ExtResource("1_ax31v")
 slope_influence = 1.5
-max_speed = 200.0
+max_speed = 1000.0
 initial_speed = 0.0
 initial_speed_in_air = 0.0
 minimum_speed = 40.0

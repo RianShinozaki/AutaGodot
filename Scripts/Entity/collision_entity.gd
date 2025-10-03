@@ -41,13 +41,13 @@ func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 			var _kc = move_and_collide(_velocity * _delta, true)
 			if _kc != null:
 				var _normal = _kc.get_normal()
-				_velocity = -_velocity.reflect(_normal)
 				_velocity.y += gravity * _delta
+				_velocity = -_velocity.reflect(_normal)
 				var _loss_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (1 - bounce_factor)
 				var _impact_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (bounce_factor)
 				_velocity.x -= _loss_factor.x * _velocity.x
 				_velocity.y -= _loss_factor.y * _velocity.y
-				if(absf(_velocity.y) < 20): _velocity.y = 0
+				if(absf(_velocity.y) < 50): _velocity.y = 0
 				emit_signal("just_bounced", _normal, _velocity)
 			velocity = _velocity
 			move_and_slide()

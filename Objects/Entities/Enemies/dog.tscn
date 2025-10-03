@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://7fyraj5eai8g" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_1flec"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_n4sfi"]
 [ext_resource type="Texture2D" uid="uid://baone4ljqq8fv" path="res://Art Assets/Environment/Misc/Objects/Dog.png" id="3_3g0cg"]
-[ext_resource type="Script" uid="uid://cguvip60iwf3n" path="res://Scripts/Effects/C-Sharp/AfterImageGenerator.cs" id="4_qjiua"]
 [ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="5_bwtb3"]
+[ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Scripts/Effects/AfterImageGenerator.gd" id="5_l7g05"]
 [ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="6_b0g58"]
 [ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="7_y86nq"]
 [ext_resource type="Script" uid="uid://dbt54swsxqpja" path="res://Scripts/Entities/General/Base/EntityState.cs" id="8_wafxr"]
@@ -357,7 +357,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
 libraries = {
-"": SubResource("AnimationLibrary_pqax5")
+&"": SubResource("AnimationLibrary_pqax5")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Art"]
@@ -366,7 +366,7 @@ advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AfterImageGenerator" type="Node" parent="Art"]
-script = ExtResource("4_qjiua")
+script = ExtResource("5_l7g05")
 
 [node name="Attributes" parent="." instance=ExtResource("5_bwtb3")]
 

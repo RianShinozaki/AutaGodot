@@ -51,7 +51,8 @@ func _process(delta: float) -> void:
 			
 	#Handle acceleration/deceleration due to slopes
 	var _norm := entity.get_floor_normal()
-	var _amount := _norm.x * entity.gravity * mov_param.slope_influence * delta
+	var _slope_influence = mov_param.slope_uphill_influence if sign(entity.velocity.x) != sign(_norm.x) else mov_param.slope_downhill_influence
+	var _amount: float = _norm.x * entity.gravity * _slope_influence * delta
 	entity.accelerate_x(_amount, mov_param.absolute_limit * sign(_norm.x), true)
 	
 	#Update gravity

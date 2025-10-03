@@ -40,6 +40,7 @@ func _start() -> void:
 	entity.collision_mode = CollisionEntity.COLLISION_MODE_BOUNCE
 	entity.gravity = orb_param.gravity
 	anim.get("parameters/playback").start("Orb", true)
+	entity.get_node("Art").rotation = 0
 	entity.get_node("EnvironmentBox").shape = orb_param.collision_shape
 	entity.get_node("EnvironmentBox").position = orb_param.collision_shape_position
 	entity.get_node("Art/AfterImageGenerator").call("start_afterimages")
@@ -51,12 +52,18 @@ func _start() -> void:
 	var _input = inp.input_direction
 	
 	if entity.last_action_state.name == "DuckState":
+		var _norm := entity.get_floor_normal()
 		if abs(_input.x) <= 0.3:
 			_input.x = -1 if entity.get_node("Art").flip_h else 1
+		var _velocity: Vector2 = entity.velocity
+		entity.velocity.y = 0
 		if _input.x > 0:
 			entity.velocity.x = max(entity.velocity.x, sign(_input.x) * orb_param.launch_speed)
 		else:
 			entity.velocity.x = min(entity.velocity.x, sign(_input.x) * orb_param.launch_speed)
+		_velocity = Vector2(-_norm.y * entity.velocity.x, _norm.x * entity.velocity.x )
+		if(_velocity.y < 0):
+			entity.velocity = _velocity
 		return
 	
 	if _input == Vector2.ZERO:
@@ -112,7 +119,12 @@ func _process(delta: float) -> void:
 	if entity.velocity.x != 0:
 		entity.get_node("Art").flip_h = entity.velocity.x < 0
 		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(entity.velocity.x), 1.0)
-
+	print(entity.is_on_floor())
+	
+	var _norm := entity.get_floor_normal()
+	var _amount := _norm.x * entity.gravity * orb_param.slope_influence * delta
+	entity.accelerate_x(_amount, 10000 * sign(_norm.x), true)
+	
 func _end() -> void:
 	super._end()
 	entity.collision_mode = CollisionEntity.COLLISION_MODE_FLOOR

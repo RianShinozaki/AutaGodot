@@ -16,6 +16,7 @@ initial_gravity_time = 0.2
 exit_speed = 110.0
 orb_recharge_time = 0.5
 orb_to_jump_buffer_time = 0.07
+slope_influence = 1.0
 max_speed = 100.0
 initial_speed = 0.0
 initial_speed_in_air = 0.0

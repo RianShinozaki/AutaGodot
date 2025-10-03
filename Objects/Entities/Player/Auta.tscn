@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://ckxjom1hk78wb"]
+[gd_scene load_steps=116 format=3 uid="uid://c4qvyi42w0qvy"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -32,8 +32,9 @@ height = 25.0
 [sub_resource type="Resource" id="Resource_0j550"]
 script = ExtResource("7_qfgkc")
 minimum_speed_skating = 110.0
-absolute_limit = 250.0
-slope_influence = 1.5
+absolute_limit = 500.0
+slope_uphill_influence = 0.7
+slope_downhill_influence = 1.5
 slope_land_influence = 0.0
 slope_jump_influence = 0.3
 max_speed = 160.0
