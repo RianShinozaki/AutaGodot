@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\addons\\racoonery\\racooneryplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:addons\\racoonery\\racooneryplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\scripts\\system\\save\\saveutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:scripts\\system\\save\\saveutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\scripts\\system\\save\\nodes\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:scripts\\system\\save\\nodes\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\scripts\\system\\save\\resources\\savedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:scripts\\system\\save\\resources\\savedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\scripts\\system\\save\\isaveable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:scripts\\system\\save\\isaveable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\scripts\\system\\save\\resources\\savefile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:scripts\\system\\save\\resources\\savefile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|c:\\users\\red\\documents\\rps\\autagodot\\scripts\\system\\save\\nodes\\saveloadcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEC8200-07D3-452D-B7AA-2EB85138F639}|Auta.csproj|solutionrelative:scripts\\system\\save\\nodes\\saveloadcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 989,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,15 +58,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RacooneryPlugin.cs",
-              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\addons\\racoonery\\RacooneryPlugin.cs",
-              "RelativeDocumentMoniker": "addons\\racoonery\\RacooneryPlugin.cs",
-              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\addons\\racoonery\\RacooneryPlugin.cs",
-              "RelativeToolTip": "addons\\racoonery\\RacooneryPlugin.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "SaveFile.cs",
+              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Resources\\SaveFile.cs",
+              "RelativeDocumentMoniker": "Scripts\\System\\Save\\Resources\\SaveFile.cs",
+              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Resources\\SaveFile.cs",
+              "RelativeToolTip": "Scripts\\System\\Save\\Resources\\SaveFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T22:53:33.179Z",
+              "WhenOpened": "2025-10-08T19:03:52.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SaveUtils.cs",
+              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\SaveUtils.cs",
+              "RelativeDocumentMoniker": "Scripts\\System\\Save\\SaveUtils.cs",
+              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\SaveUtils.cs*",
+              "RelativeToolTip": "Scripts\\System\\Save\\SaveUtils.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T18:56:35.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SaveManager.cs",
+              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Nodes\\SaveManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\System\\Save\\Nodes\\SaveManager.cs",
+              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Nodes\\SaveManager.cs",
+              "RelativeToolTip": "Scripts\\System\\Save\\Nodes\\SaveManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T18:54:18.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SaveData.cs",
+              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Resources\\SaveData.cs",
+              "RelativeDocumentMoniker": "Scripts\\System\\Save\\Resources\\SaveData.cs",
+              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Resources\\SaveData.cs",
+              "RelativeToolTip": "Scripts\\System\\Save\\Resources\\SaveData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T17:59:27.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SaveLoadComponent.cs",
+              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Nodes\\SaveLoadComponent.cs",
+              "RelativeDocumentMoniker": "Scripts\\System\\Save\\Nodes\\SaveLoadComponent.cs",
+              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\Nodes\\SaveLoadComponent.cs",
+              "RelativeToolTip": "Scripts\\System\\Save\\Nodes\\SaveLoadComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T17:56:34.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ISaveable.cs",
+              "DocumentMoniker": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\ISaveable.cs",
+              "RelativeDocumentMoniker": "Scripts\\System\\Save\\ISaveable.cs",
+              "ToolTip": "C:\\Users\\Red\\Documents\\RPS\\AutaGodot\\Scripts\\System\\Save\\ISaveable.cs",
+              "RelativeToolTip": "Scripts\\System\\Save\\ISaveable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T17:53:25.067Z",
               "EditorCaption": ""
             }
           ]
@@ -58,6 +143,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Bookmark",
