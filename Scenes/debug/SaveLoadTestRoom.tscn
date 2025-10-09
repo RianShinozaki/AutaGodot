@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjcps0086hgct"]
+
+[ext_resource type="Script" uid="uid://cuuryg48nc3tw" path="res://Scripts/System/Save/Debug/SaveLoadTestRoom.cs" id="1_snfr4"]
+[ext_resource type="Script" uid="uid://mln6fhjpdjcq" path="res://Scripts/System/Save/Nodes/SaveLoadComponent.cs" id="2_bs3e4"]
+[ext_resource type="Script" uid="uid://c4yr8x2811awt" path="res://Scripts/System/Save/Nodes/SaveManager.cs" id="3_3jsdg"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_snfr4")
+
+[node name="Settings" type="Node" parent="."]
+script = ExtResource("2_bs3e4")
+Objects = PackedStringArray("AutaDead", "HP", "position")
+metadata/_custom_type_script = "uid://mln6fhjpdjcq"
+
+[node name="Global" type="Node" parent="."]
+script = ExtResource("2_bs3e4")
+DataLayer = 1
+Objects = PackedStringArray("AutaDead", "HP", "position")
+metadata/_custom_type_script = "uid://mln6fhjpdjcq"
+
+[node name="Local" type="Node" parent="."]
+script = ExtResource("2_bs3e4")
+DataLayer = 2
+Objects = PackedStringArray("AutaDead", "HP", "position")
+metadata/_custom_type_script = "uid://mln6fhjpdjcq"
+
+[node name="SaveManager" type="Node" parent="."]
+script = ExtResource("3_3jsdg")
+Levels = PackedStringArray("Debug")
+metadata/_custom_type_script = "uid://c4yr8x2811awt"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 43.0
+text = "Test"
+
+[connection signal="button_down" from="Button" to="." method="TestSaves"]

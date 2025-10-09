@@ -1,7 +1,10 @@
 using Godot;
+using Godot.Collections;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 [GlobalClass]
 public partial class SaveManager : Node
 {
@@ -58,23 +61,26 @@ public partial class SaveManager : Node
     public void SaveData(SaveDataLayer layer) {
         ISaveable[] saveables = SaveUtils.FindAllSaveables(GetTree().Root).ToArray();
 
-        string FilePath = $"user://Saves/{nameof(layer)}.{_saveSlot}.{SaveFileExtension}";
+        string FilePath = $"user://Saves/{layer.ToString()}.{_saveSlot}.{SaveFileExtension}";
 
         if (layer == SaveDataLayer.Local)
         {
             FilePath = $"user://Saves/{Levels[_levelId]}.{_saveSlot}.{SaveFileExtension}";
         }
 
+        DirAccess dir = DirAccess.Open("user://");
+
+        if (!dir.DirExists("user://Saves/")) {
+            dir.MakeDir("user://Saves/");
+        }
+
         FileAccess file = FileAccess.Open(FilePath + ".tmp", FileAccess.ModeFlags.Write);
         
 
-        SaveFile saveFile = new SaveFile()
-        {
-            SaveFileRevision = SaveFileRevision,
-            DataLayer = (short)layer,
-        };
-
         List<SaveData> objData = new List<SaveData>();
+
+        file.StoreVar(SaveFileRevision);
+        file.StoreVar((short)layer);
 
         foreach (var saveable in saveables) {
             if (saveable == null) {
@@ -85,18 +91,14 @@ public partial class SaveManager : Node
                 if (comp.DataLayer != layer) {
                     continue;
                 }
-                objData.Add(comp.Save());
+
+                SaveData sv = comp.Save();
+
+                file.StoreVar(sv.NodePath);
+                file.StoreVar(sv.Data);
             }
         }
-
-        DirAccess dir = DirAccess.Open("user://");
-
-        if (!file.StoreVar(saveFile)) {
-            GD.PrintErr("Error when writing to file!");
-            file.Close();
-            dir.Remove(FilePath + ".tmp");
-            
-        }
+        file.Flush();
         file.Close();
 
         dir.Remove(FilePath);
@@ -104,7 +106,7 @@ public partial class SaveManager : Node
     }
 
     public void LoadData(SaveDataLayer layer, int save) {
-        string FilePath = $"user://Saves/{nameof(layer)}.{_saveSlot}.{SaveFileExtension}";
+        string FilePath = $"user://Saves/{layer.ToString()}.{_saveSlot}.{SaveFileExtension}";
 
         if (layer == SaveDataLayer.Local)
         {
@@ -113,20 +115,40 @@ public partial class SaveManager : Node
 
         FileAccess file = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
 
-        var savegame = file.GetVar();
+        //var savegame = file.GetVar();
+        var filerev = file.GetVar();
+        short rv = (short)Convert.ToInt64(filerev.Obj);
 
-        if (savegame.Obj is not SaveFile || (savegame.Obj as SaveFile).SaveFileRevision > SaveFileRevision) {
-            GD.PrintErr("File is not valid save game!");
+        if (rv > SaveFileRevision)
+        {
+            GD.PrintErr("File is from a newer version!");
             return;
         }
 
-        foreach (SaveData svdata in (savegame.Obj as SaveFile).SavedData) { 
-            string nodepath = svdata.NodePath;
+        var dlayer = file.GetVar();
+        short dl = (short)Convert.ToInt64(dlayer.Obj);
 
-            Node node = GetNode(nodepath);
+        while (!file.EofReached()) {
+            if (file.GetPosition() + 4 > file.GetLength()) break;
 
-            for (int i = 0; i < svdata.Data.Count; i++) {
-                node.Set(svdata.Data.Keys.ToArray()[i], svdata.Data.Values.ToArray()[i]);
+            var nodepath = file.GetVar();
+
+            if (nodepath.Obj.ToString() == null) {
+                GD.PrintErr("Nodepath is invalid! Breaking...");
+                return;
+            }
+
+            Node node = GetNode(nodepath.Obj as string);
+
+            var dict = file.GetVar();
+
+            if (dict.Obj is not Dictionary) {
+                GD.PrintErr("Dictionary is corrupt! Breaking...");
+                return;
+            }
+
+            foreach (string key in (dict.Obj as Dictionary).Keys) {
+                node.Set(key, (dict.Obj as Dictionary)[key]);
             }
         }
     }

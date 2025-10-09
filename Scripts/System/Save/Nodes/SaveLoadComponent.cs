@@ -1,6 +1,6 @@
 using Godot;
+using Godot.Collections;
 using System;
-using System.Collections.Generic;
 [GlobalClass]
 public partial class SaveLoadComponent : Node, ISaveable
 {
@@ -15,8 +15,10 @@ public partial class SaveLoadComponent : Node, ISaveable
             GD.PrintErr("Error when creating \"SaveData\":\nObjects either not present or null!");
         }
 
-        SaveData data = new SaveData() { 
-            NodePath = GetParent().GetPath().ToString() 
+        SaveData data = new SaveData()
+        {
+            NodePath = GetParent().GetPath().ToString(),
+            Data = new Dictionary<string, Variant>()
         };
 
         Node parent = GetParent();
@@ -24,12 +26,18 @@ public partial class SaveLoadComponent : Node, ISaveable
         foreach (var obj in Objects) {
             var variable = parent.Get(obj);
 
-            if (variable.AsGodotObject() == null) {
-                GD.PrintErr("Error when creating \"SaveData\":Variable is not GodotObject! Skipping...\n");
+            if (variable.GetType() != typeof(Variant)) {
+                GD.PrintErr("Error when creating \"SaveData\":Variable is not Variant! Skipping...");
                 continue;
             }
 
-            data.Data[obj] = variable;
+            if (variable.Obj == null) {
+                GD.PrintErr("Error when creating \"SaveData\":Variable is null! Skipping...");
+                GD.Print(DataLayer);
+                continue;
+            }
+
+            data.Data.Add(obj, variable);
         }
 
         return data;
