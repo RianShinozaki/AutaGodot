@@ -34,12 +34,15 @@ func _process(delta: float) -> void:
 	
 	#Accelerate and decelerate
 	var hor = inp.input_direction.x
-	if abs(hor) > 0.1:
+	if abs(hor) > 0.2 && (sign(hor) == sign(entity.velocity.x) || entity.velocity.x == 0):
 		entity.accelerate_x(mov_param.get_acceleration(entity) * delta * sign(hor), sign(hor) * mov_param.get_max_speed(), true)
 		if abs(entity.velocity.x) < mov_param.get_initial_speed(entity):
 			entity.velocity.x = mov_param.get_initial_speed(entity) * sign(hor)
 	
-	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
+	if abs(hor) > 0.2 && sign(hor) != sign(entity.velocity.x):
+		entity.accelerate_x(mov_param.get_reverse_acceleration(entity) * delta, 0, false)
+		
+	if abs(hor) < 0.2:
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
 	
 	if abs(entity.velocity.x) < mov_param.minimum_speed_skating:

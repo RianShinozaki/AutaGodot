@@ -33,10 +33,19 @@ func _process(delta: float) -> void:
 	
 	#Accelerate and decelerate
 	var hor = inp.input_direction.x
-	if abs(hor) > 0.1:
+	if abs(hor) > 0.2 && (sign(hor) == sign(entity.velocity.x) || entity.velocity.x == 0):
 		entity.accelerate_x(mov_param.get_acceleration(entity) * delta * sign(hor), sign(hor) * mov_param.get_max_speed(), true)
 		if abs(entity.velocity.x) < mov_param.get_initial_speed(entity):
 			entity.velocity.x = mov_param.get_initial_speed(entity) * sign(hor)
+	
+	if abs(hor) > 0.2 && sign(hor) != sign(entity.velocity.x):
+		entity.accelerate_x(mov_param.get_reverse_acceleration(entity) * delta, 0, false)
+		
+
+	var _norm := entity.get_floor_normal()
+	var _slope_influence = mov_param.slope_uphill_influence if sign(entity.velocity.x) != sign(_norm.x) else mov_param.slope_downhill_influence
+	var _amount: float = _norm.x * entity.gravity * _slope_influence * delta
+	entity.accelerate_x(_amount, mov_param.absolute_limit * sign(_norm.x), true)
 	
 	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
@@ -52,7 +61,7 @@ func _process(delta: float) -> void:
 			play_animation_oneshot("Turn")
 	
 	#Update gravity
-	if(entity.velocity.y > jmp_param.rising_gravity_scale): can_short_hop = false
+	if(entity.velocity.y > jmp_param.falling_threshold): can_short_hop = false
 	var _do_short_hop = can_short_hop and not inp.action_a_pressed
 	entity.gravity = jmp_param.get_gravity(entity, jmp_param.short_hop_gravity_scale if _do_short_hop else 1.0)
 	entity.velocity.y = min(entity.velocity.y, jmp_param.max_falling_speed)

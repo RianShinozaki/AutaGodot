@@ -22,7 +22,7 @@ shader_parameter/t = 0.0
 shader_parameter/ColorGradient = SubResource("GradientTexture2D_42gby")
 
 [node name="AfterImage" type="Sprite2D"]
-z_index = -50
+z_index = -5
 texture_filter = 1
 material = SubResource("ShaderMaterial_4g2li")
 texture = ExtResource("1_25hs3")

@@ -39,6 +39,7 @@ func _start() -> void:
 	can_unorb = false
 	entity.collision_mode = CollisionEntity.COLLISION_MODE_BOUNCE
 	entity.gravity = orb_param.gravity
+	auta.emit_orb_signal()
 	anim.get("parameters/playback").start("Orb", true)
 	entity.get_node("Art").rotation = 0
 	entity.get_node("EnvironmentBox").shape = orb_param.collision_shape
@@ -96,10 +97,8 @@ func _process(delta: float) -> void:
 	if not inp.action_c_pressed and orb_time > orb_param.minimum_time:
 		if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
 			entity.switch_action_state_name("SpeedState")
-			print("speed")
 		else:
 			entity.switch_action_state_name("NormalState")
-			print("nospeed")
 			
 	if orb_time <= orb_param.initial_gravity_time:
 		entity.gravity = orb_param.initial_gravity
@@ -119,7 +118,6 @@ func _process(delta: float) -> void:
 	if entity.velocity.x != 0:
 		entity.get_node("Art").flip_h = entity.velocity.x < 0
 		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(entity.velocity.x), 1.0)
-	print(entity.is_on_floor())
 	
 	var _norm := entity.get_floor_normal()
 	var _amount := _norm.x * entity.gravity * orb_param.slope_influence * delta

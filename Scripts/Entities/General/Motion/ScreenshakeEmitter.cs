@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class ScreenshakeEmitter : StateScript
+public partial class ScreenshakeEmitter : Node2D
 {
 	[Export] public float shake;
 	[Export] public Curve distanceFalloffCurve;
@@ -15,8 +15,6 @@ public partial class ScreenshakeEmitter : StateScript
 
 	public void EmitShake()
 	{
-		if(!active) return;
-
 		time = 0;
 		shaking = true;
 	}
@@ -25,9 +23,8 @@ public partial class ScreenshakeEmitter : StateScript
 	}
 	public override void _Process(double delta)
 	{
-		if(!active) return;
 		if(!shaking) return;
-		float len = (GameCamera.Instance.GlobalPosition - entity.GlobalPosition).Length();
+		float len = (GameCamera.Instance.GlobalPosition - GlobalPosition).Length();
 		float calcShake = shake * timeFalloffCurve.Sample(time/maxTime) 
 								* distanceFalloffCurve.Sample(len/maxRange);
 		if(GameCamera.screenshake > calcShake) return;

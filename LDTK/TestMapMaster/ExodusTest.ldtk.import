@@ -1,0 +1,37 @@
+[remap]
+
+importer="ldtk.import"
+type="PackedScene"
+uid="uid://dibt18xlt74si"
+path="res://.godot/imported/ExodusTest.ldtk-c9068f3029b2cfd765b7842ed55fbef5.scn"
+
+[deps]
+
+files=["res://LDTK/TestMapMaster/tilesets/tileset_16px.res", "res://LDTK/TestMapMaster/levels/Level_0.scn", "res://LDTK/TestMapMaster/levels/Level_1.scn", "res://LDTK/TestMapMaster/levels/Level_2.scn", "res://LDTK/TestMapMaster/levels/Entrance.scn", "res://LDTK/TestMapMaster/levels/Level_4.scn", "res://LDTK/TestMapMaster/levels/Level_5.scn", "res://LDTK/TestMapMaster/levels/Level_6.scn", "res://LDTK/TestMapMaster/levels/Level_7.scn", "res://LDTK/TestMapMaster/levels/Level_8.scn", "res://LDTK/TestMapMaster/levels/Level_9.scn", "res://LDTK/TestMapMaster/levels/Level_10.scn", "res://LDTK/TestMapMaster/levels/Level_11.scn", "res://LDTK/TestMapMaster/levels/Level_12.scn", "res://LDTK/TestMapMaster/levels/Level_13.scn", "res://LDTK/TestMapMaster/levels/Level_14.scn", "res://LDTK/TestMapMaster/levels/Level_15.scn", "res://LDTK/TestMapMaster/levels/Level_16.scn", "res://LDTK/TestMapMaster/levels/Level_17.scn", "res://LDTK/TestMapMaster/levels/Level_18.scn", "res://LDTK/TestMapMaster/levels/Level_19.scn", "res://LDTK/TestMapMaster/levels/Level_20.scn", "res://LDTK/TestMapMaster/levels/Level_21.scn", "res://LDTK/TestMapMaster/levels/CaveEntrance.scn", "res://LDTK/TestMapMaster/levels/Level_23.scn", "res://LDTK/TestMapMaster/levels/Level_24.scn", "res://LDTK/TestMapMaster/levels/Level_25.scn", "res://LDTK/TestMapMaster/levels/Level_26.scn", "res://LDTK/TestMapMaster/levels/Level_27.scn", "res://LDTK/TestMapMaster/levels/Level_28.scn", "res://LDTK/TestMapMaster/levels/Level_29.scn", "res://LDTK/TestMapMaster/levels/Level_30.scn", "res://LDTK/TestMapMaster/levels/Level_31.scn", "res://LDTK/TestMapMaster/levels/Level_32.scn", "res://LDTK/TestMapMaster/levels/Level_33.scn", "res://LDTK/TestMapMaster/levels/Gauntlets_Room.scn", "res://LDTK/TestMapMaster/levels/Level_35.scn", "res://LDTK/TestMapMaster/levels/Level_36.scn", "res://LDTK/TestMapMaster/levels/Level_37.scn", "res://LDTK/TestMapMaster/levels/Level_38.scn", "res://LDTK/TestMapMaster/levels/Level_39.scn", "res://LDTK/TestMapMaster/levels/Level_40.scn", "res://LDTK/TestMapMaster/levels/Level_41.scn", "res://LDTK/TestMapMaster/levels/Level_42.scn", "res://LDTK/TestMapMaster/levels/Level_43.scn", "res://LDTK/TestMapMaster/levels/Level_44.scn", "res://LDTK/TestMapMaster/levels/Level_45.scn", "res://.godot/imported/ExodusTest.ldtk-c9068f3029b2cfd765b7842ed55fbef5.scn"]
+
+source_file="res://LDTK/TestMapMaster/ExodusTest.ldtk"
+dest_files=["res://.godot/imported/ExodusTest.ldtk-c9068f3029b2cfd765b7842ed55fbef5.scn", "res://LDTK/TestMapMaster/tilesets/tileset_16px.res", "res://LDTK/TestMapMaster/levels/Level_0.scn", "res://LDTK/TestMapMaster/levels/Level_1.scn", "res://LDTK/TestMapMaster/levels/Level_2.scn", "res://LDTK/TestMapMaster/levels/Entrance.scn", "res://LDTK/TestMapMaster/levels/Level_4.scn", "res://LDTK/TestMapMaster/levels/Level_5.scn", "res://LDTK/TestMapMaster/levels/Level_6.scn", "res://LDTK/TestMapMaster/levels/Level_7.scn", "res://LDTK/TestMapMaster/levels/Level_8.scn", "res://LDTK/TestMapMaster/levels/Level_9.scn", "res://LDTK/TestMapMaster/levels/Level_10.scn", "res://LDTK/TestMapMaster/levels/Level_11.scn", "res://LDTK/TestMapMaster/levels/Level_12.scn", "res://LDTK/TestMapMaster/levels/Level_13.scn", "res://LDTK/TestMapMaster/levels/Level_14.scn", "res://LDTK/TestMapMaster/levels/Level_15.scn", "res://LDTK/TestMapMaster/levels/Level_16.scn", "res://LDTK/TestMapMaster/levels/Level_17.scn", "res://LDTK/TestMapMaster/levels/Level_18.scn", "res://LDTK/TestMapMaster/levels/Level_19.scn", "res://LDTK/TestMapMaster/levels/Level_20.scn", "res://LDTK/TestMapMaster/levels/Level_21.scn", "res://LDTK/TestMapMaster/levels/CaveEntrance.scn", "res://LDTK/TestMapMaster/levels/Level_23.scn", "res://LDTK/TestMapMaster/levels/Level_24.scn", "res://LDTK/TestMapMaster/levels/Level_25.scn", "res://LDTK/TestMapMaster/levels/Level_26.scn", "res://LDTK/TestMapMaster/levels/Level_27.scn", "res://LDTK/TestMapMaster/levels/Level_28.scn", "res://LDTK/TestMapMaster/levels/Level_29.scn", "res://LDTK/TestMapMaster/levels/Level_30.scn", "res://LDTK/TestMapMaster/levels/Level_31.scn", "res://LDTK/TestMapMaster/levels/Level_32.scn", "res://LDTK/TestMapMaster/levels/Level_33.scn", "res://LDTK/TestMapMaster/levels/Gauntlets_Room.scn", "res://LDTK/TestMapMaster/levels/Level_35.scn", "res://LDTK/TestMapMaster/levels/Level_36.scn", "res://LDTK/TestMapMaster/levels/Level_37.scn", "res://LDTK/TestMapMaster/levels/Level_38.scn", "res://LDTK/TestMapMaster/levels/Level_39.scn", "res://LDTK/TestMapMaster/levels/Level_40.scn", "res://LDTK/TestMapMaster/levels/Level_41.scn", "res://LDTK/TestMapMaster/levels/Level_42.scn", "res://LDTK/TestMapMaster/levels/Level_43.scn", "res://LDTK/TestMapMaster/levels/Level_44.scn", "res://LDTK/TestMapMaster/levels/Level_45.scn", "res://.godot/imported/ExodusTest.ldtk-c9068f3029b2cfd765b7842ed55fbef5.scn"]
+
+[params]
+
+World=""
+group_world_layers=false
+Level=""
+pack_levels=true
+Layer=""
+layers_always_visible=false
+Tileset=""
+tileset_custom_data=false
+integer_grid_tilesets=false
+atlas_texture_type=0
+Entity=""
+resolve_entityrefs=true
+use_entity_placeholders=false
+Post Import=""
+tileset_post_import=""
+entities_post_import=""
+level_post_import=""
+world_post_import=""
+Debug=""
+force_tileset_reimport=false
+verbose_output=false

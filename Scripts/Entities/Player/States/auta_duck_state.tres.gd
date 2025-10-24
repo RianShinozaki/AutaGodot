@@ -16,7 +16,6 @@ func _ready() -> void:
 	inp = entity.get_node("GenericAttributes/InputManager")
 	anim = entity.get_node("Art/AnimationTree")
 	duck_param = entity.parameters["duck"]
-	mov_param = entity.parameters["movement"]
 	inp.action_c_just_pressed.connect(on_orb)
 	
 func _start() -> void:
@@ -29,16 +28,20 @@ func _start() -> void:
 
 func _process(delta: float) -> void:
 	if !active: return
-	entity.accelerate_x(duck_param.get_acceleration(entity) * delta, 0, false)
 	var _vert: float = inp.input_direction.y
 	if _vert <= 0.3 or not entity.is_on_floor():
 		entity.switch_action_state_name("NormalState")
 		anim.get("parameters/Grounded/playback").start("FromDuck", true)
 	
 	var _norm := entity.get_floor_normal()
-	var _amount := _norm.x * entity.gravity * duck_param.slope_influence * delta
-	entity.accelerate_x(_amount, duck_param.max_speed * sign(_norm.x), true)
+	var _slope_influence = duck_param.slope_uphill_influence if sign(entity.velocity.x) != sign(_norm.x) else duck_param.slope_downhill_influence
+	var _amount: float = _norm.x * entity.gravity * _slope_influence * delta
+	entity.accelerate_x(_amount, duck_param.absolute_limit * sign(_norm.x), true)
 	
+	entity.accelerate_x(duck_param.get_deceleration(entity) * delta, 0, false)
+	if abs(entity.velocity.x) < duck_param.get_minimum_speed(entity):
+		entity.velocity.x = 0
+			
 	if entity.is_on_floor() && abs(entity.velocity.x) < 20: 
 		entity.get_node("Art/AfterImageGenerator").call("stop_afterimages")
 		

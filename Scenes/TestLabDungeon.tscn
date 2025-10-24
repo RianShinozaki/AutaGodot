@@ -1,0 +1,374 @@
+[gd_scene load_steps=46 format=3 uid="uid://bvlhthxlo20l7"]
+
+[ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_ga3tf"]
+[ext_resource type="PackedScene" uid="uid://c4qvyi42w0qvy" path="res://Objects/Entities/Player/auta.tscn" id="3_am0ur"]
+[ext_resource type="Script" uid="uid://dqme5rsfgh03c" path="res://Scripts/Entities/General/Dialogue/BasicInteractable.cs" id="4_t2v12"]
+[ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="5_kuukr"]
+[ext_resource type="Script" uid="uid://vcgent31weyp" path="res://Scripts/Dialogue/DialogueRunner.cs" id="6_jb6p8"]
+[ext_resource type="Resource" uid="uid://bi40bt8omdpdo" path="res://Data/Dialogue/Test/TessNPC.tres" id="7_oc5iy"]
+[ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Objects/System/game_system.tscn" id="8_ajoom"]
+[ext_resource type="PackedScene" uid="uid://bxsjfno7h4ayh" path="res://LDTK/TestLabDungeon/TestLabDungeon.ldtk" id="8_tfdo7"]
+[ext_resource type="Texture2D" uid="uid://s7lx46gkxjwo" path="res://Art Assets/Environment/TestLab/Backgrounds/clouds_cloud_sky_blue_1.png" id="9_sapyj"]
+[ext_resource type="Texture2D" uid="uid://ce12ixi0vhcr3" path="res://Art Assets/Environment/TestLab/Backgrounds/the_night_sky_starry.jpg" id="9_wn8ln"]
+[ext_resource type="Texture2D" uid="uid://cuh5qdb5h4mgb" path="res://Art Assets/Environment/TestLab/Backgrounds/planet_moon_space_space.png" id="10_ie3ev"]
+[ext_resource type="Script" uid="uid://d3s1sfj0y4h1w" path="res://Scripts/Helpers/ScaleByCamera.gd" id="10_ikfgr"]
+[ext_resource type="Script" uid="uid://dpi8tc4icsrh8" path="res://Scripts/Environment/DemoDungeon/spatial_splicer.gd" id="12_4u6ql"]
+[ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="13_ikfgr"]
+[ext_resource type="Script" uid="uid://brq7j3rrreit1" path="res://Scripts/Effects/sprite_dupe.gd" id="14_6u8da"]
+[ext_resource type="Script" uid="uid://bq4gmeosskuxp" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="15_tltcn"]
+[ext_resource type="Script" uid="uid://dq4hhkm2ssb6b" path="res://Scripts/Environment/DemoDungeon/desplicer.gd" id="16_uytli"]
+
+[sub_resource type="Environment" id="Environment_sapyj"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.28
+glow_strength = 0.48
+glow_bloom = 0.43
+glow_blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gsxy"]
+atlas = ExtResource("5_kuukr")
+region = Rect2(0, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35yqp"]
+atlas = ExtResource("5_kuukr")
+region = Rect2(16, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6o0m"]
+atlas = ExtResource("5_kuukr")
+region = Rect2(32, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4nek"]
+atlas = ExtResource("5_kuukr")
+region = Rect2(48, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrvu1"]
+atlas = ExtResource("5_kuukr")
+region = Rect2(64, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcy67"]
+atlas = ExtResource("5_kuukr")
+region = Rect2(80, 0, 16, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uikoh"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5gsxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35yqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6o0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4nek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrvu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcy67")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
+size = Vector2(24, 10)
+
+[sub_resource type="Gradient" id="Gradient_sapyj"]
+offsets = PackedFloat32Array(0, 0.6666667)
+colors = PackedColorArray(0.0010704279, 0.2199974, 0.40277168, 0.431373, 0.204035, 0.0178255, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ie3ev"]
+gradient = SubResource("Gradient_sapyj")
+width = 700
+height = 500
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.512195, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wn8ln"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ie3ev"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxf0g"]
+radius = 24.186773
+
+[sub_resource type="Gradient" id="Gradient_frn6d"]
+offsets = PackedFloat32Array(0, 0.4854369, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.26578033, 0.5614267, 1, 1, 1, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cld1r"]
+gradient = SubResource("Gradient_frn6d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h0eo7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uc7io"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_g43yt"]
+offsets = PackedFloat32Array(0, 0.30744338, 0.36245954, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.37864077, 0.37864077, 0.37864077, 1, 0.2724798, 0.2724798, 0.2724798, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ashu4"]
+gradient = SubResource("Gradient_g43yt")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_6ftjg"]
+offsets = PackedFloat32Array(0, 0.17704917, 0.6721311, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.796243, 0.796243, 0.796243, 1, 0.4853593, 0.4853593, 0.4853593, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6krqr"]
+offsets = PackedFloat32Array(0, 0.47540984, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4745098, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_kwjh5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9941692, 0.011520743), -2.0047197, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqw83"]
+radius = 6.0
+height = 25.0
+
+[sub_resource type="Gradient" id="Gradient_a1s1a"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2p05u"]
+gradient = SubResource("Gradient_a1s1a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_junhl"]
+colors = PackedColorArray(0, 0.47059858, 0.75551665, 1, 1, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcst2"]
+gradient = SubResource("Gradient_junhl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="GameWorld" type="CanvasModulate"]
+texture_filter = 1
+script = ExtResource("1_ga3tf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sapyj")
+
+[node name="DebugLight" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(449, -437)
+editor_only = true
+energy = 2.64
+
+[node name="Auta" parent="." instance=ExtResource("3_am0ur")]
+position = Vector2(80, -80)
+
+[node name="Entities" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="BasicDialogueEntity" type="Area2D" parent="Entities"]
+position = Vector2(-318, -11)
+script = ExtResource("4_t2v12")
+
+[node name="Tess" type="AnimatedSprite2D" parent="Entities/BasicDialogueEntity"]
+sprite_frames = SubResource("SpriteFrames_uikoh")
+autoplay = "default"
+
+[node name="DialogueRunner" type="Control" parent="Entities/BasicDialogueEntity" node_paths=PackedStringArray("audioStreamPlayer")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("6_jb6p8")
+dialogueData = ExtResource("7_oc5iy")
+audioStreamPlayer = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Entities/BasicDialogueEntity/DialogueRunner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/BasicDialogueEntity"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_5xne8")
+
+[node name="GameSystem" parent="." instance=ExtResource("8_ajoom")]
+
+[node name="Cam" parent="GameSystem" index="1"]
+position = Vector2(0, 0)
+
+[node name="Camera2D" parent="GameSystem/Cam" index="0"]
+zoom = Vector2(3, 3)
+
+[node name="Sprite2D2" parent="GameSystem/Cam/Camera2D" index="3"]
+visible = true
+texture = SubResource("GradientTexture2D_ie3ev")
+
+[node name="TestLabDungeon" parent="." instance=ExtResource("8_tfdo7")]
+z_index = -10
+position = Vector2(-224, -128)
+rect = Rect2i(0, 0, 448, 256)
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Stars" type="Parallax2D" parent="Background"]
+self_modulate = Color(0.8089983, 0.8089983, 0.8089982, 1)
+z_index = -20
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(650, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Stars"]
+modulate = Color(0.50980395, 0.6313726, 0.6392157, 1)
+position = Vector2(9.255, 0)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_wn8ln")
+flip_h = true
+script = ExtResource("10_ikfgr")
+
+[node name="Planet2" type="Parallax2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.47843137)
+z_index = -20
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(600, 350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_ie3ev")
+script = ExtResource("10_ikfgr")
+
+[node name="Planet1" type="Parallax2D" parent="Background"]
+modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)
+z_index = -20
+scroll_scale = Vector2(0.02, 0.02)
+scroll_offset = Vector2(800, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet1"]
+material = SubResource("CanvasItemMaterial_wn8ln")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_ie3ev")
+script = ExtResource("10_ikfgr")
+
+[node name="Clouds1" type="Parallax2D" parent="Background"]
+visible = false
+self_modulate = Color(0.8089983, 0.8089983, 0.8089982, 1)
+z_index = -20
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(608, 352)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Clouds1"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(28, -86.92001)
+texture = ExtResource("9_sapyj")
+offset = Vector2(17.9, 64.21)
+flip_h = true
+script = ExtResource("10_ikfgr")
+
+[node name="Clouds2" type="Parallax2D" parent="Background"]
+visible = false
+z_index = -20
+scroll_scale = Vector2(0.15, 0.15)
+scroll_offset = Vector2(592, 416)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Clouds2"]
+modulate = Color(0.6666667, 0.6666667, 0.6666667, 0.68235296)
+material = SubResource("CanvasItemMaterial_ie3ev")
+texture = ExtResource("9_sapyj")
+script = ExtResource("10_ikfgr")
+
+[node name="SpatialSplicerZone" type="Node2D" parent="."]
+position = Vector2(448, -32)
+
+[node name="SpatialSplicer" type="Area2D" parent="SpatialSplicerZone"]
+position = Vector2(-128, 16)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("12_4u6ql")
+splice_offset_tiles = Vector2(-4, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpatialSplicerZone/SpatialSplicer"]
+shape = SubResource("CircleShape2D_fxf0g")
+
+[node name="Portal" type="Sprite2D" parent="SpatialSplicerZone/SpatialSplicer"]
+texture = SubResource("GradientTexture2D_cld1r")
+
+[node name="SpriteDupe" type="Sprite2D" parent="SpatialSplicerZone"]
+visible = false
+self_modulate = Color(1, 0.53333336, 1, 0.5764706)
+material = SubResource("CanvasItemMaterial_h0eo7")
+texture = ExtResource("13_ikfgr")
+script = ExtResource("14_6u8da")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="SpatialSplicerZone/SpriteDupe"]
+material = SubResource("CanvasItemMaterial_uc7io")
+position = Vector2(0, -6)
+amount = 64
+texture = SubResource("GradientTexture2D_ashu4")
+lifetime = 2.0
+explosiveness = 0.08
+randomness = 0.12
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+linear_accel_min = 4.55
+linear_accel_max = 4.55
+radial_accel_min = 1.0
+radial_accel_max = 2.0
+tangential_accel_min = 4.2
+tangential_accel_max = 4.2
+color_ramp = SubResource("Gradient_6ftjg")
+color_initial_ramp = SubResource("Gradient_6krqr")
+
+[node name="ScreenshakeEmitter" type="Node2D" parent="SpatialSplicerZone/SpriteDupe"]
+script = ExtResource("15_tltcn")
+shake = 10.0
+distanceFalloffCurve = SubResource("Curve_kwjh5")
+maxRange = -1.0
+maxTime = 0.1
+timeFalloffCurve = SubResource("Curve_kwjh5")
+metadata/_custom_type_script = "uid://bq4gmeosskuxp"
+
+[node name="Area2D" type="Area2D" parent="SpatialSplicerZone/SpriteDupe"]
+position = Vector2(0, -5)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpatialSplicerZone/SpriteDupe/Area2D"]
+shape = SubResource("CapsuleShape2D_dqw83")
+
+[node name="DesplicerRed" type="Area2D" parent="SpatialSplicerZone"]
+position = Vector2(-192, 16)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("16_uytli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpatialSplicerZone/DesplicerRed"]
+shape = SubResource("CircleShape2D_fxf0g")
+
+[node name="Portal" type="Sprite2D" parent="SpatialSplicerZone/DesplicerRed"]
+texture = SubResource("GradientTexture2D_2p05u")
+
+[node name="DesplicerBlue" type="Area2D" parent="SpatialSplicerZone"]
+position = Vector2(448, -256)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("16_uytli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpatialSplicerZone/DesplicerBlue"]
+shape = SubResource("CircleShape2D_fxf0g")
+
+[node name="Portal" type="Sprite2D" parent="SpatialSplicerZone/DesplicerBlue"]
+texture = SubResource("GradientTexture2D_mcst2")
+
+[editable path="GameSystem"]

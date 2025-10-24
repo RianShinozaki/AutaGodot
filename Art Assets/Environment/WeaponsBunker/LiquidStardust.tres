@@ -10,10 +10,10 @@ colors = PackedColorArray(0.113725, 0.313726, 0.447059, 1, 0.882353, 0.952941, 1
 frequency = 0.0143
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_thmwb"]
+noise = SubResource("FastNoiseLite_yav31")
+color_ramp = SubResource("Gradient_bfppl")
 seamless = true
 seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_bfppl")
-noise = SubResource("FastNoiseLite_yav31")
 
 [resource]
 shader = ExtResource("1_s2j68")

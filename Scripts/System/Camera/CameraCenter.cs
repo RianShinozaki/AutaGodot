@@ -21,12 +21,13 @@ public partial class CameraCenter : Area2D
 	public override void _Ready()
 	{
 		base._Ready();
-		GlobalPosition = target.GlobalPosition;
 		camRegions = new Godot.Collections.Array<CamRegion>();
+		if(target != null) GlobalPosition = target.GlobalPosition;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(target == null) return;
 		currentCamMode = CamMode.Free;
 		
 		Vector2 velocity = Vector2.Zero;

@@ -30,6 +30,7 @@ public partial class GameCamera : Camera2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(target == null) return;
 		if(screenshake > 0) screenshake -= screenshakefalloff * (float)delta;
 		GlobalPosition = GlobalPosition.Lerp(target.GlobalPosition 
 											+ new Vector2(rand.RandfRange(-screenshake, screenshake), 

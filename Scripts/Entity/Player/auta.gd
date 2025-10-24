@@ -7,9 +7,13 @@ var orb_timer: float = 0.0
 var recharge_orb = false
 var anim_skating := false
 
+signal orbed
+
+func _ready() -> void:
+	GameCamera.instance.targets.append(self)
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	print(velocity_true)
 	modulate = Color.WHITE
 	if not can_orb and not recharge_orb and is_on_floor() and collision_mode == COLLISION_MODE_FLOOR:
 		recharge_orb = true
@@ -20,3 +24,6 @@ func _physics_process(delta: float) -> void:
 			modulate = Color.CYAN
 		if orb_timer == 0:
 			can_orb = true
+
+func emit_orb_signal():
+	emit_signal("orbed")
