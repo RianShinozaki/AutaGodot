@@ -56,6 +56,10 @@ folder_colors={
 
 import/laigter/laigter_path="C:/Users/josep/AppData/Local/Programs/Laigter/laigter.exe"
 
+[global_group]
+
+CamRegion=""
+
 [input]
 
 A={

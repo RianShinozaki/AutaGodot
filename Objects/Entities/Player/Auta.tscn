@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://c4qvyi42w0qvy"]
+[gd_scene load_steps=119 format=3 uid="uid://c4qvyi42w0qvy"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -891,6 +891,15 @@ height = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2fwl"]
 radius = 13.0384
 
+[sub_resource type="Gradient" id="Gradient_0vkrt"]
+offsets = PackedFloat32Array(0.0991254, 0.784257)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r3wth"]
+gradient = SubResource("Gradient_0vkrt")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Auta" type="CharacterBody2D" node_paths=PackedStringArray("current_action_state")]
 texture_filter = 1
 collision_layer = 8
@@ -1008,3 +1017,9 @@ script = ExtResource("18_m2fwl")
 
 [node name="SpeedState" type="Node2D" parent="ActionStates"]
 script = ExtResource("24_r3wth")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+color = Color(5.77569e-06, 0.922705, 0.927308, 1)
+energy = 0.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_r3wth")

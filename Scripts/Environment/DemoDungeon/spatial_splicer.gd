@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var splice_offset_tiles: Vector2
+@export var zoom_out: bool
 var splice_offset_tiles_orig: Vector2
 var splice_active = false
 var target: Node2D
@@ -40,7 +41,7 @@ func on_body_entered(body: Node2D) -> void:
 		body.orbed.connect(on_orbed)
 		on_orbed()
 		GameCamera.instance.targets.append(sprite_dupe)
-		GameCamera.instance.lerp_zoom(2)
+		if zoom_out: GameCamera.instance.lerp_zoom(2)
 
 func on_sprite_body_entered(body: Node2D):
 	collider_list.append(body)
@@ -56,7 +57,7 @@ func deactivate() -> void:
 	target.orbed.disconnect(on_orbed)
 	$Portal.visible = true
 	GameCamera.instance.targets.erase(sprite_dupe)
-	GameCamera.instance.lerp_zoom(3)
+	if zoom_out: GameCamera.instance.lerp_zoom(3)
 	
 func on_orbed() -> void:
 	if collider_list.is_empty():

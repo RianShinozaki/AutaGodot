@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://db8l7ltwxxsjp"]
 
 [ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_abg3g"]
-[ext_resource type="Script" uid="uid://fr67c83tjktl" path="res://Scripts/System/Controllers/GameCamera.gd" id="3_kaof1"]
+[ext_resource type="Script" uid="uid://fr67c83tjktl" path="res://Scripts/System/Camera/GameCamera.gd" id="3_kaof1"]
 [ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="3_xw6ph"]
 [ext_resource type="Shader" uid="uid://crij0fawgr8t6" path="res://Shaders/Desaturate.tres" id="4_x75ph"]
 
