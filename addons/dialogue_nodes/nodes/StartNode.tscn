@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bphy83mvqee70"]
+[gd_scene load_steps=3 format=3 uid="uid://c3p0644abxxbm"]
 
 [ext_resource type="Texture2D" uid="uid://bucad3kf5mxvp" path="res://addons/dialogue_nodes/icons/Play.svg" id="1"]
-[ext_resource type="Script" uid="uid://k68hlrq02avu" path="res://addons/dialogue_nodes/nodes/startNode.gd" id="2"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/nodes/startNode.gd" id="2"]
 
 [node name="StartNode" type="GraphNode"]
+custom_minimum_size = Vector2(0, 86)
 offset_right = 180.0
 offset_bottom = 60.0
+resizable = true
 title = "Start"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -37,5 +39,16 @@ size_flags_horizontal = 3
 tooltip_text = "Required field.
 The ID is used to identify each tree in a dialogue tree."
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ResizeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="resize_request" from="." to="." method="_on_resize"]
 [connection signal="pressed" from="HBoxContainer/RunButton" to="." method="_on_run_pressed"]
 [connection signal="text_changed" from="HBoxContainer/ID" to="." method="_on_ID_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ResizeTimer" to="." method="_on_resize_timer_timeout"]

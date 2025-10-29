@@ -1,17 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb7vw7fvmejei"]
+[gd_scene load_steps=14 format=3 uid="uid://bb7vw7fvmejei"]
 
 [ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_dssc1"]
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="1_v3dwl"]
 [ext_resource type="Script" uid="uid://crtfw650p8ob8" path="res://Scripts/System/Controllers/C-sharp/MusicController.cs" id="4_0qlmu"]
-[ext_resource type="PackedScene" uid="uid://bpck7bfkynclm" path="res://Objects/UI/DialogueBoxAuta.tscn" id="5_ximvb"]
 [ext_resource type="PackedScene" uid="uid://bvlhthxlo20l7" path="res://Scenes/TestLabDungeon.tscn" id="6_i6g32"]
+[ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="6_ldgsr"]
 [ext_resource type="Script" uid="uid://2mmeece63pi7" path="res://Scripts/System/Controllers/C-sharp/SFXController.cs" id="6_o47f1"]
+[ext_resource type="Script" uid="uid://fac37v01ub0b" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_o5yvi"]
+[ext_resource type="Script" uid="uid://bsjyyawxxf0bl" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_rku1e"]
+[ext_resource type="Script" uid="uid://c82luh8yqcndl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_rfjv2"]
+[ext_resource type="Script" uid="uid://cvpltn1nqccc5" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_1phco"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_nb51f"]
+script = ExtResource("8_rku1e")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_nnt18"]
+script = ExtResource("9_rfjv2")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ewbju"]
+script = ExtResource("10_1phco")
 
 [node name="Game" type="Node"]
 script = ExtResource("1_dssc1")
 
 [node name="PlayerUI" parent="." instance=ExtResource("1_v3dwl")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="DialogueBox" type="Panel" parent="PlayerUI"]
+unique_name_in_owner = true
 visible = false
+texture_filter = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = -102.5
+offset_right = -758.9999
+offset_bottom = -2.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_ldgsr")
+script = ExtResource("7_o5yvi")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_nb51f"), SubResource("RichTextEffect_nnt18"), SubResource("RichTextEffect_ewbju")])
+metadata/_custom_type_script = "uid://fac37v01ub0b"
 
 [node name="SFXController" type="Node" parent="."]
 script = ExtResource("6_o47f1")
@@ -22,12 +55,4 @@ script = ExtResource("4_0qlmu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicController"]
 
-[node name="DialogueBox" parent="." instance=ExtResource("5_ximvb")]
-layer = 6
-
-[node name="DialogueUI" parent="DialogueBox/DialogueBox" index="1"]
-self_modulate = Color(0, 0, 0, 1)
-
 [node name="GameWorld" parent="." instance=ExtResource("6_i6g32")]
-
-[editable path="DialogueBox"]

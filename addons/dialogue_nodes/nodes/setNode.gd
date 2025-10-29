@@ -2,142 +2,99 @@
 extends GraphNode
 
 
-enum {STRING, INT, FLOAT, BOOL}
-
 signal modified
 
-@onready var variable = $HBoxContainer/Variable
-@onready var operator = $HBoxContainer/Operator
-@onready var type = $HBoxContainer/Type
+@onready var variable = $BoxContainer/Variable
+@onready var variable_timer = $VariableTimer
+@onready var type = $BoxContainer/Type
+@onready var value = $BoxContainer/Value
+@onready var value_timer = $ValueTimer
 
-@onready var string_value : LineEdit = $HBoxContainer/StringValue
-@onready var int_value : SpinBox = $HBoxContainer/IntValue
-@onready var float_value : SpinBox = $HBoxContainer/FloatValue
-@onready var bool_value : CheckBox = $HBoxContainer/BoolValue
+var undo_redo : EditorUndoRedoManager
+var last_variable : String
+var last_type : int
+var last_value : String
 
-var types = [TYPE_STRING, TYPE_INT, TYPE_FLOAT, TYPE_BOOL]
-var last_shown : Control
 
-func _ready():
-	last_shown = string_value
-	operator_add_string()
-
-func _to_dict(graph):
-	var dict = {}
+func _to_dict(graph : GraphEdit):
+	var dict := {}
+	var connections : Array = graph.get_connections(name)
+	
 	dict['variable'] = variable.text
-	dict['type'] = operator.selected
-	
-	if (variable.text) == '':
-		printerr(title + ' has an empty variable!')
-		
-	match(types[type.selected]):
-		TYPE_STRING:
-			dict['value'] = string_value.text
-		TYPE_INT:
-			dict['value'] = int(int_value.value)
-		TYPE_FLOAT:
-			dict['value'] = float_value.value
-		TYPE_BOOL:
-			dict['value'] = bool_value.button_pressed
-		_:	
-			dict['value'] = string_value.text
-			print('ConditionNode: Invalid type set to dict')
-
-	var next_nodes = graph.get_next(name)
-	
-	if len(next_nodes) > 0:
-		dict['link'] = next_nodes[0]
-	else:
-		dict['link'] = 'END'
+	dict['type'] = type.selected
+	dict['value'] = value.text
+	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
 	
 	return dict
 
 
-func _from_dict(_graph, dict):
-	var retrieved_value = dict['value']
+func _from_dict(dict : Dictionary):
 	variable.text = dict['variable']
+	type.selected = dict['type']
+	value.text = dict['value']
 	
-	match(typeof(retrieved_value)):
-		TYPE_STRING:
-			operator_add_string()
-			string_value.text = retrieved_value
-			type.selected = 0
-		TYPE_INT:
-			operator_add_number()
-			int_value.value = retrieved_value
-			type.selected = 1
-		TYPE_FLOAT:
-			operator_add_number()
-			float_value.value = retrieved_value
-			type.selected = 2
-		TYPE_BOOL:
-			operator_add_boolean()
-			bool_value.button_pressed = retrieved_value
-			type.selected = 3
-		_:	
-			print('ConditionNode: Cannot retrieve value of type ' + str(typeof(retrieved_value)))
-	
-	operator.selected = dict['type']
+	last_variable = variable.text
+	last_type = type.selected
+	last_value = value.text
 	
 	return [dict['link']]
 
-func operator_add_boolean():
-	operator.clear()
-	operator.add_item('=', 0)
 
-func operator_add_string():
-	operator.clear()
-	operator.add_item('=', 0)
-	operator.add_item('+=', 1)
+func set_variable(new_variable : String):
+	if variable.text != new_variable:
+		variable.text = new_variable
+	last_variable = new_variable
+
+
+func set_value(new_value : String):
+	if value.text != new_value:
+		value.text = new_value
+	last_value = new_value
+
+
+func _on_variable_changed(_new_text):
+	variable_timer.stop()
+	variable_timer.start()
+
+
+func _on_variable_timer_timeout():
+	if not undo_redo: return
 	
-func operator_add_number():
-	operator.clear()
-	operator.add_item('=', 0)
-	operator.add_item('+=', 1)
-	operator.add_item('-=', 2)
-	operator.add_item('*=', 3)
-	operator.add_item('/=', 4)
-
-func clear_values():
-	string_value.text = ""
-	int_value.value = 0
-	float_value.value = 0
-	bool_value.button_pressed = false
-
-func _on_type_changed(new_idx : int):
-	if last_shown:
-		last_shown.hide()
-
-	match types[new_idx]:
-		TYPE_STRING:
-			string_value.show()
-			operator_add_string()
-			last_shown = string_value
-		TYPE_INT:
-			int_value.show()
-			operator_add_number()
-			last_shown = int_value
-		TYPE_FLOAT:
-			float_value.show()
-			operator_add_number()
-			last_shown = float_value
-		TYPE_BOOL:
-			bool_value.show()
-			operator_add_boolean()
-			last_shown = bool_value
-			
-	_on_modified()
-
-func set_variable(_new_var):
-	_on_modified()
+	undo_redo.create_action('Set variable name')
+	undo_redo.add_do_method(self, 'set_variable', variable.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, 'set_variable', last_variable)
+	undo_redo.commit_action()
 
 
-func set_operator(_new_type):
-	_on_modified()
+func _on_type_selected(idx : int):
+	if not undo_redo: return
+	
+	undo_redo.create_action('Set operator type')
+	undo_redo.add_do_method(type, 'select', idx)
+	undo_redo.add_do_property(self, 'last_type', idx)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(type, 'select', last_type)
+	undo_redo.add_undo_property(self, 'last_type', last_type)
+	undo_redo.commit_action()
 
 
-func set_value(_new_val):
-	_on_modified()
+func _on_value_changed(_new_text):
+	value_timer.stop()
+	value_timer.start()
+
+
+func _on_value_timer_timeout():
+	if not undo_redo: return
+	
+	undo_redo.create_action('Set value')
+	undo_redo.add_do_method(self, 'set_value', value.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, 'set_value', last_value)
+	undo_redo.commit_action()
 
 
 func _on_modified():

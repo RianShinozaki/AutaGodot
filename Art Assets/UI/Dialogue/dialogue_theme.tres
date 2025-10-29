@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cy2f4tvi1em78"]
+
+[ext_resource type="FontFile" uid="uid://bwn2jpwxj6ugi" path="res://Art Assets/Fonts/Not Jam Mono Clean 16.ttf" id="1_26oxp"]
+
+[sub_resource type="Gradient" id="Gradient_456xg"]
+offsets = PackedFloat32Array(0, 0.675862, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0609076, 3.93589e-05, 0.22359, 0.775862, 0.575686, 0.022546, 0.483255, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_levgk"]
+gradient = SubResource("Gradient_456xg")
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jl84a"]
+texture = SubResource("GradientTexture2D_levgk")
+expand_margin_left = 300.0
+expand_margin_top = 25.0
+expand_margin_right = 300.0
+expand_margin_bottom = 85.0
+
+[resource]
+Label/fonts/font = ExtResource("1_26oxp")
+Panel/styles/panel = SubResource("StyleBoxTexture_jl84a")
+RichTextLabel/fonts/normal_font = ExtResource("1_26oxp")

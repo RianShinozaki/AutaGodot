@@ -1121,9 +1121,7 @@ damage = 2.0
 hitstun = 0.25
 xKnockback = 10.0
 yKnockback = 45.0
-damageType = 0
 flip = true
-weight = 0
 HitFX = "Slice"
 impactSound = ExtResource("28_yqpct")
 
@@ -1428,9 +1426,7 @@ damage = 3.0
 hitstun = 0.3
 xKnockback = 90.0
 yKnockback = 45.0
-damageType = 0
 flip = true
-weight = 0
 HitFX = "Slice"
 impactSound = ExtResource("28_yqpct")
 
@@ -1446,9 +1442,7 @@ damage = 2.0
 hitstun = 0.35
 xKnockback = 30.0
 yKnockback = 200.0
-damageType = 0
 flip = true
-weight = 0
 HitFX = "Slice"
 impactSound = ExtResource("28_yqpct")
 

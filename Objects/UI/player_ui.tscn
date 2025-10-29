@@ -14,11 +14,10 @@ layer = 100
 [node name="AutaUI" type="TextureRect" parent="."]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_db4av")
-offset_left = 22.0
-offset_top = -12.0
-offset_right = 144.0
-offset_bottom = 52.0
-scale = Vector2(2, 2)
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 126.0
+offset_bottom = 66.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("1_f1pw7")

@@ -1,280 +1,126 @@
 @tool
 extends Control
 
-@onready var fileMenu = $Main/ToolBar/FileMenu
-@onready var addMenu = $Main/ToolBar/AddMenu
-@onready var popupMenu = $Main/Workspace/Graph/PopupMenu
-@onready var runMenu = $Main/ToolBar/RunMenu
-@onready var debugMenu = $Main/ToolBar/DebugMenu
+
+@onready var file_menu = $Main/ToolBar/FileMenu
+@onready var debug_menu = $Main/ToolBar/DebugMenu
+@onready var add_menu = $Main/ToolBar/AddMenu
+@onready var run_menu = $Main/ToolBar/RunMenu
 @onready var workspace = $Main/Workspace
-@onready var graph = $Main/Workspace/Graph
 @onready var side_panel = $Main/Workspace/SidePanel
-@onready var files : Files = $Main/Workspace/SidePanel/Files
-@onready var data = $Main/Workspace/SidePanel/Data
+@onready var files = $Main/Workspace/SidePanel/Files
 @onready var characters = $Main/Workspace/SidePanel/Data/Characters
-@onready var variables = $Main/Workspace/SidePanel/Data/Variables
+@onready var panel_toggle = $Main/Statusbar/PanelToggle
 @onready var version_number = $Main/Statusbar/VersionNumber
-@onready var dialogue = $DialogueWindow
-@onready var dialogueBG = $DialogBackground
-@onready var newDialogue = $NewDialog
-@onready var saveDialogue = $SaveDialog
-@onready var openDialogue = $OpenDialog
+@onready var dialogue_background = $DialogueBackground
+@onready var dialogue_box = $DialogueBox
 
-
-var start_nodes = []
-var comment_nodes = []
-var _debug = false
-var _base_color : Color
+var undo_redo : EditorUndoRedoManager
+var graph : GraphEdit
+var variables : VBoxContainer
+var _debug := false
+var _add_menu_initialized := false
 
 
 func _ready():
-	init_menus()
-	data.hide()
-	dialogue.initialize()
+	file_menu.get_popup().id_pressed.connect(files._on_toolbar_menu_pressed)
+	run_menu.get_popup().id_pressed.connect(run_tree)
+	debug_menu.get_popup().id_pressed.connect(_on_debug_menu_pressed)
 	
-	addMenu.get_popup().id_pressed.connect(workspace.add_node)
-	runMenu.get_popup().id_pressed.connect(_on_run_menu_pressed)
-	fileMenu.get_popup().id_pressed.connect(_on_file_menu_pressed)
-	debugMenu.get_popup().id_pressed.connect(_on_debug_menu_pressed)
-	
-	dialogue.dialogue_started.connect(_on_dialogue_started)
-	dialogue.dialogue_ended.connect(_on_dialogue_ended)
-	dialogue.dialogue_signal.connect(_on_dialogue_signal)
-	dialogue.variable_changed.connect(_on_dialogue_variable_changed)
-	dialogue.option_selected.connect(_on_dialogue_option_selected)
+	dialogue_box.dialogue_started.connect(_on_dialogue_started)
+	dialogue_box.option_selected.connect(_on_dialogue_option_selected)
+	dialogue_box.dialogue_signal.connect(_on_dialogue_signal)
+	dialogue_box.variable_changed.connect(_on_dialogue_variable_changed)
+	dialogue_box.dialogue_ended.connect(_on_dialogue_ended)
 	
 	var config = ConfigFile.new()
 	config.load('res://addons/dialogue_nodes/plugin.cfg')
 	version_number.text = config.get_value('plugin', 'version')
 
 
-func init_menus():
-	# clear if already existing items
-	addMenu.get_popup().clear()
-	popupMenu.clear()
+func run_tree(start_node_idx : int):
+	if not is_instance_valid(graph): return
 	
-	# add items to both menus based on the nodes list
-	for i in range(len(workspace.nodes)):
-		addMenu.get_popup().add_item(workspace.nodes[i].name, i)
-		popupMenu.add_item(workspace.nodes[i].name, i)
-	
-	# hide if no files are open
-	if files.get_child_count() == 0:
-		addMenu.hide()
-		runMenu.hide()
-
-
-func _run_tree(start_node):
-	var data : DialogueDataGD = DialogueDataGD.new()
-	
-	data.Starts = {}
-	data.Nodes = {}
-	data.Variables = {}
-	data.Comments = []
-	data.Strays = []
-	
+	var start_node := graph.get_node(NodePath(graph.starts[start_node_idx]))
+	var data := DialogueData.new()
 	data = start_node.tree_to_data(graph, data)
-	data.Variables = variables.to_dict()
-	data.Characters = characters.filePath.text
+	data.characters = characters.get_data()
+	data.variables = variables.get_data()
 	
-	dialogueBG.show()
-	dialogue.start(data, start_node.ID)
+	dialogue_box.data = data
+	dialogue_box.start(start_node.start_id)
+	dialogue_background.show()
 
-func _update_run_menu():
-	runMenu.get_popup().clear()
+
+func _on_debug_menu_pressed(idx : int):
+	match (idx):
+		0:
+			var popup : PopupMenu = debug_menu.get_popup()
+			_debug = !_debug
+			popup.set_item_checked(idx, _debug)
+
+
+func _on_run_menu_about_to_popup():
+	if not is_instance_valid(graph): return
 	
-	if len(start_nodes) == 0:
-		runMenu.get_popup().add_item('Add a Start Node first!')
-		runMenu.get_popup().set_item_disabled(0, true)
+	run_menu.get_popup().clear()
+	
+	if graph.starts.size() == 0:
+		run_menu.get_popup().add_item('Add a Start Node first!')
+		run_menu.get_popup().set_item_disabled(0, true)
 		return
 	
-	for start_node_name in start_nodes:
-		var ID = graph.get_node( NodePath(start_node_name) ).ID
-		runMenu.get_popup().add_item(ID)
+	graph.starts.sort_custom(func (node_name1, node_name2):
+		var id1 : String = graph.get_node(NodePath(node_name1)).start_id
+		var id2 : String = graph.get_node(NodePath(node_name2)).start_id
+		return id1 < id2
+		)
+	
+	for start_node_name in graph.starts:
+		var start_id : String = graph.get_node(NodePath(start_node_name)).start_id
+		if start_id != '':
+			run_menu.get_popup().add_item(start_id)
 
 
-func get_data() -> Resource:
-	var csharp_dialogue_data = load("res://addons/dialogue_nodes/objects/DialogueData.cs")
-	var data = csharp_dialogue_data.new()
+func _on_files_changed():
+	add_menu.visible = files.item_count > 0
+	run_menu.visible = add_menu.visible
 	
-	# add trees to data
-	data.Starts = {}
-	data.Nodes = {}
-	for start_node_name in start_nodes:
-		var start_node = graph.get_node( NodePath(start_node_name) )
-		data = start_node.tree_to_data(graph, data)
+	if is_instance_valid(graph):
+		graph.run_requested.disconnect(run_tree)
 	
-	# add comments to data
-	data.Comments.clear()
-
-	for i in range(len(comment_nodes)):
-		var node = graph.get_node( NodePath(comment_nodes[i]) )
-		data.Comments.append(node.name)
-		data.Nodes[node.name] = node._to_dict(graph)
-		data.Nodes[node.name]['offset'] = node.position_offset
+	if files.item_count == 0: return
 	
-	# add variables to data
-	data.Variables = variables.to_dict()
+	var new_metadata : Dictionary = files.get_current_metadata()
 	
-	# add stray nodes
-	data.Strays.clear()
-	for node in graph.get_children():
-		if node is GraphNode and not data.Nodes.has(node.name):
-			data.Strays.append(node.name)
-			data.Nodes[node.name] = node._to_dict(graph)
-			data.Nodes[node.name]['offset'] = node.position_offset
+	if new_metadata.is_empty():
+		graph = null
+		variables = null
+		return
 	
-	data.Characters = characters.filePath.text
-	return data
+	graph = new_metadata['graph']
+	graph.run_requested.connect(run_tree)
+	variables = new_metadata['variables']
+	
+	if not _add_menu_initialized and is_instance_valid(graph):
+		graph.init_add_menu(add_menu.get_popup())
+		_add_menu_initialized = true
 
 
-func open_data(data : Resource):
-	# clear graph
-	workspace.remove_all_nodes()
-	#await get_tree().idle_frame
-	# add all start nodes with their trees
-	workspace.loading_file = true
-	for id in data.Starts:
-		var start_node_name = data.Starts[id]
-		var type = int(start_node_name.split('_')[0])
-		var offset = data.Nodes[start_node_name]['offset']
-		var start_node = workspace.add_node(type, null, start_node_name, offset)
-		start_node.data_to_tree(workspace, data)
-	
-	for node_name in data.Comments:
-		var type = int(node_name.split('_')[0])
-		var offset = data.Nodes[node_name]['offset']
-		var comment_node = workspace.add_node(type, null, node_name, offset)
-		comment_node._from_dict(graph, data.Nodes[node_name])
+func _on_files_toggle_button_pressed():
+	side_panel.visible = panel_toggle.button_pressed
+
+
+func _on_version_number_pressed():
+	DisplayServer.clipboard_set('v'+version_number.text)
+
+
+func _on_dialogue_background_input(event : InputEvent):
+	if event is InputEventMouseButton:
+		dialogue_box.stop()
 		
-	variables.from_dict(data.Variables)
-	
-	for node_name in data.Strays:
-		var type = int(node_name.split('_')[0])
-		var offset = data.Nodes[node_name]['offset']
-		var new_node = workspace.add_node(type, null, node_name, offset)
-		new_node._from_dict(graph, data.Nodes[node_name])
-	
-	characters.load_file(data.Characters)
-	
-	workspace.request_node = null
-	workspace.request_slot = null
-	workspace.loading_file = false
-
-
-func new_file(path):
-	files.new_file(path)
-	graph.show()
-	data.show()
-
-
-func open_file(path):
-	files.open_file(path)
-
-
-func save_file(path, data : Resource = get_data()):
-	files.save_as_file(path, data)
-
-
-func toggle_side_panel():
-	side_panel.visible = not side_panel.visible
-
-
-func _on_node_added(node_name):
-	var type = node_name.split('_')[0]
-	var node : GraphNode = graph.get_node( NodePath(node_name) )
-	
-	if node.is_slot_enabled_left(0):
-		node.set_slot_color_left(0, _base_color)
-	
-	match( type ):
-		'0':
-			start_nodes.append(node_name)
-			node.set_slot_color_right(0, _base_color)
-			node.run_tree.connect(_run_tree.bind(node))
-		'1':
-			node._set_syntax_color(_base_color)
-			characters.file_selected.connect(node._on_characters_loaded)
-			node._on_characters_loaded(characters.characterList)
-		'2':
-			comment_nodes.append(node_name)
-		'3', '4':
-			node.set_slot_color_right(0, _base_color)
-
-
-func _on_node_deleted(node_name):
-	var type = node_name.split('_')[0]
-	
-	match( type ):
-		'0':
-			start_nodes.erase(node_name)
-		'2':
-			comment_nodes.erase(node_name)
-
-
-func _on_file_menu_pressed(id):
-	match( id ):
-		0:
-			newDialogue.popup_centered()
-		1:
-			openDialogue.popup_centered()
-		2:
-			files.save_file()
-		3:
-			if files.get_item_count() > 0:
-				saveDialogue.popup_centered()
-		4:
-			files.close_file()
-			variables.remove_all_variables()
-		5:
-			files.close_all()
-			variables.remove_all_variables()
-
-
-func _on_file_popup_pressed(id):
-	match (id):
-		0:
-			# Save
-			files.save_file()
-		1:
-			# Save as
-			if files.get_item_count() > 0:
-				saveDialogue.popup_centered()
-		2:
-			# Close
-			files.close_file()
-		3:
-			# Close all
-			files.close_all()
-
-
-func _on_file_opened(dialogueData : Resource):
-	open_data(dialogueData)
-	graph.show()
-	data.show()
-
-
-func _on_file_closed():
-	variables.remove_all_variables()
-
-
-func _on_run_menu_pressed(id):
-	var start_node = graph.get_node( NodePath(start_nodes[int(id)]) )
-	
-	_run_tree(start_node)
-
-
-func _on_debug_menu_pressed(id):
-	match (id):
-		0:
-			var popup = debugMenu.get_popup()
-			_debug = !_debug
-			popup.set_item_checked(id, _debug)
-
-
-func _on_graph_visibility_changed():
-	addMenu.visible = graph.visible
-	runMenu.visible = graph.visible
+		if _debug:
+			print('Dialogue canceled')
 
 
 func _on_dialogue_started(id : String):
@@ -282,34 +128,27 @@ func _on_dialogue_started(id : String):
 		print_debug('Dialogue started: ', id)
 
 
-func _on_dialogue_variable_changed(var_name, value):
+func _on_dialogue_option_selected(idx : int):
+	if _debug:
+		print('Option selected. idx: ', idx, ', text: "', dialogue_box.options_container.get_child(idx).text, '"')
+
+
+func _on_dialogue_variable_changed(var_name : String, value):
 	variables.set_value(var_name, value)
-	files.modify_file()
+	files.set_modified(files.cur_idx, true)
 	
 	if _debug:
 		print('Variable changed:', var_name, ', value:', value)
 
 
-func _on_dialogue_signal(value):
+func _on_dialogue_signal(value : String):
 	if _debug:
 		print('Dialogue emitted signal with value:', value)
 
 
 func _on_dialogue_ended():
-	dialogueBG.hide()
+	dialogue_background.hide()
+
 	if _debug:
-		print('Dialogue finished')
+		print('Dialogue ended')
 
-
-func _on_dialogue_option_selected(idx):
-	if _debug:
-		print('Option selected. idx: ' + str(idx))
-
-
-func _on_dialog_background_input(event):
-	if event is InputEventMouseButton:
-		dialogue.stop()
-
-
-func _on_version_number_pressed():
-	DisplayServer.clipboard_set('v'+version_number.text)
