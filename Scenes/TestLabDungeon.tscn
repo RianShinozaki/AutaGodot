@@ -1,10 +1,9 @@
-[gd_scene load_steps=65 format=4 uid="uid://bvlhthxlo20l7"]
+[gd_scene load_steps=67 format=4 uid="uid://bvlhthxlo20l7"]
 
 [ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_ga3tf"]
 [ext_resource type="Texture2D" uid="uid://n34hv5l4n6ok" path="res://Art Assets/Environment/TestLab/Backgrounds/TowerWall.png" id="2_uytli"]
 [ext_resource type="PackedScene" uid="uid://c4qvyi42w0qvy" path="res://Objects/Entities/Player/auta.tscn" id="3_am0ur"]
 [ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Scripts/Entity/Combat/hitbox.gd" id="3_ashu4"]
-[ext_resource type="Script" uid="uid://xjxfu3xw4ceq" path="res://Scripts/Entities/General/basic_dialogue_entity.gd" id="3_cld1r"]
 [ext_resource type="Texture2D" uid="uid://bgao42q5hob07" path="res://Art Assets/Debug/DebugSpikes.png" id="4_6ftjg"]
 [ext_resource type="Script" uid="uid://cdscelsbemhqb" path="res://Scripts/Dialogue/dialogue_runner.gd" id="4_fxf0g"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="5_kuukr"]
@@ -18,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://cww50hbl1nplv" path="res://Art Assets/Environment/TestLab/Backgrounds/clouds_cloud_sky_blue_1 (2).png" id="12_h0eo7"]
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="13_ikfgr"]
 [ext_resource type="Script" uid="uid://brq7j3rrreit1" path="res://Scripts/Effects/sprite_dupe.gd" id="14_6u8da"]
-[ext_resource type="Script" uid="uid://bq4gmeosskuxp" path="res://Scripts/Entities/General/Motion/ScreenshakeEmitter.cs" id="15_tltcn"]
 [ext_resource type="Script" uid="uid://dq4hhkm2ssb6b" path="res://Scripts/Environment/DemoDungeon/desplicer.gd" id="16_uytli"]
 [ext_resource type="Script" uid="uid://bbptsu4dxchx4" path="res://Scripts/System/Camera/cam_region.gd" id="18_6u8da"]
 [ext_resource type="Script" uid="uid://bqoncsiwhcrgb" path="res://Scripts/System/Camera/parallax_controller.gd" id="19_cld1r"]
@@ -35,8 +33,50 @@ glow_strength = 0.48
 glow_bloom = 0.43
 glow_blend_mode = 1
 
+[sub_resource type="CSharpScript" id="CSharpScript_h0eo7"]
+script/source = "using Godot;
+using System;
+
+public enum DamageType {
+	Slice,
+	Bash,
+	HeavyBash,
+	Pierce,
+}
+
+[GlobalClass]
+public partial class HitboxData : Resource
+{
+	[Export] public float damage;
+	[Export] public float hitstun; //In seconds
+	[Export] public float xKnockback;
+	[Export] public float yKnockback;
+	[Export] public DamageType damageType;
+	[Export] public bool flip;
+	[Export] public int weight;
+	[Export] public string HitFX;
+	[Export] public AudioStream impactSound;
+
+}
+"
+
+[sub_resource type="Resource" id="Resource_uc7io"]
+script = SubResource("CSharpScript_h0eo7")
+metadata/_custom_type_script = "uid://cwv6dukb6l4fe"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ashu4"]
 size = Vector2(16, 16)
+
+[sub_resource type="GDScript" id="GDScript_ashu4"]
+script/source = "extends Area2D
+@export var start_id: String
+
+func _ready() -> void:
+	body_entered.connect(on_body_entered)
+	
+func on_body_entered(_body: Node2D) -> void:
+	$DialogueRunner.start_dialogue(start_id)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gsxy"]
 atlas = ExtResource("5_kuukr")
@@ -179,6 +219,44 @@ colors = PackedColorArray(0, 0, 0, 1, 0.796243, 0.796243, 0.796243, 1, 0.4853593
 offsets = PackedFloat32Array(0, 0.47540984, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.4745098, 1, 1, 0, 1, 1, 1)
 
+[sub_resource type="CSharpScript" id="CSharpScript_6ftjg"]
+script/source = "using Godot;
+using System;
+
+[GlobalClass]
+public partial class ScreenshakeEmitter : Node2D
+{
+	[Export] public float shake;
+	[Export] public Curve distanceFalloffCurve;
+	[Export] float maxRange;
+	[Export] float maxTime;
+	[Export] public Curve timeFalloffCurve;
+
+	float time;
+	bool shaking;
+
+	public void EmitShake()
+	{
+		time = 0;
+		shaking = true;
+	}
+	public void StopShake() {
+		shaking = false;
+	}
+	public override void _Process(double delta)
+	{
+		if(!shaking) return;
+		float len = (GameCamera.Instance.GlobalPosition - GlobalPosition).Length();
+		float calcShake = shake * timeFalloffCurve.Sample(time/maxTime) 
+								* distanceFalloffCurve.Sample(len/maxRange);
+		if(GameCamera.screenshake > calcShake) return;
+		GameCamera.screenshake = calcShake;
+		time = Mathf.MoveToward(time, maxTime, (float)delta);
+		if(time == maxTime) StopShake();
+	}
+}
+"
+
 [sub_resource type="Curve" id="Curve_kwjh5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9941692, 0.011520743), -2.0047197, 0.0, 0, 0]
 point_count = 2
@@ -255,6 +333,7 @@ position = Vector2(176, -48)
 [node name="DebugSpikes" type="Area2D" parent="."]
 position = Vector2(256, -64)
 script = ExtResource("3_ashu4")
+hitbox_data = SubResource("Resource_uc7io")
 
 [node name="DebugSpikes" type="Sprite2D" parent="DebugSpikes"]
 texture = ExtResource("4_6ftjg")
@@ -272,7 +351,7 @@ z_index = -1
 position = Vector2(-448, -42)
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("3_cld1r")
+script = SubResource("GDScript_ashu4")
 start_id = "Start"
 
 [node name="Tess" type="AnimatedSprite2D" parent="Entities/BasicDialogueEntity"]
@@ -641,7 +720,7 @@ color_ramp = SubResource("Gradient_6ftjg")
 color_initial_ramp = SubResource("Gradient_6krqr")
 
 [node name="ScreenshakeEmitter" type="Node2D" parent="CamRegions/CamRegion3/SpatialSplicerZone/SpriteDupe"]
-script = ExtResource("15_tltcn")
+script = SubResource("CSharpScript_6ftjg")
 shake = 10.0
 distanceFalloffCurve = SubResource("Curve_kwjh5")
 maxRange = -1.0
