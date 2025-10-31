@@ -857,7 +857,7 @@ break_loop_at_end = true
 priority = 2
 switch_mode = 2
 advance_mode = 2
-advance_expression = "parameters[\"movement\"].max_speed + 20 < abs(velocity.x)
+advance_expression = "100 < abs(velocity.x)
 "
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0j550"]
@@ -865,7 +865,7 @@ break_loop_at_end = true
 priority = 2
 switch_mode = 2
 advance_mode = 2
-advance_expression = "parameters[\"movement\"].max_speed >= abs(velocity.x)
+advance_expression = "100 >= abs(velocity.x)
 "
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ml1rd"]
@@ -1008,8 +1008,8 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="Resource" id="Resource_8pc40"]
 script = ExtResource("19_q1afw")
 damage = 3
-x_knockback = 400.0
-y_knockback = -100.0
+x_knockback = 120.0
+y_knockback = -30.0
 x_knockback_is_relative = true
 hitstun_duration = 0.15
 impact_fx = "SlashFX"
@@ -1022,8 +1022,8 @@ height = 43.999992
 [sub_resource type="Resource" id="Resource_jj7hu"]
 script = ExtResource("19_q1afw")
 damage = 3
-x_knockback = 50.0
-y_knockback = -400.0
+x_knockback = 20.0
+y_knockback = -250.0
 x_knockback_is_relative = true
 hitstun_duration = 0.15
 impact_fx = "SlashFX"
@@ -1118,7 +1118,7 @@ texture = SubResource("GradientTexture2D_r3wth")
 
 [node name="WeakSlashAttack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
 visible = false
-position = Vector2(-14, 0)
+position = Vector2(-24, 0)
 collision_layer = 256
 collision_mask = 10240
 script = ExtResource("18_pbapi")
@@ -1139,7 +1139,7 @@ frame = 1
 
 [node name="LaunchingSlashAttack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
 visible = false
-position = Vector2(-14, 0)
+position = Vector2(-24, 0)
 collision_layer = 256
 collision_mask = 10240
 script = ExtResource("18_pbapi")

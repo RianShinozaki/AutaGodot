@@ -6,6 +6,8 @@ var anim: AnimationTree
 
 var mov_param: EntityMovementParameters
 var jmp_param: EntityJumpParameters
+var speed_param: AutaSpeedParameters
+
 var can_short_hop:
 	get:
 		return entity.get_node("ActionStates/NormalState").can_short_hop
@@ -21,6 +23,7 @@ func _ready() -> void:
 	inp = entity.get_node("GenericAttributes/InputManager")
 	mov_param = entity.parameters["movement"]
 	jmp_param = entity.parameters["jump"]
+	speed_param = entity.parameters["speed"]
 	anim = entity.get_node("Art/AnimationTree")
 	auta = entity as Auta
 
@@ -79,7 +82,10 @@ func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Attack/playback").start(_anim, true)
 	
 func animation_cancel():
-	entity.switch_action_state_name("NormalState")
+	if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
+		entity.switch_action_state_name("SpeedState")
+	else:
+		entity.switch_action_state_name("NormalState")
 
 func process_damage(_area):
 	var _hb_data: HitboxData = _area.hitbox_data

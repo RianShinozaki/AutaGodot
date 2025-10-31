@@ -8,6 +8,7 @@ var anim: AnimationTree
 
 var duck_param: AutaDuckParameters
 var mov_param: EntityMovementParameters
+var speed_param: AutaSpeedParameters
 var can_unduck: bool
 
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _ready() -> void:
 	inp = entity.get_node("GenericAttributes/InputManager")
 	anim = entity.get_node("Art/AnimationTree")
 	duck_param = entity.parameters["duck"]
+	speed_param = entity.parameters["speed"]
+	
 	inp.action_c_just_pressed.connect(on_orb)
 	
 func _start() -> void:
@@ -30,9 +33,12 @@ func _process(delta: float) -> void:
 	if !active: return
 	var _vert: float = inp.input_direction.y
 	if _vert <= 0.3 or not entity.is_on_floor():
-		entity.switch_action_state_name("NormalState")
-		anim.get("parameters/Grounded/playback").start("FromDuck", true)
-	
+		if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
+			entity.switch_action_state_name("SpeedState")
+		else:
+			entity.switch_action_state_name("NormalState")
+			anim.get("parameters/Grounded/playback").start("FromDuck", true)
+			
 	var _norm := entity.get_floor_normal()
 	var _slope_influence = duck_param.slope_uphill_influence if sign(entity.velocity.x) != sign(_norm.x) else duck_param.slope_downhill_influence
 	var _amount: float = _norm.x * entity.gravity * _slope_influence * delta

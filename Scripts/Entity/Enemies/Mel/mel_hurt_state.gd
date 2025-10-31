@@ -74,16 +74,16 @@ func _physics_process(delta: float) -> void:
 		var _dir = entity.pre_move_velocity.normalized()
 		
 		entity.inflict_hitstun(_len, _dir, 0.25)
-		entity.velocity.x = -sign(entity.pre_move_velocity.x) * 30
-		entity.velocity.y = 0
+		entity.velocity.x = -entity.pre_move_velocity.x /2
+		entity.velocity.y = entity.pre_move_velocity.y /2
 		GameCamera.instance.shake_screen(_len/3, 0.25)
 	
-	if entity.is_on_floor() and (entity.pre_move_velocity.y > 250 or abs(entity.pre_move_velocity).x > 100):
+	if entity.is_on_floor() and (entity.pre_move_velocity.y > 250 or abs(entity.pre_move_velocity).x > 150):
 		var _len = entity.pre_move_velocity.length()/60
 		var _dir = entity.pre_move_velocity.normalized()
 		
 		entity.inflict_hitstun(_len, _dir, 0.05)
-		entity.velocity.y = -140
+		entity.velocity.y = min(entity.pre_move_velocity.x/2, -100)
 		entity.velocity.x = entity.pre_move_velocity.x/2
 		GameCamera.instance.shake_screen(_len/3, 0.25)
 	
