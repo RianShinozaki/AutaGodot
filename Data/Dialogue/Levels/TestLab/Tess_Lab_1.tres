@@ -9,7 +9,7 @@ starts = {
 }
 nodes = {
 &"0_1": {
-"link": &"1_1",
+"link": &"1_10",
 "offset": Vector2(-1040, 120),
 "start_id": "Start"
 },
@@ -24,7 +24,20 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300.0005, 240.00018),
+"size": Vector2(300.0005, 240.00012),
+"speaker": 1
+},
+&"1_10": {
+"dialogue": "holy shit bro",
+"offset": Vector2(-820, -140),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": 1
 },
 &"1_2": {
@@ -37,7 +50,7 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300.00012, 240.00012),
+"size": Vector2(300, 240.00012),
 "speaker": 0
 },
 &"1_3": {
@@ -76,7 +89,7 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300, 240.00023),
+"size": Vector2(300.00024, 240.00021),
 "speaker": 1
 },
 &"1_6": {
@@ -89,7 +102,7 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300, 240.00023),
+"size": Vector2(300.00024, 240.00021),
 "speaker": 0
 },
 &"1_7": {
@@ -102,7 +115,7 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300, 240.00023),
+"size": Vector2(300.0005, 240.00021),
 "speaker": 1
 },
 &"1_8": {
@@ -115,7 +128,7 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300, 240.0001),
+"size": Vector2(300.00012, 240.00009),
 "speaker": 1
 },
 &"1_9": {
@@ -128,8 +141,9 @@ Blue in the sky!",
 "text": ""
 }
 },
-"size": Vector2(300.00003, 240),
+"size": Vector2(300, 240),
 "speaker": 1
 }
 }
+strays = Array[String](["1_1", "1_9", "1_2", "1_3", "1_4", "1_8", "1_5", "1_6", "1_7"])
 characters = "res://Data/Dialogue/Levels/TestLab/TestLabChars.tres"

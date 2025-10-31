@@ -6,6 +6,7 @@ public partial class AnimatedEffect : Sprite2D
 	Node opo;
 	RandomNumberGenerator rand;
 	[Export] public float rotRange;
+	public string effectName = "Effect";
 	public override void _Ready()
 	{
 		opo = GetNode<Node>("ObjectPoolObject");
@@ -13,7 +14,7 @@ public partial class AnimatedEffect : Sprite2D
 		Visible = false;
 	}
 	public void OnSpawn() {
-		GetNode<AnimationPlayer>("AnimationPlayer").Play("Effect");
+		GetNode<AnimationPlayer>("AnimationPlayer").Play(effectName);
 		RotationDegrees = rand.RandfRange(-rotRange, rotRange);
 		Visible = true;
 	}

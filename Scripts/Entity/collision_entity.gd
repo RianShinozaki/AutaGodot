@@ -26,6 +26,10 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 signal just_grounded(normal: Vector2, velocity: Vector2)
 signal just_bounced(normal: Vector2, velocity: Vector2)
 
+var shake_level: float
+var shake_direction: Vector2
+var pre_move_velocity: Vector2
+
 var velocity_true: Vector2:
 	get:
 		if is_on_floor():
@@ -75,17 +79,39 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	
 	previously_grounded = is_on_floor()
+	pre_move_velocity = velocity
 	move(velocity, delta, true)
 
 func accelerate_x(_amount: float, _limit: float, _toward: bool):
 	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_amount) if _toward else 1))
 
-func switch_action_state_name(_state: String):
-	var _action_state = get_node("ActionStates/"+_state)
-	switch_action_state(_action_state)
+func switch_action_state_name(_state: String) -> ActionState:
+	var _action_state = get_action_state_name(_state)
+	return switch_action_state(_action_state)
+
+func get_action_state_name(_state: String) -> ActionState:
+	return get_node("ActionStates/"+_state)
 	
-func switch_action_state(_state: ActionState):
+func switch_action_state(_state: ActionState) -> ActionState:
 	last_action_state = current_action_state
 	current_action_state = _state
 	last_action_state._end()
 	current_action_state._start()
+	return current_action_state
+
+func inflict_hitstun(_shake_level: float, _shake_direction: Vector2, _duration: float, _stun_fx: float = 1.0):
+	if not apply_physics: return
+	apply_physics = false
+	shake_level = _shake_level
+	shake_direction = _shake_direction
+	$Art.material.set_shader_parameter("stunFX", _stun_fx)
+	$Art/AnimationPlayer.speed_scale = 0.0
+	await get_tree().create_timer(_duration).timeout
+	$Art.material.set_shader_parameter("stunFX", 0.0)
+	$Art/AnimationPlayer.speed_scale = 1.0
+	apply_physics = true
+	shake_level = 0
+	shake_direction = Vector2.ZERO
+
+func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
+	pass

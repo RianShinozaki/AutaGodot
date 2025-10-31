@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://bvlhthxlo20l7"]
+[gd_scene load_steps=67 format=4 uid="uid://bvlhthxlo20l7"]
 
 [ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_ga3tf"]
 [ext_resource type="Texture2D" uid="uid://n34hv5l4n6ok" path="res://Art Assets/Environment/TestLab/Backgrounds/TowerWall.png" id="2_uytli"]
@@ -6,19 +6,10 @@
 [ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Scripts/Entity/Combat/hitbox.gd" id="3_ashu4"]
 [ext_resource type="Texture2D" uid="uid://bgao42q5hob07" path="res://Art Assets/Debug/DebugSpikes.png" id="4_6ftjg"]
 [ext_resource type="Script" uid="uid://cdscelsbemhqb" path="res://Scripts/Dialogue/dialogue_runner.gd" id="4_fxf0g"]
-[ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="4_mcst2"]
-[ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="4_uc7io"]
-[ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Scripts/Entity/Player/Parameter Resources/auta_duck_parameters.tres" id="5_caf74"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="5_kuukr"]
 [ext_resource type="Resource" uid="uid://bloiv7pepkuh" path="res://Data/Dialogue/Levels/TestLab/Tess_Lab_1.tres" id="6_h0eo7"]
-[ext_resource type="Resource" uid="uid://dds83antj5nu5" path="res://Scripts/Entity/Player/Parameter Resources/auta_jump_parameters.tres" id="6_voja1"]
-[ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Scripts/Entity/Player/Parameter Resources/auta_movement_parameters.tres" id="7_v5xu6"]
 [ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Objects/System/game_system.tscn" id="8_ajoom"]
-[ext_resource type="PackedScene" uid="uid://c4tqhxgt3mrmo" path="res://Objects/Entities/Enemies/mel.tscn" id="8_caf74"]
-[ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Scripts/Entity/Player/Parameter Resources/auta_orb_parameters.tres" id="8_syevp"]
 [ext_resource type="PackedScene" uid="uid://bxsjfno7h4ayh" path="res://LDTK/TestLabDungeon/TestLabDungeon.ldtk" id="8_tfdo7"]
-[ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Scripts/Entity/Player/Parameter Resources/auta_speed_parameters.tres" id="9_8b6vd"]
-[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Scripts/Entity/Player/Parameter Scripts/player_hurt_parameters.gd" id="9_mcst2"]
 [ext_resource type="Texture2D" uid="uid://ce12ixi0vhcr3" path="res://Art Assets/Environment/TestLab/Backgrounds/the_night_sky_starry.jpg" id="9_wn8ln"]
 [ext_resource type="Texture2D" uid="uid://cuh5qdb5h4mgb" path="res://Art Assets/Environment/TestLab/Backgrounds/planet_moon_space_space.png" id="10_ie3ev"]
 [ext_resource type="Script" uid="uid://d3s1sfj0y4h1w" path="res://Scripts/Helpers/ScaleByCamera.gd" id="10_ikfgr"]
@@ -42,15 +33,36 @@ glow_strength = 0.48
 glow_bloom = 0.43
 glow_blend_mode = 1
 
-[sub_resource type="Resource" id="Resource_ashu4"]
-script = ExtResource("4_uc7io")
-damage = 4
-x_knockback = 100.0
-y_knockback = -20.0
-x_knockback_is_relative = true
-hitstun_duration = 0.1
-impact_fx = "HitFX"
-metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
+[sub_resource type="CSharpScript" id="CSharpScript_h0eo7"]
+script/source = "using Godot;
+using System;
+
+public enum DamageType {
+	Slice,
+	Bash,
+	HeavyBash,
+	Pierce,
+}
+
+[GlobalClass]
+public partial class HitboxData : Resource
+{
+	[Export] public float damage;
+	[Export] public float hitstun; //In seconds
+	[Export] public float xKnockback;
+	[Export] public float yKnockback;
+	[Export] public DamageType damageType;
+	[Export] public bool flip;
+	[Export] public int weight;
+	[Export] public string HitFX;
+	[Export] public AudioStream impactSound;
+
+}
+"
+
+[sub_resource type="Resource" id="Resource_uc7io"]
+script = SubResource("CSharpScript_h0eo7")
+metadata/_custom_type_script = "uid://cwv6dukb6l4fe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ashu4"]
 size = Vector2(16, 16)
@@ -119,13 +131,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
 
-[sub_resource type="Resource" id="Resource_caf74"]
-script = ExtResource("9_mcst2")
-recovery_time = 0.25
-recovery_min_speed = 140.0
-invincibility_time = 0.75
-metadata/_custom_type_script = "uid://d4bnhxqktpcel"
-
 [sub_resource type="Gradient" id="Gradient_sapyj"]
 offsets = PackedFloat32Array(0, 0.6666667)
 colors = PackedColorArray(0.0010704279, 0.2199974, 0.40277168, 0.431373, 0.204035, 0.0178255, 0, 0)
@@ -144,6 +149,7 @@ light_mode = 1
 light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wn8ln"]
+blend_mode = 1
 light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6krqr"]
@@ -321,17 +327,20 @@ position = Vector2(449, -437)
 editor_only = true
 energy = 2.64
 
+[node name="Auta" parent="." instance=ExtResource("3_am0ur")]
+position = Vector2(176, -48)
+
 [node name="DebugSpikes" type="Area2D" parent="."]
-position = Vector2(144, -64)
-collision_layer = 4096
-collision_mask = 0
+position = Vector2(256, -64)
 script = ExtResource("3_ashu4")
-hitbox_data = SubResource("Resource_ashu4")
+hitbox_data = SubResource("Resource_uc7io")
 
 [node name="DebugSpikes" type="Sprite2D" parent="DebugSpikes"]
 texture = ExtResource("4_6ftjg")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DebugSpikes"]
+position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_ashu4")
 
 [node name="Entities" type="Node2D" parent="."]
@@ -360,20 +369,6 @@ data = ExtResource("6_h0eo7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/BasicDialogueEntity"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5xne8")
-
-[node name="Mel" parent="Entities" instance=ExtResource("8_caf74")]
-position = Vector2(256, -128)
-
-[node name="Auta" parent="." instance=ExtResource("3_am0ur")]
-position = Vector2(176, -48)
-parameters = Dictionary[String, ExtResource("4_mcst2")]({
-"duck": ExtResource("5_caf74"),
-"hurt": SubResource("Resource_caf74"),
-"jump": ExtResource("6_voja1"),
-"movement": ExtResource("7_v5xu6"),
-"orb": ExtResource("8_syevp"),
-"speed": ExtResource("9_8b6vd")
-})
 
 [node name="GameSystem" parent="." instance=ExtResource("8_ajoom")]
 
@@ -404,7 +399,7 @@ scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(650, 400)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Stars"]
-modulate = Color(0.79520047, 0.92323256, 0.98658186, 1)
+modulate = Color(0.50980395, 0.6313726, 0.6392157, 1)
 material = SubResource("CanvasItemMaterial_ashu4")
 position = Vector2(9.255, 0)
 scale = Vector2(0.6, 0.6)
@@ -446,7 +441,7 @@ autoscroll = Vector2(-5, 4)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Clouds1"]
-modulate = Color(0.41406646, 0.56051046, 0.8213104, 0.90588236)
+modulate = Color(0.60784316, 0.6392157, 0.83137256, 0.90588236)
 material = SubResource("CanvasItemMaterial_6krqr")
 position = Vector2(28, -86.92001)
 texture = ExtResource("12_h0eo7")
@@ -731,6 +726,7 @@ distanceFalloffCurve = SubResource("Curve_kwjh5")
 maxRange = -1.0
 maxTime = 0.1
 timeFalloffCurve = SubResource("Curve_kwjh5")
+metadata/_custom_type_script = "uid://bq4gmeosskuxp"
 
 [node name="Area2D" type="Area2D" parent="CamRegions/CamRegion3/SpatialSplicerZone/SpriteDupe"]
 position = Vector2(0, -5)

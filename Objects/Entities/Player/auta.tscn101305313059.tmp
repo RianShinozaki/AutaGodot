@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://c4qvyi42w0qvy"]
+[gd_scene load_steps=128 format=3 uid="uid://c4qvyi42w0qvy"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -24,15 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://ct6pqwkiwhpf5" path="res://Objects/Effects/Oneshots/orbburst.tscn" id="15_sqgqn"]
 [ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Objects/Effects/Oneshots/Land.tscn" id="17_06ssu"]
 [ext_resource type="Script" uid="uid://duyft4418juqr" path="res://Scripts/Entity/Player/Action States/player_attack_state.gd" id="18_m2fwl"]
-[ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Scripts/Entity/Combat/entity_hitbox.gd" id="18_pbapi"]
-[ext_resource type="PackedScene" uid="uid://du6ojetpg40qk" path="res://Objects/Components/damage_counter_parent.tscn" id="18_q1afw"]
+[ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Scripts/Entity/Combat/hitbox.gd" id="18_pbapi"]
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="19_q1afw"]
 [ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Scripts/Entity/Combat/hurtbox.gd" id="21_ml1rd"]
 [ext_resource type="Script" uid="uid://177nfholi5sj" path="res://Scripts/Entity/Player/Action States/auta_duck_state.gd" id="22_r3wth"]
 [ext_resource type="PackedScene" uid="uid://ble3feonhjm7c" path="res://Objects/Effects/Oneshots/HitFX.tscn" id="22_s8caf"]
-[ext_resource type="PackedScene" uid="uid://tn6ogvcrkx4g" path="res://Objects/Effects/Oneshots/orbreform.tscn" id="24_8pc40"]
 [ext_resource type="Script" uid="uid://e63s53waw8ux" path="res://Scripts/Entity/Player/Action States/player_speed_state.gd" id="24_r3wth"]
-[ext_resource type="PackedScene" uid="uid://b4xiwafh7vu5s" path="res://Objects/Effects/Oneshots/ElectricitySpurt.tscn" id="26_jj7hu"]
 [ext_resource type="Script" uid="uid://buye7h14rme1w" path="res://Scripts/Entity/Player/Action States/player_hurt_state.gd" id="27_7a5kt"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
@@ -340,41 +337,6 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/CollisionShape2D:disabled")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/Art:frame")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.24, 0, 0.24, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_5hoco"]
 resource_name = "Run"
@@ -621,76 +583,9 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_8pc40"]
-resource_name = "Launcher"
-length = 0.48
-step = 0.08
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Art:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.37880158),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [112, 113, 114, 115, 116, 117]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ActionStates/AttackState")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3846154),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"animation_cancel"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15384616, 0.36899444),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15568867, 0.3775757),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/Art:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 2),
-"points": PackedFloat32Array(1, -0.24, 0, 0.24, 0, 5, -0.025743797, -0.6666667, 0, 0, 6, -0.014256202, -0.16666667, 0, 0, 7, -0.013333334, -0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 0.15446278, 0.24, 0.32)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b056u"]
 _data = {
-&"Combo1": SubResource("Animation_cgv2g"),
-&"Launcher": SubResource("Animation_8pc40")
+&"Combo1": SubResource("Animation_cgv2g")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q3qwu"]
@@ -715,7 +610,7 @@ animation = &"Attack/HandCombo3"
 animation = &"Attack/HandLaunch"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pd7dl"]
-animation = &"Attack/Launcher"
+animation = &"Attack/Launch"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lo2pb"]
 switch_mode = 2
@@ -1005,11 +900,11 @@ gradient = SubResource("Gradient_s8caf")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Resource" id="Resource_8pc40"]
+[sub_resource type="Resource" id="Resource_jj7hu"]
 script = ExtResource("19_q1afw")
-damage = 3
-x_knockback = 400.0
-y_knockback = -100.0
+damage = 1
+x_knockback = 80.0
+y_knockback = 30.0
 x_knockback_is_relative = true
 hitstun_duration = 0.15
 impact_fx = "SlashFX"
@@ -1017,20 +912,6 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6hb8"]
 radius = 11.0
-height = 43.999992
-
-[sub_resource type="Resource" id="Resource_jj7hu"]
-script = ExtResource("19_q1afw")
-damage = 3
-x_knockback = 50.0
-y_knockback = -400.0
-x_knockback_is_relative = true
-hitstun_duration = 0.15
-impact_fx = "SlashFX"
-metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8pc40"]
-radius = 14.849243
 height = 48.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j550"]
@@ -1097,14 +978,12 @@ shape = SubResource("CapsuleShape2D_r3wth")
 
 [node name="EntityStatus" type="Node2D" parent="GenericAttributes"]
 script = ExtResource("15_0j550")
-max_health = 30.0
+max_health = 10.0
 
 [node name="InputManager" type="Node2D" parent="GenericAttributes"]
 script = ExtResource("13_4h77s")
 read_controller_input = true
 input_deadzone = 0.3
-
-[node name="DamageCounterParent" parent="GenericAttributes" instance=ExtResource("18_q1afw")]
 
 [node name="SpecialAttributes" type="Node2D" parent="."]
 
@@ -1116,44 +995,21 @@ texture = SubResource("GradientTexture2D_r3wth")
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes"]
 
-[node name="WeakSlashAttack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
+[node name="WeakSlashAttack" type="Area2D" parent="SpecialAttributes/Hitboxes"]
 visible = false
-position = Vector2(-14, 0)
 collision_layer = 256
 collision_mask = 10240
 script = ExtResource("18_pbapi")
-entity = NodePath("../../..")
-hitbox_data = SubResource("Resource_8pc40")
+hitbox_data = SubResource("Resource_jj7hu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/WeakSlashAttack"]
-position = Vector2(43, -4)
+position = Vector2(21, -4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_a6hb8")
 disabled = true
 
 [node name="Art" type="Sprite2D" parent="SpecialAttributes/Hitboxes/WeakSlashAttack"]
-position = Vector2(37, -6)
-texture = ExtResource("10_s0xk6")
-hframes = 8
-frame = 1
-
-[node name="LaunchingSlashAttack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
-visible = false
-position = Vector2(-14, 0)
-collision_layer = 256
-collision_mask = 10240
-script = ExtResource("18_pbapi")
-entity = NodePath("../../..")
-hitbox_data = SubResource("Resource_jj7hu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/LaunchingSlashAttack"]
-position = Vector2(38, -9)
-rotation = 0.7853982
-shape = SubResource("CapsuleShape2D_8pc40")
-disabled = true
-
-[node name="Art" type="Sprite2D" parent="SpecialAttributes/Hitboxes/LaunchingSlashAttack"]
-position = Vector2(38, -6)
+position = Vector2(17, -6)
 texture = ExtResource("10_s0xk6")
 hframes = 8
 frame = 1
@@ -1165,11 +1021,6 @@ script = ExtResource("14_l0f5k")
 object = ExtResource("15_sqgqn")
 count = 2
 
-[node name="OrbReform" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("24_8pc40")
-count = 2
-
 [node name="Land" type="Node" parent="SpecialAttributes/ObjectPools"]
 script = ExtResource("14_l0f5k")
 object = ExtResource("17_06ssu")
@@ -1179,11 +1030,6 @@ count = 2
 script = ExtResource("14_l0f5k")
 object = ExtResource("22_s8caf")
 count = 2
-
-[node name="ElectricitySpurt" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("26_jj7hu")
-count = 6
 
 [node name="PlayerHurtbox" type="Area2D" parent="SpecialAttributes"]
 collision_layer = 512

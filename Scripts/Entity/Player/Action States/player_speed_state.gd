@@ -100,3 +100,8 @@ func just_grounded(_normal: Vector2, _velocity: Vector2):
 
 func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Grounded/playback").start(_anim, true)
+
+func process_damage(_area):
+	var _hb_data: HitboxData = _area.hitbox_data
+	var _hurtstate: PlayerHurtState = entity.switch_action_state_name("HurtState")
+	_hurtstate.initiate_hurt(_area as Hitbox)

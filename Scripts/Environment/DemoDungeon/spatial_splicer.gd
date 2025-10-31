@@ -69,8 +69,8 @@ func on_orbed() -> void:
 	line_len = 1
 	line_tween = create_tween().tween_property(self, "line_thickness", 0, 0.3).set_trans(Tween.TRANS_BOUNCE)
 	create_tween().tween_property(self, "line_len", 0, 0.3).set_trans(Tween.TRANS_CUBIC)
-	$"../SpriteDupe/ScreenshakeEmitter".EmitShake()
-	
+	GameCamera.instance.shake_screen(3, 0.25)
+
 func _draw() -> void:
 	if splice_active:
 		draw_set_transform_matrix(global_transform.affine_inverse())

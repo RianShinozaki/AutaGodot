@@ -181,8 +181,8 @@ noise_type = 3
 frequency = 0.4311
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hc4bp"]
-color_ramp = SubResource("Gradient_cvxvj")
 noise = SubResource("FastNoiseLite_j33ud")
+color_ramp = SubResource("Gradient_cvxvj")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_lebiw"]
 output_port_for_preview = 0

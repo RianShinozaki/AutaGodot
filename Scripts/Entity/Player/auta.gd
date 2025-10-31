@@ -6,11 +6,13 @@ var can_orb: bool = true
 var orb_timer: float = 0.0
 var recharge_orb = false
 var anim_skating := false
+static var instance: Auta
 
 signal orbed
 
 func _ready() -> void:
 	GameCamera.instance.targets.append(self)
+	instance = self
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -27,3 +29,11 @@ func _physics_process(delta: float) -> void:
 
 func emit_orb_signal():
 	emit_signal("orbed")
+
+func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
+	var _knockback_total: Vector2 = Vector2(_hitbox_data.x_knockback, _hitbox_data.y_knockback)
+	var _len = _knockback_total.length() / 60
+	var _dir = _knockback_total.normalized()
+	inflict_hitstun(_len, _dir, _hitbox_data.hitstun_duration, 0)
+	if not is_on_floor() and velocity.y > -30:
+		velocity.y = -30

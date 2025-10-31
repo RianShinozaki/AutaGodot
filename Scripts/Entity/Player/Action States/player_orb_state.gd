@@ -19,6 +19,7 @@ var can_short_hop:
 
 @onready var orb_area_shape = $OrbGrab/CollisionShape2D
 @onready var orb_burst_fx_pool = $"../../SpecialAttributes/ObjectPools/OrbBurst"
+@onready var orb_reform_fx_pool = $"../../SpecialAttributes/ObjectPools/OrbReform"
 
 func _ready() -> void:
 	super._ready()
@@ -150,6 +151,10 @@ func _end() -> void:
 	else:
 		entity.velocity.y = 0
 	
+	var fx: Node2D = orb_reform_fx_pool.spawn_object()
+	if fx != null:
+		fx.global_position = entity.global_position;
+	
 func on_jump():
 	if not active: return
 	if time_since_last_bounce <= orb_param.orb_to_jump_buffer_time:
@@ -163,3 +168,8 @@ func on_attack():
 
 func on_bounce(_normal: Vector2, _velocity: Vector2):
 	time_since_last_bounce = 0
+
+func process_damage(_area):
+	var _hb_data: HitboxData = _area.hitbox_data
+	var _hurtstate: PlayerHurtState = entity.switch_action_state_name("HurtState")
+	_hurtstate.initiate_hurt(_area as Hitbox)
