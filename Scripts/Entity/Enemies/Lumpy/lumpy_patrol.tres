@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntityPatrolParameters" load_steps=2 format=3 uid="uid://c4dkrc78n7gmr"]
+
+[ext_resource type="Script" uid="uid://yp7b5lyl1uv1" path="res://Scripts/Entity/Parameters/AI State/entity_patrol_parameters.gd" id="1_1gm6g"]
+
+[resource]
+script = ExtResource("1_1gm6g")
+patrol_wait_time = 1.3
+patrol_move_time = 1.0
+patrol_time_variation = 0.2
+patrol_aggro_radius = 64
+increment_counter_only_grounded = true
+metadata/_custom_type_script = "uid://yp7b5lyl1uv1"

@@ -30,6 +30,9 @@ var shake_level: float
 var shake_direction: Vector2
 var pre_move_velocity: Vector2
 
+func _ready() -> void:
+	velocity = Vector2.ZERO
+	
 var velocity_true: Vector2:
 	get:
 		if is_on_floor():
@@ -81,7 +84,7 @@ func _physics_process(delta: float) -> void:
 	previously_grounded = is_on_floor()
 	pre_move_velocity = velocity
 	move(velocity, delta, true)
-
+	
 func accelerate_x(_amount: float, _limit: float, _toward: bool):
 	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_amount) if _toward else 1))
 

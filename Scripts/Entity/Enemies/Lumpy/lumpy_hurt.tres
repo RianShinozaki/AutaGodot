@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerHurtParameters" load_steps=2 format=3 uid="uid://c8mbrl8idg1sy"]
+
+[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Scripts/Entity/Player/Parameter Scripts/player_hurt_parameters.gd" id="1_iomqd"]
+
+[resource]
+script = ExtResource("1_iomqd")
+recovery_time = 0.6
+recovery_min_speed = 40.0
+power_resistance_normal = 1
+power_resistance_tough = 2
+metadata/_custom_type_script = "uid://d4bnhxqktpcel"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntityAggroKeepDistanceParameters" load_steps=2 format=3 uid="uid://btf2tsaarleha"]
+
+[ext_resource type="Script" uid="uid://dj6od6iabenw8" path="res://Scripts/Entity/Parameters/AI State/entity_aggro_keep_distance.gd" id="1_8jkpp"]
+
+[resource]
+script = ExtResource("1_8jkpp")
+watch_distance = 48
+aggro_radius = 128
+attack_wait_time = 2.0
+attack_wait_time_variation = 0.2
+increment_counter_only_grounded = true
+metadata/_custom_type_script = "uid://dj6od6iabenw8"

@@ -1,12 +1,12 @@
-[gd_scene load_steps=38 format=3 uid="uid://c4tqhxgt3mrmo"]
+[gd_scene load_steps=36 format=3 uid="uid://c4tqhxgt3mrmo"]
 
 [ext_resource type="Script" uid="uid://cd8and1xomnrl" path="res://Scripts/Entity/collision_entity.gd" id="1_hibua"]
 [ext_resource type="Texture2D" uid="uid://chfuc80sy7xxw" path="res://Art Assets/Enemies/Generic/Mel.png" id="2_6eli1"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_ssn21"]
 [ext_resource type="Script" uid="uid://bpm1hc74705k7" path="res://Scripts/Entity/entity_art.gd" id="3_1nrqu"]
-[ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/entity_movement_parameters.gd" id="3_w2mp1"]
+[ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/Action State/entity_movement_parameters.gd" id="3_w2mp1"]
 [ext_resource type="Script" uid="uid://qyscfa5mlupj" path="res://Scripts/Entity/Combat/entity_status.gd" id="4_1nrqu"]
-[ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Scripts/Entity/Parameters/entity_jump_parameters.gd" id="4_47t0j"]
+[ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Scripts/Entity/Parameters/Action State/entity_jump_parameters.gd" id="4_47t0j"]
 [ext_resource type="Script" uid="uid://coygks3n2h0jn" path="res://Scripts/Entity/input_manager.gd" id="5_2reoq"]
 [ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Scripts/Entity/Player/Parameter Scripts/player_hurt_parameters.gd" id="5_w2mp1"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="6_tfbb4"]
@@ -17,8 +17,8 @@
 [ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Scripts/Entity/Combat/hurtbox.gd" id="9_tfbb4"]
 [ext_resource type="PackedScene" uid="uid://du6ojetpg40qk" path="res://Objects/Components/damage_counter_parent.tscn" id="12_kr16b"]
 [ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Objects/Effects/Oneshots/SlashFX.tscn" id="13_47t0j"]
-[ext_resource type="Script" uid="uid://nnjq040k661b" path="res://Scripts/Entity/Enemies/Mel/mel_normal_state.gd" id="13_ssn21"]
-[ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Scripts/Entity/Enemies/Mel/mel_hurt_state.gd" id="15_w2mp1"]
+[ext_resource type="Script" uid="uid://nnjq040k661b" path="res://Scripts/Entity/Enemies/Generic/enemy_normal_state.gd" id="13_ssn21"]
+[ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Scripts/Entity/Enemies/Generic/enemy_hurt_state.gd" id="15_w2mp1"]
 [ext_resource type="PackedScene" uid="uid://7qyd1unc7cjw" path="res://Objects/Effects/Oneshots/BloodSpurt.tscn" id="17_kywu1"]
 
 [sub_resource type="Resource" id="Resource_47t0j"]
@@ -144,15 +144,6 @@ _data = {
 &"idle": SubResource("Animation_47t0j")
 }
 
-[sub_resource type="Gradient" id="Gradient_0vkrt"]
-offsets = PackedFloat32Array(0.0991254, 0.784257)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_k2ley"]
-gradient = SubResource("Gradient_0vkrt")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
 size = Vector2(12, 25)
 
@@ -202,12 +193,6 @@ input_deadzone = 0.3
 [node name="DamageCounterParent" parent="GenericAttributes" instance=ExtResource("12_kr16b")]
 
 [node name="SpecialAttributes" type="Node2D" parent="."]
-
-[node name="PointLight" type="PointLight2D" parent="SpecialAttributes"]
-color = Color(5.77569e-06, 0.922705, 0.927308, 1)
-energy = 0.0
-range_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_k2ley")
 
 [node name="ObjectPools" type="Node2D" parent="SpecialAttributes"]
 

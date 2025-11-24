@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://c4qvyi42w0qvy"]
+[gd_scene load_steps=137 format=3 uid="uid://c4qvyi42w0qvy"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="7_74fyi"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Scripts/Entity/Player/Parameter Resources/auta_speed_parameters.tres" id="7_r3wth"]
 [ext_resource type="Texture2D" uid="uid://07pc0b3pntrm" path="res://Art Assets/Characters/Auta/AutaSheet1Eyes.png" id="8_qfgkc"]
+[ext_resource type="Resource" uid="uid://0d1mwparxfjs" path="res://Scripts/Entity/Player/Parameter Resources/player_hurt_parameters.tres" id="8_qmcjn"]
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="9_r3wth"]
 [ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Audio/Sounds/Player/Step1.wav" id="10_0j550"]
 [ext_resource type="Texture2D" uid="uid://ctmy0sgjf47p3" path="res://Art Assets/Characters/Auta/AutaAttackFX.png" id="10_s0xk6"]
@@ -1008,10 +1009,11 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="Resource" id="Resource_8pc40"]
 script = ExtResource("19_q1afw")
 damage = 3
-x_knockback = 120.0
-y_knockback = -30.0
+x_knockback = 60.0
+y_knockback = -20.0
 x_knockback_is_relative = true
-hitstun_duration = 0.15
+knockback_power = 1
+hitstun_duration = 0.08
 impact_fx = "SlashFX"
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
@@ -1019,12 +1021,16 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 radius = 11.0
 height = 43.999992
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8pc40"]
+blend_mode = 1
+
 [sub_resource type="Resource" id="Resource_jj7hu"]
 script = ExtResource("19_q1afw")
 damage = 3
-x_knockback = 20.0
-y_knockback = -250.0
+x_knockback = 50.0
+y_knockback = -100.0
 x_knockback_is_relative = true
+knockback_power = 1
 hitstun_duration = 0.15
 impact_fx = "SlashFX"
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
@@ -1032,6 +1038,9 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8pc40"]
 radius = 14.849243
 height = 48.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qmcjn"]
+blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j550"]
 size = Vector2(12, 25)
@@ -1052,6 +1061,7 @@ apply_physics = true
 current_action_state = NodePath("ActionStates/NormalState")
 parameters = Dictionary[String, ExtResource("2_s0xk6")]({
 "duck": ExtResource("6_06ssu"),
+"hurt": ExtResource("8_qmcjn"),
 "jump": ExtResource("3_m2fwl"),
 "movement": ExtResource("4_l0f5k"),
 "orb": ExtResource("5_sqgqn"),
@@ -1132,6 +1142,7 @@ shape = SubResource("CapsuleShape2D_a6hb8")
 disabled = true
 
 [node name="Art" type="Sprite2D" parent="SpecialAttributes/Hitboxes/WeakSlashAttack"]
+material = SubResource("CanvasItemMaterial_8pc40")
 position = Vector2(37, -6)
 texture = ExtResource("10_s0xk6")
 hframes = 8
@@ -1153,6 +1164,7 @@ shape = SubResource("CapsuleShape2D_8pc40")
 disabled = true
 
 [node name="Art" type="Sprite2D" parent="SpecialAttributes/Hitboxes/LaunchingSlashAttack"]
+material = SubResource("CanvasItemMaterial_qmcjn")
 position = Vector2(38, -6)
 texture = ExtResource("10_s0xk6")
 hframes = 8

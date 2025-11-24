@@ -7,7 +7,7 @@ extends Node2D
 @export var input_deadzone: float
 
 signal action_a_just_pressed
-@export var action_a_pressed: bool
+var action_a_pressed: bool
 signal action_a_just_released
 
 signal action_b_just_pressed
@@ -41,3 +41,10 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_released("C"):
 			emit_signal("action_c_just_released")
 		action_c_pressed = Input.is_action_pressed("C")
+
+func set_input_direction(direction: Vector2):
+	input_direction = direction
+
+func press_button(_button: String):
+	var _button_lower = _button.to_lower()
+	emit_signal("action_" + _button_lower + "_just_pressed")

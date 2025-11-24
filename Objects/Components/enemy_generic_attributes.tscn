@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://jxbt53i5ibrm"]
+
+[ext_resource type="Script" uid="uid://qyscfa5mlupj" path="res://Scripts/Entity/Combat/entity_status.gd" id="1_15m4g"]
+[ext_resource type="Script" uid="uid://coygks3n2h0jn" path="res://Scripts/Entity/input_manager.gd" id="2_g0w76"]
+[ext_resource type="PackedScene" uid="uid://du6ojetpg40qk" path="res://Objects/Components/damage_counter_parent.tscn" id="3_4mhux"]
+
+[node name="GenericAttributes" type="Node2D"]
+
+[node name="EntityStatus" type="Node2D" parent="."]
+script = ExtResource("1_15m4g")
+max_health = 10.0
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("2_g0w76")
+input_deadzone = 0.3
+
+[node name="DamageCounterParent" parent="." instance=ExtResource("3_4mhux")]

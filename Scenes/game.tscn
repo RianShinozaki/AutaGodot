@@ -24,8 +24,6 @@ script = ExtResource("10_1phco")
 script = ExtResource("1_dssc1")
 
 [node name="PlayerUI" parent="." instance=ExtResource("1_v3dwl")]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="DialogueBox" type="Panel" parent="PlayerUI"]
 unique_name_in_owner = true

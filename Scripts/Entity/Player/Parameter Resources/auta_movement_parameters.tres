@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EntityMovementParameters" load_steps=3 format=3 uid="uid://b6nf7ajycjq30"]
 
-[ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/entity_movement_parameters.gd" id="1_prx2n"]
+[ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/Action State/entity_movement_parameters.gd" id="1_prx2n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_junhl"]
 radius = 6.0

@@ -1,55 +1,405 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw40ijv30boup"]
+[gd_scene load_steps=14 format=3 uid="uid://dw40ijv30boup"]
 
-[ext_resource type="Texture2D" uid="uid://dh02ehpcpi1qx" path="res://Art Assets/UI/Game/AutaUI.png" id="1_f1pw7"]
 [ext_resource type="Script" uid="uid://dnmadyvju5hcq" path="res://Scripts/UI/player_ui.gd" id="1_xlwdk"]
+[ext_resource type="Texture2D" uid="uid://bypbvfyut2am3" path="res://Art Assets/UI/Game/AutaUI-Face.png" id="2_xlwdk"]
 [ext_resource type="Texture2D" uid="uid://pgi55101u1u6" path="res://Art Assets/UI/Game/spr_HealthbarBar.png" id="3_0ndgo"]
-[ext_resource type="Texture2D" uid="uid://d113a3wcib8nn" path="res://Art Assets/UI/Game/spr_MPBar.png" id="4_6qwfq"]
+[ext_resource type="Texture2D" uid="uid://daomwr2v8hgei" path="res://Art Assets/UI/Game/colored-purple-white-texture-liquid-art.jpg" id="5_m3ws1"]
+[ext_resource type="Shader" uid="uid://dlhyqowjlr6uy" path="res://Shaders/UI/scroll_ui.gdshader" id="5_mwhf7"]
+[ext_resource type="FontFile" uid="uid://bp8nix4b6mabv" path="res://Art Assets/Fonts/THEBOLDFONT-FREEVERSION.ttf" id="5_xmds5"]
+[ext_resource type="Texture2D" uid="uid://5yf705k887bl" path="res://Art Assets/UI/Game/Sparkle.png" id="5_yrovb"]
+[ext_resource type="Texture2D" uid="uid://dk750ibmy7jiv" path="res://Art Assets/UI/Dialogue/TessPortrait.png" id="7_yrovb"]
+[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="9_sru0y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmds5"]
+shader = ExtResource("5_mwhf7")
+shader_parameter/scroll_speed_x = 0.02
+shader_parameter/scroll_speed_y = 0.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmds5"]
+font = ExtResource("5_xmds5")
+font_size = 35
+outline_size = 6
+outline_color = Color(0.44313726, 0.11372549, 0.33333334, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_db4av"]
 light_mode = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_sru0y"]
+font = ExtResource("5_xmds5")
+font_size = 35
+font_color = Color(0.4627451, 0.14901961, 0.4, 1)
+outline_size = 10
+
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 100
+offset = Vector2(50, 30)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 50, 30)
 script = ExtResource("1_xlwdk")
 
-[node name="AutaUI" type="TextureRect" parent="."]
+[node name="AutaTab" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 47.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="ColorRect" parent="AutaTab"]
+clip_children = 2
+layout_mode = 0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 88.0
+
+[node name="TextureRect" type="TextureRect" parent="AutaTab/TextureRect"]
+modulate = Color(1, 0.40784314, 0.48235294, 0.88235295)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="AUTA" type="Label" parent="AutaTab"]
+modulate = Color(0.9590284, 0.77197933, 0.8339528, 1)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 72.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+text = "AUTA"
+label_settings = SubResource("LabelSettings_xmds5")
+horizontal_alignment = 1
+
+[node name="Sparkle-1" type="TextureRect" parent="AutaTab"]
+modulate = Color(0.9625369, 0.76137334, 0.7979221, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = -8.0
+texture = ExtResource("5_yrovb")
+expand_mode = 2
+
+[node name="Sparkle-2" type="TextureRect" parent="AutaTab"]
+modulate = Color(0.9625369, 0.76137334, 0.7979221, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("5_yrovb")
+expand_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="AutaTab"]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_db4av")
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 126.0
-offset_bottom = 66.0
+layout_mode = 0
+offset_left = -8.5
+offset_top = -6.0
+offset_right = 34.5
+offset_bottom = 49.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("1_f1pw7")
+texture = ExtResource("2_xlwdk")
+expand_mode = 1
+stretch_mode = 2
 
-[node name="HealthBar" type="TextureProgressBar" parent="AutaUI"]
-show_behind_parent = true
+[node name="HPBar" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 23.0
+offset_top = 9.0
+offset_right = 63.0
+offset_bottom = 49.0
+
+[node name="WhiteOutline2" type="ColorRect" parent="HPBar"]
+z_index = -1
 layout_mode = 0
-offset_left = 38.0
-offset_top = 43.0
-offset_right = 118.0
-offset_bottom = 83.0
+offset_left = -18.0
+offset_top = 58.0
+offset_right = 134.0
+offset_bottom = 66.0
+
+[node name="BlackBG" type="ColorRect" parent="HPBar"]
+z_index = -1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.5
+offset_right = 136.0
+offset_bottom = 64.0
+color = Color(0.06958811, 0.12734836, 0.27127957, 1)
+
+[node name="HealthBar" type="TextureProgressBar" parent="HPBar"]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 64.0
 max_value = 1.0
 step = 0.01
 value = 1.0
+nine_patch_stretch = true
 texture_progress = ExtResource("3_0ndgo")
 
-[node name="HealthBar2" type="TextureProgressBar" parent="AutaUI"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="HPBar/HealthBar"]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
 layout_mode = 0
-offset_left = 38.0
-offset_top = 55.0
-offset_right = 118.0
-offset_bottom = 95.0
-value = 100.0
-texture_progress = ExtResource("4_6qwfq")
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="HP" type="Label" parent="HPBar"]
+visible = false
+layout_mode = 0
+offset_left = -14.5
+offset_top = 56.0
+offset_right = 100.5
+offset_bottom = 156.0
+scale = Vector2(0.25, 0.25)
+text = "HP"
+label_settings = SubResource("LabelSettings_sru0y")
+
+[node name="MPBar" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 25.0
+offset_right = 79.0
+offset_bottom = 65.0
+
+[node name="WhiteOutline2" type="ColorRect" parent="MPBar"]
+z_index = -1
+layout_mode = 0
+offset_left = -18.0
+offset_top = 58.0
+offset_right = 134.0
+offset_bottom = 66.0
+
+[node name="BlackBG" type="ColorRect" parent="MPBar"]
+z_index = -1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.5
+offset_right = 136.0
+offset_bottom = 64.0
+color = Color(0.06958811, 0.12734836, 0.27127957, 1)
+
+[node name="HealthBar" type="TextureProgressBar" parent="MPBar"]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 64.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_0ndgo")
+
+[node name="TextureRect" type="TextureRect" parent="MPBar/HealthBar"]
+modulate = Color(1, 0.23137255, 0.64705884, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_top = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2126.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="SP" type="Label" parent="MPBar"]
+visible = false
+layout_mode = 0
+offset_left = -14.5
+offset_top = 56.0
+offset_right = 100.5
+offset_bottom = 156.0
+scale = Vector2(0.25, 0.25)
+text = "SP"
+label_settings = SubResource("LabelSettings_sru0y")
+
+[node name="TessTab" type="Control" parent="."]
+visible = false
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 63.0
+offset_top = 9.0
+offset_right = 103.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="ColorRect" parent="TessTab"]
+clip_children = 2
+layout_mode = 0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="TessTab/TextureRect"]
+modulate = Color(0.73052436, 0.3548694, 0.7551984, 0.88235295)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="TESS" type="Label" parent="TessTab"]
+modulate = Color(0.75641733, 0.45945495, 0.92124796, 1)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -15.5
+offset_right = 72.0
+offset_bottom = 20.5
+scale = Vector2(0.5, 0.5)
+text = "TESS"
+label_settings = SubResource("LabelSettings_xmds5")
+horizontal_alignment = 1
+
+[node name="Portrait" type="TextureRect" parent="TessTab"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_db4av")
+layout_mode = 0
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 23.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("7_yrovb")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="EnemyTab" type="Control" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 591.0
+offset_top = 9.0
+offset_right = 631.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="ColorRect" parent="EnemyTab"]
+clip_children = 2
+layout_mode = 0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 72.0
+
+[node name="TextureRect" type="TextureRect" parent="EnemyTab/TextureRect"]
+modulate = Color(0.79889333, 0, 0.104868434, 0.88235295)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="EnemyName" type="Label" parent="EnemyTab"]
+modulate = Color(0.9590284, 0.77197933, 0.8339528, 1)
+layout_mode = 0
+offset_left = -88.0
+offset_top = -16.0
+offset_right = 152.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+text = "ENEMY"
+label_settings = SubResource("LabelSettings_xmds5")
+horizontal_alignment = 2
+
+[node name="Portrait" type="Sprite2D" parent="EnemyTab"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_db4av")
+position = Vector2(8, 32)
 scale = Vector2(2, 2)
+texture = ExtResource("9_sru0y")
+flip_h = true
+hframes = 4
+vframes = 4
+
+[node name="EnemyHP" type="Control" parent="."]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 479.0
+offset_top = 9.0
+offset_right = 519.0
+offset_bottom = 49.0
+
+[node name="WhiteOutline2" type="ColorRect" parent="EnemyHP"]
+z_index = -1
+layout_mode = 0
+offset_left = 53.595
+offset_top = 58.0
+offset_right = 133.595
+offset_bottom = 66.0
+
+[node name="BlackBG" type="ColorRect" parent="EnemyHP"]
+z_index = -1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.5
+offset_right = 136.0
+offset_bottom = 64.0
+color = Color(0.06958811, 0.12734836, 0.27127957, 1)
+
+[node name="HealthBar" type="TextureProgressBar" parent="EnemyHP"]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 64.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_0ndgo")
+
+[node name="TextureRect" type="TextureRect" parent="EnemyHP/HealthBar"]
+modulate = Color(0.00012513995, 0.49239254, 0.9606876, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="HP" type="Label" parent="EnemyHP"]
+visible = false
+layout_mode = 0
+offset_left = -14.5
+offset_top = 56.0
+offset_right = 100.5
+offset_bottom = 156.0
+scale = Vector2(0.25, 0.25)
+text = "HP"
+label_settings = SubResource("LabelSettings_sru0y")

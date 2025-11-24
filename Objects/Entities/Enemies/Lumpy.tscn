@@ -1,36 +1,59 @@
-[gd_scene load_steps=50 format=3 uid="uid://c0xpkc5fuun44"]
+[gd_scene load_steps=59 format=3 uid="uid://dqojhxpt2n0ma"]
 
-[ext_resource type="Script" uid="uid://7fyraj5eai8g" path="res://Scripts/Entities/General/Base/StateEntity.cs" id="1_5mmnx"]
-[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="2_i2ob7"]
-[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="3_kqnyo"]
-[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="4_ouqjm"]
-[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="5_gruas"]
-[ext_resource type="PackedScene" uid="uid://cm2fc327odcxe" path="res://Objects/Components/enemy_standard_attributes.tscn" id="7_xbsis"]
-[ext_resource type="Script" uid="uid://c2c30ww4v8xa8" path="res://Scripts/Entities/Player/States/PlayerNormalState.cs" id="8_pqpgr"]
-[ext_resource type="PackedScene" uid="uid://x5ri42qjt5rx" path="res://Objects/Components/enemy_standard_script_group.tscn" id="9_7f2kx"]
-[ext_resource type="Script" uid="uid://dbt54swsxqpja" path="res://Scripts/Entities/General/Base/EntityState.cs" id="10_sab7k"]
-[ext_resource type="Script" uid="uid://bf5akk5lh5m6g" path="res://Scripts/Entities/General/Base/StateScriptGroup.cs" id="11_6i11l"]
-[ext_resource type="Script" uid="uid://rrc8rviiy8m6" path="res://Scripts/Entities/General/Motion/AccelAndDecel.cs" id="12_cp4kx"]
-[ext_resource type="Script" uid="uid://daepulrmfw6l2" path="res://Scripts/Entities/General/Motion/FlipToFaceDirection.cs" id="13_wowl5"]
-[ext_resource type="Script" uid="uid://dxq8yhjrp7bsm" path="res://Scripts/Entities/General/Behavior/PatrolRandomly.cs" id="14_8hl3p"]
-[ext_resource type="Script" uid="uid://brfk75wk3idmq" path="res://Scripts/Entities/General/Behavior/TriggerEnterAct.cs" id="15_aliyx"]
-[ext_resource type="Script" uid="uid://mvuysq6wbp8f" path="res://Scripts/System/Combat/Hitbox.cs" id="16_dneiw"]
-[ext_resource type="Script" uid="uid://cwv6dukb6l4fe" path="res://Data/Combat/HitboxData.cs" id="17_i2vf5"]
-[ext_resource type="PackedScene" uid="uid://bygolch5gnrqk" path="res://Objects/Components/EnemyHurtState.tscn" id="18_4474c"]
-[ext_resource type="PackedScene" uid="uid://clwj6dgm0myvh" path="res://Objects/Components/EnemyGrabbedState.tscn" id="19_mp5gu"]
-[ext_resource type="PackedScene" uid="uid://db0ov7bqn51kr" path="res://Objects/Components/EnemyThrownState.tscn" id="20_ula41"]
-[ext_resource type="PackedScene" uid="uid://b150mpdv8riyj" path="res://Objects/Components/EnemyTuckState.tscn" id="21_pyoey"]
-[ext_resource type="Script" uid="uid://oamv1u5fuf7j" path="res://Scripts/System/Combat/Hurtbox.cs" id="22_50a61"]
+[ext_resource type="Script" uid="uid://bec2isxmuf486" path="res://Scripts/Entity/Enemies/Lumpy/lumpy.gd" id="1_pxb8d"]
+[ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_abrse"]
+[ext_resource type="Script" uid="uid://dnfr55r8vuv4i" path="res://Scripts/Entity/Parameters/ai_parameter_set.gd" id="2_fud45"]
+[ext_resource type="Resource" uid="uid://btf2tsaarleha" path="res://Scripts/Entity/Enemies/Lumpy/lumpy_aggro_keep_distance.tres" id="3_pxb8d"]
+[ext_resource type="Resource" uid="uid://c4dkrc78n7gmr" path="res://Scripts/Entity/Enemies/Lumpy/lumpy_patrol.tres" id="4_lr445"]
+[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Art Assets/Materials/2D-Default.tres" id="6_gydlj"]
+[ext_resource type="Resource" uid="uid://c8mbrl8idg1sy" path="res://Scripts/Entity/Enemies/Lumpy/lumpy_hurt.tres" id="6_lr445"]
+[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="7_abrse"]
+[ext_resource type="Resource" uid="uid://d11iaatvptb73" path="res://Scripts/Entity/Enemies/Lumpy/lumpy_jump.tres" id="7_lr445"]
+[ext_resource type="Resource" uid="uid://c2p134p3ajfu1" path="res://Scripts/Entity/Enemies/Lumpy/lumpy_movement.tres" id="8_lr445"]
+[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Art Assets/Enemies/Generic/LumpySheet_n.png" id="8_w7nl7"]
+[ext_resource type="Script" uid="uid://ch4p44uoy3hmw" path="res://Scripts/Entity/Enemies/Lumpy/lumpy_attack_parameters.gd" id="9_h6ji7"]
+[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Art Assets/Enemies/Generic/LumpySheet_s.png" id="9_xugyf"]
+[ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Scripts/Effects/AfterImageGenerator.gd" id="10_w7nl7"]
+[ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Objects/Effects/Oneshots/after_image.tscn" id="11_xugyf"]
+[ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Scripts/System/Controllers/ObjectPool.gd" id="13_3s03o"]
+[ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Objects/Effects/Oneshots/Land.tscn" id="14_pglu5"]
+[ext_resource type="PackedScene" uid="uid://ble3feonhjm7c" path="res://Objects/Effects/Oneshots/HitFX.tscn" id="15_ih27p"]
+[ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Objects/Effects/Oneshots/SlashFX.tscn" id="16_ggq7g"]
+[ext_resource type="PackedScene" uid="uid://jxbt53i5ibrm" path="res://Objects/Components/enemy_generic_attributes.tscn" id="16_h6ji7"]
+[ext_resource type="PackedScene" uid="uid://7qyd1unc7cjw" path="res://Objects/Effects/Oneshots/BloodSpurt.tscn" id="17_t3lta"]
+[ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Scripts/Entity/Combat/hurtbox.gd" id="18_ktntf"]
+[ext_resource type="Script" uid="uid://nnjq040k661b" path="res://Scripts/Entity/Enemies/Generic/enemy_normal_state.gd" id="19_s0u4b"]
+[ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Scripts/Entity/Enemies/Generic/enemy_hurt_state.gd" id="20_qqell"]
+[ext_resource type="Script" uid="uid://bkffy6a8vknj" path="res://Scripts/Entity/Enemies/AIStates/patrol_state.gd" id="23_ugovn"]
+[ext_resource type="Script" uid="uid://b5ilw57hqw2c" path="res://Scripts/Entity/Enemies/AIStates/aggro_keep_distance_state.gd" id="24_widae"]
+[ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Scripts/Entity/Combat/entity_hitbox.gd" id="25_3s03o"]
+[ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Scripts/Entity/Combat/hurt_manager.gd" id="25_jkofg"]
+[ext_resource type="Script" uid="uid://xi8xgjw0meix" path="res://Scripts/Entity/Enemies/Generic/enemy_attack_state.gd" id="25_pxb8d"]
+[ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="26_pglu5"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_rbaw3"]
-diffuse_texture = ExtResource("3_kqnyo")
-normal_texture = ExtResource("4_ouqjm")
-specular_texture = ExtResource("5_gruas")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syevp"]
+radius = 3.0
+height = 17.45
+
+[sub_resource type="Resource" id="Resource_jkofg"]
+script = ExtResource("9_h6ji7")
+attack_speed = 250.0
+deceleration = 480.0
+deceleration_in_air = 240.0
+absolute_limit = 300.0
+collision_shape = SubResource("CapsuleShape2D_syevp")
+collision_shape_position = Vector2(0, 1)
+metadata/_custom_type_script = "uid://ch4p44uoy3hmw"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ugovn"]
+diffuse_texture = ExtResource("7_abrse")
+normal_texture = ExtResource("8_w7nl7")
+specular_texture = ExtResource("9_xugyf")
 texture_filter = 1
 
 [sub_resource type="Animation" id="Animation_k40gc"]
 resource_name = "Attack"
-length = 0.8
+length = 1.2
 step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,7 +62,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.307692, 0.461538, 0.615385),
+"times": PackedFloat32Array(0, 0.15384616, 0.30769232, 0.4615383, 0.6153843, 0.7692313),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [5, 6, 7, 8, 9, 10]
@@ -47,42 +70,28 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../States/NormalState/ActiveScriptGroup/AccelAndDecel")
+tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.153846),
+"times": PackedFloat32Array(0.30769247, 0.9230771),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [5.0, 0.0, true],
-"method": &"BurstSpeed"
+"args": [],
+"method": &"attack_burst"
 }, {
-"args": [100.0, 0.0, true],
-"method": &"BurstSpeed"
+"args": ["NormalState"],
+"method": &"switch_action_state_name"
 }]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("..")
+tracks/2/path = NodePath("../SpecialAttributes/Hitboxes/Attack/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.769231),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["NormalState"],
-"method": &"SwitchState"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../States/AttackState/Attack/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.16, 0.769231),
+"times": PackedFloat32Array(0, 0.3133244, 0.92560613),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -137,7 +146,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../States/AttackState/Attack/CollisionShape2D:disabled")
+tracks/1/path = NodePath("../SpecialAttributes/Hitboxes/Attack/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -202,11 +211,11 @@ animation = &"Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yxo1k"]
 advance_mode = 2
-advance_expression = "abs(horProj) > 0.5f"
+advance_expression = "abs(velocity.x) > 0.5f"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fgolq"]
 advance_mode = 2
-advance_expression = "abs(horProj) < 0.5f"
+advance_expression = "abs(velocity.x) < 0.5f"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r1kc3"]
 advance_mode = 2
@@ -235,7 +244,7 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_83c1s"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_widae"]
 states/Attack/node = SubResource("AnimationNodeAnimation_tiyy2")
 states/Attack/position = Vector2(343, 5)
 states/Grounded/node = SubResource("AnimationNodeStateMachine_en1n3")
@@ -249,101 +258,52 @@ states/Tuck/position = Vector2(556, 8)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb")]
 graph_offset = Vector2(-28, -95)
 
-[sub_resource type="CSharpScript" id="CSharpScript_bjaog"]
-script/source = "using Godot;
-using System;
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
+size = Vector2(18, 8)
 
-//Attach these to a node underneath the sprite
-public partial class AfterImageGenerator : Node
-{
-	bool active;
-	float afterImgTimer = 0;
-	Sprite2D sprite;
+[sub_resource type="Resource" id="Resource_ggq7g"]
+script = ExtResource("26_pglu5")
+damage = 3
+x_knockback = 60.0
+y_knockback = -20.0
+x_knockback_is_relative = true
+hitstun_duration = 0.08
+impact_fx = "SlashFX"
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
-	public override void _Ready()
-	{
-		sprite = GetParent<Sprite2D>();
-	}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]
+radius = 6.79
+height = 22.93
 
-	public override void _Process(double delta)
-	{
-		if(active) afterImgTimer += (float)delta;
-		if(afterImgTimer > 0.07f) {
-			/*AfterImage afterImg = ObjectPool.Instance.Spawn(\"AfterImage\") as AfterImage;
-			if(afterImg != null) {
-				afterImg.Texture = sprite.Texture;
-				afterImg.Hframes = sprite.Hframes;
-				afterImg.Vframes = sprite.Vframes;
-				afterImg.FlipH = sprite.FlipH;
-				afterImg.Frame = sprite.Frame;
-				afterImg.GlobalPosition = sprite.GlobalPosition;
-				afterImg.Offset = sprite.Offset;
-				afterImg.Rotation = sprite.Rotation;
-				ShaderMaterial mat = afterImg.Material as ShaderMaterial;
-				if(sprite.Texture is CanvasTexture canv) {
-					mat.SetShaderParameter(\"Texture\", canv.DiffuseTexture);
-				}
-				else mat.SetShaderParameter(\"Texture\", sprite.Texture);
-			}
-			afterImgTimer = 0;*/
-		}
-	}
+[sub_resource type="CircleShape2D" id="CircleShape2D_fud45"]
+radius = 64.0
 
-	public void StartCreatingAfterImgs() {
-		afterImgTimer = 0;
-		active = true;
-	}
-	public void StopCreatingAfterImgs() {
-		active = false;
-	}
-	
-}
-"
+[sub_resource type="CircleShape2D" id="CircleShape2D_lr445"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruk6c"]
-size = Vector2(136, 19)
-
-[sub_resource type="Resource" id="Resource_5i24x"]
-script = ExtResource("17_i2vf5")
-damage = 3.0
-hitstun = 0.5
-xKnockback = 90.0
-yKnockback = 0.0
-damageType = 0
-flip = true
-weight = 0
-HitFX = "Slice"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm1vm"]
-radius = 4.00001
-height = 20.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv6ar"]
-radius = 4.0
-height = 16.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0b30"]
-size = Vector2(16, 9)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_w5red"]
-radius = 16.0
-
-[node name="Lumpy" type="CharacterBody2D" node_paths=PackedStringArray("currentState")]
+[node name="Lumpy" type="CharacterBody2D" node_paths=PackedStringArray("current_ai_state", "current_action_state")]
 collision_layer = 2
-floor_snap_length = 8.0
-script = ExtResource("1_5mmnx")
-currentState = NodePath("States/NormalState")
-GroundedFloorCheckDist = 16
-AirFloorCheckDist = 8
-floorOffset = 4
-gravity = 300.0
+velocity = Vector2(0, 2431.6692)
+script = ExtResource("1_pxb8d")
+current_ai_state = NodePath("AIStates/PatrolState")
+ai_parameters = Dictionary[String, ExtResource("2_fud45")]({
+"aggro": ExtResource("3_pxb8d"),
+"patrol": ExtResource("4_lr445")
+})
+apply_physics = true
+current_action_state = NodePath("ActionStates/NormalState")
+parameters = Dictionary[String, ExtResource("2_abrse")]({
+"attack": SubResource("Resource_jkofg"),
+"hurt": ExtResource("6_lr445"),
+"jump": ExtResource("7_lr445"),
+"movement": ExtResource("8_lr445")
+})
 
 [node name="Art" type="Sprite2D" parent="."]
 light_mask = 2
 texture_filter = 1
-material = ExtResource("2_i2ob7")
+material = ExtResource("6_gydlj")
 position = Vector2(0, -4)
-texture = SubResource("CanvasTexture_rbaw3")
+texture = SubResource("CanvasTexture_ugovn")
 offset = Vector2(-1, 0)
 hframes = 4
 vframes = 4
@@ -354,135 +314,130 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Art"]
-tree_root = SubResource("AnimationNodeStateMachine_83c1s")
+tree_root = SubResource("AnimationNodeStateMachine_widae")
 advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AfterImageGenerator" type="Node" parent="Art"]
-script = SubResource("CSharpScript_bjaog")
+script = ExtResource("10_w7nl7")
+time_between_after_images = 0.1
+object = ExtResource("11_xugyf")
+count = 5
 
-[node name="Attributes" parent="." instance=ExtResource("7_xbsis")]
+[node name="EnvironmentBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_syevp")
 
-[node name="States" type="Node2D" parent="."]
-visible = false
+[node name="GenericAttributes" parent="." instance=ExtResource("16_h6ji7")]
 
-[node name="EnemyBaseState" type="Node2D" parent="States"]
-script = ExtResource("8_pqpgr")
+[node name="SpecialAttributes" type="Node2D" parent="."]
 
-[node name="EnemyStandardScriptGroup" parent="States/EnemyBaseState" instance=ExtResource("9_7f2kx")]
+[node name="ObjectPools" type="Node2D" parent="SpecialAttributes"]
 
-[node name="EnemyHurt" parent="States/EnemyBaseState/EnemyStandardScriptGroup" index="0" node_paths=PackedStringArray("ignoreAreas")]
-ignoreAreas = [NodePath("../../../ThrownState/ActiveComponentGroup/ColliderSetActive/Attack")]
+[node name="Land" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("13_3s03o")
+object = ExtResource("14_pglu5")
+count = 2
 
-[node name="NormalState" type="Node2D" parent="States"]
-script = ExtResource("10_sab7k")
+[node name="HitFX" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("13_3s03o")
+object = ExtResource("15_ih27p")
+count = 2
 
-[node name="ActiveScriptGroup" type="Node2D" parent="States/NormalState"]
-script = ExtResource("11_6i11l")
+[node name="SlashFX" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("13_3s03o")
+object = ExtResource("16_ggq7g")
+count = 2
 
-[node name="AccelAndDecel" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("12_cp4kx")
-speed = 30.0
-accel = 900.0
-decel = 480.0
-decelTooFast = 120.0
-airAccel = 480.0
-airDecel = 240.0
-airDecelTooFast = 60.0
+[node name="BloodSpurt" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("13_3s03o")
+object = ExtResource("17_t3lta")
+count = 2
 
-[node name="FlipToFaceDirection" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("13_wowl5")
+[node name="Hurtbox" type="Area2D" parent="SpecialAttributes"]
+collision_layer = 2048
+collision_mask = 4352
+script = ExtResource("18_ktntf")
 
-[node name="PatrolRandomly" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-script = ExtResource("14_8hl3p")
-patrolRange = 100
-waitTimeRange = Vector2(2, 3)
-moveTimeRange = Vector2(1, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hurtbox"]
+shape = SubResource("RectangleShape2D_xmtoo")
+debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
 
-[node name="TriggerEnterAct" type="Node2D" parent="States/NormalState/ActiveScriptGroup"]
-process_priority = -1
-script = ExtResource("15_aliyx")
-toState = "AttackState"
-playAnim = &"Attack"
-faceTarget = true
-triggerWaitRange = Vector2(1, 1)
-SubseqTriggerWaitRange = Vector2(1, 2)
+[node name="Hitboxes" type="Node2D" parent="SpecialAttributes"]
 
-[node name="Area2D" type="Area2D" parent="States/NormalState/ActiveScriptGroup/TriggerEnterAct"]
-visible = false
+[node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
+position = Vector2(-24, 0)
+collision_layer = 1024
+collision_mask = 8704
+script = ExtResource("25_3s03o")
+entity = NodePath("../../..")
+hitbox_data = SubResource("Resource_ggq7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Attack"]
+position = Vector2(24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t3lta")
+disabled = true
+
+[node name="AggroRange" type="Area2D" parent="SpecialAttributes"]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/NormalState/ActiveScriptGroup/TriggerEnterAct/Area2D"]
-position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_ruk6c")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/AggroRange"]
+shape = SubResource("CircleShape2D_fud45")
+debug_color = Color(0.75881803, 0.5550323, 0.23434493, 0.41960785)
 
-[node name="AttackState" type="Node2D" parent="States"]
-script = ExtResource("10_sab7k")
+[node name="TerrainRaycasts" type="Node2D" parent="SpecialAttributes"]
 
-[node name="ActiveScriptGroup" type="Node2D" parent="States/AttackState"]
-script = ExtResource("11_6i11l")
+[node name="RightFloor" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts"]
+position = Vector2(16, -5)
+target_position = Vector2(0, 16)
 
-[node name="AccelAndDecel" type="Node2D" parent="States/AttackState/ActiveScriptGroup"]
-script = ExtResource("12_cp4kx")
-horReset = true
-speed = 30.0
-accel = 900.0
-decel = 60.0
-decelTooFast = 120.0
-airAccel = 480.0
-airDecel = 240.0
-airDecelTooFast = 60.0
+[node name="RightWall" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts"]
+target_position = Vector2(16, 0)
 
-[node name="InitScriptGroup" type="Node2D" parent="States/AttackState"]
-script = ExtResource("11_6i11l")
+[node name="LeftFloor" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts"]
+position = Vector2(-16, -5)
+target_position = Vector2(0, 16)
 
-[node name="Attack" type="Area2D" parent="States/AttackState"]
-collision_layer = 1024
-collision_mask = 512
-script = ExtResource("16_dneiw")
-hitboxData = SubResource("Resource_5i24x")
+[node name="LeftWall" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts"]
+target_position = Vector2(-16, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/AttackState/Attack"]
-rotation = -1.57079
-shape = SubResource("CapsuleShape2D_vm1vm")
-disabled = true
+[node name="ShoveBox" type="Area2D" parent="SpecialAttributes"]
+collision_layer = 262144
+collision_mask = 262144
 
-[node name="HurtState" parent="States" instance=ExtResource("18_4474c")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/ShoveBox"]
+shape = SubResource("CircleShape2D_lr445")
+debug_color = Color(0.4012802, 0.52294666, 0.8282767, 0.41960785)
 
-[node name="GrabbedState" parent="States" instance=ExtResource("19_mp5gu")]
+[node name="HurtManager" type="Node2D" parent="SpecialAttributes"]
+script = ExtResource("25_jkofg")
+power_resistance = 1
 
-[node name="ThrownState" parent="States" node_paths=PackedStringArray("ignoreAreas") instance=ExtResource("20_ula41")]
-ignoreAreas = [NodePath("../../Hurtbox")]
+[node name="ActionStates" type="Node2D" parent="."]
 
-[node name="TuckState" parent="States" instance=ExtResource("21_pyoey")]
+[node name="NormalState" type="Node2D" parent="ActionStates"]
+script = ExtResource("19_s0u4b")
+active = true
 
-[node name="NormalEnvironmentBox" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_hv6ar")
+[node name="AttackState" type="Node2D" parent="ActionStates"]
+script = ExtResource("25_pxb8d")
+active = true
 
-[node name="Hurtbox" type="Area2D" parent="."]
-visible = false
-position = Vector2(0, 4)
-collision_layer = 2048
-collision_mask = 260
-script = ExtResource("22_50a61")
+[node name="HurtState" type="Node2D" parent="ActionStates"]
+script = ExtResource("20_qqell")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -4.5)
-shape = SubResource("RectangleShape2D_f0b30")
+[node name="AIStates" type="Node2D" parent="."]
 
-[node name="DistanceArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 65536
-collision_mask = 0
+[node name="PatrolState" type="Node2D" parent="AIStates"]
+script = ExtResource("23_ugovn")
+active = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DistanceArea"]
-position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_w5red")
-debug_color = Color(3.03224e-06, 0.624266, 0.530517, 0.42)
+[node name="AggroState" type="Node2D" parent="AIStates"]
+script = ExtResource("24_widae")
 
-[connection signal="animation_finished" from="Art/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-
-[editable path="States/EnemyBaseState/EnemyStandardScriptGroup"]
-[editable path="States/ThrownState"]
+[connection signal="body_entered" from="SpecialAttributes/AggroRange" to="AIStates/PatrolState" method="_on_aggro_range_body_entered"]
+[connection signal="area_entered" from="SpecialAttributes/ShoveBox" to="." method="_on_shove_box_area_entered"]
+[connection signal="area_exited" from="SpecialAttributes/ShoveBox" to="." method="_on_shove_box_area_exited"]

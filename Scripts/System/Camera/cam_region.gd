@@ -22,7 +22,6 @@ func on_body_entered(_body: Node2D):
 		active = true
 		GameCamera.instance.set_extents(x_extents, y_extents)
 		emit_signal("activate")
-		print("activate")
 	
 func deactivate_self():
 	active = false
