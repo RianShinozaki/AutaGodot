@@ -6,7 +6,7 @@
 script = ExtResource("1_8jkpp")
 watch_distance = 48
 aggro_radius = 128
-attack_wait_time = 2.0
+attack_wait_time = 1.4
 attack_wait_time_variation = 0.2
 increment_counter_only_grounded = true
 metadata/_custom_type_script = "uid://dj6od6iabenw8"

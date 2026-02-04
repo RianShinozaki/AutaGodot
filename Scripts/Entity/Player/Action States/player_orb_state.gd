@@ -51,7 +51,7 @@ func _start() -> void:
 	if fx != null:
 		fx.global_position = entity.global_position;
 		
-	var _input = inp.input_direction
+	var _input = inp.input_direction.round().normalized()
 	
 	if entity.last_action_state.name == "DuckState":
 		var _norm := entity.get_floor_normal()
@@ -96,10 +96,10 @@ func _process(delta: float) -> void:
 	time_since_last_bounce += delta
 	
 	if not inp.action_c_pressed and orb_time > orb_param.minimum_time:
-		if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
-			entity.switch_action_state_name("SpeedState")
-		else:
-			entity.switch_action_state_name("NormalState")
+		#if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
+		#	entity.switch_action_state_name("SpeedState")
+		#else:
+		entity.switch_action_state_name("NormalState")
 			
 	if orb_time <= orb_param.initial_gravity_time:
 		entity.gravity = orb_param.initial_gravity
@@ -109,10 +109,10 @@ func _process(delta: float) -> void:
 	
 	#Accelerate and decelerate
 	var hor = inp.input_direction.x
-	if abs(hor) > 0.1:
+	if abs(hor) > 0.5:
 		entity.accelerate_x(orb_param.get_acceleration(entity) * delta * sign(hor), sign(hor) * orb_param.get_max_speed(), true)
 	
-	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
+	if abs(hor) < 0.5 or sign(hor) == -sign(entity.velocity.x):
 		entity.accelerate_x(orb_param.get_deceleration(entity) * delta, 0, false)
 	
 	#Turn the player around
@@ -168,8 +168,3 @@ func on_attack():
 
 func on_bounce(_normal: Vector2, _velocity: Vector2):
 	time_since_last_bounce = 0
-
-func process_damage(_area):
-	var _hb_data: HitboxData = _area.hitbox_data
-	var _hurtstate: PlayerHurtState = entity.switch_action_state_name("HurtState")
-	_hurtstate.initiate_hurt(_area as Hitbox)

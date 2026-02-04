@@ -1,5 +1,4 @@
 shader_type canvas_item;
-
 uniform float scroll_speed_x = 0.1; // Adjust scrolling speed
 uniform float scroll_speed_y = 0.1; // Adjust scrolling speed
 

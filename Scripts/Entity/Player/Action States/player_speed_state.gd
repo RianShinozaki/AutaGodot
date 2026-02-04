@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _start() -> void:
 	super._start()
+	anim.get("parameters/playback").start("Grounded", true)
 	entity.get_node("EnvironmentBox").shape = mov_param.collision_shape
 	entity.get_node("EnvironmentBox").position = mov_param.collision_shape_position
 	can_short_hop = false
@@ -100,8 +101,3 @@ func just_grounded(_normal: Vector2, _velocity: Vector2):
 
 func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Grounded/playback").start(_anim, true)
-
-func process_damage(_area):
-	var _hb_data: HitboxData = _area.hitbox_data
-	var _hurtstate: PlayerHurtState = entity.switch_action_state_name("HurtState")
-	_hurtstate.initiate_hurt(_area as Hitbox)

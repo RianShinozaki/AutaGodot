@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://c4qvyi42w0qvy"]
+[gd_scene load_steps=140 format=3 uid="uid://c4qvyi42w0qvy"]
 
 [ext_resource type="Script" uid="uid://bqjeqb1orxa4h" path="res://Scripts/Entity/Player/auta.gd" id="1_a6hb8"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_s0xk6"]
@@ -28,12 +28,14 @@
 [ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Scripts/Entity/Combat/entity_hitbox.gd" id="18_pbapi"]
 [ext_resource type="PackedScene" uid="uid://du6ojetpg40qk" path="res://Objects/Components/damage_counter_parent.tscn" id="18_q1afw"]
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="19_q1afw"]
+[ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Scripts/Entity/Combat/hurt_manager.gd" id="20_fjfq2"]
 [ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Scripts/Entity/Combat/hurtbox.gd" id="21_ml1rd"]
 [ext_resource type="Script" uid="uid://177nfholi5sj" path="res://Scripts/Entity/Player/Action States/auta_duck_state.gd" id="22_r3wth"]
 [ext_resource type="PackedScene" uid="uid://ble3feonhjm7c" path="res://Objects/Effects/Oneshots/HitFX.tscn" id="22_s8caf"]
 [ext_resource type="PackedScene" uid="uid://tn6ogvcrkx4g" path="res://Objects/Effects/Oneshots/orbreform.tscn" id="24_8pc40"]
 [ext_resource type="Script" uid="uid://e63s53waw8ux" path="res://Scripts/Entity/Player/Action States/player_speed_state.gd" id="24_r3wth"]
 [ext_resource type="PackedScene" uid="uid://b4xiwafh7vu5s" path="res://Objects/Effects/Oneshots/ElectricitySpurt.tscn" id="26_jj7hu"]
+[ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Objects/Effects/Oneshots/SlashFX.tscn" id="27_4r2se"]
 [ext_resource type="Script" uid="uid://buye7h14rme1w" path="res://Scripts/Entity/Player/Action States/player_hurt_state.gd" id="27_7a5kt"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
@@ -858,7 +860,7 @@ break_loop_at_end = true
 priority = 2
 switch_mode = 2
 advance_mode = 2
-advance_expression = "100 < abs(velocity.x)
+advance_expression = "140 < abs(velocity.x)
 "
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0j550"]
@@ -866,12 +868,16 @@ break_loop_at_end = true
 priority = 2
 switch_mode = 2
 advance_mode = 2
-advance_expression = "100 >= abs(velocity.x)
+advance_expression = "140 >= abs(velocity.x)
 "
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ml1rd"]
 advance_mode = 2
 advance_expression = "anim_skating == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qmcjn"]
+advance_mode = 2
+advance_expression = "duck == false"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eg2nn"]
 states/Duck/node = SubResource("AnimationNodeAnimation_u2e3c")
@@ -891,12 +897,12 @@ states/Run/position = Vector2(562.4, 110.64)
 states/Skate/node = SubResource("AnimationNodeAnimation_mt5hc")
 states/Skate/position = Vector2(611, 199)
 states/Slide/node = SubResource("AnimationNodeAnimation_g5j43")
-states/Slide/position = Vector2(-22, -6)
+states/Slide/position = Vector2(-13, 16)
 states/Start/position = Vector2(165, 113.24)
 states/Turn/node = SubResource("AnimationNodeAnimation_2yium")
 states/Turn/position = Vector2(624.2, -31.2)
-transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Duck", "Slide", SubResource("AnimationNodeStateMachineTransition_d61rj"), "Slide", "FromSlide", SubResource("AnimationNodeStateMachineTransition_8kc68"), "FromSlide", "Duck", SubResource("AnimationNodeStateMachineTransition_r258h"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov"), "Run", "Skate", SubResource("AnimationNodeStateMachineTransition_3pwj2"), "Skate", "Run", SubResource("AnimationNodeStateMachineTransition_q4eky"), "Run", "FastRun", SubResource("AnimationNodeStateMachineTransition_r3wth"), "FastRun", "Run", SubResource("AnimationNodeStateMachineTransition_0j550"), "FastRun", "Skate", SubResource("AnimationNodeStateMachineTransition_ml1rd")]
-graph_offset = Vector2(157, -22.830994)
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Duck", "Slide", SubResource("AnimationNodeStateMachineTransition_d61rj"), "Slide", "FromSlide", SubResource("AnimationNodeStateMachineTransition_8kc68"), "FromSlide", "Duck", SubResource("AnimationNodeStateMachineTransition_r258h"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov"), "Run", "Skate", SubResource("AnimationNodeStateMachineTransition_3pwj2"), "Skate", "Run", SubResource("AnimationNodeStateMachineTransition_q4eky"), "Run", "FastRun", SubResource("AnimationNodeStateMachineTransition_r3wth"), "FastRun", "Run", SubResource("AnimationNodeStateMachineTransition_0j550"), "FastRun", "Skate", SubResource("AnimationNodeStateMachineTransition_ml1rd"), "Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_qmcjn")]
+graph_offset = Vector2(101, -219.831)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jessi"]
 animation = &"Hurt"
@@ -991,20 +997,11 @@ states/Start/position = Vector2(151.2, 122.944)
 states/ThrowSpin/node = SubResource("AnimationNodeAnimation_li7pu")
 states/ThrowSpin/position = Vector2(201, -115)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
-graph_offset = Vector2(-203, -92.94699)
+graph_offset = Vector2(-87, -185.94699)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
 radius = 6.0
 height = 25.0
-
-[sub_resource type="Gradient" id="Gradient_s8caf"]
-offsets = PackedFloat32Array(0.0991254, 0.784257)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r3wth"]
-gradient = SubResource("Gradient_s8caf")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_8pc40"]
 script = ExtResource("19_q1afw")
@@ -1044,6 +1041,15 @@ blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j550"]
 size = Vector2(12, 25)
+
+[sub_resource type="Gradient" id="Gradient_s8caf"]
+offsets = PackedFloat32Array(0.0991254, 0.784257)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r3wth"]
+gradient = SubResource("Gradient_s8caf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2fwl"]
 radius = 13.0384
@@ -1112,17 +1118,47 @@ max_health = 30.0
 [node name="InputManager" type="Node2D" parent="GenericAttributes"]
 script = ExtResource("13_4h77s")
 read_controller_input = true
-input_deadzone = 0.3
+input_deadzone = 0.4
 
 [node name="DamageCounterParent" parent="GenericAttributes" instance=ExtResource("18_q1afw")]
 
 [node name="SpecialAttributes" type="Node2D" parent="."]
 
-[node name="PointLight" type="PointLight2D" parent="SpecialAttributes"]
-color = Color(5.77569e-06, 0.922705, 0.927308, 1)
-energy = 0.0
-range_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_r3wth")
+[node name="HurtManager" type="Node2D" parent="SpecialAttributes"]
+script = ExtResource("20_fjfq2")
+power_resistance = 1
+
+[node name="ObjectPools" type="Node2D" parent="SpecialAttributes"]
+
+[node name="OrbBurst" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("15_sqgqn")
+count = 2
+
+[node name="OrbReform" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("24_8pc40")
+count = 2
+
+[node name="Land" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("17_06ssu")
+count = 2
+
+[node name="SlashFX" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("27_4r2se")
+count = 2
+
+[node name="HitFX" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("22_s8caf")
+count = 2
+
+[node name="BloodSpurt" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("14_l0f5k")
+object = ExtResource("26_jj7hu")
+count = 6
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes"]
 
@@ -1170,33 +1206,6 @@ texture = ExtResource("10_s0xk6")
 hframes = 8
 frame = 1
 
-[node name="ObjectPools" type="Node2D" parent="SpecialAttributes"]
-
-[node name="OrbBurst" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("15_sqgqn")
-count = 2
-
-[node name="OrbReform" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("24_8pc40")
-count = 2
-
-[node name="Land" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("17_06ssu")
-count = 2
-
-[node name="HitFX" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("22_s8caf")
-count = 2
-
-[node name="ElectricitySpurt" type="Node" parent="SpecialAttributes/ObjectPools"]
-script = ExtResource("14_l0f5k")
-object = ExtResource("26_jj7hu")
-count = 6
-
 [node name="PlayerHurtbox" type="Area2D" parent="SpecialAttributes"]
 collision_layer = 512
 collision_mask = 5120
@@ -1206,6 +1215,12 @@ script = ExtResource("21_ml1rd")
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_0j550")
 debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
+
+[node name="PointLight" type="PointLight2D" parent="SpecialAttributes"]
+color = Color(5.77569e-06, 0.922705, 0.927308, 1)
+energy = 0.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_r3wth")
 
 [node name="ActionStates" type="Node2D" parent="."]
 

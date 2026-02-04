@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource("1_vu7wl")
-jump_power = -275.0
-gravity = 260.0
+jump_power = -300.0
+gravity = 550.0
 normal_gravity_scale = 1.0
 short_hop_gravity_scale = 3.0
-rising_gravity_scale = 2.2
-falling_gravity_scale = 1.6
-rising_threshold = -30.0
-falling_threshold = 10.0
+rising_gravity_scale = 1.2
+falling_gravity_scale = 0.9
+rising_threshold = -50.0
+falling_threshold = -20.0
 max_falling_speed = 300.0
 metadata/_custom_type_script = "uid://dymrp8farfsle"

@@ -1,13 +1,10 @@
-[gd_scene load_steps=77 format=4 uid="uid://bvlhthxlo20l7"]
+[gd_scene load_steps=71 format=4 uid="uid://bvlhthxlo20l7"]
 
 [ext_resource type="Script" uid="uid://cejh16smoq2ue" path="res://Scripts/System/Controllers/C-sharp/GameWorld.cs" id="1_ga3tf"]
 [ext_resource type="Texture2D" uid="uid://n34hv5l4n6ok" path="res://Art Assets/Environment/TestLab/Backgrounds/TowerWall.png" id="2_uytli"]
 [ext_resource type="PackedScene" uid="uid://c4qvyi42w0qvy" path="res://Objects/Entities/Player/auta.tscn" id="3_am0ur"]
-[ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Scripts/Entity/Combat/hitbox.gd" id="3_ashu4"]
-[ext_resource type="Texture2D" uid="uid://bgao42q5hob07" path="res://Art Assets/Debug/DebugSpikes.png" id="4_6ftjg"]
 [ext_resource type="Script" uid="uid://cdscelsbemhqb" path="res://Scripts/Dialogue/dialogue_runner.gd" id="4_fxf0g"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="4_mcst2"]
-[ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="4_uc7io"]
 [ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Scripts/Entity/Player/Parameter Resources/auta_duck_parameters.tres" id="5_caf74"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Art Assets/Characters/Tess/TessSheet.png" id="5_kuukr"]
 [ext_resource type="Resource" uid="uid://bloiv7pepkuh" path="res://Data/Dialogue/Levels/TestLab/Tess_Lab_1.tres" id="6_h0eo7"]
@@ -28,9 +25,12 @@
 [ext_resource type="Script" uid="uid://dq4hhkm2ssb6b" path="res://Scripts/Environment/DemoDungeon/desplicer.gd" id="16_uytli"]
 [ext_resource type="Script" uid="uid://bbptsu4dxchx4" path="res://Scripts/System/Camera/cam_region.gd" id="18_6u8da"]
 [ext_resource type="Script" uid="uid://bqoncsiwhcrgb" path="res://Scripts/System/Camera/parallax_controller.gd" id="19_cld1r"]
-[ext_resource type="Texture2D" uid="uid://bo382opbg1lma" path="res://Art Assets/Environment/Misc/Tilesets/TestTileset.png" id="19_tltcn"]
 [ext_resource type="Texture2D" uid="uid://cg03ynmhrreyr" path="res://Art Assets/Environment/TestLab/Backgrounds/TowerWallLeft.png" id="21_fxf0g"]
 [ext_resource type="Texture2D" uid="uid://6armilotcurd" path="res://Art Assets/Effects/Lighting/Gradient.png" id="23_uc7io"]
+[ext_resource type="Texture2D" uid="uid://cu588nywie0r5" path="res://Art Assets/Environment/TestLab/Backgrounds/BackgroundTower.png" id="24_2p05u"]
+[ext_resource type="Texture2D" uid="uid://cgsf8qprecy3x" path="res://Art Assets/Environment/TestLab/Backgrounds/LanceAuraSmall.png" id="25_mcst2"]
+[ext_resource type="TileSet" uid="uid://noxo8242sqq6" path="res://Art Assets/Environment/TestLab/Tileset/testlabtileset.res" id="29_dqw83"]
+[ext_resource type="Texture2D" uid="uid://chv5nmpt6vwqo" path="res://Art Assets/Characters/Auta/AutaNewNew.png" id="32_caf74"]
 [ext_resource type="PackedScene" uid="uid://dqojhxpt2n0ma" path="res://Objects/Entities/Enemies/lumpy.tscn" id="35_syevp"]
 
 [sub_resource type="Environment" id="Environment_sapyj"]
@@ -41,30 +41,6 @@ glow_intensity = 1.28
 glow_strength = 0.48
 glow_bloom = 0.43
 glow_blend_mode = 1
-
-[sub_resource type="Resource" id="Resource_ashu4"]
-script = ExtResource("4_uc7io")
-damage = 4
-x_knockback = 100.0
-y_knockback = -20.0
-x_knockback_is_relative = true
-hitstun_duration = 0.1
-impact_fx = "HitFX"
-metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ashu4"]
-size = Vector2(16, 16)
-
-[sub_resource type="GDScript" id="GDScript_ashu4"]
-script/source = "extends Area2D
-@export var start_id: String
-
-func _ready() -> void:
-	body_entered.connect(on_body_entered)
-	
-func on_body_entered(_body: Node2D) -> void:
-	$DialogueRunner.start_dialogue(start_id)
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gsxy"]
 atlas = ExtResource("5_kuukr")
@@ -119,7 +95,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
 
-[sub_resource type="Resource" id="Resource_caf74"]
+[sub_resource type="Resource" id="Resource_voja1"]
 resource_local_to_scene = true
 script = ExtResource("9_mcst2")
 recovery_time = 0.25
@@ -128,12 +104,12 @@ invincibility_time = 1.0
 stagger_knockback_threshold = 100.0
 metadata/_custom_type_script = "uid://d4bnhxqktpcel"
 
-[sub_resource type="Gradient" id="Gradient_sapyj"]
+[sub_resource type="Gradient" id="Gradient_dqw83"]
 offsets = PackedFloat32Array(0, 0.6666667)
 colors = PackedColorArray(0.0010704279, 0.2199974, 0.40277168, 0.431373, 0.204035, 0.0178255, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ie3ev"]
-gradient = SubResource("Gradient_sapyj")
+gradient = SubResource("Gradient_dqw83")
 width = 700
 height = 500
 fill_from = Vector2(0.5128205, 0.77350426)
@@ -156,35 +132,35 @@ blend_mode = 1
 light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tltcn"]
-size = Vector2(448, 512)
+size = Vector2(448, 416)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0eo7"]
 size = Vector2(448, 512)
 
-[sub_resource type="Gradient" id="Gradient_h0eo7"]
+[sub_resource type="Gradient" id="Gradient_2p05u"]
 offsets = PackedFloat32Array(0, 0.69908816, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.90577507, 0.90577507, 0.90577507, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uc7io"]
-gradient = SubResource("Gradient_h0eo7")
+gradient = SubResource("Gradient_2p05u")
 width = 160
 height = 169
 fill = 2
 fill_from = Vector2(0.5, 0.487)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc7io"]
-size = Vector2(896, 512)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqw83"]
+size = Vector2(896, 6144)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxf0g"]
 radius = 24.186773
 
-[sub_resource type="Gradient" id="Gradient_frn6d"]
+[sub_resource type="Gradient" id="Gradient_mcst2"]
 offsets = PackedFloat32Array(0, 0.4854369, 1)
 colors = PackedColorArray(1, 0, 0, 1, 0.26578033, 0.5614267, 1, 1, 1, 0, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cld1r"]
-gradient = SubResource("Gradient_frn6d")
+gradient = SubResource("Gradient_mcst2")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -195,12 +171,12 @@ blend_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uc7io"]
 blend_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_g43yt"]
+[sub_resource type="Gradient" id="Gradient_caf74"]
 offsets = PackedFloat32Array(0, 0.30744338, 0.36245954, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.37864077, 0.37864077, 0.37864077, 1, 0.2724798, 0.2724798, 0.2724798, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ashu4"]
-gradient = SubResource("Gradient_g43yt")
+gradient = SubResource("Gradient_caf74")
 width = 8
 height = 8
 fill = 1
@@ -261,64 +237,23 @@ point_count = 2
 radius = 6.0
 height = 25.0
 
-[sub_resource type="Gradient" id="Gradient_a1s1a"]
+[sub_resource type="Gradient" id="Gradient_voja1"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2p05u"]
-gradient = SubResource("Gradient_a1s1a")
+gradient = SubResource("Gradient_voja1")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="Gradient" id="Gradient_junhl"]
+[sub_resource type="Gradient" id="Gradient_v5xu6"]
 colors = PackedColorArray(0, 0.47059858, 0.75551665, 1, 1, 0, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mcst2"]
-gradient = SubResource("Gradient_junhl")
+gradient = SubResource("Gradient_v5xu6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_v5xu6"]
-vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
-agent_radius = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uytli"]
-texture = ExtResource("19_tltcn")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_v5xu6")
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_fxf0g"]
-physics_layer_0/collision_layer = 1
-navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_uytli")
 
 [node name="GameWorld" type="CanvasModulate"]
 texture_filter = 1
@@ -333,29 +268,14 @@ position = Vector2(449, -437)
 editor_only = true
 energy = 2.64
 
-[node name="DebugSpikes" type="Area2D" parent="."]
-position = Vector2(176, 0)
-collision_layer = 4096
-collision_mask = 0
-script = ExtResource("3_ashu4")
-hitbox_data = SubResource("Resource_ashu4")
-
-[node name="DebugSpikes" type="Sprite2D" parent="DebugSpikes"]
-texture = ExtResource("4_6ftjg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugSpikes"]
-shape = SubResource("RectangleShape2D_ashu4")
-
 [node name="Entities" type="Node2D" parent="."]
 texture_filter = 1
 
 [node name="BasicDialogueEntity" type="Area2D" parent="Entities"]
 z_index = -1
-position = Vector2(-448, -42)
+position = Vector2(-448, 272)
 collision_layer = 0
 collision_mask = 8
-script = SubResource("GDScript_ashu4")
-start_id = "Start"
 
 [node name="Tess" type="AnimatedSprite2D" parent="Entities/BasicDialogueEntity"]
 sprite_frames = SubResource("SpriteFrames_uikoh")
@@ -374,10 +294,10 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5xne8")
 
 [node name="Auta" parent="Entities" instance=ExtResource("3_am0ur")]
-position = Vector2(176, -48)
+position = Vector2(256, -48)
 parameters = Dictionary[String, ExtResource("4_mcst2")]({
 "duck": ExtResource("5_caf74"),
-"hurt": SubResource("Resource_caf74"),
+"hurt": SubResource("Resource_voja1"),
 "jump": ExtResource("6_voja1"),
 "movement": ExtResource("7_v5xu6"),
 "orb": ExtResource("8_syevp"),
@@ -385,19 +305,19 @@ parameters = Dictionary[String, ExtResource("4_mcst2")]({
 })
 
 [node name="Lumpy4" parent="Entities" instance=ExtResource("35_syevp")]
-position = Vector2(672, -48)
+position = Vector2(576, -48)
 
 [node name="Lumpy3" parent="Entities" instance=ExtResource("35_syevp")]
 position = Vector2(608, -304)
 
-[node name="Lumpy2" parent="Entities" instance=ExtResource("35_syevp")]
-position = Vector2(304, -48)
+[node name="Lumpy6" parent="Entities" instance=ExtResource("35_syevp")]
+position = Vector2(-656, -48)
 
-[node name="Lumpy" parent="Entities" instance=ExtResource("35_syevp")]
-position = Vector2(720, -208)
+[node name="Lumpy7" parent="Entities" instance=ExtResource("35_syevp")]
+position = Vector2(-512, -48)
 
-[node name="Lumpy5" parent="Entities" instance=ExtResource("35_syevp")]
-position = Vector2(336, -48)
+[node name="Lumpy8" parent="Entities" instance=ExtResource("35_syevp")]
+position = Vector2(-352, -48)
 
 [node name="GameSystem" parent="." instance=ExtResource("8_ajoom")]
 
@@ -423,7 +343,7 @@ z_index = -15
 
 [node name="Stars" type="Parallax2D" parent="Background"]
 self_modulate = Color(0.8089983, 0.8089983, 0.8089982, 1)
-z_index = -20
+z_index = -27
 scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(650, 400)
 
@@ -438,7 +358,7 @@ script = ExtResource("10_ikfgr")
 
 [node name="Planet2" type="Parallax2D" parent="Background"]
 modulate = Color(1, 1, 1, 0.47843137)
-z_index = -20
+z_index = -27
 scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(600, 368.805)
 
@@ -450,7 +370,7 @@ script = ExtResource("10_ikfgr")
 
 [node name="Planet1" type="Parallax2D" parent="Background"]
 modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)
-z_index = -20
+z_index = -26
 scroll_scale = Vector2(0.02, 0.02)
 scroll_offset = Vector2(800, 470.545)
 
@@ -462,7 +382,7 @@ script = ExtResource("10_ikfgr")
 
 [node name="Clouds1" type="Parallax2D" parent="Background"]
 self_modulate = Color(0.8089983, 0.8089983, 0.8089982, 1)
-z_index = -20
+z_index = -26
 scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(848, 120)
 repeat_size = Vector2(1812, 1024)
@@ -479,7 +399,7 @@ flip_h = true
 script = ExtResource("10_ikfgr")
 
 [node name="Clouds2" type="Parallax2D" parent="Background"]
-z_index = -20
+z_index = -23
 scroll_scale = Vector2(0.15, 0.15)
 scroll_offset = Vector2(832, -32)
 repeat_size = Vector2(1812, 1024)
@@ -502,7 +422,7 @@ script = ExtResource("18_6u8da")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamRegions/CamRegion"]
 visible = false
-position = Vector2(224, 128)
+position = Vector2(224, 80)
 shape = SubResource("RectangleShape2D_tltcn")
 
 [node name="BackgroundElements" type="Node2D" parent="CamRegions/CamRegion"]
@@ -520,12 +440,93 @@ position = Vector2(24, 128)
 texture = ExtResource("21_fxf0g")
 flip_v = true
 
+[node name="TowerWall" type="Sprite2D" parent="CamRegions/CamRegion/BackgroundElements/TowerWallLeft"]
+position = Vector2(400, -256)
+texture = ExtResource("2_uytli")
+flip_v = true
+
+[node name="TowerWallLeft" type="Sprite2D" parent="CamRegions/CamRegion/BackgroundElements/TowerWallLeft"]
+position = Vector2(0, -256)
+texture = ExtResource("21_fxf0g")
+flip_v = true
+
 [node name="TowerWall2" type="Sprite2D" parent="CamRegions/CamRegion/BackgroundElements"]
 position = Vector2(424, 384)
 texture = ExtResource("2_uytli")
 flip_v = true
 
 [node name="TowerWallLeft2" type="Sprite2D" parent="CamRegions/CamRegion/BackgroundElements"]
+position = Vector2(24, 384)
+texture = ExtResource("21_fxf0g")
+flip_v = true
+
+[node name="Node2D" type="Node2D" parent="CamRegions/CamRegion"]
+z_index = -15
+script = ExtResource("19_cld1r")
+scroll_scale = 0.7
+offset = Vector2(-67, -30)
+
+[node name="BackgroundTower" type="Sprite2D" parent="CamRegions/CamRegion/Node2D"]
+z_index = -9
+position = Vector2(336, 224.75)
+texture = ExtResource("24_2p05u")
+
+[node name="BackgroundTower2" type="Sprite2D" parent="CamRegions/CamRegion/Node2D"]
+z_index = -9
+position = Vector2(216, 208)
+texture = ExtResource("24_2p05u")
+
+[node name="LanceAura" type="Sprite2D" parent="CamRegions/CamRegion/Node2D/BackgroundTower2"]
+z_index = -1
+position = Vector2(14.07, -114.225)
+texture = ExtResource("25_mcst2")
+
+[node name="BackgroundTower3" type="Sprite2D" parent="CamRegions/CamRegion/Node2D"]
+z_index = -9
+position = Vector2(96, 224.75)
+texture = ExtResource("24_2p05u")
+
+[node name="CamRegion5" type="Area2D" parent="CamRegions" groups=["CamRegion"]]
+position = Vector2(-1344, -256)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("18_6u8da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamRegions/CamRegion5"]
+position = Vector2(224, 128)
+shape = SubResource("RectangleShape2D_tltcn")
+
+[node name="BackgroundElements" type="Node2D" parent="CamRegions/CamRegion5"]
+z_index = -15
+script = ExtResource("19_cld1r")
+scroll_scale = 1.0
+
+[node name="TowerWall" type="Sprite2D" parent="CamRegions/CamRegion5/BackgroundElements"]
+position = Vector2(424, 128)
+texture = ExtResource("2_uytli")
+flip_v = true
+
+[node name="TowerWallLeft" type="Sprite2D" parent="CamRegions/CamRegion5/BackgroundElements"]
+position = Vector2(24, 128)
+texture = ExtResource("21_fxf0g")
+flip_v = true
+
+[node name="TowerWall3" type="Sprite2D" parent="CamRegions/CamRegion5/BackgroundElements"]
+position = Vector2(424, -128)
+texture = ExtResource("2_uytli")
+flip_v = true
+
+[node name="TowerWallLeft3" type="Sprite2D" parent="CamRegions/CamRegion5/BackgroundElements"]
+position = Vector2(24, -128)
+texture = ExtResource("21_fxf0g")
+flip_v = true
+
+[node name="TowerWall2" type="Sprite2D" parent="CamRegions/CamRegion5/BackgroundElements"]
+position = Vector2(424, 384)
+texture = ExtResource("2_uytli")
+flip_v = true
+
+[node name="TowerWallLeft2" type="Sprite2D" parent="CamRegions/CamRegion5/BackgroundElements"]
 position = Vector2(24, 384)
 texture = ExtResource("21_fxf0g")
 flip_v = true
@@ -614,8 +615,8 @@ script = ExtResource("18_6u8da")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamRegions/CamRegion4"]
 visible = false
-position = Vector2(448, 256)
-shape = SubResource("RectangleShape2D_uc7io")
+position = Vector2(448, 128)
+shape = SubResource("RectangleShape2D_dqw83")
 
 [node name="Node2D" type="Node2D" parent="CamRegions/CamRegion4"]
 z_index = -15
@@ -647,6 +648,50 @@ color = Color(0.68650734, 0.8610554, 0.9734337, 1)
 texture = SubResource("GradientTexture2D_uc7io")
 
 [node name="WindowLight3" type="PointLight2D" parent="CamRegions/CamRegion4/Lighting"]
+position = Vector2(608, 128)
+scale = Vector2(1, 1.5)
+color = Color(0.68650734, 0.8610554, 0.9734337, 1)
+texture = SubResource("GradientTexture2D_uc7io")
+
+[node name="CamRegion6" type="Area2D" parent="CamRegions" groups=["CamRegion"]]
+position = Vector2(-2240, -256)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("18_6u8da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamRegions/CamRegion6"]
+position = Vector2(448, 2816)
+shape = SubResource("RectangleShape2D_dqw83")
+
+[node name="Node2D" type="Node2D" parent="CamRegions/CamRegion6"]
+z_index = -15
+script = ExtResource("19_cld1r")
+scroll_scale = 1.0
+
+[node name="Lighting" type="Node2D" parent="CamRegions/CamRegion6"]
+script = ExtResource("19_cld1r")
+scroll_scale = 1.0
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CamRegions/CamRegion6/Lighting"]
+position = Vector2(304, 112)
+color = Color(0.48971283, 0.5371971, 0.5695949, 1)
+energy = 0.65
+blend_mode = 1
+range_item_cull_mask = 3
+
+[node name="WindowLight" type="PointLight2D" parent="CamRegions/CamRegion6/Lighting"]
+position = Vector2(304, 128)
+scale = Vector2(1, 1.5)
+color = Color(0.68650734, 0.8610554, 0.9734337, 1)
+texture = SubResource("GradientTexture2D_uc7io")
+
+[node name="WindowLight2" type="PointLight2D" parent="CamRegions/CamRegion6/Lighting"]
+position = Vector2(448, 128)
+scale = Vector2(1, 1.5)
+color = Color(0.68650734, 0.8610554, 0.9734337, 1)
+texture = SubResource("GradientTexture2D_uc7io")
+
+[node name="WindowLight3" type="PointLight2D" parent="CamRegions/CamRegion6/Lighting"]
 position = Vector2(608, 128)
 scale = Vector2(1, 1.5)
 color = Color(0.68650734, 0.8610554, 0.9734337, 1)
@@ -789,9 +834,21 @@ texture = SubResource("GradientTexture2D_mcst2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 visible = false
-tile_map_data = PackedByteArray("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")
-tile_set = SubResource("TileSet_fxf0g")
-collision_enabled = false
+tile_map_data = PackedByteArray("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AAASAPn/AAAAAAAAAAATAPn/AAAAAAAAAAAUAPn/AAAAAAAAAAB1//7/AQAIAAAAAAB2//7/AQAIAAAAAAB3//7/AQAIAAAAAAB4//7/AQAIAAAAAAB5//7/AQAIAAAAAAB6//7/AQAIAAAAAAB7//7/AQAIAAAAAAB8//7/AQAIAAAAAAB9//7/AQAIAAAAAAB+//7/AQAIAAAAAAB///7/AQAIAAAAAACA//7/AQAIAAAAAACB//7/AQAIAAAAAACC//7/AQAIAAAAAACD//7/AQAIAAAAAACE//7/AQAIAAAAAACF//7/AQAIAAAAAACG//7/AQAIAAAAAACH//7/AQAIAAAAAACI//7/AQAIAAAAAACJ//7/AQAIAAAAAACK//7/AQAIAAAAAACL//7/AQAIAAAAAACM//7/AQAIAAAAAACN//7/AQAIAAAAAACO//7/AQAIAAAAAACP//7/AQAIAAAAAACQ//7/AQAIAAAAAACR//7/AQAIAAAAAACS//7/AQAIAAAAAACT//7/AQAIAAAAAACU//7/AQAIAAAAAACV//7/AQAIAAAAAACW//7/AQAIAAAAAACX//7/AQAIAAAAAACY//7/AQAIAAAAAACZ//7/AQAIAAAAAACa//7/AQAIAAAAAACb//7/AQAIAAAAAACc//7/AQAIAAAAAACd//7/AQAIAAAAAACe//7/AQAIAAAAAACf//7/AQAIAAAAAACg//7/AQAIAAAAAACh//7/AQAIAAAAAACi//7/AQAIAAAAAACj//7/AQAIAAAAAACk//7/AQAIAAAAAACl//7/AQAIAAAAAACm//7/AQAIAAAAAACn//7/AQAIAAAAAACo//7/AQAIAAAAAACp//7/AQAIAAAAAACq//7/AQAIAAAAAACX//3/AQAIAAAAAACX//z/AQAIAAAAAACX//v/AQAIAAAAAACY//v/AQAIAAAAAACZ//v/AQAIAAAAAACa//v/AQAIAAAAAACa//z/AQAIAAAAAACb//z/AQAIAAAAAACc//z/AQAIAAAAAACc//v/AQAIAAAAAACb//v/AQAIAAAAAACc//3/AQAIAAAAAACC//3/AQAIAAAAAACC//z/AQAIAAAAAACC//v/AQAIAAAAAACD//v/AQAIAAAAAACE//v/AQAIAAAAAACF//v/AQAIAAAAAACG//v/AQAIAAAAAACH//v/AQAIAAAAAACH//z/AQAIAAAAAACI//z/AQAIAAAAAACI//3/AQAIAAAAAAB0//r/AQAIAAAAAAB0//v/AQAIAAAAAAB0//z/AQAIAAAAAAB0//3/AQAIAAAAAACX//r/AQAIAAAAAACY//r/AQAIAAAAAACZ//r/AQAIAAAAAACa//r/AQAIAAAAAACb//r/AQAIAAAAAACc//r/AQAIAAAAAACT//3/AQAIAAAAAACT//z/AQAIAAAAAACT//v/AQAIAAAAAACU//v/AQAIAAAAAACU//z/AQAIAAAAAACU//3/AQAIAAAAAACX//n/AQAIAAAAAACY//n/AQAIAAAAAACZ//n/AQAIAAAAAACa//n/AQAIAAAAAACb//n/AQAIAAAAAACc//n/AQAIAAAAAACc//j/AQAIAAAAAACc//f/AQAIAAAAAACc//b/AQAIAAAAAACc//X/AQAIAAAAAACb//X/AQAIAAAAAACa//X/AQAIAAAAAACY//X/AQAIAAAAAACX//X/AQAIAAAAAACZ//X/AQAIAAAAAACQ//j/AQAIAAAAAACP//j/AQAIAAAAAACO//j/AQAIAAAAAACN//j/AQAIAAAAAACM//j/AQAIAAAAAACM//f/AQAIAAAAAACM//b/AQAIAAAAAACM//X/AQAIAAAAAACM//T/AQAIAAAAAACM//P/AQAIAAAAAACL//P/AQAIAAAAAACL//L/AQAIAAAAAACL//H/AQAIAAAAAACL//D/AQAIAAAAAACT//X/AQAIAAAAAACU//X/AQAIAAAAAAA=")
+tile_set = ExtResource("29_dqw83")
 navigation_visibility_mode = 1
+
+[node name="Lumpy" parent="." instance=ExtResource("35_syevp")]
+position = Vector2(-1856, -48)
+
+[node name="Lumpy2" parent="." instance=ExtResource("35_syevp")]
+position = Vector2(-1488, -64)
+
+[node name="Lumpy3" parent="." instance=ExtResource("35_syevp")]
+position = Vector2(-1280, -256)
+
+[node name="AutaNewNew" type="Sprite2D" parent="."]
+position = Vector2(223, -43)
+texture = ExtResource("32_caf74")
 
 [editable path="GameSystem"]

@@ -7,10 +7,10 @@ path="res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f
 
 [deps]
 
-files=["res://LDTK/TestLabDungeon/tilesets/tileset_16px.res", "res://LDTK/TestLabDungeon/levels/Level_0.scn", "res://LDTK/TestLabDungeon/levels/Level_1.scn", "res://LDTK/TestLabDungeon/levels/Level_2.scn", "res://LDTK/TestLabDungeon/levels/Level_3.scn", "res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f.scn"]
+files=["res://LDTK/TestLabDungeon/tilesets/tileset_16px.res", "res://LDTK/TestLabDungeon/levels/Level_0.scn", "res://LDTK/TestLabDungeon/levels/Level_1.scn", "res://LDTK/TestLabDungeon/levels/Level_2.scn", "res://LDTK/TestLabDungeon/levels/Level_3.scn", "res://LDTK/TestLabDungeon/levels/Level_4.scn", "res://LDTK/TestLabDungeon/levels/Level_5.scn", "res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f.scn"]
 
 source_file="res://LDTK/TestLabDungeon/TestLabDungeon.ldtk"
-dest_files=["res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f.scn", "res://LDTK/TestLabDungeon/tilesets/tileset_16px.res", "res://LDTK/TestLabDungeon/levels/Level_0.scn", "res://LDTK/TestLabDungeon/levels/Level_1.scn", "res://LDTK/TestLabDungeon/levels/Level_2.scn", "res://LDTK/TestLabDungeon/levels/Level_3.scn", "res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f.scn"]
+dest_files=["res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f.scn", "res://LDTK/TestLabDungeon/tilesets/tileset_16px.res", "res://LDTK/TestLabDungeon/levels/Level_0.scn", "res://LDTK/TestLabDungeon/levels/Level_1.scn", "res://LDTK/TestLabDungeon/levels/Level_2.scn", "res://LDTK/TestLabDungeon/levels/Level_3.scn", "res://LDTK/TestLabDungeon/levels/Level_4.scn", "res://LDTK/TestLabDungeon/levels/Level_5.scn", "res://.godot/imported/TestLabDungeon.ldtk-2d2b95d148edb84f1440a2b6b3917c2f.scn"]
 
 [params]
 

@@ -21,6 +21,7 @@ signal action_c_just_released
 func _process(_delta: float) -> void:
 	if read_controller_input:
 		input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
 		if input_direction.length() < input_deadzone:
 			input_direction = Vector2.ZERO
 		

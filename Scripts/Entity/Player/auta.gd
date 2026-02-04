@@ -37,3 +37,6 @@ func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
 	inflict_hitstun(_len, _dir, _hitbox_data.hitstun_duration, 0)
 	if not is_on_floor() and velocity.y > -30:
 		velocity.y = -30
+
+func process_damage(_area):
+	$SpecialAttributes/HurtManager.process_hurt(_area)

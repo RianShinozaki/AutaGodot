@@ -8,9 +8,9 @@ height = 25.0
 
 [resource]
 script = ExtResource("1_w52yl")
-minimum_speed_skating = 110.0
+minimum_speed_skating = 999.0
 slope_jump_influence = 0.7
-max_speed = 160.0
+max_speed = 200.0
 acceleration = 450.0
 acceleration_in_air = 450.0
 deceleration = 300.0

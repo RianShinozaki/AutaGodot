@@ -77,4 +77,4 @@ func process_hurt(_hitbox: Area2D):
 	
 	#Capture UIw
 	if capture_ui:
-		PlayerUI.instance.enemy_target = entity
+		PlayerUI.instance.captured_enemy(entity)

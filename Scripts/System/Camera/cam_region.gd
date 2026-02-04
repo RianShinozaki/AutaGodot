@@ -30,5 +30,5 @@ func deactivate_self():
 func set_extents() -> void:
 	var _total_width: float = $CollisionShape2D.shape.size.x * global_scale.x
 	var _total_height: float = $CollisionShape2D.shape.size.y * global_scale.y
-	x_extents = Vector2(global_position.x, global_position.x + _total_width) 
-	y_extents = Vector2(global_position.y, global_position.y + _total_height) 
+	x_extents = Vector2($CollisionShape2D.global_position.x - _total_width/2, $CollisionShape2D.global_position.x + _total_width/2) 
+	y_extents = Vector2($CollisionShape2D.global_position.y - _total_height/2, $CollisionShape2D.global_position.y + _total_height/2) 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dqojhxpt2n0ma"]
+[gd_scene load_steps=61 format=3 uid="uid://dqojhxpt2n0ma"]
 
 [ext_resource type="Script" uid="uid://bec2isxmuf486" path="res://Scripts/Entity/Enemies/Lumpy/lumpy.gd" id="1_pxb8d"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Scripts/Entity/Parameters/parameter_set.gd" id="2_abrse"]
@@ -21,9 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Objects/Effects/Oneshots/SlashFX.tscn" id="16_ggq7g"]
 [ext_resource type="PackedScene" uid="uid://jxbt53i5ibrm" path="res://Objects/Components/enemy_generic_attributes.tscn" id="16_h6ji7"]
 [ext_resource type="PackedScene" uid="uid://7qyd1unc7cjw" path="res://Objects/Effects/Oneshots/BloodSpurt.tscn" id="17_t3lta"]
+[ext_resource type="Script" uid="uid://bxlxjbv23a585" path="res://Scripts/Entity/Combat/death_manager.gd" id="18_3s03o"]
 [ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Scripts/Entity/Combat/hurtbox.gd" id="18_ktntf"]
 [ext_resource type="Script" uid="uid://nnjq040k661b" path="res://Scripts/Entity/Enemies/Generic/enemy_normal_state.gd" id="19_s0u4b"]
 [ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Scripts/Entity/Enemies/Generic/enemy_hurt_state.gd" id="20_qqell"]
+[ext_resource type="PackedScene" uid="uid://bp61slk7a2ff1" path="res://Objects/Effects/Oneshots/enemy_death.tscn" id="22_fkov2"]
 [ext_resource type="Script" uid="uid://bkffy6a8vknj" path="res://Scripts/Entity/Enemies/AIStates/patrol_state.gd" id="23_ugovn"]
 [ext_resource type="Script" uid="uid://b5ilw57hqw2c" path="res://Scripts/Entity/Enemies/AIStates/aggro_keep_distance_state.gd" id="24_widae"]
 [ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Scripts/Entity/Combat/entity_hitbox.gd" id="25_3s03o"]
@@ -62,10 +64,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15384616, 0.30769232, 0.4615383, 0.6153843, 0.7692313),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15384616, 0.30769232, 0.4615383, 0.6153843, 0.7692313, 0.908787),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8, 9, 10]
+"values": [5, 6, 7, 8, 9, 10, 3]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -91,7 +93,7 @@ tracks/2/path = NodePath("../SpecialAttributes/Hitboxes/Attack/CollisionShape2D:
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3133244, 0.92560613),
+"times": PackedFloat32Array(0, 0.3133244, 0.7692308),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -258,22 +260,23 @@ states/Tuck/position = Vector2(556, 8)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb")]
 graph_offset = Vector2(-28, -95)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
-size = Vector2(18, 8)
-
 [sub_resource type="Resource" id="Resource_ggq7g"]
 script = ExtResource("26_pglu5")
 damage = 3
 x_knockback = 60.0
 y_knockback = -20.0
 x_knockback_is_relative = true
+knockback_power = 2
 hitstun_duration = 0.08
-impact_fx = "SlashFX"
+impact_fx = "HitFX"
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]
 radius = 6.79
 height = 22.93
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
+size = Vector2(18, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fud45"]
 radius = 64.0
@@ -331,7 +334,17 @@ shape = SubResource("CapsuleShape2D_syevp")
 
 [node name="GenericAttributes" parent="." instance=ExtResource("16_h6ji7")]
 
+[node name="EntityStatus" parent="GenericAttributes" index="0"]
+max_health = 16.0
+
 [node name="SpecialAttributes" type="Node2D" parent="."]
+
+[node name="HurtManager" type="Node2D" parent="SpecialAttributes"]
+script = ExtResource("25_jkofg")
+power_resistance = 1
+
+[node name="DeathManager" type="Node2D" parent="SpecialAttributes"]
+script = ExtResource("18_3s03o")
 
 [node name="ObjectPools" type="Node2D" parent="SpecialAttributes"]
 
@@ -355,38 +368,10 @@ script = ExtResource("13_3s03o")
 object = ExtResource("17_t3lta")
 count = 2
 
-[node name="Hurtbox" type="Area2D" parent="SpecialAttributes"]
-collision_layer = 2048
-collision_mask = 4352
-script = ExtResource("18_ktntf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hurtbox"]
-shape = SubResource("RectangleShape2D_xmtoo")
-debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
-
-[node name="Hitboxes" type="Node2D" parent="SpecialAttributes"]
-
-[node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
-position = Vector2(-24, 0)
-collision_layer = 1024
-collision_mask = 8704
-script = ExtResource("25_3s03o")
-entity = NodePath("../../..")
-hitbox_data = SubResource("Resource_ggq7g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Attack"]
-position = Vector2(24, 0)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_t3lta")
-disabled = true
-
-[node name="AggroRange" type="Area2D" parent="SpecialAttributes"]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/AggroRange"]
-shape = SubResource("CircleShape2D_fud45")
-debug_color = Color(0.75881803, 0.5550323, 0.23434493, 0.41960785)
+[node name="DeathExplosion" type="Node" parent="SpecialAttributes/ObjectPools"]
+script = ExtResource("13_3s03o")
+object = ExtResource("22_fkov2")
+count = 1
 
 [node name="TerrainRaycasts" type="Node2D" parent="SpecialAttributes"]
 
@@ -404,17 +389,50 @@ target_position = Vector2(0, 16)
 [node name="LeftWall" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts"]
 target_position = Vector2(-16, 0)
 
+[node name="Hitboxes" type="Node2D" parent="SpecialAttributes"]
+visible = false
+
+[node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" node_paths=PackedStringArray("entity")]
+position = Vector2(-24, 0)
+collision_layer = 1024
+collision_mask = 8704
+script = ExtResource("25_3s03o")
+entity = NodePath("../../..")
+hitbox_data = SubResource("Resource_ggq7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Attack"]
+position = Vector2(24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t3lta")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="SpecialAttributes"]
+visible = false
+collision_layer = 2048
+collision_mask = 4352
+script = ExtResource("18_ktntf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hurtbox"]
+shape = SubResource("RectangleShape2D_xmtoo")
+debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
+
+[node name="AggroRange" type="Area2D" parent="SpecialAttributes"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/AggroRange"]
+shape = SubResource("CircleShape2D_fud45")
+debug_color = Color(0.75881803, 0.5550323, 0.23434493, 0.41960785)
+
 [node name="ShoveBox" type="Area2D" parent="SpecialAttributes"]
+visible = false
 collision_layer = 262144
 collision_mask = 262144
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/ShoveBox"]
 shape = SubResource("CircleShape2D_lr445")
 debug_color = Color(0.4012802, 0.52294666, 0.8282767, 0.41960785)
-
-[node name="HurtManager" type="Node2D" parent="SpecialAttributes"]
-script = ExtResource("25_jkofg")
-power_resistance = 1
 
 [node name="ActionStates" type="Node2D" parent="."]
 
@@ -441,3 +459,5 @@ script = ExtResource("24_widae")
 [connection signal="body_entered" from="SpecialAttributes/AggroRange" to="AIStates/PatrolState" method="_on_aggro_range_body_entered"]
 [connection signal="area_entered" from="SpecialAttributes/ShoveBox" to="." method="_on_shove_box_area_entered"]
 [connection signal="area_exited" from="SpecialAttributes/ShoveBox" to="." method="_on_shove_box_area_exited"]
+
+[editable path="GenericAttributes"]

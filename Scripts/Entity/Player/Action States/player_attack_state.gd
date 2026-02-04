@@ -86,8 +86,3 @@ func animation_cancel():
 		entity.switch_action_state_name("SpeedState")
 	else:
 		entity.switch_action_state_name("NormalState")
-
-func process_damage(_area):
-	var _hb_data: HitboxData = _area.hitbox_data
-	var _hurtstate: PlayerHurtState = entity.switch_action_state_name("HurtState")
-	_hurtstate.initiate_hurt(_area as Hitbox)

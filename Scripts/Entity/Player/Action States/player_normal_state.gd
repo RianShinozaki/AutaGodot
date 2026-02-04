@@ -33,12 +33,12 @@ func _process(delta: float) -> void:
 	
 	#Accelerate and decelerate
 	var hor = inp.input_direction.x
-	if abs(hor) > 0.2 && (sign(hor) == sign(entity.velocity.x) || entity.velocity.x == 0):
+	if abs(hor) > 0.5 && (sign(hor) == sign(entity.velocity.x) || entity.velocity.x == 0):
 		entity.accelerate_x(mov_param.get_acceleration(entity) * delta * sign(hor), sign(hor) * mov_param.get_max_speed(), true)
 		if abs(entity.velocity.x) < mov_param.get_initial_speed(entity):
 			entity.velocity.x = mov_param.get_initial_speed(entity) * sign(hor)
 	
-	if abs(hor) > 0.2 && sign(hor) != sign(entity.velocity.x):
+	if abs(hor) > 0.5 && sign(hor) != sign(entity.velocity.x):
 		entity.accelerate_x(mov_param.get_reverse_acceleration(entity) * delta, 0, false)
 		
 
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	var _amount: float = _norm.x * entity.gravity * _slope_influence * delta
 	entity.accelerate_x(_amount, mov_param.absolute_limit * sign(_norm.x), true)
 	
-	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
+	if abs(hor) < 0.5 or sign(hor) == -sign(entity.velocity.x):
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
 		if abs(entity.velocity.x) < mov_param.get_minimum_speed(entity):
 			entity.velocity.x = 0
@@ -106,8 +106,3 @@ func just_grounded(_normal: Vector2, _velocity: Vector2):
 
 func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Grounded/playback").start(_anim, true)
-
-func process_damage(_area):
-	var _hb_data: HitboxData = _area.hitbox_data
-	var _hurtstate: PlayerHurtState = entity.switch_action_state_name("HurtState")
-	_hurtstate.initiate_hurt(_area as Hitbox)
