@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AutaSpeedParameters" load_steps=3 format=3 uid="uid://raaf2alewgfp"]
+[gd_resource type="Resource" script_class="AutaSpeedParameters" format=3 uid="uid://raaf2alewgfp"]
 
 [ext_resource type="Script" uid="uid://b0kurlubrh4oe" path="res://Scripts/Entity/Player/Parameter Scripts/auta_speed_parameters.gd" id="1_w52yl"]
 

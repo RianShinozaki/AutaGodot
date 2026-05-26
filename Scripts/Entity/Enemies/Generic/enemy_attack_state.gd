@@ -18,7 +18,6 @@ func _ready() -> void:
 	hurt_param = entity.parameters["hurt"]
 	
 	anim = entity.get_node("Art/AnimationTree")
-	entity.just_grounded.connect(just_grounded)
 
 func _start() -> void:
 	super._start()
@@ -50,13 +49,6 @@ func _process(delta: float) -> void:
 
 func _end() -> void:
 	super._end()
-	
-#Grounded animation handler
-func just_grounded(_normal: Vector2, _velocity: Vector2):
-	var fx: Node2D = land_fx_pool.spawn_object()
-	if fx != null:
-		fx.global_position = entity.global_position + Vector2.DOWN*14;
-		fx.rotation = entity.get_floor_angle() * sign(entity.get_floor_normal().x)
 
 func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Grounded/playback").start(_anim, true)

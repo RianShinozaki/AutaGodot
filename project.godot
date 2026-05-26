@@ -21,6 +21,10 @@ run/main_scene="uid://bb7vw7fvmejei"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://Scripts/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://c26fit5d5jho4"
+
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
@@ -29,10 +33,10 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "Auta": "res://Art Assets/UI/Dialogue/Auta.dch",
-"Tess": "res://Data/Dialogic/Tess.dch"
+"Tess": "res://Resources/Dialogic/Tess.dch"
 }
 directories/dtl_directory={
-"tess_test": "res://Data/Dialogic/tess_test.dtl"
+"tess_test": "res://Resources/Dialogic/tess_test.dtl"
 }
 layout/style_directory={
 "": "res://Art Assets/UI/Dialogue/dialogic_theme.tres",
@@ -84,8 +88,8 @@ animations/cross_fade_default="Fade Cross"
 
 [display]
 
-window/size/viewport_width=1344
-window/size/viewport_height=756
+window/size/viewport_width=1536
+window/size/viewport_height=864
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
@@ -102,14 +106,14 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/keny
 
 folder_colors={
 "res://Art Assets/": "red",
-"res://Assets/": "gray",
 "res://Audio/": "green",
-"res://Data/": "yellow",
+"res://Maps/": "teal",
 "res://Objects/": "pink",
-"res://Scenes/": "teal",
+"res://Resources/": "yellow",
+"res://Resources/Tilesets/": "orange",
 "res://Scripts/": "blue",
 "res://Shaders/": "purple",
-"res://Tilesets/": "orange",
+"res://Unused/": "gray",
 "res://addons/": "gray"
 }
 
@@ -137,7 +141,7 @@ B={
 }
 C={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
@@ -167,6 +171,11 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+TessSummon={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -178,6 +187,7 @@ dialogic_default_action={
 2d_physics/layer_3="GravityRegion"
 2d_physics/layer_4="Player"
 2d_physics/layer_5="EntityMovingPlatCollider"
+2d_physics/layer_6="Effector"
 2d_physics/layer_9="PlayerHitbox"
 2d_physics/layer_10="PlayerHurtbox"
 2d_physics/layer_11="EnemyHitbox"
@@ -189,6 +199,7 @@ dialogic_default_action={
 2d_physics/layer_17="Camera"
 2d_physics/layer_18="CameraBoundary"
 2d_physics/layer_19="EntityShoveBox"
+2d_physics/layer_20="TessGlide"
 
 [physics]
 

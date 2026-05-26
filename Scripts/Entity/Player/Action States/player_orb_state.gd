@@ -21,6 +21,10 @@ var can_short_hop:
 @onready var orb_burst_fx_pool = $"../../SpecialAttributes/ObjectPools/OrbBurst"
 @onready var orb_reform_fx_pool = $"../../SpecialAttributes/ObjectPools/OrbReform"
 
+@export var orb_sound: AudioStream
+@export var orb_reform: AudioStream
+@export var orb_bounce: AudioStream
+
 func _ready() -> void:
 	super._ready()
 	auta = entity as Auta
@@ -88,6 +92,8 @@ func _start() -> void:
 		entity.velocity.y = orb_param.launch_y_speed
 	if entity.velocity.y == 0 and not entity.is_on_floor():
 		entity.velocity.y = orb_param.launch_y_speed * 0.3
+		
+	SFXController.play_sound(orb_sound, global_position)
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -131,10 +137,16 @@ func _end() -> void:
 	auta.can_orb = false
 	auta.recharge_orb = false
 	auta.orb_timer = orb_param.orb_recharge_time
-	orb_area_shape.disabled = true
+	orb_area_shape.set_deferred("disabled", true)
+	
+	var fx: Node2D = orb_reform_fx_pool.spawn_object()
+	if fx != null:
+		fx.global_position = entity.global_position;
+	SFXController.play_sound(orb_reform, global_position)
 	
 	var _input = inp.input_direction
 	if _input == Vector2.ZERO: return
+	
 	_input = _input.normalized()
 	
 	if _input.x > 0.5:
@@ -151,9 +163,6 @@ func _end() -> void:
 	else:
 		entity.velocity.y = 0
 	
-	var fx: Node2D = orb_reform_fx_pool.spawn_object()
-	if fx != null:
-		fx.global_position = entity.global_position;
 	
 func on_jump():
 	if not active: return
@@ -168,3 +177,4 @@ func on_attack():
 
 func on_bounce(_normal: Vector2, _velocity: Vector2):
 	time_since_last_bounce = 0
+	SFXController.play_sound(orb_bounce, global_position)

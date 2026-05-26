@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqa8tytdncd0s"]
+[gd_scene format=3 uid="uid://cqa8tytdncd0s"]
 
 [ext_resource type="Texture2D" uid="uid://celeelnfu5jpe" path="res://Art Assets/Characters/Auta/AutaSheet1.png" id="1_25hs3"]
 [ext_resource type="Shader" uid="uid://4fhxa2eg78jg" path="res://Shaders/BrightColorShift.tres" id="1_suut3"]
@@ -21,7 +21,7 @@ shader_parameter/Texture = ExtResource("1_25hs3")
 shader_parameter/t = 0.0
 shader_parameter/ColorGradient = SubResource("GradientTexture2D_42gby")
 
-[node name="AfterImage" type="Sprite2D"]
+[node name="AfterImage" type="Sprite2D" unique_id=226950978]
 z_index = -5
 texture_filter = 1
 material = SubResource("ShaderMaterial_4g2li")
@@ -30,5 +30,5 @@ hframes = 8
 vframes = 8
 script = ExtResource("3_atxib")
 
-[node name="ObjectPoolObject" type="Node" parent="."]
+[node name="ObjectPoolObject" type="Node" parent="." unique_id=814002411]
 script = ExtResource("4_je0gy")

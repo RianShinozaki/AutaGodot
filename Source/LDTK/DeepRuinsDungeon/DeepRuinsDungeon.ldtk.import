@@ -1,0 +1,37 @@
+[remap]
+
+importer="ldtk.import"
+type="PackedScene"
+uid="uid://d1qjf2tme7xjl"
+path="res://.godot/imported/DeepRuinsDungeon.ldtk-7fd0020f30e32ba7b845dee847628dd6.scn"
+
+[deps]
+
+files=["res://Source/LDTK/DeepRuinsDungeon/tilesets/tileset_16px.res", "res://Source/LDTK/DeepRuinsDungeon/levels/Level_0.scn", "res://Source/LDTK/DeepRuinsDungeon/levels/Level_1.scn", "res://Source/LDTK/DeepRuinsDungeon/levels/Level_2.scn", "res://.godot/imported/DeepRuinsDungeon.ldtk-7fd0020f30e32ba7b845dee847628dd6.scn"]
+
+source_file="res://Source/LDTK/DeepRuinsDungeon/DeepRuinsDungeon.ldtk"
+dest_files=["res://.godot/imported/DeepRuinsDungeon.ldtk-7fd0020f30e32ba7b845dee847628dd6.scn", "res://Source/LDTK/DeepRuinsDungeon/tilesets/tileset_16px.res", "res://Source/LDTK/DeepRuinsDungeon/levels/Level_0.scn", "res://Source/LDTK/DeepRuinsDungeon/levels/Level_1.scn", "res://Source/LDTK/DeepRuinsDungeon/levels/Level_2.scn", "res://.godot/imported/DeepRuinsDungeon.ldtk-7fd0020f30e32ba7b845dee847628dd6.scn"]
+
+[params]
+
+World=""
+group_world_layers=false
+Level=""
+pack_levels=true
+Layer=""
+layers_always_visible=false
+Tileset=""
+tileset_custom_data=false
+integer_grid_tilesets=false
+atlas_texture_type=0
+Entity=""
+resolve_entityrefs=true
+use_entity_placeholders=false
+Post Import=""
+tileset_post_import=""
+entities_post_import="res://LDTK/EntityImport.gd"
+level_post_import=""
+world_post_import=""
+Debug=""
+force_tileset_reimport=false
+verbose_output=false

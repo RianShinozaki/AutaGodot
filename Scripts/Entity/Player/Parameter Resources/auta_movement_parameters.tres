@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityMovementParameters" load_steps=3 format=3 uid="uid://b6nf7ajycjq30"]
+[gd_resource type="Resource" script_class="EntityMovementParameters" format=3 uid="uid://b6nf7ajycjq30"]
 
 [ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/Action State/entity_movement_parameters.gd" id="1_prx2n"]
 
@@ -8,7 +8,7 @@ height = 25.0
 
 [resource]
 script = ExtResource("1_prx2n")
-max_speed = 121.0
+max_speed = 100.0
 initial_speed = 60.0
 initial_speed_in_air = 35.0
 minimum_speed = 50.0
@@ -22,7 +22,7 @@ reverse_acceleration = 1200.0
 reverse_acceleration_in_air = 600.0
 absolute_limit = 200.0
 slope_uphill_influence = 1.0
-slope_downhill_influence = 1.7
+slope_downhill_influence = 1.3
 collision_shape = SubResource("CapsuleShape2D_junhl")
 collision_shape_position = Vector2(0, -5)
 metadata/_custom_type_script = "uid://bw6pvvkl3qgmo"

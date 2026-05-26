@@ -23,6 +23,9 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 @export_group("Parameters")
 @export var parameters: Dictionary[String, ParameterSet]
 
+@export_group("Mods")
+@export var platform_detector: PlatformDetector
+
 signal just_grounded(normal: Vector2, velocity: Vector2)
 signal just_bounced(normal: Vector2, velocity: Vector2)
 
@@ -32,6 +35,7 @@ var pre_move_velocity: Vector2
 
 func _ready() -> void:
 	velocity = Vector2.ZERO
+	platform_detector = get_node_or_null("GenericAttributes/PlatformDetector")
 	
 var velocity_true: Vector2:
 	get:
@@ -73,9 +77,15 @@ func _physics_process(delta: float) -> void:
 	if !apply_physics: return
 	
 	if collision_mode == COLLISION_MODE_FLOOR:
-		if is_on_floor() and velocity.y >= 0 and not previously_grounded:
-			emit_signal("just_grounded", get_floor_normal(), velocity)
-			velocity.y = 0
+		if is_on_floor():
+			if velocity.y >= 0 and not previously_grounded:
+				emit_signal("just_grounded", get_floor_normal(), velocity)
+				velocity.y = 0
+			
+			if platform_detector != null:
+				var _displacement = platform_detector.apply(self)
+				var _platform_velocity = _displacement / delta if delta > 0 else Vector2.ZERO
+			
 		if not is_on_floor() or velocity.y < 0:
 			velocity.y += gravity * delta
 	else:

@@ -13,6 +13,7 @@ signal orbed
 func _ready() -> void:
 	GameCamera.instance.targets.append(self)
 	instance = self
+	super._ready()
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)

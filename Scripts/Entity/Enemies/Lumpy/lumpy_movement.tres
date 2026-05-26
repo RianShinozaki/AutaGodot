@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityMovementParameters" load_steps=3 format=3 uid="uid://c2p134p3ajfu1"]
+[gd_resource type="Resource" script_class="EntityMovementParameters" format=3 uid="uid://c2p134p3ajfu1"]
 
 [ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Scripts/Entity/Parameters/Action State/entity_movement_parameters.gd" id="1_84be8"]
 
@@ -8,8 +8,8 @@ height = 17.45
 
 [resource]
 script = ExtResource("1_84be8")
-max_speed = 60.0
-initial_speed = 60.0
+max_speed = 30.0
+initial_speed = 30.0
 initial_speed_in_air = 35.0
 acceleration = 600.0
 acceleration_in_air = 100.0

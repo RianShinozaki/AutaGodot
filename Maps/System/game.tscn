@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bb7vw7fvmejei"]
+
+[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_yjdgk"]
+[ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="2_txtda"]
+[ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="3_l0bwt"]
+[ext_resource type="Script" uid="uid://fac37v01ub0b" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="4_0ysoq"]
+[ext_resource type="Script" uid="uid://bsjyyawxxf0bl" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_wty1d"]
+[ext_resource type="Script" uid="uid://c82luh8yqcndl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_iex31"]
+[ext_resource type="Script" uid="uid://cvpltn1nqccc5" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_ynys3"]
+[ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Maps/Game Maps/DeepTransmissionDungeon.tscn" id="9_2bif5"]
+[ext_resource type="Script" uid="uid://crtfw650p8ob8" path="res://Scripts/System/Controllers/C-sharp/MusicController.cs" id="9_hdfm3"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_nb51f"]
+script = ExtResource("5_wty1d")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_nnt18"]
+script = ExtResource("6_iex31")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ewbju"]
+script = ExtResource("7_ynys3")
+
+[sub_resource type="CSharpScript" id="CSharpScript_yjdgk"]
+script/source = "using Godot;
+using System;
+
+[GlobalClass]
+public partial class SFXController : Node
+{
+	[Export] public int numChannels;
+	public static SFXController sfx;
+    public override void _Ready()
+    {
+		sfx = this;
+		for(int i = 0; i < numChannels; i++) {
+			AudioStreamPlayer2D player = new AudioStreamPlayer2D();
+			AddChild(player);
+		}
+    }
+
+	//Call this with a loaded sound to play it
+	public static AudioStreamPlayer2D PlaySound(AudioStream sound, Vector2 position, float dbLinear = 1f, float pitchScale = 1f) {
+		foreach(var node in sfx.GetChildren()) {
+			AudioStreamPlayer2D audio = node as AudioStreamPlayer2D;
+			if(audio.Playing) {
+				if (audio.Stream == sound)
+				{
+					audio.Stop();
+				}
+			}
+		}
+		foreach (var node in sfx.GetChildren())
+		{
+			AudioStreamPlayer2D audio = node as AudioStreamPlayer2D;
+			if (!audio.Playing)
+			{
+				audio.Stream = sound;
+				audio.Play();
+				audio.VolumeDb = Mathf.LinearToDb(dbLinear);
+				audio.PitchScale = pitchScale;
+				audio.GlobalPosition = position;
+				return audio;
+			}
+		}
+		AudioStreamPlayer2D oldestAudio = sfx.GetChild<AudioStreamPlayer2D>(0);
+		float longestTimePlayed = -1;
+		foreach(var node in sfx.GetChildren()) {
+			AudioStreamPlayer2D audio = node as AudioStreamPlayer2D;
+			float thisTime = audio.GetPlaybackPosition();
+			if(thisTime > longestTimePlayed) {
+				longestTimePlayed = thisTime;
+				oldestAudio = audio;
+			}
+		}
+		oldestAudio.Stop();
+		oldestAudio.Stream = sound;
+		oldestAudio.Play();
+		oldestAudio.GlobalPosition = position;
+		oldestAudio.VolumeDb = Mathf.LinearToDb(dbLinear);
+		oldestAudio.PitchScale = pitchScale;
+		return oldestAudio;
+	}
+}"
+
+[node name="Game" type="Node" unique_id=1676149531]
+script = ExtResource("1_yjdgk")
+
+[node name="PlayerUI" parent="." unique_id=391135168 instance=ExtResource("2_txtda")]
+
+[node name="DialogueBox" type="Panel" parent="PlayerUI" unique_id=530999579]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = -102.5
+offset_right = -758.9999
+offset_bottom = -2.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_l0bwt")
+script = ExtResource("4_0ysoq")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_nb51f"), SubResource("RichTextEffect_nnt18"), SubResource("RichTextEffect_ewbju")])
+metadata/_custom_type_script = "uid://fac37v01ub0b"
+
+[node name="SFXController" type="Node" parent="." unique_id=1127874887]
+script = SubResource("CSharpScript_yjdgk")
+numChannels = 8
+
+[node name="MusicController" type="Node" parent="." unique_id=1511821570]
+script = ExtResource("9_hdfm3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicController" unique_id=1441681876]
+
+[node name="GameWorld" parent="." unique_id=780061894 instance=ExtResource("9_2bif5")]

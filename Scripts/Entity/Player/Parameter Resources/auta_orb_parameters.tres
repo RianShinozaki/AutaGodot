@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AutaOrbParameters" load_steps=3 format=3 uid="uid://bb7h2qh4ngy0n"]
+[gd_resource type="Resource" script_class="AutaOrbParameters" format=3 uid="uid://bb7h2qh4ngy0n"]
 
 [ext_resource type="Script" uid="uid://cs7b24ogtxvhl" path="res://Scripts/Entity/Player/Parameter Scripts/auta_orb_parameters.gd" id="1_571r1"]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AutaDuckParameters" load_steps=3 format=3 uid="uid://c1104baue8t8u"]
+[gd_resource type="Resource" script_class="AutaDuckParameters" format=3 uid="uid://c1104baue8t8u"]
 
 [ext_resource type="Script" uid="uid://c0bqhh0dgadv1" path="res://Scripts/Entity/Player/Parameter Scripts/auta_duck_parameters.gd" id="1_ax31v"]
 

@@ -9,6 +9,9 @@ var mov_param: EntityMovementParameters
 var jmp_param: EntityJumpParameters
 var can_short_hop: bool
 
+@export var jump_sound: AudioStream
+@export var land_sound: AudioStream
+
 func _ready() -> void:
 	super._ready()
 	inp = entity.get_node("GenericAttributes/InputManager")
@@ -84,6 +87,7 @@ func on_jump():
 	if(entity.is_on_floor()):
 		can_short_hop = true
 		entity.velocity.y = jmp_param.get_jump_power()
+		SFXController.play_sound(jump_sound, global_position)
 
 func on_attack():
 	if not active: return
@@ -96,6 +100,7 @@ func on_orb():
 
 #Grounded animation handler
 func just_grounded(_normal: Vector2, _velocity: Vector2):
+	SFXController.play_sound(land_sound, global_position)
 	var fx: Node2D = land_fx_pool.spawn_object()
 	if fx != null:
 		fx.global_position = entity.global_position + Vector2.DOWN*8;
