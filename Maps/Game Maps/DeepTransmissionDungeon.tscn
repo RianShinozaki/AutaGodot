@@ -17,7 +17,11 @@
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Scripts/Entity/Player/Parameter Resources/auta_speed_parameters.tres" id="14_8vjw5"]
 [ext_resource type="PackedScene" uid="uid://ctr84t408tdtr" path="res://Objects/Environment/CamRegion.tscn" id="18_fy4fg"]
 [ext_resource type="PackedScene" uid="uid://dqojhxpt2n0ma" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="19_aaexp"]
+[ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="20_4r7af"]
 [ext_resource type="Texture2D" uid="uid://ctt8gxfcwqgnv" path="res://Art Assets/Enemies/SpiderDrone/spider-control-photo.png" id="20_v72ke"]
+[ext_resource type="Script" uid="uid://l3fva1ohmwti" path="res://Scripts/Cinematics/Cutscenes/cutscene_crash_into_ruins.gd" id="21_5aay8"]
+[ext_resource type="Script" uid="uid://biw4en6dgkpmt" path="res://Scripts/Cinematics/Cutscenes/Events/PlayAnimation.gd" id="22_xgsak"]
+[ext_resource type="Script" uid="uid://cyqnksqojldp1" path="res://Scripts/Cinematics/Cutscenes/Events/CutsceneEvent.gd" id="23_o6ix0"]
 [ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Art Assets/Effects/Particles/Stardust.png" id="24_ulal3"]
 [ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/C-sharp/ParallaxController.cs" id="25_bifs3"]
 
@@ -118,13 +122,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
 
-[sub_resource type="Resource" id="Resource_v72ke"]
+[sub_resource type="Resource" id="Resource_nh4r8"]
 resource_local_to_scene = true
 script = ExtResource("10_2qrbl")
 recovery_time = 0.25
 recovery_min_speed = 80.0
 invincibility_time = 1.0
 metadata/_custom_type_script = "uid://d4bnhxqktpcel"
+
+[sub_resource type="Gradient" id="Gradient_abelk"]
+colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vtldl"]
+gradient = SubResource("Gradient_abelk")
+width = 4
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iukae"]
+resource_local_to_scene = true
+shader = ExtResource("20_4r7af")
+shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
+shader_parameter/emission_map = SubResource("CompressedTexture2D_4m6ou")
+shader_parameter/emission_strength = 0.0
+shader_parameter/outline_color_left = Color(1, 0, 1, 1)
+shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/stunFX = 0.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5aay8"]
 particles_animation = true
@@ -177,6 +200,250 @@ turbulence_noise_speed = Vector3(45.325, 0, 0)
 turbulence_noise_speed_random = 0.08
 turbulence_influence_min = 0.0
 turbulence_influence_max = 0.104
+
+[sub_resource type="Resource" id="Resource_okpoj"]
+script = ExtResource("22_xgsak")
+anim_name = &"1"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Animation" id="Animation_xgsak"]
+resource_name = "1"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.0666666, 4.5, 4.5666666, 8.16219),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 1, 51, 52, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.7, 4.4333334, 8.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Entities/Auta/Art:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 2, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.62833333, 0, 0, 0, 10, -0.6063943, -0.054709435, 0, 0, 10, -0.25, 0, 0.040477753, -1.1830606, 0, -0.24083996, 1.1501623, 0.25, 0),
+"times": PackedFloat32Array(2.048682, 2.24, 2.43, 6.2, 7, 8.144206, 8.525524)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Entities/Auta/Art:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.024482012, -0.73322487, -5, -0.25, 0, 0.25, 0, 0, -0.018502712, -1.2815053, 0.25, 0, 0, -0.25, 0, 0.024482012, -0.73322487, -5, -0.25, 0, 0.25, 0, 0, -0.018502712, -1.2815053, 0.25, 0),
+"times": PackedFloat32Array(2.048682, 2.24, 2.5, 8.144206, 8.335524, 8.533334)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Entities/TessActor:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 0, 2, 2),
+"points": PackedFloat32Array(231, -0.25, 0, 0.25, 0, 231, -1.3361706, 0, 0, 0, 239, -0.07859834, -1.3333334, 0, 0, 239, -0.15, 0, 0, 0, 245, -0.23236561, -1.0044403, 0.5, 0, 245, -0.5, 0, 0, 0, 526.43854, -0.08198261, -21.036926, 0, 0),
+"times": PackedFloat32Array(0, 8.017023, 8.366667, 9.266666, 9.450383, 10.533334, 11.266666)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Entities/TessActor:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(139, -0.25, 0, 0.25, 0, 139, -1.3361706, 0, 0, 0, 125.502205, -0.03605175, 0.8409195, 0.042546593, -0.99241394, 128, -0.07278538, -5.175148, 0, 0),
+"times": PackedFloat32Array(0, 8.017023, 8.2, 8.366667)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Entities/TessActor:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0, 2),
+"points": PackedFloat32Array(-1.5707964, -0.25, 0, 0.25, 0, -1.5707964, -1.3361706, 0, 0, 0, 0, -0.07859834, -0.26179942, 0, 0, 0, -0.36111116, 0, 0, 0, 50, -0.6222223, 0, 0, 0),
+"times": PackedFloat32Array(0, 8.017023, 8.366667, 10.5, 14.233334)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Entities/Auta:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(206, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../Entities/Auta:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(136, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Entities/TessActor:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 10.42039),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dq1x4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Entities/Auta/Art:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Entities/Auta/Art:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Entities/TessActor:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(231, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Entities/TessActor:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(139, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Entities/TessActor:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.5707964, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Entities/Auta:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(206, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../Entities/Auta:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(136, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Entities/TessActor:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okpoj"]
+_data = {
+&"1": SubResource("Animation_xgsak"),
+&"RESET": SubResource("Animation_dq1x4")
+}
 
 [node name="GameWorld" type="CanvasModulate" unique_id=780061894]
 texture_filter = 1
@@ -442,7 +709,7 @@ texture_filter = 1
 position = Vector2(1, -144)
 
 [node name="BasicDialogueEntity" type="Area2D" parent="Entities" unique_id=369787051]
-position = Vector2(344, 264)
+position = Vector2(343, 128)
 
 [node name="Tess" type="AnimatedSprite2D" parent="Entities/BasicDialogueEntity" unique_id=1088091151]
 sprite_frames = SubResource("SpriteFrames_uikoh")
@@ -459,15 +726,28 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5xne8")
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("7_2dyve")]
-position = Vector2(199, 56)
+position = Vector2(206, 136)
 parameters = Dictionary[String, ExtResource("8_7q83e")]({
 "duck": ExtResource("9_jnlj7"),
-"hurt": SubResource("Resource_v72ke"),
+"hurt": SubResource("Resource_nh4r8"),
 "jump": ExtResource("11_fbxmm"),
 "movement": ExtResource("12_evwo5"),
 "orb": ExtResource("13_7qrxs"),
 "speed": ExtResource("14_8vjw5")
 })
+
+[node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
+material = SubResource("ShaderMaterial_iukae")
+frame = 18
+
+[node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
+position = Vector2(9, 8)
+
+[node name="TessActor" type="Sprite2D" parent="Entities" unique_id=2108609380]
+position = Vector2(231, 139)
+rotation = -1.5707964
+texture = ExtResource("6_8al7y")
+flip_h = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=537952464]
 material = SubResource("CanvasItemMaterial_5aay8")
@@ -508,3 +788,15 @@ lifetime = 5.0
 preprocess = 25.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5aay8")
+
+[node name="Cutscenes" type="Node" parent="." unique_id=1869082087]
+
+[node name="FirstCutsceneManager" type="Node" parent="Cutscenes" unique_id=743469344]
+process_priority = 5
+script = ExtResource("21_5aay8")
+events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_okpoj")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/FirstCutsceneManager" unique_id=1347344932]
+libraries/ = SubResource("AnimationLibrary_okpoj")
+
+[editable path="Entities/Auta"]

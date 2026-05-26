@@ -1051,7 +1051,7 @@ material = SubResource("ShaderMaterial_q8rtl")
 texture = ExtResource("11_ku027")
 offset = Vector2(0, -8)
 hframes = 12
-vframes = 6
+vframes = 15
 script = ExtResource("11_4h77s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Art" unique_id=1708684726]
