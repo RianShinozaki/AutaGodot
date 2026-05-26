@@ -6,7 +6,7 @@
 light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tltcn"]
-size = Vector2(384, 216)
+size = Vector2(384, 224)
 
 [node name="CamRegion" type="Area2D" unique_id=1814409989 groups=["CamRegion"]]
 collision_layer = 0
@@ -15,6 +15,6 @@ script = ExtResource("1_dc5nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=910972008]
 material = SubResource("CanvasItemMaterial_goc2w")
-position = Vector2(192, 108)
+position = Vector2(192, 112)
 shape = SubResource("RectangleShape2D_tltcn")
 debug_color = Color(0, 0.6, 0.69803923, 0)

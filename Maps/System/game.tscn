@@ -19,68 +19,6 @@ script = ExtResource("6_iex31")
 [sub_resource type="RichTextEffect" id="RichTextEffect_ewbju"]
 script = ExtResource("7_ynys3")
 
-[sub_resource type="CSharpScript" id="CSharpScript_yjdgk"]
-script/source = "using Godot;
-using System;
-
-[GlobalClass]
-public partial class SFXController : Node
-{
-	[Export] public int numChannels;
-	public static SFXController sfx;
-    public override void _Ready()
-    {
-		sfx = this;
-		for(int i = 0; i < numChannels; i++) {
-			AudioStreamPlayer2D player = new AudioStreamPlayer2D();
-			AddChild(player);
-		}
-    }
-
-	//Call this with a loaded sound to play it
-	public static AudioStreamPlayer2D PlaySound(AudioStream sound, Vector2 position, float dbLinear = 1f, float pitchScale = 1f) {
-		foreach(var node in sfx.GetChildren()) {
-			AudioStreamPlayer2D audio = node as AudioStreamPlayer2D;
-			if(audio.Playing) {
-				if (audio.Stream == sound)
-				{
-					audio.Stop();
-				}
-			}
-		}
-		foreach (var node in sfx.GetChildren())
-		{
-			AudioStreamPlayer2D audio = node as AudioStreamPlayer2D;
-			if (!audio.Playing)
-			{
-				audio.Stream = sound;
-				audio.Play();
-				audio.VolumeDb = Mathf.LinearToDb(dbLinear);
-				audio.PitchScale = pitchScale;
-				audio.GlobalPosition = position;
-				return audio;
-			}
-		}
-		AudioStreamPlayer2D oldestAudio = sfx.GetChild<AudioStreamPlayer2D>(0);
-		float longestTimePlayed = -1;
-		foreach(var node in sfx.GetChildren()) {
-			AudioStreamPlayer2D audio = node as AudioStreamPlayer2D;
-			float thisTime = audio.GetPlaybackPosition();
-			if(thisTime > longestTimePlayed) {
-				longestTimePlayed = thisTime;
-				oldestAudio = audio;
-			}
-		}
-		oldestAudio.Stop();
-		oldestAudio.Stream = sound;
-		oldestAudio.Play();
-		oldestAudio.GlobalPosition = position;
-		oldestAudio.VolumeDb = Mathf.LinearToDb(dbLinear);
-		oldestAudio.PitchScale = pitchScale;
-		return oldestAudio;
-	}
-}"
-
 [node name="Game" type="Node" unique_id=1676149531]
 script = ExtResource("1_yjdgk")
 
@@ -104,10 +42,6 @@ theme = ExtResource("3_l0bwt")
 script = ExtResource("4_0ysoq")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_nb51f"), SubResource("RichTextEffect_nnt18"), SubResource("RichTextEffect_ewbju")])
 metadata/_custom_type_script = "uid://fac37v01ub0b"
-
-[node name="SFXController" type="Node" parent="." unique_id=1127874887]
-script = SubResource("CSharpScript_yjdgk")
-numChannels = 8
 
 [node name="MusicController" type="Node" parent="." unique_id=1511821570]
 script = ExtResource("9_hdfm3")

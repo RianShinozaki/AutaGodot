@@ -59,10 +59,11 @@ func process_hurt(_hitbox: Area2D):
 		fx.global_position = entity.global_position + offset
 		fx.global_scale.x = sign(_x_knockback)
 	
-	fx = object_pools.get_node("BloodSpurt").spawn_object()
-	if fx != null:
-		fx.global_position = entity.global_position + offset
-		fx.global_scale.x = sign(_x_knockback)
+	if power_resistance < _hb_data.knockback_power:
+		fx = object_pools.get_node("BloodSpurt").spawn_object()
+		if fx != null:
+			fx.global_position = entity.global_position + offset
+			fx.global_scale.x = sign(_x_knockback)
 		
 	#Draw damage text
 	var _dc = $"../../GenericAttributes/DamageCounterParent/DamageCounter"
