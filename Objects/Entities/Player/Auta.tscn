@@ -909,6 +909,10 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ii2ou"]
+advance_mode = 2
+advance_expression = "velocity.y < -0.2f"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fohhu"]
 states/Fall/node = SubResource("AnimationNodeAnimation_5l3k2")
 states/Fall/position = Vector2(441.8, 162.4)
@@ -919,9 +923,9 @@ states/Jump/position = Vector2(353.8, 2.39999)
 states/JumpToFall/node = SubResource("AnimationNodeAnimation_vw62l")
 states/JumpToFall/position = Vector2(488.2, 51.2)
 states/ThrowFlip/node = SubResource("AnimationNodeAnimation_p74sp")
-states/ThrowFlip/position = Vector2(587, 135)
-transitions = ["Jump", "JumpToFall", SubResource("AnimationNodeStateMachineTransition_f5cjg"), "JumpToFall", "Fall", SubResource("AnimationNodeStateMachineTransition_dpq4a"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_hdogo"), "Start", "Fall", SubResource("AnimationNodeStateMachineTransition_cgm5l"), "Fall", "Fall_Done", SubResource("AnimationNodeStateMachineTransition_t30y0"), "ThrowFlip", "Fall_Done", SubResource("AnimationNodeStateMachineTransition_cv5xt")]
-graph_offset = Vector2(-8, -42)
+states/ThrowFlip/position = Vector2(587.8, 134.2)
+transitions = ["Jump", "JumpToFall", SubResource("AnimationNodeStateMachineTransition_f5cjg"), "JumpToFall", "Fall", SubResource("AnimationNodeStateMachineTransition_dpq4a"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_hdogo"), "Start", "Fall", SubResource("AnimationNodeStateMachineTransition_cgm5l"), "Fall", "Fall_Done", SubResource("AnimationNodeStateMachineTransition_t30y0"), "ThrowFlip", "Fall_Done", SubResource("AnimationNodeStateMachineTransition_cv5xt"), "Fall", "Jump", SubResource("AnimationNodeStateMachineTransition_ii2ou")]
+graph_offset = Vector2(37, -93)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x8bts"]
 animation = &"Orb"

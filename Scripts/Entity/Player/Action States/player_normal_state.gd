@@ -12,6 +12,9 @@ var can_short_hop: bool
 @export var jump_sound: AudioStream
 @export var land_sound: AudioStream
 
+var coyote_time_max: float = 0.07
+var coyote_time: float = 0.07
+
 func _ready() -> void:
 	super._ready()
 	inp = entity.get_node("GenericAttributes/InputManager")
@@ -32,6 +35,12 @@ func _start() -> void:
 	
 func _process(delta: float) -> void:
 	super._process(delta)
+	
+	if entity.is_on_floor():
+		coyote_time = coyote_time_max
+	else:
+		coyote_time = move_toward(coyote_time, 0, delta)
+		
 	if not active: return
 	
 	#Accelerate and decelerate
@@ -77,15 +86,16 @@ func _process(delta: float) -> void:
 	var _art: Sprite2D = entity.get_node("Art")
 	var _to_angle: float = 0
 	_art.global_rotation = lerp_angle(_art.global_rotation,_to_angle,delta * 10)
-
+	
 
 func _end() -> void:
 	super._end()
 	
 func on_jump():
 	if not active: return
-	if(entity.is_on_floor()):
+	if(coyote_time > 0):
 		can_short_hop = true
+		coyote_time = 0
 		entity.velocity.y = jmp_param.get_jump_power()
 		SFXController.play_sound(jump_sound, global_position)
 
