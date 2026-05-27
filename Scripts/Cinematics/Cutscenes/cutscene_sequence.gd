@@ -6,3 +6,7 @@ func begin():
 	for event in events:
 		event.trigger(self)
 		await event.finished
+	end()
+
+func end():
+	pass
