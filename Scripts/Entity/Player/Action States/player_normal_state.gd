@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func _start() -> void:
 	super._start()
-	entity.get_node("EnvironmentBox").shape = mov_param.collision_shape
+	entity.get_node("EnvironmentBox").set_deferred("shape", mov_param.collision_shape)
 	entity.get_node("EnvironmentBox").position = mov_param.collision_shape_position
 	can_short_hop = false
 	

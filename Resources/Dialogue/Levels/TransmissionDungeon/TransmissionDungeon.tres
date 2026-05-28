@@ -1,0 +1,144 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://b2mnr82oa4cag"]
+
+[ext_resource type="Script" uid="uid://djropofdqiyvo" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_tjkdm"]
+
+[resource]
+script = ExtResource("1_tjkdm")
+starts = {
+"1": &"0_1",
+"2": &"0_2",
+"3": &"0_3",
+"4": &"0_4",
+"5": &"0_5"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-340, 220),
+"start_id": "1"
+},
+&"0_2": {
+"link": &"1_2",
+"offset": Vector2(-320, 600),
+"start_id": "2"
+},
+&"0_3": {
+"link": &"1_4",
+"offset": Vector2(-375.97318, 1087.2244),
+"start_id": "3"
+},
+&"0_4": {
+"link": &"1_6",
+"offset": Vector2(-355.18008, 1537.4601),
+"start_id": "4"
+},
+&"0_5": {
+"link": &"1_8",
+"offset": Vector2(-340.39383, 2068.408),
+"start_id": "5"
+},
+&"1_1": {
+"dialogue": "aaaaaAAAAAHHHH!!!",
+"offset": Vector2(3, 218),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00003, 286),
+"speaker": "Tess"
+},
+&"1_2": {
+"dialogue": "Come on... come ON! GO UP!",
+"offset": Vector2(-80, 600),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(339.99985, 339.99985),
+"speaker": "Tess"
+},
+&"1_3": {
+"dialogue": "Of course. Why wouldn't the lift be busted? Why should anything be okay?",
+"offset": Vector2(300, 600),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(399.9997, 359.99997),
+"speaker": "Tess"
+},
+&"1_4": {
+"dialogue": "NO!",
+"offset": Vector2(-40, 1080),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300.00003, 285.99994),
+"speaker": "Tess"
+},
+&"1_5": {
+"dialogue": "Back off![shake rate=20.0 level=5 connected=1] I'm warning you![/shake]",
+"offset": Vector2(300, 1080),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(419.9997, 299.99994),
+"speaker": "Tess"
+},
+&"1_6": {
+"dialogue": "...What? It actually listened to me?",
+"offset": Vector2(-53.890053, 1587.0701),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(360, 360),
+"speaker": "Tess"
+},
+&"1_7": {
+"dialogue": "Um... okay. Come over here. Slowly.",
+"offset": Vector2(400, 1600),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(320.00012, 320),
+"speaker": "Tess"
+},
+&"1_8": {
+"dialogue": "Guess the down button works.",
+"offset": Vector2(-40, 2040),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(339.99997, 340),
+"speaker": "Tess"
+}
+}

@@ -25,10 +25,6 @@ config/icon="res://Scripts/icon.svg"
 
 buses/default_bus_layout="uid://c26fit5d5jho4"
 
-[autoload]
-
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-
 [dialogic]
 
 directories/dch_directory={
@@ -100,7 +96,7 @@ project/assembly_name="Auta"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg", "res://addons/kenyoni/plugin_reloader/plugin.cfg")
 
 [file_customization]
 

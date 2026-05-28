@@ -19,21 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://dqojhxpt2n0ma" path="res://Objects/Entities/Enemies/Lumpy.tscn" id="19_aaexp"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Shaders/2D-Default.gdshader" id="20_4r7af"]
 [ext_resource type="Texture2D" uid="uid://ctt8gxfcwqgnv" path="res://Art Assets/Enemies/SpiderDrone/spider-control-photo.png" id="20_v72ke"]
-[ext_resource type="Script" uid="uid://l3fva1ohmwti" path="res://Scripts/Cinematics/Cutscenes/basic_cutscene_runner.gd" id="21_5aay8"]
-[ext_resource type="Script" uid="uid://biw4en6dgkpmt" path="res://Scripts/Cinematics/Cutscenes/Events/play_animation_event.gd" id="22_xgsak"]
-[ext_resource type="Script" uid="uid://cyqnksqojldp1" path="res://Scripts/Cinematics/Cutscenes/Events/cutscene_event.gd" id="23_o6ix0"]
+[ext_resource type="Script" uid="uid://l3fva1ohmwti" path="res://Scripts/Cinematics/Cutscenes/cutscene_crash_into_ruins.gd" id="21_5aay8"]
+[ext_resource type="Script" uid="uid://biw4en6dgkpmt" path="res://Scripts/Cinematics/Cutscenes/Events/PlayAnimation.gd" id="22_xgsak"]
+[ext_resource type="Script" uid="uid://cyqnksqojldp1" path="res://Scripts/Cinematics/Cutscenes/Events/CutsceneEvent.gd" id="23_o6ix0"]
 [ext_resource type="Resource" uid="uid://b2mnr82oa4cag" path="res://Resources/Dialogue/Levels/TransmissionDungeon/TransmissionDungeon.tres" id="24_nh4r8"]
 [ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Art Assets/Effects/Particles/Stardust.png" id="24_ulal3"]
 [ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/C-sharp/ParallaxController.cs" id="25_bifs3"]
-[ext_resource type="Script" uid="uid://bj716hg8hw7wv" path="res://Scripts/Cinematics/Cutscenes/Events/dialogue_event.gd" id="25_iukae"]
-[ext_resource type="Script" uid="uid://dmrxnsi74n4mc" path="res://Scripts/Cinematics/Cutscenes/Events/code_event.gd" id="27_02hcr"]
-[ext_resource type="Script" uid="uid://dt1gjqmpl11iy" path="res://Scripts/Cinematics/Cutscenes/Events/cast_to_shadow_realm_event.gd" id="27_dq1x4"]
-[ext_resource type="Script" uid="uid://dk32tcfg80s0r" path="res://Scripts/Cinematics/Cutscenes/Events/wait_event.gd" id="27_iukae"]
-[ext_resource type="Script" uid="uid://dsovpycvde0wq" path="res://Scripts/Cinematics/Cutscenes/Events/walk_object_to_x_event.gd" id="30_g5inn"]
-[ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Audio/Sounds/Player/Step1.wav" id="31_03anl"]
-[ext_resource type="Texture2D" uid="uid://da5tqx8qs8xie" path="res://Unused/Misc/Objects/MovingPlat.png" id="31_qennh"]
-[ext_resource type="AudioStream" uid="uid://d1kvfiltoylrr" path="res://Audio/Sounds/Impact/CannonballCrash.wav" id="32_q0tuf"]
-[ext_resource type="Texture2D" uid="uid://c44iq1waa0srd" path="res://Art Assets/Environment/DeepRuins/LiftButton.png" id="34_omwlr"]
+[ext_resource type="Script" uid="uid://bj716hg8hw7wv" path="res://Scripts/Cinematics/Cutscenes/Events/DialogueEvent.gd" id="25_iukae"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -131,7 +123,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
 
-[sub_resource type="Resource" id="Resource_omwlr"]
+[sub_resource type="Resource" id="Resource_4r7af"]
 resource_local_to_scene = true
 script = ExtResource("10_2qrbl")
 recovery_time = 0.25
@@ -148,7 +140,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3cny"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6ix0"]
 resource_local_to_scene = true
 shader = ExtResource("20_4r7af")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -351,379 +343,15 @@ tracks/10/keys = {
 "method": &"end_event"
 }]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../../Entities/TessActor:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 11.166418),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_dq1x4"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Entities/TessActor:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_okpoj"]
 _data = {
 &"1": SubResource("Animation_xgsak"),
 &"RESET": SubResource("Animation_dq1x4")
 }
-
-[sub_resource type="Resource" id="Resource_03anl"]
-script = ExtResource("27_dq1x4")
-objects_to_cast = Array[NodePath]([NodePath("Area2D"), NodePath("StaticBody2D")])
-metadata/_custom_type_script = "uid://dt1gjqmpl11iy"
-
-[sub_resource type="Resource" id="Resource_y3cny"]
-script = ExtResource("27_02hcr")
-target = NodePath("../../Entities/Auta")
-code_string = "set_x_velocity(0)
-switch_action_state_name(\"NormalState\")
-set_art_flip(false)
-lock_controls()"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_8al7y"]
-script = ExtResource("27_02hcr")
-target = NodePath("../../GameSystem/Cam/Camera2D")
-code_string = "override_target( Vector2(2402.0, -900))"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_02hcr"]
-script = ExtResource("27_iukae")
-time = 0.5
-metadata/_custom_type_script = "uid://dk32tcfg80s0r"
-
-[sub_resource type="Resource" id="Resource_g5inn"]
-script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "2"
-metadata/_custom_type_script = "uid://bj716hg8hw7wv"
-
-[sub_resource type="Resource" id="Resource_qennh"]
-script = ExtResource("22_xgsak")
-anim_name = &"2"
-metadata/_custom_type_script = "uid://biw4en6dgkpmt"
-
-[sub_resource type="Resource" id="Resource_q0tuf"]
-script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "3"
-metadata/_custom_type_script = "uid://bj716hg8hw7wv"
-
-[sub_resource type="Resource" id="Resource_2qrbl"]
-script = ExtResource("30_g5inn")
-target = NodePath("../../Entities/Auta")
-x_position = 2280.0
-metadata/_custom_type_script = "uid://dsovpycvde0wq"
-
-[sub_resource type="Resource" id="Resource_7q83e"]
-script = ExtResource("27_02hcr")
-target = NodePath("../../Entities/Auta")
-code_string = "set_x_velocity(0)
-set_art_flip(false)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_jnlj7"]
-script = ExtResource("27_iukae")
-time = 1.0
-metadata/_custom_type_script = "uid://dk32tcfg80s0r"
-
-[sub_resource type="Resource" id="Resource_fbxmm"]
-script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "4"
-metadata/_custom_type_script = "uid://bj716hg8hw7wv"
-
-[sub_resource type="Resource" id="Resource_bjehn"]
-script = ExtResource("27_iukae")
-time = 0.4
-metadata/_custom_type_script = "uid://dk32tcfg80s0r"
-
-[sub_resource type="Resource" id="Resource_2dyve"]
-script = ExtResource("30_g5inn")
-target = NodePath("../../Entities/Auta")
-x_position = 2391.0
-metadata/_custom_type_script = "uid://dsovpycvde0wq"
-
-[sub_resource type="Resource" id="Resource_evwo5"]
-script = ExtResource("22_xgsak")
-anim_name = &"3"
-metadata/_custom_type_script = "uid://biw4en6dgkpmt"
-
-[sub_resource type="Resource" id="Resource_7qrxs"]
-script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "5"
-metadata/_custom_type_script = "uid://bj716hg8hw7wv"
-
-[sub_resource type="Resource" id="Resource_xuous"]
-script = ExtResource("27_iukae")
-time = 0.5
-metadata/_custom_type_script = "uid://dk32tcfg80s0r"
-
-[sub_resource type="Resource" id="Resource_8vjw5"]
-script = ExtResource("27_02hcr")
-target = NodePath("../../GameSystem/Cam/Camera2D")
-code_string = "set(\"target_override\",false)
-snap_to_target()"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_xxc4j"]
-script = ExtResource("22_xgsak")
-anim_name = &"4"
-metadata/_custom_type_script = "uid://biw4en6dgkpmt"
-
-[sub_resource type="Resource" id="Resource_kskgq"]
-script = ExtResource("27_02hcr")
-target = NodePath("../../GameSystem/Cam/Camera2D")
-code_string = "set(\"ignore_boundaries\",false)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh4r8"]
-size = Vector2(24, 160)
-
-[sub_resource type="Animation" id="Animation_iukae"]
-resource_name = "1"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Entities/Auta/Art:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.06666667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_g5inn"]
-resource_name = "2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Entities/TessActor2:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335, 0.16392072),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Entities/TessActor2:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(2447, 0, 0, 0.07103231, 0, 2447, 0, 0, 0.14047283, 4.970215, 2451, 0, 0, 0, 0, 2455, 0, 0, 0, 0),
-"times": PackedFloat32Array(0.033333335, 0.42619383, 0.53333336, 0.6333333)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Entities/TessActor2:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-736, 0, 0, 0.07103231, 0, -736, -0.25, 0, 0, -0.8269043, -739, -0.100000024, -0.008178711, 0.099999964, 0.036010742, -736, 0, -1.1185303, 0, 0),
-"times": PackedFloat32Array(0.033333335, 0.42619383, 0.53333336, 0.6333333)
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end_event"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_7qrxs"]
-resource_name = "3"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lift:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333335, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Entities/TessActor2:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("31_03anl")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-
-[sub_resource type="Animation" id="Animation_qennh"]
-resource_name = "4"
-length = 10.0
-step = 0.0833
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lift:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 128), Vector2(0, 1808)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.083333336, 4.733333, 6.01, 8.833334),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Entities/Auta/Art:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.083333336, 6.01, 6.0833335, 6.1666665, 7.3333335, 7.4166665, 7.5, 8.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [85, 96, 97, 98, 99, 100, 101, 102]
-}
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("32_q0tuf")
-}],
-"times": PackedFloat32Array(3)
-}
-tracks/3/use_blend = true
-
-[sub_resource type="Animation" id="Animation_02hcr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Entities/TessActor2:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Entities/TessActor2:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(2447, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Entities/TessActor2:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-736, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Lift:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5inn"]
-_data = {
-&"1": SubResource("Animation_iukae"),
-&"2": SubResource("Animation_g5inn"),
-&"3": SubResource("Animation_7qrxs"),
-&"4": SubResource("Animation_qennh"),
-&"RESET": SubResource("Animation_02hcr")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8al7y"]
-size = Vector2(64, 16)
 
 [node name="GameWorld" type="CanvasModulate" unique_id=780061894]
 texture_filter = 1
@@ -741,13 +369,6 @@ editor_only = true
 energy = 2.64
 
 [node name="GameSystem" parent="." unique_id=1502683367 instance=ExtResource("3_03anl")]
-
-[node name="Camera2D" parent="GameSystem/Cam" parent_id_path=PackedInt32Array(1502683367, 1407532100) index="0" unique_id=1593991952]
-position = Vector2(-31, -17)
-target_position = Vector2(2400, -650)
-
-[node name="Node2D" type="Node2D" parent="GameSystem/Cam/Camera2D" index="3" unique_id=115856824]
-position = Vector2(2212, -679)
 
 [node name="TileMapLow" type="Node2D" parent="." unique_id=1992608098]
 
@@ -1013,10 +634,10 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5xne8")
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("7_2dyve")]
-position = Vector2(2279, -728)
+position = Vector2(206, 136)
 parameters = Dictionary[String, ExtResource("8_7q83e")]({
 "duck": ExtResource("9_jnlj7"),
-"hurt": SubResource("Resource_omwlr"),
+"hurt": SubResource("Resource_4r7af"),
 "jump": ExtResource("11_fbxmm"),
 "movement": ExtResource("12_evwo5"),
 "orb": ExtResource("13_7qrxs"),
@@ -1024,20 +645,15 @@ parameters = Dictionary[String, ExtResource("8_7q83e")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_y3cny")
+material = SubResource("ShaderMaterial_o6ix0")
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
 position = Vector2(9, 8)
 
 [node name="TessActor" type="Sprite2D" parent="Entities" unique_id=2108609380]
-position = Vector2(231, 139)
-rotation = -1.5707964
+position = Vector2(242.02142, 128)
 texture = ExtResource("6_8al7y")
 flip_h = true
-
-[node name="TessActor2" type="Sprite2D" parent="Entities" unique_id=499179423]
-position = Vector2(2447, -736)
-texture = ExtResource("6_8al7y")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=537952464]
 material = SubResource("CanvasItemMaterial_5aay8")
@@ -1084,60 +700,10 @@ process_material = SubResource("ParticleProcessMaterial_5aay8")
 [node name="FirstCutsceneManager" type="Node" parent="Cutscenes" unique_id=743469344]
 process_priority = 5
 script = ExtResource("21_5aay8")
+activate_on_ready = true
 events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_okpoj"), SubResource("Resource_dq1x4")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/FirstCutsceneManager" unique_id=1347344932]
-active = false
 libraries/ = SubResource("AnimationLibrary_okpoj")
 
-[node name="ThirdCutsceneManager" type="Node" parent="Cutscenes" unique_id=1758098737]
-script = ExtResource("21_5aay8")
-events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_03anl"), SubResource("Resource_y3cny"), SubResource("Resource_8al7y"), SubResource("Resource_02hcr"), SubResource("Resource_g5inn"), SubResource("Resource_qennh"), SubResource("Resource_q0tuf"), SubResource("Resource_2qrbl"), SubResource("Resource_7q83e"), SubResource("Resource_jnlj7"), SubResource("Resource_fbxmm"), SubResource("Resource_bjehn"), SubResource("Resource_2dyve"), SubResource("Resource_evwo5"), SubResource("Resource_7qrxs"), SubResource("Resource_xuous"), SubResource("Resource_8vjw5"), SubResource("Resource_xxc4j"), SubResource("Resource_kskgq")])
-
-[node name="Area2D" type="Area2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=1962572712]
-position = Vector2(2314, -896)
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/ThirdCutsceneManager/Area2D" unique_id=1781662702]
-position = Vector2(4, -48)
-shape = SubResource("RectangleShape2D_nh4r8")
-debug_color = Color(0.7513031, 0.45676595, 0.12473331, 0.41960785)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=887902883]
-position = Vector2(2376.618, -896)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/ThirdCutsceneManager/StaticBody2D" unique_id=1170836930]
-position = Vector2(-52, -48)
-shape = SubResource("RectangleShape2D_nh4r8")
-debug_color = Color(0.7513031, 0.45676595, 0.12473331, 0.41960785)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/ThirdCutsceneManager" unique_id=1180342735]
-libraries/ = SubResource("AnimationLibrary_g5inn")
-
-[node name="Lift" type="StaticBody2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=290513258]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/ThirdCutsceneManager/Lift" unique_id=423006945]
-position = Vector2(2400, -856)
-shape = SubResource("RectangleShape2D_8al7y")
-
-[node name="Sprite2D" type="Sprite2D" parent="Cutscenes/ThirdCutsceneManager/Lift" unique_id=784860327]
-position = Vector2(2400, -856)
-scale = Vector2(2, 1)
-texture = ExtResource("31_qennh")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscenes/ThirdCutsceneManager" unique_id=356840932]
-
-[node name="LiftButton" type="Sprite2D" parent="." unique_id=1340631914]
-z_index = -1
-position = Vector2(2460, -880)
-texture = ExtResource("34_omwlr")
-
-[node name="LiftButton2" type="Sprite2D" parent="." unique_id=1025256083]
-z_index = -1
-position = Vector2(2448, 960)
-texture = ExtResource("34_omwlr")
-
-[connection signal="body_entered" from="Cutscenes/ThirdCutsceneManager/Area2D" to="Cutscenes/ThirdCutsceneManager" method="begin" unbinds=1]
-
-[editable path="GameSystem"]
 [editable path="Entities/Auta"]

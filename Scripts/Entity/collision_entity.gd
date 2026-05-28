@@ -98,6 +98,9 @@ func _physics_process(delta: float) -> void:
 func accelerate_x(_amount: float, _limit: float, _toward: bool):
 	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_amount) if _toward else 1))
 
+func set_x_velocity(_amount: float):
+	velocity.x = _amount
+	
 func switch_action_state_name(_state: String) -> ActionState:
 	var _action_state = get_action_state_name(_state)
 	return switch_action_state(_action_state)
@@ -128,3 +131,35 @@ func inflict_hitstun(_shake_level: float, _shake_direction: Vector2, _duration: 
 
 func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
 	pass
+
+func lock_controls(_unset_inputs: bool = true):
+	var _inp: InputManager = get_node("GenericAttributes/InputManager")
+	_inp.read_controller_input = false
+	if _unset_inputs:
+		_inp.input_direction = Vector2.ZERO
+
+func unlock_controls():
+	var _inp: InputManager = get_node("GenericAttributes/InputManager")
+	_inp.read_controller_input = true
+
+func set_art_flip(_flip_h: bool):
+	get_node("Art").flip_h = _flip_h
+
+signal reached_x_position
+func walk_to_x(_x_position: float, _speed_scale: float = 1):
+	var _move_dir: int = 0
+	var _inp: InputManager = get_node("GenericAttributes/InputManager")
+	if _x_position < global_position.x:
+		_move_dir = -1
+	else:
+		_move_dir = 1
+	_inp.input_direction = Vector2.RIGHT * _speed_scale * _move_dir
+	
+	while (global_position.x + velocity.x/60 < _x_position and _move_dir == 1) or (global_position.x - velocity.x/60 > _x_position and _move_dir == -1):
+		
+		await get_tree().process_frame
+	
+	_inp.input_direction = Vector2.ZERO
+	emit_signal("reached_x_position")
+	
+		

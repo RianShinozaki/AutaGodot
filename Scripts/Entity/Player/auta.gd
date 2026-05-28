@@ -41,3 +41,4 @@ func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
 
 func process_damage(_area):
 	$SpecialAttributes/HurtManager.process_hurt(_area)
+	
