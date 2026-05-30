@@ -49,6 +49,8 @@ func on_body_entered(body):
 		active = true
 		GameCamera.instance.set_extents(x_extents, y_extents)
 		GameCamera.instance.snap_to_target()
+		if body is Auta:
+			body.set_quick_respawn()
 		emit_signal("activate")
 	
 func deactivate_self():

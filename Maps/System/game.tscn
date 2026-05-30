@@ -30,8 +30,14 @@ script = ExtResource("1_yjdgk")
 
 [node name="PlayerUI" parent="." unique_id=391135168 instance=ExtResource("2_txtda")]
 
-[node name="DialogueBox" type="Panel" parent="PlayerUI" unique_id=530999579]
-unique_name_in_owner = true
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=258548040]
+layer = 100
+offset = Vector2(50, 30)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 50, 30)
+
+[node name="DialogueBox" type="Panel" parent="DialogueUI" unique_id=217227158]
+visible = false
 texture_filter = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -48,7 +54,7 @@ script = ExtResource("4_0ysoq")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_nb51f"), SubResource("RichTextEffect_nnt18"), SubResource("RichTextEffect_ewbju")])
 metadata/_custom_type_script = "uid://fac37v01ub0b"
 
-[node name="Panel2" type="Panel" parent="PlayerUI/DialogueBox" unique_id=164383607]
+[node name="Panel2" type="Panel" parent="DialogueUI/DialogueBox" unique_id=1494730230]
 z_index = -1
 layout_mode = 0
 offset_left = 6.875
@@ -58,7 +64,7 @@ offset_bottom = 90.236
 rotation = 0.08726646
 theme_override_styles/panel = SubResource("StyleBoxFlat_txtda")
 
-[node name="Panel" type="Panel" parent="PlayerUI/DialogueBox" unique_id=1315784086]
+[node name="Panel" type="Panel" parent="DialogueUI/DialogueBox" unique_id=54563407]
 z_index = -1
 layout_mode = 0
 offset_left = -27.76

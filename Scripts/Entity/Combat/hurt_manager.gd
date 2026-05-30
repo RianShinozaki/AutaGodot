@@ -80,7 +80,7 @@ func process_hurt(_hitbox: Area2D):
 	$"../../GenericAttributes/DamageCounterParent".global_position = global_position + offset + Vector2.UP*2
 	
 	#Capture UI
-	if capture_ui:
+	if not _is_player and capture_ui:
 		PlayerUI.instance.captured_enemy(entity)
 	
 	#Respawn if player

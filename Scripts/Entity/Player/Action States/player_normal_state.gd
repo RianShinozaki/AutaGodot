@@ -105,7 +105,7 @@ func on_attack():
 		
 func on_orb():
 	if not active: return
-	if auta.can_orb:
+	if auta.can_orb and auta.unlocked_orb:
 		entity.switch_action_state_name("OrbState")
 
 #Grounded animation handler

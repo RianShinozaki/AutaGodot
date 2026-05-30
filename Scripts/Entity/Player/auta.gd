@@ -2,13 +2,17 @@ class_name Auta
 
 extends CollisionEntity
 
+@export var unlocked_orb = false
+
 var can_orb: bool = true
 var orb_timer: float = 0.0
 var recharge_orb = false
 var anim_skating := false
+var quick_respawn_pos: Vector2
 static var instance: Auta
 
 signal orbed
+signal quick_respawned
 
 func _ready() -> void:
 	GameCamera.instance.targets.append(self)
@@ -41,7 +45,15 @@ func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
 
 func process_damage(_area):
 	$SpecialAttributes/HurtManager.process_hurt(_area)
+
+func set_quick_respawn():
+	quick_respawn_pos = global_position
 	
 func quick_respawn():
-	await get_tree().create_timer(2).timeout
-	get_tree().reload_current_scene()
+	await get_tree().create_timer(0.5).timeout
+	global_position = quick_respawn_pos
+	GameCamera.instance.snap_to_target()
+	emit_signal("quick_respawned")
+
+func unlock_orb():
+	unlocked_orb = true

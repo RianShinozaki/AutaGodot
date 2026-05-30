@@ -3,6 +3,7 @@
 class_name DialogueBox
 extends Panel
  
+static var instance: DialogueBox
 
 ## Triggered when a dialogue has started. Passes [param id] of the dialogue tree as defined in the StartNode.
 signal dialogue_started(id : String)
@@ -156,6 +157,7 @@ func _enter_tree():
 	#	for child in get_children():
 	#		remove_child(child)
 	#		child.queue_free()
+	instance = self
 	
 	var margin_container = MarginContainer.new()
 	add_child(margin_container)

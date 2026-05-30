@@ -62,3 +62,6 @@ func play_big_message_instance(_message: String):
 		big_message.modulate.a -= _FADE_SPEED
 		await get_tree().process_frame
 	big_message.visible = false
+
+func set_ui_visibility(_visible: bool):
+	visible = _visible

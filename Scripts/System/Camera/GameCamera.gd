@@ -52,7 +52,7 @@ func set_extents(_x_extents: Vector2, _y_extents: Vector2):
 	y_extents = _y_extents
 
 func shake_screen(_amount: float, _duration: float):
-	if shake_amount > 0: return
+	if shake_amount > _amount: return
 	shake_amount = _amount
 	await get_tree().create_timer(_duration).timeout
 	shake_amount = 0
@@ -69,3 +69,7 @@ func unoverride_target():
 func snap_to_target():
 	get_camera_target()
 	global_position = target_position
+	
+func retarget(_target):
+	targets.clear()
+	targets.append(_target)

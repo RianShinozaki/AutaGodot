@@ -9,7 +9,11 @@ starts = {
 "2": &"0_2",
 "3": &"0_3",
 "4": &"0_4",
-"5": &"0_5"
+"5": &"0_5",
+"6": &"0_6",
+"7": &"0_7",
+"8": &"0_8",
+"9": &"0_9"
 }
 nodes = {
 &"0_1": {
@@ -37,6 +41,26 @@ nodes = {
 "offset": Vector2(-340.39383, 2068.408),
 "start_id": "5"
 },
+&"0_6": {
+"link": &"1_9",
+"offset": Vector2(-333.36362, 2476.8494),
+"start_id": "6"
+},
+&"0_7": {
+"link": &"1_12",
+"offset": Vector2(-340, 3000),
+"start_id": "7"
+},
+&"0_8": {
+"link": &"1_20",
+"offset": Vector2(-340, 3500),
+"start_id": "8"
+},
+&"0_9": {
+"link": &"1_21",
+"offset": Vector2(-360, 3940),
+"start_id": "9"
+},
 &"1_1": {
 "dialogue": "aaaaaAAAAAHHHH!!!",
 "offset": Vector2(3, 218),
@@ -47,8 +71,138 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00003, 286),
+"size": Vector2(300.00006, 286),
 "speaker": "Tess"
+},
+&"1_10": {
+"dialogue": "Found one Series X96 Stardust Robot.",
+"offset": Vector2(420, 2520),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(460.00052, 320),
+"speaker": "Machine"
+},
+&"1_11": {
+"dialogue": "Beginning diagnostic system...",
+"offset": Vector2(920, 2520),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(359.99957, 400),
+"speaker": "Machine"
+},
+&"1_12": {
+"dialogue": "Diagnostic complete.",
+"offset": Vector2(-80, 3040),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(420.00024, 380),
+"speaker": "Machine"
+},
+&"1_13": {
+"dialogue": "Series X96 Stardust Robot.",
+"offset": Vector2(360, 3060),
+"options": {
+0: {
+"condition": {},
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(380.00012, 380),
+"speaker": "Machine"
+},
+&"1_14": {
+"dialogue": "Serial code: AUTA.",
+"offset": Vector2(780, 3100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_15",
+"text": ""
+}
+},
+"size": Vector2(399.99963, 320),
+"speaker": "Machine"
+},
+&"1_15": {
+"dialogue": "Last online: 25 years ago.",
+"offset": Vector2(1220, 3100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_16",
+"text": ""
+}
+},
+"size": Vector2(440, 320),
+"speaker": "Machine"
+},
+&"1_16": {
+"dialogue": "Central nervous system, limbic system showing signs of \"Type V\" corruption.",
+"offset": Vector2(1680, 3120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(420, 340),
+"speaker": "Machine"
+},
+&"1_17": {
+"dialogue": "Restoring functions locked behind trauma firewall...",
+"offset": Vector2(2120, 3120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(340.00012, 340),
+"speaker": "Machine"
+},
+&"1_18": {
+"dialogue": "...",
+"offset": Vector2(2500, 3140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_19",
+"text": ""
+}
+},
+"size": Vector2(319.99988, 320),
+"speaker": "Machine"
+},
+&"1_19": {
+"dialogue": "Restored \"Omnidirectional Release Burst\" (O.R.B.) system.",
+"offset": Vector2(2860, 3140),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(379.99988, 320),
+"speaker": "Machine"
 },
 &"1_2": {
 "dialogue": "Come on... come ON! GO UP!",
@@ -60,8 +214,47 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(339.99985, 339.99985),
+"size": Vector2(339.99963, 340),
 "speaker": "Tess"
+},
+&"1_20": {
+"dialogue": "...Further repairs not possible at this facility. Please return to the Inner Ring and present yourself to a Class 1 repair facility.",
+"offset": Vector2(-60, 3500),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(360, 360),
+"speaker": "Machine"
+},
+&"1_21": {
+"dialogue": "Your 'Orb' ability has been restored.",
+"offset": Vector2(-40, 3960),
+"options": {
+0: {
+"condition": {},
+"link": &"1_22",
+"text": ""
+}
+},
+"size": Vector2(380, 340),
+"speaker": "Tutorial"
+},
+&"1_22": {
+"dialogue": "To use your 'Orb', press 'D' while holding down in any direction.",
+"offset": Vector2(380, 3960),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(499.99994, 360),
+"speaker": "Tutorial"
 },
 &"1_3": {
 "dialogue": "Of course. Why wouldn't the lift be busted? Why should anything be okay?",
@@ -73,7 +266,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(399.9997, 359.99997),
+"size": Vector2(400.00018, 360),
 "speaker": "Tess"
 },
 &"1_4": {
@@ -86,7 +279,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00003, 285.99994),
+"size": Vector2(300.00024, 286),
 "speaker": "Tess"
 },
 &"1_5": {
@@ -99,7 +292,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(419.9997, 299.99994),
+"size": Vector2(420.00018, 300),
 "speaker": "Tess"
 },
 &"1_6": {
@@ -112,7 +305,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(360, 360),
+"size": Vector2(359.99988, 360),
 "speaker": "Tess"
 },
 &"1_7": {
@@ -125,7 +318,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(320.00012, 320),
+"size": Vector2(319.99997, 320),
 "speaker": "Tess"
 },
 &"1_8": {
@@ -138,7 +331,20 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(339.99997, 340),
+"size": Vector2(340.00024, 340.00012),
 "speaker": "Tess"
+},
+&"1_9": {
+"dialogue": "Beginning automaton scan...",
+"offset": Vector2(-40, 2500),
+"options": {
+0: {
+"condition": {},
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(420.00024, 360),
+"speaker": "Machine"
 }
 }
