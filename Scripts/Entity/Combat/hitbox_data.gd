@@ -9,3 +9,4 @@ extends Resource
 @export var knockback_power: int
 @export var hitstun_duration: float
 @export var impact_fx: String
+@export var force_respawn: bool = false

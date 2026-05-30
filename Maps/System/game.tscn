@@ -19,6 +19,12 @@ script = ExtResource("6_iex31")
 [sub_resource type="RichTextEffect" id="RichTextEffect_ewbju"]
 script = ExtResource("7_ynys3")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txtda"]
+bg_color = Color(0.9874967, 0.00038620114, 0.90192336, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjdgk"]
+bg_color = Color(0.27058825, 0.6039216, 1, 1)
+
 [node name="Game" type="Node" unique_id=1676149531]
 script = ExtResource("1_yjdgk")
 
@@ -26,22 +32,41 @@ script = ExtResource("1_yjdgk")
 
 [node name="DialogueBox" type="Panel" parent="PlayerUI" unique_id=530999579]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 85.0
-offset_top = -102.5
-offset_right = -758.9999
-offset_bottom = -2.5
+offset_left = 39.0
+offset_top = -135.0
+offset_right = -857.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_l0bwt")
 script = ExtResource("4_0ysoq")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_nb51f"), SubResource("RichTextEffect_nnt18"), SubResource("RichTextEffect_ewbju")])
 metadata/_custom_type_script = "uid://fac37v01ub0b"
+
+[node name="Panel2" type="Panel" parent="PlayerUI/DialogueBox" unique_id=164383607]
+z_index = -1
+layout_mode = 0
+offset_left = 6.875
+offset_top = -45.764
+offset_right = 706.875
+offset_bottom = 90.236
+rotation = 0.08726646
+theme_override_styles/panel = SubResource("StyleBoxFlat_txtda")
+
+[node name="Panel" type="Panel" parent="PlayerUI/DialogueBox" unique_id=1315784086]
+z_index = -1
+layout_mode = 0
+offset_left = -27.76
+offset_top = -27.855
+offset_right = 672.24
+offset_bottom = 108.145004
+rotation = 0.04712389
+theme_override_styles/panel = SubResource("StyleBoxFlat_yjdgk")
 
 [node name="MusicController" type="Node" parent="." unique_id=1511821570]
 script = ExtResource("9_hdfm3")

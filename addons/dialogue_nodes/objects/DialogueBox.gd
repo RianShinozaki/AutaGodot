@@ -152,10 +152,10 @@ var _wait_effect : RichTextWait
 
 
 func _enter_tree():
-	if get_child_count() > 0:
-		for child in get_children():
-			remove_child(child)
-			child.queue_free()
+	#if get_child_count() > 0:
+	#	for child in get_children():
+	#		remove_child(child)
+	#		child.queue_free()
 	
 	var margin_container = MarginContainer.new()
 	add_child(margin_container)
@@ -184,6 +184,7 @@ func _enter_tree():
 	speaker_label = Label.new()
 	_sub_container.add_child(speaker_label)
 	speaker_label.text = 'Speaker'
+	speaker_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
 	dialogue_label = RichTextLabel.new()
 	_sub_container.add_child(dialogue_label)

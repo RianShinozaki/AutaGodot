@@ -20,6 +20,7 @@ func _ready() -> void:
 func process_hurt(_hitbox: Area2D):
 	#Get hitbox data
 	var _hb_data: HitboxData = _hitbox.hitbox_data
+	var _is_player: bool = entity is Auta
 	
 	#Process X knockback direction
 	var _x_knockback: float = _hb_data.x_knockback
@@ -51,16 +52,18 @@ func process_hurt(_hitbox: Area2D):
 	entity.inflict_hitstun(_len, _dir, _hb_data.hitstun_duration)
 	GameCamera.instance.shake_screen(_len, 0.25)
 	
-	#Create FX
-	var pool = object_pools.get_node(_hb_data.impact_fx)
-	var fx: Node2D = pool.spawn_object()
 	var offset: Vector2 = (_hitbox.global_position - entity.global_position).normalized()*4
-	if fx != null:
-		fx.global_position = entity.global_position + offset
-		fx.global_scale.x = sign(_x_knockback)
+	
+	#Create FX
+	if _hb_data.impact_fx != "":
+		var pool = object_pools.get_node(_hb_data.impact_fx)
+		var fx: Node2D = pool.spawn_object()
+		if fx != null:
+			fx.global_position = entity.global_position + offset
+			fx.global_scale.x = sign(_x_knockback)
 	
 	if power_resistance < _hb_data.knockback_power:
-		fx = object_pools.get_node("BloodSpurt").spawn_object()
+		var fx = object_pools.get_node("BloodSpurt").spawn_object()
 		if fx != null:
 			fx.global_position = entity.global_position + offset
 			fx.global_scale.x = sign(_x_knockback)
@@ -76,6 +79,10 @@ func process_hurt(_hitbox: Area2D):
 	_dca.play("trigger")
 	$"../../GenericAttributes/DamageCounterParent".global_position = global_position + offset + Vector2.UP*2
 	
-	#Capture UIw
+	#Capture UI
 	if capture_ui:
 		PlayerUI.instance.captured_enemy(entity)
+	
+	#Respawn if player
+	if _is_player and _hb_data.force_respawn:
+		entity.quick_respawn()

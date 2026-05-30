@@ -13,14 +13,42 @@ signal deactivate
 func _ready() -> void:
 	body_entered.connect(on_body_entered)
 	set_extents()
-	
-func on_body_entered(_body: Node2D):
+
+func on_body_entered(body):
 	if not active:
+		var pos = body.global_position
+		
+		var dist_left = abs(pos.x - x_extents.x)
+		var dist_right = abs(pos.x - x_extents.y)
+		var dist_top = abs(pos.y - y_extents.x)
+		var dist_bottom =abs(pos.y - y_extents.y)
+		
+		var min_dist = min(dist_left, dist_right, dist_top, dist_bottom)
+		
+		if abs(min_dist) < 64:
+			if min_dist == dist_left:
+				while(body.global_position.x < x_extents.x+16):
+					body.global_position.x+=1
+					
+			elif min_dist == dist_right:
+				while(body.global_position.x > x_extents.y-16):
+					body.global_position.x-=1
+					
+			elif min_dist == dist_top:
+				while(body.global_position.y < y_extents.x+16):
+					body.global_position.y+=1
+					
+			else:
+				while(body.global_position.y > y_extents.y-16):
+					body.global_position.y-=1
+				body.velocity.y = -250
+			
 		var _crs = get_tree().get_nodes_in_group("CamRegion")
 		for _cr in _crs:
 			_cr.deactivate_self()
 		active = true
 		GameCamera.instance.set_extents(x_extents, y_extents)
+		GameCamera.instance.snap_to_target()
 		emit_signal("activate")
 	
 func deactivate_self():

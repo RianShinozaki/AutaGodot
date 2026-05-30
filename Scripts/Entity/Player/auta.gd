@@ -42,3 +42,6 @@ func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
 func process_damage(_area):
 	$SpecialAttributes/HurtManager.process_hurt(_area)
 	
+func quick_respawn():
+	await get_tree().create_timer(2).timeout
+	get_tree().reload_current_scene()
