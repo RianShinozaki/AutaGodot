@@ -18,3 +18,4 @@ class_name AutaOrbParameters extends EntityMovementParameters
 @export var orb_recharge_time: float
 ##How long after a bounce can you do a jump
 @export var orb_to_jump_buffer_time: float
+@export var slope_influence: float

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtrd4o1pxulkh"]
+
+[ext_resource type="Texture2D" uid="uid://blywv7ai4lo18" path="res://Art Assets/Effects/Impact/Slice.png" id="1_fd6ac"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_glg3t"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="3_b0vcm"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e0svg"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_llm5k"]
+resource_name = "Effect"
+length = 0.57
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.33333334, 0.4165, 0.49980003, 0.57),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_qq5yl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_e0svg"]
+resource_name = "Slice"
+step = 0.0833
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcon5"]
+_data = {
+&"Effect": SubResource("Animation_llm5k"),
+&"RESET": SubResource("Animation_qq5yl"),
+&"Slice": SubResource("Animation_e0svg")
+}
+
+[node name="SlashFX" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_e0svg")
+texture = ExtResource("1_fd6ac")
+offset = Vector2(0, -1)
+hframes = 8
+frame = 1
+script = ExtResource("2_glg3t")
+rotRange = 15.0
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("3_b0vcm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wcon5")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

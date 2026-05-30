@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bb7vw7fvmejei"]
+
+[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_yjdgk"]
+[ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="2_txtda"]
+[ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="3_l0bwt"]
+[ext_resource type="Script" uid="uid://fac37v01ub0b" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="4_0ysoq"]
+[ext_resource type="Script" uid="uid://bsjyyawxxf0bl" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_wty1d"]
+[ext_resource type="Script" uid="uid://c82luh8yqcndl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_iex31"]
+[ext_resource type="Script" uid="uid://cvpltn1nqccc5" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_ynys3"]
+[ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Maps/Game Maps/DeepTransmissionDungeon.tscn" id="9_2bif5"]
+[ext_resource type="Script" uid="uid://crtfw650p8ob8" path="res://Scripts/System/Controllers/C-sharp/MusicController.cs" id="9_hdfm3"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_nb51f"]
+script = ExtResource("5_wty1d")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_nnt18"]
+script = ExtResource("6_iex31")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ewbju"]
+script = ExtResource("7_ynys3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txtda"]
+bg_color = Color(0.9874967, 0.00038620114, 0.90192336, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjdgk"]
+bg_color = Color(0.27058825, 0.6039216, 1, 1)
+
+[node name="Game" type="Node" unique_id=1676149531]
+script = ExtResource("1_yjdgk")
+
+[node name="PlayerUI" parent="." unique_id=391135168 instance=ExtResource("2_txtda")]
+
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=258548040]
+layer = 100
+offset = Vector2(50, 30)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 50, 30)
+
+[node name="DialogueBox" type="Panel" parent="DialogueUI" unique_id=217227158]
+visible = false
+texture_filter = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = -135.0
+offset_right = -857.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_l0bwt")
+script = ExtResource("4_0ysoq")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_nb51f"), SubResource("RichTextEffect_nnt18"), SubResource("RichTextEffect_ewbju")])
+metadata/_custom_type_script = "uid://fac37v01ub0b"
+
+[node name="Panel2" type="Panel" parent="DialogueUI/DialogueBox" unique_id=1494730230]
+z_index = -1
+layout_mode = 0
+offset_left = 6.875
+offset_top = -45.764
+offset_right = 706.875
+offset_bottom = 90.236
+rotation = 0.08726646
+theme_override_styles/panel = SubResource("StyleBoxFlat_txtda")
+
+[node name="Panel" type="Panel" parent="DialogueUI/DialogueBox" unique_id=54563407]
+z_index = -1
+layout_mode = 0
+offset_left = -27.76
+offset_top = -27.855
+offset_right = 672.24
+offset_bottom = 108.145004
+rotation = 0.04712389
+theme_override_styles/panel = SubResource("StyleBoxFlat_yjdgk")
+
+[node name="MusicController" type="Node" parent="." unique_id=1511821570]
+script = ExtResource("9_hdfm3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicController" unique_id=1441681876]
+
+[node name="GameWorld" parent="." unique_id=780061894 instance=ExtResource("9_2bif5")]

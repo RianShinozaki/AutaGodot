@@ -6,6 +6,8 @@ var anim: AnimationTree
 
 var mov_param: EntityMovementParameters
 var jmp_param: EntityJumpParameters
+var speed_param: AutaSpeedParameters
+
 var can_short_hop:
 	get:
 		return entity.get_node("ActionStates/NormalState").can_short_hop
@@ -21,6 +23,7 @@ func _ready() -> void:
 	inp = entity.get_node("GenericAttributes/InputManager")
 	mov_param = entity.parameters["movement"]
 	jmp_param = entity.parameters["jump"]
+	speed_param = entity.parameters["speed"]
 	anim = entity.get_node("Art/AnimationTree")
 	auta = entity as Auta
 
@@ -30,10 +33,17 @@ func _start() -> void:
 	entity.get_node("EnvironmentBox").position = mov_param.collision_shape_position
 	var direction = inp.input_direction
 	if direction.x != 0:
-		entity.get_node("Art").flip_h = entity.velocity.x < 0
-		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(entity.velocity.x), 1.0)
+		entity.get_node("Art").flip_h = direction.x < 0
+		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(direction.x), 1.0)
 	anim.get("parameters/playback").start("Attack", true)
-	play_animation_oneshot("Attack_Combo1")
+	
+	var _input = inp.input_direction
+	
+	if _input.y < -0.5:
+		play_animation_oneshot("Attack_Launch")
+	else:
+		play_animation_oneshot("Attack_Combo1")
+	
 	
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -41,12 +51,19 @@ func _process(delta: float) -> void:
 	
 	#Accelerate and decelerate
 	var hor = inp.input_direction.x
-	if abs(hor) > 0.1:
+	if abs(hor) > 0.2 && (sign(hor) == sign(entity.velocity.x) || entity.velocity.x == 0):
 		entity.accelerate_x(mov_param.get_acceleration(entity) * delta * sign(hor), sign(hor) * mov_param.get_max_speed(), true)
+		if abs(entity.velocity.x) < mov_param.get_initial_speed(entity):
+			entity.velocity.x = mov_param.get_initial_speed(entity) * sign(hor)
 	
+	if abs(hor) > 0.2 && sign(hor) != sign(entity.velocity.x):
+		entity.accelerate_x(mov_param.get_reverse_acceleration(entity) * delta, 0, false)
+		
 	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
-	
+		if abs(entity.velocity.x) < mov_param.get_minimum_speed(entity):
+			entity.velocity.x = 0
+			
 	#Update gravity
 	if(entity.velocity.y > jmp_param.rising_gravity_scale): can_short_hop = false
 	var _do_short_hop = can_short_hop and not inp.action_a_pressed
@@ -65,4 +82,7 @@ func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Attack/playback").start(_anim, true)
 	
 func animation_cancel():
-	entity.switch_action_state_name("NormalState")
+	if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
+		entity.switch_action_state_name("SpeedState")
+	else:
+		entity.switch_action_state_name("NormalState")

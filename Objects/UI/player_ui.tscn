@@ -1,54 +1,620 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw40ijv30boup"]
+[gd_scene format=3 uid="uid://dw40ijv30boup"]
 
-[ext_resource type="Texture2D" uid="uid://dh02ehpcpi1qx" path="res://Art Assets/UI/Game/AutaUI.png" id="1_f1pw7"]
-[ext_resource type="Script" uid="uid://dx7xxmq6a8igj" path="res://Scripts/UI/AutaUi.cs" id="2_yy0te"]
+[ext_resource type="Script" uid="uid://dnmadyvju5hcq" path="res://Scripts/UI/player_ui.gd" id="1_xlwdk"]
 [ext_resource type="Texture2D" uid="uid://pgi55101u1u6" path="res://Art Assets/UI/Game/spr_HealthbarBar.png" id="3_0ndgo"]
-[ext_resource type="Texture2D" uid="uid://d113a3wcib8nn" path="res://Art Assets/UI/Game/spr_MPBar.png" id="4_6qwfq"]
+[ext_resource type="Texture2D" uid="uid://daomwr2v8hgei" path="res://Art Assets/UI/Game/colored-purple-white-texture-liquid-art.jpg" id="5_m3ws1"]
+[ext_resource type="Shader" uid="uid://dlhyqowjlr6uy" path="res://Shaders/UI/scroll_ui.gdshader" id="5_mwhf7"]
+[ext_resource type="FontFile" uid="uid://bp8nix4b6mabv" path="res://Art Assets/Fonts/THEBOLDFONT-FREEVERSION.ttf" id="5_xmds5"]
+[ext_resource type="Texture2D" uid="uid://5yf705k887bl" path="res://Art Assets/UI/Game/Sparkle.png" id="5_yrovb"]
+[ext_resource type="Texture2D" uid="uid://dk750ibmy7jiv" path="res://Art Assets/UI/Dialogue/TessPortrait.png" id="7_yrovb"]
+[ext_resource type="Texture2D" uid="uid://db6yplo50hftd" path="res://Art Assets/UI/Game/Auta_2025_Trio.png" id="8_ccb1e"]
+[ext_resource type="Texture2D" uid="uid://bhrhhv2wusop1" path="res://Art Assets/UI/Game/Sparkle-individual.png" id="8_x6nag"]
+[ext_resource type="Texture2D" uid="uid://dnayf1qt203nc" path="res://Unused/BigHeartMask.png" id="9_4vbml"]
+[ext_resource type="Shader" uid="uid://balfwwe82aysw" path="res://Shaders/UI/scroll_ui_add.gdshader" id="9_ccb1e"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="9_ijkxl"]
+[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Art Assets/Enemies/Generic/LumpySheet.png" id="9_sru0y"]
+[ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://Shaders/UI/ui_square.gdshader" id="13_ccb1e"]
+
+[sub_resource type="Gradient" id="Gradient_4vbml"]
+offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mqqqp"]
+gradient = SubResource("Gradient_4vbml")
+width = 256
+height = 256
+fill_from = Vector2(0.14957266, 0.47863248)
+fill_to = Vector2(0.88461536, 0.41025642)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rl5i0"]
+load_path = "res://.godot/imported/TessPortrait.png-69fcc7032dbb2064ad1f1ae62cfeffed.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2wipf"]
+load_path = "res://.godot/imported/colored-purple-white-texture-liquid-art.jpg-d97b7d06b54a1cf251637e7d3f8d0b5a.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xhk1"]
+shader = ExtResource("13_ccb1e")
+shader_parameter/tex = SubResource("CompressedTexture2D_2wipf")
+shader_parameter/mask = SubResource("GradientTexture2D_mqqqp")
+shader_parameter/tex_size = Vector2(128, 128)
+shader_parameter/mask_size = Vector2(0, 0)
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/modulate = Color(0.37602854, 0.53698444, 0.3332764, 1)
+shader_parameter/sprite = SubResource("CompressedTexture2D_rl5i0")
+shader_parameter/sprite_size = Vector2(64, 64)
+shader_parameter/sprite_offset = Vector2(0.435, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ijkxl"]
+
+[sub_resource type="Gradient" id="Gradient_73bxj"]
+offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4vbml"]
+gradient = SubResource("Gradient_73bxj")
+width = 256
+height = 256
+fill_from = Vector2(0.14957266, 0.47863248)
+fill_to = Vector2(0.88461536, 0.41025642)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqqqp"]
+load_path = "res://.godot/imported/colored-purple-white-texture-liquid-art.jpg-d97b7d06b54a1cf251637e7d3f8d0b5a.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rl5i0"]
+shader = ExtResource("13_ccb1e")
+shader_parameter/tex = SubResource("CompressedTexture2D_mqqqp")
+shader_parameter/mask = SubResource("GradientTexture2D_4vbml")
+shader_parameter/tex_size = Vector2(128, 128)
+shader_parameter/mask_size = Vector2(0, 0)
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/modulate = Color(0.38113484, 0.21629578, 0.39601701, 1)
+shader_parameter/sprite = ExtResource("7_yrovb")
+shader_parameter/sprite_size = Vector2(64, 64)
+shader_parameter/sprite_offset = Vector2(0.435, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijkxl"]
+shader = ExtResource("9_ccb1e")
+shader_parameter/scroll_speed_x = 0.02
+shader_parameter/scroll_speed_y = 0.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_sru0y"]
+font = ExtResource("5_xmds5")
+font_size = 35
+font_color = Color(0.4627451, 0.14901961, 0.4, 1)
+outline_size = 10
+
+[sub_resource type="Gradient" id="Gradient_ccb1e"]
+offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_73bxj"]
+gradient = SubResource("Gradient_ccb1e")
+width = 256
+height = 256
+fill_from = Vector2(0.1923077, 0.41025642)
+fill_to = Vector2(0.52136755, 0.26068377)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vbml"]
+shader = ExtResource("13_ccb1e")
+shader_parameter/tex = ExtResource("5_m3ws1")
+shader_parameter/mask = SubResource("GradientTexture2D_73bxj")
+shader_parameter/tex_size = Vector2(128, 128)
+shader_parameter/mask_size = Vector2(104.355, 128)
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/modulate = Color(0.88199216, 0.2385431, 0.5766974, 1)
+shader_parameter/sprite = ExtResource("8_ccb1e")
+shader_parameter/sprite_size = Vector2(84.215, 210.06)
+shader_parameter/sprite_offset = Vector2(0.02, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vbml"]
+load_path = "res://.godot/imported/Auta_2025_Trio.png-72382f67ddf25bff44194e033109920d.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqqqp"]
+shader = ExtResource("13_ccb1e")
+shader_parameter/tex = ExtResource("5_m3ws1")
+shader_parameter/mask = ExtResource("9_4vbml")
+shader_parameter/tex_size = Vector2(128, 128)
+shader_parameter/mask_size = Vector2(128, 128)
+shader_parameter/scroll_speed = Vector2(0.1, 0.1)
+shader_parameter/modulate = Color(0.88199216, 0.2385431, 0.5766974, 1)
+shader_parameter/sprite = SubResource("CompressedTexture2D_4vbml")
+shader_parameter/sprite_size = Vector2(90.53, 210.06)
+shader_parameter/sprite_offset = Vector2(-0.01, -0.095)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmds5"]
+font = ExtResource("5_xmds5")
+font_size = 35
+outline_size = 6
+outline_color = Color(0.44313726, 0.11372549, 0.33333334, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73bxj"]
+shader = ExtResource("9_ccb1e")
+shader_parameter/scroll_speed_x = 0.02
+shader_parameter/scroll_speed_y = 0.01
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ccb1e"]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmds5"]
+shader = ExtResource("5_mwhf7")
+shader_parameter/scroll_speed_x = 0.02
+shader_parameter/scroll_speed_y = 0.01
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_db4av"]
 light_mode = 1
 
-[node name="PlayerUI" type="CanvasLayer"]
+[sub_resource type="LabelSettings" id="LabelSettings_ccb1e"]
+font = ExtResource("5_xmds5")
+font_size = 32
+
+[node name="PlayerUI" type="CanvasLayer" unique_id=258548040]
 layer = 100
-
-[node name="AutaUI" type="TextureRect" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_db4av")
-offset_left = 22.0
-offset_top = -12.0
-offset_right = 144.0
-offset_bottom = 52.0
+offset = Vector2(50, 30)
 scale = Vector2(2, 2)
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_f1pw7")
-script = ExtResource("2_yy0te")
+transform = Transform2D(2, 0, 0, 2, 50, 30)
+script = ExtResource("1_xlwdk")
 
-[node name="HealthBar" type="TextureProgressBar" parent="AutaUI"]
-show_behind_parent = true
+[node name="TessTab2" type="Control" parent="." unique_id=1883699700]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 9.0
+offset_right = 167.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="TextureRect" parent="TessTab2" unique_id=1726680687]
+material = SubResource("ShaderMaterial_3xhk1")
 layout_mode = 0
-offset_left = 38.0
-offset_top = 43.0
-offset_right = 118.0
-offset_bottom = 83.0
-value = 100.0
+offset_left = -40.0
+offset_right = 80.0
+offset_bottom = 24.0
+texture = SubResource("PlaceholderTexture2D_ijkxl")
+
+[node name="TextureRect2" type="TextureRect" parent="TessTab2" unique_id=1136378849]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -35.0
+offset_right = 56.0
+offset_bottom = 29.0
+texture = ExtResource("7_yrovb")
+
+[node name="TessTab" type="Control" parent="." unique_id=1812065505]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 47.0
+offset_top = 9.0
+offset_right = 87.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="TextureRect" parent="TessTab" unique_id=985122956]
+material = SubResource("ShaderMaterial_rl5i0")
+layout_mode = 0
+offset_left = -40.0
+offset_right = 80.0
+offset_bottom = 24.0
+texture = SubResource("PlaceholderTexture2D_ijkxl")
+
+[node name="TextureRect2" type="TextureRect" parent="TessTab" unique_id=462100275]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -35.0
+offset_right = 56.0
+offset_bottom = 29.0
+texture = ExtResource("7_yrovb")
+
+[node name="HPBar" type="Control" parent="." unique_id=737186914]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 63.0
+offset_top = -7.0
+offset_right = 103.0
+offset_bottom = 33.0
+
+[node name="WhiteOutline2" type="ColorRect" parent="HPBar" unique_id=1894528229]
+z_index = -1
+layout_mode = 0
+offset_left = -18.0
+offset_top = 58.0
+offset_right = 150.0
+offset_bottom = 66.0
+
+[node name="BlackBG" type="ColorRect" parent="HPBar" unique_id=1871582428]
+z_index = -1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.5
+offset_right = 152.0
+offset_bottom = 64.0
+color = Color(0.06958811, 0.12734836, 0.27127957, 1)
+
+[node name="HealthBar" type="TextureProgressBar" parent="HPBar" unique_id=1861035504]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.0
+offset_right = 152.0
+offset_bottom = 64.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+nine_patch_stretch = true
 texture_progress = ExtResource("3_0ndgo")
 
-[node name="HealthBar2" type="TextureProgressBar" parent="AutaUI"]
+[node name="TextureRect" type="TextureRect" parent="HPBar/HealthBar" unique_id=2060491164]
+modulate = Color(1.540184e-06, 0.83222675, 0.83440304, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_ijkxl")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="HP" type="Label" parent="HPBar" unique_id=826482009]
+visible = false
+layout_mode = 0
+offset_left = -14.5
+offset_top = 56.0
+offset_right = 100.5
+offset_bottom = 156.0
+scale = Vector2(0.25, 0.25)
+text = "HP"
+label_settings = SubResource("LabelSettings_sru0y")
+
+[node name="AutaTab" type="Control" parent="." unique_id=1593533045]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 55.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="TextureRect" parent="AutaTab" unique_id=1771330838]
+material = SubResource("ShaderMaterial_4vbml")
+layout_mode = 0
+offset_left = -40.0
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 72.0
+texture = SubResource("PlaceholderTexture2D_ijkxl")
+
+[node name="TextureRect2" type="TextureRect" parent="AutaTab" unique_id=1583973492]
+visible = false
+material = SubResource("ShaderMaterial_mqqqp")
+layout_mode = 0
+offset_left = -41.5
+offset_top = -42.5
+offset_right = 86.5
+offset_bottom = 85.5
+texture = SubResource("PlaceholderTexture2D_ijkxl")
+
+[node name="AUTA" type="Label" parent="AutaTab" unique_id=892063574]
+visible = false
+modulate = Color(0.9590284, 0.77197933, 0.8339528, 1)
+layout_mode = 0
+offset_left = -31.5
+offset_top = -15.5
+offset_right = 48.5
+offset_bottom = 20.5
+scale = Vector2(0.5, 0.5)
+text = "AUTA"
+label_settings = SubResource("LabelSettings_xmds5")
+horizontal_alignment = 1
+
+[node name="MPBar" type="Control" parent="." unique_id=1889887295]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 9.0
+offset_right = 95.0
+offset_bottom = 49.0
+
+[node name="WhiteOutline2" type="ColorRect" parent="MPBar" unique_id=1233970938]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -18.0
+offset_top = 58.0
+offset_right = 134.0
+offset_bottom = 66.0
+
+[node name="BlackBG" type="ColorRect" parent="MPBar" unique_id=869024795]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -16.0
+offset_top = 56.5
+offset_right = 136.0
+offset_bottom = 64.0
+color = Color(0.06958811, 0.12734836, 0.27127957, 1)
+
+[node name="MP" type="TextureRect" parent="MPBar" unique_id=46098130]
+modulate = Color(0.9625369, 0.76137334, 0.7979221, 1)
+self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
+clip_children = 2
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 72.0
+texture = ExtResource("5_yrovb")
+expand_mode = 3
+
+[node name="MPBar" type="TextureProgressBar" parent="MPBar/MP" unique_id=109039331]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 38.0
-offset_top = 55.0
-offset_right = 118.0
-offset_bottom = 95.0
-value = 100.0
-texture_progress = ExtResource("4_6qwfq")
+offset_right = 48.0
+offset_bottom = 27.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_0ndgo")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="Sparkle1" type="Control" parent="MPBar" unique_id=1172423726]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Shape" type="TextureRect" parent="MPBar/Sparkle1" unique_id=211331820]
+self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("8_x6nag")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MPBar/Sparkle1/Shape" unique_id=690123266]
+modulate = Color(0.8745098, 0.30980393, 0.59607846, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_73bxj")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="Light" type="TextureRect" parent="MPBar/Sparkle1" unique_id=537212084]
+modulate = Color(0.6811064, 0.24548897, 0.54134667, 0.43529412)
+clip_children = 2
+material = SubResource("CanvasItemMaterial_ccb1e")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("9_ijkxl")
+expand_mode = 3
+
+[node name="Sparkle2" type="Control" parent="MPBar" unique_id=1617644656]
+anchors_preset = 0
+offset_left = 16.0
+offset_right = 56.0
+offset_bottom = 40.0
+
+[node name="Shape" type="TextureRect" parent="MPBar/Sparkle2" unique_id=387230474]
+self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("8_x6nag")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MPBar/Sparkle2/Shape" unique_id=236780595]
+modulate = Color(0.8745098, 0.30980393, 0.59607846, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_73bxj")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="Light" type="TextureRect" parent="MPBar/Sparkle2" unique_id=327081311]
+modulate = Color(0.6811064, 0.24548897, 0.54134667, 0.43529412)
+clip_children = 2
+material = SubResource("CanvasItemMaterial_ccb1e")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("9_ijkxl")
+expand_mode = 3
+
+[node name="Sparkle3" type="Control" parent="MPBar" unique_id=848191291]
+anchors_preset = 0
+offset_left = 32.0
+offset_right = 72.0
+offset_bottom = 40.0
+
+[node name="Shape" type="TextureRect" parent="MPBar/Sparkle3" unique_id=1763196430]
+self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("8_x6nag")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MPBar/Sparkle3/Shape" unique_id=527885614]
+modulate = Color(0.8745098, 0.30980393, 0.59607846, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_73bxj")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="Light" type="TextureRect" parent="MPBar/Sparkle3" unique_id=676289217]
+modulate = Color(0.6811064, 0.24548897, 0.54134667, 0.43529412)
+clip_children = 2
+material = SubResource("CanvasItemMaterial_ccb1e")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("9_ijkxl")
+expand_mode = 3
+
+[node name="SP" type="Label" parent="MPBar" unique_id=333746789]
+visible = false
+layout_mode = 0
+offset_left = -14.5
+offset_top = 56.0
+offset_right = 100.5
+offset_bottom = 156.0
+scale = Vector2(0.25, 0.25)
+text = "SP"
+label_settings = SubResource("LabelSettings_sru0y")
+
+[node name="EnemyUI" type="Control" parent="." unique_id=699090803]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EnemyTab" type="Control" parent="EnemyUI" unique_id=797070470]
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = 591.0
+offset_top = 9.0
+offset_right = 631.0
+offset_bottom = 49.0
+
+[node name="TextureRect" type="ColorRect" parent="EnemyUI/EnemyTab" unique_id=1173022495]
+clip_children = 2
+layout_mode = 0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 72.0
+
+[node name="TextureRect" type="TextureRect" parent="EnemyUI/EnemyTab/TextureRect" unique_id=1386858250]
+modulate = Color(0.79889333, 0, 0.104868434, 0.88235295)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="EnemyName" type="Label" parent="EnemyUI/EnemyTab" unique_id=921521043]
+modulate = Color(0.9590284, 0.77197933, 0.8339528, 1)
+layout_mode = 0
+offset_left = -88.0
+offset_top = -16.0
+offset_right = 152.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+text = "ENEMY"
+label_settings = SubResource("LabelSettings_xmds5")
+horizontal_alignment = 2
+
+[node name="Portrait" type="Sprite2D" parent="EnemyUI/EnemyTab" unique_id=1949908782]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_db4av")
+position = Vector2(8, 32)
 scale = Vector2(2, 2)
+texture = ExtResource("9_sru0y")
+flip_h = true
+hframes = 4
+vframes = 4
+
+[node name="EnemyHP" type="Control" parent="EnemyUI" unique_id=2077385258]
+z_index = 1
+anchors_preset = 0
+offset_left = 479.0
+offset_top = 9.0
+offset_right = 519.0
+offset_bottom = 49.0
+
+[node name="WhiteOutline2" type="ColorRect" parent="EnemyUI/EnemyHP" unique_id=700062583]
+z_index = -1
+layout_mode = 0
+offset_left = 53.595
+offset_top = 58.0
+offset_right = 133.595
+offset_bottom = 66.0
+
+[node name="BlackBG" type="ColorRect" parent="EnemyUI/EnemyHP" unique_id=708904237]
+z_index = -1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.5
+offset_right = 136.0
+offset_bottom = 64.0
+color = Color(0.06958811, 0.12734836, 0.27127957, 1)
+
+[node name="HealthBar" type="TextureProgressBar" parent="EnemyUI/EnemyHP" unique_id=948403948]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 64.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_0ndgo")
+
+[node name="TextureRect" type="TextureRect" parent="EnemyUI/EnemyHP/HealthBar" unique_id=1347240121]
+modulate = Color(0.00012513995, 0.49239254, 0.9606876, 1)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_xmds5")
+layout_mode = 0
+offset_left = -7.9999995
+offset_right = 2125.0
+offset_bottom = 2134.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_m3ws1")
+
+[node name="HP" type="Label" parent="EnemyUI/EnemyHP" unique_id=609585754]
+visible = false
+layout_mode = 0
+offset_left = -14.5
+offset_top = 56.0
+offset_right = 100.5
+offset_bottom = 156.0
+scale = Vector2(0.25, 0.25)
+text = "HP"
+label_settings = SubResource("LabelSettings_sru0y")
+
+[node name="BigMessage" type="Label" parent="." unique_id=322938768]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -24.5
+offset_top = 129.5
+offset_right = -794.5
+offset_bottom = 161.5
+grow_horizontal = 2
+text = "TEST MESSAGE"
+label_settings = SubResource("LabelSettings_ccb1e")
+horizontal_alignment = 1

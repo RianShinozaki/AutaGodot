@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=18 format=3 uid="uid://cwgau5yvosgkc"]
+[gd_resource type="VisualShader" format=3 uid="uid://cwgau5yvosgkc"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_tlg5q"]
 operator = 7
@@ -58,61 +58,6 @@ default_input_values = [0, 0.0, 1, 1.0]
 [sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_ua2u4"]
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform sampler2D Texture2DParameter : filter_nearest;
-uniform sampler2D tex_frg_6;
-
-
-
-void fragment() {
-// UVFunc:14
-	vec2 n_in14p1 = vec2(1.00000, 1.00000);
-	vec2 n_in14p2 = vec2(0.00000, 0.00000);
-	vec2 n_out14p0 = n_in14p2 * n_in14p1 + UV;
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(Texture2DParameter, n_out14p0);
-	float n_out3p4 = n_out3p0.a;
-
-
-// Texture2D:6
-	vec4 n_out6p0 = texture(tex_frg_6, UV);
-	float n_out6p1 = n_out6p0.r;
-
-
-// Input:12
-	float n_out12p0 = TIME;
-
-
-// FloatFunc:11
-	float n_out11p0 = sin(n_out12p0);
-
-
-// Clamp:13
-	float n_in13p1 = 0.00000;
-	float n_in13p2 = 1.00000;
-	float n_out13p0 = clamp(n_out11p0, n_in13p1, n_in13p2);
-
-
-// FloatOp:8
-	float n_out8p0 = n_out6p1 + n_out13p0;
-
-
-// FloatOp:10
-	float n_out10p0 = min(n_out3p4, n_out8p0);
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out3p0.xyz);
-	COLOR.a = n_out10p0;
-
-
-}
-"
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(520, 140)

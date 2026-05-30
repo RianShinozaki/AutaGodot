@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://7qyd1unc7cjw"]
+
+[ext_resource type="Texture2D" uid="uid://x4xosolxfx6t" path="res://Art Assets/Effects/Impact/BloodSpurt.png" id="1_ji1td"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_hsg3e"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="3_gmorq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e0svg"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_llm5k"]
+resource_name = "Effect"
+length = 0.5831
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08330002, 0.16673335, 0.24990001, 0.33320004, 0.4034, 0.5000667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_qq5yl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_e0svg"]
+resource_name = "Slice"
+step = 0.0833
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcon5"]
+_data = {
+&"Effect": SubResource("Animation_llm5k"),
+&"RESET": SubResource("Animation_qq5yl"),
+&"Slice": SubResource("Animation_e0svg")
+}
+
+[node name="BloodSpurt" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_e0svg")
+texture = ExtResource("1_ji1td")
+offset = Vector2(29.67, -14.205)
+hframes = 9
+frame = 1
+script = ExtResource("2_hsg3e")
+rotRange = 15.0
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("3_gmorq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wcon5")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

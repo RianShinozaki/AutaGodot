@@ -9,4 +9,7 @@ func spawn():
 	get_parent().OnSpawn()
 
 func despawn():
-	object_pool.return_object_to_pool(self)
+	if is_instance_valid(object_pool):
+		object_pool.return_object_to_pool(self)
+	else:
+		queue_free()

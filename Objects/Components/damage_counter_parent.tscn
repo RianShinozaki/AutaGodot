@@ -1,0 +1,170 @@
+[gd_scene load_steps=8 format=3 uid="uid://du6ojetpg40qk"]
+
+[ext_resource type="Shader" uid="uid://3euvgoek0shn" path="res://Shaders/retro_vhs_glitch.gdshader" id="1_laq22"]
+[ext_resource type="FontFile" uid="uid://bjcihuue17427" path="res://Art Assets/Fonts/Not Jam Mono Clean 13.ttf" id="2_xlxex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5su5"]
+shader = ExtResource("1_laq22")
+shader_parameter/intensity = 0.058000002755
+shader_parameter/glitch_frequency = 3.07000014256512
+shader_parameter/glitch_duration = 0.18600000813648
+shader_parameter/red_displacement = 0.0450000021375
+shader_parameter/green_displacement = 0.03200000152
+shader_parameter/blue_displacement = 0.026000001235
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 0.1930000091675
+shader_parameter/slice_intensity = 0.75200003572
+shader_parameter/ghost_intensity = 0.202000009595
+shader_parameter/negative_intensity = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_sw2wh"]
+font = ExtResource("2_xlxex")
+font_size = 13
+font_color = Color(0.9999998, 0.10976777, 0.52946186, 1)
+outline_size = 4
+
+[sub_resource type="Animation" id="Animation_jj7hu"]
+resource_name = "trigger"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.1, 1.1535243, 1.2, -0.04333332, 0.0006555319, 0.026951127, -0.0004077076, 1, -0.07333332, 0.24191403, 0, 0),
+"times": PackedFloat32Array(0, 0.31, 0.44)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.1, 1.210016, 1.2, -0.07666667, -0.036826134, 0.026627911, 0.012790473, 1, -0.07333332, 0.20065558, 0, 0),
+"times": PackedFloat32Array(0, 0.31, 0.44)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-27, -0.25, 0, 0.25, 0, -27, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-11.000001, -0.25, 0, 0, -2.5071907, -38.05738, -0.6666666, 0.18568993, 0, 0),
+"times": PackedFloat32Array(0, 0.96666664)
+}
+
+[sub_resource type="Animation" id="Animation_8pc40"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-27, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-11.000001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8pc40"]
+_data = {
+&"RESET": SubResource("Animation_8pc40"),
+&"trigger": SubResource("Animation_jj7hu")
+}
+
+[node name="DamageCounterParent" type="Node2D"]
+top_level = true
+texture_filter = 1
+
+[node name="DamageCounter" type="Label" parent="."]
+material = SubResource("ShaderMaterial_d5su5")
+offset_left = -27.0
+offset_top = -11.000001
+offset_right = 27.0
+offset_bottom = 15.999999
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(28.28, 16.465)
+text = "123"
+label_settings = SubResource("LabelSettings_sw2wh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageCounter"]
+libraries = {
+&"": SubResource("AnimationLibrary_8pc40")
+}

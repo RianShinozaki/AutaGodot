@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://db8l7ltwxxsjp"]
+[gd_scene format=3 uid="uid://db8l7ltwxxsjp"]
 
 [ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_abg3g"]
-[ext_resource type="PackedScene" uid="uid://cqx3d6x3e06hm" path="res://Objects/System/camera_2d.tscn" id="3_xw6ph"]
+[ext_resource type="Script" uid="uid://bmqwdds8ljkiu" path="res://Scripts/System/Controllers/game_system.gd" id="1_kaof1"]
+[ext_resource type="Script" uid="uid://fr67c83tjktl" path="res://Scripts/System/Camera/GameCamera.gd" id="3_kaof1"]
 [ext_resource type="Shader" uid="uid://crij0fawgr8t6" path="res://Shaders/Desaturate.tres" id="4_x75ph"]
-[ext_resource type="PackedScene" uid="uid://o2dhbshs28xw" path="res://Objects/System/camera_center.tscn" id="5_o0guj"]
+[ext_resource type="Script" uid="uid://bawt248lwkmlq" path="res://Scripts/System/Controllers/sfx_controller.gd" id="5_ufvuj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1w4b"]
 shader = ExtResource("4_x75ph")
@@ -41,24 +42,25 @@ height = 259
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.512195, 0)
 
-[node name="GameSystem" type="Node2D"]
+[node name="GameSystem" type="Node2D" unique_id=1502683367]
+script = ExtResource("1_kaof1")
 
-[node name="Node" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." unique_id=121694945]
 script = ExtResource("1_abg3g")
 
-[node name="Cam" type="Node2D" parent="."]
+[node name="Cam" type="Node2D" parent="." unique_id=1407532100]
 position = Vector2(223, -207)
 
-[node name="Camera2D" parent="Cam" node_paths=PackedStringArray("target") instance=ExtResource("3_xw6ph")]
+[node name="Camera2D" type="Camera2D" parent="Cam" unique_id=1593991952]
 zoom = Vector2(4, 4)
-target = NodePath("../CameraCenter")
+script = ExtResource("3_kaof1")
 
-[node name="SharpShader" type="Sprite2D" parent="Cam/Camera2D"]
+[node name="SharpShader" type="Sprite2D" parent="Cam/Camera2D" unique_id=397901144]
 visible = false
 material = SubResource("ShaderMaterial_c1w4b")
 texture = SubResource("PlaceholderTexture2D_t1264")
 
-[node name="Sprite2D" type="Sprite2D" parent="Cam/Camera2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Cam/Camera2D" unique_id=1821959365]
 visible = false
 light_mask = 0
 z_index = -3997
@@ -68,7 +70,7 @@ position = Vector2(2, -12)
 scale = Vector2(1, 0.978764)
 texture = SubResource("GradientTexture2D_ajp8n")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Cam/Camera2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Cam/Camera2D" unique_id=1946273659]
 visible = false
 light_mask = 0
 material = SubResource("CanvasItemMaterial_yvfxt")
@@ -76,6 +78,6 @@ position = Vector2(0, 26)
 scale = Vector2(1, 0.795367)
 texture = SubResource("GradientTexture2D_k1pnl")
 
-[node name="CameraCenter" parent="Cam" instance=ExtResource("5_o0guj")]
-position = Vector2(712, -168)
-cameraSize = Vector2(336, 173)
+[node name="SFXController" type="Node" parent="." unique_id=277570848]
+script = ExtResource("5_ufvuj")
+metadata/_custom_type_script = "uid://bawt248lwkmlq"

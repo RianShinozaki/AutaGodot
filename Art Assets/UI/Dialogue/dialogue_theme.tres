@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=3 uid="uid://cy2f4tvi1em78"]
+
+[ext_resource type="FontFile" uid="uid://bwn2jpwxj6ugi" path="res://Art Assets/Fonts/Not Jam Mono Clean 16.ttf" id="1_26oxp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26oxp"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 255.0
+expand_margin_right = 255.0
+expand_margin_bottom = 255.0
+
+[resource]
+Label/fonts/font = ExtResource("1_26oxp")
+Panel/styles/panel = SubResource("StyleBoxFlat_26oxp")
+RichTextLabel/fonts/normal_font = ExtResource("1_26oxp")

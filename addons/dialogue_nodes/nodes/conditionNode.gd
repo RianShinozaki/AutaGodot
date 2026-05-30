@@ -1,59 +1,33 @@
 @tool
 extends GraphNode
 
-enum {EQUAL, NEQUAL, GREATER, LESS, GEQUAL, LEQUAL}
 
 signal modified
 
-@onready var variable = $HBoxContainer/Variable
-@onready var operator = $HBoxContainer/Operator
-@onready var type = $HBoxContainer/Type
+@onready var value1 = $BoxContainer/Value1
+@onready var value1_timer = $Value1Timer
+@onready var operator = $BoxContainer/Operator
+@onready var value2 = $BoxContainer/Value2
+@onready var value2_timer = $Value2Timer
 
-@onready var string_value : LineEdit = $HBoxContainer/StringValue
-@onready var int_value : SpinBox = $HBoxContainer/IntValue
-@onready var float_value : SpinBox = $HBoxContainer/FloatValue
-@onready var bool_value : CheckBox = $HBoxContainer/BoolValue
+var undo_redo : EditorUndoRedoManager
+var last_operator : int
 
-@onready var trueLabel = $TrueLabel
-@onready var falseLabel = $FalseLabel
-
-var types = [TYPE_STRING, TYPE_INT, TYPE_FLOAT, TYPE_BOOL, TYPE_OBJECT]
-var last_shown : Control
-var is_operators_full: bool
 
 func _ready():
-	last_shown = string_value
-	is_operators_full = true
-	operator_add_simple()
-	
-func _to_dict(graph):
+	value1.set_meta('last_value', value1.text)
+	value2.set_meta('last_value', value2.text)
+
+
+func _to_dict(graph : GraphEdit):
 	var dict = {}
-	dict['value1'] = variable.text
+	dict['value1'] = value1.text
 	dict['operator'] = operator.selected
+	dict['value2'] = value2.text
 	
 	dict['true'] = 'END'
 	dict['false'] = 'END'
 	
-	if variable.text == '':
-		printerr(title + ' has an empty variable name')
-		
-	match(types[type.selected]):
-		TYPE_STRING:
-			dict['value2'] = string_value.text
-		TYPE_INT:
-			dict['value2'] = int(int_value.value)
-		TYPE_FLOAT:
-			dict['value2'] = float_value.value
-		TYPE_BOOL:
-			dict['value2'] = bool_value.button_pressed
-		TYPE_OBJECT:
-			dict['value2'] = '{{' + string_value.text + '}}'
-			if string_value.text == '':
-				printerr(title + ': comparison variable is empty!')
-		_:
-			dict['value2'] = string_value.text
-			print('ConditionNode: Invalid type set to dict')
-		
 	for connection in graph.get_connection_list():
 		if connection['from_node'] == name:
 			if connection['from_port'] == 0:
@@ -64,99 +38,68 @@ func _to_dict(graph):
 	return dict
 
 
-func _from_dict(_graph, dict):
-	clear_values()
-	variable.text = dict['value1'] 
-	
-	var retrieved_value = dict['value2']
-	
-	match(typeof(retrieved_value)):
-		TYPE_STRING:
-			#checks if variable
-			if retrieved_value.begins_with('{{') and retrieved_value.ends_with('}}'):
-				operator_add_full()
-				string_value.text = retrieved_value.replace('{{', '').replace('}}', '')
-				type.selected = 4
-			else:
-				operator_add_simple()
-				string_value.text = retrieved_value
-				type.selected = 0
-		TYPE_INT:
-			operator_add_full()
-			int_value.value = retrieved_value
-			type.selected = 1
-		TYPE_FLOAT:
-			operator_add_full()
-			float_value.value = retrieved_value
-			type.selected = 2
-		TYPE_BOOL:
-			operator_add_simple()
-			bool_value.button_pressed = retrieved_value
-			type.selected = 3
-		_:	
-			print('ConditionNode: Cannot retrieve value of type ' + str(typeof(retrieved_value)))
-	
+func _from_dict(dict : Dictionary):
+	value1.text = dict['value1']
 	operator.selected = dict['operator']
+	value2.text = dict['value2']
+	
+	value1.set_meta('last_value', value1.text)
+	last_operator = operator.selected
+	value2.set_meta('last_value', value2.text)
 	
 	return [dict['true'], dict['false']]
 
-func clear_values():
-	string_value.text = ""
-	int_value.value = 0
-	float_value.value = 0
-	bool_value.button_pressed = false
 
-func operator_add_simple():
-	if is_operators_full:
-		is_operators_full = false
-		operator.clear()
-		operator.add_item('==', 0)
-		operator.add_item('!=', 1)
+func set_value(node : LineEdit, new_value):
+	if node.text != new_value:
+		node.text = new_value
+	node.set_meta('last_value', new_value)
 
-func operator_add_full():
-	if not is_operators_full:
-		is_operators_full = true
-		operator.clear()
-		operator.add_item('==', 0)
-		operator.add_item('!=', 1)
-		operator.add_item('>', 2)
-		operator.add_item('<', 3)
-		operator.add_item('>=', 4)
-		operator.add_item('<=', 5)
+
+func _on_value1_changed(new_text):
+	value1_timer.stop()
+	value1_timer.start()
+
+
+func _on_value1_timer_timeout():
+	if not undo_redo: return
 	
-func set_operator(_new_operator):
-	_on_modified()
+	undo_redo.create_action('Set value1')
+	undo_redo.add_do_method(self, 'set_value', value1, value1.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, 'set_value', value1, value1.get_meta('last_value'))
+	undo_redo.commit_action()
 
-func set_value(_new_val):
-	_on_modified()
 
-func _on_type_changed(new_idx : int):
-	if last_shown:
-		last_shown.hide()
-
-	match types[new_idx]:
-		TYPE_STRING:
-			string_value.show()
-			operator_add_simple()
-			last_shown = string_value
-		TYPE_INT:
-			int_value.show()
-			operator_add_full()
-			last_shown = int_value
-		TYPE_FLOAT:
-			float_value.show()
-			operator_add_full()
-			last_shown = float_value
-		TYPE_BOOL:
-			bool_value.show()
-			operator_add_simple()
-			last_shown = bool_value
-		TYPE_OBJECT:
-			string_value.show()
-			operator_add_full()
-			last_shown = string_value
+func _on_operator_selected(idx):
+	if not undo_redo: return
 	
-	_on_modified()
+	undo_redo.create_action('Set operator')
+	undo_redo.add_do_method(operator, 'select', idx)
+	undo_redo.add_do_property(self, 'last_operator', idx)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(operator, 'select', last_operator)
+	undo_redo.add_undo_property(self, 'last_operator', last_operator)
+	undo_redo.commit_action()
+
+
+func _on_value2_changed(new_text):
+	value2_timer.stop()
+	value2_timer.start()
+
+
+func _on_value2_timer_timeout():
+	if not undo_redo: return
+	
+	undo_redo.create_action('Set value2')
+	undo_redo.add_do_method(self, 'set_value', value2, value2.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, 'set_value', value2, value2.get_meta('last_value'))
+	undo_redo.commit_action()
+
 
 func _on_modified():
 	modified.emit()

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bupqxbb71vemd"]
+
+[ext_resource type="Texture2D" uid="uid://3xn7otcbqfii" path="res://Art Assets/Effects/Lighting/Spotlight.png" id="1_ctfbm"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjxv6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_me0ys"]
+blend_mode = 1
+
+[node name="Spotlight" type="Node2D" unique_id=1089630131]
+
+[node name="Spotlight" type="PointLight2D" parent="." unique_id=932885201]
+material = SubResource("CanvasItemMaterial_fjxv6")
+position = Vector2(0, 54.28)
+scale = Vector2(1, 0.8)
+color = Color(0.6200771, 0.8026672, 0, 1)
+energy = 0.47
+range_layer_min = -100
+range_layer_max = 100
+range_item_cull_mask = 3
+texture = ExtResource("1_ctfbm")
+texture_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Spotlight" unique_id=1596980999]
+modulate = Color(0.88190556, 0.5829578, 0.6579087, 0.18431373)
+material = SubResource("CanvasItemMaterial_me0ys")
+scale = Vector2(0.685, 0.933)
+texture = ExtResource("1_ctfbm")

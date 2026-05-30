@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://4fhxa2eg78jg"]
+[gd_resource type="VisualShader" format=3 uid="uid://4fhxa2eg78jg"]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_pcpt3"]
 function = 1
@@ -42,85 +42,6 @@ source = 5
 [sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_k7kak"]
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_add, unshaded;
-
-uniform sampler2D Texture : filter_nearest;
-uniform float t;
-uniform sampler2D ColorGradient;
-
-
-
-void fragment() {
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(Texture, UV);
-
-
-// VectorOp:14
-	vec4 n_in14p1 = vec4(0.50000, 0.50000, 0.50000, 0.30000);
-	vec4 n_out14p0 = n_out3p0 * n_in14p1;
-
-
-// FloatParameter:12
-	float n_out12p0 = t;
-
-
-// VectorCompose:11
-	float n_in11p1 = 0.00000;
-	vec2 n_out11p0 = vec2(n_out12p0, n_in11p1);
-
-
-	vec4 n_out6p0;
-// Texture2D:6
-	n_out6p0 = texture(ColorGradient, n_out11p0);
-
-
-	vec3 n_out13p0;
-// ColorOp:13
-	{
-		float base = vec3(n_out14p0.xyz).x;
-		float blend = vec3(n_out6p0.xyz).x;
-		if (base < 0.5) {
-			n_out13p0.x = 2.0 * base * blend;
-		} else {
-			n_out13p0.x = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
-		}
-	}
-	{
-		float base = vec3(n_out14p0.xyz).y;
-		float blend = vec3(n_out6p0.xyz).y;
-		if (base < 0.5) {
-			n_out13p0.y = 2.0 * base * blend;
-		} else {
-			n_out13p0.y = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
-		}
-	}
-	{
-		float base = vec3(n_out14p0.xyz).z;
-		float blend = vec3(n_out6p0.xyz).z;
-		if (base < 0.5) {
-			n_out13p0.z = 2.0 * base * blend;
-		} else {
-			n_out13p0.z = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
-		}
-	}
-
-
-// VectorDecompose:4
-	float n_out4p0 = n_out3p0.x;
-	float n_out4p1 = n_out3p0.y;
-	float n_out4p2 = n_out3p0.z;
-	float n_out4p3 = n_out3p0.w;
-
-
-// Output:0
-	COLOR.rgb = n_out13p0;
-	COLOR.a = n_out4p3;
-
-
-}
-"
 mode = 1
 modes/blend = 1
 flags/unshaded = true

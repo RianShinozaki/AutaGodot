@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _start() -> void:
 	super._start()
+	anim.get("parameters/playback").start("Grounded", true)
 	entity.get_node("EnvironmentBox").shape = mov_param.collision_shape
 	entity.get_node("EnvironmentBox").position = mov_param.collision_shape_position
 	can_short_hop = false
@@ -34,12 +35,15 @@ func _process(delta: float) -> void:
 	
 	#Accelerate and decelerate
 	var hor = inp.input_direction.x
-	if abs(hor) > 0.1:
+	if abs(hor) > 0.2 && (sign(hor) == sign(entity.velocity.x) || entity.velocity.x == 0):
 		entity.accelerate_x(mov_param.get_acceleration(entity) * delta * sign(hor), sign(hor) * mov_param.get_max_speed(), true)
 		if abs(entity.velocity.x) < mov_param.get_initial_speed(entity):
 			entity.velocity.x = mov_param.get_initial_speed(entity) * sign(hor)
 	
-	if abs(hor) < 0.1 or sign(hor) == -sign(entity.velocity.x):
+	if abs(hor) > 0.2 && sign(hor) != sign(entity.velocity.x):
+		entity.accelerate_x(mov_param.get_reverse_acceleration(entity) * delta, 0, false)
+		
+	if abs(hor) < 0.2:
 		entity.accelerate_x(mov_param.get_deceleration(entity) * delta, 0, false)
 	
 	if abs(entity.velocity.x) < mov_param.minimum_speed_skating:
@@ -51,7 +55,8 @@ func _process(delta: float) -> void:
 			
 	#Handle acceleration/deceleration due to slopes
 	var _norm := entity.get_floor_normal()
-	var _amount := _norm.x * entity.gravity * mov_param.slope_influence * delta
+	var _slope_influence = mov_param.slope_uphill_influence if sign(entity.velocity.x) != sign(_norm.x) else mov_param.slope_downhill_influence
+	var _amount: float = _norm.x * entity.gravity * _slope_influence * delta
 	entity.accelerate_x(_amount, mov_param.absolute_limit * sign(_norm.x), true)
 	
 	#Update gravity
@@ -74,8 +79,11 @@ func on_jump():
 	if(entity.is_on_floor()):
 		can_short_hop = true
 		var _norm := entity.get_floor_normal()
-		entity.velocity.y = jmp_param.get_jump_power() + entity.velocity.x * _norm.x * mov_param.slope_jump_influence
-		entity.velocity.x += sign(entity.velocity.x) * entity.velocity.x * _norm.x * mov_param.slope_jump_influence
+		var _x: float = entity.velocity_true.x + jmp_param.get_jump_power() * -_norm.x
+		var _y: float = entity.velocity_true.y + jmp_param.get_jump_power() * -_norm.y
+		var _slope_leave_velocity: Vector2 = Vector2(_x, _y)
+		var _noslope_velocity: Vector2 = Vector2(entity.velocity_true.x, jmp_param.get_jump_power())
+		entity.velocity = _noslope_velocity.lerp(_slope_leave_velocity, mov_param.slope_jump_influence)
 
 func on_attack():
 	if not active: return
@@ -88,9 +96,6 @@ func on_orb():
 
 #Grounded animation handler
 func just_grounded(_normal: Vector2, _velocity: Vector2):
-	var fx: Node2D = land_fx_pool.spawn_object()
-	if fx != null:
-		fx.global_position = entity.global_position + Vector2.DOWN*8;
 	if not active: return
 	play_animation_oneshot("Land")
 

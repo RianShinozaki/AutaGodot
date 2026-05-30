@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://tn6ogvcrkx4g"]
+
+[ext_resource type="Texture2D" uid="uid://dxb1d2ndeavxf" path="res://Art Assets/Effects/Movement/OrbReform.png" id="1_wra0m"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_6q4ge"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="3_0uool"]
+
+[sub_resource type="Animation" id="Animation_3mcd5"]
+resource_name = "Effect"
+length = 0.75
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_24w60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a42ke"]
+_data = {
+&"Effect": SubResource("Animation_3mcd5"),
+&"RESET": SubResource("Animation_24w60")
+}
+
+[node name="OrbReform" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_wra0m")
+hframes = 8
+script = ExtResource("2_6q4ge")
+rotRange = 30.0
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("3_0uool")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a42ke")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

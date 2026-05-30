@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp61slk7a2ff1"]
+
+[ext_resource type="Texture2D" uid="uid://brvjrhmsyals6" path="res://Art Assets/Effects/Impact/Burst.png" id="1_3ph6g"]
+[ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_ake48"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Scripts/System/Controllers/ObjectPoolObject.gd" id="3_fuebx"]
+
+[sub_resource type="Animation" id="Animation_24w60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ake48"]
+resource_name = "Effect"
+length = 0.4998
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fuebx"]
+_data = {
+&"Effect": SubResource("Animation_ake48"),
+&"RESET": SubResource("Animation_24w60")
+}
+
+[node name="OrbBurst" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_3ph6g")
+hframes = 7
+script = ExtResource("2_ake48")
+rotRange = 30.0
+
+[node name="ObjectPoolObject" type="Node" parent="."]
+script = ExtResource("3_fuebx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fuebx")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

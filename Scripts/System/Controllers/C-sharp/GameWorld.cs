@@ -7,7 +7,7 @@ public partial class GameWorld : CanvasModulate
 	public override void _Ready()
 	{
 		Callable.From(() => {
-			MusicController.StartMusic(bgMusic, 0.5f, -5f);
+			MusicController.StartMusic(bgMusic, 0.5f, -2f);
 		}).CallDeferred();
 		
 	}

@@ -23,8 +23,26 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 @export_group("Parameters")
 @export var parameters: Dictionary[String, ParameterSet]
 
+@export_group("Mods")
+@export var platform_detector: PlatformDetector
+
 signal just_grounded(normal: Vector2, velocity: Vector2)
 signal just_bounced(normal: Vector2, velocity: Vector2)
+
+var shake_level: float
+var shake_direction: Vector2
+var pre_move_velocity: Vector2
+
+func _ready() -> void:
+	velocity = Vector2.ZERO
+	platform_detector = get_node_or_null("GenericAttributes/PlatformDetector")
+	
+var velocity_true: Vector2:
+	get:
+		if is_on_floor():
+			return Vector2(-velocity.x * get_floor_normal().y, velocity.x * get_floor_normal().x)
+		else:
+			return velocity
 
 func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 	var _temp_velocity = velocity
@@ -41,13 +59,13 @@ func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 			var _kc = move_and_collide(_velocity * _delta, true)
 			if _kc != null:
 				var _normal = _kc.get_normal()
-				_velocity = -_velocity.reflect(_normal)
 				_velocity.y += gravity * _delta
+				_velocity = -_velocity.reflect(_normal)
 				var _loss_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (1 - bounce_factor)
 				var _impact_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (bounce_factor)
 				_velocity.x -= _loss_factor.x * _velocity.x
 				_velocity.y -= _loss_factor.y * _velocity.y
-				if(absf(_velocity.y) < 20): _velocity.y = 0
+				if(absf(_velocity.y) < 50): _velocity.y = 0
 				emit_signal("just_bounced", _normal, _velocity)
 			velocity = _velocity
 			move_and_slide()
@@ -59,26 +77,89 @@ func _physics_process(delta: float) -> void:
 	if !apply_physics: return
 	
 	if collision_mode == COLLISION_MODE_FLOOR:
-		if is_on_floor() and velocity.y >= 0 and not previously_grounded:
-			emit_signal("just_grounded", get_floor_normal(), velocity)
-			velocity.y = 0
+		if is_on_floor():
+			if velocity.y >= 0 and not previously_grounded:
+				emit_signal("just_grounded", get_floor_normal(), velocity)
+				velocity.y = 0
+			
+			if platform_detector != null:
+				var _displacement = platform_detector.apply(self)
+				var _platform_velocity = _displacement / delta if delta > 0 else Vector2.ZERO
+			
 		if not is_on_floor() or velocity.y < 0:
 			velocity.y += gravity * delta
 	else:
 		velocity.y += gravity * delta
 	
 	previously_grounded = is_on_floor()
+	pre_move_velocity = velocity
 	move(velocity, delta, true)
-
+	
 func accelerate_x(_amount: float, _limit: float, _toward: bool):
 	velocity.x = move_toward(velocity.x, _limit, _amount * (sign(_amount) if _toward else 1))
 
-func switch_action_state_name(_state: String):
-	var _action_state = get_node("ActionStates/"+_state)
-	switch_action_state(_action_state)
+func set_x_velocity(_amount: float):
+	velocity.x = _amount
 	
-func switch_action_state(_state: ActionState):
+func switch_action_state_name(_state: String) -> ActionState:
+	var _action_state = get_action_state_name(_state)
+	return switch_action_state(_action_state)
+
+func get_action_state_name(_state: String) -> ActionState:
+	return get_node("ActionStates/"+_state)
+	
+func switch_action_state(_state: ActionState) -> ActionState:
 	last_action_state = current_action_state
 	current_action_state = _state
 	last_action_state._end()
 	current_action_state._start()
+	return current_action_state
+
+func inflict_hitstun(_shake_level: float, _shake_direction: Vector2, _duration: float, _stun_fx: float = 1.0):
+	if not apply_physics: return
+	apply_physics = false
+	shake_level = _shake_level
+	shake_direction = _shake_direction
+	$Art.material.set_shader_parameter("stunFX", _stun_fx)
+	$Art/AnimationPlayer.speed_scale = 0.0
+	await get_tree().create_timer(_duration).timeout
+	$Art.material.set_shader_parameter("stunFX", 0.0)
+	$Art/AnimationPlayer.speed_scale = 1.0
+	apply_physics = true
+	shake_level = 0
+	shake_direction = Vector2.ZERO
+
+func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
+	pass
+
+func lock_controls(_unset_inputs: bool = true):
+	var _inp: InputManager = get_node("GenericAttributes/InputManager")
+	_inp.read_controller_input = false
+	if _unset_inputs:
+		_inp.input_direction = Vector2.ZERO
+
+func unlock_controls():
+	var _inp: InputManager = get_node("GenericAttributes/InputManager")
+	_inp.read_controller_input = true
+
+func set_art_flip(_flip_h: bool):
+	get_node("Art").flip_h = _flip_h
+
+signal reached_x_position
+func walk_to_x(_x_position: float, _speed_scale: float = 1):
+	var _move_dir: int = 0
+	var _inp: InputManager = get_node("GenericAttributes/InputManager")
+	if _x_position < global_position.x:
+		_move_dir = -1
+	else:
+		_move_dir = 1
+	_inp.input_direction = Vector2.RIGHT * _speed_scale * _move_dir
+	
+	while (global_position.x + velocity.x/60 < _x_position and _move_dir == 1) or (global_position.x - velocity.x/60 > _x_position and _move_dir == -1):
+		
+		await get_tree().process_frame
+	
+	_inp.input_direction = Vector2.ZERO
+	emit_signal("reached_x_position")
+	
+		

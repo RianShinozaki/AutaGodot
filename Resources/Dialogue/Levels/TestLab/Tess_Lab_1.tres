@@ -1,0 +1,149 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bloiv7pepkuh"]
+
+[ext_resource type="Script" uid="uid://djropofdqiyvo" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_ea36j"]
+
+[resource]
+script = ExtResource("1_ea36j")
+starts = {
+"Start": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"1_10",
+"offset": Vector2(-1040, 120),
+"start_id": "Start"
+},
+&"1_1": {
+"dialogue": "~~Towers on sand...
+Blue in the sky!",
+"offset": Vector2(-780, 120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_9",
+"text": ""
+}
+},
+"size": Vector2(300.0005, 240.00012),
+"speaker": 1
+},
+&"1_10": {
+"dialogue": "holy shit bro",
+"offset": Vector2(-820, -140),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_2": {
+"dialogue": "Wow, did you just make that up?",
+"offset": Vector2(-20, 140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240.00012),
+"speaker": 0
+},
+&"1_3": {
+"dialogue": "It's part of a song I heard as a kid.",
+"offset": Vector2(320, 140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240.00012),
+"speaker": 1
+},
+&"1_4": {
+"dialogue": "The funny part is... the first time I heard it, I'd never even seen a blue sky. ",
+"offset": Vector2(660, 140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_5": {
+"dialogue": "Yet here we are.",
+"offset": Vector2(1440, 160),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 240.00021),
+"speaker": 1
+},
+&"1_6": {
+"dialogue": "If we look hard enough, I bet we could find a sky for every color.",
+"offset": Vector2(1760, 160),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 240.00021),
+"speaker": 0
+},
+&"1_7": {
+"dialogue": "Sure. Why not? I think I could believe anything at this point.",
+"offset": Vector2(2080, 160),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.0005, 240.00021),
+"speaker": 1
+},
+&"1_8": {
+"dialogue": "I actually didn't think they were real. Just part of an absurd rhyme for kids. ",
+"offset": Vector2(1060, 160),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 240.00009),
+"speaker": 1
+},
+&"1_9": {
+"dialogue": "Don't they look grand as the ages go by?~~",
+"offset": Vector2(-420, 140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+}
+}
+strays = Array[String](["1_1", "1_9", "1_2", "1_3", "1_4", "1_8", "1_5", "1_6", "1_7"])
+characters = "res://Data/Dialogue/Levels/TestLab/TestLabChars.tres"
