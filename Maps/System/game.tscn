@@ -37,14 +37,13 @@ scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 50, 30)
 
 [node name="DialogueBox" type="Panel" parent="DialogueUI" unique_id=217227158]
-visible = false
 texture_filter = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 39.0
-offset_top = -135.0
+offset_top = -111.0
 offset_right = -857.0
 offset_bottom = -15.0
 grow_horizontal = 2
@@ -57,21 +56,21 @@ metadata/_custom_type_script = "uid://fac37v01ub0b"
 [node name="Panel2" type="Panel" parent="DialogueUI/DialogueBox" unique_id=1494730230]
 z_index = -1
 layout_mode = 0
-offset_left = 6.875
-offset_top = -45.764
-offset_right = 706.875
-offset_bottom = 90.236
-rotation = 0.08726646
+offset_left = -8.0
+offset_top = -11.999992
+offset_right = 692.0
+offset_bottom = 124.00001
+rotation = 0.018642256
 theme_override_styles/panel = SubResource("StyleBoxFlat_txtda")
 
 [node name="Panel" type="Panel" parent="DialogueUI/DialogueBox" unique_id=54563407]
 z_index = -1
 layout_mode = 0
-offset_left = -27.76
-offset_top = -27.855
-offset_right = 672.24
-offset_bottom = 108.145004
-rotation = 0.04712389
+offset_left = -26.999996
+offset_top = -5.4999866
+offset_right = 673.0
+offset_bottom = 130.50002
+rotation = 0.0070558563
 theme_override_styles/panel = SubResource("StyleBoxFlat_yjdgk")
 
 [node name="MusicController" type="Node" parent="." unique_id=1511821570]

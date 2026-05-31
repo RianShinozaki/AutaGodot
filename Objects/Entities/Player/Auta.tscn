@@ -1045,7 +1045,6 @@ parameters = Dictionary[String, ExtResource("2_s0xk6")]({
 })
 
 [node name="Art" type="Sprite2D" parent="." unique_id=177438306]
-light_mask = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_q8rtl")
 texture = ExtResource("11_ku027")
