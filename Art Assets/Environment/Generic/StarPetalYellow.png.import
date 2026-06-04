@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bknnkq0wqudcq"
-path="res://.godot/imported/VoidBubble.png-ca6f11d5dd64b0907e3c0f4c942392de.ctex"
+uid="uid://dexbrg65x7hyf"
+path="res://.godot/imported/StarPetalYellow.png-3673303e2451103755ee8b42ca8ee6e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Unused/Misc/Objects/VoidBubble.png"
-dest_files=["res://.godot/imported/VoidBubble.png-ca6f11d5dd64b0907e3c0f4c942392de.ctex"]
+source_file="res://Art Assets/Environment/Generic/StarPetalYellow.png"
+dest_files=["res://.godot/imported/StarPetalYellow.png-3673303e2451103755ee8b42ca8ee6e9.ctex"]
 
 [params]
 

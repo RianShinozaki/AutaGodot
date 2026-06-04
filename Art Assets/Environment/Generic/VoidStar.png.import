@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf70hd178yhv3"
-path="res://.godot/imported/StarPetalPink.png-8be9f78142430e86a1cfa4fa1b08cb8e.ctex"
+uid="uid://vmf25qoaiqh2"
+path="res://.godot/imported/VoidStar.png-73b8b3592078e45901e147846c807782.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Unused/Misc/Objects/StarPetalPink.png"
-dest_files=["res://.godot/imported/StarPetalPink.png-8be9f78142430e86a1cfa4fa1b08cb8e.ctex"]
+source_file="res://Art Assets/Environment/Generic/VoidStar.png"
+dest_files=["res://.godot/imported/VoidStar.png-73b8b3592078e45901e147846c807782.ctex"]
 
 [params]
 

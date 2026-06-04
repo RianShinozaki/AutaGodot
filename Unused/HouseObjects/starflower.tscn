@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://daailb8lshm22"]
 
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/OrbBreakable.cs" id="1_u24fw"]
-[ext_resource type="Texture2D" uid="uid://cqibf5p6e3ask" path="res://Unused/Misc/Objects/StarFlowerYellow.png" id="2_tq876"]
+[ext_resource type="Texture2D" uid="uid://cqibf5p6e3ask" path="res://Art Assets/Environment/Generic/StarFlowerYellow.png" id="2_tq876"]
 [ext_resource type="AudioStream" uid="uid://cmq7eli3mwwhf" path="res://Audio/Sounds/Item/FlowerPop.wav" id="3_8px60"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="3_hi0jn"]
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/StarPetal.cs" id="4_6pteb"]
 [ext_resource type="Script" uid="uid://ubgi76algbag" path="res://Scripts/Effects/C-Sharp/Trail.cs" id="6_5cvhm"]
-[ext_resource type="Texture2D" uid="uid://dexbrg65x7hyf" path="res://Unused/Misc/Objects/StarPetalYellow.png" id="6_a5j23"]
+[ext_resource type="Texture2D" uid="uid://dexbrg65x7hyf" path="res://Art Assets/Environment/Generic/StarPetalYellow.png" id="6_a5j23"]
 [ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Audio/Sounds/Item/flowerpickup.wav" id="8_3vkn3"]
 
 [sub_resource type="Animation" id="Animation_nkgyy"]

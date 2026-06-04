@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cct6sp383ydp2"
-path="res://.godot/imported/VoidBoblePop.png-392407be94d5efec1f9ec8f2ad9aca6b.ctex"
+uid="uid://cf70hd178yhv3"
+path="res://.godot/imported/StarPetalPink.png-cd343c970cd2a8f7dd35f3892f8857d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Unused/Misc/Objects/VoidBoblePop.png"
-dest_files=["res://.godot/imported/VoidBoblePop.png-392407be94d5efec1f9ec8f2ad9aca6b.ctex"]
+source_file="res://Art Assets/Environment/Generic/StarPetalPink.png"
+dest_files=["res://.godot/imported/StarPetalPink.png-cd343c970cd2a8f7dd35f3892f8857d7.ctex"]
 
 [params]
 
