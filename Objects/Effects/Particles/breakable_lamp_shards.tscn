@@ -42,11 +42,15 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s0h8"]
+radius = 48.0
+
 [node name="BreakableLampShards" type="CharacterBody2D" unique_id=1961415455]
 collision_layer = 0
 script = ExtResource("1_7s0h8")
 bounce_coef = 0.7
 initial_velocity = 100.0
+absorb_heal_amount = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573051179]
 shape = SubResource("CircleShape2D_ulal3")
@@ -55,3 +59,13 @@ shape = SubResource("CircleShape2D_ulal3")
 sprite_frames = SubResource("SpriteFrames_s57g8")
 autoplay = "default"
 frame_progress = 0.14610605
+
+[node name="OrbDetector" type="Area2D" parent="." unique_id=1087026959]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbDetector" unique_id=453248431]
+visible = false
+shape = SubResource("CircleShape2D_7s0h8")
+
+[connection signal="area_entered" from="OrbDetector" to="." method="_on_orb_detector_area_entered"]

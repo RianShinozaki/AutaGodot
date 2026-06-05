@@ -7,3 +7,7 @@ var health: float
 
 func _ready() -> void:
 	health = max_health
+
+func add_health(_amt: float):
+	health += _amt
+	health = min(health, max_health)

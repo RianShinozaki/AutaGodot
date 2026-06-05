@@ -121,12 +121,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vjw5"]
 radius = 48.0
 
-[node name="VoidStar" type="Area2D" unique_id=1739534731]
+[node name="VoidStar" type="CharacterBody2D" unique_id=1640714550]
 collision_layer = 0
-collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_0iibd")
-dampen = 250.0
-attract_force = 700.0
+lifetime = 0
+gravity = 0.0
+attract_force = 1500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1923906381]
 shape = SubResource("CircleShape2D_xxc4j")
@@ -147,5 +148,4 @@ collision_mask = 32768
 visible = false
 shape = SubResource("CircleShape2D_8vjw5")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="OrbDetector" to="." method="_on_orb_detector_area_entered"]

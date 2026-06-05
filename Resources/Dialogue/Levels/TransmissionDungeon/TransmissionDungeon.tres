@@ -13,13 +13,25 @@ starts = {
 "6": &"0_6",
 "7": &"0_7",
 "8": &"0_8",
-"9": &"0_9"
+"9": &"0_9",
+"gag1": &"0_10",
+"gag2": &"0_11"
 }
 nodes = {
 &"0_1": {
 "link": &"1_1",
 "offset": Vector2(-340, 220),
 "start_id": "1"
+},
+&"0_10": {
+"link": &"1_23",
+"offset": Vector2(-240, -720),
+"start_id": "gag1"
+},
+&"0_11": {
+"link": &"1_24",
+"offset": Vector2(-200, -260),
+"start_id": "gag2"
 },
 &"0_2": {
 "link": &"1_2",
@@ -71,7 +83,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 286),
+"size": Vector2(300.00012, 286.0002),
 "speaker": "Tess"
 },
 &"1_10": {
@@ -84,7 +96,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(460.00052, 320),
+"size": Vector2(460.0005, 320),
 "speaker": "Machine"
 },
 &"1_11": {
@@ -110,7 +122,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420.00024, 380),
+"size": Vector2(420.00046, 379.9995),
 "speaker": "Machine"
 },
 &"1_13": {
@@ -123,7 +135,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(380.00012, 380),
+"size": Vector2(380.00024, 379.9995),
 "speaker": "Machine"
 },
 &"1_14": {
@@ -136,7 +148,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(399.99963, 320),
+"size": Vector2(399.99976, 320),
 "speaker": "Machine"
 },
 &"1_15": {
@@ -175,7 +187,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(340.00012, 340),
+"size": Vector2(340, 340),
 "speaker": "Machine"
 },
 &"1_18": {
@@ -201,7 +213,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(379.99988, 320),
+"size": Vector2(380.0005, 320),
 "speaker": "Machine"
 },
 &"1_2": {
@@ -214,7 +226,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(339.99963, 340),
+"size": Vector2(339.99973, 340.00006),
 "speaker": "Tess"
 },
 &"1_20": {
@@ -227,7 +239,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(360, 360),
+"size": Vector2(360.00006, 359.99927),
 "speaker": "Machine"
 },
 &"1_21": {
@@ -240,7 +252,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(380, 340),
+"size": Vector2(379.99994, 340.00024),
 "speaker": "Tutorial"
 },
 &"1_22": {
@@ -253,8 +265,39 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(499.99994, 360),
+"size": Vector2(500.00006, 360.00024),
 "speaker": "Tutorial"
+},
+&"1_23": {
+"dialogue": "There's a panel here for lift controls. Try the up button?",
+"offset": Vector2(60, -720),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Yes"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "No"
+}
+},
+"size": Vector2(340.00006, 400.0001),
+"speaker": ""
+},
+&"1_24": {
+"dialogue": "Who designed this?",
+"offset": Vector2(80, -220),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00003, 300),
+"speaker": ""
 },
 &"1_3": {
 "dialogue": "Of course. Why wouldn't the lift be busted? Why should anything be okay?",
@@ -266,7 +309,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(400.00018, 360),
+"size": Vector2(400.00037, 360),
 "speaker": "Tess"
 },
 &"1_4": {
@@ -279,7 +322,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 286),
+"size": Vector2(300.00024, 286.00018),
 "speaker": "Tess"
 },
 &"1_5": {
@@ -292,7 +335,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420.00018, 300),
+"size": Vector2(420.00037, 300.00018),
 "speaker": "Tess"
 },
 &"1_6": {
@@ -305,7 +348,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(359.99988, 360),
+"size": Vector2(359.99973, 360),
 "speaker": "Tess"
 },
 &"1_7": {
@@ -318,7 +361,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(319.99997, 320),
+"size": Vector2(319.99994, 320),
 "speaker": "Tess"
 },
 &"1_8": {
@@ -344,7 +387,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420.00024, 360),
+"size": Vector2(420.00018, 359.9995),
 "speaker": "Machine"
 }
 }
