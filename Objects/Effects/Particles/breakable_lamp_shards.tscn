@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://f028tl168r5n"]
+
+[ext_resource type="Script" uid="uid://dhtldmm1vddu" path="res://Scripts/Effects/simple_bouncing_particle.gd" id="1_7s0h8"]
+[ext_resource type="Texture2D" uid="uid://0vjph16g6rfv" path="res://Art Assets/Effects/Particles/BreakableLampShards.png" id="2_om4bf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ulal3"]
+radius = 3.1622777
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bifs3"]
+atlas = ExtResource("2_om4bf")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8fxt"]
+atlas = ExtResource("2_om4bf")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v5ku"]
+atlas = ExtResource("2_om4bf")
+region = Rect2(12, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn3ek"]
+atlas = ExtResource("2_om4bf")
+region = Rect2(18, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s57g8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bifs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8fxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v5ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn3ek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="BreakableLampShards" type="CharacterBody2D" unique_id=1961415455]
+collision_layer = 0
+script = ExtResource("1_7s0h8")
+bounce_coef = 0.7
+initial_velocity = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573051179]
+shape = SubResource("CircleShape2D_ulal3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=963587951]
+sprite_frames = SubResource("SpriteFrames_s57g8")
+autoplay = "default"
+frame_progress = 0.14610605

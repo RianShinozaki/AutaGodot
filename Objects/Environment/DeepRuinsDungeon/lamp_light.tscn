@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ca2kwb4a5v0nb"]
+
+[ext_resource type="Texture2D" uid="uid://6armilotcurd" path="res://Art Assets/Effects/Lighting/Gradient.png" id="1_6b5em"]
+[ext_resource type="Script" uid="uid://bhil7t0s34aww" path="res://Scripts/Environment/Generic/Items/breakable.gd" id="1_awywa"]
+[ext_resource type="Texture2D" uid="uid://vd3cnc5xri5w" path="res://Art Assets/Environment/DeepRuins/Lamp.png" id="1_mk4as"]
+[ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Audio/Sounds/Impact/SmallShatter.mp3" id="2_uckq1"]
+[ext_resource type="PackedScene" uid="uid://f028tl168r5n" path="res://Objects/Effects/Particles/breakable_lamp_shards.tscn" id="3_260pu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_evwo5"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mk4as"]
+
+[node name="LampLight" type="Area2D" unique_id=595104892]
+collision_layer = 0
+collision_mask = 5376
+script = ExtResource("1_awywa")
+break_sound = ExtResource("2_uckq1")
+obj_particle = ExtResource("3_260pu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151112078]
+position = Vector2(8, 8)
+texture = ExtResource("1_mk4as")
+
+[node name="LampLight" type="PointLight2D" parent="." unique_id=887033195]
+position = Vector2(8, 75)
+rotation = -3.1415927
+scale = Vector2(0.25520074, 2)
+color = Color(0.8352941, 0.52156866, 0.39607844, 1)
+texture = ExtResource("1_6b5em")
+
+[node name="Sprite2D" type="Sprite2D" parent="LampLight" unique_id=458512356]
+modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
+material = SubResource("CanvasItemMaterial_evwo5")
+texture = ExtResource("1_6b5em")
+
+[node name="Area2D" type="CollisionShape2D" parent="." unique_id=190447068]
+position = Vector2(8, 8)
+shape = SubResource("CircleShape2D_mk4as")

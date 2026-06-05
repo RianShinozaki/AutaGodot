@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0vjph16g6rfv"
-path="res://.godot/imported/BreakableLampShards.png-418fae194e82377fca9469a791b9c525.ctex"
+uid="uid://vd3cnc5xri5w"
+path="res://.godot/imported/Lamp.png-4a00e398710a9e85e14ff727412c9bf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Unused/House-Art/Objects/BreakableLampShards.png"
-dest_files=["res://.godot/imported/BreakableLampShards.png-418fae194e82377fca9469a791b9c525.ctex"]
+source_file="res://Art Assets/Environment/DeepRuins/Lamp.png"
+dest_files=["res://.godot/imported/Lamp.png-4a00e398710a9e85e14ff727412c9bf1.ctex"]
 
 [params]
 

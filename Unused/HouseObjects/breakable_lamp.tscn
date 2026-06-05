@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://28mj3fvw13kx" path="res://Unused/House-Art/Objects/BreakableLamp.png" id="1_s6hg1"]
 [ext_resource type="Script" path="res://Scripts/Environment/Interactables/Breakable.cs" id="1_utubm"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_bbtbr"]
-[ext_resource type="Texture2D" uid="uid://0vjph16g6rfv" path="res://Unused/House-Art/Objects/BreakableLampShards.png" id="4_gyc13"]
+[ext_resource type="Texture2D" uid="uid://0vjph16g6rfv" path="res://Art Assets/Effects/Particles/BreakableLampShards.png" id="4_gyc13"]
 [ext_resource type="Script" uid="uid://bidx22qk6ughi" path="res://Scripts/Effects/C-Sharp/BouncingParticle.cs" id="4_npl5r"]
 [ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Audio/Sounds/Impact/SmallShatter.mp3" id="6_iv7xl"]
 

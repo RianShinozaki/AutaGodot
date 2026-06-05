@@ -1,40 +1,38 @@
-[gd_scene format=3 uid="uid://7lhso6a6iu3b"]
+[gd_scene format=3 uid="uid://dy606oiadqnen"]
 
-[ext_resource type="Texture2D" uid="uid://bknnkq0wqudcq" path="res://Art Assets/Environment/Generic/VoidBubble.png" id="1_qstjs"]
-[ext_resource type="Script" uid="uid://coxjcotxb0468" path="res://Scripts/Environment/Generic/Items/void_bubble.gd" id="2_1c2vy"]
-[ext_resource type="AudioStream" uid="uid://ddcirhcl7psae" path="res://Audio/Sounds/Item/BubblePop.wav" id="3_v61us"]
-[ext_resource type="PackedScene" uid="uid://dy606oiadqnen" path="res://Objects/Environment/Generic/Items/void_star.tscn" id="4_1c2vy"]
+[ext_resource type="Script" uid="uid://bnj68nu8my33u" path="res://Scripts/Environment/Generic/Items/void_star.gd" id="1_0iibd"]
+[ext_resource type="Texture2D" uid="uid://vmf25qoaiqh2" path="res://Art Assets/Environment/Generic/VoidStar.png" id="2_nfp3i"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxc4j"]
-atlas = ExtResource("1_qstjs")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxc4j"]
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuous"]
-atlas = ExtResource("1_qstjs")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("2_nfp3i")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kskgq"]
-atlas = ExtResource("1_qstjs")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("2_nfp3i")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjehn"]
-atlas = ExtResource("1_qstjs")
-region = Rect2(96, 0, 32, 32)
+atlas = ExtResource("2_nfp3i")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3u7t7"]
-atlas = ExtResource("1_qstjs")
-region = Rect2(128, 0, 32, 32)
+atlas = ExtResource("2_nfp3i")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4cxeu"]
-atlas = ExtResource("1_qstjs")
+atlas = ExtResource("2_nfp3i")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ujtd"]
+atlas = ExtResource("2_nfp3i")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1ujtd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pxw4"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xxc4j")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xuous")
 }, {
@@ -49,13 +47,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4cxeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ujtd")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2pxw4"]
 
 [sub_resource type="Animation" id="Animation_8vjw5"]
 resource_name = "Pop"
@@ -119,23 +118,34 @@ _data = {
 &"RESET": SubResource("Animation_xxc4j")
 }
 
-[node name="VoidBubble" type="AnimatedSprite2D" unique_id=827863788]
-sprite_frames = SubResource("SpriteFrames_1ujtd")
-autoplay = "default"
-frame_progress = 0.046581276
-script = ExtResource("2_1c2vy")
-pop_sound = ExtResource("3_v61us")
-obj_void_star = ExtResource("4_1c2vy")
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vjw5"]
+radius = 48.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1826993387]
+[node name="VoidStar" type="Area2D" unique_id=1739534731]
 collision_layer = 0
-collision_mask = 33032
+collision_mask = 8
+script = ExtResource("1_0iibd")
+dampen = 250.0
+attract_force = 700.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1841892796]
-shape = SubResource("CircleShape2D_2pxw4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1923906381]
+shape = SubResource("CircleShape2D_xxc4j")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2145598593]
+[node name="VoidStar" type="AnimatedSprite2D" parent="." unique_id=1326488925]
+sprite_frames = SubResource("SpriteFrames_2pxw4")
+autoplay = "default"
+frame_progress = 0.5363029
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VoidStar" unique_id=888301457]
 libraries/ = SubResource("AnimationLibrary_xuous")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="OrbDetector" type="Area2D" parent="." unique_id=776953990]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbDetector" unique_id=1267319167]
+visible = false
+shape = SubResource("CircleShape2D_8vjw5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="OrbDetector" to="." method="_on_orb_detector_area_entered"]
