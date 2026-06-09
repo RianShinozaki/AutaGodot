@@ -16,6 +16,9 @@ func _ready():
 	
 func _physics_process(delta):
 	var _collision = move_and_collide(velocity * delta)
+	if auta == null: return
+	var _dir = (auta.global_position - global_position).normalized()
+	var _mag = (auta.global_position - global_position).length()
 	
 	if not attract:
 		velocity += Vector2.DOWN * gravity * delta
@@ -25,11 +28,12 @@ func _physics_process(delta):
 			
 	if attract:
 		velocity -= velocity * 6 * delta
-		var _dir = (auta.global_position - global_position).normalized()
-		var _mag = (auta.global_position - global_position).length()
 		velocity += _dir * attract_force * delta
-		if _mag < 8:
-			queue_free()
+	if _mag < 24:
+		attract = true
+			
+	if _mag < 8:
+		queue_free()
 
 
 func _on_orb_detector_area_entered(area):

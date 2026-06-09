@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://do1fuoougopjr"]
+
+[ext_resource type="Texture2D" uid="uid://6armilotcurd" path="res://Art Assets/Effects/Lighting/Gradient.png" id="1_ji24d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_evwo5"]
+blend_mode = 1
+
+[node name="PointLight2D14" type="PointLight2D" unique_id=1398715599]
+rotation = -3.1415927
+scale = Vector2(1, 2)
+color = Color(0.8352941, 0.52156866, 0.39607844, 1)
+texture = ExtResource("1_ji24d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2125027444]
+modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
+material = SubResource("CanvasItemMaterial_evwo5")
+texture = ExtResource("1_ji24d")

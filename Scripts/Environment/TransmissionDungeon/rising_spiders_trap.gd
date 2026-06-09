@@ -28,3 +28,9 @@ func _on_killzone_area_entered(area):
 	await Auta.instance.quick_respawned
 	killzone.position.y = -8
 	triggered = false
+
+
+func _on_trigger2_body_entered(body):
+	active = false
+	killzone.position.y = -8
+	triggered = false

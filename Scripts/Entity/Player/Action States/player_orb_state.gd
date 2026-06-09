@@ -177,4 +177,5 @@ func on_attack():
 
 func on_bounce(_normal: Vector2, _velocity: Vector2):
 	time_since_last_bounce = 0
-	SFXController.play_sound(orb_bounce, global_position)
+	if _velocity.dot(_normal) > 50:
+		SFXController.play_sound(orb_bounce, global_position)

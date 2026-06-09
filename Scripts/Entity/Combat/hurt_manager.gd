@@ -21,6 +21,7 @@ func process_hurt(_hitbox: Area2D):
 	#Get hitbox data
 	var _hb_data: HitboxData = _hitbox.hitbox_data
 	var _is_player: bool = entity is Auta
+	var _dist_to_cam = (GameCamera.instance.global_position - global_position).length()
 	
 	#Process X knockback direction
 	var _x_knockback: float = _hb_data.x_knockback
@@ -50,7 +51,9 @@ func process_hurt(_hitbox: Area2D):
 	var _len = _knockback_total.length() / 60
 	var _dir = _knockback_total.normalized()
 	entity.inflict_hitstun(_len, _dir, _hb_data.hitstun_duration)
-	GameCamera.instance.shake_screen(_len, 0.25)
+	
+	if _dist_to_cam < 400:
+		GameCamera.instance.shake_screen(_len, 0.25)
 	
 	var offset: Vector2 = (_hitbox.global_position - entity.global_position).normalized()*4
 	
@@ -80,7 +83,7 @@ func process_hurt(_hitbox: Area2D):
 	$"../../GenericAttributes/DamageCounterParent".global_position = global_position + offset + Vector2.UP*2
 	
 	#Capture UI
-	if not _is_player and capture_ui:
+	if not _is_player and capture_ui and _dist_to_cam < 400:
 		PlayerUI.instance.captured_enemy(entity)
 	
 	#Respawn if player
