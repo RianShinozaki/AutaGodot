@@ -14,6 +14,7 @@ starts = {
 "7": &"0_7",
 "8": &"0_8",
 "9": &"0_9",
+"TessNote": &"0_12",
 "gag1": &"0_10",
 "gag2": &"0_11"
 }
@@ -32,6 +33,11 @@ nodes = {
 "link": &"1_24",
 "offset": Vector2(-200, -260),
 "start_id": "gag2"
+},
+&"0_12": {
+"link": &"1_25",
+"offset": Vector2(-360, 4440),
+"start_id": "TessNote"
 },
 &"0_2": {
 "link": &"1_2",
@@ -83,7 +89,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 286.0002),
+"size": Vector2(300.00003, 286),
 "speaker": "Tess"
 },
 &"1_10": {
@@ -96,7 +102,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(460.0005, 320),
+"size": Vector2(459.99988, 319.99976),
 "speaker": "Machine"
 },
 &"1_11": {
@@ -109,7 +115,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(359.99957, 400),
+"size": Vector2(359.9995, 399.99976),
 "speaker": "Machine"
 },
 &"1_12": {
@@ -122,7 +128,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420.00046, 379.9995),
+"size": Vector2(420.00055, 379.9995),
 "speaker": "Machine"
 },
 &"1_13": {
@@ -135,7 +141,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(380.00024, 379.9995),
+"size": Vector2(379.99982, 379.99927),
 "speaker": "Machine"
 },
 &"1_14": {
@@ -148,7 +154,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(399.99976, 320),
+"size": Vector2(399.9995, 320),
 "speaker": "Machine"
 },
 &"1_15": {
@@ -174,7 +180,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420, 340),
+"size": Vector2(419.99902, 339.99976),
 "speaker": "Machine"
 },
 &"1_17": {
@@ -187,7 +193,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(340, 340),
+"size": Vector2(340.00122, 339.99976),
 "speaker": "Machine"
 },
 &"1_18": {
@@ -200,7 +206,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(319.99988, 320),
+"size": Vector2(320.0005, 320),
 "speaker": "Machine"
 },
 &"1_19": {
@@ -213,7 +219,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(380.0005, 320),
+"size": Vector2(380.00098, 320),
 "speaker": "Machine"
 },
 &"1_2": {
@@ -226,7 +232,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(339.99973, 340.00006),
+"size": Vector2(339.99976, 340),
 "speaker": "Tess"
 },
 &"1_20": {
@@ -239,7 +245,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(360.00006, 359.99927),
+"size": Vector2(359.99997, 359.99902),
 "speaker": "Machine"
 },
 &"1_21": {
@@ -252,7 +258,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(379.99994, 340.00024),
+"size": Vector2(379.99966, 340),
 "speaker": "Tutorial"
 },
 &"1_22": {
@@ -265,7 +271,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(500.00006, 360.00024),
+"size": Vector2(500.00092, 360),
 "speaker": "Tutorial"
 },
 &"1_23": {
@@ -283,7 +289,7 @@ nodes = {
 "text": "No"
 }
 },
-"size": Vector2(340.00006, 400.0001),
+"size": Vector2(340.00027, 400),
 "speaker": ""
 },
 &"1_24": {
@@ -296,8 +302,47 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00003, 300),
+"size": Vector2(300.00018, 300),
 "speaker": ""
+},
+&"1_25": {
+"dialogue": "To the scary robot",
+"offset": Vector2(-37.536644, 4510.946),
+"options": {
+0: {
+"condition": {},
+"link": &"1_26",
+"text": ""
+}
+},
+"size": Vector2(300.0001, 340),
+"speaker": "Note"
+},
+&"1_26": {
+"dialogue": "Sorry for dropping you in that big pit. If you are reading this, I assume you survived.",
+"offset": Vector2(280, 4520),
+"options": {
+0: {
+"condition": {},
+"link": &"1_27",
+"text": ""
+}
+},
+"size": Vector2(359.9995, 380),
+"speaker": "Note"
+},
+&"1_27": {
+"dialogue": "Let's let bygones be bygones. You dropped me in a pit and I dropped you in one. Fair's fair.     -Tess",
+"offset": Vector2(680, 4540),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(339.99988, 360),
+"speaker": "Note"
 },
 &"1_3": {
 "dialogue": "Of course. Why wouldn't the lift be busted? Why should anything be okay?",
@@ -309,7 +354,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(400.00037, 360),
+"size": Vector2(400.0005, 360),
 "speaker": "Tess"
 },
 &"1_4": {
@@ -322,7 +367,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 286.00018),
+"size": Vector2(300.00015, 286),
 "speaker": "Tess"
 },
 &"1_5": {
@@ -335,7 +380,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420.00037, 300.00018),
+"size": Vector2(420.00024, 300),
 "speaker": "Tess"
 },
 &"1_6": {
@@ -348,7 +393,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(359.99973, 360),
+"size": Vector2(359.99994, 360),
 "speaker": "Tess"
 },
 &"1_7": {
@@ -361,7 +406,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(319.99994, 320),
+"size": Vector2(319.99976, 320),
 "speaker": "Tess"
 },
 &"1_8": {
@@ -374,7 +419,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(340.00024, 340.00012),
+"size": Vector2(340.00015, 340),
 "speaker": "Tess"
 },
 &"1_9": {
@@ -387,7 +432,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(420.00018, 359.9995),
+"size": Vector2(419.9999, 359.99927),
 "speaker": "Machine"
 }
 }

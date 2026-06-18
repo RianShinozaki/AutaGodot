@@ -23,14 +23,14 @@ func _process(delta):
 			active = false
 
 
-func _on_killzone_area_entered(area):
+func _on_killzone_area_entered(_area):
 	active = false
 	await Auta.instance.quick_respawned
 	killzone.position.y = -8
 	triggered = false
 
 
-func _on_trigger2_body_entered(body):
+func _on_trigger2_body_entered(_body):
 	active = false
 	killzone.position.y = -8
 	triggered = false

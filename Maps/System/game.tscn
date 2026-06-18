@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://bsjyyawxxf0bl" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_wty1d"]
 [ext_resource type="Script" uid="uid://c82luh8yqcndl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_iex31"]
 [ext_resource type="Script" uid="uid://cvpltn1nqccc5" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_ynys3"]
+[ext_resource type="Texture2D" uid="uid://bwkbokwcbn3kx" path="res://Art Assets/UI/Dialogue/scav.png" id="8_yjdgk"]
 [ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Maps/Game Maps/DeepTransmissionDungeon.tscn" id="9_2bif5"]
-[ext_resource type="Script" uid="uid://crtfw650p8ob8" path="res://Scripts/System/Controllers/C-sharp/MusicController.cs" id="9_hdfm3"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_nb51f"]
 script = ExtResource("5_wty1d")
@@ -74,9 +74,10 @@ offset_bottom = 130.50002
 rotation = 0.0070558563
 theme_override_styles/panel = SubResource("StyleBoxFlat_yjdgk")
 
-[node name="MusicController" type="Node" parent="." unique_id=1511821570]
-script = ExtResource("9_hdfm3")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicController" unique_id=1441681876]
+[node name="Image(1)" type="Sprite2D" parent="DialogueUI/DialogueBox" unique_id=1307600112]
+position = Vector2(588, -12)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_yjdgk")
 
 [node name="GameWorld" parent="." unique_id=780061894 instance=ExtResource("9_2bif5")]
+script = null

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://xhsj0g8qclnp"]
+
+[ext_resource type="Script" uid="uid://bwcqcoj2gh2vp" path="res://Scripts/Environment/Generic/Movement/orb_magnet.gd" id="1_tt5pr"]
+[ext_resource type="Texture2D" uid="uid://bouw715ol1q78" path="res://Unused/Misc/Objects/SimpleTrigger.png" id="2_8xuax"]
+
+[sub_resource type="Curve" id="Curve_2pxw4"]
+_data = [Vector2(0, 0.5093521), 0.0, 0.0, 0, 0, Vector2(0.9999999, 0.98697394), 1.6234425, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pxw4"]
+radius = 72.443085
+
+[node name="OrbMagnet" type="Area2D" unique_id=902548155]
+collision_layer = 0
+collision_mask = 32768
+script = ExtResource("1_tt5pr")
+pull_force = 1400.0
+speed_cap = 350.0
+pull_curve = SubResource("Curve_2pxw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989470312]
+shape = SubResource("CircleShape2D_2pxw4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=262191348]
+texture = ExtResource("2_8xuax")
+hframes = 2
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

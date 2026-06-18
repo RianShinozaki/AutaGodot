@@ -194,6 +194,7 @@ func _enter_tree():
 	dialogue_label.bbcode_enabled = true
 	dialogue_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	dialogue_label.custom_effects = custom_effects
+	dialogue_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
 	options_container = BoxContainer.new()
 	_sub_container.add_child(options_container)

@@ -35,12 +35,13 @@
 [ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Objects/Effects/Oneshots/SlashFX.tscn" id="27_4r2se"]
 [ext_resource type="Script" uid="uid://buye7h14rme1w" path="res://Scripts/Entity/Player/Action States/player_hurt_state.gd" id="27_7a5kt"]
 [ext_resource type="Script" uid="uid://ccf4fifjw86ji" path="res://Scripts/Entity/Attributes/WindboxDetector.gd" id="29_c7jri"]
-[ext_resource type="AudioStream" uid="uid://b6cn8tg7ip7t3" path="res://Audio/Sounds/Player/Jump.wav" id="31_khunw"]
+[ext_resource type="AudioStream" uid="uid://b5p62f7fgdu0p" path="res://Audio/Sounds/Player/Jump.mp3" id="31_t46mf"]
 [ext_resource type="AudioStream" uid="uid://bix4yxfe1gw0b" path="res://Audio/Sounds/Player/Land.wav" id="32_ga82k"]
 [ext_resource type="AudioStream" uid="uid://vtkg1d7ul1bm" path="res://Audio/Sounds/Player/OrbThrow.wav" id="34_ii2ou"]
 [ext_resource type="Script" uid="uid://c22rwdceqof7o" path="res://Scripts/Entity/Player/Action States/auta_tessglide_state.gd" id="35_fx7q6"]
 [ext_resource type="AudioStream" uid="uid://cgsu02iieh4m2" path="res://Audio/Sounds/Player/OrbReform.wav" id="35_t46mf"]
 [ext_resource type="AudioStream" uid="uid://5xjocl68r7yu" path="res://Audio/Sounds/Player/OrbBounce.ogg" id="36_k2uvo"]
+[ext_resource type="Texture2D" uid="uid://cts484m3ncvb" path="res://Art Assets/Characters/Auta/OrbSpin.png" id="37_t46mf"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -493,6 +494,23 @@ tracks/3/keys = {
 "values": [1, -1]
 }
 
+[sub_resource type="Animation" id="Animation_t46mf"]
+resource_name = "ToOrb"
+length = 0.04
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [53, 54]
+}
+
 [sub_resource type="Animation" id="Animation_2r0hl"]
 resource_name = "Turn"
 length = 0.2
@@ -530,6 +548,7 @@ _data = {
 &"Slide": SubResource("Animation_310b7"),
 &"ThrowFlip": SubResource("Animation_1pfnt"),
 &"ThrowSpin": SubResource("Animation_ln1gp"),
+&"ToOrb": SubResource("Animation_t46mf"),
 &"Turn": SubResource("Animation_2r0hl")
 }
 
@@ -933,6 +952,9 @@ animation = &"Orb"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li7pu"]
 animation = &"ThrowSpin"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t46mf"]
+animation = &"ToOrb"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dxtdl"]
 advance_mode = 2
 
@@ -945,6 +967,10 @@ advance_mode = 2
 advance_expression = "is_on_floor() == true"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yvtee"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k2uvo"]
 switch_mode = 2
 advance_mode = 2
 
@@ -963,8 +989,10 @@ states/Orb/position = Vector2(266.8, -37.6)
 states/Start/position = Vector2(151.2, 122.944)
 states/ThrowSpin/node = SubResource("AnimationNodeAnimation_li7pu")
 states/ThrowSpin/position = Vector2(201, -115)
-transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee")]
-graph_offset = Vector2(-87, -185.94699)
+states/ToOrb/node = SubResource("AnimationNodeAnimation_t46mf")
+states/ToOrb/position = Vector2(-73.20001, -96.746994)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee"), "ToOrb", "Orb", SubResource("AnimationNodeStateMachineTransition_k2uvo")]
+graph_offset = Vector2(-272, -191.94699)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
 radius = 6.0
@@ -1022,6 +1050,35 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2fwl"]
 radius = 13.0384
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t46mf"]
+atlas = ExtResource("37_t46mf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2uvo"]
+atlas = ExtResource("37_t46mf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwlcs"]
+atlas = ExtResource("37_t46mf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sr3rh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t46mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2uvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwlcs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Auta" type="CharacterBody2D" unique_id=248982637 node_paths=PackedStringArray("current_action_state")]
 texture_filter = 1
@@ -1202,7 +1259,7 @@ hurtbox = NodePath("../PlayerHurtbox")
 
 [node name="NormalState" type="Node2D" parent="ActionStates" unique_id=720044032]
 script = ExtResource("14_s8caf")
-jump_sound = ExtResource("31_khunw")
+jump_sound = ExtResource("31_t46mf")
 land_sound = ExtResource("32_ga82k")
 active = true
 
@@ -1220,6 +1277,13 @@ collision_mask = 16384
 shape = SubResource("CircleShape2D_m2fwl")
 disabled = true
 debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
+
+[node name="OrbSpin" type="AnimatedSprite2D" parent="ActionStates/OrbState" unique_id=225539432]
+visible = false
+sprite_frames = SubResource("SpriteFrames_sr3rh")
+autoplay = "default"
+frame_progress = 0.38804847
+offset = Vector2(0, 1)
 
 [node name="DuckState" type="Node2D" parent="ActionStates" unique_id=116700874]
 script = ExtResource("22_r3wth")

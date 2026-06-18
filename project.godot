@@ -25,6 +25,10 @@ config/icon="res://Scripts/icon.svg"
 
 buses/default_bus_layout="uid://c26fit5d5jho4"
 
+[autoload]
+
+Music="*uid://m65mqk4g3464"
+
 [dialogic]
 
 directories/dch_directory={

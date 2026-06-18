@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct6pqwkiwhpf5"]
+[gd_scene format=3 uid="uid://ct6pqwkiwhpf5"]
 
 [ext_resource type="Texture2D" uid="uid://bookg7or8t1xj" path="res://Art Assets/Characters/Auta/OrbBurst.png" id="1_8k1sy"]
 [ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_1vcsb"]
@@ -42,19 +42,17 @@ _data = {
 &"RESET": SubResource("Animation_24w60")
 }
 
-[node name="OrbBurst" type="Sprite2D"]
+[node name="OrbBurst" type="Sprite2D" unique_id=1361461223]
 texture_filter = 1
 texture = ExtResource("1_8k1sy")
 hframes = 8
 script = ExtResource("2_1vcsb")
 rotRange = 30.0
 
-[node name="ObjectPoolObject" type="Node" parent="."]
+[node name="ObjectPoolObject" type="Node" parent="." unique_id=289932058]
 script = ExtResource("3_0mluo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a42ke")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=450332928]
+libraries/ = SubResource("AnimationLibrary_a42ke")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -36,5 +36,5 @@ func _physics_process(delta):
 		queue_free()
 
 
-func _on_orb_detector_area_entered(area):
+func _on_orb_detector_area_entered(_area):
 	attract = true

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://hlx7ydx683o7"]
+
+[ext_resource type="FontFile" uid="uid://bpq0qdc1uqoy6" path="res://Art Assets/Fonts/wicky-javick.bold.ttf" id="1_omttt"]
+
+[resource]
+font = ExtResource("1_omttt")
+font_size = 21
