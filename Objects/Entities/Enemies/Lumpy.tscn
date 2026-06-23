@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Scripts/Entity/Combat/entity_hitbox.gd" id="25_3s03o"]
 [ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Scripts/Entity/Combat/hurt_manager.gd" id="25_jkofg"]
 [ext_resource type="Script" uid="uid://xi8xgjw0meix" path="res://Scripts/Entity/Enemies/Generic/enemy_attack_state.gd" id="25_pxb8d"]
+[ext_resource type="AudioStream" uid="uid://ck4b6m41vc0an" path="res://Audio/Sounds/Impact/Bash-Impact.wav" id="26_eej7v"]
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="26_pglu5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syevp"]
@@ -240,11 +241,11 @@ graph_offset = Vector2(-28, -95)
 script = ExtResource("26_pglu5")
 damage = 3
 x_knockback = 60.0
-y_knockback = -20.0
 x_knockback_is_relative = true
 knockback_power = 2
 hitstun_duration = 0.08
 impact_fx = "HitFX"
+impact_sound = ExtResource("26_eej7v")
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]

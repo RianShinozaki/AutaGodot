@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dy606oiadqnen"]
 
 [ext_resource type="Script" uid="uid://bnj68nu8my33u" path="res://Scripts/Environment/Generic/Items/void_star.gd" id="1_0iibd"]
+[ext_resource type="AudioStream" uid="uid://dipxalx7srb2u" path="res://Audio/Sounds/Item/BubblePickup.mp3" id="2_l5hv1"]
 [ext_resource type="Texture2D" uid="uid://vmf25qoaiqh2" path="res://Art Assets/Environment/Generic/VoidStar.png" id="2_nfp3i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxc4j"]
@@ -128,6 +129,7 @@ script = ExtResource("1_0iibd")
 lifetime = 0
 gravity = 0.0
 attract_force = 1500.0
+pickup_sound = ExtResource("2_l5hv1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1923906381]
 shape = SubResource("CircleShape2D_xxc4j")

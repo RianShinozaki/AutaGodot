@@ -5,10 +5,12 @@ class_name VoidStar extends CharacterBody2D
 @export var lifetime = 5
 @export var gravity: float = 400
 @export var attract_force: float = 2500
+@export var pickup_sound: AudioStream
 
 var counter: float = 0
 var auta: Auta
 var attract: bool = false
+static var pitch_scale: float = 1
 
 func _ready():
 	await get_tree().process_frame
@@ -33,6 +35,12 @@ func _physics_process(delta):
 		attract = true
 			
 	if _mag < 8:
+		if pickup_sound:
+			if SFXController.stop_sound_if_playing(pickup_sound):
+				pitch_scale *= 1.189
+			else:
+				pitch_scale = 1
+			SFXController.play_sound(pickup_sound, global_position, 1, pitch_scale)
 		queue_free()
 
 

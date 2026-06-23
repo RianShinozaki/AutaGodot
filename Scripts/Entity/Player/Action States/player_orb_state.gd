@@ -27,6 +27,7 @@ var can_short_hop:
 @export var orb_sound: AudioStream
 @export var orb_reform: AudioStream
 @export var orb_bounce: AudioStream
+@export var spin_jump: AudioStream
 
 var into_orb_velocity: Vector2
 var into_orb_grounded: bool
@@ -149,7 +150,7 @@ func _process(delta: float) -> void:
 		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(hor), 1.0)
 		
 	
-	if abs(entity.velocity.x) > 140: orb_spin.visible = true
+	if abs(entity.velocity.x) > 140 and inp.action_a_pressed: orb_spin.visible = true
 	else: orb_spin.visible = false
 
 	var _norm := entity.get_floor_normal()
@@ -211,10 +212,11 @@ func on_bounce(_normal: Vector2, _velocity: Vector2):
 	if _velocity.dot(_normal) > 50:
 		SFXController.play_sound(orb_bounce, global_position)
 		
-	if abs(entity.velocity.x) > 140: 
+	if abs(entity.velocity.x) > 140 and inp.action_a_pressed: 
 		var _upward = Vector2.RIGHT.dot(_normal) * sign(entity.velocity.x)
 		if _upward < 0:
 			await get_tree().process_frame
 			entity.velocity.y = min(entity.velocity.y, -abs(_upward * entity.velocity.x) * 2.0)
 			entity.velocity.x += (_upward * entity.velocity.x) * 0.5
+			SFXController.play_sound(spin_jump, global_position)
 			

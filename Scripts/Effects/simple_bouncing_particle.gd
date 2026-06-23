@@ -6,10 +6,12 @@ extends CharacterBody2D
 @export var gravity: float = 400
 @export var attract_force: float = 2500
 @export var absorb_heal_amount: float = 0.5
+@export var pickup_sound: AudioStream
 
 var attract = false
 var auta: Auta
 var counter: float = 0
+static var pitch_scale: float = 1
 
 func _ready():
 	auta = Auta.instance
@@ -32,6 +34,12 @@ func _physics_process(delta):
 		var _mag = (auta.global_position - global_position).length()
 		velocity += _dir * attract_force * delta
 		if _mag < 8:
+			if pickup_sound:
+				if SFXController.stop_sound_if_playing(pickup_sound):
+					pitch_scale *= 1.189
+				else:
+					pitch_scale = 1
+				SFXController.play_sound(pickup_sound, global_position, 1, pitch_scale)
 			auta.get_node("GenericAttributes/EntityStatus").add_health(absorb_heal_amount)
 			queue_free()
 

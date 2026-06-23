@@ -57,6 +57,10 @@ func process_hurt(_hitbox: Area2D):
 	
 	var offset: Vector2 = (_hitbox.global_position - entity.global_position).normalized()*4
 	
+	#Play sound
+	if _hb_data.impact_sound:
+		SFXController.play_sound(_hb_data.impact_sound, global_position, 1, randf_range(0.9, 1.1))
+		
 	#Create FX
 	if _hb_data.impact_fx != "":
 		var pool = object_pools.get_node(_hb_data.impact_fx)

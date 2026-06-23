@@ -15,13 +15,14 @@ func _ready():
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
 
-static func start_music(_audio: AudioStream, _volume: float = 0.0):
+static func start_music(_audio: AudioStream, _volume: float = 1.0):
 	instance.start_music_inst(_audio, _volume)
 
 func start_music_inst(_audio: AudioStream, _volume: float):
 	if audio.playing:
 		instance.stop_music_inst()
 	audio.stream = _audio
+	audio.volume_linear = _volume
 	audio.play()
 
 static func stop_music():

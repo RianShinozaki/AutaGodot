@@ -8,6 +8,8 @@ var mov_param: EntityMovementParameters
 var jmp_param: EntityJumpParameters
 var speed_param: AutaSpeedParameters
 
+@export var attack_sound: AudioStream
+
 var can_short_hop:
 	get:
 		return entity.get_node("ActionStates/NormalState").can_short_hop
@@ -16,7 +18,7 @@ var can_short_hop:
 		
 var combo_number: int = 0
 var combo_timer: float
-var combo_max_time: float
+@export var combo_max_time: float
 
 func _ready() -> void:
 	super._ready()
@@ -36,16 +38,29 @@ func _start() -> void:
 		entity.get_node("Art").flip_h = direction.x < 0
 		entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(direction.x), 1.0)
 	anim.get("parameters/playback").start("Attack", true)
-	
+	SFXController.play_sound(attack_sound, global_position, 1, randf_range(0.9, 1.1))
 	var _input = inp.input_direction
 	
-	if _input.y < -0.5:
-		play_animation_oneshot("Attack_Launch")
-	else:
+	#if _input.y < -0.5:
+	#play_animation_oneshot("Attack_Launch")
+	#else:
+	if combo_timer <= 0:
+		combo_number = 0
+		
+	if combo_number == 0:
 		play_animation_oneshot("Attack_Combo1")
+		combo_number = 1
+	elif combo_number == 1:
+		play_animation_oneshot("Attack_Combo2")
+		combo_number = 2
+	elif combo_number == 2:
+		play_animation_oneshot("Attack_Combo3")
+		combo_number = 0
 	
 	
 func _process(delta: float) -> void:
+	if combo_timer > 0: combo_timer -= delta
+	
 	super._process(delta)
 	if not active: return
 	
@@ -82,6 +97,8 @@ func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Attack/playback").start(_anim, true)
 	
 func animation_cancel():
+	combo_timer = combo_max_time
+	
 	if abs(entity.velocity.x) > speed_param.minimum_speed_skating:
 		entity.switch_action_state_name("SpeedState")
 	else:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://f028tl168r5n"]
 
 [ext_resource type="Script" uid="uid://dhtldmm1vddu" path="res://Scripts/Effects/simple_bouncing_particle.gd" id="1_7s0h8"]
+[ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Audio/Sounds/Item/flowerpickup.wav" id="2_kf74f"]
 [ext_resource type="Texture2D" uid="uid://0vjph16g6rfv" path="res://Art Assets/Effects/Particles/BreakableLampShards.png" id="2_om4bf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulal3"]
@@ -51,6 +52,7 @@ script = ExtResource("1_7s0h8")
 bounce_coef = 0.7
 initial_velocity = 100.0
 absorb_heal_amount = 1.0
+pickup_sound = ExtResource("2_kf74f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573051179]
 shape = SubResource("CircleShape2D_ulal3")

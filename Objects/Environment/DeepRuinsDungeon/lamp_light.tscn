@@ -26,11 +26,11 @@ texture = ExtResource("1_mk4as")
 position = Vector2(8, 75)
 rotation = -3.1415927
 scale = Vector2(0.25520074, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
+color = Color(0.94902, 0, 0.25098, 1)
 texture = ExtResource("1_6b5em")
 
 [node name="Sprite2D" type="Sprite2D" parent="LampLight" unique_id=458512356]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
+modulate = Color(0.9490196, 0, 0.2509804, 0.2)
 material = SubResource("CanvasItemMaterial_evwo5")
 texture = ExtResource("1_6b5em")
 

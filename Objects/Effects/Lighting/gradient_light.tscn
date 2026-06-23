@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3g30r1oyug18"]
+[gd_scene format=3 uid="uid://d3g30r1oyug18"]
 
 [ext_resource type="Texture2D" uid="uid://6armilotcurd" path="res://Art Assets/Effects/Lighting/Gradient.png" id="1_c6mey"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Art Assets/Effects/Lighting/CircleSDF.tres" id="2_eqejk"]
@@ -6,10 +6,10 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1opim"]
 blend_mode = 1
 
-[node name="GradientLight" type="Node2D"]
+[node name="GradientLight" type="Node2D" unique_id=546520796]
 scale = Vector2(1, 2)
 
-[node name="GradientLight" type="PointLight2D" parent="."]
+[node name="GradientLight" type="PointLight2D" parent="." unique_id=1437049007]
 light_mask = 15
 position = Vector2(32, 32)
 rotation = 3.14159
@@ -21,12 +21,12 @@ range_item_cull_mask = 15
 texture = ExtResource("1_c6mey")
 height = 100.0
 
-[node name="Gradient" type="Sprite2D" parent="GradientLight"]
+[node name="Gradient" type="Sprite2D" parent="GradientLight" unique_id=1690802964]
 modulate = Color(0.929122, 0.0714178, 0.336165, 0.141176)
 material = SubResource("CanvasItemMaterial_1opim")
 texture = ExtResource("1_c6mey")
 
-[node name="PointLight2D" type="PointLight2D" parent="GradientLight"]
+[node name="PointLight2D" type="PointLight2D" parent="GradientLight" unique_id=941130615]
 color = Color(0.825431, 0.204924, 0.296902, 1)
 energy = 0.41
 range_layer_min = -200

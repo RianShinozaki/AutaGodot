@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtrd4o1pxulkh"]
+[gd_scene format=3 uid="uid://dtrd4o1pxulkh"]
 
 [ext_resource type="Texture2D" uid="uid://blywv7ai4lo18" path="res://Art Assets/Effects/Impact/Slice.png" id="1_fd6ac"]
 [ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Scripts/Effects/C-Sharp/AnimatedEffect.cs" id="2_glg3t"]
@@ -50,7 +50,7 @@ _data = {
 &"Slice": SubResource("Animation_e0svg")
 }
 
-[node name="SlashFX" type="Sprite2D"]
+[node name="SlashFX" type="Sprite2D" unique_id=2111264675]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_e0svg")
 texture = ExtResource("1_fd6ac")
@@ -60,12 +60,10 @@ frame = 1
 script = ExtResource("2_glg3t")
 rotRange = 15.0
 
-[node name="ObjectPoolObject" type="Node" parent="."]
+[node name="ObjectPoolObject" type="Node" parent="." unique_id=1554923569]
 script = ExtResource("3_b0vcm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wcon5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2098968489]
+libraries/ = SubResource("AnimationLibrary_wcon5")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

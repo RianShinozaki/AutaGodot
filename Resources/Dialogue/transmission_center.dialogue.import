@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://knn6xkirisou"
+path="res://.godot/imported/transmission_center.dialogue-374c1efaa0f2d0f6d557d93bfd3032b3.tres"
+
+[deps]
+
+source_file="res://Resources/Dialogue/transmission_center.dialogue"
+dest_files=["res://.godot/imported/transmission_center.dialogue-374c1efaa0f2d0f6d557d93bfd3032b3.tres"]
+
+[params]
+
+defaults=true

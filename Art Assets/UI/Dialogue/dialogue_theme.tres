@@ -8,7 +8,14 @@ expand_margin_left = 255.0
 expand_margin_right = 255.0
 expand_margin_bottom = 255.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3owyb"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 70.0
+expand_margin_right = 70.0
+expand_margin_bottom = 35.0
+
 [resource]
 Label/fonts/font = ExtResource("1_26oxp")
 Panel/styles/panel = SubResource("StyleBoxFlat_26oxp")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_3owyb")
 RichTextLabel/fonts/normal_font = ExtResource("1_26oxp")

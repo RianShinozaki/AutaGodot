@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://b4xiwafh7vu5s" path="res://Objects/Effects/Oneshots/ElectricitySpurt.tscn" id="26_jj7hu"]
 [ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Objects/Effects/Oneshots/SlashFX.tscn" id="27_4r2se"]
 [ext_resource type="Script" uid="uid://buye7h14rme1w" path="res://Scripts/Entity/Player/Action States/player_hurt_state.gd" id="27_7a5kt"]
+[ext_resource type="AudioStream" uid="uid://cd2hls4guqvte" path="res://Audio/Sounds/Player/Slice-Impact.mp3" id="27_sr3rh"]
 [ext_resource type="Script" uid="uid://ccf4fifjw86ji" path="res://Scripts/Entity/Attributes/WindboxDetector.gd" id="29_c7jri"]
 [ext_resource type="AudioStream" uid="uid://b5p62f7fgdu0p" path="res://Audio/Sounds/Player/Jump.mp3" id="31_t46mf"]
 [ext_resource type="AudioStream" uid="uid://bix4yxfe1gw0b" path="res://Audio/Sounds/Player/Land.wav" id="32_ga82k"]
@@ -41,7 +42,9 @@
 [ext_resource type="Script" uid="uid://c22rwdceqof7o" path="res://Scripts/Entity/Player/Action States/auta_tessglide_state.gd" id="35_fx7q6"]
 [ext_resource type="AudioStream" uid="uid://cgsu02iieh4m2" path="res://Audio/Sounds/Player/OrbReform.wav" id="35_t46mf"]
 [ext_resource type="AudioStream" uid="uid://5xjocl68r7yu" path="res://Audio/Sounds/Player/OrbBounce.ogg" id="36_k2uvo"]
+[ext_resource type="AudioStream" uid="uid://bj8tbwgnfa211" path="res://Audio/Sounds/Player/SpinJump.mp3" id="37_k2uvo"]
 [ext_resource type="Texture2D" uid="uid://cts484m3ncvb" path="res://Art Assets/Characters/Auta/OrbSpin.png" id="37_t46mf"]
+[ext_resource type="AudioStream" uid="uid://dqe4m8lfjhxv5" path="res://Audio/Sounds/Player/Slash-Attack.mp3" id="42_sr3rh"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -174,10 +177,10 @@ tracks/0/path = NodePath("Art:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.153846),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [48, 49]
+"values": [46]
 }
 
 [sub_resource type="Animation" id="Animation_wvn26"]
@@ -372,6 +375,18 @@ tracks/8/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.24, 0, 0.24, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpecialAttributes/Hitboxes/MidSlashAttack/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5hoco"]
@@ -574,7 +589,7 @@ tracks/1/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack/CollisionSh
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05882353, 0.230769),
+"times": PackedFloat32Array(0.11764706, 0.230769),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -604,6 +619,116 @@ tracks/3/keys = {
 "args": [],
 "method": &"animation_cancel"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_sr3rh"]
+resource_name = "Combo2"
+length = 0.4
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.23529412, 0.29411766, 0.3529412),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [31, 32, 33, 34, 35, 36, 37]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.11764706, 0.230769),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05882353, 0.29411766),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ActionStates/AttackState")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.29411766),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_cancel"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ewfhr"]
+resource_name = "Combo3"
+length = 0.46
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.23529412, 0.29411766, 0.3529412, 0.4117647),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [38, 39, 40, 41, 42, 43, 44, 45]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.12217219, 0.35746634),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActionStates/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35746634),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_cancel"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpecialAttributes/Hitboxes/MidSlashAttack/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1764706, 0.29411766),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_8pc40"]
@@ -675,6 +800,8 @@ tracks/4/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b056u"]
 _data = {
 &"Combo1": SubResource("Animation_cgv2g"),
+&"Combo2": SubResource("Animation_sr3rh"),
+&"Combo3": SubResource("Animation_ewfhr"),
 &"Launcher": SubResource("Animation_8pc40")
 }
 
@@ -998,25 +1125,38 @@ graph_offset = Vector2(-272, -191.94699)
 radius = 6.0
 height = 25.0
 
-[sub_resource type="Resource" id="Resource_8pc40"]
+[sub_resource type="Resource" id="Resource_sr3rh"]
 script = ExtResource("19_q1afw")
-damage = 3
-x_knockback = 60.0
-y_knockback = -20.0
+damage = 4
+x_knockback = 90.0
+y_knockback = -15.0
 x_knockback_is_relative = true
 knockback_power = 1
 hitstun_duration = 0.08
 impact_fx = "SlashFX"
+impact_sound = ExtResource("27_sr3rh")
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6hb8"]
-radius = 11.0
-height = 43.999992
+radius = 15.0000105
+height = 36.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8pc40"]
 blend_mode = 1
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oajcv"]
+
+[sub_resource type="Resource" id="Resource_8pc40"]
+script = ExtResource("19_q1afw")
+damage = 5
+x_knockback = 120.0
+y_knockback = -30.0
+x_knockback_is_relative = true
+knockback_power = 1
+hitstun_duration = 0.12
+impact_fx = "SlashFX"
+impact_sound = ExtResource("27_sr3rh")
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="Resource" id="Resource_jj7hu"]
 script = ExtResource("19_q1afw")
@@ -1196,7 +1336,7 @@ collision_layer = 256
 collision_mask = 10240
 script = ExtResource("18_pbapi")
 entity = NodePath("../../..")
-hitbox_data = SubResource("Resource_8pc40")
+hitbox_data = SubResource("Resource_sr3rh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/WeakSlashAttack" unique_id=1707823233]
 position = Vector2(43, -4)
@@ -1205,6 +1345,28 @@ shape = SubResource("CapsuleShape2D_a6hb8")
 disabled = true
 
 [node name="Art" type="Sprite2D" parent="SpecialAttributes/Hitboxes/WeakSlashAttack" unique_id=1667453597]
+visible = false
+material = SubResource("CanvasItemMaterial_8pc40")
+position = Vector2(37, -6)
+texture = SubResource("CompressedTexture2D_oajcv")
+hframes = 8
+frame = 1
+
+[node name="MidSlashAttack" type="Area2D" parent="SpecialAttributes/Hitboxes" unique_id=28540738 node_paths=PackedStringArray("entity")]
+position = Vector2(-24, 0)
+collision_layer = 256
+collision_mask = 10240
+script = ExtResource("18_pbapi")
+entity = NodePath("../../..")
+hitbox_data = SubResource("Resource_8pc40")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/MidSlashAttack" unique_id=613316810]
+position = Vector2(45, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a6hb8")
+disabled = true
+
+[node name="Art" type="Sprite2D" parent="SpecialAttributes/Hitboxes/MidSlashAttack" unique_id=79788016]
 visible = false
 material = SubResource("CanvasItemMaterial_8pc40")
 position = Vector2(37, -6)
@@ -1268,6 +1430,7 @@ script = ExtResource("15_aa1rq")
 orb_sound = ExtResource("34_ii2ou")
 orb_reform = ExtResource("35_t46mf")
 orb_bounce = ExtResource("36_k2uvo")
+spin_jump = ExtResource("37_k2uvo")
 
 [node name="OrbGrab" type="Area2D" parent="ActionStates/OrbState" unique_id=544769711]
 collision_layer = 32768
@@ -1282,7 +1445,7 @@ debug_color = Color(0.941816, 1.0685e-05, 0.608914, 0.42)
 visible = false
 sprite_frames = SubResource("SpriteFrames_sr3rh")
 autoplay = "default"
-frame_progress = 0.38804847
+frame_progress = 0.9127765
 offset = Vector2(0, 1)
 
 [node name="DuckState" type="Node2D" parent="ActionStates" unique_id=116700874]
@@ -1290,6 +1453,8 @@ script = ExtResource("22_r3wth")
 
 [node name="AttackState" type="Node2D" parent="ActionStates" unique_id=1982969529]
 script = ExtResource("18_m2fwl")
+attack_sound = ExtResource("42_sr3rh")
+combo_max_time = 0.4
 
 [node name="SpeedState" type="Node2D" parent="ActionStates" unique_id=1513359406]
 script = ExtResource("24_r3wth")

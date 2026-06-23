@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://dnh1o4b1d68yn"]
 
+[ext_resource type="Script" uid="uid://dql0e6xd5vhy7" path="res://Scripts/System/Controllers/gameworld.gd" id="1_1ujtd"]
+[ext_resource type="AudioStream" uid="uid://dgquiafdci3qr" path="res://Audio/Music/auta_ambient.wav" id="2_2pxw4"]
 [ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Objects/System/game_system.tscn" id="3_03anl"]
 [ext_resource type="TileSet" uid="uid://yh2udwba6rfy" path="res://Resources/Tilesets/debug_tileset.res" id="4_fy4fg"]
 [ext_resource type="Texture2D" uid="uid://behd8sdfbvyb0" path="res://Unused/Underground-Art/Backgrounds/spr_RockyBG_TC.png" id="4_omwlr"]
@@ -20,6 +22,7 @@
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Scripts/Entity/Combat/hitbox_data.gd" id="13_2dyve"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Scripts/Entity/Player/Parameter Resources/auta_orb_parameters.tres" id="13_7qrxs"]
 [ext_resource type="PackedScene" uid="uid://7lhso6a6iu3b" path="res://Objects/Environment/Generic/Items/void_bubble.tscn" id="13_8vjw5"]
+[ext_resource type="PackedScene" uid="uid://d3g30r1oyug18" path="res://Objects/Effects/Lighting/gradient_light.tscn" id="13_tmwn1"]
 [ext_resource type="PackedScene" uid="uid://cnd1kl0ijtlxv" path="res://Objects/Environment/DeepRuinsDungeon/lamp_light_red.tscn" id="13_xxc4j"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Scripts/Entity/Player/Parameter Resources/auta_speed_parameters.tres" id="14_8vjw5"]
 [ext_resource type="PackedScene" uid="uid://dy606oiadqnen" path="res://Objects/Environment/Generic/Items/void_star.tscn" id="14_xxc4j"]
@@ -32,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://byt0i2qkpuqdl" path="res://Objects/Environment/Generic/Items/void_bubble_big.tscn" id="21_kskgq"]
 [ext_resource type="Script" uid="uid://biw4en6dgkpmt" path="res://Scripts/Cinematics/Cutscenes/Events/play_animation_event.gd" id="22_xgsak"]
 [ext_resource type="Script" uid="uid://cyqnksqojldp1" path="res://Scripts/Cinematics/Cutscenes/Events/cutscene_event.gd" id="23_o6ix0"]
-[ext_resource type="Resource" uid="uid://b2mnr82oa4cag" path="res://Resources/Dialogue/Levels/TransmissionDungeon/TransmissionDungeon.tres" id="24_nh4r8"]
 [ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Art Assets/Effects/Particles/Stardust.png" id="24_ulal3"]
 [ext_resource type="PackedScene" uid="uid://xhsj0g8qclnp" path="res://Objects/Environment/Generic/Movement/orb_magnet.tscn" id="25_1ujtd"]
 [ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Scripts/System/Controllers/C-sharp/ParallaxController.cs" id="25_bifs3"]
@@ -46,6 +48,7 @@
 [ext_resource type="AudioStream" uid="uid://d1kvfiltoylrr" path="res://Audio/Sounds/Impact/CannonballCrash.wav" id="32_q0tuf"]
 [ext_resource type="Script" uid="uid://d3006oyn3njtw" path="res://Scripts/Cinematics/Cutscenes/Events/retarget_camera_event.gd" id="33_7q83e"]
 [ext_resource type="Texture2D" uid="uid://c44iq1waa0srd" path="res://Art Assets/Environment/DeepRuins/LiftButton.png" id="34_omwlr"]
+[ext_resource type="Resource" uid="uid://knn6xkirisou" path="res://Resources/Dialogue/transmission_center.dialogue" id="38_ulal3"]
 [ext_resource type="Texture2D" uid="uid://kyfahr8e7qe" path="res://Art Assets/Environment/DeepRuins/ScannerCutin.png" id="39_2qrbl"]
 [ext_resource type="AudioStream" uid="uid://b27v51jq3c1ul" path="res://Audio/Music/DownUnder.mp3" id="41_1ujtd"]
 [ext_resource type="Script" uid="uid://bx15mtxl7sb66" path="res://Scripts/Cinematics/Cutscenes/Events/music_event.gd" id="42_2pxw4"]
@@ -84,7 +87,7 @@ light_mode = 2
 
 [sub_resource type="Gradient" id="Gradient_25qwu"]
 offsets = PackedFloat32Array(0.0136519, 0.221843, 0.672566, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0.54509807, 0.42352942, 0.38039216, 0.18039216, 0.9874211, 0.5410922, 0.30505356, 0.337255, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 0, 0.54509807, 0.42352942, 0.38039216, 0.18039216, 0.14354032, 0.57606095, 0.7686954, 0.337255, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1ujtd"]
 gradient = SubResource("Gradient_25qwu")
@@ -304,7 +307,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xne8"]
 size = Vector2(24, 10)
 
-[sub_resource type="Resource" id="Resource_2pxw4"]
+[sub_resource type="Resource" id="Resource_7brep"]
 resource_local_to_scene = true
 script = ExtResource("10_2qrbl")
 recovery_time = 0.25
@@ -321,7 +324,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmwn1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xq5e3"]
 resource_local_to_scene = true
 shader = ExtResource("20_4r7af")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -344,8 +347,7 @@ metadata/_custom_type_script = "uid://biw4en6dgkpmt"
 
 [sub_resource type="Resource" id="Resource_dq1x4"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "1"
+start_id = "start"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
 [sub_resource type="Resource" id="Resource_3u7t7"]
@@ -561,8 +563,7 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_g5inn"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "2"
+start_id = "cutscene_3_1"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
 [sub_resource type="Resource" id="Resource_qennh"]
@@ -572,8 +573,7 @@ metadata/_custom_type_script = "uid://biw4en6dgkpmt"
 
 [sub_resource type="Resource" id="Resource_q0tuf"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "3"
+start_id = "cutscene_3_2"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
 [sub_resource type="Resource" id="Resource_2qrbl"]
@@ -596,8 +596,7 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_fbxmm"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "4"
+start_id = "cutscene_3_3"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
 [sub_resource type="Resource" id="Resource_bjehn"]
@@ -618,8 +617,7 @@ metadata/_custom_type_script = "uid://biw4en6dgkpmt"
 
 [sub_resource type="Resource" id="Resource_7qrxs"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
-start_id = "5"
+start_id = "cutscene_3_4"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
 [sub_resource type="Resource" id="Resource_xuous"]
@@ -970,7 +968,6 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_4cibt"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "6"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -986,7 +983,6 @@ metadata/_custom_type_script = "uid://biw4en6dgkpmt"
 
 [sub_resource type="Resource" id="Resource_aa1jm"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "7"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -1002,7 +998,6 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_dh0qq"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "8"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -1013,7 +1008,6 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_epds7"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "9"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -1268,7 +1262,6 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_sjmyk"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "gag1"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -1386,7 +1379,6 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_dkakw"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "gag2"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -1398,7 +1390,6 @@ metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
 [sub_resource type="Resource" id="Resource_nbx8u"]
 script = ExtResource("25_iukae")
-data = ExtResource("24_nh4r8")
 start_id = "TessNote"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
@@ -1410,6 +1401,9 @@ metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
 [node name="GameWorld" type="CanvasModulate" unique_id=780061894]
 texture_filter = 1
+script = ExtResource("1_1ujtd")
+bgm = ExtResource("2_2pxw4")
+bgm_volume = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1142520488]
 environment = SubResource("Environment_02j3j")
@@ -1422,7 +1416,7 @@ energy = 2.64
 
 [node name="DebugLight2" type="DirectionalLight2D" parent="." unique_id=1886786186]
 position = Vector2(449, -437)
-color = Color(0.52025914, 0.62776846, 0.6632568, 1)
+color = Color(0.77187544, 0.43948558, 0.9247128, 1)
 energy = 0.23
 blend_mode = 1
 
@@ -1585,187 +1579,37 @@ position = Vector2(0, -192)
 scale = Vector2(2, 1)
 
 [node name="PointLight2D4" type="PointLight2D" parent="Regions/FirstChamber" unique_id=1521909283]
-position = Vector2(224, -32)
-scale = Vector2(1.925, 1)
-color = Color(0.9080063, 0.6220047, 0.40176615, 1)
-energy = 0.1
+position = Vector2(224, -11.77)
+scale = Vector2(3.125, 0.56)
+color = Color(0, 0.4192962, 0.74258864, 1)
+energy = 0.26
 texture = ExtResource("10_fbxmm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D4" unique_id=1245447010]
-modulate = Color(0.76862746, 0.49019608, 0.41960785, 0.15686275)
+modulate = Color(0.50980395, 0.76862746, 0.9647059, 0.1254902)
 material = SubResource("CanvasItemMaterial_evwo5")
 texture = ExtResource("10_fbxmm")
 
-[node name="PointLight2D6" type="PointLight2D" parent="Regions/FirstChamber" unique_id=2071693000]
-position = Vector2(336, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
+[node name="PointLight2D5" type="PointLight2D" parent="Regions/FirstChamber" unique_id=616556063]
+position = Vector2(224, -111.99999)
+scale = Vector2(0.9999999, -3.4999998)
+color = Color(0, 0.4192962, 0.74258864, 1)
+energy = 0.5
 texture = ExtResource("10_fbxmm")
 
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D6" unique_id=2015443074]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
+[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D5" unique_id=202172307]
+modulate = Color(0.73839617, 0.7266604, 0.81073487, 0.2901961)
 material = SubResource("CanvasItemMaterial_evwo5")
 texture = ExtResource("10_fbxmm")
 
-[node name="PointLight2D7" type="PointLight2D" parent="Regions/FirstChamber" unique_id=45243247]
-position = Vector2(112, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
+[node name="GradientLight" parent="Regions/FirstChamber" unique_id=657260952 instance=ExtResource("13_tmwn1")]
+position = Vector2(304, -144)
 
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D7" unique_id=382948436]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
+[node name="GradientLight2" parent="Regions/FirstChamber" unique_id=95243036 instance=ExtResource("13_tmwn1")]
+position = Vector2(80, -144)
 
-[node name="PointLight2D8" type="PointLight2D" parent="Regions/FirstChamber" unique_id=1833377791]
-position = Vector2(544, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D8" unique_id=160093469]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D9" type="PointLight2D" parent="Regions/FirstChamber" unique_id=1462019203]
-position = Vector2(896, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D9" unique_id=1317953428]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D10" type="PointLight2D" parent="Regions/FirstChamber" unique_id=2069921540]
-position = Vector2(1056, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D10" unique_id=161317559]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D11" type="PointLight2D" parent="Regions/FirstChamber" unique_id=1085349199]
-position = Vector2(1424, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D11" unique_id=945026882]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D13" type="PointLight2D" parent="Regions/FirstChamber" unique_id=422149545]
-position = Vector2(1712, -80)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D13" unique_id=1281720972]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D14" parent="Regions/FirstChamber" unique_id=1398715599 instance=ExtResource("12_3u7t7")]
-position = Vector2(1840, -192)
-
-[node name="PointLight2D15" type="PointLight2D" parent="Regions/FirstChamber" unique_id=771973385]
-position = Vector2(1792, -416)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D15" unique_id=1592958288]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D16" type="PointLight2D" parent="Regions/FirstChamber" unique_id=1637194892]
-position = Vector2(1856, -752)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D16" unique_id=1971367004]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D17" type="PointLight2D" parent="Regions/FirstChamber" unique_id=301388809]
-position = Vector2(1856, -944)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D17" unique_id=1619933577]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D23" type="PointLight2D" parent="Regions/FirstChamber" unique_id=573940589]
-position = Vector2(2112, -944)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D23" unique_id=1891575789]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D24" type="PointLight2D" parent="Regions/FirstChamber" unique_id=504264377]
-position = Vector2(2320, -944)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D24" unique_id=1658845252]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D25" type="PointLight2D" parent="Regions/FirstChamber" unique_id=1443334126]
-position = Vector2(2480, -944)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D25" unique_id=1334754465]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D26" type="PointLight2D" parent="Regions/FirstChamber" unique_id=442260266]
-position = Vector2(2608, -944)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/FirstChamber/PointLight2D26" unique_id=1702101216]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
+[node name="GradientLight3" parent="Regions/FirstChamber" unique_id=673857687 instance=ExtResource("13_tmwn1")]
+position = Vector2(512, -144)
 
 [node name="SecondChamber" type="Node2D" parent="Regions" unique_id=507116314]
 
@@ -1775,6 +1619,15 @@ scale = Vector2(2, 1.3)
 
 [node name="LampLight" parent="Regions/SecondChamber" unique_id=595104892 instance=ExtResource("12_8vjw5")]
 position = Vector2(1216, -96)
+
+[node name="GradientLight" parent="Regions/SecondChamber" unique_id=2016905155 instance=ExtResource("13_tmwn1")]
+position = Vector2(864, -144)
+
+[node name="GradientLight2" parent="Regions/SecondChamber" unique_id=575092895 instance=ExtResource("13_tmwn1")]
+position = Vector2(1024, -144)
+
+[node name="GradientLight3" parent="Regions/SecondChamber" unique_id=484914012 instance=ExtResource("13_tmwn1")]
+position = Vector2(1392, -144)
 
 [node name="ThirdChamber" type="Node2D" parent="Regions" unique_id=303891439]
 position = Vector2(768, 0)
@@ -1832,6 +1685,18 @@ position = Vector2(984, 320)
 position = Vector2(1920, -1056)
 scale = Vector2(2, 1)
 
+[node name="GradientLight" parent="Regions/FifthChamber" unique_id=546520796 instance=ExtResource("13_tmwn1")]
+position = Vector2(2080, -1008)
+
+[node name="GradientLight2" parent="Regions/FifthChamber" unique_id=957202836 instance=ExtResource("13_tmwn1")]
+position = Vector2(2288, -1008)
+
+[node name="GradientLight3" parent="Regions/FifthChamber" unique_id=400454109 instance=ExtResource("13_tmwn1")]
+position = Vector2(2448, -1008)
+
+[node name="GradientLight4" parent="Regions/FifthChamber" unique_id=1270157060 instance=ExtResource("13_tmwn1")]
+position = Vector2(2576, -1008)
+
 [node name="LongDrop" type="Node2D" parent="Regions" unique_id=613798973]
 
 [node name="CamRegion" parent="Regions/LongDrop" unique_id=2048075544 instance=ExtResource("18_fy4fg")]
@@ -1849,66 +1714,6 @@ position = Vector2(2288, -16)
 [node name="CamRegion" parent="Regions/Power_FirstChamber" unique_id=1483462879 instance=ExtResource("18_fy4fg")]
 position = Vector2(2016, 736)
 scale = Vector2(2, 2)
-
-[node name="PointLight2D27" type="PointLight2D" parent="Regions/Power_FirstChamber" unique_id=323768531]
-position = Vector2(1840, 1056)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_FirstChamber/PointLight2D27" unique_id=2034261445]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D28" type="PointLight2D" parent="Regions/Power_FirstChamber" unique_id=1444648048]
-position = Vector2(1440, 1312)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_FirstChamber/PointLight2D28" unique_id=1659150484]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D29" type="PointLight2D" parent="Regions/Power_FirstChamber" unique_id=904810881]
-position = Vector2(2368, 1728)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_FirstChamber/PointLight2D29" unique_id=1368893164]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D30" type="PointLight2D" parent="Regions/Power_FirstChamber" unique_id=1361642164]
-position = Vector2(2496, 1728)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_FirstChamber/PointLight2D30" unique_id=756908239]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
-
-[node name="PointLight2D31" type="PointLight2D" parent="Regions/Power_FirstChamber" unique_id=1457739156]
-position = Vector2(2592, 1728)
-rotation = -3.1415927
-scale = Vector2(1, 2)
-color = Color(0.8352941, 0.52156866, 0.39607844, 1)
-texture = ExtResource("10_fbxmm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_FirstChamber/PointLight2D31" unique_id=2083355717]
-modulate = Color(0.72595793, 0.45837384, 0.039785262, 0.21568628)
-material = SubResource("CanvasItemMaterial_evwo5")
-texture = ExtResource("10_fbxmm")
 
 [node name="LampLight" parent="Regions/Power_FirstChamber" unique_id=2027769832 instance=ExtResource("13_xxc4j")]
 position = Vector2(2288, 864)
@@ -1959,6 +1764,9 @@ position = Vector2(1904, 1208)
 [node name="CamRegion2" parent="Regions/Power_SecondChamber" unique_id=516843002 instance=ExtResource("18_fy4fg")]
 position = Vector2(2400, 1168)
 
+[node name="PointLight2D14" parent="Regions/Power_SecondChamber" unique_id=1398715599 instance=ExtResource("12_3u7t7")]
+position = Vector2(2624, 1280)
+
 [node name="Power_SecondChamber2" type="Node2D" parent="Regions" unique_id=250113905]
 position = Vector2(-384, 264)
 
@@ -1983,6 +1791,9 @@ position = Vector2(1704, 1016)
 
 [node name="VoidBubble3" parent="Regions/Power_SecondChamber2" unique_id=645777052 instance=ExtResource("13_8vjw5")]
 position = Vector2(1952, 1192)
+
+[node name="PointLight2D14" parent="Regions/Power_SecondChamber2" unique_id=173107900 instance=ExtResource("12_3u7t7")]
+position = Vector2(1824, 1048)
 
 [node name="Power_Spiders1" type="Node2D" parent="Regions" unique_id=1980532928]
 position = Vector2(0, 456)
@@ -2087,17 +1898,17 @@ root_node = NodePath("../AnimatableBody2D/MovingPlat")
 libraries/ = SubResource("AnimationLibrary_7q83e")
 autoplay = &"def"
 
+[node name="Lumpy4" parent="Regions/Power_Spiders2" unique_id=1932247243 instance=ExtResource("19_aaexp")]
+position = Vector2(1439, 920)
+
+[node name="Lumpy3" parent="Regions/Power_Spiders2" unique_id=475992278 instance=ExtResource("19_aaexp")]
+position = Vector2(1423, 1104)
+
+[node name="Lumpy2" parent="Regions/Power_Spiders2" unique_id=1981808810 instance=ExtResource("19_aaexp")]
+position = Vector2(1823, 936)
+
 [node name="Lumpy" parent="Regions/Power_Spiders2" unique_id=2108218529 instance=ExtResource("19_aaexp")]
 position = Vector2(1807, 1112)
-
-[node name="Lumpy" parent="Regions/Power_Spiders2/Lumpy" unique_id=1981808810 instance=ExtResource("19_aaexp")]
-position = Vector2(16, -176)
-
-[node name="Lumpy" parent="Regions/Power_Spiders2/Lumpy/Lumpy" unique_id=475992278 instance=ExtResource("19_aaexp")]
-position = Vector2(-400, 168)
-
-[node name="Lumpy" parent="Regions/Power_Spiders2/Lumpy/Lumpy/Lumpy" unique_id=1932247243 instance=ExtResource("19_aaexp")]
-position = Vector2(16, -184)
 
 [node name="LampLight" parent="Regions/Power_Spiders2" unique_id=1292231416 instance=ExtResource("12_8vjw5")]
 position = Vector2(1807, 1008)
@@ -2116,6 +1927,15 @@ position = Vector2(2127, 1080)
 
 [node name="VoidBubble" parent="Regions/Power_Spiders2" unique_id=827863788 instance=ExtResource("13_8vjw5")]
 position = Vector2(1983, 1040)
+
+[node name="PointLight2D14" parent="Regions/Power_Spiders2" unique_id=926937743 instance=ExtResource("12_3u7t7")]
+position = Vector2(1983, 1056)
+
+[node name="PointLight2D15" parent="Regions/Power_Spiders2" unique_id=1711584111 instance=ExtResource("12_3u7t7")]
+position = Vector2(2111, 1056)
+
+[node name="PointLight2D16" parent="Regions/Power_Spiders2" unique_id=513600157 instance=ExtResource("12_3u7t7")]
+position = Vector2(2207, 1056)
 
 [node name="Power_EscapeSpider" type="Node2D" parent="Regions" unique_id=1537657700]
 position = Vector2(384, 240)
@@ -2180,6 +2000,9 @@ position = Vector2(1952, 1128)
 rotation = -1.5707964
 scale = Vector2(0.7437917, 1.1833181)
 texture = ExtResource("10_fbxmm")
+
+[node name="PointLight2D14" parent="Regions/Power_EscapeSpider" unique_id=245318034 instance=ExtResource("12_3u7t7")]
+position = Vector2(1824, 1216)
 
 [node name="Power_Secret1" type="Node2D" parent="Regions" unique_id=1314746029]
 position = Vector2(2400, 1184)
@@ -2457,6 +2280,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5xne8")
 
 [node name="TessActor" type="Sprite2D" parent="Entities" unique_id=2108609380]
+visible = false
 position = Vector2(231, 139)
 rotation = -1.5707964
 texture = ExtResource("6_8al7y")
@@ -2469,11 +2293,11 @@ texture = ExtResource("6_8al7y")
 hframes = 9
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("7_2dyve")]
-position = Vector2(3407, 1168)
+position = Vector2(2279, -736)
 unlocked_orb = true
 parameters = Dictionary[String, ExtResource("8_7q83e")]({
 "duck": ExtResource("9_jnlj7"),
-"hurt": SubResource("Resource_2pxw4"),
+"hurt": SubResource("Resource_7brep"),
 "jump": ExtResource("11_fbxmm"),
 "movement": ExtResource("12_evwo5"),
 "orb": ExtResource("13_7qrxs"),
@@ -2481,7 +2305,7 @@ parameters = Dictionary[String, ExtResource("8_7q83e")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_tmwn1")
+material = SubResource("ShaderMaterial_xq5e3")
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
 position = Vector2(9, 8)
@@ -2520,6 +2344,7 @@ texture = SubResource("GradientTexture2D_4cxeu")
 process_priority = 5
 script = ExtResource("21_5aay8")
 events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_4cxeu"), SubResource("Resource_okpoj"), SubResource("Resource_dq1x4"), SubResource("Resource_3u7t7"), SubResource("Resource_kfnnb"), SubResource("Resource_1ckis")])
+dialogue_resource = ExtResource("38_ulal3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/FirstCutsceneManager" unique_id=1347344932]
 active = false
@@ -2530,6 +2355,7 @@ libraries/ = SubResource("AnimationLibrary_okpoj")
 [node name="ThirdCutsceneManager" type="Node" parent="Cutscenes" unique_id=1758098737]
 script = ExtResource("21_5aay8")
 events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_03anl"), SubResource("Resource_y3cny"), SubResource("Resource_8al7y"), SubResource("Resource_tmwn1"), SubResource("Resource_02hcr"), SubResource("Resource_g5inn"), SubResource("Resource_qennh"), SubResource("Resource_q0tuf"), SubResource("Resource_2qrbl"), SubResource("Resource_7q83e"), SubResource("Resource_jnlj7"), SubResource("Resource_fbxmm"), SubResource("Resource_bjehn"), SubResource("Resource_2dyve"), SubResource("Resource_evwo5"), SubResource("Resource_7qrxs"), SubResource("Resource_xuous"), SubResource("Resource_ulal3"), SubResource("Resource_8vjw5"), SubResource("Resource_xxc4j"), SubResource("Resource_kskgq"), SubResource("Resource_5bmk8"), SubResource("Resource_dhagv"), SubResource("Resource_3nj4f")])
+dialogue_resource = ExtResource("38_ulal3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=1962572712]
 position = Vector2(2314, -896)
@@ -2679,6 +2505,21 @@ texture = ExtResource("34_omwlr")
 z_index = -1
 position = Vector2(2488, 960)
 texture = ExtResource("34_omwlr")
+
+[node name="GradientLight" parent="." unique_id=394769763 instance=ExtResource("13_tmwn1")]
+position = Vector2(1680, -144)
+
+[node name="GradientLight2" parent="." unique_id=1322787690 instance=ExtResource("13_tmwn1")]
+position = Vector2(1808, -256)
+
+[node name="GradientLight3" parent="." unique_id=1497681160 instance=ExtResource("13_tmwn1")]
+position = Vector2(1760, -480)
+
+[node name="GradientLight4" parent="." unique_id=5958040 instance=ExtResource("13_tmwn1")]
+position = Vector2(1824, -816)
+
+[node name="GradientLight5" parent="." unique_id=850427112 instance=ExtResource("13_tmwn1")]
+position = Vector2(1824, -1008)
 
 [connection signal="area_entered" from="Regions/Power_SpidersRise/RisingSpidersTrap/Killzone" to="Regions/Power_SpidersRise/RisingSpidersTrap" method="_on_killzone_area_entered"]
 [connection signal="body_entered" from="Regions/Power_SpidersRise/RisingSpidersTrap/Trigger" to="Regions/Power_SpidersRise/RisingSpidersTrap" method="_on_trigger_body_entered"]
