@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="2_txtda"]
 [ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="3_l0bwt"]
 [ext_resource type="Texture2D" uid="uid://bwkbokwcbn3kx" path="res://Art Assets/UI/Dialogue/scav.png" id="8_yjdgk"]
-[ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Maps/Game Maps/DeepTransmissionDungeon.tscn" id="9_2bif5"]
+[ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Maps/Game Maps/TRC-TransmissionCenterDungeon/DeepTransmissionDungeon.tscn" id="9_2bif5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txtda"]
 bg_color = Color(0.9874967, 0.00038620114, 0.90192336, 1)

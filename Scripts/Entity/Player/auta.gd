@@ -57,3 +57,8 @@ func quick_respawn():
 
 func unlock_orb():
 	unlocked_orb = true
+	
+func unset_all():
+	switch_action_state_name("NormalState")
+	velocity = Vector2.ZERO
+	get_node("GenericAttributes/InputManager").set_input_direction(Vector2.ZERO)

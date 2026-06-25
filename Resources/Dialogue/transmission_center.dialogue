@@ -21,3 +21,105 @@ Tess: Come over here. Slowly.
 ~ cutscene_3_4
 Tess: I guess the down button works.
 => END
+
+~ monitor_off
+There is a monitor here. Without power, all you see is the blurry shape of...
+[color=magenta]Something very, very odd[/color]...
+=> END
+
+~ monitor_1
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"The spider-drone fleet's self-replication ability is performing admirably." 
+	"Throughout the remainder of this trial period, we will keep an eye on population levels and determine if they rise or fall without influence."
+	"Population stability is of utmost importance. Loss of spider-drones will, of course, leave us open to having our hyperspace energy pipelines fed on by local natural entities."
+	"An unchecked increase in population could lead to loss of structural integrity. We don't yet know the extent of what the spider-drones will resort to consuming in order to replicate."
+	"Log population levels every week."
+	=> END
+- Don't
+=> END
+
+~ monitor_2
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"Project F-203 'Heavy Spider' is proceeding well."
+	"While the drone fleet protects the facility against class-3 or below natural local entities, Project F-203 protects against intruding class-1 sentient beings."
+	"Security is of the utmost priority."
+	"Note - I am uncertain as to the source of Design Team's obsession with spiders. Keep forgetting to ask."
+	=> END
+- Don't
+=> END
+
+~ monitor_3
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"Unlike most natural resources, hyperspace crystals seem to become MORE abundant the more we harness their latent energy."
+	"Science Team has noted an average 0.04% increase per-week of natural crystal deposit formations."
+	"Science Team is still attempting to determine how to proof chambers against crystal formation. No known barrier, physical or energy based, seems to work."
+	=> END
+- Don't
+=> END
+
+
+
+~ monitor_4
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"The Inner Ring is demanding more and more crystals every week. This week's shipment was 2 tons, up 20% from last week."
+	"We have crystals in excess, yes. But we lack the manpower to extract such volumes while maintaining our own research."
+	"Characteristic, I suppose, of the Inner Ring to prioritize their fantastical ideas over our critical research. Our inter-space communication vs. the Inner Ring's [color=cyan]special project[/color]... don't make me laugh." 
+	"...Next week's shipment demands 2.5 tons."
+	"Do they really think they can do it? Do they think that, from this abundant natural resource, [color=cyan]they can create [/color]--"
+	The rest of the text lies below the screen. 
+	You attempt to scroll down, but the burned screen stubbornly remains the same.
+	=> END
+- Don't
+=> END
+
+~ reflection
+So, this is you.
+=> END
+
+~ reflection_2
+This is who you are.
+=> END
+
+~ reflection_3
+This is what you look like.
+=> END
+
+~ reflection_4
+That's your face.
+That's your skin.
+Those are your hands.
+Those are your eyes.
+=> END
+
+~ reflection_5
+This is what that child was afraid of.
+This is what you are afraid of.
+=> END
+
+~ warning
+Loudspeaker: WARNING. ENERGY LEAK DETECTED.
+Loudspeaker: POTENTIAL PRESENCE OF CLASS 2 OR 1 AUTOMATON.
+Loudspeaker: ALL AUTOMATONS - PRESENT YOURSELF TO A SCANNER IMMEDIATELY.
+=> END
+
+~ scanner_1
+Computer: SCANNING IN PROGRESS...
+Computer: CLASS 1 SENTIENT AUTOMATON DETECTED.
+Computer: CODENAME: AUTA
+Computer: FULL AUTHORIZATION GRANTED. ALARMS DISENGAGED.
+=> END
+
+~ scanner_2
+Computer: MULTIPLE CRITICAL ISSUES DETECTED WITH AUTOMATON.
+Computer: INITIATING DIAGNOSTIC AND REPAIR HALO.
+=> END
+
+~ scanner_3
+Computer: WARNING: MULTIPLE CRITICAL FUNCTIONS BLOCKED.
+Computer: SOURCE: SEVERE DEGREDATION OF PSYCHE INTERFACE DUE TO TRAUMA.
+Computer: BEGIN NEURAL TAP IN 3... 2... 1...
+=> END

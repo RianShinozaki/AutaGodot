@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c4j8jt8sujir4"]
+
+[ext_resource type="Script" uid="uid://dhtldmm1vddu" path="res://Scripts/Effects/simple_bouncing_particle.gd" id="1_3aeyp"]
+[ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Audio/Sounds/Item/flowerpickup.wav" id="2_fglrb"]
+[ext_resource type="Texture2D" uid="uid://bf47ksm8sdnq4" path="res://Art Assets/Environment/DeepRuins/crystal_shard/spr_CrystalBlock_Particles_0.png" id="3_6203l"]
+[ext_resource type="Texture2D" uid="uid://3sh22gf6kt0t" path="res://Art Assets/Environment/DeepRuins/crystal_shard/spr_CrystalBlock_Particles_1.png" id="4_6vysr"]
+[ext_resource type="Texture2D" uid="uid://d3v1hmonfi4ha" path="res://Art Assets/Environment/DeepRuins/crystal_shard/spr_CrystalBlock_Particles_2.png" id="5_paixe"]
+[ext_resource type="Texture2D" uid="uid://bd63uvwqrjtin" path="res://Art Assets/Environment/DeepRuins/crystal_shard/spr_CrystalBlock_Particles_3.png" id="6_qhi6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ulal3"]
+radius = 6.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6203l"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f13g6"]
+atlas = ExtResource("3_6203l")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o27c4"]
+atlas = ExtResource("4_6vysr")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfmde"]
+atlas = ExtResource("5_paixe")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx8x6"]
+atlas = ExtResource("6_qhi6d")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s57g8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f13g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o27c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfmde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx8x6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s0h8"]
+radius = 48.0
+
+[node name="CrystalShard" type="CharacterBody2D" unique_id=1961415455]
+collision_layer = 0
+script = ExtResource("1_3aeyp")
+bounce_coef = 0.7
+initial_velocity = 100.0
+absorb_heal_amount = 1.0
+pickup_sound = ExtResource("2_fglrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573051179]
+shape = SubResource("CircleShape2D_ulal3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=963587951]
+material = SubResource("CanvasItemMaterial_6203l")
+sprite_frames = SubResource("SpriteFrames_s57g8")
+autoplay = "default"
+frame_progress = 0.0299433
+
+[node name="OrbDetector" type="Area2D" parent="." unique_id=1087026959]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbDetector" unique_id=453248431]
+visible = false
+shape = SubResource("CircleShape2D_7s0h8")
+
+[connection signal="area_entered" from="OrbDetector" to="." method="_on_orb_detector_area_entered"]

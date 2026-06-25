@@ -117,6 +117,7 @@ func just_grounded(_normal: Vector2, _velocity: Vector2):
 		fx.rotation = entity.get_floor_angle() * sign(entity.get_floor_normal().x)
 		
 	if not active: return
+	if not anim.active: return
 	play_animation_oneshot("Land")
 
 func play_animation_oneshot(_anim: String):

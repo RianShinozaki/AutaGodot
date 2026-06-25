@@ -18,7 +18,7 @@ script = ExtResource("1_3wakf")
 break_sound = ExtResource("2_brvw3")
 obj_particle = ExtResource("3_kkqmd")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151112078]
+[node name="Art" type="Sprite2D" parent="." unique_id=1151112078]
 position = Vector2(8, 8)
 texture = ExtResource("2_sql4g")
 
