@@ -7,8 +7,13 @@ signal event_ended
 signal cutscene_started
 signal cutscene_finished
 
+var active: bool
+
 func begin():
+	if active: return
 	emit_signal("cutscene_started")
+	active = true
+	
 	for event in events:
 		event.trigger(self)
 		if event.async:
@@ -16,6 +21,7 @@ func begin():
 	end()
 
 func end():
+	active = false
 	emit_signal("cutscene_finished")
 
 func end_event():

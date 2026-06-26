@@ -78,6 +78,9 @@
 [ext_resource type="Texture2D" uid="uid://bn44pkhy2wha8" path="res://Art Assets/Environment/DeepRuins/CrystalCutin.png" id="67_dh0qq"]
 [ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="68_jbrhv"]
 [ext_resource type="Texture2D" uid="uid://dd8ofvy1fmyon" path="res://Art Assets/Environment/DeepRuins/CrystalCutin2.png" id="76_3458u"]
+[ext_resource type="Texture2D" uid="uid://qsgw4q8yl15" path="res://Art Assets/Environment/DeepRuins/repair-halo.png" id="77_5bu3v"]
+[ext_resource type="Script" uid="uid://bao1jfyey2tac" path="res://Scripts/Cinematics/Cutscenes/Events/change_scene_event.gd" id="77_w0m06"]
+[ext_resource type="PackedScene" uid="uid://kj02ish857pn" path="res://Maps/Cutscenes/DemoEnd.tscn" id="78_i4cvd"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -208,21 +211,13 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omwlr"]
 size = Vector2(386, 20)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ns1wf"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3458u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0m06"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_ns1wf")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5bu3v"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eifjb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4cvd"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_5bu3v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dyve"]
 size = Vector2(1120, 24)
@@ -272,13 +267,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epds7"]
 size = Vector2(32, 48)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w0m06"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4cvd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77xtc"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_w0m06")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnlj7"]
 size = Vector2(432, 16)
@@ -318,13 +309,9 @@ bg_color = Color(0.9213565, 0, 0.05927293, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0qq"]
 size = Vector2(25, 65)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_77xtc"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_43ttl"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_77xtc")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_el5x5"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -334,13 +321,13 @@ resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 shader_parameter/viewport_texture = SubResource("ViewportTexture_el5x5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cpbhl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i4cvd"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpbhl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_el5x5"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_cpbhl")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_i4cvd")
 
 [sub_resource type="Gradient" id="Gradient_tfix1"]
 offsets = PackedFloat32Array(0.6712159, 1)
@@ -354,13 +341,13 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8kmvl"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kmvl"]
+resource_local_to_scene = true
+shader = ExtResource("33_cpbhl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_utpk0"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_8kmvl")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vptce"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -370,53 +357,29 @@ resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 shader_parameter/viewport_texture = SubResource("ViewportTexture_vptce")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dmvkg"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmvkg"]
+resource_local_to_scene = true
+shader = ExtResource("33_cpbhl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cail5"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_dmvkg")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a5yve"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r71yt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5yve"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_a5yve")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tv2dl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_r71yt"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv2dl"]
+resource_local_to_scene = true
+shader = ExtResource("33_cpbhl")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_r71yt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kifwd"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_tv2dl")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_q6s2b"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypg4x"]
-resource_local_to_scene = true
-shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_q6s2b")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ohvtu"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yedq"]
-resource_local_to_scene = true
-shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_ohvtu")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_sa03e"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1tuu"]
-resource_local_to_scene = true
-shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_sa03e")
 
 [sub_resource type="Gradient" id="Gradient_ntf5m"]
 offsets = PackedFloat32Array(0.3181818, 1)
@@ -429,6 +392,40 @@ height = 55
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3458u"]
+atlas = ExtResource("40_5bu3v")
+region = Rect2(0, 0, 78, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bu3v"]
+atlas = ExtResource("40_5bu3v")
+region = Rect2(0, 0, 78, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eifjb"]
+atlas = ExtResource("40_5bu3v")
+region = Rect2(78, 0, 78, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0m06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3458u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bu3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eifjb")
+}],
+"loop": true,
+"name": &"scan",
+"speed": 24.0
+}]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tfix1"]
 gradient = SubResource("Gradient_ntf5m")
@@ -471,7 +468,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x2ce"]
 size = Vector2(20, 16)
 
-[sub_resource type="Resource" id="Resource_3g78j"]
+[sub_resource type="Resource" id="Resource_1ifvt"]
 resource_local_to_scene = true
 script = ExtResource("10_2qrbl")
 recovery_time = 0.25
@@ -488,7 +485,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7g7pv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02u88"]
 resource_local_to_scene = true
 shader = ExtResource("20_4r7af")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -658,6 +655,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(239, 128), Vector2(239, 128), Vector2(245.925, 128), Vector2(245.925, 128), Vector2(400, 128)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../../Entities/Auta/Art:flip_h")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_dq1x4"]
@@ -2019,6 +2028,11 @@ script = ExtResource("25_iukae")
 start_id = "reflection_3"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
+[sub_resource type="Resource" id="Resource_7q3h2"]
+script = ExtResource("27_iukae")
+time = 1.5
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
 [sub_resource type="Resource" id="Resource_r71yt"]
 script = ExtResource("22_xgsak")
 anim_name = &"2"
@@ -2031,7 +2045,7 @@ metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
 [sub_resource type="Resource" id="Resource_ohvtu"]
 script = ExtResource("27_iukae")
-time = 1.0
+time = 3.0
 metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_ve3se"]
@@ -2105,6 +2119,12 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 script = ExtResource("27_02hcr")
 target = NodePath("../../GameSystem/Cam/Camera2D")
 code_string = "lerp_zoom(4)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_mohfm"]
+script = ExtResource("27_02hcr")
+target = NodePath("../ScannerCutscene/Area2D/CollisionShape2D")
+code_string = "set(\"disabled\", false)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbrhv"]
@@ -2274,7 +2294,7 @@ tracks/12/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tv2dl"]
 resource_name = "2"
-length = 1.5
+length = 0.5
 step = 0.0833
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2286,7 +2306,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(13.215, 13.215)]
+"values": [Vector2(9.725, 9.725)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2299,6 +2319,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(774.79, 100)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CrystalCutin:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0994837673636766]
 }
 
 [sub_resource type="Animation" id="Animation_5bu3v"]
@@ -2666,6 +2698,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/CrystalCutin:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ve3se"]
 _data = {
@@ -2691,7 +2735,292 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jbrhv"]
 light_mode = 1
 
+[sub_resource type="Resource" id="Resource_7yedq"]
+script = ExtResource("27_02hcr")
+target = NodePath("../../GameSystem/Cam/Camera2D")
+code_string = "lerp_zoom(6)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_sa03e"]
+script = ExtResource("27_02hcr")
+target = NodePath("../../Entities/Auta")
+code_string = "unset_all()"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_t1tuu"]
+script = ExtResource("30_g5inn")
+target = NodePath("../../Entities/Auta")
+x_position = 5246.0
+metadata/_custom_type_script = "uid://dsovpycvde0wq"
+
+[sub_resource type="Resource" id="Resource_7g7pv"]
+script = ExtResource("22_xgsak")
+anim_name = &"1"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_8gql0"]
+script = ExtResource("25_iukae")
+start_id = "scanner_1"
+metadata/_custom_type_script = "uid://bj716hg8hw7wv"
+
+[sub_resource type="Resource" id="Resource_uff1f"]
+script = ExtResource("42_2pxw4")
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
+[sub_resource type="Resource" id="Resource_d1tqx"]
+script = ExtResource("22_xgsak")
+anim_name = &"2"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_ydva7"]
+script = ExtResource("25_iukae")
+start_id = "scanner_2"
+metadata/_custom_type_script = "uid://bj716hg8hw7wv"
+
+[sub_resource type="Resource" id="Resource_3g78j"]
+script = ExtResource("27_02hcr")
+target = NodePath("../../Entities/Auta")
+code_string = "set(\"apply_physics\", false)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_ohghj"]
+script = ExtResource("22_xgsak")
+anim_name = &"3"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_iksbu"]
+script = ExtResource("25_iukae")
+start_id = "scanner_3"
+metadata/_custom_type_script = "uid://bj716hg8hw7wv"
+
+[sub_resource type="Resource" id="Resource_etfvs"]
+script = ExtResource("27_02hcr")
+target = NodePath("../../GameSystem/Cam/Camera2D")
+code_string = "lerp_zoom(100)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_xdywo"]
+script = ExtResource("27_iukae")
+time = 0.2
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_02u88"]
+script = ExtResource("77_w0m06")
+to_scene = ExtResource("78_i4cvd")
+metadata/_custom_type_script = "uid://bao1jfyey2tac"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3458u"]
+
+[sub_resource type="Animation" id="Animation_8gql0"]
+resource_name = "1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Entities/Auta:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5246, 1714)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Entities/Auta/Art:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Regions/Power_OrbRoom/Scanner:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"scan"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.1, 1.1666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [96, 97]
+}
+
+[sub_resource type="Animation" id="Animation_uff1f"]
+resource_name = "2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Regions/Power_OrbRoom/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w0m06"]
+resource_name = "3"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Halo:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.6999997),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5247, 1525), Vector2(5247, 1561.54), Vector2(5247, 1539.96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Halo:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.71309173, 1.1, 1.6999997),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.405, 0.84), Vector2(1.295, 1.14), Vector2(1.1076325, 1.0451895), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Entities/Auta:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.0209614, 1.7156414, 2.1),
+"transitions": PackedFloat32Array(0, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5246, 1714), Vector2(5246, 1714), Vector2(5246, 1695.79), Vector2(5246, 1696.135)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Halo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.29999995, 1.1761955, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [85, 1, 46]
+}
+
+[sub_resource type="Animation" id="Animation_eifjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Regions/Power_OrbRoom/Scanner:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5247, 1557.745)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Halo:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Halo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1tqx"]
+_data = {
+&"1": SubResource("Animation_8gql0"),
+&"2": SubResource("Animation_uff1f"),
+&"3": SubResource("Animation_w0m06"),
+&"RESET": SubResource("Animation_eifjb")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i4cvd"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77xtc"]
+blend_mode = 1
+light_mode = 1
 
 [sub_resource type="Resource" id="Resource_scxxy"]
 script = ExtResource("27_02hcr")
@@ -2710,13 +3039,9 @@ target = NodePath("../../GameSystem/Cam/Camera2D")
 code_string = "lerp_zoom(4, 0.8)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8gql0"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1tqx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7q3h2"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_8gql0")
 
 [node name="GameWorld" type="CanvasModulate" unique_id=780061894]
 texture_filter = 1
@@ -2745,7 +3070,7 @@ script = ExtResource("3_s57g8")
 [node name="Node2D" type="Node2D" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1593991952) index="3" unique_id=115856824]
 position = Vector2(2212, -679)
 
-[node name="SubViewport" type="SubViewport" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1593991952) index="4" unique_id=2105447759]
+[node name="SubViewport" type="SubViewport" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1593991952) index="4" unique_id=2105447759 groups=["Reflection"]]
 transparent_bg = true
 canvas_cull_mask = 4293919775
 size = Vector2i(384, 216)
@@ -3222,11 +3547,11 @@ position = Vector2(1928, 1120)
 position = Vector2(1944, 1144)
 
 [node name="Crystal11" parent="Regions/Power_Spiders1" unique_id=1202755598 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_3458u")
+material = SubResource("ShaderMaterial_w0m06")
 position = Vector2(1672, 1480)
 
 [node name="Crystal12" parent="Regions/Power_Spiders1" unique_id=2063146107 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_eifjb")
+material = SubResource("ShaderMaterial_i4cvd")
 position = Vector2(2072, 1544)
 
 [node name="Power_Spiders2" type="Node2D" parent="Regions" unique_id=892348680]
@@ -3404,7 +3729,7 @@ texture = ExtResource("28_epds7")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_Spiders2" unique_id=1079356612 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_i4cvd")
+material = SubResource("ShaderMaterial_77xtc")
 position = Vector2(1584, 864)
 rotation = -1.5707964
 
@@ -3640,7 +3965,7 @@ scale = Vector2(5, 2.5)
 
 [node name="BigCrystal" type="Sprite2D" parent="Regions/Power_OrbRoom" unique_id=393122528]
 z_index = -5
-material = SubResource("ShaderMaterial_cpbhl")
+material = SubResource("ShaderMaterial_el5x5")
 position = Vector2(5183, 320)
 texture = ExtResource("28_ntf5m")
 hframes = 2
@@ -3652,35 +3977,35 @@ energy = 0.64
 texture = SubResource("GradientTexture2D_4cibt")
 
 [node name="Crystal11" parent="Regions/Power_OrbRoom" unique_id=22271428 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_utpk0")
+material = SubResource("ShaderMaterial_8kmvl")
 position = Vector2(4159, 464)
 
 [node name="Crystal12" parent="Regions/Power_OrbRoom" unique_id=512185491 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_dr1bf")
+material = SubResource("ShaderMaterial_utpk0")
 position = Vector2(4463, 560)
 
 [node name="Crystal13" parent="Regions/Power_OrbRoom" unique_id=892262993 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_cail5")
+material = SubResource("ShaderMaterial_dr1bf")
 position = Vector2(4655, 680)
 
 [node name="Crystal14" parent="Regions/Power_OrbRoom" unique_id=272788436 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_r71yt")
+material = SubResource("ShaderMaterial_dmvkg")
 position = Vector2(4383, 680)
 
 [node name="Crystal15" parent="Regions/Power_OrbRoom" unique_id=1962508947 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_kifwd")
+material = SubResource("ShaderMaterial_cail5")
 position = Vector2(4783, 432)
 
 [node name="Crystal16" parent="Regions/Power_OrbRoom" unique_id=1147407336 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_ypg4x")
+material = SubResource("ShaderMaterial_a5yve")
 position = Vector2(5271, 336)
 
 [node name="Crystal17" parent="Regions/Power_OrbRoom" unique_id=102429357 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_7yedq")
+material = SubResource("ShaderMaterial_tv2dl")
 position = Vector2(5055, 336)
 
 [node name="Crystal18" parent="Regions/Power_OrbRoom" unique_id=1487458792 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_t1tuu")
+material = SubResource("ShaderMaterial_kifwd")
 position = Vector2(4455, 384)
 
 [node name="LampLight" parent="Regions/Power_OrbRoom" unique_id=434627774 instance=ExtResource("13_xxc4j")]
@@ -3720,9 +4045,11 @@ color = Color(0, 0.7365527, 0.93503505, 1)
 energy = 2.67
 texture = SubResource("GradientTexture2D_3458u")
 
-[node name="Scanner" type="Sprite2D" parent="Regions/Power_OrbRoom" unique_id=16610641]
+[node name="Scanner" type="AnimatedSprite2D" parent="Regions/Power_OrbRoom" unique_id=826165455]
 position = Vector2(5255, 629)
-texture = ExtResource("40_5bu3v")
+sprite_frames = SubResource("SpriteFrames_w0m06")
+autoplay = "default"
+frame_progress = 0.1590058
 
 [node name="PointLight2D" type="PointLight2D" parent="Regions/Power_OrbRoom/Scanner" unique_id=355748630]
 visible = false
@@ -3996,13 +4323,14 @@ frame = 9
 position = Vector2(2447, -736)
 texture = ExtResource("6_8al7y")
 hframes = 9
+vframes = 9
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("7_2dyve")]
 visibility_layer = 1025
-position = Vector2(5143, 1720)
+position = Vector2(5165, 1376)
 parameters = Dictionary[String, ExtResource("8_7q83e")]({
 "duck": ExtResource("9_jnlj7"),
-"hurt": SubResource("Resource_3g78j"),
+"hurt": SubResource("Resource_1ifvt"),
 "jump": ExtResource("11_fbxmm"),
 "movement": ExtResource("12_evwo5"),
 "orb": ExtResource("13_7qrxs"),
@@ -4010,7 +4338,7 @@ parameters = Dictionary[String, ExtResource("8_7q83e")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_7g7pv")
+material = SubResource("ShaderMaterial_02u88")
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
 position = Vector2(9, 8)
@@ -4231,7 +4559,7 @@ libraries/ = SubResource("AnimationLibrary_3u7t7")
 
 [node name="ExistentialCrisis" type="Node" parent="Cutscenes" unique_id=359160914]
 script = ExtResource("21_5aay8")
-events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_8kmvl"), SubResource("Resource_ns1wf"), SubResource("Resource_bw0t3"), SubResource("Resource_ftvx3"), SubResource("Resource_vptce"), SubResource("Resource_dr1bf"), SubResource("Resource_dmvkg"), SubResource("Resource_cail5"), SubResource("Resource_a5yve"), SubResource("Resource_r71yt"), SubResource("Resource_tv2dl"), SubResource("Resource_ohvtu"), SubResource("Resource_ve3se"), SubResource("Resource_kifwd"), SubResource("Resource_q6s2b"), SubResource("Resource_ypg4x"), SubResource("Resource_3458u"), SubResource("Resource_eifjb"), SubResource("Resource_5bu3v"), SubResource("Resource_w0m06"), SubResource("Resource_utpk0"), SubResource("Resource_i4cvd"), SubResource("Resource_77xtc"), SubResource("Resource_43ttl"), SubResource("Resource_el5x5"), SubResource("Resource_6ekld")])
+events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_8kmvl"), SubResource("Resource_ns1wf"), SubResource("Resource_bw0t3"), SubResource("Resource_ftvx3"), SubResource("Resource_vptce"), SubResource("Resource_dr1bf"), SubResource("Resource_dmvkg"), SubResource("Resource_cail5"), SubResource("Resource_a5yve"), SubResource("Resource_7q3h2"), SubResource("Resource_r71yt"), SubResource("Resource_tv2dl"), SubResource("Resource_ohvtu"), SubResource("Resource_ve3se"), SubResource("Resource_kifwd"), SubResource("Resource_q6s2b"), SubResource("Resource_ypg4x"), SubResource("Resource_3458u"), SubResource("Resource_eifjb"), SubResource("Resource_5bu3v"), SubResource("Resource_w0m06"), SubResource("Resource_utpk0"), SubResource("Resource_i4cvd"), SubResource("Resource_77xtc"), SubResource("Resource_43ttl"), SubResource("Resource_el5x5"), SubResource("Resource_6ekld"), SubResource("Resource_mohfm")])
 dialogue_resource = ExtResource("38_ulal3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ExistentialCrisis" unique_id=1513089020]
@@ -4263,7 +4591,8 @@ visible = false
 z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_2qrbl")
-position = Vector2(774.79, 100)
+position = Vector2(1033, 257.0001)
+rotation = 0.41431192
 scale = Vector2(13.215, 13.215)
 texture = ExtResource("76_3458u")
 
@@ -4307,12 +4636,38 @@ bus = &"Entities"
 
 [node name="ScannerCutscene" type="Node" parent="Cutscenes" unique_id=20804829]
 script = ExtResource("21_5aay8")
+events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_7yedq"), SubResource("Resource_sa03e"), SubResource("Resource_t1tuu"), SubResource("Resource_sa03e"), SubResource("Resource_7g7pv"), SubResource("Resource_8gql0"), SubResource("Resource_uff1f"), SubResource("Resource_d1tqx"), SubResource("Resource_ydva7"), SubResource("Resource_3g78j"), SubResource("Resource_ohghj"), SubResource("Resource_iksbu"), SubResource("Resource_etfvs"), SubResource("Resource_xdywo"), SubResource("Resource_02u88")])
 dialogue_resource = ExtResource("38_ulal3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ScannerCutscene" unique_id=977028894]
+position = Vector2(5247, 1579)
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/ScannerCutscene/Area2D" unique_id=353603145]
 shape = SubResource("RectangleShape2D_3458u")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/ScannerCutscene" unique_id=1085393944]
+libraries/ = SubResource("AnimationLibrary_d1tqx")
+
+[node name="Halo" type="Node2D" parent="Cutscenes/ScannerCutscene" unique_id=1859462215]
+visible = false
+texture_filter = 1
+position = Vector2(5247, 1557.745)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cutscenes/ScannerCutscene/Halo" unique_id=381269269]
+z_index = -3
+material = SubResource("CanvasItemMaterial_i4cvd")
+texture = ExtResource("77_5bu3v")
+vframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cutscenes/ScannerCutscene/Halo" unique_id=144981338]
+z_index = 3
+material = SubResource("CanvasItemMaterial_77xtc")
+texture = ExtResource("77_5bu3v")
+vframes = 2
+frame = 1
 
 [node name="TessNote" type="Node" parent="Cutscenes" unique_id=1827588387]
 script = ExtResource("21_5aay8")
@@ -4345,7 +4700,7 @@ position = Vector2(2488, 960)
 texture = ExtResource("34_omwlr")
 
 [node name="Crystal11" parent="." unique_id=1425072424 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_d1tqx")
+material = SubResource("ShaderMaterial_7q3h2")
 position = Vector2(2816, 1904)
 
 [connection signal="area_entered" from="Regions/Power_Spiders2/BreakableWall" to="Regions/Power_Spiders2/BreakableWall" method="area_entered"]
@@ -4365,6 +4720,7 @@ position = Vector2(2816, 1904)
 [connection signal="body_exited" from="Cutscenes/LiftGagCutscene2/Interactable" to="Cutscenes/LiftGagCutscene2/Interactable" method="_on_body_exited"]
 [connection signal="trigger" from="Cutscenes/LiftGagCutscene2/Interactable" to="Cutscenes/LiftGagCutscene2" method="begin"]
 [connection signal="body_entered" from="Cutscenes/ExistentialCrisis/Area2D" to="Cutscenes/ExistentialCrisis" method="begin" unbinds=1]
+[connection signal="body_entered" from="Cutscenes/ScannerCutscene/Area2D" to="Cutscenes/ScannerCutscene" method="begin" unbinds=1]
 [connection signal="body_entered" from="Cutscenes/TessNote/Interactable" to="Cutscenes/TessNote/Interactable" method="_on_body_entered"]
 [connection signal="body_exited" from="Cutscenes/TessNote/Interactable" to="Cutscenes/TessNote/Interactable" method="_on_body_exited"]
 [connection signal="trigger" from="Cutscenes/TessNote/Interactable" to="Cutscenes/TessNote" method="begin"]

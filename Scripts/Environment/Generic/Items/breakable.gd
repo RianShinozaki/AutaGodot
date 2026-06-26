@@ -1,3 +1,4 @@
+class_name Breakable 
 extends Area2D
 @export var break_sound: AudioStream
 @export var obj_particle: PackedScene

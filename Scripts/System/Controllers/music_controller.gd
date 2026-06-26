@@ -20,7 +20,6 @@ func _ready():
 	add_child(audio)
 
 func _physics_process(delta):
-	print(audio.volume_linear)
 	if audio.volume_linear != target_vol:
 		audio.volume_linear = move_toward(audio.volume_linear, target_vol, vol_change_speed * delta)
 		if audio.volume_linear == target_vol and target_vol == 0:

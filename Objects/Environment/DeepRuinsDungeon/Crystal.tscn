@@ -1,21 +1,17 @@
 [gd_scene format=3 uid="uid://c6kgxd5wx788"]
 
 [ext_resource type="Shader" uid="uid://48qum0sd6wpa" path="res://Shaders/crystal_reflection.gdshader" id="1_3xvt5"]
-[ext_resource type="Script" uid="uid://bhil7t0s34aww" path="res://Scripts/Environment/Generic/Items/breakable.gd" id="1_lvwmy"]
 [ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Audio/Sounds/Impact/SmallShatter.mp3" id="2_642t8"]
 [ext_resource type="Texture2D" uid="uid://b1d5y1ipojsyc" path="res://Art Assets/Environment/DeepRuins/Crystal1.png" id="2_lvwmy"]
 [ext_resource type="PackedScene" uid="uid://c4j8jt8sujir4" path="res://Objects/Effects/Particles/crystal_shards.tscn" id="3_n785f"]
+[ext_resource type="Script" uid="uid://bfnmwnmdxaeca" path="res://Scripts/Environment/TransmissionDungeon/crystal_setup.gd" id="6_n785f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_642t8"]
+resource_local_to_scene = true
+shader = ExtResource("1_3xvt5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pv77"]
 size = Vector2(16, 24)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_cpbhl"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpbhl"]
-resource_local_to_scene = true
-shader = ExtResource("1_3xvt5")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_cpbhl")
 
 [sub_resource type="Gradient" id="Gradient_ntf5m"]
 offsets = PackedFloat32Array(0.6712159, 1)
@@ -28,9 +24,10 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [node name="Crystal" type="Area2D" unique_id=1781972239]
+material = SubResource("ShaderMaterial_642t8")
 collision_layer = 0
 collision_mask = 4352
-script = ExtResource("1_lvwmy")
+script = ExtResource("6_n785f")
 break_sound = ExtResource("2_642t8")
 obj_particle = ExtResource("3_n785f")
 destroy = false
@@ -41,7 +38,7 @@ shape = SubResource("RectangleShape2D_5pv77")
 
 [node name="Art" type="Sprite2D" parent="." unique_id=1202755598]
 z_index = -5
-material = SubResource("ShaderMaterial_cpbhl")
+use_parent_material = true
 position = Vector2(0, 0.25)
 texture = ExtResource("2_lvwmy")
 offset = Vector2(0, 0.3)

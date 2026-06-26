@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://kj02ish857pn"]
+
+[node name="DemoEnd" type="Node2D" unique_id=2145476518]
+
+[node name="Label" type="Label" parent="." unique_id=1255341420]
+offset_left = 588.0
+offset_top = 373.0
+offset_right = 691.0
+offset_bottom = 396.0
+scale = Vector2(3.525, 3.525)
+text = "demo end lol"

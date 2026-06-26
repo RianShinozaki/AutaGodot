@@ -884,14 +884,8 @@ graph_offset = Vector2(265, -88)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u2e3c"]
 animation = &"Duck"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sctth"]
-animation = &"FastRun"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h41u2"]
 animation = &"FromDuck"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6qp1f"]
-animation = &"FromSlide"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycl7s"]
 animation = &"Idle"
@@ -904,9 +898,6 @@ animation = &"Run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mt5hc"]
 animation = &"Skate"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g5j43"]
-animation = &"Slide"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yium"]
 animation = &"Turn"
@@ -931,19 +922,6 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d61rj"]
-advance_mode = 2
-advance_expression = "parameters[\"movement\"].max_speed < abs(velocity.x)
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8kc68"]
-advance_mode = 2
-advance_expression = "abs(velocity.x) < 10f"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r258h"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ogpvt"]
 advance_mode = 2
 
@@ -964,39 +942,11 @@ advance_expression = "anim_skating == true"
 advance_mode = 2
 advance_expression = "anim_skating == false"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r3wth"]
-break_loop_at_end = true
-priority = 2
-switch_mode = 2
-advance_mode = 2
-advance_expression = "140 < abs(velocity.x)
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0j550"]
-break_loop_at_end = true
-priority = 2
-switch_mode = 2
-advance_mode = 2
-advance_expression = "140 >= abs(velocity.x)
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ml1rd"]
-advance_mode = 2
-advance_expression = "anim_skating == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qmcjn"]
-advance_mode = 2
-advance_expression = "duck == false"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eg2nn"]
 states/Duck/node = SubResource("AnimationNodeAnimation_u2e3c")
 states/Duck/position = Vector2(25, -125)
-states/FastRun/node = SubResource("AnimationNodeAnimation_sctth")
-states/FastRun/position = Vector2(722, 87)
 states/FromDuck/node = SubResource("AnimationNodeAnimation_h41u2")
 states/FromDuck/position = Vector2(278, -27.2)
-states/FromSlide/node = SubResource("AnimationNodeAnimation_6qp1f")
-states/FromSlide/position = Vector2(101, -26)
 states/Idle/node = SubResource("AnimationNodeAnimation_ycl7s")
 states/Idle/position = Vector2(368, 111.6)
 states/Land/node = SubResource("AnimationNodeAnimation_t3x3s")
@@ -1005,13 +955,11 @@ states/Run/node = SubResource("AnimationNodeAnimation_hvtho")
 states/Run/position = Vector2(562.4, 110.64)
 states/Skate/node = SubResource("AnimationNodeAnimation_mt5hc")
 states/Skate/position = Vector2(611, 199)
-states/Slide/node = SubResource("AnimationNodeAnimation_g5j43")
-states/Slide/position = Vector2(-13, 16)
 states/Start/position = Vector2(165, 113.24)
 states/Turn/node = SubResource("AnimationNodeAnimation_2yium")
 states/Turn/position = Vector2(624.2, -31.2)
-transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Duck", "Slide", SubResource("AnimationNodeStateMachineTransition_d61rj"), "Slide", "FromSlide", SubResource("AnimationNodeStateMachineTransition_8kc68"), "FromSlide", "Duck", SubResource("AnimationNodeStateMachineTransition_r258h"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov"), "Run", "Skate", SubResource("AnimationNodeStateMachineTransition_3pwj2"), "Skate", "Run", SubResource("AnimationNodeStateMachineTransition_q4eky"), "Run", "FastRun", SubResource("AnimationNodeStateMachineTransition_r3wth"), "FastRun", "Run", SubResource("AnimationNodeStateMachineTransition_0j550"), "FastRun", "Skate", SubResource("AnimationNodeStateMachineTransition_ml1rd"), "Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_qmcjn")]
-graph_offset = Vector2(-294, -165.831)
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_5l0kj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4ucsn"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_kxbkn"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_jwonl"), "FromDuck", "Idle", SubResource("AnimationNodeStateMachineTransition_y3bx7"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ogpvt"), "Idle", "Duck", SubResource("AnimationNodeStateMachineTransition_7je4p"), "Land", "Duck", SubResource("AnimationNodeStateMachineTransition_hunov"), "Run", "Skate", SubResource("AnimationNodeStateMachineTransition_3pwj2"), "Skate", "Run", SubResource("AnimationNodeStateMachineTransition_q4eky")]
+graph_offset = Vector2(-88, -193.831)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jessi"]
 animation = &"Hurt"
@@ -1119,7 +1067,7 @@ states/ThrowSpin/position = Vector2(201, -115)
 states/ToOrb/node = SubResource("AnimationNodeAnimation_t46mf")
 states/ToOrb/position = Vector2(-73.20001, -96.746994)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee"), "ToOrb", "Orb", SubResource("AnimationNodeStateMachineTransition_k2uvo")]
-graph_offset = Vector2(-167, -88.94699)
+graph_offset = Vector2(-211, -187.94699)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
 radius = 6.0
