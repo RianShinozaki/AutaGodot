@@ -1,0 +1,213 @@
+~ start
+Tess: AAAAAAAAHHHHHHHHHH!!
+=> END
+
+~ cutscene_2_1
+Tess: This is bad... this is really, really bad!
+Tess: Where am I? And what the hell... was that thing?
+Tess: It couldn't have been...
+Tess: No. No! That doesn't exist here. 
+Tess: That CAN'T exist here. It was just some sort of... [color=magenta]pink-haired monster[/color].
+Tess: Gotta get out of here before it finds me again.
+
+~ cutscene_3_1
+Tess: Come on... COME ON! GO UP!
+Tess: Of course. Why wouldn't the lift be busted? Why would anything be okay?
+=> END
+
+~ cutscene_3_2
+Tess: NO!!
+Tess: Stay away from me!!
+=> END
+
+~ cutscene_3_3
+Tess: ...What? It actually listened?
+Tess: Okay...
+Tess: Come over here. Slowly.
+=> END
+
+~ cutscene_3_4
+Tess: I guess the down button works.
+=> END
+
+~ monitor_off
+There is a monitor here. Without power, all you see is the blurry shape of...
+[color=magenta]Something very, very odd[/color]...
+=> END
+
+~ monitor_1
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"The spider-drone fleet's self-replication ability is performing admirably." 
+	"Throughout the remainder of this trial period, we will keep an eye on population levels and determine if they rise or fall without influence."
+	"Population stability is of utmost importance. Loss of spider-drones will, of course, leave us open to having our hyperspace energy pipelines fed on by local natural entities."
+	"An unchecked increase in population could lead to loss of structural integrity. We don't yet know the extent of what the spider-drones will resort to consuming in order to replicate."
+	"Log population levels every week."
+	=> END
+- Don't
+=> END
+
+~ monitor_2
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"Project F-203 'Heavy Spider' is proceeding well."
+	"While the drone fleet protects the facility against class-3 or below natural local entities, Project F-203 protects against intruding class-2 and above sentient beings."
+	"Security is of the utmost priority."
+	"Note - I am uncertain as to the source of Design Team's obsession with spiders. Keep forgetting to ask."
+	=> END
+- Don't
+=> END
+
+~ monitor_3
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"Unlike most natural resources, hyperspace crystals seem to become MORE abundant the more we harness their latent energy."
+	"Science Team has noted an average 0.04% increase per-week of natural crystal deposit formations."
+	"Science Team is still attempting to determine how to proof chambers against crystal formation. No known barrier, physical or energy based, seems to work."
+	=> END
+- Don't
+=> END
+
+~ monitor_4
+Some text is burned onto the weakly flickering monitor.
+- Read it
+	"The Inner Ring is demanding more and more crystals every week. This week's shipment was 2 tons, up 20% from last week."
+	"We have crystals in excess, yes. But we lack the manpower to extract such volumes while maintaining our own research."
+	"Characteristic, I suppose, of the Inner Ring to prioritize their fantastical ideas over our critical research. Our inter-space communication vs. the Inner Ring's [color=cyan]special project[/color]... don't make me laugh." 
+	"...Next week's shipment demands 2.5 tons."
+	"Do they really think they can do it? Do they think that, from this abundant natural resource, [color=cyan]they can create [/color]--"
+	The rest of the text lies below the screen. 
+	You attempt to scroll down, but the burned screen stubbornly remains the same.
+	=> END
+- Don't
+=> END
+
+~ reflection
+So, this is you.
+=> END
+
+~ reflection_2
+This is who you are.
+=> END
+
+~ reflection_3
+This is what you look like.
+=> END
+
+~ reflection_4
+That's your face.
+That's your skin.
+Those are your hands.
+Those are your eyes.
+=> END
+
+~ reflection_5
+[speed=0.2]This is what that child was afraid of.
+[speed=0.2]This is what you are afraid of.[next=auto]
+=> END
+
+~ warning
+Loudspeaker: WARNING. ENERGY LEAK DETECTED.
+Loudspeaker: POTENTIAL PRESENCE OF CLASS 2 OR 1 AUTOMATON.
+Loudspeaker: ALL AUTOMATONS - PRESENT YOURSELF TO A SCANNER IMMEDIATELY.
+=> END
+
+~ scanner_1
+Computer: SCANNING IN PROGRESS...
+Computer: CLASS 1 SENTIENT AUTOMATON DETECTED.
+Computer: CODENAME: AUTA
+Computer: FULL AUTHORIZATION GRANTED. ALARMS DISENGAGED.
+=> END
+
+~ scanner_2
+Computer: MULTIPLE CRITICAL ISSUES DETECTED WITH AUTOMATON.
+Computer: INITIATING DIAGNOSTIC AND REPAIR HALO.
+=> END
+
+~ scanner_3
+Computer: BEGINNING NEURAL TAP IN 3... 2... 1...
+=> END
+
+~ orb_tutorial_1
+???: Greetings. It has been quite some time since I have met someone here.
+Bard: I am the Brain Assistive Recovery Daemon.
+Bard: I am a program designed to guide you through the V.O.I.D. protocol.
+=> END
+
+~ orb_tutorial_1_2
+Bard: Where you find yourself now is a place that is not quite reality, yet not quite in your mind.
+do bard_anim.play("glitch")
+Bard: It is not quite unreality. Yet it is not you. Yet it is not me.
+do bard_anim.play("default")
+Bard: It is an emergent phenomenon of Class 1 automatons like yourself. Accessible to you and... daemons such as myself.
+=> END
+
+~ orb_tutorial_1_3
+Bard: Forgive me. As I said, it has been some time. I am recovering my own protocols.
+Bard: ...
+Bard: Please, follow me.
+=> END
+
+~ orb_tutorial_1_4
+Bard: You see, this is a realm of chaos. ...No.
+do bard_anim.play("glitch")
+
+Bard: [speed=1] This is a realm of interconnecton... No.
+Bard: This is a realm of...
+Bard: [speed=0.2]...
+do bard_anim.play("default")
+Bard: Please, follow me.
+=> END
+
+~ orb_tutorial_1_5
+Bard: Let us collapse the possibilities.
+Bard: We wish to diagnose your condition. Observe.
+=> END
+
+~ orb_tutorial_1_6
+do bard_anim.play("glitch")
+Bard: Concerning.
+do bard_anim.play("default")
+=> END
+
+~ orb_tutorial_1_7
+Bard: Don't be concerned. 
+Bard: The V.O.I.D. protocol has a 99% restoration success rate.
+=> END
+
+~ orb_tutorial_2
+Bard: You are the personality interface assigned to model code [color=magenta]"AUTA"[/color].
+Bard: For simplicity, you may consider this place a representation of your neural complex. 
+Bard: As such, my assessment of your neural condition is...
+=> END
+
+~ orb_tutorial_3
+Bard: [color=yellow]Unhealthy[/color]. Full analysis pending.
+=> END
+
+~ orb_tutorial_4
+Bard: Do not fear. The V.O.I.D. protocol has a 99% restoration success rate.
+=> END
+
+~ orb_tutorial_5
+Bard: For optimal results, the V.O.I.D. protocol also requires conscious participation from the automaton's personality interface. Let us begin with a simple function restoration.
+Bard: Your assessment has indicated your [color=cyan]"ORB" function [/color]has become neurally isolated. We must reconnect it.
+Bard: Let us continue.
+=> END
+
+~ orb_tutorial_6
+Bard: This appears to be the appropriate location.
+Bard: It is now your responsibility to navigate this space in order to find and reconnect your lost function.
+Bard: I will continue to guide you if necessary. Good luck.
+=> END
+
+Bard: We, of course, must contact your handler for permission to continue the operation.
+Bard: Pinging your handler now...
+ 
+~ orb_tutorial_11
+Bard: ...
+
+~ orb_tutorial_12
+Bard: ...We are sorry. We were unable to contact your handler. 
+Bard: According to V.O.I.D. protocol, you now assume responsibility to locate your handler and acquire permission to perform further repairs.
+Bard: Please understand, 

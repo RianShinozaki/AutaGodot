@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://blcjf1135r371"]
+
+[ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Actors/Common/Components/hurt_manager.gd" id="1_etydx"]
+
+[node name="HurtManager" type="Node2D" unique_id=607268015]
+script = ExtResource("1_etydx")
+power_resistance = 1

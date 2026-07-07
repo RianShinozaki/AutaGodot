@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jxbt53i5ibrm"]
+
+[ext_resource type="Script" uid="uid://qyscfa5mlupj" path="res://Actors/Common/Components/entity_status.gd" id="1_15m4g"]
+[ext_resource type="Script" uid="uid://coygks3n2h0jn" path="res://Actors/Common/Components/input_manager.gd" id="2_g0w76"]
+[ext_resource type="PackedScene" uid="uid://du6ojetpg40qk" path="res://Actors/Common/Components/damage_counter_parent.tscn" id="3_4mhux"]
+
+[node name="GenericAttributes" type="Node2D" unique_id=65119447]
+
+[node name="EntityStatus" type="Node2D" parent="." unique_id=1875539726]
+script = ExtResource("1_15m4g")
+max_health = 10.0
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1744800344]
+script = ExtResource("2_g0w76")
+input_deadzone = 0.3
+
+[node name="DamageCounterParent" parent="." unique_id=952489401 instance=ExtResource("3_4mhux")]

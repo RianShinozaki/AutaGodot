@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dia27gk10s7kj"]
+
+[ext_resource type="Script" uid="uid://b467a1nar4qhy" path="res://Levels/Common/Obstacles/spinner.gd" id="1_dctti"]
+[ext_resource type="Texture2D" uid="uid://cr1pxv7ovgjfy" path="res://Levels/TransmissionCenter/Obstacles/MetalPlatform.png" id="2_tcd8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5j4b"]
+size = Vector2(64, 32)
+
+[node name="SpinningPlatform" type="AnimatableBody2D" unique_id=1556867341]
+script = ExtResource("1_dctti")
+rotate_speed = 0.855
+
+[node name="MetalPlatform" type="Sprite2D" parent="." unique_id=1459625638]
+texture = ExtResource("2_tcd8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1058993164]
+shape = SubResource("RectangleShape2D_t5j4b")

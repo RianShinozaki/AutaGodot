@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ex28beo3jw1d"]
+
+[ext_resource type="Script" uid="uid://bvf87wwuc2qcc" path="res://Levels/Common/Obstacles/Windbox.gd" id="1_4qc6k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whhe8"]
+
+[node name="Windbox" type="Area2D" unique_id=1324653846]
+script = ExtResource("1_4qc6k")
+direction = 270.0
+power = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1221335927]
+shape = SubResource("RectangleShape2D_whhe8")

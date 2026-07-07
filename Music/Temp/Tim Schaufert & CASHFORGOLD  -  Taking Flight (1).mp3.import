@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gwyy585286ys"
+path="res://.godot/imported/Tim Schaufert & CASHFORGOLD  -  Taking Flight (1).mp3-141e0d43c6315ade8a73dcc7e37f5c71.mp3str"
+
+[deps]
+
+source_file="res://Music/Temp/Tim Schaufert & CASHFORGOLD  -  Taking Flight (1).mp3"
+dest_files=["res://.godot/imported/Tim Schaufert & CASHFORGOLD  -  Taking Flight (1).mp3-141e0d43c6315ade8a73dcc7e37f5c71.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c7timob3xjp4q"]
+
+[ext_resource type="Script" uid="uid://ccf4fifjw86ji" path="res://Actors/Common/Components/WindboxDetector.gd" id="1_bry0g"]
+
+[node name="WindboxDetector" type="Node2D" unique_id=2060922589 node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("1_bry0g")
+hurtbox = NodePath("")

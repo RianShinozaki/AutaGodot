@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dryoyuj4vl0l5"]
+[gd_scene format=3 uid="uid://dryoyuj4vl0l5"]
 
 [ext_resource type="Script" uid="uid://b6gkjq52ymdif" path="res://addons/kenyoni/plugin_reloader/internal/reloader.gd" id="1_kd7gg"]
 

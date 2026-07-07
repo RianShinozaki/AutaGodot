@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://e150kel66qnm"]
+
+[ext_resource type="Script" uid="uid://qyscfa5mlupj" path="res://Actors/Common/Components/entity_status.gd" id="1_2m2lg"]
+
+[node name="EntityStatus" type="Node2D" unique_id=23286436]
+script = ExtResource("1_2m2lg")
+max_health = 30.0

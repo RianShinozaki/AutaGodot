@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cni7flg7rw44w"]
+
+[ext_resource type="Script" uid="uid://coygks3n2h0jn" path="res://Actors/Common/Components/input_manager.gd" id="1_ghkqf"]
+
+[node name="InputManager" type="Node2D" unique_id=1034958145]
+script = ExtResource("1_ghkqf")
+input_deadzone = 0.2
