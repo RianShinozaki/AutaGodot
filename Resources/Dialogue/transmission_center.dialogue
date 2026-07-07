@@ -136,7 +136,9 @@ Bard: I am a program designed to guide you through the V.O.I.D. protocol.
 
 ~ orb_tutorial_1_2
 Bard: Where you find yourself now is a place that is not quite reality, yet not quite in your mind.
-Bard: It is not quite unreality. But it is not you. But it is not me.
+do bard_anim.play("glitch")
+Bard: It is not quite unreality. Yet it is not you. Yet it is not me.
+do bard_anim.play("default")
 Bard: It is an emergent phenomenon of Class 1 automatons like yourself. Accessible to you and... daemons such as myself.
 => END
 
@@ -148,9 +150,12 @@ Bard: Please, follow me.
 
 ~ orb_tutorial_1_4
 Bard: You see, this is a realm of chaos. ...No.
-Bard: This is a realm of interconnecton... No.
+do bard_anim.play("glitch")
+
+Bard: [speed=1] This is a realm of interconnecton... No.
 Bard: This is a realm of...
-Bard: ...
+Bard: [speed=0.2]...
+do bard_anim.play("default")
 Bard: Please, follow me.
 => END
 

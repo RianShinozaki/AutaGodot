@@ -2,6 +2,7 @@ class_name CutsceneSequence extends Node
 
 @export var events: Array[CutsceneEvent]
 @export var dialogue_resource: DialogueResource
+@export var actors: Dictionary[String, Node]
 
 signal event_ended
 signal cutscene_started

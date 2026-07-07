@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://dmrxnsi74n4mc" path="res://Scripts/Cinematics/Cutscenes/Events/code_event.gd" id="21_phnro"]
 [ext_resource type="Texture2D" uid="uid://cr1pxv7ovgjfy" path="res://Art Assets/Environment/DeepRuins/MetalPlatform.png" id="22_j8jxn"]
 [ext_resource type="Script" uid="uid://biw4en6dgkpmt" path="res://Scripts/Cinematics/Cutscenes/Events/play_animation_event.gd" id="22_phnro"]
-[ext_resource type="Script" uid="uid://b467a1nar4qhy" path="res://Scripts/Environment/Generic/Obstacles/spinning_platform.gd" id="22_t5j4b"]
+[ext_resource type="Script" path="res://Scripts/Environment/Generic/Obstacles/spinning_platform.gd" id="22_t5j4b"]
 [ext_resource type="AudioStream" uid="uid://fj7jcj1a1utu" path="res://Audio/Sounds/Cutscene/FastFall.mp3" id="24_p107v"]
 [ext_resource type="Texture2D" uid="uid://bdok1617ryuvc" path="res://Art Assets/Characters/Bard/bard_sprites.png" id="26_cs45n"]
 [ext_resource type="Script" uid="uid://d3006oyn3njtw" path="res://Scripts/Cinematics/Cutscenes/Events/retarget_camera_event.gd" id="27_4mqbf"]
@@ -386,11 +386,30 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14]
 }
 
+[sub_resource type="Animation" id="Animation_wrhjk"]
+resource_name = "glitch"
+length = 0.3332
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ysou"]
 _data = {
 &"RESET": SubResource("Animation_cs45n"),
 &"default": SubResource("Animation_6ysou"),
-&"form": SubResource("Animation_4mqbf")
+&"form": SubResource("Animation_4mqbf"),
+&"glitch": SubResource("Animation_wrhjk")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5j4b"]
@@ -532,18 +551,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../Entities/Auta:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cs45n"]
@@ -1000,7 +1007,7 @@ position = Vector2(1, -144)
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("5_7uyae")]
 visibility_layer = 1025
-position = Vector2(326, 104)
+position = Vector2(1759, -24)
 parameters = Dictionary[String, ExtResource("6_ahwhm")]({
 "duck": ExtResource("7_ssonb"),
 "hurt": SubResource("Resource_l3j8d"),
@@ -1024,7 +1031,7 @@ texture = ExtResource("26_cs45n")
 flip_h = true
 hframes = 5
 vframes = 5
-frame = 14
+frame = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Entities/Bard" unique_id=1740555323]
 reset_on_save = false
@@ -1121,7 +1128,6 @@ shape = SubResource("RectangleShape2D_t5j4b")
 
 [node name="Start" type="Node" parent="Cutscenes" unique_id=2024710371]
 script = ExtResource("19_ixg0b")
-activate_on_ready = true
 events = Array[ExtResource("20_pq87d")]([SubResource("Resource_li1lr"), SubResource("Resource_p107v"), SubResource("Resource_p67t4")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/Start" unique_id=2035866599]
@@ -1129,10 +1135,13 @@ libraries/ = SubResource("AnimationLibrary_cs45n")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscenes/Start" unique_id=893578030]
 
-[node name="MeetBard" type="Node" parent="Cutscenes" unique_id=2015122683]
+[node name="MeetBard" type="Node" parent="Cutscenes" unique_id=2015122683 node_paths=PackedStringArray("actors")]
 script = ExtResource("19_ixg0b")
 events = Array[ExtResource("20_pq87d")]([SubResource("Resource_jrs8m"), SubResource("Resource_4mqbf"), SubResource("Resource_2waqd"), SubResource("Resource_65bxv"), SubResource("Resource_6ysou"), SubResource("Resource_5sf65"), SubResource("Resource_qttyq"), SubResource("Resource_22nr4"), SubResource("Resource_d7go0"), SubResource("Resource_ekriy"), SubResource("Resource_j8jxn"), SubResource("Resource_t5j4b"), SubResource("Resource_0qwn1"), SubResource("Resource_wrhjk"), SubResource("Resource_hrao5"), SubResource("Resource_1365u"), SubResource("Resource_5mv85"), SubResource("Resource_twipn"), SubResource("Resource_mg5o7")])
 dialogue_resource = ExtResource("29_5sf65")
+actors = {
+"bard_anim": NodePath("../../Entities/Bard/AnimationPlayer")
+}
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/MeetBard" unique_id=1189990602]
 position = Vector2(1776, -269)

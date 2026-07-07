@@ -2,15 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bmqwdds8ljkiu" path="res://Scripts/System/Controllers/game_system.gd" id="1_ws00x"]
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="2_txtda"]
-[ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="3_l0bwt"]
+[ext_resource type="Script" uid="uid://duoqifug8x5d7" path="res://Scripts/Dialogue/dialogue_runner.gd" id="3_atxl8"]
 [ext_resource type="PackedScene" uid="uid://dkgw8xfruiby8" path="res://Maps/Game Maps/TRC-TransmissionCenterDungeon/OrbTutorial.tscn" id="5_ws00x"]
-[ext_resource type="Texture2D" uid="uid://bwkbokwcbn3kx" path="res://Art Assets/UI/Dialogue/scav.png" id="8_yjdgk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txtda"]
-bg_color = Color(0.9874967, 0.00038620114, 0.90192336, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjdgk"]
-bg_color = Color(0.27058825, 0.6039216, 1, 1)
 
 [node name="Game" type="Node" unique_id=1676149531]
 script = ExtResource("1_ws00x")
@@ -22,45 +15,6 @@ layer = 102
 offset = Vector2(50, 30)
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 50, 30)
-
-[node name="DialogueBox" type="Panel" parent="DialogueUI" unique_id=1946957913]
-visible = false
-texture_filter = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 39.0
-offset_top = -111.0
-offset_right = -857.0
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_l0bwt")
-
-[node name="Panel2" type="Panel" parent="DialogueUI/DialogueBox" unique_id=1494730230]
-z_index = -1
-layout_mode = 0
-offset_left = -8.0
-offset_top = -11.999992
-offset_right = 692.0
-offset_bottom = 124.00001
-rotation = 0.018642256
-theme_override_styles/panel = SubResource("StyleBoxFlat_txtda")
-
-[node name="Panel" type="Panel" parent="DialogueUI/DialogueBox" unique_id=54563407]
-z_index = -1
-layout_mode = 0
-offset_left = -26.999996
-offset_top = -5.4999866
-offset_right = 673.0
-offset_bottom = 130.50002
-rotation = 0.0070558563
-theme_override_styles/panel = SubResource("StyleBoxFlat_yjdgk")
-
-[node name="Image(1)" type="Sprite2D" parent="DialogueUI/DialogueBox" unique_id=1307600112]
-position = Vector2(588, -12)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("8_yjdgk")
+script = ExtResource("3_atxl8")
 
 [node name="GameWorld" parent="." unique_id=1205324340 instance=ExtResource("5_ws00x")]
