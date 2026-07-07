@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	if collision_mode == COLLISION_MODE_FLOOR:
 		if is_on_floor():
 			if velocity.y >= 0 and not previously_grounded:
-				emit_signal("just_grounded", get_floor_normal(), velocity)
+				emit_signal("just_grounded", get_floor_normal(), pre_move_velocity)
 				velocity.y = 0
 			
 			if platform_detector != null:

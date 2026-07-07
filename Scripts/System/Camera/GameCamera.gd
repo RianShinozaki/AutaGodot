@@ -22,6 +22,9 @@ func _enter_tree() -> void:
 		global_position = target_position
 
 func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
+	if _trans_time == 0.0:
+		zoom = Vector2.ONE * _target
+		return
 	var _targf: float = float(_target)
 	create_tween().tween_property(self, "zoom", Vector2.ONE * _targf, _trans_time).set_trans(Tween.TRANS_SINE)
 

@@ -7,16 +7,22 @@ extends CharacterBody2D
 @export var attract_force: float = 2500
 @export var absorb_heal_amount: float = 0.5
 @export var pickup_sound: AudioStream
-
+@export var set_own_velocity: bool = false
 var attract = false
 var auta: Auta
 var counter: float = 0
 static var pitch_scale: float = 1
+@export var active: bool = true
 
 func _ready():
 	auta = Auta.instance
+	if set_own_velocity:
+		var _dir: Vector2 = Vector2.from_angle(randf_range(0, 2*PI))
+		velocity = _dir * initial_velocity
 
 func _physics_process(delta):
+	if not active: return
+	
 	var _collision = move_and_collide(velocity * delta)
 	
 	if not attract:
@@ -45,4 +51,5 @@ func _physics_process(delta):
 
 
 func _on_orb_detector_area_entered(_area):
-	attract = true
+	if active:
+		attract = true

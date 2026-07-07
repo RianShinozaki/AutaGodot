@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://tef4mq5qj0wm"]
+
+[ext_resource type="FontFile" uid="uid://bjcihuue17427" path="res://Art Assets/Fonts/Not Jam Mono Clean 13.ttf" id="1_q30lv"]
+[ext_resource type="Script" uid="uid://dql0e6xd5vhy7" path="res://Scripts/System/Controllers/gameworld.gd" id="1_xujrd"]
+[ext_resource type="Shader" uid="uid://bsvi4xwa2df4" path="res://Shaders/crt.gdshader" id="2_4cek1"]
+[ext_resource type="AudioStream" uid="uid://byaumwunct0nr" path="res://Audio/Sounds/Cutscene/computer_startup.wav" id="2_f11ge"]
+[ext_resource type="Script" uid="uid://bq4xh6qjo8qh4" path="res://Scripts/Environment/TransmissionDungeon/neuraltapcutscene.gd" id="4_wjd73"]
+[ext_resource type="PackedScene" uid="uid://dkgw8xfruiby8" path="res://Maps/Game Maps/TRC-TransmissionCenterDungeon/OrbTutorial.tscn" id="5_es7lx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wjd73"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_es7lx"]
+resource_local_to_scene = true
+shader = ExtResource("2_4cek1")
+shader_parameter/tex = SubResource("ViewportTexture_wjd73")
+shader_parameter/mask_type = 1
+shader_parameter/curve = 0.0
+shader_parameter/sharpness = 0.5
+shader_parameter/color_offset = 0.5
+shader_parameter/mask_brightness = 0.4350000206625
+shader_parameter/scanline_brightness = 1.0
+shader_parameter/min_scanline_thickness = 0.8190000270275
+shader_parameter/aspect = 0.6960000093100001
+shader_parameter/wobble_strength = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xujrd"]
+bg_color = Color(0.387665, 0.12940261, 0, 1)
+
+[sub_resource type="Theme" id="Theme_4cek1"]
+default_font = ExtResource("1_q30lv")
+default_font_size = 39
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q30lv"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_xujrd"]
+resource_name = "1"
+length = 20.0
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.023, 2.423, 2.5896666, 2.6896667, 2.9563334, 3.4586668, 3.833, 4.079, 4.257, 4.5759997, 4.7929997, 5.0610003, 5.597, 5.9019995, 6.3710003, 6.958, 7.6949997, 8.976, 12.601, 14.136),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 28, 39, 45, 63, 79, 93, 100, 112, 119, 133, 138, 152, 164, 176, 187, 198, 278, 289, 326]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.023, 16.542662, 16.62824),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(6.175, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.023, 17.04, 17.262074, 17.596031),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.023, 17.077, 17.262074),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.023, 17.458073, 17.484074, 17.6203),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../..:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.424, 17.521961, 17.620302),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 2.6773252,
+"start_offset": 0.0,
+"stream": ExtResource("2_f11ge")
+}],
+"times": PackedFloat32Array(0.010000005)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_4cek1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../..:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjd73"]
+_data = {
+&"1": SubResource("Animation_xujrd"),
+&"RESET": SubResource("Animation_4cek1")
+}
+
+[node name="GameWorld" type="CanvasModulate" unique_id=338976451]
+script = ExtResource("1_xujrd")
+bgm_volume = 0.4
+metadata/_custom_type_script = "uid://dql0e6xd5vhy7"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1131497085]
+material = SubResource("ShaderMaterial_es7lx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1576.0
+offset_bottom = 890.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1778969043]
+size = Vector2i(1576, 890)
+
+[node name="NeuralTapCutscene" type="Control" parent="SubViewport" unique_id=706664484]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 17.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SubViewport/NeuralTapCutscene" unique_id=1353247288]
+layout_mode = 0
+offset_left = -37.0
+offset_top = -14.0
+offset_right = 1557.0
+offset_bottom = 889.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xujrd")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewport/NeuralTapCutscene" unique_id=1321159544]
+visible = false
+layout_mode = 0
+offset_top = 27.0
+offset_right = 1536.0
+offset_bottom = 864.0
+scale = Vector2(0.685, 1.165)
+theme = SubResource("Theme_4cek1")
+bbcode_enabled = true
+text = "DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK
+DON'T COME BACK"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/NeuralTapCutscene" unique_id=1619203484]
+modulate = Color(0.99999994, 0.73556244, 0.45501387, 1)
+layout_mode = 0
+offset_top = 27.0
+offset_right = 1536.0
+offset_bottom = 864.0
+theme = SubResource("Theme_4cek1")
+bbcode_enabled = true
+text = "(C) XXXXXX MASTELLAIRE, INC.
+BIOS DATE [ERR]
+VERSION 4.06.2003
+MODEL CODE AUTA
+
+DRIVER TEST		...OK
+LIMBIC TEST		...OK
+WEAPONS TEST		...OK
+MEMORY TEST		...[color=yellow]UNHEALTHY[/color]
+PSYCHE TEST		...[color=red]ERROR [/color]
+
+
+[color=red]WARNING: SEVERE PSYCHOLOGICAL CONTAMINATION DETECTED. RISK OF CASCADING NEURON FAILURE [/color]
+
+INITIATING
+	V.O.I.D. PROTOCOL"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Panel2" type="Panel" parent="SubViewport/NeuralTapCutscene" unique_id=84881247]
+visible = false
+layout_mode = 0
+offset_left = -289.34
+offset_top = -14.0
+offset_right = 1704.0
+offset_bottom = 889.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q30lv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/NeuralTapCutscene" unique_id=1408963438]
+libraries/ = SubResource("AnimationLibrary_wjd73")
+autoplay = &"1"
+script = ExtResource("4_wjd73")
+next_scene = ExtResource("5_es7lx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewport/NeuralTapCutscene" unique_id=443516475]
+
+[connection signal="animation_finished" from="SubViewport/NeuralTapCutscene/AnimationPlayer" to="SubViewport/NeuralTapCutscene/AnimationPlayer" method="_on_animation_finished"]

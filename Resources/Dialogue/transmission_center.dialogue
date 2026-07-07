@@ -2,6 +2,14 @@
 Tess: AAAAAAAAHHHHHHHHHH!!
 => END
 
+~ cutscene_2_1
+Tess: This is bad... this is really, really bad!
+Tess: Where am I? And what the hell... was that thing?
+Tess: It couldn't have been...
+Tess: No. No! That doesn't exist here. 
+Tess: That CAN'T exist here. It was just some sort of... [color=magenta]pink-haired monster[/color].
+Tess: Gotta get out of here before it finds me again.
+
 ~ cutscene_3_1
 Tess: Come on... COME ON! GO UP!
 Tess: Of course. Why wouldn't the lift be busted? Why would anything be okay?
@@ -43,7 +51,7 @@ Some text is burned onto the weakly flickering monitor.
 Some text is burned onto the weakly flickering monitor.
 - Read it
 	"Project F-203 'Heavy Spider' is proceeding well."
-	"While the drone fleet protects the facility against class-3 or below natural local entities, Project F-203 protects against intruding class-1 sentient beings."
+	"While the drone fleet protects the facility against class-3 or below natural local entities, Project F-203 protects against intruding class-2 and above sentient beings."
 	"Security is of the utmost priority."
 	"Note - I am uncertain as to the source of Design Team's obsession with spiders. Keep forgetting to ask."
 	=> END
@@ -59,8 +67,6 @@ Some text is burned onto the weakly flickering monitor.
 	=> END
 - Don't
 => END
-
-
 
 ~ monitor_4
 Some text is burned onto the weakly flickering monitor.
@@ -96,8 +102,8 @@ Those are your eyes.
 => END
 
 ~ reflection_5
-This is what that child was afraid of.
-This is what you are afraid of.
+[speed=0.2]This is what that child was afraid of.
+[speed=0.2]This is what you are afraid of.[next=auto]
 => END
 
 ~ warning
@@ -119,7 +125,82 @@ Computer: INITIATING DIAGNOSTIC AND REPAIR HALO.
 => END
 
 ~ scanner_3
-Computer: WARNING: MULTIPLE CRITICAL FUNCTIONS BLOCKED.
-Computer: SOURCE: SEVERE DEGREDATION OF PSYCHE INTERFACE DUE TO TRAUMA.
-Computer: BEGIN NEURAL TAP IN 3... 2... 1...
+Computer: BEGINNING NEURAL TAP IN 3... 2... 1...
 => END
+
+~ orb_tutorial_1
+???: Greetings. It has been quite some time since I have met someone here.
+Bard: I am the Brain Assistive Recovery Daemon.
+Bard: I am a program designed to guide you through the V.O.I.D. protocol.
+=> END
+
+~ orb_tutorial_1_2
+Bard: Where you find yourself now is a place that is not quite reality, yet not quite in your mind.
+Bard: It is not quite unreality. But it is not you. But it is not me.
+Bard: It is an emergent phenomenon of Class 1 automatons like yourself. Accessible to you and... daemons such as myself.
+=> END
+
+~ orb_tutorial_1_3
+Bard: Forgive me. As I said, it has been some time. I am recovering my own protocols.
+Bard: ...
+Bard: Please, follow me.
+=> END
+
+~ orb_tutorial_1_4
+Bard: You see, this is a realm of chaos. ...No.
+Bard: This is a realm of interconnecton... No.
+Bard: This is a realm of...
+Bard: ...
+Bard: Please, follow me.
+=> END
+
+~ orb_tutorial_1_5
+Bard: Let us collapse the possibilities.
+Bard: We wish to diagnose your condition. Observe.
+=> END
+
+~ orb_tutorial_1_6
+Bard: Concerning.
+=> END
+
+~ orb_tutorial_1_7
+Bard: Don't be concerned. 
+Bard: The V.O.I.D. protocol has a 99% restoration success rate.
+=> END
+
+~ orb_tutorial_2
+Bard: You are the personality interface assigned to model code [color=magenta]"AUTA"[/color].
+Bard: For simplicity, you may consider this place a representation of your neural complex. 
+Bard: As such, my assessment of your neural condition is...
+=> END
+
+~ orb_tutorial_3
+Bard: [color=yellow]Unhealthy[/color]. Full analysis pending.
+=> END
+
+~ orb_tutorial_4
+Bard: Do not fear. The V.O.I.D. protocol has a 99% restoration success rate.
+=> END
+
+~ orb_tutorial_5
+Bard: For optimal results, the V.O.I.D. protocol also requires conscious participation from the automaton's personality interface. Let us begin with a simple function restoration.
+Bard: Your assessment has indicated your [color=cyan]"ORB" function [/color]has become neurally isolated. We must reconnect it.
+Bard: Let us continue.
+=> END
+
+~ orb_tutorial_6
+Bard: This appears to be the appropriate location.
+Bard: It is now your responsibility to navigate this space in order to find and reconnect your lost function.
+Bard: I will continue to guide you if necessary. Good luck.
+=> END
+
+Bard: We, of course, must contact your handler for permission to continue the operation.
+Bard: Pinging your handler now...
+ 
+~ orb_tutorial_11
+Bard: ...
+
+~ orb_tutorial_12
+Bard: ...We are sorry. We were unable to contact your handler. 
+Bard: According to V.O.I.D. protocol, you now assume responsibility to locate your handler and acquire permission to perform further repairs.
+Bard: Please understand, 

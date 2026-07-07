@@ -5,6 +5,7 @@ extends AnimatedSprite2D
 @export var start_id: String
 
 @export var powered: bool = false
+@onready var prompt = $Prompt
 
 var entered: bool = false
 var active: bool = true
@@ -17,10 +18,12 @@ func _ready():
 	
 func _on_body_entered(_body):
 	entered = true
+	prompt.visible = true
 
 
 func _on_body_exited(_body):
 	entered = false
+	prompt.visible = false
 
 func _input(event):
 	if active and entered and event.is_action_pressed("Interact"):
@@ -32,7 +35,8 @@ func _input(event):
 			PlayerUI.instance.set_ui_visibility(false)
 			auta.unset_all()
 			auta.get_node("GenericAttributes/InputManager").read_controller_input = false
-		
+			prompt.visible = false
+			
 			DialogueManager.show_dialogue_balloon(dialogue_resource, start_id if powered else fail_id)
 			await DialogueManager.dialogue_ended
 		
@@ -40,3 +44,4 @@ func _input(event):
 			auta.get_node("GenericAttributes/InputManager").read_controller_input = true
 			active = true
 			GameCamera.instance.lerp_zoom(4)
+			prompt.visible = true

@@ -60,5 +60,5 @@ func unlock_orb():
 	
 func unset_all():
 	switch_action_state_name("NormalState")
-	velocity = Vector2.ZERO
+	velocity.x = 0
 	get_node("GenericAttributes/InputManager").set_input_direction(Vector2.ZERO)

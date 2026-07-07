@@ -62,6 +62,8 @@
 [ext_resource type="Script" uid="uid://daifiimoqu6vf" path="res://Scripts/Environment/TransmissionDungeon/breakable_wall_special.gd" id="34_p3iw4"]
 [ext_resource type="Resource" uid="uid://knn6xkirisou" path="res://Resources/Dialogue/transmission_center.dialogue" id="38_ulal3"]
 [ext_resource type="Texture2D" uid="uid://kyfahr8e7qe" path="res://Art Assets/Environment/DeepRuins/ScannerCutin.png" id="39_2qrbl"]
+[ext_resource type="Script" uid="uid://bwm5nmrll3bjq" path="res://Scripts/Environment/TransmissionDungeon/crystal_shard_activate.gd" id="39_77xtc"]
+[ext_resource type="PackedScene" uid="uid://c4j8jt8sujir4" path="res://Objects/Effects/Particles/crystal_shards.tscn" id="39_i4cvd"]
 [ext_resource type="Texture2D" uid="uid://bpjuwkykiify8" path="res://Art Assets/Environment/DeepRuins/spr_ControlRoom/scanner.png" id="40_5bu3v"]
 [ext_resource type="PackedScene" uid="uid://c6kgxd5wx788" path="res://Objects/Environment/DeepRuinsDungeon/Crystal.tscn" id="40_3458u"]
 [ext_resource type="Texture2D" uid="uid://b6sqmo0irbgvi" path="res://Art Assets/Environment/DeepRuins/spr_ControlRoom/spr_ControlRoom_0.png" id="40_ns1wf"]
@@ -80,7 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://dd8ofvy1fmyon" path="res://Art Assets/Environment/DeepRuins/CrystalCutin2.png" id="76_3458u"]
 [ext_resource type="Texture2D" uid="uid://qsgw4q8yl15" path="res://Art Assets/Environment/DeepRuins/repair-halo.png" id="77_5bu3v"]
 [ext_resource type="Script" uid="uid://bao1jfyey2tac" path="res://Scripts/Cinematics/Cutscenes/Events/change_scene_event.gd" id="77_w0m06"]
-[ext_resource type="PackedScene" uid="uid://kj02ish857pn" path="res://Maps/Cutscenes/DemoEnd.tscn" id="78_i4cvd"]
+[ext_resource type="PackedScene" uid="uid://tef4mq5qj0wm" path="res://Maps/Game Maps/TRC-TransmissionCenterDungeon/NeuralTapCutscene.tscn" id="80_77xtc"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -211,11 +213,11 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omwlr"]
 size = Vector2(386, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0m06"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77xtc"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4cvd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43ttl"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 
@@ -267,7 +269,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epds7"]
 size = Vector2(32, 48)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_77xtc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ekld"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 
@@ -309,17 +311,17 @@ bg_color = Color(0.9213565, 0, 0.05927293, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0qq"]
 size = Vector2(25, 65)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_43ttl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kmvl"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_el5x5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_utpk0"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ekld"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vptce"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_el5x5")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_utpk0")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_i4cvd"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -341,43 +343,43 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kmvl"]
-resource_local_to_scene = true
-shader = ExtResource("33_cpbhl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_utpk0"]
-resource_local_to_scene = true
-shader = ExtResource("33_cpbhl")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_vptce"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dr1bf"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_vptce")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dmvkg"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cail5"]
-resource_local_to_scene = true
-shader = ExtResource("33_cpbhl")
+[sub_resource type="ViewportTexture" id="ViewportTexture_cail5"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a5yve"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_cail5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_r71yt"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r71yt"]
+resource_local_to_scene = true
+shader = ExtResource("33_cpbhl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tv2dl"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_r71yt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kifwd"]
+resource_local_to_scene = true
+shader = ExtResource("33_cpbhl")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q6s2b"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypg4x"]
+resource_local_to_scene = true
+shader = ExtResource("33_cpbhl")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_q6s2b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohvtu"]
 resource_local_to_scene = true
 shader = ExtResource("33_cpbhl")
 
@@ -467,6 +469,20 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x2ce"]
 size = Vector2(20, 16)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w0m06"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_i4cvd"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_77xtc"]
+gradient = SubResource("Gradient_i4cvd")
+width = 32
+height = 17
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
 
 [sub_resource type="Resource" id="Resource_1ifvt"]
 resource_local_to_scene = true
@@ -1024,10 +1040,10 @@ tracks/4/path = NodePath("../../Entities/Auta/Art:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3.31, 3.3333333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3.31),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 20.978857, 0.0]
+"values": [0.0, 25.132741228718345]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1155,6 +1171,7 @@ blend_mode = 1
 [sub_resource type="Animation" id="Animation_t8fxt"]
 resource_name = "1"
 length = 6.5
+step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1335,7 +1352,7 @@ tracks/15/path = NodePath("../../Entities/Auta/Art:frame")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(1.5999668),
+"times": PackedFloat32Array(1.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [84]
@@ -1359,7 +1376,7 @@ tracks/17/path = NodePath("../../Entities/Auta/Art:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 1.0527081, 1.5666666, 1.5999668),
+"times": PackedFloat32Array(0, 1.0527081, 1.5976666, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.5882496, 0.0]
@@ -2427,6 +2444,20 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/4/use_blend = true
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Regions/Power_OrbRoom/BigCrystal/Node2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"activate_them"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ns1wf"]
 resource_name = "5"
@@ -2793,6 +2824,11 @@ script = ExtResource("25_iukae")
 start_id = "scanner_3"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
+[sub_resource type="Resource" id="Resource_f1imf"]
+script = ExtResource("33_7q83e")
+target_1 = NodePath("CamPivot")
+metadata/_custom_type_script = "uid://d3006oyn3njtw"
+
 [sub_resource type="Resource" id="Resource_etfvs"]
 script = ExtResource("27_02hcr")
 target = NodePath("../../GameSystem/Cam/Camera2D")
@@ -2806,8 +2842,13 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_02u88"]
 script = ExtResource("77_w0m06")
-to_scene = ExtResource("78_i4cvd")
+to_scene = ExtResource("80_77xtc")
 metadata/_custom_type_script = "uid://bao1jfyey2tac"
+
+[sub_resource type="Resource" id="Resource_3cx7a"]
+script = ExtResource("27_iukae")
+time = 2.0
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3458u"]
 
@@ -2952,7 +2993,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.29999995, 1.1761955, 1.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [85, 1, 46]
+"values": [70, 1, 46]
 }
 
 [sub_resource type="Animation" id="Animation_eifjb"]
@@ -3547,11 +3588,11 @@ position = Vector2(1928, 1120)
 position = Vector2(1944, 1144)
 
 [node name="Crystal11" parent="Regions/Power_Spiders1" unique_id=1202755598 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_w0m06")
+material = SubResource("ShaderMaterial_77xtc")
 position = Vector2(1672, 1480)
 
 [node name="Crystal12" parent="Regions/Power_Spiders1" unique_id=2063146107 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_i4cvd")
+material = SubResource("ShaderMaterial_43ttl")
 position = Vector2(2072, 1544)
 
 [node name="Power_Spiders2" type="Node2D" parent="Regions" unique_id=892348680]
@@ -3729,7 +3770,7 @@ texture = ExtResource("28_epds7")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_Spiders2" unique_id=1079356612 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_77xtc")
+material = SubResource("ShaderMaterial_6ekld")
 position = Vector2(1584, 864)
 rotation = -1.5707964
 
@@ -3948,11 +3989,11 @@ texture = ExtResource("28_epds7")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_SpidersRise" unique_id=970997406 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_43ttl")
+material = SubResource("ShaderMaterial_8kmvl")
 position = Vector2(1808, 1120)
 
 [node name="Crystal12" parent="Regions/Power_SpidersRise" unique_id=201573027 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_6ekld")
+material = SubResource("ShaderMaterial_vptce")
 position = Vector2(1968, 976)
 rotation = -1.5707964
 
@@ -3960,7 +4001,7 @@ rotation = -1.5707964
 position = Vector2(1, 896)
 
 [node name="CamRegion" parent="Regions/Power_OrbRoom" unique_id=747072779 instance=ExtResource("18_fy4fg")]
-position = Vector2(3543, 160)
+position = Vector2(3551.0002, 160)
 scale = Vector2(5, 2.5)
 
 [node name="BigCrystal" type="Sprite2D" parent="Regions/Power_OrbRoom" unique_id=393122528]
@@ -3976,36 +4017,81 @@ color = Color(0.25635764, 0.49541497, 0.6602332, 1)
 energy = 0.64
 texture = SubResource("GradientTexture2D_4cibt")
 
+[node name="Node2D" type="Node2D" parent="Regions/Power_OrbRoom/BigCrystal" unique_id=1940125908]
+script = ExtResource("39_77xtc")
+
+[node name="CrystalShard" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=1961415455 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(-1, 6)
+set_own_velocity = true
+active = false
+
+[node name="CrystalShard2" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=121018975 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(2, 0)
+set_own_velocity = true
+active = false
+
+[node name="CrystalShard3" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=171944273 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(13, 1)
+set_own_velocity = true
+active = false
+
+[node name="CrystalShard5" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=860897090 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(13, 1)
+set_own_velocity = true
+active = false
+
+[node name="CrystalShard6" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=1041584278 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(13, 1)
+set_own_velocity = true
+active = false
+
+[node name="CrystalShard7" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=1343430635 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(13, 1)
+set_own_velocity = true
+active = false
+
+[node name="CrystalShard4" parent="Regions/Power_OrbRoom/BigCrystal/Node2D" unique_id=688938964 instance=ExtResource("39_i4cvd")]
+visible = false
+position = Vector2(10, 7)
+set_own_velocity = true
+active = false
+
 [node name="Crystal11" parent="Regions/Power_OrbRoom" unique_id=22271428 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_8kmvl")
+material = SubResource("ShaderMaterial_dr1bf")
 position = Vector2(4159, 464)
 
 [node name="Crystal12" parent="Regions/Power_OrbRoom" unique_id=512185491 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_utpk0")
+material = SubResource("ShaderMaterial_dmvkg")
 position = Vector2(4463, 560)
 
 [node name="Crystal13" parent="Regions/Power_OrbRoom" unique_id=892262993 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_dr1bf")
+material = SubResource("ShaderMaterial_a5yve")
 position = Vector2(4655, 680)
 
 [node name="Crystal14" parent="Regions/Power_OrbRoom" unique_id=272788436 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_dmvkg")
+material = SubResource("ShaderMaterial_r71yt")
 position = Vector2(4383, 680)
 
 [node name="Crystal15" parent="Regions/Power_OrbRoom" unique_id=1962508947 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_cail5")
+material = SubResource("ShaderMaterial_tv2dl")
 position = Vector2(4783, 432)
 
 [node name="Crystal16" parent="Regions/Power_OrbRoom" unique_id=1147407336 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_a5yve")
+material = SubResource("ShaderMaterial_kifwd")
 position = Vector2(5271, 336)
 
 [node name="Crystal17" parent="Regions/Power_OrbRoom" unique_id=102429357 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_tv2dl")
+material = SubResource("ShaderMaterial_ypg4x")
 position = Vector2(5055, 336)
 
 [node name="Crystal18" parent="Regions/Power_OrbRoom" unique_id=1487458792 instance=ExtResource("40_3458u")]
-material = SubResource("ShaderMaterial_kifwd")
+material = SubResource("ShaderMaterial_ohvtu")
 position = Vector2(4455, 384)
 
 [node name="LampLight" parent="Regions/Power_OrbRoom" unique_id=434627774 instance=ExtResource("13_xxc4j")]
@@ -4081,6 +4167,22 @@ collision_mask = 8
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_7x2ce")
 
+[node name="Prompt" type="Sprite2D" parent="Regions/Power_OrbRoom/Terminal" unique_id=1265328446]
+visible = false
+material = SubResource("CanvasItemMaterial_w0m06")
+position = Vector2(0, 28)
+texture = SubResource("GradientTexture2D_77xtc")
+
+[node name="Label" type="Label" parent="Regions/Power_OrbRoom/Terminal/Prompt" unique_id=578211554]
+modulate = Color(0.40146014, 0.40146014, 0.40146014, 1)
+use_parent_material = true
+offset_left = -9.999998
+offset_top = -5.999999
+offset_right = 36.0
+offset_bottom = 17.0
+scale = Vector2(0.43, 0.43)
+text = "SPACE"
+
 [node name="Terminal2" type="AnimatedSprite2D" parent="Regions/Power_OrbRoom" unique_id=684803442 groups=["lab_monitor"]]
 position = Vector2(4335, 560)
 sprite_frames = SubResource("SpriteFrames_dkakw")
@@ -4098,6 +4200,22 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Regions/Power_OrbRoom/Terminal2/Area2D" unique_id=283205039]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_7x2ce")
+
+[node name="Prompt" type="Sprite2D" parent="Regions/Power_OrbRoom/Terminal2" unique_id=1976030949]
+visible = false
+material = SubResource("CanvasItemMaterial_w0m06")
+position = Vector2(0, 28)
+texture = SubResource("GradientTexture2D_77xtc")
+
+[node name="Label" type="Label" parent="Regions/Power_OrbRoom/Terminal2/Prompt" unique_id=71475699]
+modulate = Color(0.40146014, 0.40146014, 0.40146014, 1)
+use_parent_material = true
+offset_left = -9.999998
+offset_top = -5.999999
+offset_right = 36.0
+offset_bottom = 17.0
+scale = Vector2(0.43, 0.43)
+text = "SPACE"
 
 [node name="Terminal3" type="AnimatedSprite2D" parent="Regions/Power_OrbRoom" unique_id=1465030972 groups=["lab_monitor"]]
 position = Vector2(4519, 384)
@@ -4117,6 +4235,22 @@ collision_mask = 8
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_7x2ce")
 
+[node name="Prompt" type="Sprite2D" parent="Regions/Power_OrbRoom/Terminal3" unique_id=1588178157]
+visible = false
+material = SubResource("CanvasItemMaterial_w0m06")
+position = Vector2(0, 28)
+texture = SubResource("GradientTexture2D_77xtc")
+
+[node name="Label" type="Label" parent="Regions/Power_OrbRoom/Terminal3/Prompt" unique_id=2018957855]
+modulate = Color(0.40146014, 0.40146014, 0.40146014, 1)
+use_parent_material = true
+offset_left = -9.999998
+offset_top = -5.999999
+offset_right = 36.0
+offset_bottom = 17.0
+scale = Vector2(0.43, 0.43)
+text = "SPACE"
+
 [node name="Terminal4" type="AnimatedSprite2D" parent="Regions/Power_OrbRoom" unique_id=974396779 groups=["lab_monitor"]]
 position = Vector2(4831, 336)
 sprite_frames = SubResource("SpriteFrames_dkakw")
@@ -4134,6 +4268,22 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Regions/Power_OrbRoom/Terminal4/Area2D" unique_id=1300742130]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_7x2ce")
+
+[node name="Prompt" type="Sprite2D" parent="Regions/Power_OrbRoom/Terminal4" unique_id=376017210]
+visible = false
+material = SubResource("CanvasItemMaterial_w0m06")
+position = Vector2(0, 28)
+texture = SubResource("GradientTexture2D_77xtc")
+
+[node name="Label" type="Label" parent="Regions/Power_OrbRoom/Terminal4/Prompt" unique_id=184732274]
+modulate = Color(0.40146014, 0.40146014, 0.40146014, 1)
+use_parent_material = true
+offset_left = -9.999998
+offset_top = -5.999999
+offset_right = 36.0
+offset_bottom = 17.0
+scale = Vector2(0.43, 0.43)
+text = "SPACE"
 
 [node name="Panel" type="Panel" parent="Regions/Power_OrbRoom" unique_id=882732551]
 visible = false
@@ -4327,7 +4477,7 @@ vframes = 9
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("7_2dyve")]
 visibility_layer = 1025
-position = Vector2(5165, 1376)
+position = Vector2(2399, 1080)
 parameters = Dictionary[String, ExtResource("8_7q83e")]({
 "duck": ExtResource("9_jnlj7"),
 "hurt": SubResource("Resource_1ifvt"),
@@ -4339,6 +4489,7 @@ parameters = Dictionary[String, ExtResource("8_7q83e")]({
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
 material = SubResource("ShaderMaterial_02u88")
+rotation = 25.132742
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
 position = Vector2(9, 8)
@@ -4385,7 +4536,6 @@ shape = SubResource("RectangleShape2D_nh4r8")
 debug_color = Color(0.7513031, 0.45676595, 0.12473331, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/ThirdCutsceneManager" unique_id=1180342735]
-active = false
 libraries/ = SubResource("AnimationLibrary_g5inn")
 
 [node name="Lift" type="StaticBody2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=290513258]
@@ -4636,7 +4786,7 @@ bus = &"Entities"
 
 [node name="ScannerCutscene" type="Node" parent="Cutscenes" unique_id=20804829]
 script = ExtResource("21_5aay8")
-events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_7yedq"), SubResource("Resource_sa03e"), SubResource("Resource_t1tuu"), SubResource("Resource_sa03e"), SubResource("Resource_7g7pv"), SubResource("Resource_8gql0"), SubResource("Resource_uff1f"), SubResource("Resource_d1tqx"), SubResource("Resource_ydva7"), SubResource("Resource_3g78j"), SubResource("Resource_ohghj"), SubResource("Resource_iksbu"), SubResource("Resource_etfvs"), SubResource("Resource_xdywo"), SubResource("Resource_02u88")])
+events = Array[ExtResource("23_o6ix0")]([SubResource("Resource_7yedq"), SubResource("Resource_sa03e"), SubResource("Resource_t1tuu"), SubResource("Resource_sa03e"), SubResource("Resource_7g7pv"), SubResource("Resource_8gql0"), SubResource("Resource_uff1f"), SubResource("Resource_d1tqx"), SubResource("Resource_ydva7"), SubResource("Resource_3g78j"), SubResource("Resource_ohghj"), SubResource("Resource_iksbu"), SubResource("Resource_f1imf"), SubResource("Resource_etfvs"), SubResource("Resource_xdywo"), SubResource("Resource_02u88"), SubResource("Resource_3cx7a")])
 dialogue_resource = ExtResource("38_ulal3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ScannerCutscene" unique_id=977028894]
@@ -4668,6 +4818,9 @@ material = SubResource("CanvasItemMaterial_77xtc")
 texture = ExtResource("77_5bu3v")
 vframes = 2
 frame = 1
+
+[node name="CamPivot" type="Node2D" parent="Cutscenes/ScannerCutscene" unique_id=1343592521]
+position = Vector2(5247, 1543)
 
 [node name="TessNote" type="Node" parent="Cutscenes" unique_id=1827588387]
 script = ExtResource("21_5aay8")

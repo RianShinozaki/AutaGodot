@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bb7vw7fvmejei"]
 
-[ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_yjdgk"]
+[ext_resource type="Script" uid="uid://bmqwdds8ljkiu" path="res://Scripts/System/Controllers/game_system.gd" id="1_ws00x"]
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://Objects/UI/player_ui.tscn" id="2_txtda"]
 [ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://Art Assets/UI/Dialogue/dialogue_theme.tres" id="3_l0bwt"]
+[ext_resource type="PackedScene" uid="uid://dkgw8xfruiby8" path="res://Maps/Game Maps/TRC-TransmissionCenterDungeon/OrbTutorial.tscn" id="5_ws00x"]
 [ext_resource type="Texture2D" uid="uid://bwkbokwcbn3kx" path="res://Art Assets/UI/Dialogue/scav.png" id="8_yjdgk"]
-[ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Maps/Game Maps/TRC-TransmissionCenterDungeon/DeepTransmissionDungeon.tscn" id="9_2bif5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txtda"]
 bg_color = Color(0.9874967, 0.00038620114, 0.90192336, 1)
@@ -13,12 +13,12 @@ bg_color = Color(0.9874967, 0.00038620114, 0.90192336, 1)
 bg_color = Color(0.27058825, 0.6039216, 1, 1)
 
 [node name="Game" type="Node" unique_id=1676149531]
-script = ExtResource("1_yjdgk")
+script = ExtResource("1_ws00x")
 
 [node name="PlayerUI" parent="." unique_id=391135168 instance=ExtResource("2_txtda")]
 
 [node name="DialogueUI" type="CanvasLayer" parent="." unique_id=258548040]
-layer = 100
+layer = 102
 offset = Vector2(50, 30)
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 50, 30)
@@ -63,4 +63,4 @@ position = Vector2(588, -12)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_yjdgk")
 
-[node name="GameWorld" parent="." unique_id=780061894 instance=ExtResource("9_2bif5")]
+[node name="GameWorld" parent="." unique_id=1205324340 instance=ExtResource("5_ws00x")]

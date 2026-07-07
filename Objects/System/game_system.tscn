@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://db8l7ltwxxsjp"]
 
 [ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Scripts/System/Controllers/C-sharp/GameManager.cs" id="1_abg3g"]
-[ext_resource type="Script" uid="uid://bmqwdds8ljkiu" path="res://Scripts/System/Controllers/game_system.gd" id="1_kaof1"]
 [ext_resource type="Script" uid="uid://fr67c83tjktl" path="res://Scripts/System/Camera/GameCamera.gd" id="3_kaof1"]
 [ext_resource type="Shader" uid="uid://crij0fawgr8t6" path="res://Shaders/Desaturate.tres" id="4_x75ph"]
 [ext_resource type="Script" uid="uid://bawt248lwkmlq" path="res://Scripts/System/Controllers/sfx_controller.gd" id="5_ufvuj"]
@@ -43,7 +42,6 @@ fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.512195, 0)
 
 [node name="GameSystem" type="Node2D" unique_id=1502683367]
-script = ExtResource("1_kaof1")
 
 [node name="GameManager" type="Node" parent="." unique_id=121694945]
 script = ExtResource("1_abg3g")

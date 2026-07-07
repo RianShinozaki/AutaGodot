@@ -1,7 +1,14 @@
-extends Node2D
+class_name GameSystem extends Node
 
-@onready var cam: GameCamera = $Cam/Camera2D
+static var instance: GameSystem
+
+@onready var game_world: GameWorld = $GameWorld
 
 func _ready():
-	await get_tree().process_frame
-	cam.targets.append(Auta.instance)
+	instance = self
+
+func change_game_world(_world: PackedScene):
+	game_world.queue_free()
+	var _new_world: GameWorld = _world.instantiate()
+	add_child(_new_world)
+	game_world = _new_world
