@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dnswudu7bf4no"]
+
+[ext_resource type="Script" uid="uid://qj6g75cb60u" path="res://Levels/TransmissionCenter/Obstacles/Constellation/constellation.gd" id="1_y6cqo"]
+[ext_resource type="PackedScene" uid="uid://c6q7y3kw63ke1" path="res://Levels/TransmissionCenter/Obstacles/Constellation/star_trail.tscn" id="2_jixk8"]
+[ext_resource type="Texture2D" uid="uid://qokdgqvskbws" path="res://Levels/TransmissionCenter/Obstacles/Constellation/constellation.png" id="2_mpju1"]
+[ext_resource type="PackedScene" uid="uid://df67dgut4lksx" path="res://Effects/Oneshots/Ripple.tscn" id="3_338mj"]
+[ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Effects/Images/Particles/Stardust.png" id="4_jixk8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye5nc"]
+atlas = ExtResource("2_mpju1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7iiy"]
+atlas = ExtResource("2_mpju1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6po3c"]
+atlas = ExtResource("2_mpju1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wj8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye5nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7iiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6po3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5l20"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7iiy"]
+radius = 64.49806
+
+[sub_resource type="Curve" id="Curve_jixk8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.218622, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_338mj"]
+curve = SubResource("Curve_jixk8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_338mj"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 10.25
+emission_ring_inner_radius = 4.0
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 0.029000096
+orbit_velocity_max = 0.27300012
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_338mj")
+
+[sub_resource type="Gradient" id="Gradient_jixk8"]
+offsets = PackedFloat32Array(0, 0.3857143, 0.9351648)
+colors = PackedColorArray(1, 1, 1, 1, 0.8507638, 0.8507638, 0.8507638, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_338mj"]
+gradient = SubResource("Gradient_jixk8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Constellation" type="Area2D" unique_id=1858085275]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_y6cqo")
+star_trail = ExtResource("2_jixk8")
+ripple = ExtResource("3_338mj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=475770239]
+sprite_frames = SubResource("SpriteFrames_0wj8m")
+autoplay = "default"
+frame_progress = 0.5568472
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1349197524]
+shape = SubResource("CircleShape2D_w5l20")
+
+[node name="PullBox" type="Area2D" parent="." unique_id=46455800]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullBox" unique_id=1734321261]
+shape = SubResource("CircleShape2D_p7iiy")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=80390023]
+amount = 32
+texture = ExtResource("4_jixk8")
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_338mj")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=907389548]
+texture = SubResource("GradientTexture2D_338mj")
+
+[connection signal="area_entered" from="PullBox" to="." method="_on_pull_box_area_entered"]
+[connection signal="area_exited" from="PullBox" to="." method="_on_pull_box_area_exited"]

@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 	
 	var _art: Sprite2D = entity.get_node("Art")
 	var _to_angle: float = 0
-	_art.global_rotation = lerp_angle(_art.global_rotation,_to_angle,delta * 10)
+	_art.rotation = lerp_angle(_art.rotation,_to_angle,delta * 10)
 	
 
 func _end() -> void:

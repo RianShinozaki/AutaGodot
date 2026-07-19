@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bwx5wuelm5u8y"]
+
+[ext_resource type="Script" uid="uid://bqflrhhgd0wwe" path="res://Levels/TransmissionCenter/Obstacles/spinning_platform_gravity.gd" id="1_mnvge"]
+[ext_resource type="Texture2D" uid="uid://bg3fe7fjry788" path="res://Levels/TransmissionCenter/Obstacles/MetalPlatformInverted.png" id="2_3uaq8"]
+[ext_resource type="Script" uid="uid://r4fdvgcpbp5r" path="res://Levels/Common/Triggers/gravity_effector.gd" id="3_ck41n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5j4b"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7iiy"]
+size = Vector2(62, 31.39)
+
+[node name="SpinningPlatformGravity" type="Node2D" unique_id=663500260]
+script = ExtResource("1_mnvge")
+rotate_speed = -0.855
+
+[node name="Collider" type="AnimatableBody2D" parent="." unique_id=769514635]
+position = Vector2(3344, -312)
+
+[node name="MetalPlatform" type="Sprite2D" parent="Collider" unique_id=1159316160]
+texture = ExtResource("2_3uaq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" unique_id=1812592413]
+shape = SubResource("RectangleShape2D_t5j4b")
+
+[node name="GravityEffectorArea" type="Area2D" parent="Collider" unique_id=865545968]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_ck41n")
+set_gravity_direction = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider/GravityEffectorArea" unique_id=1844540333]
+position = Vector2(0, -7.6950073)
+shape = SubResource("RectangleShape2D_p7iiy")

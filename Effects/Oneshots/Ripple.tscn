@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://df67dgut4lksx"]
+
+[ext_resource type="Shader" uid="uid://r0ba3fex8jok" path="res://Effects/radial_distortion.gdshader" id="1_3e0c2"]
+[ext_resource type="Script" uid="uid://drp1642x7mlv8" path="res://Effects/Oneshots/ripple.gd" id="2_m3ilx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ij3ll"]
+shader = ExtResource("1_3e0c2")
+shader_parameter/thickness = 0.2
+shader_parameter/strength = 2.0
+shader_parameter/sprite_size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_338mj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ij3ll"]
+gradient = SubResource("Gradient_338mj")
+width = 32
+height = 32
+
+[node name="Ripple" type="Sprite2D" unique_id=2003498889]
+z_index = 1
+material = SubResource("ShaderMaterial_ij3ll")
+texture = SubResource("GradientTexture2D_ij3ll")
+script = ExtResource("2_m3ilx")
+expand_speed = 20.0
+fade_speed = 1.0

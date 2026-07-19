@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b33gkho2x7rds"]
+
+[ext_resource type="Script" uid="uid://bdvwfi4hq1j1y" path="res://Levels/TransmissionCenter/Obstacles/constellation_kill_zone.gd" id="1_xkuqi"]
+[ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Effects/Images/Particles/Stardust.png" id="2_vl46i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnaai"]
+size = Vector2(16, 112)
+
+[sub_resource type="Gradient" id="Gradient_sd1cq"]
+offsets = PackedFloat32Array(0, 0.76555556, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.90555555, 1, 1, 1, 0)
+
+[node name="ConstellationKillZone" type="Area2D" unique_id=1615590097]
+collision_layer = 0
+collision_mask = 32768
+script = ExtResource("1_xkuqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1860967973]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_wnaai")
+
+[node name="StarTrail" type="CPUParticles2D" parent="." unique_id=1298014066]
+position = Vector2(0, -8)
+rotation = 1.5707964
+amount = 64
+texture = ExtResource("2_vl46i")
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(57.585, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+color = Color(0.6585938, 0, 0.21279415, 1)
+color_ramp = SubResource("Gradient_sd1cq")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

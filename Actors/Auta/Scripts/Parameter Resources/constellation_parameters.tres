@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConstellationParameters" format=3 uid="uid://b8xakgch0m1lu"]
+
+[ext_resource type="Script" uid="uid://bsyecxif0gww8" path="res://Actors/Auta/Scripts/Parameter Scripts/constellation_parameters.gd" id="1_tm7v6"]
+
+[resource]
+script = ExtResource("1_tm7v6")
+rotate_speed = 3.0
+speed_dampen = 10.0
+launch_speed = 350.0
+metadata/_custom_type_script = "uid://bsyecxif0gww8"

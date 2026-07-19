@@ -135,11 +135,12 @@ Bard: I am a program designed to guide you through the V.O.I.D. protocol.
 => END
 
 ~ orb_tutorial_1_2
-Bard: Where you find yourself now is a place that is not quite reality, yet not quite in your mind.
+Bard: The V.O.I.D. is the space between. It is a sea of constellations.
 do bard_anim.play("glitch")
-Bard: It is not quite unreality. Yet it is not you. Yet it is not me.
+Bard: It is not quite reality, yet it is not quite your mind.
+Bard: It is not just you, yet it is not just me.
 do bard_anim.play("default")
-Bard: It is an emergent phenomenon of Class 1 automatons like yourself. Accessible to you and... daemons such as myself.
+Bard: It is an emergent phenomenon of class 1 beings like yourself. Accessible to you and... daemons such as myself.
 => END
 
 ~ orb_tutorial_1_3
@@ -149,56 +150,18 @@ Bard: Please, follow me.
 => END
 
 ~ orb_tutorial_1_4
-Bard: You see, this is a realm of chaos. ...No.
-do bard_anim.play("glitch")
-
-Bard: [speed=1] This is a realm of interconnecton... No.
-Bard: This is a realm of...
-Bard: [speed=0.2]...
-do bard_anim.play("default")
-Bard: Please, follow me.
+Bard: Our goal here is to reconnect what has been forgotten.
+Bard: The you that exists here... it is fragmented. Fading. We must rehabilitate it.
+Bard: Your rehabilitation requires conscious effort to be most effective.
+Bard: I will guide you, but you must traverse the network of your own will.
+Bard: Come.
 => END
 
 ~ orb_tutorial_1_5
-Bard: Let us collapse the possibilities.
-Bard: We wish to diagnose your condition. Observe.
-=> END
-
-~ orb_tutorial_1_6
-do bard_anim.play("glitch")
-Bard: Concerning.
-do bard_anim.play("default")
-=> END
-
-~ orb_tutorial_1_7
-Bard: Don't be concerned. 
-Bard: The V.O.I.D. protocol has a 99% restoration success rate.
-=> END
-
-~ orb_tutorial_2
-Bard: You are the personality interface assigned to model code [color=magenta]"AUTA"[/color].
-Bard: For simplicity, you may consider this place a representation of your neural complex. 
-Bard: As such, my assessment of your neural condition is...
-=> END
-
-~ orb_tutorial_3
-Bard: [color=yellow]Unhealthy[/color]. Full analysis pending.
-=> END
-
-~ orb_tutorial_4
-Bard: Do not fear. The V.O.I.D. protocol has a 99% restoration success rate.
-=> END
-
-~ orb_tutorial_5
-Bard: For optimal results, the V.O.I.D. protocol also requires conscious participation from the automaton's personality interface. Let us begin with a simple function restoration.
-Bard: Your assessment has indicated your [color=cyan]"ORB" function [/color]has become neurally isolated. We must reconnect it.
-Bard: Let us continue.
-=> END
-
-~ orb_tutorial_6
-Bard: This appears to be the appropriate location.
-Bard: It is now your responsibility to navigate this space in order to find and reconnect your lost function.
-Bard: I will continue to guide you if necessary. Good luck.
+Bard: ...Beautiful, is it not?
+Bard: Continue forward, and do not be afraid.
+Bard: Nothing can harm you here.
+Bard: I will see you again further on.
 => END
 
 Bard: We, of course, must contact your handler for permission to continue the operation.

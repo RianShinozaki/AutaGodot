@@ -22,6 +22,15 @@ func _enter_tree() -> void:
 		global_position = target_position
 
 func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
+	var _to_size = get_viewport_rect().size/_target
+	var _extents_size = get_extents_size()
+	print(_to_size)
+	print(_extents_size)
+	if _extents_size.x < _to_size.x:
+		_target = roundi(get_viewport_rect().size.x / _extents_size.x)
+	if _extents_size.y < _to_size.y:
+		_target = roundi(get_viewport_rect().size.y / _extents_size.y)
+		
 	if _trans_time == 0.0:
 		zoom = Vector2.ONE * _target
 		return
@@ -54,6 +63,9 @@ func set_extents(_x_extents: Vector2, _y_extents: Vector2):
 	x_extents = _x_extents
 	y_extents = _y_extents
 
+func get_extents_size() -> Vector2:
+	return Vector2(abs(x_extents.y - x_extents.x), abs(x_extents.x - x_extents.y))
+	
 func shake_screen(_amount: float, _duration: float):
 	if shake_amount > _amount: return
 	shake_amount = _amount
@@ -76,3 +88,6 @@ func snap_to_target():
 func retarget(_target):
 	targets.clear()
 	targets.append(_target)
+
+func retarget_multiple(_target: Array[Node2D]):
+	targets = _target

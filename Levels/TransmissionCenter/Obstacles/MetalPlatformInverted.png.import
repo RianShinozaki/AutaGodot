@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s7lx46gkxjwo"
-path="res://.godot/imported/clouds_cloud_sky_blue_1.png-f55815202caa4cb26a48b0b2ba98d119.ctex"
+uid="uid://bg3fe7fjry788"
+path="res://.godot/imported/MetalPlatformInverted.png-fc3ec1e1c3431f911fcf040925962c77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://z-Unused/TestLab/Backgrounds/clouds_cloud_sky_blue_1.png"
-dest_files=["res://.godot/imported/clouds_cloud_sky_blue_1.png-f55815202caa4cb26a48b0b2ba98d119.ctex"]
+source_file="res://Levels/TransmissionCenter/Obstacles/MetalPlatformInverted.png"
+dest_files=["res://.godot/imported/MetalPlatformInverted.png-fc3ec1e1c3431f911fcf040925962c77.ctex"]
 
 [params]
 

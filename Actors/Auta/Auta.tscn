@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Actors/Auta/Scripts/Parameter Resources/auta_movement_parameters.tres" id="6_sy8jn"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="7_bicp6"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="8_40br1"]
+[ext_resource type="Resource" uid="uid://b8xakgch0m1lu" path="res://Actors/Auta/Scripts/Parameter Resources/constellation_parameters.tres" id="9_hngcm"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="9_sjva5"]
 [ext_resource type="Texture2D" uid="uid://bg4qkqt7tehfr" path="res://Actors/Auta/Images/AutaSprites.png" id="10_uqnkr"]
 [ext_resource type="Script" uid="uid://bpm1hc74705k7" path="res://Actors/Common/entity_art.gd" id="11_doylp"]
@@ -45,6 +46,8 @@
 [ext_resource type="Script" uid="uid://e63s53waw8ux" path="res://Actors/Auta/Scripts/Action States/player_speed_state.gd" id="43_bp8ag"]
 [ext_resource type="Script" uid="uid://buye7h14rme1w" path="res://Actors/Auta/Scripts/Action States/player_hurt_state.gd" id="44_c3kt2"]
 [ext_resource type="Script" uid="uid://c22rwdceqof7o" path="res://Actors/Auta/Scripts/Action States/auta_tessglide_state.gd" id="45_uiyha"]
+[ext_resource type="Script" uid="uid://evebu65ui2oa" path="res://Actors/Auta/Scripts/Action States/constellation_state.gd" id="46_owgun"]
+[ext_resource type="Texture2D" uid="uid://cwi5tfh53ti57" path="res://Actors/Auta/Images/constellation_aim_arrow.png" id="47_gea82"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -1176,11 +1179,13 @@ floor_max_angle = 1.0471976
 floor_snap_length = 15.0
 platform_on_leave = 1
 script = ExtResource("1_unl7u")
+gravity_direction = Vector2(0, 1)
 gravity = 240.0
 bounce_factor = 0.7
 apply_physics = true
 current_action_state = NodePath("ActionStates/NormalState")
 parameters = Dictionary[String, ExtResource("2_owgun")]({
+"constellation": ExtResource("9_hngcm"),
 "duck": ExtResource("3_gea82"),
 "hurt": ExtResource("4_hngcm"),
 "jump": ExtResource("5_hcp3v"),
@@ -1406,3 +1411,13 @@ script = ExtResource("44_c3kt2")
 
 [node name="TessGlideState" type="Node2D" parent="ActionStates" unique_id=1800229367]
 script = ExtResource("45_uiyha")
+
+[node name="ConstellationState" type="Node2D" parent="ActionStates" unique_id=634607202]
+script = ExtResource("46_owgun")
+
+[node name="AimPivot" type="Node2D" parent="ActionStates/ConstellationState" unique_id=1308921481]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ActionStates/ConstellationState/AimPivot" unique_id=1442805135]
+position = Vector2(23, 0)
+texture = ExtResource("47_gea82")

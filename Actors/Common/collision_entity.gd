@@ -5,6 +5,7 @@ extends CharacterBody2D
 enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 
 @export_group("Collision")
+@export var gravity_direction: Vector2
 @export var gravity: float
 @export var collision_mode: int
 @export_range(0, 1) var bounce_factor: float = 1
@@ -45,16 +46,20 @@ var velocity_true: Vector2:
 			return velocity
 
 func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
+	var rot_angle = gravity_direction.angle() - PI/2
+	_velocity = _velocity.rotated(rot_angle)
 	var _temp_velocity = velocity
 	match collision_mode:
 		COLLISION_MODE_FLOOR:
 			velocity = _velocity
 			motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 			move_and_slide()
+			velocity = _velocity.rotated(-rot_angle)
 		COLLISION_MODE_FREE:
 			velocity = _velocity
 			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 			move_and_slide()
+			velocity = _velocity.rotated(-rot_angle)
 		COLLISION_MODE_BOUNCE:
 			var _kc = move_and_collide(_velocity * _delta, true)
 			if _kc != null:
@@ -145,6 +150,11 @@ func unlock_controls():
 func set_art_flip(_flip_h: bool):
 	get_node("Art").flip_h = _flip_h
 
+func set_gravity_direction(_gravity_direction: Vector2, _keep_inertia: bool = false):
+	up_direction = -_gravity_direction
+	gravity_direction = _gravity_direction
+	rotation = _gravity_direction.angle() - PI/2
+	
 signal reached_x_position
 func walk_to_x(_x_position: float, _speed_scale: float = 1):
 	var _move_dir: int = 0

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c6q7y3kw63ke1"]
+
+[ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Effects/Images/Particles/Stardust.png" id="1_7m85i"]
+
+[sub_resource type="Gradient" id="Gradient_sd1cq"]
+offsets = PackedFloat32Array(0, 0.76555556, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.90555555, 1, 1, 1, 0)
+
+[node name="StarTrail" type="CPUParticles2D" unique_id=116481429]
+amount = 64
+texture = ExtResource("1_7m85i")
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(25.62, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+color_ramp = SubResource("Gradient_sd1cq")
