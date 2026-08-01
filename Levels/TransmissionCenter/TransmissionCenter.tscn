@@ -64,12 +64,15 @@
 [ext_resource type="Script" uid="uid://dk32tcfg80s0r" path="res://Cutscenes/Events/wait_event.gd" id="61_jm7cs"]
 [ext_resource type="Script" uid="uid://dt1gjqmpl11iy" path="res://Cutscenes/Events/cast_to_shadow_realm_event.gd" id="62_ju11w"]
 [ext_resource type="Script" uid="uid://d3006oyn3njtw" path="res://Cutscenes/Events/retarget_camera_event.gd" id="63_laxiv"]
+[ext_resource type="AudioStream" uid="uid://bc6my6lvs6oxv" path="res://Music/One_Light.mp3" id="64_3yjna"]
 [ext_resource type="Script" uid="uid://dsovpycvde0wq" path="res://Cutscenes/Events/walk_object_to_x_event.gd" id="64_kbshe"]
 [ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Actors/Auta/Audio/Step1.wav" id="65_8uhry"]
 [ext_resource type="AudioStream" uid="uid://d1kvfiltoylrr" path="res://Actors/Common/Audio/CannonballCrash.wav" id="66_nel81"]
+[ext_resource type="AudioStream" uid="uid://i411u5u8sl5a" path="res://Music/Jellyhopper Beat.MP3" id="67_334my"]
 [ext_resource type="Script" uid="uid://bx15mtxl7sb66" path="res://Cutscenes/Events/music_event.gd" id="67_vfnm6"]
 [ext_resource type="AudioStream" uid="uid://t4ihlkypv8hp" path="res://Music/Caves.wav" id="68_lhndy"]
 [ext_resource type="Texture2D" uid="uid://ct5skoy331n0a" path="res://Levels/TransmissionCenter/Cutscenes/MetalDebris.png" id="69_l21b1"]
+[ext_resource type="AudioStream" uid="uid://bjfp60y2xe0mh" path="res://Music/WanderingTransmission.mp3" id="69_ll8xe"]
 [ext_resource type="Texture2D" uid="uid://vd3cnc5xri5w" path="res://Levels/TransmissionCenter/Decoration/Lights/Lamp.png" id="70_rohxo"]
 [ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Levels/Common/Audio/SmallShatter.mp3" id="71_n8w7u"]
 [ext_resource type="Texture2D" uid="uid://kyfahr8e7qe" path="res://Levels/TransmissionCenter/Cutscenes/CutIns/ScannerCutin.png" id="72_elmw1"]
@@ -78,7 +81,6 @@
 [ext_resource type="Texture2D" uid="uid://dd8ofvy1fmyon" path="res://Levels/TransmissionCenter/Cutscenes/CutIns/CrystalCutin2.png" id="75_1ehxi"]
 [ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://UI/Dialogue/dialogue_theme.tres" id="76_x1h6l"]
 [ext_resource type="Script" uid="uid://bao1jfyey2tac" path="res://Cutscenes/Events/change_scene_event.gd" id="77_0h7n4"]
-[ext_resource type="PackedScene" uid="uid://tef4mq5qj0wm" path="res://Levels/TransmissionCenter/NeuralTapCutscene.tscn" id="78_bjeia"]
 [ext_resource type="Texture2D" uid="uid://qsgw4q8yl15" path="res://Levels/TransmissionCenter/Cutscenes/ScanningMachine/repair-halo.png" id="79_6t0nk"]
 [ext_resource type="Texture2D" uid="uid://805yfb81358j" path="res://Levels/TransmissionCenter/Decoration/note.png" id="80_71rnf"]
 [ext_resource type="Texture2D" uid="uid://c44iq1waa0srd" path="res://Levels/TransmissionCenter/Decoration/LiftButton.png" id="81_krwjg"]
@@ -212,11 +214,11 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omwlr"]
 size = Vector2(386, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cp3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txdr0"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_334my"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yjna"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -268,7 +270,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epds7"]
 size = Vector2(32, 48)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ll8xe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cp3"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -310,17 +312,17 @@ bg_color = Color(0.9213565, 0, 0.05927293, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0qq"]
 size = Vector2(25, 65)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_334my"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ll8xe"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4obq"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jtr1g"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqqyi"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_jtr1g")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_ll8xe")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_i4cvd"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -342,43 +344,43 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_adiv3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtr1g"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqqyi"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_adiv3"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skvqh"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_adiv3")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_av747"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_av747"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rlqsx"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_av747")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65evp"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lc0kb"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
+[sub_resource type="ViewportTexture" id="ViewportTexture_lc0kb"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a163e"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_lc0kb")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w5t1m"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_10pu3"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_w5t1m")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnak7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5t1m"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -483,7 +485,7 @@ height = 17
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="Resource" id="Resource_t7m12"]
+[sub_resource type="Resource" id="Resource_10pu3"]
 resource_local_to_scene = true
 script = ExtResource("51_3yjna")
 recovery_time = 0.25
@@ -500,7 +502,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vt6yr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnak7"]
 resource_local_to_scene = true
 shader = ExtResource("55_cc5xr")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -509,6 +511,12 @@ shader_parameter/emission_strength = 0.0
 shader_parameter/outline_color_left = Color(1, 0, 1, 1)
 shader_parameter/outline_color_right = Color(0, 1, 1, 1)
 shader_parameter/stunFX = 0.0
+
+[sub_resource type="Resource" id="Resource_k8cp3"]
+script = ExtResource("67_vfnm6")
+volume = 1.0
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
 [sub_resource type="Resource" id="Resource_4cxeu"]
 script = ExtResource("58_1kjnm")
@@ -536,6 +544,13 @@ metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 script = ExtResource("61_jm7cs")
 time = 1.0
 metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_334my"]
+script = ExtResource("67_vfnm6")
+music = ExtResource("64_3yjna")
+volume = 0.7
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
 [sub_resource type="Animation" id="Animation_xgsak"]
 resource_name = "1"
@@ -729,6 +744,11 @@ _data = {
 &"RESET": SubResource("Animation_dq1x4")
 }
 
+[sub_resource type="Resource" id="Resource_ll8xe"]
+script = ExtResource("67_vfnm6")
+volume = 1.0
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
 [sub_resource type="Resource" id="Resource_03anl"]
 script = ExtResource("62_ju11w")
 objects_to_cast = Array[NodePath]([NodePath("Area2D"), NodePath("StaticBody2D")])
@@ -754,6 +774,18 @@ metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 script = ExtResource("63_laxiv")
 target_1 = NodePath("CameraAnchor")
 metadata/_custom_type_script = "uid://d3006oyn3njtw"
+
+[sub_resource type="Resource" id="Resource_dqqyi"]
+script = ExtResource("61_jm7cs")
+time = 0.5
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_o4obq"]
+script = ExtResource("67_vfnm6")
+music = ExtResource("67_334my")
+volume = 0.7
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
 [sub_resource type="Resource" id="Resource_02hcr"]
 script = ExtResource("61_jm7cs")
@@ -859,11 +891,11 @@ target = NodePath("../../Entities/TessActor2")
 code_string = "set(\"visible\", false)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
-[sub_resource type="Resource" id="Resource_3nj4f"]
-script = ExtResource("58_1kjnm")
-target = NodePath("../TessNote/NoteSprite")
-code_string = "set(\"visible\", true)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+[sub_resource type="Resource" id="Resource_jtr1g"]
+script = ExtResource("67_vfnm6")
+music = ExtResource("69_ll8xe")
+volume = 0.6
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh4r8"]
 size = Vector2(24, 160)
@@ -2841,7 +2873,7 @@ metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_02u88"]
 script = ExtResource("77_0h7n4")
-to_scene = ExtResource("78_bjeia")
+to_scene = "res://Levels/TransmissionCenter/NeuralTapCutscene.tscn"
 metadata/_custom_type_script = "uid://bao1jfyey2tac"
 
 [sub_resource type="Resource" id="Resource_3cx7a"]
@@ -3079,7 +3111,7 @@ target = NodePath("../../GameSystem/Cam/Camera2D")
 code_string = "lerp_zoom(4, 0.8)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cim3j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7m12"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -3556,11 +3588,11 @@ position = Vector2(1928, 1120)
 position = Vector2(1944, 1144)
 
 [node name="Crystal11" parent="Regions/Power_Spiders1" unique_id=1202755598 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_k8cp3")
+material = SubResource("ShaderMaterial_txdr0")
 position = Vector2(1672, 1480)
 
 [node name="Crystal12" parent="Regions/Power_Spiders1" unique_id=2063146107 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_334my")
+material = SubResource("ShaderMaterial_3yjna")
 position = Vector2(2072, 1544)
 
 [node name="Power_Spiders2" type="Node2D" parent="Regions" unique_id=892348680]
@@ -3738,7 +3770,7 @@ texture = ExtResource("28_v2ehy")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_Spiders2" unique_id=1079356612 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_ll8xe")
+material = SubResource("ShaderMaterial_k8cp3")
 position = Vector2(1584, 864)
 rotation = -1.5707964
 
@@ -3929,7 +3961,7 @@ position = Vector2(1624, 1296)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("34_bgllq")
-music = ExtResource("2_3yjna")
+music = ExtResource("69_ll8xe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Regions/Power_SpidersRise/MusicTrigger2" unique_id=1464398724]
 position = Vector2(-12.5, -0.5)
@@ -3957,11 +3989,11 @@ texture = ExtResource("28_v2ehy")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_SpidersRise" unique_id=970997406 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_o4obq")
+material = SubResource("ShaderMaterial_334my")
 position = Vector2(1808, 1120)
 
 [node name="Crystal12" parent="Regions/Power_SpidersRise" unique_id=201573027 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_dqqyi")
+material = SubResource("ShaderMaterial_o4obq")
 position = Vector2(1968, 976)
 rotation = -1.5707964
 
@@ -4031,35 +4063,35 @@ set_own_velocity = true
 active = false
 
 [node name="Crystal11" parent="Regions/Power_OrbRoom" unique_id=22271428 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_adiv3")
+material = SubResource("ShaderMaterial_jtr1g")
 position = Vector2(4159, 464)
 
 [node name="Crystal12" parent="Regions/Power_OrbRoom" unique_id=512185491 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_skvqh")
+material = SubResource("ShaderMaterial_dqqyi")
 position = Vector2(4463, 560)
 
 [node name="Crystal13" parent="Regions/Power_OrbRoom" unique_id=892262993 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_rlqsx")
+material = SubResource("ShaderMaterial_skvqh")
 position = Vector2(4655, 680)
 
 [node name="Crystal14" parent="Regions/Power_OrbRoom" unique_id=272788436 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_65evp")
+material = SubResource("ShaderMaterial_av747")
 position = Vector2(4383, 680)
 
 [node name="Crystal15" parent="Regions/Power_OrbRoom" unique_id=1962508947 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_lc0kb")
+material = SubResource("ShaderMaterial_rlqsx")
 position = Vector2(4783, 432)
 
 [node name="Crystal16" parent="Regions/Power_OrbRoom" unique_id=1147407336 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_a163e")
+material = SubResource("ShaderMaterial_65evp")
 position = Vector2(5271, 336)
 
 [node name="Crystal17" parent="Regions/Power_OrbRoom" unique_id=102429357 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_10pu3")
+material = SubResource("ShaderMaterial_a163e")
 position = Vector2(5055, 336)
 
 [node name="Crystal18" parent="Regions/Power_OrbRoom" unique_id=1487458792 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_nnak7")
+material = SubResource("ShaderMaterial_w5t1m")
 position = Vector2(4455, 384)
 
 [node name="LampLight" parent="Regions/Power_OrbRoom" unique_id=434627774 instance=ExtResource("17_10pu3")]
@@ -4449,7 +4481,7 @@ position = Vector2(5155, 1654)
 parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 "constellation": ExtResource("55_k8cp3"),
 "duck": ExtResource("49_wde1j"),
-"hurt": SubResource("Resource_t7m12"),
+"hurt": SubResource("Resource_10pu3"),
 "jump": ExtResource("51_5g5hq"),
 "movement": ExtResource("52_kn84j"),
 "orb": ExtResource("53_1641u"),
@@ -4457,7 +4489,7 @@ parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_vt6yr")
+material = SubResource("ShaderMaterial_nnak7")
 rotation = 25.132742
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
@@ -4474,7 +4506,7 @@ texture = SubResource("GradientTexture2D_4cxeu")
 [node name="FirstCutsceneManager" type="Node" parent="Cutscenes" unique_id=743469344]
 process_priority = 5
 script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_4cxeu"), SubResource("Resource_okpoj"), SubResource("Resource_dq1x4"), SubResource("Resource_3u7t7"), SubResource("Resource_kfnnb")])
+events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_k8cp3"), SubResource("Resource_4cxeu"), SubResource("Resource_okpoj"), SubResource("Resource_dq1x4"), SubResource("Resource_3u7t7"), SubResource("Resource_kfnnb"), SubResource("Resource_334my")])
 dialogue_resource = ExtResource("44_a4ft3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/FirstCutsceneManager" unique_id=1347344932]
@@ -4484,7 +4516,7 @@ libraries/ = SubResource("AnimationLibrary_okpoj")
 
 [node name="ThirdCutsceneManager" type="Node" parent="Cutscenes" unique_id=1758098737]
 script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_03anl"), SubResource("Resource_y3cny"), SubResource("Resource_8al7y"), SubResource("Resource_tmwn1"), SubResource("Resource_02hcr"), SubResource("Resource_g5inn"), SubResource("Resource_qennh"), SubResource("Resource_q0tuf"), SubResource("Resource_2qrbl"), SubResource("Resource_7q83e"), SubResource("Resource_jnlj7"), SubResource("Resource_fbxmm"), SubResource("Resource_bjehn"), SubResource("Resource_2dyve"), SubResource("Resource_evwo5"), SubResource("Resource_7qrxs"), SubResource("Resource_xuous"), SubResource("Resource_ulal3"), SubResource("Resource_8vjw5"), SubResource("Resource_xxc4j"), SubResource("Resource_kskgq"), SubResource("Resource_5bmk8"), SubResource("Resource_dhagv"), SubResource("Resource_3nj4f")])
+events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_ll8xe"), SubResource("Resource_03anl"), SubResource("Resource_y3cny"), SubResource("Resource_8al7y"), SubResource("Resource_tmwn1"), SubResource("Resource_dqqyi"), SubResource("Resource_o4obq"), SubResource("Resource_02hcr"), SubResource("Resource_g5inn"), SubResource("Resource_qennh"), SubResource("Resource_q0tuf"), SubResource("Resource_2qrbl"), SubResource("Resource_7q83e"), SubResource("Resource_jnlj7"), SubResource("Resource_fbxmm"), SubResource("Resource_bjehn"), SubResource("Resource_2dyve"), SubResource("Resource_evwo5"), SubResource("Resource_7qrxs"), SubResource("Resource_xuous"), SubResource("Resource_ulal3"), SubResource("Resource_8vjw5"), SubResource("Resource_xxc4j"), SubResource("Resource_kskgq"), SubResource("Resource_5bmk8"), SubResource("Resource_dhagv"), SubResource("Resource_jtr1g")])
 dialogue_resource = ExtResource("44_a4ft3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=1962572712]
@@ -4755,7 +4787,6 @@ bus = &"Entities"
 
 [node name="ScannerCutscene" type="Node" parent="Cutscenes" unique_id=20804829]
 script = ExtResource("56_s130w")
-activate_on_ready = true
 events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_7yedq"), SubResource("Resource_sa03e"), SubResource("Resource_t1tuu"), SubResource("Resource_sa03e"), SubResource("Resource_7g7pv"), SubResource("Resource_8gql0"), SubResource("Resource_uff1f"), SubResource("Resource_d1tqx"), SubResource("Resource_ydva7"), SubResource("Resource_3g78j"), SubResource("Resource_ohghj"), SubResource("Resource_iksbu"), SubResource("Resource_f1imf"), SubResource("Resource_etfvs"), SubResource("Resource_xdywo"), SubResource("Resource_02u88"), SubResource("Resource_3cx7a")])
 dialogue_resource = ExtResource("44_a4ft3")
 
@@ -4812,6 +4843,11 @@ texture_filter = 1
 position = Vector2(2488, -873)
 texture = ExtResource("80_71rnf")
 
+[node name="ScannerReturn" type="Node" parent="Cutscenes" unique_id=1375508645]
+script = ExtResource("56_s130w")
+activate_on_ready = true
+dialogue_resource = ExtResource("44_a4ft3")
+
 [node name="LiftButton" type="Sprite2D" parent="." unique_id=1340631914]
 z_index = -1
 position = Vector2(2460, -880)
@@ -4823,7 +4859,7 @@ position = Vector2(2488, 960)
 texture = ExtResource("81_krwjg")
 
 [node name="Crystal11" parent="." unique_id=1425072424 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_cim3j")
+material = SubResource("ShaderMaterial_t7m12")
 position = Vector2(2816, 1904)
 
 [connection signal="area_entered" from="Regions/Power_Spiders2/BreakableWall" to="Regions/Power_Spiders2/BreakableWall" method="area_entered"]

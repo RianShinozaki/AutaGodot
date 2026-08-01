@@ -10,6 +10,8 @@ extends Camera2D
 
 static var instance: GameCamera
 
+signal reached_position
+
 var x_extents: Vector2
 var y_extents: Vector2
 
@@ -91,3 +93,11 @@ func retarget(_target):
 
 func retarget_multiple(_target: Array[Node2D]):
 	targets = _target
+
+func lerp_to_position(_target: Vector2, _time: float):
+	ignore_boundaries = true
+	target_override = true
+	var _tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(self, "global_position", _target, _time)
+	await _tween.finished
+	target_position = _target
+	emit_signal("reached_position")

@@ -15,7 +15,7 @@ func _on_trigger_body_entered(body):
 	if body is Auta:
 		triggered = true
 		alarm.play()
-		voice.play()
+		#voice.play()
 		GameCamera.instance.shake_screen(1, 20)
 		light.visible = true
 		await get_tree().create_timer(0.5).timeout

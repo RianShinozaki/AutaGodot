@@ -269,6 +269,7 @@ ai_parameters = Dictionary[String, ExtResource("2_fud45")]({
 "aggro": ExtResource("3_pxb8d"),
 "patrol": ExtResource("4_lr445")
 })
+gravity_direction = Vector2(0, 1)
 apply_physics = true
 current_action_state = NodePath("ActionStates/NormalState")
 parameters = Dictionary[String, ExtResource("2_abrse")]({
@@ -309,7 +310,7 @@ shape = SubResource("CapsuleShape2D_syevp")
 
 [node name="GenericAttributes" parent="." unique_id=318139796 instance=ExtResource("16_h6ji7")]
 
-[node name="EntityStatus" parent="GenericAttributes" index="0"]
+[node name="EntityStatus" parent="GenericAttributes" index="0" unique_id=1875539726]
 max_health = 9.0
 
 [node name="SpecialAttributes" type="Node2D" parent="." unique_id=89626032]

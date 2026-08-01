@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://i411u5u8sl5a"
+path="res://.godot/imported/Jellyhopper Beat.MP3-11d6706ea7ac5e21d0f9282ac52d5b5f.mp3str"
+
+[deps]
+
+source_file="res://Music/Jellyhopper Beat.MP3"
+dest_files=["res://.godot/imported/Jellyhopper Beat.MP3-11d6706ea7ac5e21d0f9282ac52d5b5f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
