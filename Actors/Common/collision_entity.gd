@@ -106,6 +106,9 @@ func accelerate_x(_amount: float, _limit: float, _toward: bool):
 func set_x_velocity(_amount: float):
 	velocity.x = _amount
 	
+func set_y_velocity(_amount: float):
+	velocity.y = _amount
+	
 func switch_action_state_name(_state: String) -> ActionState:
 	var _action_state = get_action_state_name(_state)
 	return switch_action_state(_action_state)
@@ -149,6 +152,7 @@ func unlock_controls():
 
 func set_art_flip(_flip_h: bool):
 	get_node("Art").flip_h = _flip_h
+
 
 func set_gravity_direction(_gravity_direction: Vector2, _keep_inertia: bool = false):
 	up_direction = -_gravity_direction

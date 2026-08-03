@@ -13,6 +13,7 @@ var active: bool
 func begin():
 	if active: return
 	emit_signal("cutscene_started")
+	GameSystem.game_state = GameSystem.GameState.CUTSCENE
 	active = true
 	
 	for event in events:
@@ -24,6 +25,7 @@ func begin():
 func end():
 	active = false
 	emit_signal("cutscene_finished")
+	GameSystem.game_state = GameSystem.GameState.PLAY
 
 func end_event():
 	emit_signal("event_ended")

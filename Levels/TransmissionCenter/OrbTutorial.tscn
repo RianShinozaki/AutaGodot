@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dkgw8xfruiby8"]
 
 [ext_resource type="Script" uid="uid://dql0e6xd5vhy7" path="res://Levels/Common/gameworld.gd" id="1_jv7pi"]
-[ext_resource type="AudioStream" uid="uid://cmj23ii5u5k2f" path="res://Cutscenes/deep_ambience.wav" id="2_b25oj"]
+[ext_resource type="AudioStream" uid="uid://ct40g1j0yl48b" path="res://Music/void.wav" id="2_6po3c"]
 [ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Levels/Common/game_system.tscn" id="2_jgyux"]
 [ext_resource type="Texture2D" uid="uid://bg4qkqt7tehfr" path="res://Actors/Auta/Images/AutaSprites.png" id="3_smk0b"]
 [ext_resource type="Script" uid="uid://brq7j3rrreit1" path="res://Effects/sprite_dupe.gd" id="4_tf71x"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://b65il3vqob7w2" path="res://Levels/Void/house_light_on.png" id="33_8l4lu"]
 [ext_resource type="Script" uid="uid://bao1jfyey2tac" path="res://Cutscenes/Events/change_scene_event.gd" id="33_jv7pi"]
 [ext_resource type="Script" uid="uid://bx15mtxl7sb66" path="res://Cutscenes/Events/music_event.gd" id="33_p7iiy"]
+[ext_resource type="AudioStream" uid="uid://dextnf3a4sspb" path="res://Music/house.wav" id="34_0wj8m"]
 [ext_resource type="AudioStream" uid="uid://bmtry6y6rpd7i" path="res://Levels/Void/LightFlickOn.mp3" id="35_ye5nc"]
 [ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Actors/Common/Components/hitbox.gd" id="36_wrhjk"]
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Actors/Common/Components/hitbox_data.gd" id="37_hrao5"]
@@ -323,7 +324,7 @@ texture = ExtResource("14_ahwhm")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ssonb")
 
-[sub_resource type="Resource" id="Resource_r7yh8"]
+[sub_resource type="Resource" id="Resource_0wj8m"]
 resource_local_to_scene = true
 script = ExtResource("8_gcv1s")
 recovery_time = 0.25
@@ -340,7 +341,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_70677"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5l20"]
 resource_local_to_scene = true
 shader = ExtResource("13_pq87d")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -576,11 +577,6 @@ target = NodePath("../../Entities/Auta")
 code_string = "unset_all()"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
-[sub_resource type="Resource" id="Resource_6po3c"]
-script = ExtResource("33_p7iiy")
-volume = 0.7
-metadata/_custom_type_script = "uid://bx15mtxl7sb66"
-
 [sub_resource type="Resource" id="Resource_jv7pi"]
 script = ExtResource("31_femr0")
 objects_to_cast = Array[NodePath]([NodePath("Trigger")])
@@ -592,12 +588,29 @@ target = NodePath("../../Entities/Auta")
 x_position = 1903.0
 metadata/_custom_type_script = "uid://dsovpycvde0wq"
 
+[sub_resource type="Resource" id="Resource_6po3c"]
+script = ExtResource("33_p7iiy")
+volume = 0.7
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
+[sub_resource type="Resource" id="Resource_w5l20"]
+script = ExtResource("32_b6tlk")
+time = 1.5
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
 [sub_resource type="Resource" id="Resource_vgeoa"]
 script = ExtResource("31_b6tlk")
 to_object = NodePath("CameraPivot")
 duration = 2.0
 be_async = true
 metadata/_custom_type_script = "uid://c8qffhm74m3y0"
+
+[sub_resource type="Resource" id="Resource_alpl0"]
+script = ExtResource("33_p7iiy")
+music = ExtResource("34_0wj8m")
+volume = 0.7
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
 [sub_resource type="Resource" id="Resource_8l4lu"]
 script = ExtResource("32_b6tlk")
@@ -756,7 +769,7 @@ fill_to = Vector2(0.5, 0)
 [node name="GameWorld" type="CanvasModulate" unique_id=1205324340]
 texture_filter = 1
 script = ExtResource("1_jv7pi")
-bgm = ExtResource("2_b25oj")
+bgm = ExtResource("2_6po3c")
 bgm_volume = 0.6
 metadata/_custom_type_script = "uid://dql0e6xd5vhy7"
 
@@ -850,11 +863,11 @@ position = Vector2(1, -144)
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("5_7uyae")]
 visibility_layer = 1025
-position = Vector2(1807, 8)
+position = Vector2(215, 120)
 parameters = Dictionary[String, ExtResource("6_ahwhm")]({
 "constellation": ExtResource("17_ye5nc"),
 "duck": ExtResource("7_ssonb"),
-"hurt": SubResource("Resource_r7yh8"),
+"hurt": SubResource("Resource_0wj8m"),
 "jump": ExtResource("9_wohhp"),
 "movement": ExtResource("10_u1s3y"),
 "orb": ExtResource("11_ixg0b"),
@@ -862,7 +875,7 @@ parameters = Dictionary[String, ExtResource("6_ahwhm")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_70677")
+material = SubResource("ShaderMaterial_w5l20")
 frame = 17
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
@@ -963,7 +976,7 @@ libraries/ = SubResource("AnimationLibrary_cs45n")
 
 [node name="SeeHouse" type="Node" parent="Cutscenes" unique_id=941025054]
 script = ExtResource("19_ixg0b")
-events = Array[ExtResource("20_pq87d")]([SubResource("Resource_jn5ti"), SubResource("Resource_6po3c"), SubResource("Resource_jv7pi"), SubResource("Resource_femr0"), SubResource("Resource_vgeoa"), SubResource("Resource_8l4lu"), SubResource("Resource_ye5nc"), SubResource("Resource_p7iiy")])
+events = Array[ExtResource("20_pq87d")]([SubResource("Resource_jn5ti"), SubResource("Resource_jv7pi"), SubResource("Resource_femr0"), SubResource("Resource_6po3c"), SubResource("Resource_w5l20"), SubResource("Resource_vgeoa"), SubResource("Resource_alpl0"), SubResource("Resource_8l4lu"), SubResource("Resource_ye5nc"), SubResource("Resource_p7iiy")])
 
 [node name="Trigger" type="Area2D" parent="Cutscenes/SeeHouse" unique_id=1179266322]
 collision_layer = 0

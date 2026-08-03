@@ -4,6 +4,14 @@ static var instance: GameSystem
 
 @onready var game_world: GameWorld = $GameWorld
 
+enum GameState {
+	PLAY,
+	DIALOGUE,
+	CUTSCENE
+}
+
+static var game_state: GameState
+
 func _ready():
 	instance = self
 

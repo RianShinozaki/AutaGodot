@@ -51,7 +51,9 @@ func on_body_entered(body):
 		active = true
 		GameCamera.instance.set_extents(x_extents, y_extents)
 		GameCamera.instance.snap_to_target()
-		GameCamera.instance.lerp_zoom(zoom, 1)
+		if GameSystem.game_state == GameSystem.GameState.PLAY:
+			GameCamera.instance.lerp_zoom(zoom, 0.4)
+			
 		if body is Auta:
 			body.set_quick_respawn()
 		emit_signal("activate")

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dnh1o4b1d68yn"]
 
 [ext_resource type="Script" uid="uid://dql0e6xd5vhy7" path="res://Levels/Common/gameworld.gd" id="1_txdr0"]
-[ext_resource type="AudioStream" uid="uid://dgquiafdci3qr" path="res://Music/auta_ambient.wav" id="2_3yjna"]
 [ext_resource type="Script" uid="uid://cv4e1tmnxdl28" path="res://Levels/Common/Decoration/game_light.gd" id="3_k8cp3"]
 [ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Levels/Common/game_system.tscn" id="4_334my"]
 [ext_resource type="PackedScene" uid="uid://cxkrgu1mn6iam" path="res://Levels/TransmissionCenter/Tiles/transmission_center_tilemap.tscn" id="5_ll8xe"]
@@ -76,14 +75,15 @@
 [ext_resource type="Texture2D" uid="uid://vd3cnc5xri5w" path="res://Levels/TransmissionCenter/Decoration/Lights/Lamp.png" id="70_rohxo"]
 [ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Levels/Common/Audio/SmallShatter.mp3" id="71_n8w7u"]
 [ext_resource type="Texture2D" uid="uid://kyfahr8e7qe" path="res://Levels/TransmissionCenter/Cutscenes/CutIns/ScannerCutin.png" id="72_elmw1"]
-[ext_resource type="Script" uid="uid://cvn5hrkmfs5l1" path="res://Levels/Common/Triggers/interactable_trigger.gd" id="73_3im1k"]
 [ext_resource type="Texture2D" uid="uid://bn44pkhy2wha8" path="res://Levels/TransmissionCenter/Cutscenes/CutIns/CrystalCutin.png" id="74_euah6"]
 [ext_resource type="Texture2D" uid="uid://dd8ofvy1fmyon" path="res://Levels/TransmissionCenter/Cutscenes/CutIns/CrystalCutin2.png" id="75_1ehxi"]
 [ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://UI/Dialogue/dialogue_theme.tres" id="76_x1h6l"]
 [ext_resource type="Script" uid="uid://bao1jfyey2tac" path="res://Cutscenes/Events/change_scene_event.gd" id="77_0h7n4"]
 [ext_resource type="Texture2D" uid="uid://qsgw4q8yl15" path="res://Levels/TransmissionCenter/Cutscenes/ScanningMachine/repair-halo.png" id="79_6t0nk"]
-[ext_resource type="Texture2D" uid="uid://805yfb81358j" path="res://Levels/TransmissionCenter/Decoration/note.png" id="80_71rnf"]
 [ext_resource type="Texture2D" uid="uid://c44iq1waa0srd" path="res://Levels/TransmissionCenter/Decoration/LiftButton.png" id="81_krwjg"]
+[ext_resource type="AudioStream" uid="uid://bjxxt5dg58fhl" path="res://Actors/Auta/Audio/Powerup.wav" id="82_334my"]
+[ext_resource type="AudioStream" uid="uid://0vlu6g2a3hvu" path="res://Music/UpgradeStinger.wav" id="82_k8cp3"]
+[ext_resource type="FontFile" uid="uid://bpq0qdc1uqoy6" path="res://UI/Fonts/wicky-javick.bold.ttf" id="83_334my"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -99,6 +99,9 @@ glow_strength = 0.91
 glow_bloom = 0.22
 adjustment_enabled = true
 adjustment_saturation = 1.24
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_334my"]
+light_mode = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ll8xe"]
 size = Vector2(500, 500)
@@ -214,11 +217,11 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omwlr"]
 size = Vector2(386, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_txdr0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_334my"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yjna"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ll8xe"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -270,7 +273,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epds7"]
 size = Vector2(32, 48)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cp3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4obq"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -312,17 +315,17 @@ bg_color = Color(0.9213565, 0, 0.05927293, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0qq"]
 size = Vector2(25, 65)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_334my"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtr1g"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ll8xe"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dqqyi"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4obq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adiv3"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_ll8xe")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_dqqyi")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_i4cvd"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -344,43 +347,43 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtr1g"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqqyi"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_adiv3"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skvqh"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_adiv3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_av747"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlqsx"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
+[sub_resource type="ViewportTexture" id="ViewportTexture_rlqsx"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65evp"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_rlqsx")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lc0kb"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lc0kb"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a163e"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_lc0kb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5t1m"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_10pu3"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnak7"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_10pu3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7m12"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -485,7 +488,7 @@ height = 17
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="Resource" id="Resource_10pu3"]
+[sub_resource type="Resource" id="Resource_cim3j"]
 resource_local_to_scene = true
 script = ExtResource("51_3yjna")
 recovery_time = 0.25
@@ -502,7 +505,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnak7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrmdb"]
 resource_local_to_scene = true
 shader = ExtResource("55_cc5xr")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -1906,128 +1909,6 @@ light_mode = 1
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evwo5"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Resource" id="Resource_sjmyk"]
-script = ExtResource("60_8oefp")
-start_id = "gag1"
-metadata/_custom_type_script = "uid://bj716hg8hw7wv"
-
-[sub_resource type="Resource" id="Resource_dqvub"]
-script = ExtResource("59_34fc0")
-anim_name = &"1"
-metadata/_custom_type_script = "uid://biw4en6dgkpmt"
-
-[sub_resource type="Resource" id="Resource_onohr"]
-script = ExtResource("58_1kjnm")
-target = NodePath("../../Entities/Auta")
-code_string = "set_art_flip(true)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_0k5k2"]
-script = ExtResource("61_jm7cs")
-time = 2.0
-metadata/_custom_type_script = "uid://dk32tcfg80s0r"
-
-[sub_resource type="Resource" id="Resource_7x2ce"]
-script = ExtResource("58_1kjnm")
-target = NodePath("Interactable/CollisionShape2D")
-code_string = "set_deferred(\"disabled\", true)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_vj17b"]
-script = ExtResource("58_1kjnm")
-target = NodePath("../LiftGagCutscene2/Interactable/CollisionShape2D")
-code_string = "set_deferred(\"disabled\", false)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="Resource" id="Resource_4oy0a"]
-script = ExtResource("58_1kjnm")
-target = NodePath("../../Entities/Auta/Art/AnimationTree")
-code_string = "set_deferred(\"active\", true)"
-metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kskgq"]
-size = Vector2(14, 20)
-
-[sub_resource type="Animation" id="Animation_bjehn"]
-resource_name = "1"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ThirdCutsceneManager/Lift:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1808), Vector2(0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.3666667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end_event"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.43333334),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_3u7t7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ThirdCutsceneManager/Lift:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3u7t7"]
-_data = {
-&"1": SubResource("Animation_bjehn"),
-&"RESET": SubResource("Animation_3u7t7")
-}
-
-[sub_resource type="Resource" id="Resource_dkakw"]
-script = ExtResource("60_8oefp")
-start_id = "gag2"
-metadata/_custom_type_script = "uid://bj716hg8hw7wv"
-
 [sub_resource type="Resource" id="Resource_8kmvl"]
 script = ExtResource("62_ju11w")
 objects_to_cast = Array[NodePath]([NodePath("Area2D")])
@@ -3094,31 +2975,467 @@ light_mode = 1
 blend_mode = 1
 light_mode = 1
 
-[sub_resource type="Resource" id="Resource_scxxy"]
+[sub_resource type="Resource" id="Resource_lc0kb"]
+script = ExtResource("67_vfnm6")
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
+[sub_resource type="Resource" id="Resource_wpybb"]
 script = ExtResource("58_1kjnm")
-target = NodePath("../../GameSystem/Cam/Camera2D")
-code_string = "lerp_zoom(6, 0.8)"
+target = NodePath("../../GameSystem/Cam/Camera2D/Blackout")
+code_string = "set(\"visible\", true)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
-[sub_resource type="Resource" id="Resource_nbx8u"]
+[sub_resource type="Resource" id="Resource_pvunm"]
+script = ExtResource("61_jm7cs")
+time = 0.5
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_igxjy"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../GameSystem/Cam/Camera2D")
+code_string = "lerp_zoom(10, 0)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_v2ehy"]
+script = ExtResource("61_jm7cs")
+time = 0.1
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_1ejnj"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../GameSystem/Cam/Camera2D/Blackout")
+code_string = "set(\"visible\", false)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_3yjna"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../Entities/Auta")
+code_string = "unset_all()
+set(\"apply_physics\", false)
+set_art_flip(true)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_adiv3"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../GameSystem/Cam/Camera2D")
+code_string = "
+lerp_zoom(5, 1)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_av747"]
+script = ExtResource("59_34fc0")
+anim_name = &"1"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_vt6yr"]
 script = ExtResource("60_8oefp")
-start_id = "TessNote"
+start_id = "scanner_return"
 metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 
-[sub_resource type="Resource" id="Resource_5ggn7"]
+[sub_resource type="Resource" id="Resource_rlqsx"]
+script = ExtResource("59_34fc0")
+anim_name = &"2"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_skvqh"]
 script = ExtResource("58_1kjnm")
-target = NodePath("../../GameSystem/Cam/Camera2D")
-code_string = "lerp_zoom(4, 0.8)"
+target = NodePath("../../Entities/Auta")
+code_string = "set(\"apply_physics\", true)
+get_node(\"Art/AnimationTree\").set(\"active\", true)
+set_y_velocity(0)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7m12"]
+[sub_resource type="Resource" id="Resource_nnak7"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../GameSystem/Cam/Camera2D")
+code_string = "lerp_zoom(7, 4)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_t7m12"]
+script = ExtResource("61_jm7cs")
+time = 1.5
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_65evp"]
+script = ExtResource("59_34fc0")
+anim_name = &"4"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_ggs65"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../GameSystem/Cam/Camera2D")
+code_string = "lerp_zoom(5, 1)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_mrmdb"]
+script = ExtResource("61_jm7cs")
+time = 0.5
+metadata/_custom_type_script = "uid://dk32tcfg80s0r"
+
+[sub_resource type="Resource" id="Resource_a163e"]
+script = ExtResource("59_34fc0")
+anim_name = &"3"
+metadata/_custom_type_script = "uid://biw4en6dgkpmt"
+
+[sub_resource type="Resource" id="Resource_10pu3"]
+script = ExtResource("60_8oefp")
+start_id = "orb_tutorial"
+metadata/_custom_type_script = "uid://bj716hg8hw7wv"
+
+[sub_resource type="Resource" id="Resource_w5t1m"]
+script = ExtResource("58_1kjnm")
+target = NodePath("../../Entities/Auta")
+code_string = "set(\"unlocked_orb\", true)"
+metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Animation" id="Animation_3yjna"]
+resource_name = "1"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Halo:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.37599),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5247, 1539.96), Vector2(5247, 1539.96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Halo:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.37599),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Entities/Auta:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.37599),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [Vector2(5246, 1696.135), Vector2(5246, 1696.135)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Halo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.37599),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [46, 46]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.37599),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_334my"]
+resource_name = "2"
+length = 0.55
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Halo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_cim3j"]
+resource_name = "3"
+length = 8.0
+step = 0.1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("82_k8cp3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lc0kb"]
+resource_name = "4"
+length = 8.0
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.375),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.75, 1.25, 1.375, 1.5, 1.625, 1.7917, 1.875, 2.125, 2.375, 2.625, 2.875, 4.9167, 5, 5.125, 5.25, 5.375, 5.5, 5.625, 5.75, 5.875, 6, 6.125, 6.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 108, 109, 110, 111, 112, 113, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 107]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Light:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.23, -0.25, 0, 0.25, 0, 0.7, -0.125, 0.038333334, 0, 0, 0.7, -0.125, 0.038333334, 0, 0, 0.23, -0.125, 0.038333334, 0, 0),
+"times": PackedFloat32Array(0, 3.25, 7.125, 7.5)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.4295335, 5.183175, 6.000302, 6.5649734),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.58, 2.58, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../GameSystem/Cam/Camera2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.375, 2.5, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [1.0, 0.1],
+"method": &"shake_screen"
+}, {
+"args": [1.0, 0.1],
+"method": &"shake_screen"
+}, {
+"args": [0.3, 0.9],
+"method": &"shake_screen"
+}, {
+"args": [1.0, 1.5],
+"method": &"shake_screen"
+}]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("82_334my")
+}],
+"times": PackedFloat32Array(3.375)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_k8cp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Regions/Power_OrbRoom/Scanner:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5247, 1557.745)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Halo:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Halo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Entities/Auta/Art:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [109]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Entities/Auta/Art/AnimationTree:active")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Light:energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.23, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PointLight2D:energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_334my"]
+_data = {
+&"1": SubResource("Animation_3yjna"),
+&"2": SubResource("Animation_334my"),
+&"3": SubResource("Animation_cim3j"),
+&"4": SubResource("Animation_lc0kb"),
+&"RESET": SubResource("Animation_k8cp3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ll8xe"]
+font = ExtResource("83_334my")
+font_size = 48
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggs65"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
 [node name="GameWorld" type="CanvasModulate" unique_id=780061894]
+process_priority = -10
 texture_filter = 1
 script = ExtResource("1_txdr0")
-bgm = ExtResource("2_3yjna")
 bgm_volume = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1142520488]
@@ -3148,6 +3465,7 @@ size = Vector2i(384, 216)
 visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 100
+material = SubResource("CanvasItemMaterial_334my")
 texture = SubResource("PlaceholderTexture2D_ll8xe")
 
 [node name="TRC_Tiles" parent="." unique_id=439611356 instance=ExtResource("5_ll8xe")]
@@ -3588,11 +3906,11 @@ position = Vector2(1928, 1120)
 position = Vector2(1944, 1144)
 
 [node name="Crystal11" parent="Regions/Power_Spiders1" unique_id=1202755598 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_txdr0")
+material = SubResource("ShaderMaterial_334my")
 position = Vector2(1672, 1480)
 
 [node name="Crystal12" parent="Regions/Power_Spiders1" unique_id=2063146107 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_3yjna")
+material = SubResource("ShaderMaterial_ll8xe")
 position = Vector2(2072, 1544)
 
 [node name="Power_Spiders2" type="Node2D" parent="Regions" unique_id=892348680]
@@ -3770,7 +4088,7 @@ texture = ExtResource("28_v2ehy")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_Spiders2" unique_id=1079356612 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_k8cp3")
+material = SubResource("ShaderMaterial_o4obq")
 position = Vector2(1584, 864)
 rotation = -1.5707964
 
@@ -3989,11 +4307,11 @@ texture = ExtResource("28_v2ehy")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_SpidersRise" unique_id=970997406 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_334my")
+material = SubResource("ShaderMaterial_jtr1g")
 position = Vector2(1808, 1120)
 
 [node name="Crystal12" parent="Regions/Power_SpidersRise" unique_id=201573027 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_o4obq")
+material = SubResource("ShaderMaterial_adiv3")
 position = Vector2(1968, 976)
 rotation = -1.5707964
 
@@ -4063,35 +4381,35 @@ set_own_velocity = true
 active = false
 
 [node name="Crystal11" parent="Regions/Power_OrbRoom" unique_id=22271428 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_jtr1g")
+material = SubResource("ShaderMaterial_skvqh")
 position = Vector2(4159, 464)
 
 [node name="Crystal12" parent="Regions/Power_OrbRoom" unique_id=512185491 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_dqqyi")
+material = SubResource("ShaderMaterial_av747")
 position = Vector2(4463, 560)
 
 [node name="Crystal13" parent="Regions/Power_OrbRoom" unique_id=892262993 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_skvqh")
+material = SubResource("ShaderMaterial_65evp")
 position = Vector2(4655, 680)
 
 [node name="Crystal14" parent="Regions/Power_OrbRoom" unique_id=272788436 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_av747")
+material = SubResource("ShaderMaterial_lc0kb")
 position = Vector2(4383, 680)
 
 [node name="Crystal15" parent="Regions/Power_OrbRoom" unique_id=1962508947 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_rlqsx")
+material = SubResource("ShaderMaterial_a163e")
 position = Vector2(4783, 432)
 
 [node name="Crystal16" parent="Regions/Power_OrbRoom" unique_id=1147407336 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_65evp")
+material = SubResource("ShaderMaterial_w5t1m")
 position = Vector2(5271, 336)
 
 [node name="Crystal17" parent="Regions/Power_OrbRoom" unique_id=102429357 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_a163e")
+material = SubResource("ShaderMaterial_nnak7")
 position = Vector2(5055, 336)
 
 [node name="Crystal18" parent="Regions/Power_OrbRoom" unique_id=1487458792 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_w5t1m")
+material = SubResource("ShaderMaterial_t7m12")
 position = Vector2(4455, 384)
 
 [node name="LampLight" parent="Regions/Power_OrbRoom" unique_id=434627774 instance=ExtResource("17_10pu3")]
@@ -4119,6 +4437,7 @@ position = Vector2(4319, 304)
 position = Vector2(4159, 304)
 
 [node name="BigComputer" type="Sprite2D" parent="Regions/Power_OrbRoom" unique_id=1241821772]
+z_index = -6
 position = Vector2(5151, 633)
 texture = ExtResource("39_3qkly")
 hframes = 2
@@ -4132,6 +4451,7 @@ energy = 2.67
 texture = SubResource("GradientTexture2D_3458u")
 
 [node name="Scanner" type="AnimatedSprite2D" parent="Regions/Power_OrbRoom" unique_id=826165455]
+z_index = -6
 position = Vector2(5255, 629)
 sprite_frames = SubResource("SpriteFrames_w0m06")
 autoplay = "default"
@@ -4477,11 +4797,11 @@ vframes = 9
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("47_10ys7")]
 visibility_layer = 1025
-position = Vector2(5155, 1654)
+position = Vector2(5246, 1696.135)
 parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 "constellation": ExtResource("55_k8cp3"),
 "duck": ExtResource("49_wde1j"),
-"hurt": SubResource("Resource_10pu3"),
+"hurt": SubResource("Resource_cim3j"),
 "jump": ExtResource("51_5g5hq"),
 "movement": ExtResource("52_kn84j"),
 "orb": ExtResource("53_1641u"),
@@ -4489,8 +4809,15 @@ parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_nnak7")
+material = SubResource("ShaderMaterial_mrmdb")
 rotation = 25.132742
+frame = 109
+
+[node name="AnimationPlayer" parent="Entities/Auta/Art" index="0" unique_id=1708684726]
+active = false
+
+[node name="AnimationTree" parent="Entities/Auta/Art" index="1" unique_id=1654533744]
+active = false
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
 position = Vector2(9, 8)
@@ -4675,39 +5002,6 @@ offset_right = 1536.0
 offset_bottom = 856.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_evwo5")
 
-[node name="LiftGagCutscene" type="Node" parent="Cutscenes" unique_id=1534391655]
-script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_sjmyk"), SubResource("Resource_dqvub"), SubResource("Resource_onohr"), SubResource("Resource_0k5k2"), SubResource("Resource_7x2ce"), SubResource("Resource_vj17b"), SubResource("Resource_4oy0a")])
-
-[node name="Interactable" type="Area2D" parent="Cutscenes/LiftGagCutscene" unique_id=819758635]
-position = Vector2(2488, 960)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("73_3im1k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/LiftGagCutscene/Interactable" unique_id=1661800078]
-shape = SubResource("RectangleShape2D_kskgq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/LiftGagCutscene" unique_id=3495946]
-libraries/ = SubResource("AnimationLibrary_3u7t7")
-
-[node name="LiftGagCutscene2" type="Node" parent="Cutscenes" unique_id=1979525879]
-script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_dkakw")])
-
-[node name="Interactable" type="Area2D" parent="Cutscenes/LiftGagCutscene2" unique_id=1553700483]
-position = Vector2(2488, 960)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("73_3im1k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/LiftGagCutscene2/Interactable" unique_id=568936331]
-shape = SubResource("RectangleShape2D_kskgq")
-disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/LiftGagCutscene2" unique_id=1221717480]
-libraries/ = SubResource("AnimationLibrary_3u7t7")
-
 [node name="ExistentialCrisis" type="Node" parent="Cutscenes" unique_id=359160914]
 script = ExtResource("56_s130w")
 events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_8kmvl"), SubResource("Resource_ns1wf"), SubResource("Resource_bw0t3"), SubResource("Resource_ftvx3"), SubResource("Resource_vptce"), SubResource("Resource_dr1bf"), SubResource("Resource_dmvkg"), SubResource("Resource_cail5"), SubResource("Resource_a5yve"), SubResource("Resource_7q3h2"), SubResource("Resource_r71yt"), SubResource("Resource_tv2dl"), SubResource("Resource_ohvtu"), SubResource("Resource_ve3se"), SubResource("Resource_kifwd"), SubResource("Resource_q6s2b"), SubResource("Resource_ypg4x"), SubResource("Resource_3458u"), SubResource("Resource_eifjb"), SubResource("Resource_5bu3v"), SubResource("Resource_w0m06"), SubResource("Resource_utpk0"), SubResource("Resource_i4cvd"), SubResource("Resource_77xtc"), SubResource("Resource_43ttl"), SubResource("Resource_el5x5"), SubResource("Resource_6ekld"), SubResource("Resource_mohfm")])
@@ -4823,30 +5117,61 @@ frame = 1
 [node name="CamPivot" type="Node2D" parent="Cutscenes/ScannerCutscene" unique_id=1343592521]
 position = Vector2(5247, 1543)
 
-[node name="TessNote" type="Node" parent="Cutscenes" unique_id=1827588387]
-script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_scxxy"), SubResource("Resource_nbx8u"), SubResource("Resource_5ggn7")])
-
-[node name="Interactable" type="Area2D" parent="Cutscenes/TessNote" unique_id=1822663423]
-position = Vector2(2488, -872)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("73_3im1k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/TessNote/Interactable" unique_id=323448415]
-shape = SubResource("RectangleShape2D_kskgq")
-
-[node name="NoteSprite" type="Sprite2D" parent="Cutscenes/TessNote" unique_id=345304596]
-visible = false
-z_index = -1
-texture_filter = 1
-position = Vector2(2488, -873)
-texture = ExtResource("80_71rnf")
-
 [node name="ScannerReturn" type="Node" parent="Cutscenes" unique_id=1375508645]
 script = ExtResource("56_s130w")
 activate_on_ready = true
+events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_lc0kb"), SubResource("Resource_wpybb"), SubResource("Resource_pvunm"), SubResource("Resource_igxjy"), SubResource("Resource_v2ehy"), SubResource("Resource_1ejnj"), SubResource("Resource_3yjna"), SubResource("Resource_adiv3"), SubResource("Resource_av747"), SubResource("Resource_vt6yr"), SubResource("Resource_rlqsx"), SubResource("Resource_skvqh"), SubResource("Resource_nnak7"), SubResource("Resource_t7m12"), SubResource("Resource_65evp"), SubResource("Resource_ggs65"), SubResource("Resource_mrmdb"), SubResource("Resource_a163e"), SubResource("Resource_10pu3"), SubResource("Resource_w5t1m")])
 dialogue_resource = ExtResource("44_a4ft3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/ScannerReturn" unique_id=1541479986]
+libraries/ = SubResource("AnimationLibrary_334my")
+
+[node name="Halo" type="Node2D" parent="Cutscenes/ScannerReturn" unique_id=700052765]
+visible = false
+texture_filter = 1
+position = Vector2(5247, 1557.745)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cutscenes/ScannerReturn/Halo" unique_id=1662572088]
+z_index = -3
+material = SubResource("CanvasItemMaterial_i4cvd")
+texture = ExtResource("79_6t0nk")
+vframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cutscenes/ScannerReturn/Halo" unique_id=1929066082]
+z_index = 3
+material = SubResource("CanvasItemMaterial_77xtc")
+texture = ExtResource("79_6t0nk")
+vframes = 2
+frame = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscenes/ScannerReturn" unique_id=1426447702]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Cutscenes/ScannerReturn" unique_id=802558875]
+
+[node name="Panel" type="Panel" parent="Cutscenes/ScannerReturn/CanvasLayer" unique_id=1230638656]
+visible = false
+offset_left = 259.0
+offset_top = 330.0
+offset_right = 1256.0
+offset_bottom = 553.0
+
+[node name="Label" type="Label" parent="Cutscenes/ScannerReturn/CanvasLayer/Panel" unique_id=832883028]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 86.0
+offset_bottom = 141.0
+grow_horizontal = 2
+text = "ORB LAUNCH UNLOCKED"
+label_settings = SubResource("LabelSettings_ll8xe")
+horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Cutscenes/ScannerReturn" unique_id=621512950]
+position = Vector2(5249, 1552)
+color = Color(0.30290356, 0.67891276, 0.92213416, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_tfix1")
+texture_scale = 3.95
 
 [node name="LiftButton" type="Sprite2D" parent="." unique_id=1340631914]
 z_index = -1
@@ -4859,7 +5184,7 @@ position = Vector2(2488, 960)
 texture = ExtResource("81_krwjg")
 
 [node name="Crystal11" parent="." unique_id=1425072424 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_t7m12")
+material = SubResource("ShaderMaterial_ggs65")
 position = Vector2(2816, 1904)
 
 [connection signal="area_entered" from="Regions/Power_Spiders2/BreakableWall" to="Regions/Power_Spiders2/BreakableWall" method="area_entered"]
@@ -4872,17 +5197,8 @@ position = Vector2(2816, 1904)
 [connection signal="body_entered" from="Cutscenes/ThirdCutsceneManager/Area2D" to="Cutscenes/ThirdCutsceneManager" method="begin" unbinds=1]
 [connection signal="body_entered" from="Cutscenes/EnterSealedRoom/Area2D" to="Cutscenes/EnterSealedRoom" method="begin" unbinds=1]
 [connection signal="body_entered" from="Cutscenes/OrbCutsceneManager/Area2D" to="Cutscenes/OrbCutsceneManager" method="begin" unbinds=1]
-[connection signal="body_entered" from="Cutscenes/LiftGagCutscene/Interactable" to="Cutscenes/LiftGagCutscene/Interactable" method="_on_body_entered"]
-[connection signal="body_exited" from="Cutscenes/LiftGagCutscene/Interactable" to="Cutscenes/LiftGagCutscene/Interactable" method="_on_body_exited"]
-[connection signal="trigger" from="Cutscenes/LiftGagCutscene/Interactable" to="Cutscenes/LiftGagCutscene" method="begin"]
-[connection signal="body_entered" from="Cutscenes/LiftGagCutscene2/Interactable" to="Cutscenes/LiftGagCutscene2/Interactable" method="_on_body_entered"]
-[connection signal="body_exited" from="Cutscenes/LiftGagCutscene2/Interactable" to="Cutscenes/LiftGagCutscene2/Interactable" method="_on_body_exited"]
-[connection signal="trigger" from="Cutscenes/LiftGagCutscene2/Interactable" to="Cutscenes/LiftGagCutscene2" method="begin"]
 [connection signal="body_entered" from="Cutscenes/ExistentialCrisis/Area2D" to="Cutscenes/ExistentialCrisis" method="begin" unbinds=1]
 [connection signal="body_entered" from="Cutscenes/ScannerCutscene/Area2D" to="Cutscenes/ScannerCutscene" method="begin" unbinds=1]
-[connection signal="body_entered" from="Cutscenes/TessNote/Interactable" to="Cutscenes/TessNote/Interactable" method="_on_body_entered"]
-[connection signal="body_exited" from="Cutscenes/TessNote/Interactable" to="Cutscenes/TessNote/Interactable" method="_on_body_exited"]
-[connection signal="trigger" from="Cutscenes/TessNote/Interactable" to="Cutscenes/TessNote" method="begin"]
 
 [editable path="GameSystem"]
 [editable path="GameSystem/Cam"]
