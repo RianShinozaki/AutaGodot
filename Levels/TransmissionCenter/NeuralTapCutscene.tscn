@@ -45,10 +45,10 @@ tracks/0/path = NodePath("RichTextLabel:visible_characters")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.023, 2.423, 2.5896666, 2.6896667, 2.9563334, 3.4586668, 3.833, 4.079, 4.257, 4.5759997, 4.7929997, 5.0610003, 5.597, 5.9019995, 6.3710003, 6.958, 7.6949997, 8.976, 12.601, 14.136),
+"times": PackedFloat32Array(2.023, 2.423, 2.5896666, 2.6896667, 2.9563334, 3.4586668, 3.833, 4.079, 4.257, 4.5759997, 4.7929997, 5.0610003, 5.597, 5.9019995, 6.3710003, 6.958, 7.6949997, 8.976, 12.611, 14.136),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 28, 39, 45, 63, 79, 93, 100, 112, 119, 133, 138, 152, 164, 176, 187, 198, 278, 289, 326]
+"values": [0, 28, 39, 45, 63, 79, 93, 100, 112, 119, 133, 138, 152, 164, 176, 187, 198, 278, 304, 359]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -272,8 +272,9 @@ PSYCHE TEST		...[color=red]ERROR [/color]
 
 [color=red]WARNING: SEVERE PSYCHOLOGICAL CONTAMINATION DETECTED. RISK OF CASCADING NEURON FAILURE [/color]
 
-INITIATING
-	V.O.I.D. PROTOCOL"
+INITIATING REPAIR SEQUENCE
+
+AUTOMATON MAY EXPERIENCE HALLUCINATIONS AT THIS TIME"
 visible_characters = 0
 visible_ratio = 0.0
 

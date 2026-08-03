@@ -3070,7 +3070,7 @@ metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
 [sub_resource type="Resource" id="Resource_mrmdb"]
 script = ExtResource("61_jm7cs")
-time = 0.5
+time = 1.0
 metadata/_custom_type_script = "uid://dk32tcfg80s0r"
 
 [sub_resource type="Resource" id="Resource_a163e"]
@@ -3199,7 +3199,7 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("82_k8cp3")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.7)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -3213,6 +3213,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.85, 5.35, 6.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_lc0kb"]
@@ -3413,6 +3425,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Panel:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_334my"]
@@ -5150,10 +5174,11 @@ frame = 1
 
 [node name="Panel" type="Panel" parent="Cutscenes/ScannerReturn/CanvasLayer" unique_id=1230638656]
 visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 259.0
-offset_top = 330.0
+offset_top = 45.0
 offset_right = 1256.0
-offset_bottom = 553.0
+offset_bottom = 268.0
 
 [node name="Label" type="Label" parent="Cutscenes/ScannerReturn/CanvasLayer/Panel" unique_id=832883028]
 layout_mode = 1
@@ -5162,7 +5187,7 @@ anchor_right = 1.0
 offset_top = 86.0
 offset_bottom = 141.0
 grow_horizontal = 2
-text = "ORB LAUNCH UNLOCKED"
+text = "AUTA HAS RECOVERED \"ORB LAUNCH\""
 label_settings = SubResource("LabelSettings_ll8xe")
 horizontal_alignment = 1
 
