@@ -64,11 +64,11 @@ shader = ExtResource("6_r7yh8")
 shader_parameter/mask_type = 2
 shader_parameter/curve = 0.0050000002375
 shader_parameter/sharpness = 0.82800001558
-shader_parameter/color_offset = 0.07800002745500001
-shader_parameter/mask_brightness = 0.2650000125875
-shader_parameter/scanline_brightness = 0.6600000076
-shader_parameter/min_scanline_thickness = 0.5
-shader_parameter/aspect = 0.9650000220875
+shader_parameter/color_offset = -0.2599999886
+shader_parameter/mask_brightness = 1.0
+shader_parameter/scanline_brightness = 0.8870000183825
+shader_parameter/min_scanline_thickness = 0.628000017955
+shader_parameter/aspect = 1.0
 shader_parameter/wobble_strength = 0.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ixg0b"]

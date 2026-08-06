@@ -136,3 +136,27 @@ Computer: A POWER SURGE MAY OCCUR. PLEASE STAND BACK AND WATCH FOR SPARKS.
 ~ orb_tutorial
 Tutorial: To use the orb, hold down any direction with the arrow keys and press "C".
 Tutorial: You may stay in the orb as long as you like. Release "C" to return to humanoid form.
+=> END
+
+~ blastdoor
+Computer: ERROR. FAILED TO LOWER BLAST DOOR.
+=> END
+
+~ SpiderWarning_1
+Computer: AUXILIARY POWER REACTIVATED.
+=> END
+
+~ SpiderWarning_2
+Computer: PLEASE BE ADVISED: AN INTRUDER HAS BEEN DETECTED IN THE UPPER LEVELS.
+=> END
+
+~ SpiderWarning_3
+Computer: INTRUDER IS EN ROUTE TOWARDS SATELLITE DISH.
+Computer: ACTIVATING MAX-SECURITY DRONE: 'HEAVY SPIDER'.
+=> END
+
+~ SpiderWarning_4
+Computer: HEAVY SPIDER WILL CAPTURE AND DISPOSE OF INTRUDER.
+Computer: YOUR ASSISTANCE IS NOT REQUIRED AT THIS TIME.
+Computer: THANK YOU FOR YOUR VISIT, AUTA. WE HOPE TO SEE YOU AGAIN SOON.
+=> END

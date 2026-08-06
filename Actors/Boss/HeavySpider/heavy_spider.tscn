@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://b2rrumoynxolk"]
+
+[ext_resource type="Texture2D" uid="uid://ndifoxx17tos" path="res://Actors/Boss/HeavySpider/HeavySpider.png" id="1_1ln5v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ikem"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(23, 13, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ln5v"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(43, 95, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1so6p"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(145, 46, 8, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac4k6"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(143, 84, 13, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox025"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(144, 137, 8, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsv75"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(115, 50, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7dby"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(100, 78, 33, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdlnr"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(99, 113, 35, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orjdk"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(49, 126, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdc76"]
+atlas = ExtResource("1_1ln5v")
+region = Rect2(44, 165, 34, 61)
+
+[sub_resource type="Gradient" id="Gradient_ntf5m"]
+offsets = PackedFloat32Array(0.3181818, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ln5v"]
+gradient = SubResource("Gradient_ntf5m")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="HeavySpider" type="Node2D" unique_id=1981306697]
+texture_filter = 1
+
+[node name="Shell" type="Sprite2D" parent="." unique_id=358482102]
+position = Vector2(0, -32)
+texture = SubResource("AtlasTexture_8ikem")
+
+[node name="Interior" type="Sprite2D" parent="Shell" unique_id=491156945]
+position = Vector2(0, 24)
+texture = SubResource("AtlasTexture_1ln5v")
+
+[node name="RLegs" type="Node2D" parent="Shell" unique_id=768798472]
+position = Vector2(0, 24)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs" unique_id=1535635570]
+z_index = -1
+position = Vector2(11.914126, 3.9916)
+rotation = -2.2781444
+texture = SubResource("AtlasTexture_1so6p")
+offset = Vector2(0, 10)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg1" unique_id=167161605]
+position = Vector2(0, 24)
+rotation = 0.19662727
+texture = SubResource("AtlasTexture_ac4k6")
+offset = Vector2(0, 16)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg1/RLeg1" unique_id=2047850851]
+z_index = -1
+position = Vector2(1.143759, 31.690832)
+rotation = 3.5351765
+texture = SubResource("AtlasTexture_ox025")
+offset = Vector2(0, 24)
+
+[node name="RLeg2" type="Sprite2D" parent="Shell/RLegs" unique_id=611244974]
+z_index = -1
+position = Vector2(14.000001, 13)
+rotation = -1.7470189
+texture = SubResource("AtlasTexture_1so6p")
+offset = Vector2(0, 10)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg2" unique_id=1339900743]
+position = Vector2(0, 24)
+rotation = 0.01007691
+texture = SubResource("AtlasTexture_ac4k6")
+offset = Vector2(0, 16)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg2/RLeg1" unique_id=1066456548]
+z_index = -1
+position = Vector2(3.756164, 32.397102)
+rotation = 3.3103085
+texture = SubResource("AtlasTexture_ox025")
+offset = Vector2(0, 24)
+
+[node name="RLeg3" type="Sprite2D" parent="Shell/RLegs" unique_id=856703546]
+z_index = -1
+position = Vector2(12.999997, 20)
+rotation = -1.4493436
+texture = SubResource("AtlasTexture_1so6p")
+offset = Vector2(0, 10)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg3" unique_id=924944526]
+position = Vector2(0, 24)
+rotation = 0.19662727
+texture = SubResource("AtlasTexture_ac4k6")
+offset = Vector2(0, 16)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg3/RLeg1" unique_id=1331578314]
+z_index = -1
+position = Vector2(-2.6252441, 30.351257)
+rotation = 2.8384705
+texture = SubResource("AtlasTexture_ox025")
+offset = Vector2(0, 24)
+
+[node name="RLeg4" type="Sprite2D" parent="Shell/RLegs" unique_id=1834429957]
+z_index = -1
+position = Vector2(11.999997, 27.000002)
+rotation = -1.5588453
+texture = SubResource("AtlasTexture_dsv75")
+offset = Vector2(-6, 9)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg4" unique_id=121223004]
+position = Vector2(-9.772228, 19.118134)
+rotation = 0.048012167
+texture = SubResource("AtlasTexture_w7dby")
+offset = Vector2(-11, 11)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/RLegs/RLeg4/RLeg1" unique_id=1502497416]
+z_index = -1
+position = Vector2(-26.807953, 23.05071)
+rotation = 1.3595387
+texture = SubResource("AtlasTexture_kdlnr")
+offset = Vector2(-15, 12)
+
+[node name="LLegs" type="Node2D" parent="Shell" unique_id=2073052885]
+position = Vector2(0, 24)
+scale = Vector2(-1, 1)
+
+[node name="LLeg1" type="Sprite2D" parent="Shell/LLegs" unique_id=1491471841]
+z_index = -1
+position = Vector2(11.914126, 3.9916)
+rotation = -2.2781444
+texture = SubResource("AtlasTexture_1so6p")
+offset = Vector2(0, 10)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg1" unique_id=775974413]
+position = Vector2(0, 24)
+rotation = 0.19662727
+texture = SubResource("AtlasTexture_ac4k6")
+offset = Vector2(0, 16)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg1/RLeg1" unique_id=2035898783]
+z_index = -1
+position = Vector2(1.143759, 31.690832)
+rotation = 3.5351765
+texture = SubResource("AtlasTexture_ox025")
+offset = Vector2(0, 24)
+
+[node name="LLeg2" type="Sprite2D" parent="Shell/LLegs" unique_id=291366917]
+z_index = -1
+position = Vector2(14.000001, 13)
+rotation = -1.7470189
+texture = SubResource("AtlasTexture_1so6p")
+offset = Vector2(0, 10)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg2" unique_id=175559624]
+position = Vector2(0, 24)
+rotation = 0.01007691
+texture = SubResource("AtlasTexture_ac4k6")
+offset = Vector2(0, 16)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg2/RLeg1" unique_id=133041837]
+z_index = -1
+position = Vector2(3.756164, 32.397102)
+rotation = 3.3103085
+texture = SubResource("AtlasTexture_ox025")
+offset = Vector2(0, 24)
+
+[node name="LLeg3" type="Sprite2D" parent="Shell/LLegs" unique_id=1839521153]
+z_index = -1
+position = Vector2(12.999997, 20)
+rotation = -1.4493436
+texture = SubResource("AtlasTexture_1so6p")
+offset = Vector2(0, 10)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg3" unique_id=314492473]
+position = Vector2(0, 24)
+rotation = 0.19662727
+texture = SubResource("AtlasTexture_ac4k6")
+offset = Vector2(0, 16)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg3/RLeg1" unique_id=1392496185]
+z_index = -1
+position = Vector2(-2.6252441, 30.351257)
+rotation = 2.8384705
+texture = SubResource("AtlasTexture_ox025")
+offset = Vector2(0, 24)
+
+[node name="LLeg4" type="Sprite2D" parent="Shell/LLegs" unique_id=53922622]
+z_index = -1
+position = Vector2(11.999997, 27.000002)
+rotation = -1.5588453
+texture = SubResource("AtlasTexture_dsv75")
+offset = Vector2(-6, 9)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg4" unique_id=851455490]
+position = Vector2(-9.772228, 19.118134)
+rotation = 0.048012167
+texture = SubResource("AtlasTexture_w7dby")
+offset = Vector2(-11, 11)
+
+[node name="RLeg1" type="Sprite2D" parent="Shell/LLegs/LLeg4/RLeg1" unique_id=1966696587]
+z_index = -1
+position = Vector2(-26.807953, 23.05071)
+rotation = 1.3595387
+texture = SubResource("AtlasTexture_kdlnr")
+offset = Vector2(-15, 12)
+
+[node name="Neck" type="Sprite2D" parent="Shell" unique_id=60911868]
+position = Vector2(0, 24)
+texture = SubResource("AtlasTexture_orjdk")
+offset = Vector2(0, 6.415)
+
+[node name="Head" type="Sprite2D" parent="Shell/Neck" unique_id=49313522]
+position = Vector2(0, 21)
+texture = SubResource("AtlasTexture_jdc76")
+offset = Vector2(0, 24.22)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Shell/Neck/Head" unique_id=1157119417]
+position = Vector2(0, 31)
+color = Color(0.6232962, 0, 0.1092285, 1)
+energy = 1.31
+texture = SubResource("GradientTexture2D_1ln5v")
+texture_scale = 0.53
