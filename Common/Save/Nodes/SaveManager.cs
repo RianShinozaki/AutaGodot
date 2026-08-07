@@ -69,7 +69,6 @@ public partial class SaveManager : Node
         }
         GD.PrintErr($"Unable to find level \"{level}\"");
     }
-
     public void SaveData(SaveDataLayer layer, int slot = -1) {
         if (slot != -1) { 
             _saveSlot = slot;
@@ -123,12 +122,17 @@ public partial class SaveManager : Node
         dir.Rename(FilePath + ".tmp", FilePath);
     }
 
-    public void LoadData(SaveDataLayer layer, int save) {
+    public bool LoadData(SaveDataLayer layer, int save) {
         string FilePath = $"user://Saves/{layer.ToString()}.{_saveSlot}.{SaveFileExtension}";
 
         if (layer == SaveDataLayer.Local)
         {
             FilePath = $"user://Saves/{GetTree().CurrentScene.Name}.{_saveSlot}.{SaveFileExtension}";
+        }
+
+        if (!FileAccess.FileExists(FilePath)) {
+            GD.Print("Save file doesn't exist, did you save?");
+            return false;
         }
 
         FileAccess file = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
@@ -140,7 +144,8 @@ public partial class SaveManager : Node
         if (rv > SaveFileRevision)
         {
             GD.PrintErr("File is from a newer version!");
-            return;
+            file.Close();
+            return false;
         }
 
         var dlayer = file.GetVar();
@@ -153,7 +158,8 @@ public partial class SaveManager : Node
 
             if (nodepath.Obj.ToString() == null) {
                 GD.PrintErr("Nodepath is invalid! Breaking...");
-                return;
+                file.Close();
+                return false;
             }
 
             Node node = GetNode(nodepath.Obj as string);
@@ -162,12 +168,15 @@ public partial class SaveManager : Node
 
             if (dict.Obj is not Dictionary) {
                 GD.PrintErr("Dictionary is corrupt! Breaking...");
-                return;
+                file.Close();
+                return false;
             }
 
             foreach (string key in (dict.Obj as Dictionary).Keys) {
                 node.Set(key, (dict.Obj as Dictionary)[key]);
             }
         }
+        file.Close();
+        return true;
     }
 }
