@@ -67,6 +67,8 @@
 [ext_resource type="Script" uid="uid://dk32tcfg80s0r" path="res://Cutscenes/Events/wait_event.gd" id="61_jm7cs"]
 [ext_resource type="Script" uid="uid://mln6fhjpdjcq" path="res://Common/Save/Nodes/SaveLoadComponent.cs" id="61_nnak7"]
 [ext_resource type="Script" uid="uid://dt1gjqmpl11iy" path="res://Cutscenes/Events/cast_to_shadow_realm_event.gd" id="62_ju11w"]
+[ext_resource type="Texture2D" uid="uid://bkyoh4jahq53n" path="res://Common/Save/saveblock.png" id="62_vt6yr"]
+[ext_resource type="Script" uid="uid://cc0vme1uhkvq0" path="res://Common/Save/saveblock.gd" id="63_cim3j"]
 [ext_resource type="Script" uid="uid://d3006oyn3njtw" path="res://Cutscenes/Events/retarget_camera_event.gd" id="63_laxiv"]
 [ext_resource type="AudioStream" uid="uid://bc6my6lvs6oxv" path="res://Music/One_Light.mp3" id="64_3yjna"]
 [ext_resource type="Script" uid="uid://dsovpycvde0wq" path="res://Cutscenes/Events/walk_object_to_x_event.gd" id="64_kbshe"]
@@ -231,11 +233,11 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omwlr"]
 size = Vector2(386, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a163e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnak7"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5t1m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7m12"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -287,7 +289,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epds7"]
 size = Vector2(32, 48)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_10pu3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vt6yr"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -329,17 +331,17 @@ bg_color = Color(0.9213565, 0, 0.05927293, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0qq"]
 size = Vector2(25, 65)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnak7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cim3j"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_t7m12"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mrmdb"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vt6yr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggs65"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_t7m12")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_mrmdb")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_i4cvd"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -361,43 +363,43 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cim3j"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrmdb"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ggs65"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpybb"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_ggs65")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvunm"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ejnj"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
+[sub_resource type="ViewportTexture" id="ViewportTexture_1ejnj"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_igxjy"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_1ejnj")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_v2ehy"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2ehy"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jr76b"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_v2ehy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uivhe"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lgoy7"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuahk"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_lgoy7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpkqs"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -532,6 +534,9 @@ shader_parameter/outline_color_right = Color(0, 1, 1, 1)
 shader_parameter/stunFX = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t7m12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrmdb"]
+size = Vector2(16, 16)
 
 [sub_resource type="Resource" id="Resource_k8cp3"]
 script = ExtResource("67_vfnm6")
@@ -4076,7 +4081,6 @@ process_priority = -10
 texture_filter = 1
 script = ExtResource("1_txdr0")
 level = "TransmissionCenter"
-do_cutscenes = null
 bgm_volume = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1142520488]
@@ -4585,11 +4589,11 @@ position = Vector2(1928, 1120)
 position = Vector2(1944, 1144)
 
 [node name="Crystal11" parent="Regions/Power_Spiders1" unique_id=1202755598 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_a163e")
+material = SubResource("ShaderMaterial_nnak7")
 position = Vector2(1672, 1480)
 
 [node name="Crystal12" parent="Regions/Power_Spiders1" unique_id=2063146107 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_w5t1m")
+material = SubResource("ShaderMaterial_t7m12")
 position = Vector2(2072, 1544)
 
 [node name="Power_Spiders2" type="Node2D" parent="Regions" unique_id=892348680]
@@ -4767,7 +4771,7 @@ texture = ExtResource("28_v2ehy")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_Spiders2" unique_id=1079356612 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_10pu3")
+material = SubResource("ShaderMaterial_vt6yr")
 position = Vector2(1584, 864)
 rotation = -1.5707964
 
@@ -4986,11 +4990,11 @@ texture = ExtResource("28_v2ehy")
 shape = SubResource("RectangleShape2D_epds7")
 
 [node name="Crystal11" parent="Regions/Power_SpidersRise" unique_id=970997406 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_nnak7")
+material = SubResource("ShaderMaterial_cim3j")
 position = Vector2(1808, 1120)
 
 [node name="Crystal12" parent="Regions/Power_SpidersRise" unique_id=201573027 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_vt6yr")
+material = SubResource("ShaderMaterial_ggs65")
 position = Vector2(1968, 976)
 rotation = -1.5707964
 
@@ -5060,35 +5064,35 @@ set_own_velocity = true
 active = false
 
 [node name="Crystal11" parent="Regions/Power_OrbRoom" unique_id=22271428 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_cim3j")
+material = SubResource("ShaderMaterial_wpybb")
 position = Vector2(4159, 464)
 
 [node name="Crystal12" parent="Regions/Power_OrbRoom" unique_id=512185491 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_mrmdb")
+material = SubResource("ShaderMaterial_pvunm")
 position = Vector2(4463, 560)
 
 [node name="Crystal13" parent="Regions/Power_OrbRoom" unique_id=892262993 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_wpybb")
+material = SubResource("ShaderMaterial_igxjy")
 position = Vector2(4655, 680)
 
 [node name="Crystal14" parent="Regions/Power_OrbRoom" unique_id=272788436 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_pvunm")
+material = SubResource("ShaderMaterial_v2ehy")
 position = Vector2(4383, 680)
 
 [node name="Crystal15" parent="Regions/Power_OrbRoom" unique_id=1962508947 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_1ejnj")
+material = SubResource("ShaderMaterial_jr76b")
 position = Vector2(4783, 432)
 
 [node name="Crystal16" parent="Regions/Power_OrbRoom" unique_id=1147407336 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_igxjy")
+material = SubResource("ShaderMaterial_uivhe")
 position = Vector2(5271, 336)
 
 [node name="Crystal17" parent="Regions/Power_OrbRoom" unique_id=102429357 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_jr76b")
+material = SubResource("ShaderMaterial_wuahk")
 position = Vector2(5055, 336)
 
 [node name="Crystal18" parent="Regions/Power_OrbRoom" unique_id=1487458792 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_uivhe")
+material = SubResource("ShaderMaterial_bpkqs")
 position = Vector2(4455, 384)
 
 [node name="LampLight" parent="Regions/Power_OrbRoom" unique_id=434627774 instance=ExtResource("17_10pu3")]
@@ -5585,6 +5589,17 @@ DataLayer = 2
 Objects = PackedStringArray("frame")
 metadata/_custom_type_script = "uid://mln6fhjpdjcq"
 
+[node name="Saveblock" type="Sprite2D" parent="Entities" unique_id=2088211145]
+position = Vector2(2551, 1744)
+texture = ExtResource("62_vt6yr")
+script = ExtResource("63_cim3j")
+
+[node name="Area2D" type="Area2D" parent="Entities/Saveblock" unique_id=1165754604]
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Saveblock/Area2D" unique_id=263844791]
+shape = SubResource("RectangleShape2D_mrmdb")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=474097365]
 material = SubResource("CanvasItemMaterial_bjehn")
 position = Vector2(2588, 2084)
@@ -6067,6 +6082,7 @@ position = Vector2(2816, 1904)
 [connection signal="body_entered" from="Regions/Power_SpidersRise/MusicTrigger2" to="Regions/Power_SpidersRise/MusicTrigger2" method="_on_body_entered"]
 [connection signal="area_entered" from="Regions/Power_SpidersRise/BreakableWall" to="Regions/Power_SpidersRise/BreakableWall" method="area_entered"]
 [connection signal="area_entered" from="Entities/SimpleTrigger/Area2D" to="Entities/SimpleTrigger" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Entities/Saveblock/Area2D" to="Entities/Saveblock" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Cutscenes/ThirdCutsceneManager/Area2D" to="Cutscenes/ThirdCutsceneManager" method="begin" unbinds=1]
 [connection signal="body_entered" from="Cutscenes/EnterSealedRoom/Area2D" to="Cutscenes/EnterSealedRoom" method="begin" unbinds=1]
 [connection signal="body_entered" from="Cutscenes/ExistentialCrisis/Area2D" to="Cutscenes/ExistentialCrisis" method="begin" unbinds=1]

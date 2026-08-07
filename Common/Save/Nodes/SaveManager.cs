@@ -39,6 +39,18 @@ public partial class SaveManager : Node
 
     public override void _Ready()
     {
+        if (Levels == null || Levels.Length == 0) {
+            if (!FileAccess.FileExists("res://Common/Save/Resources/Levels.tres")) { 
+                SLevelList rlevels = new SLevelList();
+                rlevels.Levels = ["Default"];
+
+                ResourceSaver.Save(rlevels, "res://Common/Save/Resources/Levels.tres");
+            }
+
+            SLevelList levels = GD.Load<SLevelList>("res://Common/Save/Resources/Levels.tres");
+            Levels = levels.Levels;
+        }
+
         if (Instance != null) {
             QueueFree();
             return;
@@ -61,18 +73,6 @@ public partial class SaveManager : Node
     public void SaveData(SaveDataLayer layer, int slot = -1) {
         if (slot != -1) { 
             _saveSlot = slot;
-        }
-
-        if (Levels == null || Levels.Length == 0) {
-            if (!FileAccess.FileExists("res://Common/Save/Resources/Levels.tres")) { 
-                SLevelList rlevels = new SLevelList();
-                rlevels.Levels = ["Default"];
-
-                ResourceSaver.Save(rlevels, "res://Common/Save/Resources/Levels.tres");
-            }
-
-            SLevelList levels = GD.Load<SLevelList>("res://Common/Save/Resources/Levels.tres");
-            Levels = levels.Levels;
         }
 
         ISaveable[] saveables = SaveUtils.FindAllSaveables(GetTree().Root).ToArray();

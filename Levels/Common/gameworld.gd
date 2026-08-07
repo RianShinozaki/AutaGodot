@@ -8,8 +8,12 @@ class_name GameWorld extends CanvasModulate
 static var instance: GameWorld
 
 func _ready():
-	Save.LevelChangeString(level)
-	Save.LoadData(2, 0)
+	SaveSystem.LevelChangeString(level)
+	SaveSystem.LoadData(2, 0)
 	if bgm:
 		MusicController.start_music(bgm, bgm_volume)
 	instance = self
+
+func save():
+	SaveSystem.SaveData(2, 0)
+	print("SAVING GAME")

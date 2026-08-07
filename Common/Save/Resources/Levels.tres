@@ -1,7 +1,7 @@
-[gd_resource type="Resource" format=3 uid="uid://bipdkgweavplk"]
+[gd_resource type="Resource" format=3 uid="uid://cmvwtoaxo6wuo"]
 
-[ext_resource type="Script" uid="uid://bu5l8j15yelpm" path="res://Common/Save/Resources/SLevelList.cs" id="1_p7wue"]
+[ext_resource type="Script" path="res://Common/Save/Resources/SLevelList.cs" id="1_p7wue"]
 
 [resource]
 script = ExtResource("1_p7wue")
-Levels = PackedStringArray("Default")
+Levels = PackedStringArray("Default", "TransmissionCenter")
