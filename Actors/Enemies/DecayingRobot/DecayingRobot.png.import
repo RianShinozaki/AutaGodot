@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c020ekci2isy1"
-path="res://.godot/imported/LumpySheet_n.png-4c86fedc036620233062fb30601f4bfa.ctex"
+uid="uid://c85dsq7h5usew"
+path="res://.godot/imported/DecayingRobot.png-0e4dd0c715914b9d550b3601c154caf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Lumpy/LumpySheet_n.png"
-dest_files=["res://.godot/imported/LumpySheet_n.png-4c86fedc036620233062fb30601f4bfa.ctex"]
+source_file="res://Actors/Enemies/DecayingRobot/DecayingRobot.png"
+dest_files=["res://.godot/imported/DecayingRobot.png-0e4dd0c715914b9d550b3601c154caf6.ctex"]
 
 [params]
 

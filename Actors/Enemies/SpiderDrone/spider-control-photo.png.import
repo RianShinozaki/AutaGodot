@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c85dsq7h5usew"
-path="res://.godot/imported/DecayingRobot.png-2442783d280926c7072fd54f09d1bd2d.ctex"
+uid="uid://ctt8gxfcwqgnv"
+path="res://.godot/imported/spider-control-photo.png-3c7487927d0a89f2657c1a8f77f37610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/DecayingRobot/DecayingRobot.png"
-dest_files=["res://.godot/imported/DecayingRobot.png-2442783d280926c7072fd54f09d1bd2d.ctex"]
+source_file="res://Actors/Enemies/SpiderDrone/spider-control-photo.png"
+dest_files=["res://.godot/imported/spider-control-photo.png-3c7487927d0a89f2657c1a8f77f37610.ctex"]
 
 [params]
 

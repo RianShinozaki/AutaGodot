@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci8dyiulcxhbi"
-path="res://.godot/imported/Voidal.png-cface9e32103802c4dd14f0ce669ea65.ctex"
+uid="uid://chfuc80sy7xxw"
+path="res://.godot/imported/Mel.png-abc722f30156e3cf36ee4e852f215737.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Voidal/Voidal.png"
-dest_files=["res://.godot/imported/Voidal.png-cface9e32103802c4dd14f0ce669ea65.ctex"]
+source_file="res://Actors/Enemies/Mel/Mel.png"
+dest_files=["res://.godot/imported/Mel.png-abc722f30156e3cf36ee4e852f215737.ctex"]
 
 [params]
 

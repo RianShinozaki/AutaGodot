@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdok1617ryuvc"
-path="res://.godot/imported/bard_sprites.png-588841b4ab3cde14dc02d09519e6a77d.ctex"
+uid="uid://dke244re1b8y2"
+path="res://.godot/imported/spiderdrone.png-d6bd317d56d1bc4a7933f6696610fc77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Bard/bard_sprites.png"
-dest_files=["res://.godot/imported/bard_sprites.png-588841b4ab3cde14dc02d09519e6a77d.ctex"]
+source_file="res://Actors/Enemies/SpiderDrone/spiderdrone.png"
+dest_files=["res://.godot/imported/spiderdrone.png-d6bd317d56d1bc4a7933f6696610fc77.ctex"]
 
 [params]
 

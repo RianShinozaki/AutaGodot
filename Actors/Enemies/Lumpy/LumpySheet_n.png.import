@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://05q0wo2u2su0"
-path="res://.godot/imported/CrystalWall.png-d8e79921307459b5b17274007f1286bc.ctex"
+uid="uid://c020ekci2isy1"
+path="res://.godot/imported/LumpySheet_n.png-dec6ab7ad145bbbca680ed6851a5603f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/CrystalWall/CrystalWall.png"
-dest_files=["res://.godot/imported/CrystalWall.png-d8e79921307459b5b17274007f1286bc.ctex"]
+source_file="res://Actors/Enemies/Lumpy/LumpySheet_n.png"
+dest_files=["res://.godot/imported/LumpySheet_n.png-dec6ab7ad145bbbca680ed6851a5603f.ctex"]
 
 [params]
 

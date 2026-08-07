@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5anxl4gh266x"
-path="res://.godot/imported/LumpySheet.png-bd27bbb4c2bdcc79e302884fec54e016.ctex"
+uid="uid://bdok1617ryuvc"
+path="res://.godot/imported/bard_sprites.png-da6ec83c48d2abe6ae92dba1fdf89bb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Lumpy/LumpySheet.png"
-dest_files=["res://.godot/imported/LumpySheet.png-bd27bbb4c2bdcc79e302884fec54e016.ctex"]
+source_file="res://Actors/NPC/Bard/bard_sprites.png"
+dest_files=["res://.godot/imported/bard_sprites.png-da6ec83c48d2abe6ae92dba1fdf89bb9.ctex"]
 
 [params]
 

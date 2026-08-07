@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcwr1svqxds1s"]
 
-[ext_resource type="Texture2D" uid="uid://ci8dyiulcxhbi" path="res://Actors/Voidal/Voidal.png" id="1_dasm1"]
-[ext_resource type="Script" uid="uid://uq0v6wdjy2c0" path="res://Actors/Voidal/voidal.gd" id="2_k53hy"]
+[ext_resource type="Texture2D" uid="uid://ci8dyiulcxhbi" path="res://Actors/NPC/Voidal/Voidal.png" id="1_dasm1"]
+[ext_resource type="Script" uid="uid://uq0v6wdjy2c0" path="res://Actors/NPC/Voidal/voidal.gd" id="2_k53hy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs45n"]
 atlas = ExtResource("1_dasm1")

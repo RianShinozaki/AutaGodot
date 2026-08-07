@@ -115,11 +115,11 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 folder_colors={
 "res://Actors/": "red",
 "res://Actors/Auta/": "pink",
-"res://Actors/Bard/": "purple",
 "res://Actors/Common/": "yellow",
-"res://Actors/CrystalWall/": "blue",
+"res://Actors/NPC/Bard/": "purple",
+"res://Actors/NPC/CrystalWall/": "blue",
+"res://Actors/NPC/Voidal/": "blue",
 "res://Actors/Tess/": "purple",
-"res://Actors/Voidal/": "blue",
 "res://Common/": "orange",
 "res://Cutscenes/": "yellow",
 "res://Debug/": "green",
@@ -213,6 +213,7 @@ locale/translations_pot_files=PackedStringArray("res://Levels/TransmissionCenter
 2d_physics/layer_4="Player"
 2d_physics/layer_5="EntityMovingPlatCollider"
 2d_physics/layer_6="Effector"
+2d_physics/layer_7="SpecialWall"
 2d_physics/layer_9="PlayerHitbox"
 2d_physics/layer_10="PlayerHurtbox"
 2d_physics/layer_11="EnemyHitbox"

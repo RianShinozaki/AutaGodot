@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctt8gxfcwqgnv"
-path="res://.godot/imported/spider-control-photo.png-ac1ed2fe0dac32d28da15c850c6162b7.ctex"
+uid="uid://ci8dyiulcxhbi"
+path="res://.godot/imported/Voidal.png-f84291a32727c8d4f8be7e30d1b02b0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/SpiderDrone/spider-control-photo.png"
-dest_files=["res://.godot/imported/spider-control-photo.png-ac1ed2fe0dac32d28da15c850c6162b7.ctex"]
+source_file="res://Actors/NPC/Voidal/Voidal.png"
+dest_files=["res://.godot/imported/Voidal.png-f84291a32727c8d4f8be7e30d1b02b0f.ctex"]
 
 [params]
 

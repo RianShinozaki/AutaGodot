@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dnayf1qt203nc" path="res://z-Unused/BigHeartMask.png" id="9_4vbml"]
 [ext_resource type="Shader" uid="uid://balfwwe82aysw" path="res://UI/scroll_ui_add.gdshader" id="9_ccb1e"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Effects/Images/Lighting/CircleSDF.tres" id="9_ijkxl"]
-[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Lumpy/LumpySheet.png" id="9_sru0y"]
+[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Enemies/Lumpy/LumpySheet.png" id="9_sru0y"]
 [ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://UI/ui_square.gdshader" id="13_ccb1e"]
 
 [sub_resource type="Gradient" id="Gradient_4vbml"]

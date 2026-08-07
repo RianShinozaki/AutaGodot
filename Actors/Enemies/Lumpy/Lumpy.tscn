@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://dqojhxpt2n0ma"]
 
-[ext_resource type="Script" uid="uid://bec2isxmuf486" path="res://Actors/Lumpy/lumpy.gd" id="1_pxb8d"]
+[ext_resource type="Script" uid="uid://bec2isxmuf486" path="res://Actors/Enemies/Lumpy/lumpy.gd" id="1_pxb8d"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="2_abrse"]
 [ext_resource type="Script" uid="uid://dnfr55r8vuv4i" path="res://Actors/Common/AI States/ai_parameter_set.gd" id="2_fud45"]
-[ext_resource type="Resource" uid="uid://btf2tsaarleha" path="res://Actors/Lumpy/Parameter Resources/lumpy_aggro_keep_distance.tres" id="3_pxb8d"]
-[ext_resource type="Resource" uid="uid://c4dkrc78n7gmr" path="res://Actors/Lumpy/Parameter Resources/lumpy_patrol.tres" id="4_lr445"]
+[ext_resource type="Resource" uid="uid://btf2tsaarleha" path="res://Actors/Enemies/Lumpy/Parameter Resources/lumpy_aggro_keep_distance.tres" id="3_pxb8d"]
+[ext_resource type="Resource" uid="uid://c4dkrc78n7gmr" path="res://Actors/Enemies/Lumpy/Parameter Resources/lumpy_patrol.tres" id="4_lr445"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Actors/Common/Shaders/2D-Default.tres" id="6_gydlj"]
-[ext_resource type="Resource" uid="uid://c8mbrl8idg1sy" path="res://Actors/Lumpy/Parameter Resources/lumpy_hurt.tres" id="6_lr445"]
-[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Lumpy/LumpySheet.png" id="7_abrse"]
-[ext_resource type="Resource" uid="uid://d11iaatvptb73" path="res://Actors/Lumpy/Parameter Resources/lumpy_jump.tres" id="7_lr445"]
-[ext_resource type="Resource" uid="uid://c2p134p3ajfu1" path="res://Actors/Lumpy/Parameter Resources/lumpy_movement.tres" id="8_lr445"]
-[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Actors/Lumpy/LumpySheet_n.png" id="8_w7nl7"]
-[ext_resource type="Script" uid="uid://ch4p44uoy3hmw" path="res://Actors/Lumpy/lumpy_attack_parameters.gd" id="9_h6ji7"]
-[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Actors/Lumpy/LumpySheet_s.png" id="9_xugyf"]
+[ext_resource type="Resource" uid="uid://c8mbrl8idg1sy" path="res://Actors/Enemies/Lumpy/Parameter Resources/lumpy_hurt.tres" id="6_lr445"]
+[ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Enemies/Lumpy/LumpySheet.png" id="7_abrse"]
+[ext_resource type="Resource" uid="uid://d11iaatvptb73" path="res://Actors/Enemies/Lumpy/Parameter Resources/lumpy_jump.tres" id="7_lr445"]
+[ext_resource type="Resource" uid="uid://c2p134p3ajfu1" path="res://Actors/Enemies/Lumpy/Parameter Resources/lumpy_movement.tres" id="8_lr445"]
+[ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Actors/Enemies/Lumpy/LumpySheet_n.png" id="8_w7nl7"]
+[ext_resource type="Script" uid="uid://ch4p44uoy3hmw" path="res://Actors/Enemies/Lumpy/lumpy_attack_parameters.gd" id="9_h6ji7"]
+[ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Actors/Enemies/Lumpy/LumpySheet_s.png" id="9_xugyf"]
 [ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="10_w7nl7"]
 [ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Effects/Oneshots/after_image.tscn" id="11_xugyf"]
 [ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Common/Components/ObjectPool.gd" id="13_3s03o"]
@@ -418,7 +418,6 @@ active = true
 [node name="AttackState" type="Node2D" parent="ActionStates" unique_id=1336398526]
 script = ExtResource("25_pxb8d")
 auto_flip = null
-active = true
 auto_hook = null
 
 [node name="HurtState" type="Node2D" parent="ActionStates" unique_id=490724868]

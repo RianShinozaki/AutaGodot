@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b50ofe6rny1dj"
+path="res://.godot/imported/camera canon eos 3000n flash charging mono.wav-bdf79cd8f0fefe93d3615836a69ca802.sample"
+
+[deps]
+
+source_file="res://Levels/TransmissionCenter/Audio/camera canon eos 3000n flash charging mono.wav"
+dest_files=["res://.godot/imported/camera canon eos 3000n flash charging mono.wav-bdf79cd8f0fefe93d3615836a69ca802.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

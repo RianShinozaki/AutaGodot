@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chfuc80sy7xxw"
-path="res://.godot/imported/Mel.png-b84d7d28d2e03ff5865aa62cc5c16a21.ctex"
+uid="uid://05q0wo2u2su0"
+path="res://.godot/imported/CrystalWall.png-0cc532b8bff39d36c21e2d96d7d36fd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Mel/Mel.png"
-dest_files=["res://.godot/imported/Mel.png-b84d7d28d2e03ff5865aa62cc5c16a21.ctex"]
+source_file="res://Actors/NPC/CrystalWall/CrystalWall.png"
+dest_files=["res://.godot/imported/CrystalWall.png-0cc532b8bff39d36c21e2d96d7d36fd3.ctex"]
 
 [params]
 

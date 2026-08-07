@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SpiderDroneParam" format=3 uid="uid://cu8aseb7xr40k"]
+
+[ext_resource type="Script" uid="uid://bloq50fu8lvi6" path="res://Actors/Enemies/SpiderDrone/spider_drone_params.gd" id="1_x87j0"]
+
+[resource]
+script = ExtResource("1_x87j0")
+crawl_speed = 40.0
+metadata/_custom_type_script = "uid://bloq50fu8lvi6"

@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://b7tayp1w0fn60"]
+
+[ext_resource type="Script" uid="uid://dxcc337upygvn" path="res://Actors/Enemies/SpiderDrone/spider_drone.gd" id="1_eu3ts"]
+[ext_resource type="Resource" uid="uid://cu8aseb7xr40k" path="res://Actors/Enemies/SpiderDrone/spider_drone_params.tres" id="3_kuxhb"]
+[ext_resource type="Script" uid="uid://bw6pvvkl3qgmo" path="res://Actors/Common/Action States/Parameter Scripts/entity_movement_parameters.gd" id="4_tchxv"]
+[ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="5_wygs3"]
+[ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Actors/Common/Action States/Parameter Scripts/entity_jump_parameters.gd" id="5_y58lb"]
+[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="6_7rhdr"]
+[ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Actors/Common/Shaders/2D-Default.tres" id="10_7mryq"]
+[ext_resource type="Texture2D" uid="uid://dke244re1b8y2" path="res://Actors/Enemies/SpiderDrone/spiderdrone.png" id="11_j13ef"]
+[ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="14_4hrmk"]
+[ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Effects/Oneshots/after_image.tscn" id="15_3mpdj"]
+[ext_resource type="PackedScene" uid="uid://jxbt53i5ibrm" path="res://Actors/Common/Components/enemy_generic_attributes.tscn" id="16_pubc6"]
+[ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Actors/Common/Components/hurt_manager.gd" id="17_70cb2"]
+[ext_resource type="Script" uid="uid://bxlxjbv23a585" path="res://Actors/Common/Components/death_manager.gd" id="18_rtf8a"]
+[ext_resource type="Script" uid="uid://cd3uihjbjclmg" path="res://Actors/Enemies/SpiderDrone/spider_drone_crawl.gd" id="19_18c06"]
+[ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Common/Components/ObjectPool.gd" id="19_oi1cv"]
+[ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Effects/Oneshots/Land.tscn" id="20_x2gju"]
+[ext_resource type="PackedScene" uid="uid://ble3feonhjm7c" path="res://Effects/Oneshots/HitFX.tscn" id="21_b1rhv"]
+[ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Effects/Oneshots/SlashFX.tscn" id="22_qblew"]
+[ext_resource type="PackedScene" uid="uid://7qyd1unc7cjw" path="res://Effects/Oneshots/BloodSpurt.tscn" id="23_rm533"]
+[ext_resource type="PackedScene" uid="uid://bp61slk7a2ff1" path="res://Effects/Oneshots/enemy_death.tscn" id="24_7hqj4"]
+[ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Actors/Common/Components/entity_hitbox.gd" id="25_juk6g"]
+[ext_resource type="AudioStream" uid="uid://ck4b6m41vc0an" path="res://Actors/Common/Audio/Bash-Impact.wav" id="26_qnvac"]
+[ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Actors/Common/Components/hitbox_data.gd" id="27_wpgxk"]
+[ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Actors/Common/Components/hurtbox.gd" id="28_l87hf"]
+[ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Actors/Common/Action States/enemy_hurt_state.gd" id="31_2npvw"]
+
+[sub_resource type="Resource" id="Resource_341w4"]
+script = ExtResource("4_tchxv")
+metadata/_custom_type_script = "uid://bw6pvvkl3qgmo"
+
+[sub_resource type="Resource" id="Resource_bxn3i"]
+script = ExtResource("5_y58lb")
+metadata/_custom_type_script = "uid://dymrp8farfsle"
+
+[sub_resource type="Resource" id="Resource_b88qr"]
+script = ExtResource("6_7rhdr")
+metadata/_custom_type_script = "uid://d4bnhxqktpcel"
+
+[sub_resource type="Animation" id="Animation_b0dc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kuxhb"]
+resource_name = "default"
+length = 0.6668
+loop_mode = 1
+step = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b0dc7"]
+_data = {
+&"RESET": SubResource("Animation_b0dc7"),
+&"default": SubResource("Animation_kuxhb")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kuxhb"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0dc7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hkn8x"]
+states/default/node = SubResource("AnimationNodeAnimation_kuxhb")
+states/default/position = Vector2(441.2, 156.8)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_b0dc7")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syevp"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="Resource" id="Resource_ggq7g"]
+script = ExtResource("27_wpgxk")
+damage = 3
+x_knockback = 60.0
+x_knockback_is_relative = true
+knockback_power = 2
+hitstun_duration = 0.08
+impact_fx = "HitFX"
+impact_sound = ExtResource("26_qnvac")
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]
+radius = 6.79
+height = 22.93
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
+size = Vector2(18, 8)
+
+[node name="SpiderDrone" type="CharacterBody2D" unique_id=1556690808 node_paths=PackedStringArray("current_action_state")]
+collision_layer = 2
+collision_mask = 65
+velocity = Vector2(0, 2431.6692)
+script = ExtResource("1_eu3ts")
+gravity_direction = Vector2(0, 1)
+gravity = 70.0
+apply_physics = true
+current_action_state = NodePath("ActionStates/NormalState")
+parameters = Dictionary[String, ExtResource("5_wygs3")]({
+"hurt": SubResource("Resource_b88qr"),
+"jump": SubResource("Resource_bxn3i"),
+"movement": SubResource("Resource_341w4"),
+"normal": ExtResource("3_kuxhb")
+})
+
+[node name="Art" type="Sprite2D" parent="." unique_id=1271511334]
+light_mask = 2
+texture_filter = 1
+material = ExtResource("10_7mryq")
+position = Vector2(0, -16)
+texture = ExtResource("11_j13ef")
+offset = Vector2(-1, 0)
+hframes = 4
+
+[node name="AfterImageGenerator" type="Node" parent="Art" unique_id=1985823799]
+script = ExtResource("14_4hrmk")
+time_between_after_images = 0.1
+object = ExtResource("15_3mpdj")
+count = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Art" unique_id=1056535338]
+libraries/ = SubResource("AnimationLibrary_b0dc7")
+autoplay = &"default"
+
+[node name="AnimationTree" type="AnimationTree" parent="Art" unique_id=589503752]
+tree_root = SubResource("AnimationNodeStateMachine_hkn8x")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="EnvironmentBox" type="CollisionShape2D" parent="." unique_id=1767456773]
+position = Vector2(0, -7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_syevp")
+
+[node name="GenericAttributes" parent="." unique_id=318139796 instance=ExtResource("16_pubc6")]
+
+[node name="EntityStatus" parent="GenericAttributes" index="0" unique_id=1875539726]
+max_health = 9.0
+
+[node name="SpecialAttributes" type="Node2D" parent="." unique_id=89626032]
+
+[node name="HurtManager" type="Node2D" parent="SpecialAttributes" unique_id=57049452]
+script = ExtResource("17_70cb2")
+power_resistance = 1
+
+[node name="DeathManager" type="Node2D" parent="SpecialAttributes" unique_id=70612697]
+script = ExtResource("18_rtf8a")
+
+[node name="ObjectPools" type="Node2D" parent="SpecialAttributes" unique_id=827681176]
+
+[node name="Land" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=194386854]
+script = ExtResource("19_oi1cv")
+object = ExtResource("20_x2gju")
+count = 2
+
+[node name="HitFX" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1774795779]
+script = ExtResource("19_oi1cv")
+object = ExtResource("21_b1rhv")
+count = 2
+
+[node name="SlashFX" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=673442656]
+script = ExtResource("19_oi1cv")
+object = ExtResource("22_qblew")
+count = 2
+
+[node name="BloodSpurt" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1226366956]
+script = ExtResource("19_oi1cv")
+object = ExtResource("23_rm533")
+count = 2
+
+[node name="DeathExplosion" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1095259869]
+script = ExtResource("19_oi1cv")
+object = ExtResource("24_7hqj4")
+count = 1
+
+[node name="TerrainRaycasts" type="Node2D" parent="SpecialAttributes" unique_id=1649875977]
+
+[node name="Forward" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts" unique_id=795234417]
+position = Vector2(0, -15)
+target_position = Vector2(12, 0)
+collision_mask = 65
+
+[node name="Hitboxes" type="Node2D" parent="SpecialAttributes" unique_id=827252989]
+visible = false
+
+[node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" unique_id=1974365831 node_paths=PackedStringArray("entity")]
+position = Vector2(-24, 0)
+collision_layer = 1024
+collision_mask = 8704
+script = ExtResource("25_juk6g")
+entity = NodePath("../../..")
+hitbox_data = SubResource("Resource_ggq7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Attack" unique_id=1270191570]
+position = Vector2(24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t3lta")
+
+[node name="Hurtbox" type="Area2D" parent="SpecialAttributes" unique_id=1172212843]
+visible = false
+collision_layer = 2048
+collision_mask = 4352
+script = ExtResource("28_l87hf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hurtbox" unique_id=928578598]
+shape = SubResource("RectangleShape2D_xmtoo")
+debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
+
+[node name="ActionStates" type="Node2D" parent="." unique_id=613060342]
+
+[node name="NormalState" type="Node2D" parent="ActionStates" unique_id=1663723321]
+script = ExtResource("19_18c06")
+active = true
+
+[node name="HurtState" type="Node2D" parent="ActionStates" unique_id=490724868]
+script = ExtResource("31_2npvw")
+
+[node name="AIStates" type="Node2D" parent="." unique_id=224530863]
+
+[node name="PatrolState" type="Node2D" parent="AIStates" unique_id=1341107785]
+
+[editable path="GenericAttributes"]
