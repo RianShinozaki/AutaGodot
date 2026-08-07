@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cuuryg48nc3tw" path="res://Common/Save/Debug/SaveLoadTestRoom.cs" id="1_snfr4"]
 [ext_resource type="Script" uid="uid://mln6fhjpdjcq" path="res://Common/Save/Nodes/SaveLoadComponent.cs" id="2_bs3e4"]
-[ext_resource type="Script" uid="uid://c4yr8x2811awt" path="res://Common/Save/Nodes/SaveManager.cs" id="3_3jsdg"]
 
 [node name="Control" type="Control" unique_id=1182457711]
 layout_mode = 3
@@ -29,11 +28,6 @@ script = ExtResource("2_bs3e4")
 DataLayer = 2
 Objects = PackedStringArray("AutaDead", "HP", "position")
 metadata/_custom_type_script = "uid://mln6fhjpdjcq"
-
-[node name="SaveManager" type="Node" parent="." unique_id=2106663762]
-script = ExtResource("3_3jsdg")
-Levels = PackedStringArray("Debug")
-metadata/_custom_type_script = "uid://c4yr8x2811awt"
 
 [node name="Button" type="Button" parent="." unique_id=288884703]
 layout_mode = 0

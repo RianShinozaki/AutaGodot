@@ -58,13 +58,31 @@ public partial class SaveManager : Node
         GD.PrintErr($"Unable to find level \"{level}\"");
     }
 
-    public void SaveData(SaveDataLayer layer) {
+    public void SaveData(SaveDataLayer layer, int slot = -1) {
+        if (slot != -1) { 
+            _saveSlot = slot;
+        }
+
+        if (Levels == null || Levels.Length == 0) {
+            if (!FileAccess.FileExists("res://Common/Save/Resources/Levels.tres")) { 
+                SLevelList rlevels = new SLevelList();
+                rlevels.Levels = ["Default"];
+
+                ResourceSaver.Save(rlevels, "res://Common/Save/Resources/Levels.tres");
+            }
+
+            SLevelList levels = GD.Load<SLevelList>("res://Common/Save/Resources/Levels.tres");
+            Levels = levels.Levels;
+        }
+
         ISaveable[] saveables = SaveUtils.FindAllSaveables(GetTree().Root).ToArray();
 
         string FilePath = $"user://Saves/{layer.ToString()}.{_saveSlot}.{SaveFileExtension}";
 
         if (layer == SaveDataLayer.Local)
         {
+            GD.Print("cur"+_levelId);
+            GD.Print("lvl"+Levels.Count());
             FilePath = $"user://Saves/{Levels[_levelId]}.{_saveSlot}.{SaveFileExtension}";
         }
 
