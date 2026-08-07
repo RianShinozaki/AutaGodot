@@ -45,7 +45,6 @@
 [ext_resource type="Texture2D" uid="uid://clalm66cg48f1" path="res://Levels/TransmissionCenter/Decoration/Terminal/spr_Terminal_On_1.png" id="42_11gba"]
 [ext_resource type="Script" uid="uid://cxus1yju0x8uk" path="res://Levels/TransmissionCenter/Decoration/Terminal/terminal.gd" id="43_k0xl2"]
 [ext_resource type="Resource" uid="uid://knn6xkirisou" path="res://Levels/TransmissionCenter/transmission_center.dialogue" id="44_a4ft3"]
-[ext_resource type="PackedScene" uid="uid://xhsj0g8qclnp" path="res://Levels/Common/Obstacles/orb_magnet.tscn" id="45_tch3u"]
 [ext_resource type="Texture2D" uid="uid://f5mmw36y227x" path="res://Actors/Tess/TessSheet.png" id="46_qo0bt"]
 [ext_resource type="PackedScene" uid="uid://c4qvyi42w0qvy" path="res://Actors/Auta/Auta.tscn" id="47_10ys7"]
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="48_dsc0q"]
@@ -5459,12 +5458,6 @@ position = Vector2(2688, -1056)
 position = Vector2(0, -224)
 scale = Vector2(2, 2)
 
-[node name="OrbMagnet3" parent="Regions/Spire_Chamber1" unique_id=310096401 instance=ExtResource("45_tch3u")]
-position = Vector2(336, 112)
-
-[node name="OrbMagnet2" parent="Regions/Spire_Chamber1" unique_id=1894269097 instance=ExtResource("45_tch3u")]
-position = Vector2(552, -96)
-
 [node name="Upper1" type="Node2D" parent="Regions" unique_id=724803700]
 
 [node name="CamRegion" parent="Regions/Upper1" unique_id=890960486 instance=ExtResource("11_av747")]
@@ -5545,7 +5538,7 @@ vframes = 9
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("47_10ys7")]
 visibility_layer = 1025
-position = Vector2(3383, 856)
+position = Vector2(2679, -744)
 unlocked_orb = true
 parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 "constellation": ExtResource("55_k8cp3"),
