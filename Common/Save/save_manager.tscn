@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d1us5uy6bi0iq"]
+
+[ext_resource type="Script" uid="uid://c4yr8x2811awt" path="res://Common/Save/Nodes/SaveManager.cs" id="1_0nr52"]
+
+[node name="SaveManager" type="Node" unique_id=1964823291]
+script = ExtResource("1_0nr52")
+Levels = PackedStringArray("Debug", "TransmissionCenter")
+metadata/_custom_type_script = "uid://c4yr8x2811awt"

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://UI/player_ui.tscn" id="2_7jktm"]
 [ext_resource type="Script" uid="uid://duoqifug8x5d7" path="res://Common/Globals/dialogue_runner.gd" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dnh1o4b1d68yn" path="res://Levels/TransmissionCenter/TransmissionCenter.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://d1us5uy6bi0iq" path="res://Common/Save/save_manager.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node" unique_id=1676149531]
 script = ExtResource("1_fc0e3")
@@ -18,3 +19,7 @@ transform = Transform2D(2, 0, 0, 2, 50, 30)
 script = ExtResource("2_feb5d")
 
 [node name="GameWorld" parent="." unique_id=780061894 instance=ExtResource("4_fc0e3")]
+level = ""
+do_cutscenes = true
+
+[node name="SaveManager" parent="." unique_id=1964823291 instance=ExtResource("5_7jktm")]

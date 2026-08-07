@@ -48,7 +48,7 @@ public partial class SaveManager : Node
 
     public void LevelChange(int levelId) => _levelId = levelId;
 
-    public void LevelChange(string level) {
+    public void LevelChangeString(string level) {
         for (int i = 0; i < Levels.Length; i++) {
             if (Levels[i].ToLower().Trim() == level.ToLower().Trim()) { 
                 _levelId = i;
@@ -128,7 +128,7 @@ public partial class SaveManager : Node
 
         if (layer == SaveDataLayer.Local)
         {
-            FilePath = $"user://Saves/{Levels[_levelId]}.{_saveSlot}.{SaveFileExtension}";
+            FilePath = $"user://Saves/{GetTree().CurrentScene.Name}.{_saveSlot}.{SaveFileExtension}";
         }
 
         FileAccess file = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);

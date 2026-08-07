@@ -423,6 +423,10 @@ auto_hook = null
 [node name="HurtState" type="Node2D" parent="ActionStates" unique_id=490724868]
 script = ExtResource("20_qqell")
 
+[node name="StunState" type="Node2D" parent="ActionStates" unique_id=1247389836]
+
+[node name="CannonballState" type="Node2D" parent="ActionStates" unique_id=285571293]
+
 [node name="AIStates" type="Node2D" parent="." unique_id=224530863]
 
 [node name="PatrolState" type="Node2D" parent="AIStates" unique_id=1341107785]
