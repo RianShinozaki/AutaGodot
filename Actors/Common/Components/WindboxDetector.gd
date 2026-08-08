@@ -11,7 +11,6 @@ func _ready():
 
 
 func on_area_entered(area: Area2D):
-	print("collision")
 	if area is Windbox:
 		windboxes_entered.append(area as Windbox)
 		

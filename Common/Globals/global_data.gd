@@ -10,9 +10,7 @@ extends Node
 @export var do_scanner_return_cutscene: bool
 
 func _ready():
-	print("GLOBAL LOADING")
 	SaveSystem.LoadData(1, 0)
 
 func save():
-	print("GLOBAL SAVING")
 	SaveSystem.SaveData(1, 0)

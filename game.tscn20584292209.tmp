@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bb7vw7fvmejei"]
+
+[ext_resource type="Script" uid="uid://bmqwdds8ljkiu" path="res://Common/Game/game_system.gd" id="1_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dw40ijv30boup" path="res://UI/player_ui.tscn" id="2_7jktm"]
+[ext_resource type="Script" uid="uid://duoqifug8x5d7" path="res://Common/Globals/dialogue_runner.gd" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://k6euvoimxy1u" path="res://Debug/Debug.tscn" id="4_fc0e3"]
+
+[node name="Game" type="Node" unique_id=1676149531]
+script = ExtResource("1_fc0e3")
+
+[node name="PlayerUI" parent="." unique_id=391135168 instance=ExtResource("2_7jktm")]
+
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=258548040]
+layer = 102
+offset = Vector2(50, 30)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 50, 30)
+script = ExtResource("2_feb5d")
+
+[node name="GameWorld" parent="." unique_id=1205324340 instance=ExtResource("4_fc0e3")]

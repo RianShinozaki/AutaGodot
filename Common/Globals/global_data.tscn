@@ -5,7 +5,7 @@
 
 [node name="GlobalData" type="Node" unique_id=1328281854]
 script = ExtResource("1_bbqsi")
-do_tc_intro_cutscene = true
+visited_scanner = true
 
 [node name="SaveLoadComponent" type="Node" parent="." unique_id=1807449035]
 script = ExtResource("2_flmo8")

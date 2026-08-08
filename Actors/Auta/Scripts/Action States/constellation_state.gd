@@ -18,7 +18,6 @@ func _ready():
 	inp = entity.get_node("GenericAttributes/InputManager")
 	anim = entity.get_node("Art/AnimationTree")
 	orb_param = entity.parameters["orb"]
-	print(entity.parameters.keys())
 	const_param = entity.parameters["constellation"]
 	aim_arrow.visible = false
 	inp.action_a_just_pressed.connect(on_a_pressed)

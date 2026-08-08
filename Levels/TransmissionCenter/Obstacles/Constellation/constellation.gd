@@ -21,7 +21,6 @@ func on_body_entered(_body: Node):
 	_auta.global_position = global_position
 	_auta.switch_action_state_name("ConstellationState")
 	if last_touched_constellation and last_touched_constellation != self and not last_touched_constellation in connected_constellations:
-		print("connecting")
 		connected_constellations.append(last_touched_constellation)
 		last_touched_constellation.connected_constellations.append(self)
 		var _star_trail = star_trail.instantiate()

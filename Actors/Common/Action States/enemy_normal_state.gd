@@ -82,8 +82,7 @@ func just_grounded(_normal: Vector2, _velocity: Vector2):
 func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Grounded/playback").start(_anim, true)
 
-func process_damage(_area):
-	$"../../SpecialAttributes/HurtManager".process_hurt(_area)
+
 
 func on_attack():
 	if not active: return

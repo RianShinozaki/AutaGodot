@@ -17,3 +17,6 @@ func attack_burst():
 	var _attack_dir = -1 if $Art.flip_h else 1
 	velocity.x = attack_param.attack_speed * _attack_dir
 	$SpecialAttributes/HurtManager.power_resistance = hurt_param.power_resistance_compromised
+
+func process_damage(_area):
+	$SpecialAttributes/HurtManager.process_hurt(_area)

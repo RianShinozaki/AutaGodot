@@ -52,6 +52,3 @@ func _end() -> void:
 
 func play_animation_oneshot(_anim: String):
 	anim.get("parameters/Grounded/playback").start(_anim, true)
-
-func process_damage(_area):
-	$"../../SpecialAttributes/HurtManager".process_hurt(_area)

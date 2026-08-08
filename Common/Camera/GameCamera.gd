@@ -28,8 +28,7 @@ func _enter_tree() -> void:
 func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
 	var _to_size = get_viewport_rect().size/_target
 	var _extents_size = get_extents_size()
-	print(_to_size)
-	print(_extents_size)
+
 	if _extents_size.x < _to_size.x:
 		_target = roundi(get_viewport_rect().size.x / _extents_size.x)
 	if _extents_size.y < _to_size.y:

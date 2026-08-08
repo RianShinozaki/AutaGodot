@@ -110,7 +110,6 @@ func on_orb():
 
 #Grounded animation handler
 func just_grounded(_normal: Vector2, _velocity: Vector2):
-	print(_velocity.y)
 	if _velocity.y < 60: return
 	
 	SFXController.play_sound(land_sound, global_position)

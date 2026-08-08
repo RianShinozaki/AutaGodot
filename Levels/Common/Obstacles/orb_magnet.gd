@@ -22,8 +22,6 @@ func _process(delta):
 		auta.velocity.y -= auta.gravity*delta
 		auta.get_action_state_name("OrbState").can_control_exit = false
 		if auta.velocity.length() > speed_cap:
-			print(auta.velocity.length())
-			print(speed_cap)
 			auta.velocity = speed_cap * auta.velocity.normalized()
 
 

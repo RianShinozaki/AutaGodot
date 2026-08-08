@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="8_40br1"]
 [ext_resource type="Resource" uid="uid://b8xakgch0m1lu" path="res://Actors/Auta/Scripts/Parameter Resources/constellation_parameters.tres" id="9_hngcm"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="9_sjva5"]
+[ext_resource type="Resource" uid="uid://dbyduxe5qrotl" path="res://Actors/Auta/Scripts/Parameter Resources/auta_throw_parameters.tres" id="10_40br1"]
 [ext_resource type="Texture2D" uid="uid://bg4qkqt7tehfr" path="res://Actors/Auta/Images/AutaSprites.png" id="10_uqnkr"]
 [ext_resource type="Script" uid="uid://bpm1hc74705k7" path="res://Actors/Common/entity_art.gd" id="11_doylp"]
 [ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="12_merf2"]
@@ -48,6 +49,9 @@
 [ext_resource type="Script" uid="uid://c22rwdceqof7o" path="res://Actors/Auta/Scripts/Action States/auta_tessglide_state.gd" id="45_uiyha"]
 [ext_resource type="Script" uid="uid://evebu65ui2oa" path="res://Actors/Auta/Scripts/Action States/constellation_state.gd" id="46_owgun"]
 [ext_resource type="Texture2D" uid="uid://cwi5tfh53ti57" path="res://Actors/Auta/Images/constellation_aim_arrow.png" id="47_gea82"]
+[ext_resource type="Script" uid="uid://ceilxe6lj357r" path="res://Actors/Auta/Scripts/Action States/auta_grab_state.gd" id="47_hcp3v"]
+[ext_resource type="Texture2D" uid="uid://djybc0421wa7a" path="res://Actors/Auta/Images/AimReticle.png" id="50_40br1"]
+[ext_resource type="Texture2D" uid="uid://dt4hy3av0h1mi" path="res://Actors/Auta/Images/AimArrow.png" id="51_bicp6"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -311,31 +315,31 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("States/GrabState/FlipPivot/ThrowParent:z_index")
+tracks/3/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack/CollisionShape2D:disabled")
+tracks/4/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SpecialAttributes/Hitboxes/WeakSlashAttack:visible")
+tracks/5/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -347,49 +351,49 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack:visible")
+tracks/6/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/CollisionShape2D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
-tracks/7/type = "value"
+tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/CollisionShape2D:disabled")
+tracks/7/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/Art:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.24, 0, 0.24, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpecialAttributes/Hitboxes/MidSlashAttack/CollisionShape2D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpecialAttributes/Hitboxes/LaunchingSlashAttack/Art:frame")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.24, 0, 0.24, 0),
-"times": PackedFloat32Array(0)
-}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SpecialAttributes/Hitboxes/MidSlashAttack/CollisionShape2D:disabled")
+tracks/9/path = NodePath("ActionStates/GrabState/FlipPivot/ThrowParent:z_index")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_5hoco"]
@@ -475,12 +479,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [90, 91, 92, 93, 94, 95]
+"values": [132, 133, 134, 135, 136, 137]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("States/GrabState/FlipPivot/ThrowParent:position:x")
+tracks/1/path = NodePath("ActionStates/GrabState/FlipPivot/ThrowParent:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -491,7 +495,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("States/GrabState/FlipPivot/ThrowParent:position:y")
+tracks/2/path = NodePath("ActionStates/GrabState/FlipPivot/ThrowParent:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -502,11 +506,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("States/GrabState/FlipPivot/ThrowParent:z_index")
+tracks/3/path = NodePath("ActionStates/GrabState/FlipPivot/ThrowParent:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.166667),
+"times": PackedFloat32Array(0, 0.16695604),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1, -1]
@@ -1191,7 +1195,8 @@ parameters = Dictionary[String, ExtResource("2_owgun")]({
 "jump": ExtResource("5_hcp3v"),
 "movement": ExtResource("6_sy8jn"),
 "orb": ExtResource("7_bicp6"),
-"speed": ExtResource("8_40br1")
+"speed": ExtResource("8_40br1"),
+"throw": ExtResource("10_40br1")
 })
 
 [node name="Art" type="Sprite2D" parent="." unique_id=177438306]
@@ -1411,6 +1416,24 @@ script = ExtResource("44_c3kt2")
 
 [node name="TessGlideState" type="Node2D" parent="ActionStates" unique_id=1800229367]
 script = ExtResource("45_uiyha")
+
+[node name="GrabState" type="Node2D" parent="ActionStates" unique_id=1602720135]
+script = ExtResource("47_hcp3v")
+
+[node name="FlipPivot" type="Node2D" parent="ActionStates/GrabState" unique_id=468270149]
+
+[node name="ThrowParent" type="Node2D" parent="ActionStates/GrabState/FlipPivot" unique_id=617961026]
+
+[node name="AimArrow" type="Sprite2D" parent="ActionStates/GrabState" unique_id=169835177]
+visible = false
+position = Vector2(-3, 0)
+texture = ExtResource("51_bicp6")
+offset = Vector2(24.075, 0)
+
+[node name="AimReticle" type="Sprite2D" parent="ActionStates/GrabState" unique_id=793112822]
+visible = false
+position = Vector2(48, 0)
+texture = ExtResource("50_40br1")
 
 [node name="ConstellationState" type="Node2D" parent="ActionStates" unique_id=634607202]
 script = ExtResource("46_owgun")

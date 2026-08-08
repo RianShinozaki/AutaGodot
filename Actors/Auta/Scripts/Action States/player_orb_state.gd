@@ -119,7 +119,6 @@ func _process(delta: float) -> void:
 	if orb_time < (1.0/60.0)*4 and not bounced:
 		var _dir_dot = inp.input_direction.dot(entity.velocity.normalized())
 		if abs(_dir_dot) > 0.6:
-			print("redirect buffered!")
 			orb_boost()
 	
 	if not inp.action_c_pressed and orb_time > orb_param.minimum_time:

@@ -13,6 +13,7 @@ extends Node2D
 var entity: CollisionEntity
 
 signal staggered
+signal hurt
 
 func _ready() -> void:
 	if auto_hook: entity = get_parent().get_parent()
@@ -93,3 +94,6 @@ func process_hurt(_hitbox: Area2D):
 	#Respawn if player
 	if _is_player and _hb_data.force_respawn:
 		entity.quick_respawn()
+	
+	emit_signal("hurt")
+	
