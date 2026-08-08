@@ -127,7 +127,7 @@ public partial class SaveManager : Node
 
         if (layer == SaveDataLayer.Local)
         {
-            FilePath = $"user://Saves/{GetTree().CurrentScene.Name}.{_saveSlot}.{SaveFileExtension}";
+            FilePath = $"user://Saves/{Levels[_levelId]}.{_saveSlot}.{SaveFileExtension}";
         }
 
         if (!FileAccess.FileExists(FilePath)) {

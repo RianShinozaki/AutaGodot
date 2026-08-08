@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://maj7ygy3uugy"]
+
+[ext_resource type="Script" uid="uid://eb8lsx3hcdnk" path="res://Common/Globals/global_data.gd" id="1_bbqsi"]
+[ext_resource type="Script" uid="uid://mln6fhjpdjcq" path="res://Common/Save/Nodes/SaveLoadComponent.cs" id="2_flmo8"]
+
+[node name="GlobalData" type="Node" unique_id=1328281854]
+script = ExtResource("1_bbqsi")
+do_tc_intro_cutscene = true
+
+[node name="SaveLoadComponent" type="Node" parent="." unique_id=1807449035]
+script = ExtResource("2_flmo8")
+Objects = PackedStringArray("save_point_pos", "auta_hp", "do_tc_intro_cutscene", "tess_cutscene_1", "tess_cutscene_3", "visited_scanner", "do_scanner_return_cutscene")
+metadata/_custom_type_script = "uid://mln6fhjpdjcq"

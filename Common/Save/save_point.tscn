@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c2ctrcpn2rxj2"]
+
+[ext_resource type="Texture2D" uid="uid://bkyoh4jahq53n" path="res://Common/Save/saveblock.png" id="1_asoku"]
+[ext_resource type="Script" uid="uid://cc0vme1uhkvq0" path="res://Common/Save/saveblock.gd" id="2_2gx6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gx6q"]
+size = Vector2(16, 16)
+
+[node name="SavePoint" type="Sprite2D" unique_id=1871041207]
+texture = ExtResource("1_asoku")
+script = ExtResource("2_2gx6q")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=609621135]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1479194745]
+shape = SubResource("RectangleShape2D_2gx6q")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

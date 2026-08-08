@@ -17,6 +17,8 @@ var y_extents: Vector2
 
 var shake_amount: float = 0
 
+var tween: Tween
+
 func _enter_tree() -> void:
 	instance = self
 	if not targets.is_empty():
@@ -37,7 +39,12 @@ func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
 		zoom = Vector2.ONE * _target
 		return
 	var _targf: float = float(_target)
-	create_tween().tween_property(self, "zoom", Vector2.ONE * _targf, _trans_time).set_trans(Tween.TRANS_SINE)
+	if tween == null:
+		tween = create_tween()
+	else:
+		tween.kill()
+		tween = create_tween()
+	tween.tween_property(self, "zoom", Vector2.ONE * _targf, _trans_time).set_trans(Tween.TRANS_SINE)
 
 func _physics_process(_delta: float) -> void:
 	if !position_override:
