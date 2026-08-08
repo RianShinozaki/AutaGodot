@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+.vs/Auta/DesignTimeBuild/.dtbcache.v2
+
+.vs/Auta/FileContentIndex/17846e6a-a39a-4b9e-a366-3ba70e576403.vsidx

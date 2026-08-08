@@ -9,7 +9,7 @@ extends Node
 @export var visited_scanner: bool
 @export var do_scanner_return_cutscene: bool
 
-func _enter_tree():
+func _ready():
 	print("GLOBAL LOADING")
 	SaveSystem.LoadData(1, 0)
 
