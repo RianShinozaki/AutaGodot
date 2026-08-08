@@ -18,10 +18,13 @@ func _ready() -> void:
 	GameCamera.instance.targets.append(self)
 	instance = self
 	
-	#global_position = Global.save_point_pos
-	#get_node("GenericAttributes/EntityStatus").health = Global.auta_hp
-	#if get_node("GenericAttributes/EntityStatus").health == 0:
-	#	get_node("GenericAttributes/EntityStatus").health = get_node("GenericAttributes/EntityStatus").max_health
+	unlocked_orb = Global.visited_scanner
+	if Global.save_point_pos != Vector2.ZERO:
+		global_position = Global.save_point_pos
+		
+	get_node("GenericAttributes/EntityStatus").health = Global.auta_hp
+	if get_node("GenericAttributes/EntityStatus").health == 0:
+		get_node("GenericAttributes/EntityStatus").health = get_node("GenericAttributes/EntityStatus").max_health
 	
 	super._ready()
 

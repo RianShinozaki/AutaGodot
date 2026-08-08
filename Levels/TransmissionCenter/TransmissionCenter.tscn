@@ -71,7 +71,6 @@
 [ext_resource type="Script" uid="uid://d3006oyn3njtw" path="res://Cutscenes/Events/retarget_camera_event.gd" id="63_laxiv"]
 [ext_resource type="AudioStream" uid="uid://bc6my6lvs6oxv" path="res://Music/One_Light.mp3" id="64_3yjna"]
 [ext_resource type="Script" uid="uid://dsovpycvde0wq" path="res://Cutscenes/Events/walk_object_to_x_event.gd" id="64_kbshe"]
-[ext_resource type="AudioStream" uid="uid://biccw6qcnulks" path="res://Actors/Auta/Audio/Step1.wav" id="65_8uhry"]
 [ext_resource type="AudioStream" uid="uid://d1kvfiltoylrr" path="res://Actors/Common/Audio/CannonballCrash.wav" id="66_nel81"]
 [ext_resource type="AudioStream" uid="uid://i411u5u8sl5a" path="res://Music/Jellyhopper Beat.MP3" id="67_334my"]
 [ext_resource type="Script" uid="uid://bx15mtxl7sb66" path="res://Cutscenes/Events/music_event.gd" id="67_vfnm6"]
@@ -84,6 +83,7 @@
 [ext_resource type="Texture2D" uid="uid://dd8ofvy1fmyon" path="res://Levels/TransmissionCenter/Cutscenes/CutIns/CrystalCutin2.png" id="75_1ehxi"]
 [ext_resource type="Theme" uid="uid://cy2f4tvi1em78" path="res://UI/Dialogue/dialogue_theme.tres" id="76_x1h6l"]
 [ext_resource type="Script" uid="uid://bao1jfyey2tac" path="res://Cutscenes/Events/change_scene_event.gd" id="77_0h7n4"]
+[ext_resource type="AudioStream" uid="uid://bmtry6y6rpd7i" path="res://Levels/Void/LightFlickOn.mp3" id="77_wpybb"]
 [ext_resource type="Texture2D" uid="uid://qsgw4q8yl15" path="res://Levels/TransmissionCenter/Cutscenes/ScanningMachine/repair-halo.png" id="79_6t0nk"]
 [ext_resource type="Script" uid="uid://t2drmqximsyw" path="res://Cutscenes/Events/set_global_flag.gd" id="79_mrmdb"]
 [ext_resource type="Script" uid="uid://bo5i87cm1pnpj" path="res://Common/Globals/ContinuityHelpers/transform_if_flag.gd" id="80_cim3j"]
@@ -103,6 +103,7 @@
 [ext_resource type="AudioStream" uid="uid://bdrehwx44hqy4" path="res://Levels/TransmissionCenter/Audio/Bluezone_BC0290_demolisher_robot_mechanical_footsteps_rusty_creak_005.wav" id="91_lc0kb"]
 [ext_resource type="Script" uid="uid://ch4vor0f6rm1u" path="res://Common/Globals/ContinuityHelpers/signal_if_flag.gd" id="93_ggs65"]
 [ext_resource type="PackedScene" uid="uid://c2ctrcpn2rxj2" path="res://Common/Save/save_point.tscn" id="103_ggs65"]
+[ext_resource type="Script" uid="uid://x25r60jlfwmc" path="res://Common/Globals/ContinuityHelpers/music_on_signal.gd" id="104_wpybb"]
 
 [sub_resource type="Environment" id="Environment_02j3j"]
 background_mode = 3
@@ -866,6 +867,11 @@ target = NodePath("../../Entities/Auta")
 x_position = 2391.0
 metadata/_custom_type_script = "uid://dsovpycvde0wq"
 
+[sub_resource type="Resource" id="Resource_5g5hq"]
+script = ExtResource("67_vfnm6")
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
 [sub_resource type="Resource" id="Resource_evwo5"]
 script = ExtResource("59_34fc0")
 anim_name = &"3"
@@ -921,6 +927,12 @@ script = ExtResource("67_vfnm6")
 music = ExtResource("69_ll8xe")
 volume = 0.6
 metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
+[sub_resource type="Resource" id="Resource_dsc0q"]
+script = ExtResource("79_mrmdb")
+flag = "tess_cutscene_3"
+value = true
+metadata/_custom_type_script = "uid://t2drmqximsyw"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh4r8"]
 size = Vector2(24, 160)
@@ -1016,7 +1028,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("65_8uhry")
+"stream": ExtResource("77_wpybb")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -2398,6 +2410,12 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jbrhv"]
 light_mode = 1
 
+[sub_resource type="Resource" id="Resource_wde1j"]
+script = ExtResource("67_vfnm6")
+volume = 1.0
+instant = true
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
+
 [sub_resource type="Resource" id="Resource_7yedq"]
 script = ExtResource("58_1kjnm")
 target = NodePath("../../GameSystem/Cam/Camera2D")
@@ -3494,7 +3512,7 @@ metadata/_custom_type_script = "uid://bj716hg8hw7wv"
 [sub_resource type="Resource" id="Resource_11gba"]
 script = ExtResource("67_vfnm6")
 music = ExtResource("86_rlqsx")
-volume = 0.6
+volume = 0.4
 instant = true
 metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
@@ -3529,6 +3547,12 @@ script = ExtResource("58_1kjnm")
 target = NodePath("../../Entities/Auta/Art/AnimationTree")
 code_string = "set(\"active\", true)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
+
+[sub_resource type="Resource" id="Resource_1kvwt"]
+script = ExtResource("67_vfnm6")
+music = ExtResource("69_ll8xe")
+volume = 0.6
+metadata/_custom_type_script = "uid://bx15mtxl7sb66"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqqyi"]
 size = Vector2(10, 336)
@@ -5555,7 +5579,8 @@ frame = 9
 
 [node name="RemoveIfFlag" type="Node2D" parent="Entities/TessActor" unique_id=2125259643]
 script = ExtResource("49_vt6yr")
-global_flag = "TessCutscene1"
+global_flag = "do_tc_intro_cutscene"
+value = false
 metadata/_custom_type_script = "uid://cnm627aeb2r2f"
 
 [node name="TessActor2" type="Sprite2D" parent="Entities" unique_id=499179423]
@@ -5566,12 +5591,12 @@ vframes = 9
 
 [node name="RemoveIfFlag" type="Node2D" parent="Entities/TessActor2" unique_id=596188864]
 script = ExtResource("49_vt6yr")
-global_flag = "TessCutscene3"
+global_flag = "tess_cutscene_3"
 metadata/_custom_type_script = "uid://cnm627aeb2r2f"
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("47_10ys7")]
 visibility_layer = 1025
-position = Vector2(206, 136)
+position = Vector2(2399, -608)
 unlocked_orb = true
 parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 "constellation": ExtResource("55_k8cp3"),
@@ -5635,7 +5660,7 @@ metadata/_custom_type_script = "uid://ch4vor0f6rm1u"
 
 [node name="ThirdCutsceneManager" type="Node" parent="Cutscenes" unique_id=1758098737]
 script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_ll8xe"), SubResource("Resource_03anl"), SubResource("Resource_y3cny"), SubResource("Resource_8al7y"), SubResource("Resource_tmwn1"), SubResource("Resource_dqqyi"), SubResource("Resource_o4obq"), SubResource("Resource_02hcr"), SubResource("Resource_g5inn"), SubResource("Resource_qennh"), SubResource("Resource_q0tuf"), SubResource("Resource_2qrbl"), SubResource("Resource_7q83e"), SubResource("Resource_jnlj7"), SubResource("Resource_fbxmm"), SubResource("Resource_bjehn"), SubResource("Resource_2dyve"), SubResource("Resource_evwo5"), SubResource("Resource_7qrxs"), SubResource("Resource_xuous"), SubResource("Resource_ulal3"), SubResource("Resource_8vjw5"), SubResource("Resource_xxc4j"), SubResource("Resource_kskgq"), SubResource("Resource_5bmk8"), SubResource("Resource_dhagv"), SubResource("Resource_jtr1g")])
+events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_ll8xe"), SubResource("Resource_03anl"), SubResource("Resource_y3cny"), SubResource("Resource_8al7y"), SubResource("Resource_tmwn1"), SubResource("Resource_dqqyi"), SubResource("Resource_o4obq"), SubResource("Resource_02hcr"), SubResource("Resource_g5inn"), SubResource("Resource_qennh"), SubResource("Resource_q0tuf"), SubResource("Resource_2qrbl"), SubResource("Resource_7q83e"), SubResource("Resource_jnlj7"), SubResource("Resource_fbxmm"), SubResource("Resource_bjehn"), SubResource("Resource_2dyve"), SubResource("Resource_5g5hq"), SubResource("Resource_evwo5"), SubResource("Resource_7qrxs"), SubResource("Resource_xuous"), SubResource("Resource_ulal3"), SubResource("Resource_8vjw5"), SubResource("Resource_xxc4j"), SubResource("Resource_kskgq"), SubResource("Resource_5bmk8"), SubResource("Resource_dhagv"), SubResource("Resource_jtr1g"), SubResource("Resource_dsc0q")])
 dialogue_resource = ExtResource("44_a4ft3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ThirdCutsceneManager" unique_id=1962572712]
@@ -5657,7 +5682,7 @@ debug_color = Color(0.7513031, 0.45676595, 0.12473331, 0.41960785)
 
 [node name="RemoveIfFlag" type="Node2D" parent="Cutscenes/ThirdCutsceneManager/Area2D" unique_id=389960961]
 script = ExtResource("49_vt6yr")
-global_flag = "TessCutscene3"
+global_flag = "tess_cutscene_3"
 metadata/_custom_type_script = "uid://cnm627aeb2r2f"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/ThirdCutsceneManager" unique_id=1180342735]
@@ -5866,7 +5891,7 @@ bus = &"Entities"
 
 [node name="ScannerCutscene" type="Node" parent="Cutscenes" unique_id=20804829]
 script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_7yedq"), SubResource("Resource_sa03e"), SubResource("Resource_t1tuu"), SubResource("Resource_sa03e"), SubResource("Resource_7g7pv"), SubResource("Resource_8gql0"), SubResource("Resource_uff1f"), SubResource("Resource_d1tqx"), SubResource("Resource_ydva7"), SubResource("Resource_3g78j"), SubResource("Resource_ohghj"), SubResource("Resource_iksbu"), SubResource("Resource_f1imf"), SubResource("Resource_etfvs"), SubResource("Resource_xdywo"), SubResource("Resource_10ys7"), SubResource("Resource_02u88"), SubResource("Resource_3cx7a")])
+events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_wde1j"), SubResource("Resource_7yedq"), SubResource("Resource_sa03e"), SubResource("Resource_t1tuu"), SubResource("Resource_sa03e"), SubResource("Resource_7g7pv"), SubResource("Resource_8gql0"), SubResource("Resource_uff1f"), SubResource("Resource_d1tqx"), SubResource("Resource_ydva7"), SubResource("Resource_3g78j"), SubResource("Resource_ohghj"), SubResource("Resource_iksbu"), SubResource("Resource_f1imf"), SubResource("Resource_etfvs"), SubResource("Resource_xdywo"), SubResource("Resource_10ys7"), SubResource("Resource_02u88"), SubResource("Resource_3cx7a")])
 dialogue_resource = ExtResource("44_a4ft3")
 
 [node name="Area2D" type="Area2D" parent="Cutscenes/ScannerCutscene" unique_id=977028894]
@@ -5987,7 +6012,7 @@ metadata/_custom_type_script = "uid://ch4vor0f6rm1u"
 
 [node name="SpiderWarning" type="Node" parent="Cutscenes" unique_id=566511374]
 script = ExtResource("56_s130w")
-events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_lgoy7"), SubResource("Resource_gnxhl"), SubResource("Resource_wuahk"), SubResource("Resource_bpkqs"), SubResource("Resource_bgllq"), SubResource("Resource_kai5y"), SubResource("Resource_11gba"), SubResource("Resource_468js"), SubResource("Resource_3qkly"), SubResource("Resource_ni1c4"), SubResource("Resource_wrqs3"), SubResource("Resource_ptsqw"), SubResource("Resource_k0xl2")])
+events = Array[ExtResource("57_bwhe4")]([SubResource("Resource_lgoy7"), SubResource("Resource_gnxhl"), SubResource("Resource_wuahk"), SubResource("Resource_bpkqs"), SubResource("Resource_bgllq"), SubResource("Resource_kai5y"), SubResource("Resource_11gba"), SubResource("Resource_468js"), SubResource("Resource_3qkly"), SubResource("Resource_ni1c4"), SubResource("Resource_wrqs3"), SubResource("Resource_ptsqw"), SubResource("Resource_k0xl2"), SubResource("Resource_1kvwt")])
 dialogue_resource = ExtResource("44_a4ft3")
 
 [node name="Node2D" type="Node2D" parent="Cutscenes/SpiderWarning" unique_id=1556423417]
@@ -6143,6 +6168,17 @@ position = Vector2(2304, 968)
 [node name="SavePoint2" parent="." unique_id=504559608 instance=ExtResource("103_ggs65")]
 position = Vector2(2000, 24)
 
+[node name="MusicOnSignal" type="Node" parent="." unique_id=826758804]
+script = ExtResource("104_wpybb")
+music = ExtResource("69_ll8xe")
+volume = 0.6
+metadata/_custom_type_script = "uid://x25r60jlfwmc"
+
+[node name="SignalIfFlag" type="Node2D" parent="MusicOnSignal" unique_id=645785120]
+script = ExtResource("93_ggs65")
+flag = "tess_cutscene_3"
+metadata/_custom_type_script = "uid://ch4vor0f6rm1u"
+
 [connection signal="area_entered" from="Regions/Power_Spiders2/BreakableWall" to="Regions/Power_Spiders2/BreakableWall" method="area_entered"]
 [connection signal="area_entered" from="Regions/Power_SpidersRise/RisingSpidersTrap/Killzone" to="Regions/Power_SpidersRise/RisingSpidersTrap" method="_on_killzone_area_entered"]
 [connection signal="body_entered" from="Regions/Power_SpidersRise/RisingSpidersTrap/Trigger" to="Regions/Power_SpidersRise/RisingSpidersTrap" method="_on_trigger_body_entered"]
@@ -6158,6 +6194,7 @@ position = Vector2(2000, 24)
 [connection signal="body_entered" from="Cutscenes/ScannerCutscene/Area2D" to="Cutscenes/ScannerCutscene" method="begin" unbinds=1]
 [connection signal="trigger" from="Cutscenes/ScannerReturn/SignalIfFlag" to="Cutscenes/ScannerReturn" method="begin"]
 [connection signal="body_entered" from="Cutscenes/SpiderWarning/Node2D/Trigger" to="Cutscenes/SpiderWarning" method="begin" unbinds=1]
+[connection signal="trigger" from="MusicOnSignal/SignalIfFlag" to="MusicOnSignal" method="trigger"]
 
 [editable path="GameSystem"]
 [editable path="GameSystem/Cam"]

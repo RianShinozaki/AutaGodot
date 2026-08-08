@@ -8,4 +8,3 @@ signal trigger
 func _ready():
 	if Global.get(flag) == value:
 		emit_signal("trigger")
-		print(get_parent().name)

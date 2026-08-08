@@ -17,6 +17,7 @@ func _enter_tree():
 	print("data load success!")
 
 func save():
+	Global.auta_hp = Auta.instance.get_node("GenericAttributes/EntityStatus").health
 	SaveSystem.SaveData(2, 0)
 	Global.save()
 	print("SAVING GAME")

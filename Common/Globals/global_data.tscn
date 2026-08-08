@@ -9,5 +9,6 @@ do_tc_intro_cutscene = true
 
 [node name="SaveLoadComponent" type="Node" parent="." unique_id=1807449035]
 script = ExtResource("2_flmo8")
-Objects = PackedStringArray("save_point_pos", "auta_hp", "do_tc_intro_cutscene", "tess_cutscene_1", "tess_cutscene_3", "visited_scanner", "do_scanner_return_cutscene")
+DataLayer = 1
+Objects = PackedStringArray("save_point_pos", "auta_hp", "do_tc_intro_cutscene", "tess_cutscene_3", "visited_scanner", "do_scanner_return_cutscene")
 metadata/_custom_type_script = "uid://mln6fhjpdjcq"
