@@ -33,6 +33,7 @@ func _physics_process(delta):
 		velocity += _dir * attract_force * delta
 	if _mag < 24:
 		attract = true
+		$CollisionShape2D.set_deferred("disabled", true)
 			
 	if _mag < 8:
 		if pickup_sound:

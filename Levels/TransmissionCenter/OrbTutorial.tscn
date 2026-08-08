@@ -753,7 +753,7 @@ force_respawn = true
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcqsg"]
-size = Vector2(1928, 16)
+size = Vector2(3524, 27)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y0yk0"]
 blend_mode = 2
@@ -1015,7 +1015,7 @@ script = ExtResource("36_wrhjk")
 hitbox_data = SubResource("Resource_xni4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1676180115]
-position = Vector2(2208, 0)
+position = Vector2(1410, -5.5)
 shape = SubResource("RectangleShape2D_fcqsg")
 debug_color = Color(0.9945627, 0, 0.2274484, 0.41960785)
 
