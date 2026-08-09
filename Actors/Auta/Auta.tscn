@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Actors/Common/Components/entity_hitbox.gd" id="26_esmhp"]
 [ext_resource type="AudioStream" uid="uid://cd2hls4guqvte" path="res://Actors/Common/Audio/Slice-Impact.mp3" id="27_qmg3a"]
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Actors/Common/Components/hitbox_data.gd" id="28_n5n6a"]
+[ext_resource type="PackedScene" uid="uid://cimwbi0rmsxca" path="res://Effects/Oneshots/windburst.tscn" id="28_sjva5"]
 [ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Actors/Common/Components/hurtbox.gd" id="29_m77dg"]
 [ext_resource type="PackedScene" uid="uid://c7timob3xjp4q" path="res://Actors/Common/Components/windbox_detector.tscn" id="30_unl7u"]
 [ext_resource type="Script" uid="uid://deyrx0ieh10h" path="res://Actors/Auta/Scripts/Action States/player_normal_state.gd" id="31_n17kd"]
@@ -1278,6 +1279,11 @@ count = 2
 [node name="BloodSpurt" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=2103614189]
 script = ExtResource("19_owgun")
 object = ExtResource("25_gq133")
+count = 6
+
+[node name="Windburst" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=258754543]
+script = ExtResource("19_owgun")
+object = ExtResource("28_sjva5")
 count = 6
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes" unique_id=1585458974]

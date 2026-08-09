@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_orryd")
-grab_jump = -150.0
+grab_jump = -200.0
 throw_power = 300.0
 recoil_power = 100.0
 recoil_y = -270.0

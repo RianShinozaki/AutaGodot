@@ -191,8 +191,8 @@ scale = Vector2(2, 2)
 [node name="Lumpy" parent="." unique_id=1556690808 instance=ExtResource("17_d7km0")]
 position = Vector2(184, -28)
 
-[node name="Lumpy2" parent="." unique_id=2049027160 instance=ExtResource("17_d7km0")]
-position = Vector2(336, -24)
+[node name="Lumpy2" parent="." unique_id=603152992 instance=ExtResource("17_d7km0")]
+position = Vector2(288, -28)
 
 [editable path="GameSystem"]
 [editable path="GameSystem/Cam"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://grgc2w7fk0hy" path="res://Effects/Images/Impact/WallSlam.png" id="1_3qosl"]
 [ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Effects/C-Sharp/AnimatedEffect.cs" id="2_xpes4"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="3_rcaro"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Common/Components/ObjectPoolObject.gd" id="3_3bdqr"]
 
 [sub_resource type="Animation" id="Animation_llm5k"]
 resource_name = "Effect"
@@ -42,7 +42,7 @@ _data = {
 &"RESET": SubResource("Animation_qq5yl")
 }
 
-[node name="WallSlam" type="Sprite2D"]
+[node name="WallSlam" type="Sprite2D" unique_id=643428159]
 texture_filter = 1
 texture = ExtResource("1_3qosl")
 offset = Vector2(0, -17.51)
@@ -50,12 +50,10 @@ hframes = 9
 frame = 1
 script = ExtResource("2_xpes4")
 
-[node name="ObjectPoolObject" type="Node" parent="."]
-script = ExtResource("3_rcaro")
+[node name="ObjectPoolObject" type="Node" parent="." unique_id=1471330676]
+script = ExtResource("3_3bdqr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wcon5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=815154229]
+libraries/ = SubResource("AnimationLibrary_wcon5")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

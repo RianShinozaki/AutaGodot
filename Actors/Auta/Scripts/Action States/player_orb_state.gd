@@ -205,7 +205,7 @@ func on_attack():
 	if not active: return
 	entity.switch_action_state_name("AttackState")
 
-func on_bounce(_normal: Vector2, _velocity: Vector2):
+func on_bounce(_normal: Vector2, _velocity: Vector2, _position: Vector2):
 	bounced = true
 	time_since_last_bounce = 0
 	if _velocity.dot(_normal) > 50:

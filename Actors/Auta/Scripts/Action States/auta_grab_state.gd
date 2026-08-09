@@ -1,6 +1,7 @@
 extends ActionState
 
 @onready var land_fx_pool = $"../../SpecialAttributes/ObjectPools/Land"
+@onready var wind_fx_pool = $"../../SpecialAttributes/ObjectPools/Windburst"
 @onready var aim_arrow = $AimArrow
 @onready var aim_reticle = $AimReticle
 var auta: Auta
@@ -90,9 +91,11 @@ func on_orb():
 		entity.set_x_velocity(-aim_reticle.position.normalized().x * throw_param.recoil_power)
 		entity.set_y_velocity(throw_param.recoil_y)
 		entity.switch_action_state_name("NormalState")
+		var _wind = wind_fx_pool.spawn_object()
+		_wind.global_position = entity.global_position
 
 #Grounded animation handler
-func just_grounded(_normal: Vector2, _velocity: Vector2):
+func just_grounded(_normal: Vector2, _velocity: Vector2, _position: Vector2):
 	if _velocity.y < 60: return
 	
 	SFXController.play_sound(land_sound, global_position)

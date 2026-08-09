@@ -61,7 +61,7 @@ func _end() -> void:
 	super._end()
 	
 #Grounded animation handler
-func just_grounded(_normal: Vector2, _velocity: Vector2):
+func just_grounded(_normal: Vector2, _velocity: Vector2, _position: Vector2):
 	var fx: Node2D = land_fx_pool.spawn_object()
 	if fx != null:
 		fx.global_position = entity.get_last_slide_collision().get_position()
@@ -82,7 +82,6 @@ func _on_grabbox_area_entered(area):
 
 func throw(_dir: Vector2, speed: float):
 	var _pos_cache: Vector2 = entity.global_position
-	entity.collision_mode = entity.COLLISION_MODE_BOUNCE
 	entity.velocity = _dir * speed
 	entity.get_parent().call_deferred("remove_child",entity)
 	parent_cache.call_deferred("add_child", entity)

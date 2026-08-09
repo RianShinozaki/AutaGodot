@@ -51,10 +51,10 @@
 [ext_resource type="PackedScene" uid="uid://b7tayp1w0fn60" path="res://Actors/Enemies/SpiderDrone/SpiderDrone.tscn" id="48_w5t1m"]
 [ext_resource type="Script" uid="uid://cnm627aeb2r2f" path="res://Common/Globals/ContinuityHelpers/invisible_if_flag.gd" id="49_vt6yr"]
 [ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Actors/Auta/Scripts/Parameter Resources/auta_duck_parameters.tres" id="49_wde1j"]
-[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="51_3yjna"]
 [ext_resource type="Resource" uid="uid://dds83antj5nu5" path="res://Actors/Auta/Scripts/Parameter Resources/auta_jump_parameters.tres" id="51_5g5hq"]
 [ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Actors/Auta/Scripts/Parameter Resources/auta_movement_parameters.tres" id="52_kn84j"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="53_1641u"]
+[ext_resource type="Resource" uid="uid://0d1mwparxfjs" path="res://Actors/Auta/Scripts/Parameter Resources/player_hurt_parameters.tres" id="54_mrmdb"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="54_wna2w"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="55_cc5xr"]
 [ext_resource type="Resource" uid="uid://b8xakgch0m1lu" path="res://Actors/Auta/Scripts/Parameter Resources/constellation_parameters.tres" id="55_k8cp3"]
@@ -62,6 +62,7 @@
 [ext_resource type="Script" uid="uid://cyqnksqojldp1" path="res://Cutscenes/Events/cutscene_event.gd" id="57_bwhe4"]
 [ext_resource type="Script" uid="uid://dmrxnsi74n4mc" path="res://Cutscenes/Events/code_event.gd" id="58_1kjnm"]
 [ext_resource type="Script" uid="uid://biw4en6dgkpmt" path="res://Cutscenes/Events/play_animation_event.gd" id="59_34fc0"]
+[ext_resource type="Resource" uid="uid://dbyduxe5qrotl" path="res://Actors/Auta/Scripts/Parameter Resources/auta_throw_parameters.tres" id="59_ggs65"]
 [ext_resource type="Script" uid="uid://bj716hg8hw7wv" path="res://Cutscenes/Events/dialogue_event.gd" id="60_8oefp"]
 [ext_resource type="Script" uid="uid://dk32tcfg80s0r" path="res://Cutscenes/Events/wait_event.gd" id="61_jm7cs"]
 [ext_resource type="Script" uid="uid://dt1gjqmpl11iy" path="res://Cutscenes/Events/cast_to_shadow_realm_event.gd" id="62_ju11w"]
@@ -506,14 +507,6 @@ width = 32
 height = 17
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
-
-[sub_resource type="Resource" id="Resource_a4ft3"]
-resource_local_to_scene = true
-script = ExtResource("51_3yjna")
-recovery_time = 0.25
-recovery_min_speed = 80.0
-invincibility_time = 1.0
-metadata/_custom_type_script = "uid://d4bnhxqktpcel"
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -5423,6 +5416,9 @@ position = Vector2(200, 232)
 [node name="SpiderDrone3" parent="Regions/Power_ClimbOut2" unique_id=926534031 instance=ExtResource("48_w5t1m")]
 position = Vector2(288, 144)
 
+[node name="Lumpy" parent="Regions/Power_ClimbOut2" unique_id=322135013 instance=ExtResource("18_nnak7")]
+position = Vector2(328, 328)
+
 [node name="BigSlideRoom" type="Node2D" parent="Regions" unique_id=149838495]
 position = Vector2(2976, -160)
 
@@ -5596,16 +5592,17 @@ metadata/_custom_type_script = "uid://cnm627aeb2r2f"
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("47_10ys7")]
 visibility_layer = 1025
-position = Vector2(2807, -784)
+position = Vector2(3352, 752)
 unlocked_orb = true
 parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 "constellation": ExtResource("55_k8cp3"),
 "duck": ExtResource("49_wde1j"),
-"hurt": SubResource("Resource_a4ft3"),
+"hurt": ExtResource("54_mrmdb"),
 "jump": ExtResource("51_5g5hq"),
 "movement": ExtResource("52_kn84j"),
 "orb": ExtResource("53_1641u"),
-"speed": ExtResource("54_wna2w")
+"speed": ExtResource("54_wna2w"),
+"throw": ExtResource("59_ggs65")
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]

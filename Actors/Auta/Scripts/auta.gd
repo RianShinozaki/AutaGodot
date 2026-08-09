@@ -44,7 +44,8 @@ func _physics_process(delta: float) -> void:
 func emit_orb_signal():
 	emit_signal("orbed")
 
-func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
+func on_impact(_hitbox: Hitbox, _hurtbox: Hurtbox):
+	var _hitbox_data = _hitbox.hitbox_data
 	var _knockback_total: Vector2 = Vector2(_hitbox_data.x_knockback, _hitbox_data.y_knockback)
 	var _len = _knockback_total.length() / 60
 	var _dir = _knockback_total.normalized()

@@ -73,7 +73,7 @@ func _end() -> void:
 	super._end()
 	
 #Grounded animation handler
-func just_grounded(_normal: Vector2, _velocity: Vector2):
+func just_grounded(_normal: Vector2, _velocity: Vector2, _position: Vector2):
 	var fx: Node2D = land_fx_pool.spawn_object()
 	if fx != null:
 		fx.global_position = entity.get_last_slide_collision().get_position()

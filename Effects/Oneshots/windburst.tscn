@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba4f0yh1pdnvh" path="res://Effects/Images/Impact/Windburst.png" id="1_kd6q0"]
 [ext_resource type="Script" uid="uid://b0eove74wm06l" path="res://Effects/C-Sharp/AnimatedEffect.cs" id="2_276dw"]
-[ext_resource type="Script" path="res://Scripts/System/Controllers/C-sharp/ObjectPoolObject.cs" id="4_byd41"]
+[ext_resource type="Script" uid="uid://vqkt7ldnsvjx" path="res://Common/Components/ObjectPoolObject.gd" id="3_imxr2"]
 
 [sub_resource type="Animation" id="Animation_cugoa"]
 resource_name = "Effect"
@@ -86,19 +86,17 @@ _data = {
 &"RESET": SubResource("Animation_ska34")
 }
 
-[node name="Windburst" type="Sprite2D"]
+[node name="Windburst" type="Sprite2D" unique_id=1835086670]
 texture_filter = 1
 texture = ExtResource("1_kd6q0")
 hframes = 10
 script = ExtResource("2_276dw")
 rotRange = 30.0
 
-[node name="ObjectPoolObject" type="Node" parent="."]
-script = ExtResource("4_byd41")
+[node name="ObjectPoolObject" type="Node" parent="." unique_id=235650037]
+script = ExtResource("3_imxr2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_up6xp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=703241099]
+libraries/ = SubResource("AnimationLibrary_up6xp")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

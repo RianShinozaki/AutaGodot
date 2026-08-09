@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c020ekci2isy1" path="res://Actors/Enemies/Lumpy/LumpySheet_n.png" id="8_w7nl7"]
 [ext_resource type="Script" uid="uid://ch4p44uoy3hmw" path="res://Actors/Enemies/Lumpy/lumpy_attack_parameters.gd" id="9_h6ji7"]
 [ext_resource type="Texture2D" uid="uid://b68yqdb52n5ci" path="res://Actors/Enemies/Lumpy/LumpySheet_s.png" id="9_xugyf"]
+[ext_resource type="Script" uid="uid://d2rkfraij3dvi" path="res://Actors/Common/Action States/Parameter Scripts/entity_cannonball_parameters.gd" id="10_o1454"]
 [ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="10_w7nl7"]
 [ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Effects/Oneshots/after_image.tscn" id="11_xugyf"]
 [ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Common/Components/ObjectPool.gd" id="13_3s03o"]
@@ -26,7 +27,9 @@
 [ext_resource type="Script" uid="uid://nnjq040k661b" path="res://Actors/Common/Action States/enemy_normal_state.gd" id="19_s0u4b"]
 [ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Actors/Common/Action States/enemy_hurt_state.gd" id="20_qqell"]
 [ext_resource type="PackedScene" uid="uid://bp61slk7a2ff1" path="res://Effects/Oneshots/enemy_death.tscn" id="22_fkov2"]
+[ext_resource type="PackedScene" uid="uid://bimjw7qqi3lmu" path="res://Effects/Oneshots/wallslam.tscn" id="22_psrlb"]
 [ext_resource type="Script" uid="uid://bkffy6a8vknj" path="res://Actors/Common/AI States/patrol_state.gd" id="23_ugovn"]
+[ext_resource type="PackedScene" uid="uid://dow28ow6nv6d" path="res://Effects/Oneshots/sonicboom.tscn" id="24_mt4jo"]
 [ext_resource type="Script" uid="uid://b5ilw57hqw2c" path="res://Actors/Common/AI States/aggro_keep_distance_state.gd" id="24_widae"]
 [ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Actors/Common/Components/entity_hitbox.gd" id="25_3s03o"]
 [ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Actors/Common/Components/hurt_manager.gd" id="25_jkofg"]
@@ -49,6 +52,13 @@ absolute_limit = 300.0
 collision_shape = SubResource("CapsuleShape2D_syevp")
 collision_shape_position = Vector2(0, 1)
 metadata/_custom_type_script = "uid://ch4p44uoy3hmw"
+
+[sub_resource type="Resource" id="Resource_mt4jo"]
+script = ExtResource("10_o1454")
+gravity = 140.0
+gravity_delay = 0.6
+lifetime = 2.0
+metadata/_custom_type_script = "uid://d2rkfraij3dvi"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ugovn"]
 diffuse_texture = ExtResource("7_abrse")
@@ -383,18 +393,22 @@ graph_offset = Vector2(-28, -95)
 
 [sub_resource type="Resource" id="Resource_ggq7g"]
 script = ExtResource("26_pglu5")
-damage = 6
+damage = 9
 x_knockback = 100.0
 x_knockback_is_relative = true
 knockback_power = 3
 hitstun_duration = 0.15
 impact_fx = "HitFX"
 impact_sound = ExtResource("26_clcoo")
+damage_type = 2
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]
 radius = 6.79
 height = 22.93
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_psrlb"]
+radius = 11.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
 size = Vector2(18, 8)
@@ -421,6 +435,7 @@ apply_physics = true
 current_action_state = NodePath("ActionStates/NormalState")
 parameters = Dictionary[String, ExtResource("2_abrse")]({
 "attack": SubResource("Resource_jkofg"),
+"cannonball": SubResource("Resource_mt4jo"),
 "hurt": ExtResource("6_lr445"),
 "jump": ExtResource("7_lr445"),
 "movement": ExtResource("8_lr445")
@@ -482,6 +497,16 @@ script = ExtResource("13_3s03o")
 object = ExtResource("15_ih27p")
 count = 2
 
+[node name="WallSlam" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1991167845]
+script = ExtResource("13_3s03o")
+object = ExtResource("22_psrlb")
+count = 2
+
+[node name="SonicBoom" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=840241800]
+script = ExtResource("13_3s03o")
+object = ExtResource("24_mt4jo")
+count = 6
+
 [node name="SlashFX" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=673442656]
 script = ExtResource("13_3s03o")
 object = ExtResource("16_ggq7g")
@@ -514,7 +539,6 @@ target_position = Vector2(0, 16)
 target_position = Vector2(-16, 0)
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes" unique_id=827252989]
-visible = false
 
 [node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" unique_id=1974365831 node_paths=PackedStringArray("entity")]
 position = Vector2(-24, 0)
@@ -538,9 +562,9 @@ entity = NodePath("../../..")
 hitbox_data = SubResource("Resource_ggq7g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Cannonball" unique_id=1318547166]
-position = Vector2(24, 0)
+position = Vector2(24, -4)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_t3lta")
+shape = SubResource("CircleShape2D_psrlb")
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="SpecialAttributes" unique_id=1172212843 node_paths=PackedStringArray("ignores")]
@@ -600,6 +624,7 @@ script = ExtResource("32_ospwh")
 
 [node name="CannonballState" type="Node2D" parent="ActionStates" unique_id=285571293]
 script = ExtResource("33_clcoo")
+cannonball_crash = ExtResource("26_clcoo")
 
 [node name="AIStates" type="Node2D" parent="." unique_id=224530863]
 

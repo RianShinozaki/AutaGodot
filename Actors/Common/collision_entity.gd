@@ -27,8 +27,9 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 @export_group("Mods")
 @export var platform_detector: PlatformDetector
 
-signal just_grounded(normal: Vector2, velocity: Vector2)
-signal just_bounced(normal: Vector2, velocity: Vector2)
+signal just_grounded(normal: Vector2, velocity: Vector2, position: Vector2)
+signal just_bounced(normal: Vector2, velocity: Vector2, position: Vector2)
+signal impact(_hitbox: Hitbox, _hurtbox: Hurtbox)
 
 var shake_level: float
 var shake_direction: Vector2
@@ -64,6 +65,7 @@ func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 			var _kc = move_and_collide(_velocity * _delta, true)
 			if _kc != null:
 				var _normal = _kc.get_normal()
+				var _pos = _kc.get_position()
 				_velocity.y += gravity * _delta
 				_velocity = -_velocity.reflect(_normal)
 				var _loss_factor = Vector2(absf(_normal.x), absf(_normal.y)) * (1 - bounce_factor)
@@ -71,7 +73,7 @@ func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 				_velocity.x -= _loss_factor.x * _velocity.x
 				_velocity.y -= _loss_factor.y * _velocity.y
 				if(absf(_velocity.y) < 50): _velocity.y = 0
-				emit_signal("just_bounced", _normal, _velocity)
+				emit_signal("just_bounced", _normal, _velocity, _pos)
 			velocity = _velocity
 			move_and_slide()
 	
@@ -84,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	if collision_mode == COLLISION_MODE_FLOOR:
 		if is_on_floor():
 			if velocity.y >= 0 and not previously_grounded:
-				emit_signal("just_grounded", get_floor_normal(), pre_move_velocity)
+				emit_signal("just_grounded", get_floor_normal(), pre_move_velocity, global_position)
 				velocity.y = 0
 			
 			if platform_detector != null:
@@ -137,8 +139,8 @@ func inflict_hitstun(_shake_level: float, _shake_direction: Vector2, _duration: 
 	shake_level = 0
 	shake_direction = Vector2.ZERO
 
-func on_impact(_hitbox_data: HitboxData, _hurtbox: Hurtbox):
-	pass
+func on_impact(_hitbox: Hitbox, _hurtbox: Hurtbox):
+	emit_signal("impact", _hitbox, _hurtbox)
 
 func lock_controls(_unset_inputs: bool = true):
 	var _inp: InputManager = get_node("GenericAttributes/InputManager")

@@ -109,7 +109,7 @@ func on_orb():
 		entity.switch_action_state_name("OrbState")
 
 #Grounded animation handler
-func just_grounded(_normal: Vector2, _velocity: Vector2):
+func just_grounded(_normal: Vector2, _velocity: Vector2, _position: Vector2):
 	if _velocity.y < 60: return
 	
 	SFXController.play_sound(land_sound, global_position)
