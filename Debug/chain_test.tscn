@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cqlrgovp12eov"]
+
+[ext_resource type="PackedScene" uid="uid://gslqy18ic6mv" path="res://Levels/Common/Obstacles/Chain/chain_gear.tscn" id="1_2oteb"]
+
+[node name="ChainTest" type="Node2D" unique_id=306897547]
+texture_filter = 1
+
+[node name="ChainGear" parent="." unique_id=1519140498 instance=ExtResource("1_2oteb")]
+position = Vector2(0, -64)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1162048022]
+zoom = Vector2(4, 4)

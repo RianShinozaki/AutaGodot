@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="6_ahwhm"]
 [ext_resource type="Shader" uid="uid://bgenos3gnf47u" path="res://Effects/crt_screen.gdshader" id="6_r7yh8"]
 [ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Actors/Auta/Scripts/Parameter Resources/auta_duck_parameters.tres" id="7_ssonb"]
-[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="8_gcv1s"]
 [ext_resource type="Resource" uid="uid://dds83antj5nu5" path="res://Actors/Auta/Scripts/Parameter Resources/auta_jump_parameters.tres" id="9_wohhp"]
 [ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Actors/Auta/Scripts/Parameter Resources/auta_movement_parameters.tres" id="10_u1s3y"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="11_ixg0b"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="12_av8x7"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="13_pq87d"]
+[ext_resource type="Resource" uid="uid://0d1mwparxfjs" path="res://Actors/Auta/Scripts/Parameter Resources/player_hurt_parameters.tres" id="14_0wj8m"]
 [ext_resource type="Texture2D" uid="uid://78puoosgvimf" path="res://Levels/TransmissionCenter/Tiles/OrbTutorialWorld.png" id="14_ahwhm"]
 [ext_resource type="PackedScene" uid="uid://ctr84t408tdtr" path="res://Levels/Common/Triggers/CamRegion.tscn" id="15_ssonb"]
 [ext_resource type="PackedScene" uid="uid://brg2rq6m8djfl" path="res://Levels/TransmissionCenter/Decoration/Lights/lamp_light_yellow.tscn" id="16_gcv1s"]
@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://b8xakgch0m1lu" path="res://Actors/Auta/Scripts/Parameter Resources/constellation_parameters.tres" id="17_ye5nc"]
 [ext_resource type="Texture2D" uid="uid://cww50hbl1nplv" path="res://z-Unused/TestLab/Backgrounds/clouds_cloud_sky_blue_1 (2).png" id="18_u1s3y"]
 [ext_resource type="Script" uid="uid://l3fva1ohmwti" path="res://Cutscenes/basic_cutscene_runner.gd" id="19_ixg0b"]
+[ext_resource type="Resource" uid="uid://dbyduxe5qrotl" path="res://Actors/Auta/Scripts/Parameter Resources/auta_throw_parameters.tres" id="19_w5l20"]
 [ext_resource type="PackedScene" uid="uid://bcwr1svqxds1s" path="res://Actors/NPC/Voidal/voidal.tscn" id="20_p67t4"]
 [ext_resource type="Script" uid="uid://cyqnksqojldp1" path="res://Cutscenes/Events/cutscene_event.gd" id="20_pq87d"]
 [ext_resource type="Script" uid="uid://dmrxnsi74n4mc" path="res://Cutscenes/Events/code_event.gd" id="21_phnro"]
@@ -324,14 +325,6 @@ texture = ExtResource("14_ahwhm")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ssonb")
 
-[sub_resource type="Resource" id="Resource_0wj8m"]
-resource_local_to_scene = true
-script = ExtResource("8_gcv1s")
-recovery_time = 0.25
-recovery_min_speed = 80.0
-invincibility_time = 1.0
-metadata/_custom_type_script = "uid://d4bnhxqktpcel"
-
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
 
@@ -341,7 +334,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5l20"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alpl0"]
 resource_local_to_scene = true
 shader = ExtResource("13_pq87d")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -867,15 +860,16 @@ position = Vector2(215, 120)
 parameters = Dictionary[String, ExtResource("6_ahwhm")]({
 "constellation": ExtResource("17_ye5nc"),
 "duck": ExtResource("7_ssonb"),
-"hurt": SubResource("Resource_0wj8m"),
+"hurt": ExtResource("14_0wj8m"),
 "jump": ExtResource("9_wohhp"),
 "movement": ExtResource("10_u1s3y"),
 "orb": ExtResource("11_ixg0b"),
-"speed": ExtResource("12_av8x7")
+"speed": ExtResource("12_av8x7"),
+"throw": ExtResource("19_w5l20")
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_w5l20")
+material = SubResource("ShaderMaterial_alpl0")
 frame = 17
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]

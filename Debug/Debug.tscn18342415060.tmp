@@ -1,0 +1,199 @@
+[gd_scene format=4 uid="uid://k6euvoimxy1u"]
+
+[ext_resource type="Script" uid="uid://dql0e6xd5vhy7" path="res://Levels/Common/gameworld.gd" id="1_4cnjs"]
+[ext_resource type="PackedScene" uid="uid://db8l7ltwxxsjp" path="res://Levels/Common/game_system.tscn" id="3_rn1av"]
+[ext_resource type="Resource" uid="uid://0d1mwparxfjs" path="res://Actors/Auta/Scripts/Parameter Resources/player_hurt_parameters.tres" id="7_b2cbi"]
+[ext_resource type="PackedScene" uid="uid://c4qvyi42w0qvy" path="res://Actors/Auta/Auta.tscn" id="10_xqdfj"]
+[ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="11_xp32u"]
+[ext_resource type="Resource" uid="uid://dbyduxe5qrotl" path="res://Actors/Auta/Scripts/Parameter Resources/auta_throw_parameters.tres" id="12_b2cbi"]
+[ext_resource type="Resource" uid="uid://b8xakgch0m1lu" path="res://Actors/Auta/Scripts/Parameter Resources/constellation_parameters.tres" id="12_dhpgb"]
+[ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Actors/Auta/Scripts/Parameter Resources/auta_duck_parameters.tres" id="13_ibmtm"]
+[ext_resource type="Resource" uid="uid://dds83antj5nu5" path="res://Actors/Auta/Scripts/Parameter Resources/auta_jump_parameters.tres" id="15_7bqug"]
+[ext_resource type="Texture2D" uid="uid://bo382opbg1lma" path="res://Debug/TestTileset.png" id="16_5l1qf"]
+[ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Actors/Auta/Scripts/Parameter Resources/auta_movement_parameters.tres" id="16_ewhb5"]
+[ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="17_03n2r"]
+[ext_resource type="PackedScene" uid="uid://gslqy18ic6mv" path="res://Levels/Common/Obstacles/Chain/chain_gear.tscn" id="18_b2cbi"]
+[ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="18_wm0ae"]
+[ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="19_lqo8w"]
+[ext_resource type="PackedScene" uid="uid://ctr84t408tdtr" path="res://Levels/Common/Triggers/CamRegion.tscn" id="21_h88o7"]
+[ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Actors/Common/Components/hitbox.gd" id="39_l221v"]
+[ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Actors/Common/Components/hitbox_data.gd" id="40_f8vdn"]
+
+[sub_resource type="Gradient" id="Gradient_abelk"]
+colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vtldl"]
+gradient = SubResource("Gradient_abelk")
+width = 4
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oles6"]
+resource_local_to_scene = true
+shader = ExtResource("19_lqo8w")
+shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
+shader_parameter/emission_map = SubResource("CompressedTexture2D_4m6ou")
+shader_parameter/emission_strength = 0.0
+shader_parameter/outline_color_left = Color(1, 0, 1, 1)
+shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/stunFX = 0.0
+
+[sub_resource type="Resource" id="Resource_xni4c"]
+script = ExtResource("40_f8vdn")
+damage = 4
+y_knockback = -200.0
+knockback_power = 100
+hitstun_duration = 0.5
+force_respawn = true
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcqsg"]
+size = Vector2(3524, 27)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y0yk0"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_3u7t7"]
+colors = PackedColorArray(0.0019245051, 0.051082112, 0.060422055, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y5gpo"]
+gradient = SubResource("Gradient_3u7t7")
+fill_from = Vector2(0.4871795, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d7km0"]
+texture = ExtResource("16_5l1qf")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, 0, -8, 0)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -8, -8, -8, 8, 0, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
+5:0/0/physics_layer_0/polygon_0/one_way = true
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, 8, -8, 8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -8, -8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, -8, 8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, -8, 8, 8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 0, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 0, -8, 8, -8, 8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, 8, -8, 8, -8, -8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, -8, 8, -8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, -8, -8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, -8, -8, 8, -8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 0, -8, -8, 8, -8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, -8, 8, -8, -8, 8, -8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -8, -8, -8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -8, -8, 8, -8, 8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 0, 8, -8, 8, -8, -8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, 8, 8, -8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -8, 8, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_b2cbi"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_d7km0")
+
+[node name="GameWorld" type="CanvasModulate" unique_id=1205324340]
+texture_filter = 1
+script = ExtResource("1_4cnjs")
+bgm_volume = 0.6
+metadata/_custom_type_script = "uid://dql0e6xd5vhy7"
+
+[node name="GameSystem" parent="." unique_id=1502683367 instance=ExtResource("3_rn1av")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=560572929]
+texture_filter = 1
+position = Vector2(1, -144)
+
+[node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("10_xqdfj")]
+visibility_layer = 1025
+position = Vector2(71, 116)
+parameters = Dictionary[String, ExtResource("11_xp32u")]({
+"constellation": ExtResource("12_dhpgb"),
+"duck": ExtResource("13_ibmtm"),
+"hurt": ExtResource("7_b2cbi"),
+"jump": ExtResource("15_7bqug"),
+"movement": ExtResource("16_ewhb5"),
+"orb": ExtResource("17_03n2r"),
+"speed": ExtResource("18_wm0ae"),
+"throw": ExtResource("12_b2cbi")
+})
+
+[node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
+material = SubResource("ShaderMaterial_oles6")
+
+[node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
+position = Vector2(9, 8)
+
+[node name="Killzone" type="Area2D" parent="." unique_id=557309887]
+z_index = -5
+position = Vector2(216, 163)
+collision_layer = 4096
+collision_mask = 512
+script = ExtResource("39_l221v")
+hitbox_data = SubResource("Resource_xni4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1676180115]
+position = Vector2(1410, -5.5)
+shape = SubResource("RectangleShape2D_fcqsg")
+debug_color = Color(0.9945627, 0, 0.2274484, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="Killzone" unique_id=1219730139]
+material = SubResource("CanvasItemMaterial_y0yk0")
+position = Vector2(1319.8401, -72)
+scale = Vector2(49.004997, 2.437499)
+texture = SubResource("GradientTexture2D_y5gpo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=79417250]
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAACAAAAAAARAP//AAACAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAACAAAAAAAVAP//AAACAAAAAAAfAP//AAAAAAAAAAAeAP//AAAAAAAAAAAdAP//AAACAAAAAAAcAP//AAACAAAAAAAbAP//AAAAAAAAAAAaAP//AAAAAAAAAAAZAP//AAACAAAAAAAYAP//AAACAAAAAAAXAP//AAAAAAAAAAAWAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPb/AAAAAAAAAAAfAP7/AAAAAAAAAAAfAP3/AAAAAAAAAAAfAPz/AAAAAAAAAAAfAPv/AAAAAAAAAAAfAPr/AAAAAAAAAAAfAPn/AAAAAAAAAAAfAPj/AAAAAAAAAAAfAPf/AAAAAAAAAAAgAPf/AAAAAAAAAAAhAPf/AAAAAAAAAAAiAPf/AAAAAAAAAAAjAPf/AAAAAAAAAAAkAPf/AAAAAAAAAAAlAPf/AAAAAAAAAAAmAPf/AAAAAAAAAAAnAPf/AAAAAAAAAAAoAPf/AAAAAAAAAAApAPf/AAAAAAAAAAAqAPf/AAAAAAAAAAArAPf/AAAAAAAAAAAsAPf/AAAAAAAAAAAtAPf/AAAAAAAAAAAuAPf/AAAAAAAAAAAvAPf/AAAAAAAAAAAvAPb/AAAAAAAAAAAvAPX/AAAAAAAAAAAvAPT/AAAAAAAAAAAvAPP/AAAAAAAAAAAvAPL/AAAAAAAAAAAvAPH/AAAAAAAAAAAvAPD/AAAAAAAAAAAvAO//AAAAAAAAAAAvAO7/AAAAAAAAAAAvAO3/AAAAAAAAAAAvAOz/AAAAAAAAAAAvAOv/AAAAAAAAAAAAAPX/AAAAAAAAAAAAAPT/AAAAAAAAAAAAAPP/AAAAAAAAAAAAAPL/AAAAAAAAAAAAAPH/AAAAAAAAAAAAAPD/AAAAAAAAAAAAAO//AAAAAAAAAAAAAO7/AAAAAAAAAAAAAO3/AAAAAAAAAAAAAOz/AAAAAAAAAAAAAOv/AAAAAAAAAAAAAOr/AAAAAAAAAAAAAOn/AAAAAAAAAAAAAOj/AAAAAAAAAAAeAPv/AAAAAAAAAAAdAPv/AAAAAAAAAAAcAPv/AAAAAAAAAAAeAPf/AAAAAAAAAAAdAPf/AAAAAAAAAAAcAPf/AAAAAAAAAAAbAPv/AAAAAAAAAAAaAPv/AAAAAAAAAAAZAPv/AAAAAAAAAAAYAPv/AAAAAAAAAAAJAP//AAACAAAAAAAIAP//AAACAAAAAAAHAP//AAAAAAAAAAAGAP//AAAAAAAAAAANAP//AAACAAAAAAAMAP//AAACAAAAAAALAP//AAAAAAAAAAAKAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_b2cbi")
+
+[node name="CamRegion2" parent="." unique_id=1814409989 instance=ExtResource("21_h88o7")]
+position = Vector2(1, -448)
+scale = Vector2(2, 2)
+
+[node name="ChainGear2" parent="." unique_id=1731105931 instance=ExtResource("18_b2cbi")]
+position = Vector2(144, -176)
+debug_controls = true
+length = 5
+
+[node name="ChainGear" parent="." unique_id=1519140498 instance=ExtResource("18_b2cbi")]
+position = Vector2(223, -240)
+debug_controls = true
+
+[node name="ChainGear3" parent="." unique_id=896761658 instance=ExtResource("18_b2cbi")]
+position = Vector2(304, -304)
+debug_controls = true
+length = 15
+
+[editable path="GameSystem"]
+[editable path="GameSystem/Cam"]
+[editable path="Entities/Auta"]

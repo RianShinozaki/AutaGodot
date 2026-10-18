@@ -6,6 +6,4 @@
 script = ExtResource("1_iomqd")
 recovery_time = 0.6
 recovery_min_speed = 40.0
-power_resistance_normal = 1
-power_resistance_tough = 2
 metadata/_custom_type_script = "uid://d4bnhxqktpcel"

@@ -37,7 +37,6 @@ var pre_move_velocity: Vector2
 
 func _ready() -> void:
 	velocity = Vector2.ZERO
-	platform_detector = get_node_or_null("GenericAttributes/PlatformDetector")
 	
 var velocity_true: Vector2:
 	get:
@@ -48,19 +47,22 @@ var velocity_true: Vector2:
 
 func move(_velocity: Vector2, _delta: float, _update_velocity: bool) -> void:
 	var rot_angle = gravity_direction.angle() - PI/2
-	_velocity = _velocity.rotated(rot_angle)
+	if gravity_direction != Vector2.DOWN:
+		_velocity = _velocity.rotated(rot_angle)
 	var _temp_velocity = velocity
 	match collision_mode:
 		COLLISION_MODE_FLOOR:
 			velocity = _velocity
 			motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 			move_and_slide()
-			velocity = _velocity.rotated(-rot_angle)
+			if gravity_direction != Vector2.DOWN:
+				velocity = velocity.rotated(-rot_angle)
 		COLLISION_MODE_FREE:
 			velocity = _velocity
 			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 			move_and_slide()
-			velocity = _velocity.rotated(-rot_angle)
+			if gravity_direction != Vector2.DOWN:
+				velocity = velocity.rotated(-rot_angle)
 		COLLISION_MODE_BOUNCE:
 			var _kc = move_and_collide(_velocity * _delta, true)
 			if _kc != null:
@@ -88,11 +90,6 @@ func _physics_process(delta: float) -> void:
 			if velocity.y >= 0 and not previously_grounded:
 				emit_signal("just_grounded", get_floor_normal(), pre_move_velocity, global_position)
 				velocity.y = 0
-			
-			if platform_detector != null:
-				var _displacement = platform_detector.apply(self)
-				var _platform_velocity = _displacement / delta if delta > 0 else Vector2.ZERO
-			
 		if not is_on_floor() or velocity.y < 0:
 			velocity.y += gravity * delta
 	else:

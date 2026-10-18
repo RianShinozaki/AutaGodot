@@ -241,8 +241,8 @@ texture = SubResource("AtlasTexture_jdc76")
 offset = Vector2(0, 24.22)
 
 [node name="PointLight2D2" type="PointLight2D" parent="Shell/Neck/Head" unique_id=1157119417]
-position = Vector2(0, 31)
+position = Vector2(0, 35)
 color = Color(0.6232962, 0, 0.1092285, 1)
 energy = 1.31
 texture = SubResource("GradientTexture2D_1ln5v")
-texture_scale = 0.53
+texture_scale = 2.58

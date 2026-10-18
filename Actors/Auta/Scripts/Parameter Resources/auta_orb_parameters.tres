@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cs7b24ogtxvhl" path="res://Actors/Auta/Scripts/Parameter Scripts/auta_orb_parameters.gd" id="1_571r1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icj15"]
-radius = 7.0
+radius = 5.0
 
 [resource]
 script = ExtResource("1_571r1")
@@ -24,4 +24,5 @@ deceleration = 60.0
 deceleration_in_air = 60.0
 deceleration_above_speed = 40.0
 collision_shape = SubResource("CircleShape2D_icj15")
+collision_shape_position = Vector2(0, 1)
 metadata/_custom_type_script = "uid://cs7b24ogtxvhl"

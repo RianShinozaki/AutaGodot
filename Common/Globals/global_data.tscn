@@ -5,7 +5,9 @@
 
 [node name="GlobalData" type="Node" unique_id=1328281854]
 script = ExtResource("1_bbqsi")
+tess_cutscene_3 = true
 visited_scanner = true
+init_scene = "res://Levels/TransmissionCenter/TransmissionCenter.tscn"
 
 [node name="SaveLoadComponent" type="Node" parent="." unique_id=1807449035]
 script = ExtResource("2_flmo8")

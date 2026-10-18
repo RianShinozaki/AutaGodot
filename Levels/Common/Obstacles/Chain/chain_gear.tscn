@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://gslqy18ic6mv"]
+
+[ext_resource type="Script" uid="uid://cldrplep10j32" path="res://Levels/Common/Obstacles/Chain/chain_gear.gd" id="1_p8liv"]
+[ext_resource type="Texture2D" uid="uid://dclehgu75tkre" path="res://Levels/Common/Obstacles/Chain/chaingear-TC.png" id="2_iodkw"]
+[ext_resource type="Script" uid="uid://cwt5nuw4ysbt3" path="res://Levels/Common/Obstacles/Chain/chain_anchor.gd" id="3_8do1y"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hhj4w"]
+friction = 0.5
+rough = true
+bounce = 0.45
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hhj4w"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2oteb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8liv"]
+radius = 16.0
+
+[node name="ChainGear" type="AnimatableBody2D" unique_id=1519140498]
+collision_layer = 2147483648
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_hhj4w")
+script = ExtResource("1_p8liv")
+length = 10
+
+[node name="ChainGear" type="Sprite2D" parent="." unique_id=1227435812]
+z_index = 1
+texture = ExtResource("2_iodkw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=45181712]
+shape = SubResource("CircleShape2D_hhj4w")
+
+[node name="Anchor" type="StaticBody2D" parent="." unique_id=1915303532]
+position = Vector2(-8, 8)
+collision_layer = 2
+script = ExtResource("3_8do1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor" unique_id=1927530285]
+visible = false
+shape = SubResource("CircleShape2D_2oteb")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=913850147]
+collision_layer = 0
+collision_mask = 1280
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=894214571]
+shape = SubResource("CircleShape2D_p8liv")
+debug_color = Color(0.98275965, 0, 0.36351418, 0.41960785)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://doktuclh2qsdb"]
+
+[ext_resource type="Script" uid="uid://noiwouki2uli" path="res://Levels/Common/Obstacles/Chain/chain_link.gd" id="1_3do5u"]
+[ext_resource type="Texture2D" uid="uid://cytvwmp6mvdjl" path="res://Levels/Common/Obstacles/Chain/chain-TC.png" id="1_7rjrv"]
+[ext_resource type="Script" uid="uid://cegvcxf36ijhf" path="res://Levels/Common/Obstacles/Chain/chain_assist.gd" id="3_pph3j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3do5u"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pph3j"]
+radius = 3.0
+height = 22.0
+
+[node name="Link" type="Node2D" unique_id=1785113444]
+script = ExtResource("1_3do5u")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1611860183]
+position = Vector2(-6.993822e-07, 0)
+softness = 0.1
+angular_limit_enabled = true
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1370747705]
+collision_layer = 2
+collision_mask = 2147483649
+linear_damp = 0.05
+angular_damp = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=586584912]
+z_index = 1
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_3do5u")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1762671030]
+position = Vector2(0, 8)
+texture = ExtResource("1_7rjrv")
+
+[node name="PlayerGrabber" type="Area2D" parent="." unique_id=1140955845]
+position = Vector2(0, 10)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("3_pph3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGrabber" unique_id=1980818502]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_pph3j")
+debug_color = Color(0.8300291, 0.39395744, 0.0058910116, 0.41960785)
+
+[connection signal="body_entered" from="PlayerGrabber" to="." method="_on_player_grabber_body_entered"]

@@ -92,6 +92,10 @@ func unoverride_target():
 func snap_to_target():
 	get_camera_target()
 	global_position = target_position
+	if not ignore_boundaries:
+		var _cs = get_camera_size()
+		global_position.x = clamp(global_position.x, x_extents.x + _cs.x/2, x_extents.y - _cs.x/2)
+		global_position.y = clamp(global_position.y, y_extents.x + _cs.y/2, y_extents.y - _cs.y/2)
 	
 func retarget(_target):
 	targets.clear()

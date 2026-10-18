@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://kdnav5qm1b2y" path="res://Effects/Images/Particles/Stardust.png" id="8_thb7q"]
 [ext_resource type="Script" uid="uid://dvtg55vk1mdir" path="res://Common/Game/C-sharp/ParallaxController.cs" id="9_vai4s"]
 [ext_resource type="Texture2D" uid="uid://bi821iw5drg7c" path="res://Levels/TransmissionCenter/Decoration/Particles/smoke_02.png" id="10_m7vtq"]
+[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="11_cl2se"]
 [ext_resource type="PackedScene" uid="uid://ctr84t408tdtr" path="res://Levels/Common/Triggers/CamRegion.tscn" id="11_va6ou"]
+[ext_resource type="Resource" uid="uid://dbyduxe5qrotl" path="res://Actors/Auta/Scripts/Parameter Resources/auta_throw_parameters.tres" id="16_q524b"]
 [ext_resource type="TileSet" uid="uid://mik10cn5b22t" path="res://Levels/SteamPlateau/Tiles/steam_plateau_tileset.tres" id="17_4p0ms"]
 [ext_resource type="Script" uid="uid://bqoncsiwhcrgb" path="res://Common/Camera/parallax_controller.gd" id="19_vbc5e"]
 [ext_resource type="Texture2D" uid="uid://bp07t6jxj4ir3" path="res://Levels/SteamPlateau/Decorations/BigMushroom.png" id="20_4p0ms"]
@@ -19,7 +21,6 @@
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="48_w07h7"]
 [ext_resource type="Resource" uid="uid://b8xakgch0m1lu" path="res://Actors/Auta/Scripts/Parameter Resources/constellation_parameters.tres" id="49_mjabi"]
 [ext_resource type="Resource" uid="uid://c1104baue8t8u" path="res://Actors/Auta/Scripts/Parameter Resources/auta_duck_parameters.tres" id="50_vx0vq"]
-[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="51_ltoul"]
 [ext_resource type="Resource" uid="uid://dds83antj5nu5" path="res://Actors/Auta/Scripts/Parameter Resources/auta_jump_parameters.tres" id="52_1bxp0"]
 [ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Actors/Auta/Scripts/Parameter Resources/auta_movement_parameters.tres" id="53_u7gxb"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="54_7qssg"]
@@ -53,9 +54,9 @@ light_mode = 1
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ll8xe"]
 size = Vector2(500, 500)
 
-[sub_resource type="Resource" id="Resource_m4un6"]
+[sub_resource type="Resource" id="Resource_cl2se"]
 resource_local_to_scene = true
-script = ExtResource("51_ltoul")
+script = ExtResource("11_cl2se")
 recovery_time = 0.25
 recovery_min_speed = 80.0
 invincibility_time = 1.0
@@ -70,7 +71,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl2se"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q524b"]
 resource_local_to_scene = true
 shader = ExtResource("56_blfg5")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -301,15 +302,16 @@ unlocked_orb = true
 parameters = Dictionary[String, ExtResource("48_w07h7")]({
 "constellation": ExtResource("49_mjabi"),
 "duck": ExtResource("50_vx0vq"),
-"hurt": SubResource("Resource_m4un6"),
+"hurt": SubResource("Resource_cl2se"),
 "jump": ExtResource("52_1bxp0"),
 "movement": ExtResource("53_u7gxb"),
 "orb": ExtResource("54_7qssg"),
-"speed": ExtResource("55_lgahf")
+"speed": ExtResource("55_lgahf"),
+"throw": ExtResource("16_q524b")
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_cl2se")
+material = SubResource("ShaderMaterial_q524b")
 rotation = 25.132742
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]

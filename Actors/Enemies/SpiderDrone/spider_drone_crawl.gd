@@ -18,7 +18,7 @@ func _process(delta):
 		forward_cast.position.y = -15
 		grounded_buffer = 0.3
 	elif grounded_buffer > 0: #Look behind for walls to climb (rotating down)
-		entity.move(-Vector2.UP/delta, delta, false)
+		entity.move(-Vector2.UP*14, 1.0/60, false)
 		forward_cast.target_position.x = -12.0
 		forward_cast.position.y = 0
 		grounded_buffer -= delta
@@ -30,7 +30,7 @@ func _process(delta):
 		entity.global_position = forward_cast.get_collision_point()
 		entity.up_direction = Vector2.from_angle(entity.rotation - PI/2)
 		entity.gravity_direction = -entity.up_direction
-		entity.move(-Vector2.UP/delta, delta, false)
+		entity.move(-Vector2.UP*14, 1.0/60, false)
 	
 	if not entity.is_on_floor() and grounded_buffer <= 0: #Found no walls in time, falling
 		entity.up_direction = Vector2.UP

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cqlrgovp12eov"]
+
+[ext_resource type="Script" uid="uid://cwt5nuw4ysbt3" path="res://Levels/Common/Obstacles/Chain/chain.gd" id="1_2oteb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2oteb"]
+
+[node name="ChainTest" type="Node2D" unique_id=306897547]
+
+[node name="Chain" type="Node2D" parent="." unique_id=513495003]
+position = Vector2(40, -56)
+rotation = 1.5707964
+script = ExtResource("1_2oteb")
+
+[node name="Anchor" type="StaticBody2D" parent="Chain" unique_id=1706226157]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chain/Anchor" unique_id=1112086235]
+visible = false
+shape = SubResource("CircleShape2D_2oteb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1162048022]
+zoom = Vector2(4, 4)

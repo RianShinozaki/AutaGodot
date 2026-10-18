@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bo382opbg1lma" path="res://Debug/TestTileset.png" id="16_5l1qf"]
 [ext_resource type="Resource" uid="uid://b6nf7ajycjq30" path="res://Actors/Auta/Scripts/Parameter Resources/auta_movement_parameters.tres" id="16_ewhb5"]
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="17_03n2r"]
-[ext_resource type="PackedScene" uid="uid://dqojhxpt2n0ma" path="res://Actors/Enemies/Lumpy/Lumpy.tscn" id="17_d7km0"]
+[ext_resource type="PackedScene" uid="uid://gslqy18ic6mv" path="res://Levels/Common/Obstacles/Chain/chain_gear.tscn" id="18_b2cbi"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="18_wm0ae"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="19_lqo8w"]
 [ext_resource type="PackedScene" uid="uid://ctr84t408tdtr" path="res://Levels/Common/Triggers/CamRegion.tscn" id="21_h88o7"]
@@ -137,13 +137,16 @@ metadata/_custom_type_script = "uid://dql0e6xd5vhy7"
 
 [node name="GameSystem" parent="." unique_id=1502683367 instance=ExtResource("3_rn1av")]
 
+[node name="Camera2D" parent="GameSystem/Cam" parent_id_path=PackedInt32Array(1502683367, 1204299270) index="0" unique_id=1173792142]
+zoom = Vector2(3, 3)
+
 [node name="Entities" type="Node2D" parent="." unique_id=560572929]
 texture_filter = 1
 position = Vector2(1, -144)
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("10_xqdfj")]
 visibility_layer = 1025
-position = Vector2(87, 116)
+position = Vector2(71, 116)
 parameters = Dictionary[String, ExtResource("11_xp32u")]({
 "constellation": ExtResource("12_dhpgb"),
 "duck": ExtResource("13_ibmtm"),
@@ -187,12 +190,27 @@ tile_set = SubResource("TileSet_b2cbi")
 [node name="CamRegion2" parent="." unique_id=1814409989 instance=ExtResource("21_h88o7")]
 position = Vector2(1, -448)
 scale = Vector2(2, 2)
+zoom = 3
 
-[node name="Lumpy" parent="." unique_id=1556690808 instance=ExtResource("17_d7km0")]
-position = Vector2(184, -28)
+[node name="ChainGear2" parent="." unique_id=1731105931 instance=ExtResource("18_b2cbi")]
+z_index = -2
+position = Vector2(144, -176)
+rollup_on_start = false
+debug_controls = true
+length = 5
 
-[node name="Lumpy2" parent="." unique_id=603152992 instance=ExtResource("17_d7km0")]
-position = Vector2(288, -28)
+[node name="ChainGear" parent="." unique_id=1519140498 instance=ExtResource("18_b2cbi")]
+z_index = -2
+position = Vector2(223, -240)
+rollup_on_start = false
+debug_controls = true
+
+[node name="ChainGear3" parent="." unique_id=896761658 instance=ExtResource("18_b2cbi")]
+z_index = -2
+position = Vector2(424, -432)
+rollup_on_start = false
+debug_controls = true
+length = 15
 
 [editable path="GameSystem"]
 [editable path="GameSystem/Cam"]

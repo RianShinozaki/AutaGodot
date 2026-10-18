@@ -53,6 +53,7 @@
 [ext_resource type="Script" uid="uid://ceilxe6lj357r" path="res://Actors/Auta/Scripts/Action States/auta_grab_state.gd" id="47_hcp3v"]
 [ext_resource type="Texture2D" uid="uid://djybc0421wa7a" path="res://Actors/Auta/Images/AimReticle.png" id="50_40br1"]
 [ext_resource type="Texture2D" uid="uid://dt4hy3av0h1mi" path="res://Actors/Auta/Images/AimArrow.png" id="51_bicp6"]
+[ext_resource type="Script" uid="uid://b78lu701i6a8q" path="res://Actors/Auta/Scripts/Action States/player_chainclimb_state.gd" id="54_uqnkr"]
 
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
@@ -397,6 +398,23 @@ tracks/9/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_uqnkr"]
+resource_name = "Rope_Idle"
+length = 0.1
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [93]
+}
+
 [sub_resource type="Animation" id="Animation_5hoco"]
 resource_name = "Run"
 length = 0.68
@@ -534,6 +552,23 @@ tracks/0/keys = {
 "values": [53, 54]
 }
 
+[sub_resource type="Animation" id="Animation_doylp"]
+resource_name = "To_Rope"
+length = 0.3332
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [90, 91, 92, 93]
+}
+
 [sub_resource type="Animation" id="Animation_2r0hl"]
 resource_name = "Turn"
 length = 0.2
@@ -566,12 +601,14 @@ _data = {
 &"Land": SubResource("Animation_pkp4k"),
 &"Orb": SubResource("Animation_dqf4c"),
 &"RESET": SubResource("Animation_q4vwf"),
+&"Rope_Idle": SubResource("Animation_uqnkr"),
 &"Run": SubResource("Animation_5hoco"),
 &"Skate": SubResource("Animation_ek8y2"),
 &"Slide": SubResource("Animation_310b7"),
 &"ThrowFlip": SubResource("Animation_1pfnt"),
 &"ThrowSpin": SubResource("Animation_ln1gp"),
 &"ToOrb": SubResource("Animation_t46mf"),
+&"To_Rope": SubResource("Animation_doylp"),
 &"Turn": SubResource("Animation_2r0hl")
 }
 
@@ -1032,6 +1069,28 @@ graph_offset = Vector2(37, -93)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x8bts"]
 animation = &"Orb"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uqnkr"]
+animation = &"Rope_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_doylp"]
+animation = &"To_Rope"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_merf2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pwwud"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_merf2"]
+states/Rope_Idle/node = SubResource("AnimationNodeAnimation_uqnkr")
+states/Rope_Idle/position = Vector2(401.8, 143.79999)
+states/Start/position = Vector2(202.4, 76.8)
+states/To_Rope/node = SubResource("AnimationNodeAnimation_doylp")
+states/To_Rope/position = Vector2(407.2, 18.199997)
+transitions = ["Start", "To_Rope", SubResource("AnimationNodeStateMachineTransition_merf2"), "To_Rope", "Rope_Idle", SubResource("AnimationNodeStateMachineTransition_pwwud")]
+graph_offset = Vector2(-97, -144)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li7pu"]
 animation = &"ThrowSpin"
 
@@ -1069,22 +1128,24 @@ states/Jump/node = SubResource("AnimationNodeStateMachine_fohhu")
 states/Jump/position = Vector2(428.8, -138.6)
 states/Orb/node = SubResource("AnimationNodeAnimation_x8bts")
 states/Orb/position = Vector2(266.8, -37.6)
+states/Rope/node = SubResource("AnimationNodeStateMachine_merf2")
+states/Rope/position = Vector2(413.19995, 213.05301)
 states/Start/position = Vector2(151.2, 122.944)
 states/ThrowSpin/node = SubResource("AnimationNodeAnimation_li7pu")
 states/ThrowSpin/position = Vector2(201, -115)
 states/ToOrb/node = SubResource("AnimationNodeAnimation_t46mf")
 states/ToOrb/position = Vector2(-73.20001, -96.746994)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee"), "ToOrb", "Orb", SubResource("AnimationNodeStateMachineTransition_k2uvo")]
-graph_offset = Vector2(-211, -187.94699)
+graph_offset = Vector2(-91, -103.94699)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3wth"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjva5"]
 radius = 6.0
 height = 25.0
 
 [sub_resource type="Resource" id="Resource_sr3rh"]
 script = ExtResource("28_n5n6a")
 damage = 4
-x_knockback = 90.0
+x_knockback = 30.0
 y_knockback = -15.0
 x_knockback_is_relative = true
 knockback_power = 1
@@ -1105,7 +1166,7 @@ blend_mode = 1
 [sub_resource type="Resource" id="Resource_8pc40"]
 script = ExtResource("28_n5n6a")
 damage = 5
-x_knockback = 120.0
+x_knockback = 60.0
 y_knockback = -30.0
 x_knockback_is_relative = true
 knockback_power = 1
@@ -1230,7 +1291,7 @@ count = 10
 
 [node name="EnvironmentBox" type="CollisionShape2D" parent="." unique_id=216419676]
 position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_r3wth")
+shape = SubResource("CapsuleShape2D_sjva5")
 
 [node name="GenericAttributes" type="Node2D" parent="." unique_id=152766589]
 
@@ -1450,3 +1511,7 @@ visible = false
 [node name="Sprite2D" type="Sprite2D" parent="ActionStates/ConstellationState/AimPivot" unique_id=1442805135]
 position = Vector2(23, 0)
 texture = ExtResource("47_gea82")
+
+[node name="ChainClimbState" type="Node2D" parent="ActionStates" unique_id=1553524922]
+script = ExtResource("54_uqnkr")
+swing_influence = 500.0

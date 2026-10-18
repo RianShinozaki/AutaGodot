@@ -423,7 +423,6 @@ radius = 64.0
 
 [node name="Lumpy" type="CharacterBody2D" unique_id=1556690808 node_paths=PackedStringArray("current_ai_state", "current_action_state")]
 collision_layer = 2
-velocity = Vector2(0, 2431.6692)
 script = ExtResource("1_pxb8d")
 current_ai_state = NodePath("AIStates/PatrolState")
 ai_parameters = Dictionary[String, ExtResource("2_fud45")]({
@@ -480,7 +479,6 @@ can_be_stunned = true
 
 [node name="HurtManager" type="Node2D" parent="SpecialAttributes" unique_id=57049452]
 script = ExtResource("25_jkofg")
-power_resistance = 1
 
 [node name="DeathManager" type="Node2D" parent="SpecialAttributes" unique_id=70612697]
 script = ExtResource("18_3s03o")
