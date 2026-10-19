@@ -32,6 +32,9 @@ func _process(delta):
 		entity.gravity_direction = -entity.up_direction
 		entity.move(-Vector2.UP*14, 1.0/60, false)
 	
+	if entity.is_on_wall():
+		entity.global_position += entity.up_direction*4
+		
 	if not entity.is_on_floor() and grounded_buffer <= 0: #Found no walls in time, falling
 		entity.up_direction = Vector2.UP
 		entity.gravity_direction = -Vector2.UP

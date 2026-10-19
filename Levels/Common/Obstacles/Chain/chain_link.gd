@@ -7,6 +7,8 @@ signal player_attached
 signal player_detached
 var chain_index: int = 0
 
+const default_weight = 1
+
 func _on_player_grabber_body_entered(body):
 	if not active: return
 	

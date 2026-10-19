@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bouw715ol1q78"
-path="res://.godot/imported/SimpleTrigger.png-64e4deff7a5afd7556a1759751ea7a24.ctex"
+path="res://.godot/imported/SimpleTrigger.png-a1012087ffb2958d75d9256c9db9fd39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://z-Unused/Misc/Objects/SimpleTrigger.png"
-dest_files=["res://.godot/imported/SimpleTrigger.png-64e4deff7a5afd7556a1759751ea7a24.ctex"]
+source_file="res://Levels/Common/Triggers/SimpleTrigger.png"
+dest_files=["res://.godot/imported/SimpleTrigger.png-a1012087ffb2958d75d9256c9db9fd39.ctex"]
 
 [params]
 

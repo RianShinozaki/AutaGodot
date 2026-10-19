@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cldrplep10j32" path="res://Levels/Common/Obstacles/Chain/chain_gear.gd" id="1_p8liv"]
 [ext_resource type="Texture2D" uid="uid://dclehgu75tkre" path="res://Levels/Common/Obstacles/Chain/chaingear-TC.png" id="2_iodkw"]
-[ext_resource type="Script" uid="uid://cwt5nuw4ysbt3" path="res://Levels/Common/Obstacles/Chain/chain_anchor.gd" id="3_8do1y"]
+[ext_resource type="PackedScene" uid="uid://bd7isicbs2n0w" path="res://Levels/Common/Obstacles/Chain/chain_anchor.tscn" id="3_iodkw"]
+[ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Effects/Images/Lighting/CircleSDF.tres" id="4_iodkw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hhj4w"]
 friction = 0.5
@@ -12,8 +13,6 @@ absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hhj4w"]
 radius = 2.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2oteb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p8liv"]
 radius = 16.0
@@ -32,14 +31,8 @@ texture = ExtResource("2_iodkw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=45181712]
 shape = SubResource("CircleShape2D_hhj4w")
 
-[node name="Anchor" type="StaticBody2D" parent="." unique_id=1915303532]
+[node name="Anchor" parent="." unique_id=1835664497 instance=ExtResource("3_iodkw")]
 position = Vector2(-8, 8)
-collision_layer = 2
-script = ExtResource("3_8do1y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor" unique_id=1927530285]
-visible = false
-shape = SubResource("CircleShape2D_2oteb")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=913850147]
 collision_layer = 0
@@ -48,5 +41,9 @@ collision_mask = 1280
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=894214571]
 shape = SubResource("CircleShape2D_p8liv")
 debug_color = Color(0.98275965, 0, 0.36351418, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=755851677]
+color = Color(0.9961924, 0.8282098, 0.5773389, 1)
+texture = ExtResource("4_iodkw")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

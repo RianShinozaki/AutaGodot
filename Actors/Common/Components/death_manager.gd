@@ -10,6 +10,7 @@ func _ready():
 func query_death(_hitbox: Hitbox):
 	if status.health <= 0:
 		if status.stunned or not status.can_be_stunned:
+			print("should die")
 			death()
 		elif not status.stunned and status.can_be_stunned:
 			if _hitbox.hitbox_data.damage_type == HitboxData.DamageType.HEAVY:
@@ -19,6 +20,8 @@ func query_death(_hitbox: Hitbox):
 				entity.velocity = _dir * 250
 				entity.move_and_collide(_dir * 8)
 			else:
+				print("should be stunned")
+				print(status.stunned)
 				entity.switch_action_state_name("StunState")
 				if entity is AIEntity:
 					entity.current_ai_state.active = false

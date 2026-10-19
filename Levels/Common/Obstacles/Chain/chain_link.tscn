@@ -17,7 +17,7 @@ script = ExtResource("1_3do5u")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1611860183]
 position = Vector2(-6.993822e-07, 0)
-softness = 0.1
+softness = 0.01
 angular_limit_enabled = true
 angular_limit_lower = -3.1415927
 angular_limit_upper = 3.1415927
@@ -25,6 +25,7 @@ angular_limit_upper = 3.1415927
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1370747705]
 collision_layer = 2
 collision_mask = 2147483649
+gravity_scale = 1.5
 linear_damp = 0.05
 angular_damp = 0.05
 

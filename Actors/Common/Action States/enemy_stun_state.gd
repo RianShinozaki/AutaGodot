@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 
 
 func _end() -> void:
-	entity.get_node("GenericAttributes/EntityStatus").stunned = false
+	entity.get_node("GenericAttributes/EntityStatus").can_be_stunned = false
 	
 	super._end()
 	

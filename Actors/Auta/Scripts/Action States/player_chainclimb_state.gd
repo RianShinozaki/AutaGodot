@@ -25,7 +25,6 @@ func _ready() -> void:
 	jmp_param = entity.parameters["jump"]
 	anim = entity.get_node("Art/AnimationTree")
 	inp.action_a_just_pressed.connect(on_jump)
-	inp.action_b_just_pressed.connect(on_attack)
 	inp.action_c_just_pressed.connect(on_orb)
 	auta = entity as Auta
 
@@ -69,16 +68,19 @@ func _process(delta: float) -> void:
 			lerp_bias = 0
 			anim.get("parameters/playback").start("Rope", true)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if not active: return
+	var _link_rb: RigidBody2D = grabbed_chain.get_node("RigidBody2D")
 	var hor = inp.input_direction.x
 	if abs(hor) > 0.5:
-		var _link_rb: RigidBody2D = grabbed_chain.get_node("RigidBody2D")
 		var force_dir: Vector2 = grabbed_chain.vector_to_anchor().normalized().rotated(PI/2)
 		_link_rb.apply_force(force_dir * sign(hor) * swing_influence)
+	
+	_link_rb.apply_force(Vector2.DOWN * swing_influence/2)
 		
 func _end() -> void:
+	anim.get("parameters/playback").start("Grounded", true)
 	entity.global_rotation = 0
 	super._end()
 	
@@ -95,14 +97,11 @@ func on_jump():
 	var _link_rb: RigidBody2D = grabbed_chain.get_node("RigidBody2D")
 	entity.velocity += _link_rb.linear_velocity
 
-func on_attack():
-	if not active: return
-	entity.switch_action_state_name("AttackState")
-		
 func on_orb():
 	if not active: return
 	if auta.can_orb and auta.unlocked_orb:
 		entity.switch_action_state_name("OrbState")
+		grabbed_chain.player_just_detached()
 
 
 func play_animation_oneshot(_anim: String):

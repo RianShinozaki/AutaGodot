@@ -1,3 +1,4 @@
+class_name ChainGear
 extends AnimatableBody2D
 
 @export var rollup_on_start: bool = true
@@ -79,5 +80,5 @@ func unroll():
 	gear_collider.set_deferred("disabled", true)
 
 
-func _on_hitbox_area_entered(area):
+func _on_hitbox_area_entered(_area):
 	unroll()

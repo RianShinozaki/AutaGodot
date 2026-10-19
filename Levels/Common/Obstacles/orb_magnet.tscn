@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xhsj0g8qclnp"]
 
 [ext_resource type="Script" uid="uid://bwcqcoj2gh2vp" path="res://Levels/Common/Obstacles/orb_magnet.gd" id="1_tt5pr"]
-[ext_resource type="Texture2D" uid="uid://bouw715ol1q78" path="res://z-Unused/Misc/Objects/SimpleTrigger.png" id="2_8xuax"]
+[ext_resource type="Texture2D" uid="uid://bouw715ol1q78" path="res://Levels/Common/Triggers/SimpleTrigger.png" id="2_8xuax"]
 
 [sub_resource type="Curve" id="Curve_2pxw4"]
 _data = [Vector2(0, 0.5093521), 0.0, 0.0, 0, 0, Vector2(0.9999999, 0.98697394), 1.6234425, 0.0, 0, 0]

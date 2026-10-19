@@ -26,10 +26,8 @@ func area_entered(_hitbox: Area2D):
 
 	if _dist_to_cam < 400:
 		GameCamera.instance.shake_screen(_len, 0.25)
-	
-	#Play sound
-	if _hb_data.impact_sound:
-		SFXController.play_sound(_hb_data.impact_sound, global_position, 1, randf_range(0.9, 1.1))
+		if _hb_data.impact_sound:
+			SFXController.play_sound(_hb_data.impact_sound, global_position, 1, randf_range(0.9, 1.1))
 	
 	hp -= _hb_data.damage
 	if hp <= 0:

@@ -83,44 +83,45 @@ Some text is burned onto the weakly flickering monitor.
 => END
 
 ~ reflection
-So, this is you.
+(...What is this?)
+(...Is this me?)
 => END
 
 ~ reflection_2
-This is who you are.
+(This can't be real... I can't be...)
 => END
 
 ~ reflection_3
-This is what you look like.
+(That can't be what I look like.)
 => END
 
 ~ reflection_4
-That's your face.
-That's your skin.
-Those are your hands.
-Those are your eyes.
+(That can't be my face.)
+(That can't be my skin.)
+(That's not my hand.)
+(Those aren't my eyes.)
 => END
 
 ~ reflection_5
-[speed=0.2]This is what that child was afraid of.[next=auto]
+[speed=0.4](This can't be me.)[next=auto]
 => END
 
 ~ warning
-Loudspeaker: WARNING. ENERGY LEAK DETECTED.
-Loudspeaker: POTENTIAL PRESENCE OF CLASS 2 OR 1 AUTOMATON.
+Loudspeaker: WARNING. ENERGY DIFFUSION DETECTED.
+Loudspeaker: POTENTIAL PRESENCE OF WAR-CLASS AUTOMATON.
 Loudspeaker: ALL AUTOMATONS - PRESENT YOURSELF TO A SCANNER IMMEDIATELY.
 => END
 
 ~ scanner_1
-Computer: SCANNING IN PROGRESS...
-Computer: CLASS 1 SENTIENT AUTOMATON DETECTED.
-Computer: CODENAME: AUTA
-Computer: FULL AUTHORIZATION GRANTED. ALARMS DISENGAGED.
+Computer: AUTHORIZED CLASS 1 AUTOMATON DETECTED.
+Computer: HELLO, AUTA.
+Computer: FULL AUTHORIZATION GRANTED. DISENGAGING ALARMS.
 => END
 
 ~ scanner_2
+Computer: SCANNING...
 Computer: MULTIPLE CRITICAL ISSUES DETECTED WITH AUTOMATON.
-Computer: INITIATING DIAGNOSTIC AND REPAIR HALO.
+Computer: WE WILL INITIATE DIAGNOSTIC AND REPAIR HALO.
 => END
 
 ~ scanner_3

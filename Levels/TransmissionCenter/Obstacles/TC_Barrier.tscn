@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c3tqaxviynfdt"]
+
+[ext_resource type="Script" uid="uid://catp2wb1nxpty" path="res://Levels/Common/Obstacles/barrier_wall.gd" id="1_1rljy"]
+[ext_resource type="Texture2D" uid="uid://dkntrtwmmidx6" path="res://Levels/TransmissionCenter/Obstacles/Barrier.png" id="1_ikc2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rljy"]
+size = Vector2(16, 64)
+
+[node name="TC_Barrier" type="AnimatableBody2D" unique_id=446126807]
+texture_filter = 1
+script = ExtResource("1_1rljy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1460948158]
+position = Vector2(8, 32)
+texture = ExtResource("1_ikc2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1029701392]
+position = Vector2(8, 32)
+shape = SubResource("RectangleShape2D_1rljy")

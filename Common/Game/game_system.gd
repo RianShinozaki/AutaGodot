@@ -2,7 +2,7 @@ class_name GameSystem extends Node
 
 static var instance: GameSystem
 
-@onready var game_world: GameWorld = $GameWorld
+var game_world: GameWorld
 
 enum GameState {
 	PLAY,

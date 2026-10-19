@@ -2,5 +2,5 @@ extends Area2D
 @export var music: AudioStream
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	MusicController.start_music(music, 0.6)

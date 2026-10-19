@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://br2b6xtvlmnr4" path="res://Actors/Common/Action States/parameter_set.gd" id="5_wygs3"]
 [ext_resource type="Script" uid="uid://dymrp8farfsle" path="res://Actors/Common/Action States/Parameter Scripts/entity_jump_parameters.gd" id="5_y58lb"]
 [ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="6_7rhdr"]
+[ext_resource type="Script" uid="uid://bpm1hc74705k7" path="res://Actors/Common/entity_art.gd" id="9_y58lb"]
 [ext_resource type="Material" uid="uid://dd87u6he2t1n1" path="res://Actors/Common/Shaders/2D-Default.tres" id="10_7mryq"]
 [ext_resource type="Texture2D" uid="uid://dke244re1b8y2" path="res://Actors/Enemies/SpiderDrone/spiderdrone.png" id="11_j13ef"]
 [ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="14_4hrmk"]
@@ -133,6 +134,7 @@ position = Vector2(0, -16)
 texture = ExtResource("11_j13ef")
 offset = Vector2(-1, 0)
 hframes = 4
+script = ExtResource("9_y58lb")
 
 [node name="AfterImageGenerator" type="Node" parent="Art" unique_id=1985823799]
 script = ExtResource("14_4hrmk")

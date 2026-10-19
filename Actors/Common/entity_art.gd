@@ -3,6 +3,7 @@ extends Sprite2D
 var base_offset: Vector2 
 var entity: CollisionEntity
 
+
 func _ready() -> void:
 	base_offset = offset
 	entity = get_parent()
