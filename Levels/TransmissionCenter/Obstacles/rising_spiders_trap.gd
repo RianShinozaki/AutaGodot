@@ -18,9 +18,10 @@ func _on_trigger_body_entered(body):
 		#voice.play()
 		GameCamera.instance.shake_screen(1, 20)
 		light.visible = true
+		MusicController.start_music(scare_sound, 0.6, true)
+		
 		await get_tree().create_timer(0.5).timeout
 		active = true
-		MusicController.start_music(scare_sound)
 		
 
 func _process(delta):

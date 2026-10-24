@@ -5,7 +5,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_evwo5"]
 blend_mode = 1
 
-[node name="PointLight2D14" type="PointLight2D" unique_id=1398715599]
+[node name="PointLight2D14" type="PointLight2D" unique_id=1398715599 groups=["RoomStateDetector"]]
 rotation = -3.1415927
 scale = Vector2(1, 2)
 color = Color(0.8317482, 0, 0.31637076, 1)

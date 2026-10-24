@@ -7,13 +7,14 @@
 [ext_resource type="FontFile" uid="uid://bp8nix4b6mabv" path="res://UI/Fonts/THEBOLDFONT-FREEVERSION.ttf" id="5_xmds5"]
 [ext_resource type="Texture2D" uid="uid://5yf705k887bl" path="res://UI/Game/Sparkle.png" id="5_yrovb"]
 [ext_resource type="Texture2D" uid="uid://dk750ibmy7jiv" path="res://UI/Dialogue/TessPortrait.png" id="7_yrovb"]
-[ext_resource type="Texture2D" uid="uid://db6yplo50hftd" path="res://UI/Game/Auta_2025_Trio.png" id="8_ccb1e"]
+[ext_resource type="Texture2D" uid="uid://defw7moc6h2e3" path="res://UI/Game/Auta_2025_Trio_3_colour.png" id="8_ixg0m"]
+[ext_resource type="Texture2D" uid="uid://cwegb2qeyjt44" path="res://UI/Game/AutaUIMask.png" id="8_s8lkg"]
 [ext_resource type="Texture2D" uid="uid://bhrhhv2wusop1" path="res://UI/Game/Sparkle-individual.png" id="8_x6nag"]
-[ext_resource type="Texture2D" uid="uid://dnayf1qt203nc" path="res://z-Unused/BigHeartMask.png" id="9_4vbml"]
 [ext_resource type="Shader" uid="uid://balfwwe82aysw" path="res://UI/scroll_ui_add.gdshader" id="9_ccb1e"]
 [ext_resource type="Texture2D" uid="uid://c3bj15puqa67s" path="res://Effects/Images/Lighting/CircleSDF.tres" id="9_ijkxl"]
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Enemies/Lumpy/LumpySheet.png" id="9_sru0y"]
 [ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://UI/ui_square.gdshader" id="13_ccb1e"]
+[ext_resource type="Texture2D" uid="uid://8eey14t8daqn" path="res://UI/GamePauseMenu/Triangles.png" id="15_8hdo2"]
 
 [sub_resource type="Gradient" id="Gradient_4vbml"]
 offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
@@ -83,43 +84,17 @@ font_size = 35
 font_color = Color(0.4627451, 0.14901961, 0.4, 1)
 outline_size = 10
 
-[sub_resource type="Gradient" id="Gradient_ccb1e"]
-offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_73bxj"]
-gradient = SubResource("Gradient_ccb1e")
-width = 256
-height = 256
-fill_from = Vector2(0.1923077, 0.41025642)
-fill_to = Vector2(0.52136755, 0.26068377)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vbml"]
 shader = ExtResource("13_ccb1e")
 shader_parameter/tex = ExtResource("5_m3ws1")
-shader_parameter/mask = SubResource("GradientTexture2D_73bxj")
+shader_parameter/mask = ExtResource("8_s8lkg")
 shader_parameter/tex_size = Vector2(128, 128)
-shader_parameter/mask_size = Vector2(104.355, 128)
+shader_parameter/mask_size = Vector2(104, 128)
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
 shader_parameter/modulate = Color(0.88199216, 0.2385431, 0.5766974, 1)
-shader_parameter/sprite = ExtResource("8_ccb1e")
-shader_parameter/sprite_size = Vector2(84.215, 210.06)
-shader_parameter/sprite_offset = Vector2(0.02, 0)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vbml"]
-load_path = "res://.godot/imported/Auta_2025_Trio.png-72382f67ddf25bff44194e033109920d.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqqqp"]
-shader = ExtResource("13_ccb1e")
-shader_parameter/tex = ExtResource("5_m3ws1")
-shader_parameter/mask = ExtResource("9_4vbml")
-shader_parameter/tex_size = Vector2(128, 128)
-shader_parameter/mask_size = Vector2(128, 128)
-shader_parameter/scroll_speed = Vector2(0.1, 0.1)
-shader_parameter/modulate = Color(0.88199216, 0.2385431, 0.5766974, 1)
-shader_parameter/sprite = SubResource("CompressedTexture2D_4vbml")
-shader_parameter/sprite_size = Vector2(90.53, 210.06)
-shader_parameter/sprite_offset = Vector2(-0.01, -0.095)
+shader_parameter/sprite = ExtResource("8_ixg0m")
+shader_parameter/sprite_size = Vector2(176.4, 327.75)
+shader_parameter/sprite_offset = Vector2(0.22, 0.055)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xmds5"]
 font = ExtResource("5_xmds5")
@@ -147,24 +122,41 @@ light_mode = 1
 font = ExtResource("5_xmds5")
 font_size = 32
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3km2"]
+atlas = ExtResource("15_8hdo2")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hdo2"]
+atlas = ExtResource("15_8hdo2")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8hdo2"]
+font = ExtResource("5_xmds5")
+font_size = 30
+
 [node name="PlayerUI" type="CanvasLayer" unique_id=258548040]
+process_mode = 3
 layer = 100
-offset = Vector2(50, 30)
 scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 50, 30)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_xlwdk")
 
-[node name="TessTab2" type="Control" parent="." unique_id=1883699700]
+[node name="PlayUI" type="Control" parent="." unique_id=1252832350]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TessTab2" type="Control" parent="PlayUI" unique_id=1883699700]
 visible = false
 texture_filter = 1
-layout_mode = 3
 anchors_preset = 0
 offset_left = 127.0
 offset_top = 9.0
 offset_right = 167.0
 offset_bottom = 49.0
 
-[node name="TextureRect" type="TextureRect" parent="TessTab2" unique_id=1726680687]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/TessTab2" unique_id=1726680687]
 material = SubResource("ShaderMaterial_3xhk1")
 layout_mode = 0
 offset_left = -40.0
@@ -172,7 +164,7 @@ offset_right = 80.0
 offset_bottom = 24.0
 texture = SubResource("PlaceholderTexture2D_ijkxl")
 
-[node name="TextureRect2" type="TextureRect" parent="TessTab2" unique_id=1136378849]
+[node name="TextureRect2" type="TextureRect" parent="PlayUI/TessTab2" unique_id=1136378849]
 layout_mode = 0
 offset_left = -8.0
 offset_top = -35.0
@@ -180,17 +172,16 @@ offset_right = 56.0
 offset_bottom = 29.0
 texture = ExtResource("7_yrovb")
 
-[node name="TessTab" type="Control" parent="." unique_id=1812065505]
+[node name="TessTab" type="Control" parent="PlayUI" unique_id=1812065505]
 visible = false
 texture_filter = 1
-layout_mode = 3
 anchors_preset = 0
 offset_left = 47.0
 offset_top = 9.0
 offset_right = 87.0
 offset_bottom = 49.0
 
-[node name="TextureRect" type="TextureRect" parent="TessTab" unique_id=985122956]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/TessTab" unique_id=985122956]
 material = SubResource("ShaderMaterial_rl5i0")
 layout_mode = 0
 offset_left = -40.0
@@ -198,7 +189,7 @@ offset_right = 80.0
 offset_bottom = 24.0
 texture = SubResource("PlaceholderTexture2D_ijkxl")
 
-[node name="TextureRect2" type="TextureRect" parent="TessTab" unique_id=462100275]
+[node name="TextureRect2" type="TextureRect" parent="PlayUI/TessTab" unique_id=462100275]
 layout_mode = 0
 offset_left = -8.0
 offset_top = -35.0
@@ -206,16 +197,15 @@ offset_right = 56.0
 offset_bottom = 29.0
 texture = ExtResource("7_yrovb")
 
-[node name="HPBar" type="Control" parent="." unique_id=737186914]
+[node name="HPBar" type="Control" parent="PlayUI" unique_id=737186914]
 z_index = 1
-layout_mode = 3
 anchors_preset = 0
-offset_left = 63.0
-offset_top = -7.0
-offset_right = 103.0
-offset_bottom = 33.0
+offset_left = 87.0
+offset_top = 8.0
+offset_right = 127.0
+offset_bottom = 48.0
 
-[node name="WhiteOutline2" type="ColorRect" parent="HPBar" unique_id=1894528229]
+[node name="WhiteOutline2" type="ColorRect" parent="PlayUI/HPBar" unique_id=1894528229]
 z_index = -1
 layout_mode = 0
 offset_left = -18.0
@@ -223,7 +213,7 @@ offset_top = 58.0
 offset_right = 150.0
 offset_bottom = 66.0
 
-[node name="BlackBG" type="ColorRect" parent="HPBar" unique_id=1871582428]
+[node name="BlackBG" type="ColorRect" parent="PlayUI/HPBar" unique_id=1871582428]
 z_index = -1
 layout_mode = 0
 offset_left = -16.0
@@ -232,7 +222,7 @@ offset_right = 152.0
 offset_bottom = 64.0
 color = Color(0.06958811, 0.12734836, 0.27127957, 1)
 
-[node name="HealthBar" type="TextureProgressBar" parent="HPBar" unique_id=1861035504]
+[node name="HealthBar" type="TextureProgressBar" parent="PlayUI/HPBar" unique_id=1861035504]
 show_behind_parent = true
 clip_children = 1
 layout_mode = 0
@@ -246,7 +236,7 @@ value = 1.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_0ndgo")
 
-[node name="TextureRect" type="TextureRect" parent="HPBar/HealthBar" unique_id=2060491164]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/HPBar/HealthBar" unique_id=2060491164]
 modulate = Color(1.540184e-06, 0.83222675, 0.83440304, 1)
 texture_repeat = 3
 material = SubResource("ShaderMaterial_ijkxl")
@@ -257,7 +247,7 @@ offset_bottom = 2134.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_m3ws1")
 
-[node name="HP" type="Label" parent="HPBar" unique_id=826482009]
+[node name="HP" type="Label" parent="PlayUI/HPBar" unique_id=826482009]
 visible = false
 layout_mode = 0
 offset_left = -14.5
@@ -268,16 +258,15 @@ scale = Vector2(0.25, 0.25)
 text = "HP"
 label_settings = SubResource("LabelSettings_sru0y")
 
-[node name="AutaTab" type="Control" parent="." unique_id=1593533045]
+[node name="AutaTab" type="Control" parent="PlayUI" unique_id=1593533045]
 texture_filter = 1
-layout_mode = 3
 anchors_preset = 0
-offset_left = 15.0
-offset_top = 9.0
-offset_right = 55.0
-offset_bottom = 49.0
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 79.0
+offset_bottom = 64.0
 
-[node name="TextureRect" type="TextureRect" parent="AutaTab" unique_id=1771330838]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/AutaTab" unique_id=1771330838]
 material = SubResource("ShaderMaterial_4vbml")
 layout_mode = 0
 offset_left = -40.0
@@ -286,17 +275,7 @@ offset_right = 48.0
 offset_bottom = 72.0
 texture = SubResource("PlaceholderTexture2D_ijkxl")
 
-[node name="TextureRect2" type="TextureRect" parent="AutaTab" unique_id=1583973492]
-visible = false
-material = SubResource("ShaderMaterial_mqqqp")
-layout_mode = 0
-offset_left = -41.5
-offset_top = -42.5
-offset_right = 86.5
-offset_bottom = 85.5
-texture = SubResource("PlaceholderTexture2D_ijkxl")
-
-[node name="AUTA" type="Label" parent="AutaTab" unique_id=892063574]
+[node name="AUTA" type="Label" parent="PlayUI/AutaTab" unique_id=892063574]
 visible = false
 modulate = Color(0.9590284, 0.77197933, 0.8339528, 1)
 layout_mode = 0
@@ -309,16 +288,15 @@ text = "AUTA"
 label_settings = SubResource("LabelSettings_xmds5")
 horizontal_alignment = 1
 
-[node name="MPBar" type="Control" parent="." unique_id=1889887295]
+[node name="MPBar" type="Control" parent="PlayUI" unique_id=1889887295]
 z_index = 1
-layout_mode = 3
 anchors_preset = 0
-offset_left = 55.0
-offset_top = 9.0
-offset_right = 95.0
-offset_bottom = 49.0
+offset_left = 79.0
+offset_top = 24.0
+offset_right = 119.0
+offset_bottom = 64.0
 
-[node name="WhiteOutline2" type="ColorRect" parent="MPBar" unique_id=1233970938]
+[node name="WhiteOutline2" type="ColorRect" parent="PlayUI/MPBar" unique_id=1233970938]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -327,7 +305,7 @@ offset_top = 58.0
 offset_right = 134.0
 offset_bottom = 66.0
 
-[node name="BlackBG" type="ColorRect" parent="MPBar" unique_id=869024795]
+[node name="BlackBG" type="ColorRect" parent="PlayUI/MPBar" unique_id=869024795]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -337,7 +315,7 @@ offset_right = 136.0
 offset_bottom = 64.0
 color = Color(0.06958811, 0.12734836, 0.27127957, 1)
 
-[node name="MP" type="TextureRect" parent="MPBar" unique_id=46098130]
+[node name="MP" type="TextureRect" parent="PlayUI/MPBar" unique_id=46098130]
 modulate = Color(0.9625369, 0.76137334, 0.7979221, 1)
 self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
 clip_children = 2
@@ -349,7 +327,7 @@ offset_bottom = 72.0
 texture = ExtResource("5_yrovb")
 expand_mode = 3
 
-[node name="MPBar" type="TextureProgressBar" parent="MPBar/MP" unique_id=109039331]
+[node name="MPBar" type="TextureProgressBar" parent="PlayUI/MPBar/MP" unique_id=109039331]
 show_behind_parent = true
 layout_mode = 0
 offset_right = 48.0
@@ -360,12 +338,12 @@ value = 1.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_0ndgo")
 
-[node name="Sparkle1" type="Control" parent="MPBar" unique_id=1172423726]
+[node name="Sparkle1" type="Control" parent="PlayUI/MPBar" unique_id=1172423726]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Shape" type="TextureRect" parent="MPBar/Sparkle1" unique_id=211331820]
+[node name="Shape" type="TextureRect" parent="PlayUI/MPBar/Sparkle1" unique_id=211331820]
 self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
 clip_children = 1
 layout_mode = 0
@@ -376,7 +354,7 @@ offset_bottom = 72.0
 texture = ExtResource("8_x6nag")
 expand_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MPBar/Sparkle1/Shape" unique_id=690123266]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/MPBar/Sparkle1/Shape" unique_id=690123266]
 modulate = Color(0.8745098, 0.30980393, 0.59607846, 1)
 texture_repeat = 3
 material = SubResource("ShaderMaterial_73bxj")
@@ -387,7 +365,7 @@ offset_bottom = 2134.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_m3ws1")
 
-[node name="Light" type="TextureRect" parent="MPBar/Sparkle1" unique_id=537212084]
+[node name="Light" type="TextureRect" parent="PlayUI/MPBar/Sparkle1" unique_id=537212084]
 modulate = Color(0.6811064, 0.24548897, 0.54134667, 0.43529412)
 clip_children = 2
 material = SubResource("CanvasItemMaterial_ccb1e")
@@ -399,13 +377,13 @@ offset_bottom = 72.0
 texture = ExtResource("9_ijkxl")
 expand_mode = 3
 
-[node name="Sparkle2" type="Control" parent="MPBar" unique_id=1617644656]
+[node name="Sparkle2" type="Control" parent="PlayUI/MPBar" unique_id=1617644656]
 anchors_preset = 0
 offset_left = 16.0
 offset_right = 56.0
 offset_bottom = 40.0
 
-[node name="Shape" type="TextureRect" parent="MPBar/Sparkle2" unique_id=387230474]
+[node name="Shape" type="TextureRect" parent="PlayUI/MPBar/Sparkle2" unique_id=387230474]
 self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
 clip_children = 1
 layout_mode = 0
@@ -416,7 +394,7 @@ offset_bottom = 72.0
 texture = ExtResource("8_x6nag")
 expand_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MPBar/Sparkle2/Shape" unique_id=236780595]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/MPBar/Sparkle2/Shape" unique_id=236780595]
 modulate = Color(0.8745098, 0.30980393, 0.59607846, 1)
 texture_repeat = 3
 material = SubResource("ShaderMaterial_73bxj")
@@ -427,7 +405,7 @@ offset_bottom = 2134.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_m3ws1")
 
-[node name="Light" type="TextureRect" parent="MPBar/Sparkle2" unique_id=327081311]
+[node name="Light" type="TextureRect" parent="PlayUI/MPBar/Sparkle2" unique_id=327081311]
 modulate = Color(0.6811064, 0.24548897, 0.54134667, 0.43529412)
 clip_children = 2
 material = SubResource("CanvasItemMaterial_ccb1e")
@@ -439,13 +417,13 @@ offset_bottom = 72.0
 texture = ExtResource("9_ijkxl")
 expand_mode = 3
 
-[node name="Sparkle3" type="Control" parent="MPBar" unique_id=848191291]
+[node name="Sparkle3" type="Control" parent="PlayUI/MPBar" unique_id=848191291]
 anchors_preset = 0
 offset_left = 32.0
 offset_right = 72.0
 offset_bottom = 40.0
 
-[node name="Shape" type="TextureRect" parent="MPBar/Sparkle3" unique_id=1763196430]
+[node name="Shape" type="TextureRect" parent="PlayUI/MPBar/Sparkle3" unique_id=1763196430]
 self_modulate = Color(0.10284916, 0.020663464, 0.05793167, 1)
 clip_children = 1
 layout_mode = 0
@@ -456,7 +434,7 @@ offset_bottom = 72.0
 texture = ExtResource("8_x6nag")
 expand_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MPBar/Sparkle3/Shape" unique_id=527885614]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/MPBar/Sparkle3/Shape" unique_id=527885614]
 modulate = Color(0.8745098, 0.30980393, 0.59607846, 1)
 texture_repeat = 3
 material = SubResource("ShaderMaterial_73bxj")
@@ -467,7 +445,7 @@ offset_bottom = 2134.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_m3ws1")
 
-[node name="Light" type="TextureRect" parent="MPBar/Sparkle3" unique_id=676289217]
+[node name="Light" type="TextureRect" parent="PlayUI/MPBar/Sparkle3" unique_id=676289217]
 modulate = Color(0.6811064, 0.24548897, 0.54134667, 0.43529412)
 clip_children = 2
 material = SubResource("CanvasItemMaterial_ccb1e")
@@ -479,7 +457,7 @@ offset_bottom = 72.0
 texture = ExtResource("9_ijkxl")
 expand_mode = 3
 
-[node name="SP" type="Label" parent="MPBar" unique_id=333746789]
+[node name="SP" type="Label" parent="PlayUI/MPBar" unique_id=333746789]
 visible = false
 layout_mode = 0
 offset_left = -14.5
@@ -490,13 +468,14 @@ scale = Vector2(0.25, 0.25)
 text = "SP"
 label_settings = SubResource("LabelSettings_sru0y")
 
-[node name="EnemyUI" type="Control" parent="." unique_id=699090803]
-layout_mode = 3
+[node name="EnemyUI" type="Control" parent="PlayUI" unique_id=699090803]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 64.0
+offset_bottom = 55.0
 
-[node name="EnemyTab" type="Control" parent="EnemyUI" unique_id=797070470]
+[node name="EnemyTab" type="Control" parent="PlayUI/EnemyUI" unique_id=797070470]
 texture_filter = 1
 anchors_preset = 0
 offset_left = 591.0
@@ -504,7 +483,7 @@ offset_top = 9.0
 offset_right = 631.0
 offset_bottom = 49.0
 
-[node name="TextureRect" type="ColorRect" parent="EnemyUI/EnemyTab" unique_id=1173022495]
+[node name="TextureRect" type="ColorRect" parent="PlayUI/EnemyUI/EnemyTab" unique_id=1173022495]
 clip_children = 2
 layout_mode = 0
 offset_left = -8.0
@@ -512,7 +491,7 @@ offset_top = -24.0
 offset_right = 32.0
 offset_bottom = 72.0
 
-[node name="TextureRect" type="TextureRect" parent="EnemyUI/EnemyTab/TextureRect" unique_id=1386858250]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/EnemyUI/EnemyTab/TextureRect" unique_id=1386858250]
 modulate = Color(0.79889333, 0, 0.104868434, 0.88235295)
 texture_repeat = 3
 material = SubResource("ShaderMaterial_xmds5")
@@ -523,7 +502,7 @@ offset_bottom = 2134.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_m3ws1")
 
-[node name="EnemyName" type="Label" parent="EnemyUI/EnemyTab" unique_id=921521043]
+[node name="EnemyName" type="Label" parent="PlayUI/EnemyUI/EnemyTab" unique_id=921521043]
 modulate = Color(0.9590284, 0.77197933, 0.8339528, 1)
 layout_mode = 0
 offset_left = -88.0
@@ -535,7 +514,7 @@ text = "ENEMY"
 label_settings = SubResource("LabelSettings_xmds5")
 horizontal_alignment = 2
 
-[node name="Portrait" type="Sprite2D" parent="EnemyUI/EnemyTab" unique_id=1949908782]
+[node name="Portrait" type="Sprite2D" parent="PlayUI/EnemyUI/EnemyTab" unique_id=1949908782]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_db4av")
 position = Vector2(8, 32)
@@ -545,7 +524,7 @@ flip_h = true
 hframes = 4
 vframes = 4
 
-[node name="EnemyHP" type="Control" parent="EnemyUI" unique_id=2077385258]
+[node name="EnemyHP" type="Control" parent="PlayUI/EnemyUI" unique_id=2077385258]
 z_index = 1
 anchors_preset = 0
 offset_left = 479.0
@@ -553,7 +532,7 @@ offset_top = 9.0
 offset_right = 519.0
 offset_bottom = 49.0
 
-[node name="WhiteOutline2" type="ColorRect" parent="EnemyUI/EnemyHP" unique_id=700062583]
+[node name="WhiteOutline2" type="ColorRect" parent="PlayUI/EnemyUI/EnemyHP" unique_id=700062583]
 z_index = -1
 layout_mode = 0
 offset_left = 53.595
@@ -561,7 +540,7 @@ offset_top = 58.0
 offset_right = 133.595
 offset_bottom = 66.0
 
-[node name="BlackBG" type="ColorRect" parent="EnemyUI/EnemyHP" unique_id=708904237]
+[node name="BlackBG" type="ColorRect" parent="PlayUI/EnemyUI/EnemyHP" unique_id=708904237]
 z_index = -1
 layout_mode = 0
 offset_left = 56.0
@@ -570,7 +549,7 @@ offset_right = 136.0
 offset_bottom = 64.0
 color = Color(0.06958811, 0.12734836, 0.27127957, 1)
 
-[node name="HealthBar" type="TextureProgressBar" parent="EnemyUI/EnemyHP" unique_id=948403948]
+[node name="HealthBar" type="TextureProgressBar" parent="PlayUI/EnemyUI/EnemyHP" unique_id=948403948]
 show_behind_parent = true
 clip_children = 1
 layout_mode = 0
@@ -584,7 +563,7 @@ value = 1.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_0ndgo")
 
-[node name="TextureRect" type="TextureRect" parent="EnemyUI/EnemyHP/HealthBar" unique_id=1347240121]
+[node name="TextureRect" type="TextureRect" parent="PlayUI/EnemyUI/EnemyHP/HealthBar" unique_id=1347240121]
 modulate = Color(0.00012513995, 0.49239254, 0.9606876, 1)
 texture_repeat = 3
 material = SubResource("ShaderMaterial_xmds5")
@@ -595,7 +574,7 @@ offset_bottom = 2134.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_m3ws1")
 
-[node name="HP" type="Label" parent="EnemyUI/EnemyHP" unique_id=609585754]
+[node name="HP" type="Label" parent="PlayUI/EnemyUI/EnemyHP" unique_id=609585754]
 visible = false
 layout_mode = 0
 offset_left = -14.5
@@ -606,15 +585,72 @@ scale = Vector2(0.25, 0.25)
 text = "HP"
 label_settings = SubResource("LabelSettings_sru0y")
 
-[node name="BigMessage" type="Label" parent="." unique_id=322938768]
+[node name="BigMessage" type="Label" parent="PlayUI" unique_id=322938768]
 visible = false
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = -24.5
 offset_top = 129.5
-offset_right = -794.5
+offset_right = 138.5
 offset_bottom = 161.5
 grow_horizontal = 2
 text = "TEST MESSAGE"
 label_settings = SubResource("LabelSettings_ccb1e")
 horizontal_alignment = 1
+
+[node name="PauseMenu" type="Control" parent="." unique_id=978956667]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -768.0
+offset_bottom = -432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=1774579751]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20538434, 0.07132702, 0.15257674, 0.19215687)
+
+[node name="Parallax2D" type="Parallax2D" parent="PauseMenu" unique_id=9298582]
+scroll_offset = Vector2(-36, 420)
+repeat_size = Vector2(64, 0)
+autoscroll = Vector2(-20, 0)
+repeat_times = 15
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/Parallax2D" unique_id=1397597406]
+position = Vector2(404, -4)
+texture = SubResource("AtlasTexture_k3km2")
+
+[node name="Parallax2D2" type="Parallax2D" parent="PauseMenu" unique_id=188505185]
+scroll_offset = Vector2(-36, 20)
+repeat_size = Vector2(64, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 15
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/Parallax2D2" unique_id=518726216]
+position = Vector2(404, -4)
+texture = SubResource("AtlasTexture_8hdo2")
+
+[node name="Label" type="Label" parent="PauseMenu" unique_id=1196516591]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_8hdo2")
+horizontal_alignment = 1
+vertical_alignment = 1

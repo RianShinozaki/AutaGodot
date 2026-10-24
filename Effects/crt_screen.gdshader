@@ -2,6 +2,7 @@
 // V4
 
 shader_type canvas_item;
+render_mode unshaded;
 
 /**
 	The input texture that will have the CRT effect applied to it.

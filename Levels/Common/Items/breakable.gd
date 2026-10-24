@@ -34,3 +34,5 @@ func on_area_entered(_area: Area2D):
 		queue_free()
 	else:
 		$Art.frame = 1
+		if get_node_or_null("Art/PointLight2D"):
+			$Art/PointLight2D.visible = false

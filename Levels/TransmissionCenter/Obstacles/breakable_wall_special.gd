@@ -5,7 +5,7 @@ extends Hurtbox
 @export var hp: float
 @export var target: Node2D
 @export var target_height: float
-
+@onready var object_pool: ObjectPool = $ObjectPool
 func _ready() -> void:
 	pass
 	
@@ -34,6 +34,8 @@ func area_entered(_hitbox: Area2D):
 		SFXController.play_sound(_hb_data.impact_sound, global_position, 1, randf_range(0.9, 1.1))
 	
 	hp -= _hb_data.damage
+	var _smoke = object_pool.spawn_object()
+	_smoke.global_position = global_position - Vector2.RIGHT * 8
 	
 	if target.position.y < target_height && hp <= 0:
 		queue_free()

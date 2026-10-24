@@ -421,7 +421,7 @@ radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lr445"]
 
-[node name="Lumpy" type="CharacterBody2D" unique_id=1556690808 node_paths=PackedStringArray("current_ai_state", "current_action_state")]
+[node name="Lumpy" type="CharacterBody2D" unique_id=1556690808 node_paths=PackedStringArray("current_ai_state", "current_action_state") groups=["RoomStateDetector"]]
 collision_layer = 2
 script = ExtResource("1_pxb8d")
 current_ai_state = NodePath("AIStates/PatrolState")

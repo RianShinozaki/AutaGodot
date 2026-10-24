@@ -12,9 +12,13 @@ var y_extents: Vector2
 signal activate
 signal deactivate
 
-func _ready() -> void:
+var objects: Array[Node2D]
+
+func _enter_tree() -> void:
 	body_entered.connect(on_body_entered)
 	set_extents()
+	get_parent().visible = false
+	objects = []
 
 func on_body_entered(body):
 	if not active:
@@ -56,14 +60,26 @@ func on_body_entered(body):
 			
 		if body is Auta:
 			body.set_quick_respawn()
+			get_parent().visible = true
 		emit_signal("activate")
+		objects = objects.filter(func(item): return is_instance_valid(item))
+		for _object in objects:
+			_object.process_mode = Node.PROCESS_MODE_INHERIT
 	
 func deactivate_self():
 	active = false
+	get_parent().visible = false
 	emit_signal("deactivate")
+	objects = objects.filter(func(item): return is_instance_valid(item))
+	
+	for _object in objects:
+		_object.process_mode = Node.PROCESS_MODE_DISABLED
 
 func set_extents() -> void:
 	var _total_width: float = $CollisionShape2D.shape.size.x * global_scale.x
 	var _total_height: float = $CollisionShape2D.shape.size.y * global_scale.y
 	x_extents = Vector2($CollisionShape2D.global_position.x - _total_width/2, $CollisionShape2D.global_position.x + _total_width/2) 
 	y_extents = Vector2($CollisionShape2D.global_position.y - _total_height/2, $CollisionShape2D.global_position.y + _total_height/2) 
+
+func add_object(_node2D: Node2D):
+	objects.append(_node2D)

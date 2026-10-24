@@ -2,9 +2,11 @@ class_name PlayerUI
 
 extends CanvasLayer
 
-@onready var health_bar = $HPBar/HealthBar
-@onready var enemy_health = $EnemyUI/EnemyHP
-@onready var big_message = $BigMessage
+@onready var health_bar = $PlayUI/HPBar/HealthBar
+@onready var enemy_health = $PlayUI/EnemyUI/EnemyHP
+@onready var big_message = $PlayUI/BigMessage
+@onready var pause_menu = $PauseMenu
+@onready var play_ui = $PlayUI
 
 var auta: Auta
 var enemy_target: CollisionEntity
@@ -14,8 +16,11 @@ var uncapture_enemy_time: float = 0
 
 static var instance: PlayerUI
 
+var menu_active: bool = false
+
 func _ready():
 	instance = self
+	pause_menu.visible = false
 
 func _process(_delta: float) -> void:
 	if auta == null: auta = Auta.instance
@@ -23,28 +28,30 @@ func _process(_delta: float) -> void:
 		visible = false
 		return
 	
+	if get_tree().paused: return
+	
 	var _entstat: EntityStatus = auta.get_node("GenericAttributes/EntityStatus")
 	health_bar.value = _entstat.health / _entstat.max_health
 	
 	if enemy_target != null and is_instance_valid(enemy_target):
 		_entstat = enemy_target.get_node("GenericAttributes/EntityStatus")
-		$EnemyUI/EnemyHP/HealthBar.value = _entstat.health / _entstat.max_health
+		$PlayUI/EnemyUI/EnemyHP/HealthBar.value = _entstat.health / _entstat.max_health
 		uncapture_enemy_time += _delta
 		if uncapture_enemy_time > uncapture_enemy_time_max:
 			enemy_target = null
 	else:
-		$EnemyUI.visible = false
+		$PlayUI/EnemyUI.visible = false
 
 func captured_enemy(_enemy_target: CollisionEntity):
 	if enemy_target == _enemy_target: return
-	$EnemyUI.visible = true
-	$EnemyUI.global_position.y = -95.0
-	$EnemyUI/EnemyTab/EnemyName.text = _enemy_target.name
+	$PlayUI/EnemyUI.visible = true
+	$PlayUI/EnemyUI.position.y = -95.0
+	$PlayUI/EnemyUI/EnemyTab/EnemyName.text = _enemy_target.name
 	enemy_target = _enemy_target
 	if enemy_ui_tween:
 		enemy_ui_tween.kill()
 	enemy_ui_tween = create_tween()
-	enemy_ui_tween.tween_property($EnemyUI, "position", Vector2(0, 0), 0.2)
+	enemy_ui_tween.tween_property($PlayUI/EnemyUI, "position", Vector2(24, 15), 0.2)
 	uncapture_enemy_time = 0
 
 static func play_big_message(_message: String):
@@ -69,3 +76,15 @@ func play_big_message_instance(_message: String):
 
 func set_ui_visibility(_visible: bool):
 	visible = _visible
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Menu"):
+		toggle_menu()
+		
+func toggle_menu():
+	menu_active = not menu_active
+	get_tree().paused = menu_active
+	pause_menu.visible = menu_active
+	menu_active = menu_active
+	play_ui.visible = not menu_active
+	

@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://uug8p5q6k2ui" path="res://Common/Game/C-sharp/GameManager.cs" id="1_abg3g"]
 [ext_resource type="PackedScene" uid="uid://cdp2f8ilhjqvk" path="res://Common/Camera/Camera.tscn" id="2_p1j5q"]
 [ext_resource type="Script" uid="uid://bawt248lwkmlq" path="res://Common/Globals/sfx_controller.gd" id="3_bhxxs"]
+[ext_resource type="Script" uid="uid://b05757281f8ud" path="res://Common/Camera/room_detector_assigner.gd" id="4_pqilm"]
 
-[node name="GameSystem" type="Node2D" unique_id=1502683367]
+[node name="SceneLoads" type="Node2D" unique_id=1502683367]
 
 [node name="GameManager" type="Node" parent="." unique_id=121694945]
 script = ExtResource("1_abg3g")
@@ -15,3 +16,6 @@ position = Vector2(223, -207)
 [node name="SFXController" type="Node" parent="." unique_id=277570848]
 script = ExtResource("3_bhxxs")
 metadata/_custom_type_script = "uid://bawt248lwkmlq"
+
+[node name="RoomDetectorAssigner" type="Node" parent="." unique_id=2127207032]
+script = ExtResource("4_pqilm")

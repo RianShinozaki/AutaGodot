@@ -89,7 +89,7 @@ func on_orb():
 		grabbed_entity.throw(aim_reticle.position.normalized(), throw_param.throw_power)
 		grabbed_entity = null
 		entity.set_x_velocity(-aim_reticle.position.normalized().x * throw_param.recoil_power)
-		entity.set_y_velocity(throw_param.recoil_y)
+		entity.set_y_velocity(aim_reticle.position.normalized().y * throw_param.recoil_y)
 		entity.switch_action_state_name("NormalState")
 		var _wind = wind_fx_pool.spawn_object()
 		_wind.global_position = entity.global_position

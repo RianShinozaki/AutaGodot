@@ -61,8 +61,9 @@ func just_bounced(normal: Vector2, velocity: Vector2, _position: Vector2):
 	SFXController.play_sound(cannonball_crash, global_position)
 	var _slam = slam_fx_pool.spawn_object()
 	GameCamera.instance.shake_screen(2, 0.25)
-	_slam.global_position = _position
-	_slam.global_rotation = normal.angle() + PI/2
+	if _slam != null:
+		_slam.global_position = _position
+		_slam.global_rotation = normal.angle() + PI/2
 	
 func on_impact(_hitbox: Hitbox, _hurtbox: Hurtbox):
 	if not active: return

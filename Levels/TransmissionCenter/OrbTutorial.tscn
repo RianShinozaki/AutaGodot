@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://bb7h2qh4ngy0n" path="res://Actors/Auta/Scripts/Parameter Resources/auta_orb_parameters.tres" id="11_ixg0b"]
 [ext_resource type="Resource" uid="uid://raaf2alewgfp" path="res://Actors/Auta/Scripts/Parameter Resources/auta_speed_parameters.tres" id="12_av8x7"]
 [ext_resource type="Shader" uid="uid://jyamploxvf4y" path="res://Actors/Common/Shaders/2D-Default.gdshader" id="13_pq87d"]
-[ext_resource type="Resource" uid="uid://0d1mwparxfjs" path="res://Actors/Auta/Scripts/Parameter Resources/player_hurt_parameters.tres" id="14_0wj8m"]
+[ext_resource type="Script" uid="uid://d4bnhxqktpcel" path="res://Actors/Auta/Scripts/Parameter Scripts/player_hurt_parameters.gd" id="14_0wj8m"]
 [ext_resource type="Texture2D" uid="uid://78puoosgvimf" path="res://Levels/TransmissionCenter/Tiles/OrbTutorialWorld.png" id="14_ahwhm"]
 [ext_resource type="PackedScene" uid="uid://ctr84t408tdtr" path="res://Levels/Common/Triggers/CamRegion.tscn" id="15_ssonb"]
 [ext_resource type="PackedScene" uid="uid://brg2rq6m8djfl" path="res://Levels/TransmissionCenter/Decoration/Lights/lamp_light_yellow.tscn" id="16_gcv1s"]
@@ -325,6 +325,14 @@ texture = ExtResource("14_ahwhm")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ssonb")
 
+[sub_resource type="Resource" id="Resource_lqb3y"]
+resource_local_to_scene = true
+script = ExtResource("14_0wj8m")
+recovery_time = 0.25
+recovery_min_speed = 80.0
+invincibility_time = 1.0
+metadata/_custom_type_script = "uid://d4bnhxqktpcel"
+
 [sub_resource type="Gradient" id="Gradient_abelk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
 
@@ -334,7 +342,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_alpl0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3co67"]
 resource_local_to_scene = true
 shader = ExtResource("13_pq87d")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -423,8 +431,8 @@ _data = {
 [sub_resource type="Resource" id="Resource_li1lr"]
 script = ExtResource("21_phnro")
 target = NodePath("../../GameSystem/Cam/Camera2D")
-code_string = "snap_to_target()
-lerp_zoom(100, 0)
+code_string = "lerp_zoom(100, 0)
+snap_to_target()
 lerp_zoom(6, 0.8)"
 metadata/_custom_type_script = "uid://dmrxnsi74n4mc"
 
@@ -771,10 +779,13 @@ environment = SubResource("Environment_gcv1s")
 
 [node name="GameSystem" parent="." unique_id=1502683367 instance=ExtResource("2_jgyux")]
 
-[node name="Node2D" type="Node2D" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1204299270, 1173792142) index="3" unique_id=1145447356]
+[node name="Camera2D" parent="GameSystem/Cam" parent_id_path=PackedInt32Array(1502683367, 1204299270) index="0" unique_id=1173792142]
+zoom = Vector2(10, 10)
+
+[node name="Node2D" type="Node2D" parent="GameSystem/Cam/Camera2D" index="3" unique_id=1145447356]
 position = Vector2(2212, -679)
 
-[node name="SubViewport" type="SubViewport" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1204299270, 1173792142) index="4" unique_id=899269803 groups=["Reflection"]]
+[node name="SubViewport" type="SubViewport" parent="GameSystem/Cam/Camera2D" index="4" unique_id=899269803 groups=["Reflection"]]
 transparent_bg = true
 canvas_cull_mask = 4293919775
 size = Vector2i(384, 216)
@@ -806,13 +817,13 @@ active = true
 stick_to_cam = true
 stick_offset = Vector2(6.79, -0.97)
 
-[node name="Blackout" type="Sprite2D" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1204299270, 1173792142) index="5" unique_id=707088893]
+[node name="Blackout" type="Sprite2D" parent="GameSystem/Cam/Camera2D" index="5" unique_id=707088893]
 visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 100
 texture = SubResource("PlaceholderTexture2D_7l60b")
 
-[node name="ColorRect" type="ColorRect" parent="GameSystem/Cam/Camera2D" parent_id_path=PackedInt32Array(1502683367, 1204299270, 1173792142) index="6" unique_id=422767392]
+[node name="ColorRect" type="ColorRect" parent="GameSystem/Cam/Camera2D" index="6" unique_id=422767392]
 z_index = 3
 material = SubResource("ShaderMaterial_jn5ti")
 offset_left = -192.0
@@ -856,11 +867,11 @@ position = Vector2(1, -144)
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("5_7uyae")]
 visibility_layer = 1025
-position = Vector2(215, 120)
+position = Vector2(326, 104)
 parameters = Dictionary[String, ExtResource("6_ahwhm")]({
 "constellation": ExtResource("17_ye5nc"),
 "duck": ExtResource("7_ssonb"),
-"hurt": ExtResource("14_0wj8m"),
+"hurt": SubResource("Resource_lqb3y"),
 "jump": ExtResource("9_wohhp"),
 "movement": ExtResource("10_u1s3y"),
 "orb": ExtResource("11_ixg0b"),
@@ -869,7 +880,7 @@ parameters = Dictionary[String, ExtResource("6_ahwhm")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_alpl0")
+material = SubResource("ShaderMaterial_3co67")
 frame = 17
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
