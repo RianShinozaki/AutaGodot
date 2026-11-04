@@ -207,8 +207,8 @@ initial_velocity_max = 4.0
 radial_velocity_min = -0.10002235
 radial_velocity_max = -2.2351742e-05
 gravity = Vector3(0, -1, 0)
-scale_min = 10.0
-scale_max = 12.0
+scale_min = 7.0
+scale_max = 10.0
 scale_curve = SubResource("CurveTexture_468js")
 color = Color(1, 1, 1, 0.3764706)
 color_ramp = SubResource("GradientTexture1D_kai5y")
@@ -228,35 +228,6 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnlj7"]
 size = Vector2(432, 16)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5aay8"]
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 1
-particles_anim_loop = true
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5aay8"]
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(200, 128, 1)
-angle_min = 1.0728835e-05
-angle_max = 1.0728835e-05
-spread = 1.0
-initial_velocity_min = -60.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 2.7, 0)
-linear_accel_min = -2.2351742e-06
-linear_accel_max = 15.699997
-anim_speed_min = 15.2
-anim_speed_max = 15.2
-turbulence_enabled = true
-turbulence_noise_strength = 8.66
-turbulence_noise_scale = 7.346
-turbulence_noise_speed = Vector3(45.325, 0, 0)
-turbulence_noise_speed_random = 0.08
-turbulence_influence_min = 0.0
-turbulence_influence_max = 0.104
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bjehn"]
 blend_mode = 2
 
@@ -268,6 +239,91 @@ gradient = SubResource("Gradient_3u7t7")
 fill_from = Vector2(0.4871795, 1)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5aay8"]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_ni1c4"]
+offsets = PackedFloat32Array(0, 0.08402204, 0.4338843, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0.75717443, 0.75717443, 0.75717443, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wrqs3"]
+gradient = SubResource("Gradient_ni1c4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wrqs3"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 8, 1)
+emission_shape = 3
+emission_box_extents = Vector3(200, 16, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(1, 0.195, 0)
+spread = 1.0
+initial_velocity_min = -40.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 4.915, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 15.699997
+color_ramp = SubResource("GradientTexture1D_wrqs3")
+anim_speed_min = 15.2
+anim_speed_max = 15.2
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0.1, 0, 0)
+turbulence_noise_speed_random = 0.08
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.010000001
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gnxhl"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 8, 1)
+emission_shape = 3
+emission_box_extents = Vector3(200, 16, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(1, -0.195, 0)
+spread = 1.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 4.915, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 15.699997
+color_ramp = SubResource("GradientTexture1D_wrqs3")
+anim_speed_min = 15.2
+anim_speed_max = 15.2
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0.1, 0, 0)
+turbulence_noise_speed_random = 0.08
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.010000001
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3qkly"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 16, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(1, 0.195, 0)
+spread = 1.0
+initial_velocity_min = -40.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 4.915, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 15.699997
+color_ramp = SubResource("GradientTexture1D_wrqs3")
+anim_speed_min = 15.2
+anim_speed_max = 15.2
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0.1, 0, 0)
+turbulence_noise_speed_random = 0.08
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.010000001
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v72ke"]
 particle_flag_align_y = true
 particle_flag_disable_z = true
@@ -275,21 +331,21 @@ emission_shape = 3
 emission_box_extents = Vector3(200, 16, 1)
 angle_min = 1.0728835e-05
 angle_max = 1.0728835e-05
+direction = Vector3(1, -0.195, 0)
 spread = 1.0
-initial_velocity_min = -60.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 2.7, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 4.915, 0)
 linear_accel_min = -2.2351742e-06
 linear_accel_max = 15.699997
+color_ramp = SubResource("GradientTexture1D_wrqs3")
 anim_speed_min = 15.2
 anim_speed_max = 15.2
 turbulence_enabled = true
-turbulence_noise_strength = 8.66
-turbulence_noise_scale = 7.346
-turbulence_noise_speed = Vector3(45.325, 0, 0)
+turbulence_noise_speed = Vector3(0.1, 0, 0)
 turbulence_noise_speed_random = 0.08
 turbulence_influence_min = 0.0
-turbulence_influence_max = 0.104
+turbulence_influence_max = 0.010000001
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omwlr"]
 size = Vector2(386, 20)
@@ -298,12 +354,43 @@ size = Vector2(386, 20)
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrqs3"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgllq"]
 size = Vector2(346, 20)
+
+[sub_resource type="Gradient" id="Gradient_qgkbr"]
+colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jyuvq"]
+gradient = SubResource("Gradient_qgkbr")
+width = 4
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p3rcc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrqs3"]
+resource_local_to_scene = true
+shader = ExtResource("55_cc5xr")
+shader_parameter/LightGradient = SubResource("GradientTexture1D_jyuvq")
+shader_parameter/emission_map = SubResource("PlaceholderTexture2D_p3rcc")
+shader_parameter/emission_strength = 0.0
+shader_parameter/outline_color_left = Color(1, 0, 1, 1)
+shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/stunFX = 0.0
+
+[sub_resource type="Resource" id="Resource_nel81"]
+script = ExtResource("22_mrmdb")
+damage = 100
+x_knockback = 100.0
+x_knockback_is_relative = true
+knockback_power = 3
+hitstun_duration = 0.15
+impact_fx = "HitFX"
+impact_sound = ExtResource("66_nel81")
+damage_type = 2
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qkly"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dyve"]
 size = Vector2(1120, 24)
@@ -353,7 +440,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epds7"]
 size = Vector2(32, 48)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qkly"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnxhl"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -369,17 +456,17 @@ bg_color = Color(0.9213565, 0, 0.05927293, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0qq"]
 size = Vector2(25, 65)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnxhl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptsqw"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ptsqw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_11gba"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_11gba"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0xl2"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_ptsqw")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_11gba")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_i4cvd"]
 viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
@@ -401,25 +488,21 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0xl2"]
-resource_local_to_scene = true
-shader = ExtResource("25_pvunm")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4ft3"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tch3u"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo0bt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tch3u"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_tch3u")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qo0bt"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10ys7"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_qo0bt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dsc0q"]
 resource_local_to_scene = true
@@ -429,15 +512,19 @@ shader = ExtResource("25_pvunm")
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1kvwt"]
-viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g5hq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kvwt"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_1kvwt")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5g5hq"]
+viewport_path = NodePath("GameSystem/Cam/Camera2D/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kn84j"]
+resource_local_to_scene = true
+shader = ExtResource("25_pvunm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_5g5hq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1641u"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -721,7 +808,7 @@ texture_filter = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_igxjy"]
 light_mode = 1
 
-[sub_resource type="Resource" id="Resource_nel81"]
+[sub_resource type="Resource" id="Resource_vfnm6"]
 resource_local_to_scene = true
 script = ExtResource("51_3yjna")
 recovery_time = 0.25
@@ -738,7 +825,7 @@ width = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfnm6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhndy"]
 resource_local_to_scene = true
 shader = ExtResource("55_cc5xr")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
@@ -4539,7 +4626,7 @@ _data = {
 &"RESET": SubResource("Animation_laxiv")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhndy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l21b1"]
 resource_local_to_scene = true
 shader = ExtResource("25_pvunm")
 
@@ -4701,6 +4788,7 @@ script = ExtResource("9_adiv3")
 
 [node name="Fog" type="GPUParticles2D" parent="Particles" unique_id=218051435]
 z_index = 20
+texture_filter = 2
 material = SubResource("CanvasItemMaterial_7qrxs")
 amount = 16
 texture = ExtResource("10_skvqh")
@@ -4984,17 +5072,6 @@ hitbox_data = SubResource("Resource_1ujtd")
 shape = SubResource("RectangleShape2D_jnlj7")
 debug_color = Color(0.9945627, 0, 0.2274484, 0.41960785)
 
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Regions/Power_SecondChamber/Killzone" unique_id=381701035]
-material = SubResource("CanvasItemMaterial_5aay8")
-position = Vector2(0, 118)
-amount = 1024
-texture = ExtResource("20_vt6yr")
-lifetime = 5.0
-preprocess = 25.0
-visibility_rect = Rect2(0, -218.83, 100, 500.58)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_5aay8")
-
 [node name="Sprite2D" type="Sprite2D" parent="Regions/Power_SecondChamber/Killzone" unique_id=484480518]
 material = SubResource("CanvasItemMaterial_bjehn")
 position = Vector2(-8.000054, 65.99997)
@@ -5015,6 +5092,28 @@ global_flag = "visited_scanner"
 value = false
 to_position = Vector2(-1000, -1000)
 metadata/_custom_type_script = "uid://bo5i87cm1pnpj"
+
+[node name="SpidersLeft" type="GPUParticles2D" parent="Regions/Power_SecondChamber/Killzone" unique_id=1982308556]
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(-16, 112)
+amount = 768
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+visibility_rect = Rect2(-654.45013, -265.90436, 981.28174, 571.23584)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_wrqs3")
+
+[node name="SpidersRight" type="GPUParticles2D" parent="Regions/Power_SecondChamber/Killzone" unique_id=1321794783]
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(-16, 112)
+amount = 768
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+visibility_rect = Rect2(-326.52197, -266.49182, 986.51697, 573.83514)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_gnxhl")
 
 [node name="Power_SecondChamber2" type="Node2D" parent="Regions" unique_id=250113905]
 position = Vector2(-384, 264)
@@ -5063,21 +5162,31 @@ position = Vector2(0, 456)
 position = Vector2(1632, 952)
 scale = Vector2(1, 3)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Regions/Power_Spiders1" unique_id=537952464]
+[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_Spiders1" unique_id=1438922595]
+material = SubResource("CanvasItemMaterial_bjehn")
+position = Vector2(1824, 1620)
+scale = Vector2(6.000003, 1.1250008)
+texture = SubResource("GradientTexture2D_4cxeu")
+
+[node name="SpidersLeft" type="GPUParticles2D" parent="Regions/Power_Spiders1" unique_id=1741240863]
 material = SubResource("CanvasItemMaterial_5aay8")
 position = Vector2(1832, 1616)
-amount = 256
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3qkly")
+
+[node name="SpidersRight" type="GPUParticles2D" parent="Regions/Power_Spiders1" unique_id=537952464]
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(1832, 1616)
+amount = 128
 texture = ExtResource("20_vt6yr")
 lifetime = 5.0
 preprocess = 25.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_v72ke")
-
-[node name="Sprite2D" type="Sprite2D" parent="Regions/Power_Spiders1/GPUParticles2D" unique_id=1438922595]
-material = SubResource("CanvasItemMaterial_bjehn")
-position = Vector2(-8.000054, 4.0000324)
-scale = Vector2(6.000003, 1.1250008)
-texture = SubResource("GradientTexture2D_4cxeu")
 
 [node name="Killzone" type="Area2D" parent="Regions/Power_Spiders1" unique_id=1140525555]
 position = Vector2(1, 226)
@@ -5116,10 +5225,6 @@ position = Vector2(1944, 1144)
 material = SubResource("ShaderMaterial_ni1c4")
 position = Vector2(1672, 1480)
 
-[node name="Crystal12" parent="Regions/Power_Spiders1" unique_id=2063146107 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_wrqs3")
-position = Vector2(2072, 1544)
-
 [node name="ChainBreaker" type="Area2D" parent="Regions/Power_Spiders1" unique_id=470377090 node_paths=PackedStringArray("chain_anchor")]
 position = Vector2(1664, 1240)
 collision_layer = 0
@@ -5136,8 +5241,22 @@ debug_color = Color(0.94446015, 0.1984865, 0.33891147, 0.41960785)
 position = Vector2(1936, 984)
 length = 24
 
+[node name="Lumpy3" parent="Regions/Power_Spiders1" unique_id=475992278 instance=ExtResource("18_nnak7")]
+position = Vector2(1696, 1704)
+velocity = Vector2(0, 2431.6692)
+
+[node name="Art" parent="Regions/Power_Spiders1/Lumpy3" index="0" unique_id=1271511334]
+material = SubResource("ShaderMaterial_wrqs3")
+
+[node name="Attack" parent="Regions/Power_Spiders1/Lumpy3/SpecialAttributes/Hitboxes" parent_id_path=PackedInt32Array(475992278, 827252989) index="0" unique_id=1974365831]
+hitbox_data = SubResource("Resource_nel81")
+
 [node name="Power_Spiders2" type="Node2D" parent="Regions" unique_id=892348680]
 position = Vector2(384, 896)
+
+[node name="Crystal12" parent="Regions/Power_Spiders2" unique_id=2063146107 instance=ExtResource("24_wpybb")]
+material = SubResource("ShaderMaterial_3qkly")
+position = Vector2(1688, 1104)
 
 [node name="CamRegion" parent="Regions/Power_Spiders2" unique_id=1031722711 instance=ExtResource("11_av747")]
 position = Vector2(1632, 960)
@@ -5205,10 +5324,6 @@ root_node = NodePath("../AnimatableBody2D/MovingPlat")
 libraries/ = SubResource("AnimationLibrary_7q83e")
 autoplay = &"def"
 
-[node name="Lumpy3" parent="Regions/Power_Spiders2" unique_id=475992278 instance=ExtResource("18_nnak7")]
-position = Vector2(1423, 1104)
-velocity = Vector2(0, 2431.6692)
-
 [node name="Lumpy" parent="Regions/Power_Spiders2" unique_id=2108218529 instance=ExtResource("18_nnak7")]
 position = Vector2(1807, 1112)
 velocity = Vector2(0, 2431.6692)
@@ -5239,39 +5354,6 @@ position = Vector2(2111, 1056)
 
 [node name="PointLight2D16" parent="Regions/Power_Spiders2" unique_id=513600157 instance=ExtResource("16_w5t1m")]
 position = Vector2(2207, 1056)
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=1277013774]
-material = SubResource("CanvasItemMaterial_5aay8")
-position = Vector2(1824, 1168)
-amount = 256
-texture = ExtResource("20_vt6yr")
-lifetime = 5.0
-preprocess = 25.0
-visibility_rect = Rect2(-487.8231, -102.416115, 1011.7312, 270.57767)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_v72ke")
-
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=79884622]
-material = SubResource("CanvasItemMaterial_5aay8")
-position = Vector2(2224, 1168)
-amount = 256
-texture = ExtResource("20_vt6yr")
-lifetime = 5.0
-preprocess = 25.0
-visibility_rect = Rect2(-576.0122, -101.39572, 1037.7764, 275.55475)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_v72ke")
-
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=226167521]
-material = SubResource("CanvasItemMaterial_5aay8")
-position = Vector2(2624, 1168)
-amount = 256
-texture = ExtResource("20_vt6yr")
-lifetime = 5.0
-preprocess = 25.0
-visibility_rect = Rect2(-576.0122, -101.39572, 1037.7764, 275.55475)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_v72ke")
 
 [node name="LampLight2" parent="Regions/Power_Spiders2" unique_id=221166870 instance=ExtResource("17_10pu3")]
 position = Vector2(2288, 1024)
@@ -5319,13 +5401,79 @@ count = 7
 metadata/_custom_type_script = "uid://ckbikphybwc2j"
 
 [node name="Crystal11" parent="Regions/Power_Spiders2" unique_id=1079356612 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_3qkly")
+material = SubResource("ShaderMaterial_gnxhl")
 position = Vector2(1584, 864)
 rotation = -1.5707964
 
 [node name="Anchor" parent="Regions/Power_Spiders2" unique_id=1656752389 instance=ExtResource("16_uivhe")]
 position = Vector2(2160, 976)
 length = 10
+
+[node name="SpidersLeft" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=37829476]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(1848, 1168)
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3qkly")
+
+[node name="SpidersRight" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=1596379828]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(1848, 1168)
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_v72ke")
+
+[node name="SpidersLeft2" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=473387368]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(2168, 1168)
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3qkly")
+
+[node name="SpidersRight2" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=682897492]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(2168, 1168)
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_v72ke")
+
+[node name="SpidersLeft3" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=409454280]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(2608, 1168)
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3qkly")
+
+[node name="SpidersRight3" type="GPUParticles2D" parent="Regions/Power_Spiders2" unique_id=1196708104]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(2608, 1168)
+amount = 128
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_v72ke")
 
 [node name="Power_EscapeSpider" type="Node2D" parent="Regions" unique_id=1537657700]
 position = Vector2(384, 240)
@@ -5436,17 +5584,6 @@ hitbox_data = SubResource("Resource_1ujtd")
 shape = SubResource("RectangleShape2D_jnlj7")
 debug_color = Color(0.9945627, 0, 0.2274484, 0.41960785)
 
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Regions/Power_SpidersRise/RisingSpidersTrap/Killzone" unique_id=1848589309]
-material = SubResource("CanvasItemMaterial_5aay8")
-position = Vector2(0, 118)
-amount = 1024
-texture = ExtResource("20_vt6yr")
-lifetime = 5.0
-preprocess = 25.0
-visibility_rect = Rect2(0, -218.83, 100, 500.58)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_5aay8")
-
 [node name="Sprite2D" type="Sprite2D" parent="Regions/Power_SpidersRise/RisingSpidersTrap/Killzone" unique_id=74737640]
 material = SubResource("CanvasItemMaterial_bjehn")
 position = Vector2(-8.000054, 65.99997)
@@ -5460,6 +5597,30 @@ autoplay = true
 max_distance = 315.0
 attenuation = 0.26794365
 panning_strength = 0.0
+
+[node name="SpidersLeft" type="GPUParticles2D" parent="Regions/Power_SpidersRise/RisingSpidersTrap/Killzone" unique_id=1195639422]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(-16, 112)
+amount = 768
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+visibility_rect = Rect2(-654.45013, -265.90436, 981.28174, 571.23584)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_wrqs3")
+
+[node name="SpidersRight" type="GPUParticles2D" parent="Regions/Power_SpidersRise/RisingSpidersTrap/Killzone" unique_id=939088070]
+z_index = 3
+material = SubResource("CanvasItemMaterial_5aay8")
+position = Vector2(-16, 112)
+amount = 768
+texture = ExtResource("20_vt6yr")
+lifetime = 5.0
+preprocess = 25.0
+visibility_rect = Rect2(-326.52197, -266.49182, 986.51697, 573.83514)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_gnxhl")
 
 [node name="Trigger" type="Area2D" parent="Regions/Power_SpidersRise/RisingSpidersTrap" unique_id=1698933090]
 collision_layer = 0
@@ -5548,11 +5709,11 @@ count = 7
 metadata/_custom_type_script = "uid://ckbikphybwc2j"
 
 [node name="Crystal11" parent="Regions/Power_SpidersRise" unique_id=970997406 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_gnxhl")
+material = SubResource("ShaderMaterial_ptsqw")
 position = Vector2(1808, 1120)
 
 [node name="Crystal12" parent="Regions/Power_SpidersRise" unique_id=201573027 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_11gba")
+material = SubResource("ShaderMaterial_k0xl2")
 position = Vector2(1968, 976)
 rotation = -1.5707964
 
@@ -5622,35 +5783,35 @@ set_own_velocity = true
 active = false
 
 [node name="Crystal11" parent="Regions/Power_OrbRoom" unique_id=22271428 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_k0xl2")
+material = SubResource("ShaderMaterial_a4ft3")
 position = Vector2(4159, 464)
 
 [node name="Crystal12" parent="Regions/Power_OrbRoom" unique_id=512185491 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_a4ft3")
+material = SubResource("ShaderMaterial_tch3u")
 position = Vector2(4463, 560)
 
 [node name="Crystal13" parent="Regions/Power_OrbRoom" unique_id=892262993 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_qo0bt")
+material = SubResource("ShaderMaterial_10ys7")
 position = Vector2(4655, 680)
 
 [node name="Crystal14" parent="Regions/Power_OrbRoom" unique_id=272788436 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_10ys7")
+material = SubResource("ShaderMaterial_dsc0q")
 position = Vector2(4383, 680)
 
 [node name="Crystal15" parent="Regions/Power_OrbRoom" unique_id=1962508947 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_dsc0q")
+material = SubResource("ShaderMaterial_wde1j")
 position = Vector2(4783, 432)
 
 [node name="Crystal16" parent="Regions/Power_OrbRoom" unique_id=1147407336 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_wde1j")
+material = SubResource("ShaderMaterial_1kvwt")
 position = Vector2(5271, 336)
 
 [node name="Crystal17" parent="Regions/Power_OrbRoom" unique_id=102429357 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_5g5hq")
+material = SubResource("ShaderMaterial_kn84j")
 position = Vector2(5055, 336)
 
 [node name="Crystal18" parent="Regions/Power_OrbRoom" unique_id=1487458792 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_kn84j")
+material = SubResource("ShaderMaterial_1641u")
 position = Vector2(4455, 384)
 
 [node name="LampLight" parent="Regions/Power_OrbRoom" unique_id=434627774 instance=ExtResource("17_10pu3")]
@@ -6570,12 +6731,12 @@ metadata/_custom_type_script = "uid://cnm627aeb2r2f"
 
 [node name="Auta" parent="Entities" unique_id=248982637 instance=ExtResource("47_10ys7")]
 visibility_layer = 1025
-position = Vector2(3103, 2120)
+position = Vector2(3359, 1488)
 unlocked_orb = true
 parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 "constellation": ExtResource("55_k8cp3"),
 "duck": ExtResource("49_wde1j"),
-"hurt": SubResource("Resource_nel81"),
+"hurt": SubResource("Resource_vfnm6"),
 "jump": ExtResource("51_5g5hq"),
 "movement": ExtResource("52_kn84j"),
 "orb": ExtResource("53_1641u"),
@@ -6584,7 +6745,7 @@ parameters = Dictionary[String, ExtResource("48_dsc0q")]({
 })
 
 [node name="Art" parent="Entities/Auta" index="0" unique_id=177438306]
-material = SubResource("ShaderMaterial_vfnm6")
+material = SubResource("ShaderMaterial_lhndy")
 frame = 18
 
 [node name="PointLight" parent="Entities/Auta/SpecialAttributes" parent_id_path=PackedInt32Array(248982637, 1935623650) index="4" unique_id=2040756063]
@@ -7329,7 +7490,7 @@ scale = Vector2(18.125, 1.1250004)
 texture = SubResource("GradientTexture2D_4cxeu")
 
 [node name="Crystal11" parent="." unique_id=1425072424 instance=ExtResource("24_wpybb")]
-material = SubResource("ShaderMaterial_lhndy")
+material = SubResource("ShaderMaterial_l21b1")
 position = Vector2(2816, 1904)
 
 [node name="SavePoint2" parent="." unique_id=504559608 instance=ExtResource("103_ggs65")]
@@ -7375,4 +7536,6 @@ scale = Vector2(2.5, 2)
 
 [editable path="GameSystem"]
 [editable path="GameSystem/Cam"]
+[editable path="Regions/Power_Spiders1/Lumpy3"]
+[editable path="Regions/Power_Spiders1/Lumpy3/GenericAttributes"]
 [editable path="Entities/Auta"]

@@ -58,7 +58,8 @@ func _process(delta: float) -> void:
 		var _flip_h = entity.get_node("Art").flip_h
 		if(entity.velocity.x != 0 and entity.is_on_floor()):
 			entity.get_node("Art").flip_h = entity.velocity.x < 0
-			entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(entity.velocity.x), 1.0)
+			if get_node_or_null("SpecialAttributes/Hitboxes"):
+				entity.get_node("SpecialAttributes/Hitboxes").scale = Vector2(sign(entity.velocity.x), 1.0)
 	
 	#Update gravity
 	entity.gravity = jmp_param.get_gravity(entity, 1.0)

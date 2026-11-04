@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dnmadyvju5hcq" path="res://UI/player_ui.gd" id="1_xlwdk"]
 [ext_resource type="Texture2D" uid="uid://pgi55101u1u6" path="res://UI/Game/spr_HealthbarBar.png" id="3_0ndgo"]
+[ext_resource type="Texture2D" uid="uid://csxwwqp2l5v35" path="res://UI/Game/TessUIMask.png" id="3_k3km2"]
+[ext_resource type="Texture2D" uid="uid://db6yplo50hftd" path="res://UI/Game/TessTemp.png" id="4_hdrb0"]
 [ext_resource type="Texture2D" uid="uid://daomwr2v8hgei" path="res://UI/Game/colored-purple-white-texture-liquid-art.jpg" id="5_m3ws1"]
 [ext_resource type="Shader" uid="uid://dlhyqowjlr6uy" path="res://UI/scroll_ui.gdshader" id="5_mwhf7"]
 [ext_resource type="FontFile" uid="uid://bp8nix4b6mabv" path="res://UI/Fonts/THEBOLDFONT-FREEVERSION.ttf" id="5_xmds5"]
 [ext_resource type="Texture2D" uid="uid://5yf705k887bl" path="res://UI/Game/Sparkle.png" id="5_yrovb"]
-[ext_resource type="Texture2D" uid="uid://dk750ibmy7jiv" path="res://UI/Dialogue/TessPortrait.png" id="7_yrovb"]
 [ext_resource type="Texture2D" uid="uid://defw7moc6h2e3" path="res://UI/Game/Auta_2025_Trio_3_colour.png" id="8_ixg0m"]
 [ext_resource type="Texture2D" uid="uid://cwegb2qeyjt44" path="res://UI/Game/AutaUIMask.png" id="8_s8lkg"]
 [ext_resource type="Texture2D" uid="uid://bhrhhv2wusop1" path="res://UI/Game/Sparkle-individual.png" id="8_x6nag"]
@@ -16,62 +17,19 @@
 [ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://UI/ui_square.gdshader" id="13_ccb1e"]
 [ext_resource type="Texture2D" uid="uid://8eey14t8daqn" path="res://UI/GamePauseMenu/Triangles.png" id="15_8hdo2"]
 
-[sub_resource type="Gradient" id="Gradient_4vbml"]
-offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mqqqp"]
-gradient = SubResource("Gradient_4vbml")
-width = 256
-height = 256
-fill_from = Vector2(0.14957266, 0.47863248)
-fill_to = Vector2(0.88461536, 0.41025642)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rl5i0"]
-load_path = "res://.godot/imported/TessPortrait.png-69fcc7032dbb2064ad1f1ae62cfeffed.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2wipf"]
-load_path = "res://.godot/imported/colored-purple-white-texture-liquid-art.jpg-d97b7d06b54a1cf251637e7d3f8d0b5a.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xhk1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qa2pn"]
 shader = ExtResource("13_ccb1e")
-shader_parameter/tex = SubResource("CompressedTexture2D_2wipf")
-shader_parameter/mask = SubResource("GradientTexture2D_mqqqp")
+shader_parameter/tex = ExtResource("5_m3ws1")
+shader_parameter/mask = ExtResource("3_k3km2")
 shader_parameter/tex_size = Vector2(128, 128)
-shader_parameter/mask_size = Vector2(0, 0)
+shader_parameter/mask_size = Vector2(104, 128)
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
-shader_parameter/modulate = Color(0.37602854, 0.53698444, 0.3332764, 1)
-shader_parameter/sprite = SubResource("CompressedTexture2D_rl5i0")
-shader_parameter/sprite_size = Vector2(64, 64)
-shader_parameter/sprite_offset = Vector2(0.435, 0)
+shader_parameter/modulate = Color(0.2859445, 0.0009223296, 0.49913985, 1)
+shader_parameter/sprite = ExtResource("4_hdrb0")
+shader_parameter/sprite_size = Vector2(96, 163.917)
+shader_parameter/sprite_offset = Vector2(0.13, -0.025)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ijkxl"]
-
-[sub_resource type="Gradient" id="Gradient_73bxj"]
-offsets = PackedFloat32Array(0, 0.01, 0.5, 0.99, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4vbml"]
-gradient = SubResource("Gradient_73bxj")
-width = 256
-height = 256
-fill_from = Vector2(0.14957266, 0.47863248)
-fill_to = Vector2(0.88461536, 0.41025642)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqqqp"]
-load_path = "res://.godot/imported/colored-purple-white-texture-liquid-art.jpg-d97b7d06b54a1cf251637e7d3f8d0b5a.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rl5i0"]
-shader = ExtResource("13_ccb1e")
-shader_parameter/tex = SubResource("CompressedTexture2D_mqqqp")
-shader_parameter/mask = SubResource("GradientTexture2D_4vbml")
-shader_parameter/tex_size = Vector2(128, 128)
-shader_parameter/mask_size = Vector2(0, 0)
-shader_parameter/scroll_speed = Vector2(0.01, 0.01)
-shader_parameter/modulate = Color(0.38113484, 0.21629578, 0.39601701, 1)
-shader_parameter/sprite = ExtResource("7_yrovb")
-shader_parameter/sprite_size = Vector2(64, 64)
-shader_parameter/sprite_offset = Vector2(0.435, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ijkxl"]
 shader = ExtResource("9_ccb1e")
@@ -142,60 +100,29 @@ transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_xlwdk")
 
 [node name="PlayUI" type="Control" parent="." unique_id=1252832350]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TessTab2" type="Control" parent="PlayUI" unique_id=1883699700]
-visible = false
-texture_filter = 1
-anchors_preset = 0
-offset_left = 127.0
-offset_top = 9.0
-offset_right = 167.0
-offset_bottom = 49.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayUI/TessTab2" unique_id=1726680687]
-material = SubResource("ShaderMaterial_3xhk1")
-layout_mode = 0
-offset_left = -40.0
-offset_right = 80.0
-offset_bottom = 24.0
-texture = SubResource("PlaceholderTexture2D_ijkxl")
-
-[node name="TextureRect2" type="TextureRect" parent="PlayUI/TessTab2" unique_id=1136378849]
-layout_mode = 0
-offset_left = -8.0
-offset_top = -35.0
-offset_right = 56.0
-offset_bottom = 29.0
-texture = ExtResource("7_yrovb")
-
 [node name="TessTab" type="Control" parent="PlayUI" unique_id=1812065505]
 visible = false
 texture_filter = 1
 anchors_preset = 0
-offset_left = 47.0
-offset_top = 9.0
-offset_right = 87.0
-offset_bottom = 49.0
+offset_left = 76.0
+offset_top = 33.0
+offset_right = 116.0
+offset_bottom = 73.0
 
-[node name="TextureRect" type="TextureRect" parent="PlayUI/TessTab" unique_id=985122956]
-material = SubResource("ShaderMaterial_rl5i0")
+[node name="TextureRect3" type="TextureRect" parent="PlayUI/TessTab" unique_id=992427055]
+material = SubResource("ShaderMaterial_qa2pn")
 layout_mode = 0
-offset_left = -40.0
-offset_right = 80.0
-offset_bottom = 24.0
+offset_left = -3.5
+offset_top = -33.0
+offset_right = 84.5
+offset_bottom = 63.0
 texture = SubResource("PlaceholderTexture2D_ijkxl")
-
-[node name="TextureRect2" type="TextureRect" parent="PlayUI/TessTab" unique_id=462100275]
-layout_mode = 0
-offset_left = -8.0
-offset_top = -35.0
-offset_right = 56.0
-offset_bottom = 29.0
-texture = ExtResource("7_yrovb")
 
 [node name="HPBar" type="Control" parent="PlayUI" unique_id=737186914]
 z_index = 1

@@ -19,6 +19,8 @@ var shake_amount: float = 0
 
 var tween: Tween
 
+var zoom_lock: bool
+
 func _enter_tree() -> void:
 	instance = self
 	if not targets.is_empty():
@@ -26,6 +28,8 @@ func _enter_tree() -> void:
 		global_position = target_position
 
 func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
+	if zoom_lock: return
+	zoom_lock = true
 	var _to_size = get_viewport_rect().size/_target
 	var _extents_size = get_extents_size()
 
@@ -36,6 +40,7 @@ func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
 		
 	if _trans_time == 0.0:
 		zoom = Vector2.ONE * _target
+		zoom_lock = false
 		return
 	var _targf: float = float(_target)
 	if tween == null:
@@ -44,6 +49,7 @@ func lerp_zoom(_target: int, _trans_time: float = 0.3) -> void:
 		tween.kill()
 		tween = create_tween()
 	tween.tween_property(self, "zoom", Vector2.ONE * _targf, _trans_time).set_trans(Tween.TRANS_SINE)
+	zoom_lock = false
 
 func _physics_process(_delta: float) -> void:
 	if !position_override:

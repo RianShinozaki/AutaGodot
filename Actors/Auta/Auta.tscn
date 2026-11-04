@@ -36,6 +36,7 @@
 [ext_resource type="Script" uid="uid://deyrx0ieh10h" path="res://Actors/Auta/Scripts/Action States/player_normal_state.gd" id="31_n17kd"]
 [ext_resource type="AudioStream" uid="uid://b5p62f7fgdu0p" path="res://Actors/Auta/Audio/Jump.mp3" id="32_675uj"]
 [ext_resource type="AudioStream" uid="uid://bix4yxfe1gw0b" path="res://Actors/Auta/Audio/Land.wav" id="33_43p8l"]
+[ext_resource type="Script" uid="uid://bkis8vghiaciw" path="res://Actors/Auta/Scripts/player_death_manager.gd" id="34_doylp"]
 [ext_resource type="Script" uid="uid://cskmw6maro1fx" path="res://Actors/Auta/Scripts/Action States/player_orb_state.gd" id="34_edkqo"]
 [ext_resource type="AudioStream" uid="uid://vtkg1d7ul1bm" path="res://Actors/Auta/Audio/OrbThrow.wav" id="35_1dp14"]
 [ext_resource type="AudioStream" uid="uid://cgsu02iieh4m2" path="res://Actors/Auta/Audio/OrbReform.wav" id="36_xmime"]
@@ -73,6 +74,23 @@ shader_parameter/emission_strength = 0.0
 shader_parameter/outline_color_left = Color(1, 0, 1, 1)
 shader_parameter/outline_color_right = Color(0, 1, 1, 1)
 shader_parameter/stunFX = 0.0
+
+[sub_resource type="Animation" id="Animation_merf2"]
+resource_name = "Defeat"
+length = 0.1
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [47]
+}
 
 [sub_resource type="Animation" id="Animation_hq2ft"]
 resource_name = "Duck"
@@ -588,6 +606,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjstx"]
 _data = {
+&"Defeat": SubResource("Animation_merf2"),
 &"Duck": SubResource("Animation_hq2ft"),
 &"Fall": SubResource("Animation_oogdo"),
 &"Fall_Done": SubResource("Animation_g74bq"),
@@ -926,6 +945,9 @@ states/Attack_Launch/position = Vector2(615, -28)
 transitions = ["Attack_Combo1", "End", SubResource("AnimationNodeStateMachineTransition_lo2pb"), "Attack_Combo2", "End", SubResource("AnimationNodeStateMachineTransition_vi2wp"), "Attack_Combo3", "End", SubResource("AnimationNodeStateMachineTransition_746ov"), "Attack_HandCombo1", "End", SubResource("AnimationNodeStateMachineTransition_7bio7"), "Attack_HandCombo2", "End", SubResource("AnimationNodeStateMachineTransition_o4723"), "Attack_HandCombo3", "End", SubResource("AnimationNodeStateMachineTransition_douhj"), "Attack_HandLaunch", "End", SubResource("AnimationNodeStateMachineTransition_kpaug"), "Attack_Launch", "End", SubResource("AnimationNodeStateMachineTransition_63tey")]
 graph_offset = Vector2(265, -88)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_merf2"]
+animation = &"Defeat"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u2e3c"]
 animation = &"Duck"
 
@@ -1119,6 +1141,8 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_abelk"]
 states/Attack/node = SubResource("AnimationNodeStateMachine_t8dxc")
 states/Attack/position = Vector2(614.6, -71.8)
+states/Defeat/node = SubResource("AnimationNodeAnimation_merf2")
+states/Defeat/position = Vector2(5.800007, 41.65301)
 states/End/position = Vector2(708, 51.2)
 states/Grounded/node = SubResource("AnimationNodeStateMachine_eg2nn")
 states/Grounded/position = Vector2(439, 105.2)
@@ -1136,7 +1160,7 @@ states/ThrowSpin/position = Vector2(201, -115)
 states/ToOrb/node = SubResource("AnimationNodeAnimation_t46mf")
 states/ToOrb/position = Vector2(-73.20001, -96.746994)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_dxtdl"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_jkc50"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_i7hh2"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_yvtee"), "ToOrb", "Orb", SubResource("AnimationNodeStateMachineTransition_k2uvo")]
-graph_offset = Vector2(-91, -103.94699)
+graph_offset = Vector2(-249, -103.94699)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjva5"]
 radius = 6.0
@@ -1435,6 +1459,9 @@ texture = SubResource("GradientTexture2D_r3wth")
 
 [node name="WindboxDetector" parent="SpecialAttributes" unique_id=2060922589 node_paths=PackedStringArray("hurtbox") instance=ExtResource("30_unl7u")]
 hurtbox = NodePath("../PlayerHurtbox")
+
+[node name="PlayerDeathManager" type="Node2D" parent="SpecialAttributes" unique_id=1431064292]
+script = ExtResource("34_doylp")
 
 [node name="ActionStates" type="Node2D" parent="." unique_id=470457846]
 

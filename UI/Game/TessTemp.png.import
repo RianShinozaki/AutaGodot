@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db6yplo50hftd"
-path="res://.godot/imported/Auta_2025_Trio.png-caba3ad9f4f72c3b97f445f009ab43f0.ctex"
+path="res://.godot/imported/TessTemp.png-9db542748e34e90fc66988554c6c5f58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Game/Auta_2025_Trio.png"
-dest_files=["res://.godot/imported/Auta_2025_Trio.png-caba3ad9f4f72c3b97f445f009ab43f0.ctex"]
+source_file="res://UI/Game/TessTemp.png"
+dest_files=["res://.godot/imported/TessTemp.png-9db542748e34e90fc66988554c6c5f58.ctex"]
 
 [params]
 

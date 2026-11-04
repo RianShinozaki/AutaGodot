@@ -2,7 +2,7 @@ shader_type canvas_item;
 render_mode unshaded;
 
 uniform sampler2D tex: repeat_enable;
-uniform sampler2D mask;
+uniform sampler2D mask: filter_nearest;
 uniform vec2 tex_size;
 uniform vec2 mask_size;
 uniform vec2 scroll_speed;
