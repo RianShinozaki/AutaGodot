@@ -27,9 +27,9 @@ buses/default_bus_layout="uid://c26fit5d5jho4"
 [autoload]
 
 Music="*uid://m65mqk4g3464"
-DialogueManager="*uid://c3rodes2l3gxb"
 SaveSystem="*uid://d1us5uy6bi0iq"
 Global="*uid://maj7ygy3uugy"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [debug]
 

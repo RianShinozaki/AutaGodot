@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkef3aa7fdiw7"
-path="res://.godot/imported/background_spire-mod.png-190a3d8d1b7800984a1409524e8a3371.ctex"
+uid="uid://bou5lnc2nwlmq"
+path="res://.godot/imported/MovingPlatform.png-262be2296c3b3e00374e294efedb59e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/TransmissionCenter/Decoration/background_spire-mod.png"
-dest_files=["res://.godot/imported/background_spire-mod.png-190a3d8d1b7800984a1409524e8a3371.ctex"]
+source_file="res://Levels/TransmissionCenter/Decoration/MovingPlatform.png"
+dest_files=["res://.godot/imported/MovingPlatform.png-262be2296c3b3e00374e294efedb59e8.ctex"]
 
 [params]
 

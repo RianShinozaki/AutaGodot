@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcseossjwoqap"
-path="res://.godot/imported/Spirev2-mod1.png-f1f21e0c916eb30377b1e60474f72e4c.ctex"
+uid="uid://dkef3aa7fdiw7"
+path="res://.godot/imported/background_spire-mod.png-3b291a39dbce38b646b9678d725762d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/TransmissionCenter/Decoration/Spirev2-mod1.png"
-dest_files=["res://.godot/imported/Spirev2-mod1.png-f1f21e0c916eb30377b1e60474f72e4c.ctex"]
+source_file="res://Levels/TransmissionCenter/Decoration/Spire/background_spire-mod.png"
+dest_files=["res://.godot/imported/background_spire-mod.png-3b291a39dbce38b646b9678d725762d0.ctex"]
 
 [params]
 

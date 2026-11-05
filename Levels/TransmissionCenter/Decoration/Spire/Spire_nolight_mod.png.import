@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds8hd436qfs2y"
-path="res://.godot/imported/background_spire_v2.png-c2a8cced2ef430628d6bcf96504b2148.ctex"
+uid="uid://bpkhnljx4vd86"
+path="res://.godot/imported/Spire_nolight_mod.png-0eb811f8016124d8c46b48cfbb5a8075.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/TransmissionCenter/Decoration/background_spire_v2.png"
-dest_files=["res://.godot/imported/background_spire_v2.png-c2a8cced2ef430628d6bcf96504b2148.ctex"]
+source_file="res://Levels/TransmissionCenter/Decoration/Spire/Spire_nolight_mod.png"
+dest_files=["res://.godot/imported/Spire_nolight_mod.png-0eb811f8016124d8c46b48cfbb5a8075.ctex"]
 
 [params]
 
