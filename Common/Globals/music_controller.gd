@@ -18,6 +18,7 @@ func _ready():
 	instance = self
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _physics_process(delta):
 	if audio.volume_linear != target_vol:

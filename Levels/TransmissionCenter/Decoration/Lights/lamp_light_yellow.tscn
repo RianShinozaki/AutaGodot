@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brg2rq6m8djfl"]
 
-[ext_resource type="Script" uid="uid://bhil7t0s34aww" path="res://Levels/Common/Items/breakable.gd" id="1_m7ehv"]
+[ext_resource type="Script" uid="uid://bhil7t0s34aww" path="res://Levels/Common/Items/Breakable/breakable.gd" id="1_m7ehv"]
 [ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Levels/Common/Audio/SmallShatter.mp3" id="2_r1gc1"]
 [ext_resource type="PackedScene" uid="uid://f028tl168r5n" path="res://Effects/Particles/breakable_lamp_shards.tscn" id="3_pnfo1"]
 [ext_resource type="Texture2D" uid="uid://vd3cnc5xri5w" path="res://Levels/TransmissionCenter/Decoration/Lights/Lamp.png" id="4_1flcc"]

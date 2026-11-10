@@ -14,6 +14,9 @@ func begin():
 	if active: return
 	emit_signal("cutscene_started")
 	GameSystem.game_state = GameSystem.GameState.CUTSCENE
+	for node in get_tree().get_nodes_in_group("Enemy"):
+		node.process_mode = Node.PROCESS_MODE_DISABLED
+		
 	active = true
 	
 	for event in events:
@@ -26,6 +29,8 @@ func end():
 	active = false
 	emit_signal("cutscene_finished")
 	GameSystem.game_state = GameSystem.GameState.PLAY
+	for node in get_tree().get_nodes_in_group("Enemy"):
+		node.process_mode = Node.PROCESS_MODE_INHERIT
 
 func end_event():
 	emit_signal("event_ended")

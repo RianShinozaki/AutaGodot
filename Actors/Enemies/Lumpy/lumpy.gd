@@ -1,7 +1,10 @@
+class_name Lumpy
 extends AIEntity
 
 var attack_param: LumpyAttackParameters
 var hurt_param: PlayerHurtParameters
+
+signal finished_burrowing
 
 func _ready() -> void:
 	super._ready()
@@ -20,3 +23,9 @@ func attack_burst():
 
 func process_damage(_area):
 	$SpecialAttributes/HurtManager.process_hurt(_area)
+
+func do_burrow_animation():
+	switch_action_state_name("AttackState")
+	$Art/AnimationTree.get("parameters/playback").start("BurrowOut", true)
+	await $Art/AnimationTree.animation_finished
+	emit_signal("finished_burrowing")

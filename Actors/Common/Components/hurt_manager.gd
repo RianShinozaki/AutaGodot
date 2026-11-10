@@ -15,11 +15,13 @@ var entity: CollisionEntity
 signal staggered
 signal hurt(_hitbox: Hitbox)
 
+
 func _ready() -> void:
 	if auto_hook: entity = get_parent().get_parent()
 	
 func process_hurt(_hitbox: Area2D):
 	#Get hitbox data
+	
 	var _hb_data: HitboxData = _hitbox.hitbox_data
 	var _is_player: bool = entity is Auta
 	var _dist_to_cam = (GameCamera.instance.global_position - global_position).length()
@@ -96,4 +98,5 @@ func process_hurt(_hitbox: Area2D):
 		entity.quick_respawn()
 	
 	emit_signal("hurt", _hitbox)
+
 	

@@ -124,6 +124,7 @@ func switch_action_state(_state: ActionState) -> ActionState:
 
 func inflict_hitstun(_shake_level: float, _shake_direction: Vector2, _duration: float, _stun_fx: float = 1.0):
 	if not apply_physics: return
+	var apply_physics_cache = apply_physics
 	apply_physics = false
 	shake_level = _shake_level
 	shake_direction = _shake_direction
@@ -132,7 +133,7 @@ func inflict_hitstun(_shake_level: float, _shake_direction: Vector2, _duration: 
 	await get_tree().create_timer(_duration).timeout
 	$Art.material.set_shader_parameter("stunFX", 0.0)
 	$Art/AnimationPlayer.speed_scale = 1.0
-	apply_physics = true
+	apply_physics = apply_physics_cache
 	shake_level = 0
 	shake_direction = Vector2.ZERO
 

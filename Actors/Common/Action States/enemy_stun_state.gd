@@ -79,6 +79,7 @@ func _on_grabbox_area_entered(area):
 	entity.position = Vector2.ZERO
 	entity.apply_physics = false
 	Auta.instance.get_action_state_name("GrabState").grabbed_entity = self
+	grabbed = true
 
 func throw(_dir: Vector2, speed: float):
 	var _pos_cache: Vector2 = entity.global_position
@@ -88,3 +89,4 @@ func throw(_dir: Vector2, speed: float):
 	entity.set_deferred("global_position", _pos_cache)
 	entity.apply_physics = true
 	entity.switch_action_state_name("CannonballState")
+	grabbed = false

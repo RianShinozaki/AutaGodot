@@ -33,17 +33,10 @@ void fragment() {
 	alpha = mix(0, alpha, stunFX);
 	final_color = mix(final_color, outline_color_right, clamp(alpha, 0.0, 1.0));
 
-	//COLOR = vec4(color.r, color.g, color.b, texture(TEXTURE, UV).a);
 	COLOR = vec4(final_color.rgb, clamp(abs(alpha) + sprite_color.a, 0.0, 1.0));
 }
 
 void light() {
-	//float light = dot(normalize(NORMAL), LIGHT_DIRECTION) * LIGHT_ENERGY;
-	//float gradient = texture(LightGradient, vec2(light, light)).r;
-	//float cNdotL = max(0.0, gradient);
-  	//LIGHT = mix(vec4((LIGHT_COLOR.rgb * LIGHT_ENERGY) * cNdotL, LIGHT_COLOR.a), vec4(0,0,0,0), stunFX);
-
-
 	LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY, LIGHT_COLOR.a);
 	vec4 emission_color = texture(emission_map, UV);
 	LIGHT = mix(LIGHT, emission_color, emission_strength*emission_color.a);

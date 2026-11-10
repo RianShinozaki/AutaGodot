@@ -20,17 +20,7 @@ func _on_area_2d_area_entered(area):
 		Auta.instance.velocity.y = bubble_bump
 		explode()
 	else:
-		if to_spawn == 1:
-			explode()
-		else:
-			anim_player.call_deferred("play", "Pop")
-			await anim_player.animation_finished
-			var _star_inst = obj_spawn.instantiate()
-			get_parent().add_child(_star_inst)
-			_star_inst.global_position = global_position
-			var _dir = Vector2.from_angle(randf_range(0, 2*PI))
-			_star_inst.velocity = _dir * 150
-			to_spawn -= 1
+		explode()
 	
 func explode():
 	anim_player.call_deferred("play", "Pop")

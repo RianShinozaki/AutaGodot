@@ -3,10 +3,14 @@ extends Hurtbox
 @onready var active: bool = false
 @onready var art := $Sprite2D
 
+@export var can_be_triggered: bool = true
+
 signal triggered(active: bool)
 
 func _on_area_entered(area):
 	if area is Hitbox:
+		if not can_be_triggered: return
+		
 		var _hb: Hitbox = area as Hitbox
 		var _hb_data = _hb.hitbox_data
 		var _dist_to_cam = (GameCamera.instance.global_position - global_position).length()
@@ -21,11 +25,17 @@ func _on_area_entered(area):
 		var _dir = _knockback_total.normalized()
 		
 		_hb.on_impact(self)
-		active = not active
-		art.frame = 1 - art.frame
-		emit_signal("triggered", active)
+		trigger(not active)
 		
 		if _dist_to_cam < 400:
 			GameCamera.instance.shake_screen(_len, 0.25)
 			if _hb_data.impact_sound:
 				SFXController.play_sound(_hb_data.impact_sound, global_position, 1, randf_range(0.9, 1.1))
+
+func make_triggerable():
+	can_be_triggered = true
+
+func trigger(_active: bool):
+	active = _active
+	art.frame = 0 if not _active else 1
+	emit_signal("triggered", active)

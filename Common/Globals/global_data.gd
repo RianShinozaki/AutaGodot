@@ -8,6 +8,7 @@ extends Node
 @export var tess_cutscene_3: bool
 @export var visited_scanner: bool
 @export var do_scanner_return_cutscene: bool
+@export var orb_tutorial_cutscene: bool
 @export var init_scene: String
 
 func _ready():

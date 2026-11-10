@@ -144,11 +144,11 @@ Computer: ERROR. FAILED TO LOWER BLAST DOOR.
 => END
 
 ~ SpiderWarning_1
-Computer: AUXILIARY POWER REACTIVATED.
+Computer: AUXILIARY POWER REACTIVATION COMPLETE.
 => END
 
 ~ SpiderWarning_2
-Computer: PLEASE BE ADVISED: AN INTRUDER HAS BEEN DETECTED IN THE UPPER LEVELS.
+Computer: PLEASE BE ADVISED: AN INTRUDER HAS BEEN DETECTED ATOP THE SPIRE.
 => END
 
 ~ SpiderWarning_3
@@ -158,6 +158,76 @@ Computer: ACTIVATING MAX-SECURITY DRONE: 'HEAVY SPIDER'.
 
 ~ SpiderWarning_4
 Computer: HEAVY SPIDER WILL CAPTURE AND DISPOSE OF INTRUDER.
-Computer: YOUR ASSISTANCE IS NOT REQUIRED AT THIS TIME.
-Computer: THANK YOU FOR YOUR VISIT, AUTA. WE HOPE TO SEE YOU AGAIN SOON.
+=> END
+
+~ SpiderWarning_5
+Computer: BLAST DOORS HAVE BEEN CLOSED FOR SAFETY OF PERSONNEL.
+Computer: DO NOT ENGAGE OVERRIDE HATCH UNLESS ABSOLUTELY NECESSARY.
+=> END
+
+~ BardOrbTutorial_1
+...Ta... Auta... 
+Are we... connected?
+=> END
+
+~ BardOrbTutorial_2
+It seems... I can finally reach you.
+=> END
+
+~ BardOrbTutorial_3
+But now is not the time for introductions...
+Through our connection, I can see...
+You must escape this room. You must stop that child before it is too late.
+Yet, it seems you cannot destroy the cage protecting the switch. 
+Worry not. You, Auta, are a [color=magenta]stardust robot[/color]. You are capable of this and much more.
+What we need is a vessel to impress our strength upon...
+=> END
+
+~ BardOrbTutorial_4
+...And it appears an unlikely volunteer has appeared.
+=> END
+
+~ BardOrbTutorial_5
+What you must do first is strike the enemy until it [color=aqua]flashes blue[/color].
+Show me your power...
+=> END
+
+~ BardOrbTutorial_6
+Excellent... now, use your [color=aqua]orb[/color]. Aim it at the stunned enemy. As you do so, [color=yellow]hold down the C button.[/color]
+=> END
+
+~ BardOrbTutorial_7
+[speed=5] Wonderful -- now, [color=yellow]use your arrow keys to line up the target reticle, and release C to unleash your strength![/color]
+=> END
+
+~ BardOrbTutorial_8
+Fine work, Auta. Learn to harness your strength as such, and you will find the power to protect yourself... and others.
+=> END
+
+~ BardOrbTutorial_9
+I understand you have questions. I do as well.
+But that must wait. You must hurry.
+We shall speak again, soon...
+=> END
+
+
+~ BardOrbTutorial_fail
+It appears you are still getting accustomed yourself to your own strength... but there is no time to lose. Try once more.
+Remember, attack the enemy until it [color=aqua]flashes blue[/color].
+Then, use your orb to grab the enemy, [color=yellow]holding down the C button as you do so.[/color]
+[color=yellow]Use your arrow keys to line up the target reticle, and release C to throw.[/color]
+=> END
+
+~ BardOrbTutorial_fail_2
+With each passing moment, the child draws closer to danger. I urge you to focus.
+=> END
+
+~ BardOrbTutorial_fail_3
+Remember, attack the enemy until it [color=aqua]flashes blue[/color].
+Then, use your orb to grab the enemy, [color=yellow]holding down the C button as you do so.[/color]
+[color=yellow]Use your arrow keys to line up the target reticle, and release C to throw.[/color]
+=> END
+
+~ BardOrbTutorial_fail_4
+Auta, that child has probably been eaten by now. Please make haste.
 => END

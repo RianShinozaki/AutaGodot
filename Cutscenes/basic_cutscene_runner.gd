@@ -1,3 +1,4 @@
+class_name BasicCutsceneRunner
 extends CutsceneSequence
 
 @export var activate_on_ready: bool = false

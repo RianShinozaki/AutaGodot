@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bg4qkqt7tehfr" path="res://Actors/Auta/Images/AutaSprites.png" id="10_uqnkr"]
 [ext_resource type="Script" uid="uid://bpm1hc74705k7" path="res://Actors/Common/entity_art.gd" id="11_doylp"]
 [ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="12_merf2"]
+[ext_resource type="Texture2D" uid="uid://cq385t4ndmi0x" path="res://Actors/Auta/Images/AutaSprites_e.png" id="12_pwwud"]
 [ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Effects/Oneshots/after_image.tscn" id="13_pwwud"]
 [ext_resource type="PackedScene" uid="uid://e150kel66qnm" path="res://Actors/Common/Components/entity_status.tscn" id="14_unl7u"]
 [ext_resource type="PackedScene" uid="uid://cni7flg7rw44w" path="res://Actors/Common/Components/input_manager.tscn" id="15_owgun"]
@@ -63,14 +64,12 @@ colors = PackedColorArray(0, 0, 0, 1, 0.6, 0.6, 0.6, 1)
 gradient = SubResource("Gradient_abelk")
 width = 4
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4m6ou"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q8rtl"]
 resource_local_to_scene = true
 shader = ExtResource("9_sjva5")
 shader_parameter/LightGradient = SubResource("GradientTexture1D_vtldl")
-shader_parameter/emission_map = SubResource("CompressedTexture2D_4m6ou")
-shader_parameter/emission_strength = 0.0
+shader_parameter/emission_map = ExtResource("12_pwwud")
+shader_parameter/emission_strength = 0.585
 shader_parameter/outline_color_left = Color(1, 0, 1, 1)
 shader_parameter/outline_color_right = Color(0, 1, 1, 1)
 shader_parameter/stunFX = 0.0

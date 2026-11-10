@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dt80g0580tena"]
+
+[ext_resource type="Texture2D" uid="uid://c4bfmcuo0mrsi" path="res://Levels/TransmissionCenter/Obstacles/LumpyBurrow.png" id="1_iy78e"]
+[ext_resource type="Script" uid="uid://dt6i2ef3mopwk" path="res://Levels/TransmissionCenter/Obstacles/lumpy_burrow.gd" id="2_qnxu7"]
+
+[node name="LumpyBurrow" type="Sprite2D" unique_id=1803816486]
+texture = ExtResource("1_iy78e")
+script = ExtResource("2_qnxu7")

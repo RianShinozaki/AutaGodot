@@ -6,6 +6,7 @@ extends Area2D
 var entity: CollisionEntity
 
 @export var ignores: Array[Hitbox]
+var brief_invincibility = false
 
 func _ready() -> void:
 	area_entered.connect(on_area_entered)
@@ -13,6 +14,9 @@ func _ready() -> void:
 		entity = $"../.."
 	
 func on_area_entered(_area: Area2D):
+	if brief_invincibility: return
+	brief_invincibility = true
+
 	if _area is Hitbox and _area not in ignores:
 		var _hb_data: HitboxData = _area.hitbox_data
 		if entity_hitbox:
@@ -23,3 +27,6 @@ func on_area_entered(_area: Area2D):
 			else:
 				entity.process_damage(_area)
 		_area.on_impact(self)
+	
+	await get_tree().create_timer(0.25).timeout
+	brief_invincibility = false

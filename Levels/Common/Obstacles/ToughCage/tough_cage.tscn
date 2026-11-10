@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b8u7icslw85u6"]
+
+[ext_resource type="Script" uid="uid://bhil7t0s34aww" path="res://Levels/Common/Items/Breakable/breakable.gd" id="1_88ccp"]
+[ext_resource type="AudioStream" uid="uid://bhdwv3m5m28xl" path="res://Levels/Common/Audio/SmallShatter.mp3" id="2_1ccu4"]
+[ext_resource type="PackedScene" uid="uid://f028tl168r5n" path="res://Effects/Particles/breakable_lamp_shards.tscn" id="3_tgqil"]
+[ext_resource type="Texture2D" uid="uid://cn25eamq7wqav" path="res://Levels/Common/Obstacles/ToughCage/ToughCage.png" id="4_dm2ti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l3os"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm2ti"]
+size = Vector2(32, 32)
+
+[node name="ToughCage" type="Area2D" unique_id=595104892]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 5376
+script = ExtResource("1_88ccp")
+break_sound = ExtResource("2_1ccu4")
+obj_particle = ExtResource("3_tgqil")
+tough = true
+
+[node name="Art" type="Sprite2D" parent="." unique_id=1151112078]
+position = Vector2(16, -16)
+texture = ExtResource("4_dm2ti")
+
+[node name="Area2D" type="CollisionShape2D" parent="." unique_id=190447068]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_0l3os")
+
+[node name="EnvCollision" type="AnimatableBody2D" parent="." unique_id=223241334]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnvCollision" unique_id=1110731349]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_dm2ti")

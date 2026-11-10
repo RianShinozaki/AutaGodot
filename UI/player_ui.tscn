@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Enemies/Lumpy/LumpySheet.png" id="9_sru0y"]
 [ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://UI/ui_square.gdshader" id="13_ccb1e"]
 [ext_resource type="Texture2D" uid="uid://8eey14t8daqn" path="res://UI/GamePauseMenu/Triangles.png" id="15_8hdo2"]
+[ext_resource type="Texture2D" uid="uid://c0akfufcp3fwu" path="res://UI/Game/Auta_UI_mockup.png" id="16_hdrb0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa2pn"]
 shader = ExtResource("13_ccb1e")
@@ -125,6 +126,7 @@ offset_bottom = 63.0
 texture = SubResource("PlaceholderTexture2D_ijkxl")
 
 [node name="HPBar" type="Control" parent="PlayUI" unique_id=737186914]
+visible = false
 z_index = 1
 anchors_preset = 0
 offset_left = 87.0
@@ -186,6 +188,7 @@ text = "HP"
 label_settings = SubResource("LabelSettings_sru0y")
 
 [node name="AutaTab" type="Control" parent="PlayUI" unique_id=1593533045]
+visible = false
 texture_filter = 1
 anchors_preset = 0
 offset_left = 39.0
@@ -216,6 +219,7 @@ label_settings = SubResource("LabelSettings_xmds5")
 horizontal_alignment = 1
 
 [node name="MPBar" type="Control" parent="PlayUI" unique_id=1889887295]
+visible = false
 z_index = 1
 anchors_preset = 0
 offset_left = 79.0
@@ -525,6 +529,13 @@ grow_horizontal = 2
 text = "TEST MESSAGE"
 label_settings = SubResource("LabelSettings_ccb1e")
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayUI" unique_id=1573951901]
+layout_mode = 0
+offset_right = 167.962
+offset_bottom = 94.47863
+texture = ExtResource("16_hdrb0")
+expand_mode = 5
 
 [node name="PauseMenu" type="Control" parent="." unique_id=978956667]
 texture_filter = 1

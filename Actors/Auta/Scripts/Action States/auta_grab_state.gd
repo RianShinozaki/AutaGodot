@@ -75,6 +75,8 @@ func _process(delta: float) -> void:
 	aim_reticle.global_position += throw_param.reticle_move_speed * delta * _inp_dir
 	aim_arrow.rotation = aim_reticle.position.angle()
 	
+	grabbed_entity.entity.apply_physics = false
+	grabbed_entity.entity.velocity = Vector2.ZERO
 
 func _end() -> void:
 	super._end()
