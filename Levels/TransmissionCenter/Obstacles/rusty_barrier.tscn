@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cdhdhmm26enik"]
+
+[ext_resource type="Script" uid="uid://bhil7t0s34aww" path="res://Levels/Common/Items/Breakable/breakable.gd" id="1_urgsh"]
+[ext_resource type="AudioStream" uid="uid://d1kvfiltoylrr" path="res://Actors/Common/Audio/CannonballCrash.wav" id="2_nqiqu"]
+[ext_resource type="PackedScene" uid="uid://ldphuf1d2oa" path="res://Levels/TransmissionCenter/Obstacles/barrier_pieces.tscn" id="3_r8cac"]
+[ext_resource type="Texture2D" uid="uid://chns44wg4co1s" path="res://Levels/TransmissionCenter/Obstacles/wide_barrier.png" id="4_urgsh"]
+[ext_resource type="PackedScene" uid="uid://do1fuoougopjr" path="res://Levels/TransmissionCenter/Decoration/Lights/led_light.tscn" id="5_hunuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l3os"]
+size = Vector2(132, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm2ti"]
+size = Vector2(128, 16)
+
+[node name="RustyBarrier" type="Area2D" unique_id=595104892]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 5376
+script = ExtResource("1_urgsh")
+break_sound = ExtResource("2_nqiqu")
+obj_particle = ExtResource("3_r8cac")
+particles = 4
+tough = true
+even_particle_distribution = true
+
+[node name="Art" type="Sprite2D" parent="." unique_id=1151112078]
+position = Vector2(64, 0)
+texture = ExtResource("4_urgsh")
+
+[node name="Area2D" type="CollisionShape2D" parent="." unique_id=190447068]
+position = Vector2(64, -7)
+shape = SubResource("RectangleShape2D_0l3os")
+
+[node name="EnvCollision" type="AnimatableBody2D" parent="." unique_id=223241334]
+visible = false
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnvCollision" unique_id=1110731349]
+position = Vector2(64, -8)
+shape = SubResource("RectangleShape2D_dm2ti")
+
+[node name="PointLight2D14" parent="." unique_id=1398715599 instance=ExtResource("5_hunuc")]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)

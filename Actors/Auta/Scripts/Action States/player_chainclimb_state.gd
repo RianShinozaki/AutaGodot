@@ -91,7 +91,13 @@ func on_jump():
 	
 	grabbed_chain.player_just_detached()
 	can_short_hop = true
-	entity.velocity.y = jmp_param.get_jump_power()
+	
+	var vert = inp.input_direction.y
+	if vert > 0.5:
+		entity.velocity.y = 0
+	
+	else:
+		entity.velocity.y = jmp_param.get_jump_power()
 	SFXController.play_sound(jump_sound, global_position)
 	
 	var _link_rb: RigidBody2D = grabbed_chain.get_node("RigidBody2D")

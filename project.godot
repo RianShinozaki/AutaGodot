@@ -135,6 +135,7 @@ folder_colors={
 "res://Debug/": "green",
 "res://Effects/": "teal",
 "res://Levels/": "blue",
+"res://Levels/TransmissionCenter/": "purple",
 "res://Music/": "purple",
 "res://UI/": "pink",
 "res://addons/": "gray",

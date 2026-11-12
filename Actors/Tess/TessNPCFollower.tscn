@@ -105,6 +105,24 @@ _data = {
 &"Run": SubResource("Animation_kghr8")
 }
 
+[sub_resource type="Animation" id="Animation_yt3r7"]
+resource_name = "Fall"
+length = 0.1666
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [18, 19]
+}
+
 [sub_resource type="Animation" id="Animation_g7v36"]
 resource_name = "Idle"
 loop_mode = 1
@@ -133,7 +151,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_sc5wx"]
+resource_name = "JumpToFall"
+length = 0.4998
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.4166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16, 17, 18]
 }
 
 [sub_resource type="Animation" id="Animation_eyfyg"]
@@ -171,8 +206,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eyfyg"]
 _data = {
+&"Fall": SubResource("Animation_yt3r7"),
 &"Idle": SubResource("Animation_g7v36"),
 &"Jump": SubResource("Animation_r13uf"),
+&"JumpToFall": SubResource("Animation_sc5wx"),
 &"RESET": SubResource("Animation_eyfyg"),
 &"Run": SubResource("Animation_isjlb")
 }
@@ -202,7 +239,39 @@ states/Run/position = Vector2(674.8, 184.8)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_g7v36"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_isjlb"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_eyfyg")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l3mt8"]
+animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r13uf"]
 animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eyfyg"]
+animation = &"JumpToFall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sc5wx"]
+advance_mode = 2
+advance_expression = "velocity.y < -0.2f"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yt3r7"]
+advance_mode = 2
+advance_expression = "velocity.y > 0.2f"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yu4b1"]
+advance_mode = 2
+advance_expression = "velocity.y > -100"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2dnlc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l3mt8"]
+states/Fall/node = SubResource("AnimationNodeAnimation_l3mt8")
+states/Fall/position = Vector2(387.2, 119.600006)
+states/Jump/node = SubResource("AnimationNodeAnimation_r13uf")
+states/Jump/position = Vector2(360, 8.400002)
+states/JumpToFall/node = SubResource("AnimationNodeAnimation_eyfyg")
+states/JumpToFall/position = Vector2(512, 58.8)
+transitions = ["Start", "Jump", SubResource("AnimationNodeStateMachineTransition_sc5wx"), "Start", "Fall", SubResource("AnimationNodeStateMachineTransition_yt3r7"), "Jump", "JumpToFall", SubResource("AnimationNodeStateMachineTransition_yu4b1"), "JumpToFall", "Fall", SubResource("AnimationNodeStateMachineTransition_2dnlc")]
+graph_offset = Vector2(-38, -70)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f24jf"]
 advance_mode = 2
@@ -211,16 +280,16 @@ advance_mode = 2
 advance_mode = 2
 advance_expression = "is_on_floor() == false"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l3mt8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kghr8"]
 advance_mode = 2
 advance_expression = "is_on_floor() == true"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eyfyg"]
 states/Grounded/node = SubResource("AnimationNodeStateMachine_f24jf")
 states/Grounded/position = Vector2(343.2, 76.8)
-states/Jump/node = SubResource("AnimationNodeAnimation_l3mt8")
-states/Jump/position = Vector2(324.8, -81.6)
-transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_f24jf"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_r13uf"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_l3mt8")]
+states/Jump/node = SubResource("AnimationNodeStateMachine_l3mt8")
+states/Jump/position = Vector2(359.2, -80)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_f24jf"), "Grounded", "Jump", SubResource("AnimationNodeStateMachineTransition_r13uf"), "Jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_kghr8")]
 graph_offset = Vector2(-38, -120)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjva5"]

@@ -44,7 +44,7 @@ func _process(_delta: float) -> void:
 
 func captured_enemy(_enemy_target: CollisionEntity):
 	if enemy_target == _enemy_target: return
-	$PlayUI/EnemyUI.visible = true
+	#$PlayUI/EnemyUI.visible = true
 	$PlayUI/EnemyUI.position.y = -95.0
 	$PlayUI/EnemyUI/EnemyTab/EnemyName.text = _enemy_target.name
 	enemy_target = _enemy_target

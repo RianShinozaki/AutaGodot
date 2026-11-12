@@ -7,6 +7,7 @@ var clash_sound: AudioStream = preload("res://Levels/Common/Items/Breakable/Meta
 @export var particles: int = 5
 @export var destroy: bool = true
 @export var tough: bool = false
+@export var even_particle_distribution: bool
 var broken = false
 
 signal just_broken
@@ -26,22 +27,36 @@ func on_area_entered(_area: Area2D):
 		if should_signal_strike: emit_signal("struck")
 		SFXController.play_sound(clash_sound, global_position)
 		return
-	
+
+		
 	if break_sound:
 		SFXController.play_sound(break_sound, global_position)
 		
 	if obj_particle:
-		for i in range(particles):
-			var _particle = obj_particle.instantiate()
-			get_parent().call_deferred("add_child", _particle)
-			_particle.set_deferred("global_position", global_position + $Art.get_rect().get_center() )
-			_particle.velocity = Vector2.from_angle(randf_range(0, 2*PI))*_particle.initial_velocity
-			var _x_knockback = _hb.x_knockback
-			if _hb.x_knockback_is_relative:
-				_x_knockback *= -1 if _area.global_position.x > global_position.x else 1
+		if not even_particle_distribution:
+			for i in range(particles):
+				var _particle = obj_particle.instantiate()
+				get_parent().call_deferred("add_child", _particle)
+				_particle.set_deferred("global_position", global_position + $Art.get_rect().get_center() )
+				_particle.velocity = Vector2.from_angle(randf_range(0, 2*PI))*_particle.initial_velocity
+				var _x_knockback = _hb.x_knockback
+				if _hb.x_knockback_is_relative:
+					_x_knockback *= -1 if _area.global_position.x > global_position.x else 1
+				
+				_particle.velocity += Vector2(_x_knockback, _hb.y_knockback).normalized()*_particle.initial_velocity*0.55
+		else:
+			var particle_padding = $Art.get_rect().size.x / particles
 			
-			_particle.velocity += Vector2(_x_knockback, _hb.y_knockback).normalized()*_particle.initial_velocity*0.55
-	
+			for i in range(particles):
+				var _particle = obj_particle.instantiate()
+				get_parent().call_deferred("add_child", _particle)
+				_particle.set_deferred("global_position", global_position + Vector2.RIGHT * i*particle_padding )
+				_particle.velocity = Vector2.from_angle(randf_range(0, 2*PI))*_particle.initial_velocity
+				var _x_knockback = _hb.x_knockback
+				if _hb.x_knockback_is_relative:
+					_x_knockback *= -1 if _area.global_position.x > global_position.x else 1
+				
+				_particle.velocity += Vector2(_x_knockback, _hb.y_knockback).normalized()*_particle.initial_velocity*0.55
 	broken = true
 	emit_signal("just_broken")
 	if destroy:

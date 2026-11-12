@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ldphuf1d2oa"]
+
+[ext_resource type="Script" uid="uid://dhtldmm1vddu" path="res://Effects/simple_bouncing_particle.gd" id="1_k83xn"]
+[ext_resource type="AudioStream" uid="uid://be0o5nosgn00k" path="res://Levels/Common/Items/StarFlower/flowerpickup.wav" id="2_7tkex"]
+[ext_resource type="Texture2D" uid="uid://i7sdkko1yw6o" path="res://Levels/TransmissionCenter/Obstacles/wide_barrier_pieces.png" id="3_a7emq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q5x3"]
+size = Vector2(32, 18)
+
+[node name="BarrierPieces" type="CharacterBody2D" unique_id=1961415455]
+collision_layer = 0
+script = ExtResource("1_k83xn")
+bounce_coef = 0.7
+initial_velocity = 25.0
+absorb_heal_amount = 1.0
+pickup_sound = ExtResource("2_7tkex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573051179]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_2q5x3")
+disabled = true
+
+[node name="WideBarrierPieces" type="Sprite2D" parent="." unique_id=314118618]
+texture_filter = 1
+position = Vector2(16, 0)
+texture = ExtResource("3_a7emq")

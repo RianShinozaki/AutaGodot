@@ -3,6 +3,7 @@ class_name CamRegion
 extends Area2D
 
 @export var zoom: int = 4
+@export var invisible_if_inactive: bool = true
 
 var active: bool = false
 
@@ -14,10 +15,11 @@ signal deactivate
 
 var objects: Array[Node2D]
 
+
 func _enter_tree() -> void:
 	body_entered.connect(on_body_entered)
 	set_extents()
-	get_parent().visible = false
+	if invisible_if_inactive: get_parent().visible = false
 	objects = []
 
 func on_body_entered(body):
@@ -60,7 +62,7 @@ func on_body_entered(body):
 			
 		if body is Auta:
 			body.set_quick_respawn()
-			get_parent().visible = true
+			if invisible_if_inactive: get_parent().visible = true
 		emit_signal("activate")
 		objects = objects.filter(func(item): return is_instance_valid(item))
 		for _object in objects:
@@ -68,7 +70,7 @@ func on_body_entered(body):
 	
 func deactivate_self():
 	active = false
-	get_parent().visible = false
+	if invisible_if_inactive: get_parent().visible = false
 	emit_signal("deactivate")
 	objects = objects.filter(func(item): return is_instance_valid(item))
 	
