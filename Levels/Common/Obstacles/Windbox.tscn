@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bvf87wwuc2qcc" path="res://Levels/Common/Obstacles/Windbox.gd" id="1_4qc6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whhe8"]
+size = Vector2(16, 16)
 
 [node name="Windbox" type="Area2D" unique_id=1324653846]
 script = ExtResource("1_4qc6k")

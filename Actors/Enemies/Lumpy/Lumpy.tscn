@@ -602,6 +602,7 @@ object = ExtResource("11_xugyf")
 count = 5
 
 [node name="EnvironmentBox" type="CollisionShape2D" parent="." unique_id=1767456773]
+visible = false
 position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_syevp")
@@ -657,6 +658,7 @@ object = ExtResource("22_fkov2")
 count = 1
 
 [node name="TerrainRaycasts" type="Node2D" parent="SpecialAttributes" unique_id=1649875977]
+visible = false
 
 [node name="RightFloor" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts" unique_id=1767353673]
 position = Vector2(16, -5)
@@ -673,6 +675,7 @@ target_position = Vector2(0, 16)
 target_position = Vector2(-16, 0)
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes" unique_id=827252989]
+visible = false
 
 [node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" unique_id=1974365831 node_paths=PackedStringArray("entity")]
 position = Vector2(-24, 0)
@@ -713,6 +716,7 @@ shape = SubResource("RectangleShape2D_xmtoo")
 debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
 
 [node name="Grabbox" type="Area2D" parent="SpecialAttributes" unique_id=1646648946]
+visible = false
 collision_layer = 0
 collision_mask = 32768
 script = ExtResource("18_ktntf")

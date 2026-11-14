@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Enemies/Lumpy/LumpySheet.png" id="9_sru0y"]
 [ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://UI/ui_square.gdshader" id="13_ccb1e"]
 [ext_resource type="Texture2D" uid="uid://8eey14t8daqn" path="res://UI/GamePauseMenu/Triangles.png" id="15_8hdo2"]
-[ext_resource type="Texture2D" uid="uid://c0akfufcp3fwu" path="res://UI/Game/Auta_UI_mockup.png" id="16_hdrb0"]
+[ext_resource type="Texture2D" uid="uid://ck7kmmlb34gir" path="res://UI/Game/Auta_UI_mockup_test.png" id="16_hdrb0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa2pn"]
 shader = ExtResource("13_ccb1e")
@@ -400,6 +400,7 @@ text = "SP"
 label_settings = SubResource("LabelSettings_sru0y")
 
 [node name="EnemyUI" type="Control" parent="PlayUI" unique_id=699090803]
+visible = false
 anchors_preset = 0
 offset_left = 24.0
 offset_top = 15.0
@@ -538,6 +539,7 @@ texture = ExtResource("16_hdrb0")
 expand_mode = 5
 
 [node name="PauseMenu" type="Control" parent="." unique_id=978956667]
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
