@@ -1,3 +1,4 @@
+class_name SpiderDrone 
 extends AIEntity
 
 var cached_sprite_rot: float = 0

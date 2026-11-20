@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d3334dlb7nmpq"]
+
+[ext_resource type="Script" uid="uid://cwt5nuw4ysbt3" path="res://Levels/Common/Obstacles/Chain/chain_anchor.gd" id="1_wtpq6"]
+[ext_resource type="PackedScene" uid="uid://d0njkdoxc48t" path="res://Actors/Enemies/SpiderDrone/spider_on_chain.tscn" id="2_m06o6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2oteb"]
+
+[node name="AnchorSpider" type="StaticBody2D" unique_id=1835664497 node_paths=PackedStringArray("object_attached")]
+collision_layer = 2
+script = ExtResource("1_wtpq6")
+object_attached = NodePath("SpiderOnChain")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1289301185]
+visible = false
+shape = SubResource("CircleShape2D_2oteb")
+
+[node name="SpiderOnChain" parent="." unique_id=224113115 instance=ExtResource("2_m06o6")]

@@ -2,17 +2,37 @@
 
 [ext_resource type="Script" uid="uid://noiwouki2uli" path="res://Levels/Common/Obstacles/Chain/chain_link.gd" id="1_3do5u"]
 [ext_resource type="Texture2D" uid="uid://cytvwmp6mvdjl" path="res://Levels/Common/Obstacles/Chain/chain-TC.png" id="1_7rjrv"]
+[ext_resource type="Texture2D" uid="uid://bdcfqg8w7fyoh" path="res://Levels/Common/Obstacles/Chain/chain-TC_HOT.png" id="3_kq4ba"]
 [ext_resource type="Script" uid="uid://cegvcxf36ijhf" path="res://Levels/Common/Obstacles/Chain/chain_assist.gd" id="3_pph3j"]
+[ext_resource type="Script" uid="uid://dxb5sej52hapf" path="res://Actors/Common/Components/hitbox.gd" id="5_q8ejm"]
+[ext_resource type="AudioStream" uid="uid://dqe4m8lfjhxv5" path="res://Actors/Auta/Audio/Slash-Attack.mp3" id="6_lmnfi"]
+[ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Actors/Common/Components/hitbox_data.gd" id="6_o70s5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3do5u"]
 radius = 5.0
 height = 18.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kq4ba"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Resource" id="Resource_lmnfi"]
+script = ExtResource("6_o70s5")
+damage = 3
+x_knockback = 10.0
+y_knockback = 20.0
+knockback_power = 2
+hitstun_duration = 0.25
+impact_fx = "SlashFX"
+impact_sound = ExtResource("6_lmnfi")
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pph3j"]
 radius = 3.0
 height = 22.0
 
 [node name="Link" type="Node2D" unique_id=1785113444]
+texture_filter = 1
 script = ExtResource("1_3do5u")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1611860183]
@@ -34,14 +54,32 @@ z_index = 1
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_3do5u")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1762671030]
+[node name="Normal" type="Sprite2D" parent="RigidBody2D" unique_id=1762671030]
 position = Vector2(0, 8)
 texture = ExtResource("1_7rjrv")
+
+[node name="Hot" type="Sprite2D" parent="RigidBody2D" unique_id=1360746119]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_kq4ba")
+position = Vector2(0, 8)
+texture = ExtResource("3_kq4ba")
+
+[node name="Hitbox" type="Area2D" parent="RigidBody2D" unique_id=1896642153]
+collision_layer = 1024
+collision_mask = 0
+script = ExtResource("5_q8ejm")
+hitbox_data = SubResource("Resource_lmnfi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Hitbox" unique_id=640204401]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_3do5u")
+disabled = true
+debug_color = Color(0.98266536, 0, 0.3643583, 0.41960785)
 
 [node name="PlayerGrabber" type="Area2D" parent="." unique_id=1140955845]
 position = Vector2(0, 10)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 10
 monitorable = false
 script = ExtResource("3_pph3j")
 

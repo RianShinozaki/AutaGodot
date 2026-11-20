@@ -104,12 +104,8 @@ impact_fx = "HitFX"
 impact_sound = ExtResource("26_qnvac")
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]
-radius = 8.0
-height = 16.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
-size = Vector2(18, 17)
+size = Vector2(18, 16)
 
 [node name="SpiderDrone" type="CharacterBody2D" unique_id=1556690808 node_paths=PackedStringArray("current_action_state")]
 collision_layer = 2
@@ -214,9 +210,9 @@ entity = NodePath("../../..")
 hitbox_data = SubResource("Resource_ggq7g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Attack" unique_id=1270191570]
-position = Vector2(24, -8)
+position = Vector2(24, -7)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_t3lta")
+shape = SubResource("CapsuleShape2D_syevp")
 
 [node name="Hurtbox" type="Area2D" parent="SpecialAttributes" unique_id=1172212843]
 position = Vector2(0, -13)
@@ -225,7 +221,7 @@ collision_mask = 4352
 script = ExtResource("28_l87hf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hurtbox" unique_id=928578598]
-position = Vector2(0, 4.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_xmtoo")
 debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
 

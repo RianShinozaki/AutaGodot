@@ -4,6 +4,8 @@ extends Node2D
 @onready var entity: CollisionEntity = $"../.."
 @onready var pool: ObjectPool = $"../ObjectPools/DeathExplosion"
 
+signal just_died
+
 func _ready():
 	$"../HurtManager".hurt.connect(query_death)
 	
@@ -25,6 +27,7 @@ func query_death(_hitbox: Hitbox):
 		
 func death():
 	var _burst = pool.spawn_object()
+	emit_signal("just_died")
 	pool.remove_child(_burst)
 	entity.get_parent().add_child(_burst)
 	_burst.global_position = entity.global_position

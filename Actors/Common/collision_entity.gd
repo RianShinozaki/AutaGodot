@@ -16,6 +16,7 @@ enum {COLLISION_MODE_FLOOR, COLLISION_MODE_FREE, COLLISION_MODE_BOUNCE}
 @export_range(0, 1) var slope_land_influence: float
 
 @export_group("States")
+@export var stateless: bool
 @export var apply_physics: bool
 @export var previously_grounded: bool
 @export var current_action_state: ActionState
@@ -116,6 +117,7 @@ func get_action_state_name(_state: String) -> ActionState:
 	return get_node("ActionStates/"+_state)
 	
 func switch_action_state(_state: ActionState) -> ActionState:
+	if stateless: return
 	last_action_state = current_action_state
 	current_action_state = _state
 	last_action_state._end()

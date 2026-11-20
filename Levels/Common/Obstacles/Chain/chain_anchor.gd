@@ -7,6 +7,9 @@ var last_link: ChainLink
 @export var length: int = 5
 
 var activation_lock: bool = false
+@export var object_attached: Node2D
+
+signal links_established
 
 func _ready():
 	var _new_link: ChainLink
@@ -34,6 +37,11 @@ func _ready():
 	
 	last_link = _new_link
 	_pin_joint.bias = 0.8
+	
+	emit_signal("links_established")
+	
+	if object_attached != null:
+		object_attached.attach_to_chain(last_link)
 
 func set_activation_lock(value: bool):
 	activation_lock = value
@@ -54,6 +62,18 @@ func make_last_light():
 func make_last_heavy():
 	last_link.get_node("RigidBody2D").mass = get_parent().length/2 * ChainLink.default_weight
 
+func make_links_hot():
+	for link: ChainLink in chain_link_instances:
+		link.become_hot()
+		await get_tree().create_timer(0.5).timeout
+		if object_attached == null: break
+
+func make_links_cool():
+	for i in range(chain_link_instances.size()):
+		chain_link_instances[chain_link_instances.size()-i-1].become_cool()
+		await get_tree().create_timer(0.1).timeout
+		if object_attached != null: break
+		
 func on_player_attached():
 	pass
 	#deactivate_links()
