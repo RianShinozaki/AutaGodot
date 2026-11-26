@@ -528,9 +528,9 @@ states/Thrown/position = Vector2(658, 45.800003)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_qex3u"), "Attack", "Grounded", SubResource("AnimationNodeStateMachineTransition_h1tvb"), "BurrowOut", "Grounded", SubResource("AnimationNodeStateMachineTransition_m2b68")]
 graph_offset = Vector2(-28, -95)
 
-[sub_resource type="Resource" id="Resource_ggq7g"]
+[sub_resource type="Resource" id="Resource_m2b68"]
 script = ExtResource("26_pglu5")
-damage = 9
+damage = 3
 x_knockback = 100.0
 x_knockback_is_relative = true
 knockback_power = 3
@@ -543,6 +543,18 @@ metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3lta"]
 radius = 6.79
 height = 22.93
+
+[sub_resource type="Resource" id="Resource_ggq7g"]
+script = ExtResource("26_pglu5")
+damage = 9
+x_knockback = 100.0
+x_knockback_is_relative = true
+knockback_power = 3
+hitstun_duration = 0.15
+impact_fx = "HitFX"
+impact_sound = ExtResource("26_clcoo")
+damage_type = 2
+metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_psrlb"]
 radius = 11.0
@@ -684,7 +696,7 @@ collision_layer = 1024
 collision_mask = 8704
 script = ExtResource("25_3s03o")
 entity = NodePath("../../..")
-hitbox_data = SubResource("Resource_ggq7g")
+hitbox_data = SubResource("Resource_m2b68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttributes/Hitboxes/Attack" unique_id=1270191570]
 position = Vector2(24, 0)

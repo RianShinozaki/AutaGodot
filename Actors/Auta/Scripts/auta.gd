@@ -4,6 +4,7 @@ extends CollisionEntity
 
 @export var unlocked_orb = false
 
+var invincible: bool = false
 var can_orb: bool = true
 var orb_timer: float = 0.0
 var recharge_orb = false
@@ -54,7 +55,14 @@ func on_impact(_hitbox: Hitbox, _hurtbox: Hurtbox):
 		velocity.y = -30
 
 func process_damage(_area):
-	$SpecialAttributes/HurtManager.process_hurt(_area)
+	if not invincible:
+		invincible = true
+		$SpecialAttributes/HurtManager.process_hurt(_area)
+		$Art.modulate.a = 0.5
+		await get_tree().create_timer(1.25).timeout
+		invincible = false
+		$Art.modulate.a = 1
+		
 
 func set_quick_respawn():
 	quick_respawn_pos = global_position

@@ -106,9 +106,14 @@ func snap_to_target():
 func retarget(_target):
 	targets.clear()
 	targets.append(_target)
+	target_override = false
+	position_override = false
 
 func retarget_multiple(_target: Array[Node2D]):
 	targets = _target
+	target_override = false
+	position_override = false
+	
 
 func lerp_to_position(_target: Vector2, _time: float):
 	ignore_boundaries = true

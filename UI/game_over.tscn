@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bhrhhv2wusop1" path="res://UI/Game/Sparkle-individual.png" id="5_cp6d1"]
 [ext_resource type="Texture2D" uid="uid://dk60dnog3bov1" path="res://UI/GameOver/autadream.png" id="6_fasss"]
 [ext_resource type="FontFile" uid="uid://bjcihuue17427" path="res://UI/Fonts/Not Jam Mono Clean 13.ttf" id="7_5wsev"]
+[ext_resource type="Shader" uid="uid://u2oon3pmgvux" path="res://Effects/line_boil.tres" id="7_fy7qq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jk1to"]
 viewport_path = NodePath("SubViewport")
@@ -63,6 +64,9 @@ font_size = 18
 font_color = Color(1, 1, 1, 0)
 outline_size = 4
 outline_color = Color(0.31791192, 0.05856078, 0.16383815, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m8h5"]
+shader = ExtResource("7_fy7qq")
 
 [sub_resource type="Theme" id="Theme_hroa2"]
 default_font = ExtResource("7_5wsev")
@@ -861,6 +865,7 @@ color = Color(0, 0, 0, 1)
 [node name="Autadream" type="Sprite2D" parent="SubViewport/CanvasLayer/MainScreen" unique_id=207751360]
 modulate = Color(0.5169354, 0.29287162, 0.41917598, 1)
 texture_filter = 1
+material = SubResource("ShaderMaterial_0m8h5")
 position = Vector2(484.955, 239.14)
 scale = Vector2(2, 2)
 texture = ExtResource("6_fasss")

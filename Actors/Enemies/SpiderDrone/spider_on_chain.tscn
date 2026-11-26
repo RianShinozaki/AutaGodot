@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://ck4b6m41vc0an" path="res://Actors/Common/Audio/Bash-Impact.wav" id="20_vsj61"]
 [ext_resource type="Script" uid="uid://3pmq8ed0n1bc" path="res://Actors/Common/Components/hitbox_data.gd" id="21_aj14q"]
 [ext_resource type="Script" uid="uid://cc4887s21lb37" path="res://Actors/Common/Components/hurtbox.gd" id="22_qmsuu"]
+[ext_resource type="Texture2D" uid="uid://by2rhijd8vk6m" path="res://Effects/Images/Lighting/ConeLight.png" id="23_7d7o5"]
 
 [sub_resource type="Resource" id="Resource_b88qr"]
 script = ExtResource("3_tp36o")
@@ -268,7 +269,20 @@ position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_xmtoo")
 debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
 
+[node name="PointLight2D" type="PointLight2D" parent="SpecialAttributes" unique_id=48202946]
+position = Vector2(0, 45)
+rotation = 3.1415927
+scale = Vector2(0.12, 0.125)
+color = Color(1, 0.38361812, 0.44628912, 1)
+energy = 2.47
+texture = ExtResource("23_7d7o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpecialAttributes/PointLight2D" unique_id=116951971]
+modulate = Color(10.016753, 0, 0, 0.03529412)
+texture = ExtResource("23_7d7o5")
+
 [node name="PlayerDetector" type="Area2D" parent="." unique_id=1931938062]
+visible = false
 collision_layer = 0
 collision_mask = 8
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bojs1w8vb058"
+path="res://.godot/imported/The Cyber Grind.mp3-ebac53108b567ec3b6d571aea04ccd52.mp3str"
+
+[deps]
+
+source_file="res://Music/Temp/The Cyber Grind.mp3"
+dest_files=["res://.godot/imported/The Cyber Grind.mp3-ebac53108b567ec3b6d571aea04ccd52.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

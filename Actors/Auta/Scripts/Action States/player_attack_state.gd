@@ -18,6 +18,7 @@ var can_short_hop:
 		
 var combo_number: int = 0
 var combo_timer: float
+var can_attack_jump: bool = false
 @export var combo_max_time: float
 
 func _ready() -> void:
@@ -41,26 +42,29 @@ func _start() -> void:
 	SFXController.play_sound(attack_sound, global_position, 1, randf_range(0.9, 1.1))
 	var _input = inp.input_direction
 	
-	#if _input.y < -0.5:
-	#play_animation_oneshot("Attack_Launch")
-	#else:
-	if combo_timer <= 0:
-		combo_number = 0
-		
-	if combo_number == 0:
-		play_animation_oneshot("Attack_Combo1")
-		combo_number = 1
-	elif combo_number == 1:
-		play_animation_oneshot("Attack_Combo2")
-		combo_number = 2
-	elif combo_number == 2:
-		play_animation_oneshot("Attack_Combo3")
-		combo_number = 0
+	if _input.y < -0.5: #and not entity.is_on_floor():
+		play_animation_oneshot("Attack_UpAirKick")
+		if can_attack_jump and entity.velocity.y > -80:
+			entity.velocity.y = -80
+			can_attack_jump = false
+	else:
+		if combo_timer <= 0:
+			combo_number = 0
+			
+		if combo_number == 0:
+			play_animation_oneshot("Attack_Combo1")
+			combo_number = 1
+		elif combo_number == 1:
+			play_animation_oneshot("Attack_Combo2")
+			combo_number = 2
+		elif combo_number == 2:
+			play_animation_oneshot("Attack_Combo3")
+			combo_number = 0
 	
 	
 func _process(delta: float) -> void:
 	if combo_timer > 0: combo_timer -= delta
-	
+	if entity.is_on_floor(): can_attack_jump = true
 	super._process(delta)
 	if not active: return
 	

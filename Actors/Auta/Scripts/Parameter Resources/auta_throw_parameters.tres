@@ -6,7 +6,7 @@
 script = ExtResource("1_orryd")
 grab_jump = -200.0
 throw_power = 300.0
-recoil_power = 100.0
-recoil_y = -270.0
-reticle_move_speed = 1200.0
+recoil_power = 150.0
+recoil_y = -300.0
+reticle_move_speed = 1800.0
 metadata/_custom_type_script = "uid://cmnoogmf4xnl2"

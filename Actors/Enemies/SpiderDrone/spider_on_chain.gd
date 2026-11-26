@@ -54,11 +54,15 @@ func _physics_process(delta: float) -> void:
 func process_damage(_area):
 	$SpecialAttributes/HurtManager.process_hurt(_area)
 	var _link_rb: RigidBody2D = attached_link.get_node("RigidBody2D")
-	print(velocity)
-	_link_rb.apply_impulse(velocity * 2)
 	var _hitbox_data: HitboxData = _area.hitbox_data
+	var _x_knockback: float = _hitbox_data.x_knockback
+	if _hitbox_data.x_knockback_is_relative:
+		_x_knockback *= -1 if _area.global_position.x > global_position.x else 1
+	var _knockback = Vector2(_x_knockback, _hitbox_data.y_knockback/2)
 	if _hitbox_data.damage_type == HitboxData.DamageType.HEAVY:
-		_link_rb.apply_impulse(velocity * 6)
+		_link_rb.apply_impulse(_knockback * 5)
+	else:
+		_link_rb.apply_impulse(_knockback * 5)
 
 func _on_death_manager_just_died():
 	anchor.object_attached = null
@@ -74,4 +78,5 @@ func _on_player_detector_body_exited(body):
 	aggro = false
 	$PlayerDetector/CollisionShape2D.shape.radius = 150
 	$Art/AnimationPlayer.play("Passive")
+	
 	

@@ -231,3 +231,9 @@ Then, use your orb to grab the enemy, [color=yellow]holding down the C button as
 ~ BardOrbTutorial_fail_4
 Auta, that child has probably been eaten by now. Please make haste.
 => END
+
+~ tess_spire_1
+Tess: YOU! You activated all these robots, didn't you?!
+Tess: Can't you leave me alone?! I'm almost out! I'm almost at the top!
+Tess: So just... GO AWAY!
+=> END

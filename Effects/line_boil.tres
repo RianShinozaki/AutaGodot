@@ -1,0 +1,45 @@
+[gd_resource type="VisualShader" format=3 uid="uid://u2oon3pmgvux"]
+
+[sub_resource type="Gradient" id="Gradient_pbq2t"]
+colors = PackedColorArray(0.73467994, 0.73467994, 0.7346799, 1, 0.9157694, 0.9157693, 0.9157694, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gmbae"]
+noise_type = 3
+frequency = 0.0011
+offset = Vector3(-211.16, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j12hp"]
+noise = SubResource("FastNoiseLite_gmbae")
+color_ramp = SubResource("Gradient_pbq2t")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pbq2t"]
+texture = SubResource("NoiseTexture2D_j12hp")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_gmbae"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_j12hp"]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_na5dn"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_rgq5v"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(2, 2), 2, Vector2(-1, -1)]
+op_type = 1
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(368, 16)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_pbq2t")
+nodes/fragment/3/position = Vector2(-640, 176)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_gmbae")
+nodes/fragment/5/position = Vector2(-432, 480)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_j12hp")
+nodes/fragment/6/position = Vector2(64, 304)
+nodes/fragment/7/node = SubResource("VisualShaderNodeInput_na5dn")
+nodes/fragment/7/position = Vector2(-608, -32)
+nodes/fragment/8/node = SubResource("VisualShaderNodeMultiplyAdd_rgq5v")
+nodes/fragment/8/position = Vector2(-304, 256)
+nodes/fragment/connections = PackedInt32Array(5, 0, 6, 2, 3, 0, 8, 0, 8, 0, 6, 0)

@@ -13,5 +13,5 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	cached_sprite_rot = rotate_toward(cached_sprite_rot, global_rotation, delta*20)
+	cached_sprite_rot = rotate_toward(cached_sprite_rot, up_direction.angle() + PI/2, delta*20)
 	get_node("Art").global_rotation = cached_sprite_rot

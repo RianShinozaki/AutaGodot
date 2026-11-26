@@ -17,23 +17,36 @@ func _process(delta):
 		forward_cast.target_position.x = 12.0
 		forward_cast.position.y = -15
 		grounded_buffer = 0.3
-	elif grounded_buffer > 0: #Look behind for walls to climb (rotating down)
+		entity.up_direction = entity.get_floor_normal()
+		entity.gravity_direction = -entity.up_direction
+		
+	elif grounded_buffer > 0 and not entity.is_on_floor(): #Look behind for walls to climb (rotating down)
 		entity.move(-Vector2.UP*14, 1.0/60, false)
 		forward_cast.target_position.x = -12.0
 		forward_cast.position.y = 0
 		grounded_buffer -= delta
+		if forward_cast.is_colliding():
+			entity.rotation = forward_cast.get_collision_normal().angle() + PI/2
+			entity.global_position = forward_cast.get_collision_point()
+			entity.up_direction = Vector2.from_angle(entity.rotation - PI/2)
+			entity.gravity_direction = -entity.up_direction
+			entity.move(-Vector2.UP*14, 1.0/60, false)
 		
-	if forward_cast.is_colliding(): #Found a wall, cling to it
-		forward_cast.position.y = -15
-		forward_cast.target_position.x = 12.0
-		entity.rotation = forward_cast.get_collision_normal().angle() + PI/2
-		entity.global_position = forward_cast.get_collision_point()
-		entity.up_direction = Vector2.from_angle(entity.rotation - PI/2)
-		entity.gravity_direction = -entity.up_direction
-		entity.move(-Vector2.UP*14, 1.0/60, false)
-	
 	if entity.is_on_wall():
-		entity.global_position += entity.up_direction*4
+		entity.up_direction = entity.get_wall_normal()
+		entity.gravity_direction = -entity.up_direction
+		
+	#if forward_cast.is_colliding(): #Found a wall, cling to it
+	#	forward_cast.position.y = -15
+	#	forward_cast.target_position.x = 12.0
+	#	entity.rotation = forward_cast.get_collision_normal().angle() + PI/2
+	#	entity.global_position = forward_cast.get_collision_point()
+	#	entity.up_direction = Vector2.from_angle(entity.rotation - PI/2)
+	#	entity.gravity_direction = -entity.up_direction
+	#	entity.move(-Vector2.UP*14, 1.0/60, false)
+	
+	#if entity.is_on_wall():
+	#	entity.global_position += entity.up_direction*4
 		
 	if not entity.is_on_floor() and grounded_buffer <= 0: #Found no walls in time, falling
 		entity.up_direction = Vector2.UP

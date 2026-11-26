@@ -89,9 +89,8 @@ states/default/node = SubResource("AnimationNodeAnimation_kuxhb")
 states/default/position = Vector2(441.2, 156.8)
 transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_b0dc7")]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syevp"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_y58lb"]
 radius = 7.0
-height = 20.0
 
 [sub_resource type="Resource" id="Resource_ggq7g"]
 script = ExtResource("27_wpgxk")
@@ -104,15 +103,20 @@ impact_fx = "HitFX"
 impact_sound = ExtResource("26_qnvac")
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syevp"]
+radius = 7.0
+height = 20.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmtoo"]
 size = Vector2(18, 16)
 
 [node name="SpiderDrone" type="CharacterBody2D" unique_id=1556690808 node_paths=PackedStringArray("current_action_state")]
 collision_layer = 2
 collision_mask = 65
+safe_margin = 1.0
 script = ExtResource("1_eu3ts")
 gravity_direction = Vector2(0, 1)
-gravity = 70.0
+gravity = 400.0
 apply_physics = true
 current_action_state = NodePath("ActionStates/NormalState")
 parameters = Dictionary[String, ExtResource("5_wygs3")]({
@@ -126,7 +130,7 @@ parameters = Dictionary[String, ExtResource("5_wygs3")]({
 light_mask = 2
 texture_filter = 1
 material = ExtResource("10_7mryq")
-position = Vector2(0, -16)
+position = Vector2(0, -1)
 texture = ExtResource("11_j13ef")
 offset = Vector2(-1, 0)
 hframes = 4
@@ -147,16 +151,17 @@ tree_root = SubResource("AnimationNodeStateMachine_hkn8x")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="EnvironmentBox" type="CollisionShape2D" parent="." unique_id=1767456773]
-position = Vector2(0, -7)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_syevp")
+shape = SubResource("CircleShape2D_y58lb")
 
 [node name="GenericAttributes" parent="." unique_id=318139796 instance=ExtResource("16_pubc6")]
+position = Vector2(0, 7)
 
 [node name="EntityStatus" parent="GenericAttributes" index="0" unique_id=1875539726]
 max_health = 9.0
 
 [node name="SpecialAttributes" type="Node2D" parent="." unique_id=89626032]
+position = Vector2(0, 7)
 
 [node name="HurtManager" type="Node2D" parent="SpecialAttributes" unique_id=57049452]
 script = ExtResource("17_70cb2")
@@ -195,11 +200,12 @@ count = 1
 [node name="TerrainRaycasts" type="Node2D" parent="SpecialAttributes" unique_id=1649875977]
 
 [node name="Forward" type="RayCast2D" parent="SpecialAttributes/TerrainRaycasts" unique_id=795234417]
-position = Vector2(0, -15)
+position = Vector2(0, -13)
 target_position = Vector2(12, 0)
 collision_mask = 65
 
 [node name="Hitboxes" type="Node2D" parent="SpecialAttributes" unique_id=827252989]
+visible = false
 
 [node name="Attack" type="Area2D" parent="SpecialAttributes/Hitboxes" unique_id=1974365831 node_paths=PackedStringArray("entity")]
 position = Vector2(-24, 0)
@@ -215,6 +221,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_syevp")
 
 [node name="Hurtbox" type="Area2D" parent="SpecialAttributes" unique_id=1172212843]
+visible = false
 position = Vector2(0, -13)
 collision_layer = 2048
 collision_mask = 4352
@@ -226,6 +233,7 @@ shape = SubResource("RectangleShape2D_xmtoo")
 debug_color = Color(1, 0.027679995, 0.01510882, 0.41960785)
 
 [node name="ActionStates" type="Node2D" parent="." unique_id=613060342]
+position = Vector2(0, 7)
 
 [node name="NormalState" type="Node2D" parent="ActionStates" unique_id=1663723321]
 script = ExtResource("19_18c06")
@@ -235,6 +243,7 @@ active = true
 script = ExtResource("31_2npvw")
 
 [node name="AIStates" type="Node2D" parent="." unique_id=224530863]
+position = Vector2(0, 7)
 
 [node name="PatrolState" type="Node2D" parent="AIStates" unique_id=1341107785]
 

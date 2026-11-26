@@ -1,5 +1,11 @@
+class_name GameLight
 extends DirectionalLight2D
 
+static var instance: GameLight
+
+func _ready():
+	instance = self
+	
 func lerp_color(_color: Color, _time: float = 0):
 	if _time <= 0:
 		color = _color

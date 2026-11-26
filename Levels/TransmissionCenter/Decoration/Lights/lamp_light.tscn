@@ -13,7 +13,7 @@ blend_mode = 1
 
 [node name="LampLight" type="Area2D" unique_id=595104892]
 collision_layer = 0
-collision_mask = 5376
+collision_mask = 4352
 script = ExtResource("1_awywa")
 break_sound = ExtResource("2_uckq1")
 obj_particle = ExtResource("3_260pu")

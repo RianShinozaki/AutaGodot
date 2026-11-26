@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c5anxl4gh266x" path="res://Actors/Enemies/Lumpy/LumpySheet.png" id="9_sru0y"]
 [ext_resource type="Shader" uid="uid://c80njbrq3r8ks" path="res://UI/ui_square.gdshader" id="13_ccb1e"]
 [ext_resource type="Texture2D" uid="uid://8eey14t8daqn" path="res://UI/GamePauseMenu/Triangles.png" id="15_8hdo2"]
-[ext_resource type="Texture2D" uid="uid://ck7kmmlb34gir" path="res://UI/Game/Auta_UI_mockup_test.png" id="16_hdrb0"]
+[ext_resource type="Texture2D" uid="uid://bqo05r5o383c4" path="res://UI/Game/Auta_UI_mockup_colour.png" id="16_qa2pn"]
+[ext_resource type="Texture2D" uid="uid://bjamttp6m06u" path="res://UI/Game/Auta_Portrait_Final.png" id="17_350d7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa2pn"]
 shader = ExtResource("13_ccb1e")
@@ -126,7 +127,6 @@ offset_bottom = 63.0
 texture = SubResource("PlaceholderTexture2D_ijkxl")
 
 [node name="HPBar" type="Control" parent="PlayUI" unique_id=737186914]
-visible = false
 z_index = 1
 anchors_preset = 0
 offset_left = 87.0
@@ -188,7 +188,6 @@ text = "HP"
 label_settings = SubResource("LabelSettings_sru0y")
 
 [node name="AutaTab" type="Control" parent="PlayUI" unique_id=1593533045]
-visible = false
 texture_filter = 1
 anchors_preset = 0
 offset_left = 39.0
@@ -532,10 +531,23 @@ label_settings = SubResource("LabelSettings_ccb1e")
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PlayUI" unique_id=1573951901]
+visible = false
 layout_mode = 0
-offset_right = 167.962
-offset_bottom = 94.47863
-texture = ExtResource("16_hdrb0")
+offset_left = 16.165
+offset_top = 12.5
+offset_right = 216.16501
+offset_bottom = 125.0
+texture = ExtResource("17_350d7")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="PlayUI" unique_id=1126035138]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.5
+offset_right = 204.0
+offset_bottom = 129.0
+texture = ExtResource("16_qa2pn")
 expand_mode = 5
 
 [node name="PauseMenu" type="Control" parent="." unique_id=978956667]

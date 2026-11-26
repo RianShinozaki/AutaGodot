@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	if abs(entity.velocity.x) < mov_param.get_minimum_speed(entity):
 		entity.velocity.x = 0
 	
-	if entity.velocity.length() < hurt_param.recovery_min_speed:
+	if entity.velocity.x < hurt_param.recovery_min_speed:
 		counter += delta
 		
 	if counter >= hurt_param.recovery_time:
