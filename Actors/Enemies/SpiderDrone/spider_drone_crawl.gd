@@ -4,6 +4,8 @@ extends ActionState
 @onready var forward_cast: RayCast2D = $"../../SpecialAttributes/TerrainRaycasts/Forward"
 var param: SpiderDroneParam
 var grounded_buffer: float = 0
+var knockback_time = 0
+var knockback_power = 0
 
 func _ready():
 	super._ready()
@@ -12,13 +14,20 @@ func _ready():
 func _process(delta):
 	if not active: return
 	
-	if entity.is_on_floor(): #Look ahead for walls to climb (rotating up)
-		entity.velocity.x = param.crawl_speed
+	if entity.is_on_floor():
+		
+		if knockback_time <= 0:
+			entity.velocity.x = param.crawl_speed
+		else:
+			entity.velocity.x = knockback_power
+			knockback_time -= delta
+			
+		entity.up_direction = entity.get_floor_normal()
+		entity.gravity_direction = -entity.up_direction
+		
 		forward_cast.target_position.x = 12.0
 		forward_cast.position.y = -15
 		grounded_buffer = 0.3
-		entity.up_direction = entity.get_floor_normal()
-		entity.gravity_direction = -entity.up_direction
 		
 	elif grounded_buffer > 0 and not entity.is_on_floor(): #Look behind for walls to climb (rotating down)
 		entity.move(-Vector2.UP*14, 1.0/60, false)
@@ -26,13 +35,12 @@ func _process(delta):
 		forward_cast.position.y = 0
 		grounded_buffer -= delta
 		if forward_cast.is_colliding():
-			entity.rotation = forward_cast.get_collision_normal().angle() + PI/2
 			entity.global_position = forward_cast.get_collision_point()
-			entity.up_direction = Vector2.from_angle(entity.rotation - PI/2)
+			entity.up_direction = forward_cast.get_collision_normal()
 			entity.gravity_direction = -entity.up_direction
 			entity.move(-Vector2.UP*14, 1.0/60, false)
 		
-	if entity.is_on_wall():
+	if entity.is_on_wall(): #Rotate up if hitting a wall
 		entity.up_direction = entity.get_wall_normal()
 		entity.gravity_direction = -entity.up_direction
 		
@@ -51,3 +59,15 @@ func _process(delta):
 	if not entity.is_on_floor() and grounded_buffer <= 0: #Found no walls in time, falling
 		entity.up_direction = Vector2.UP
 		entity.gravity_direction = -Vector2.UP
+
+func _end() -> void:
+	super._end()
+	entity.up_direction = Vector2.UP
+	entity.gravity_direction = -entity.up_direction
+		
+func process_knockback(_knockback: Vector2):
+	var _knockback_force = _knockback.project(entity.up_direction.rotated(-PI/2))
+	var _knockback_sign = entity.up_direction.angle_to(_knockback)
+	
+	knockback_power = _knockback_force.length() * _knockback_sign
+	knockback_time = 0.2

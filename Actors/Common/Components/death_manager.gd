@@ -23,7 +23,8 @@ func query_death(_hitbox: Hitbox):
 			else:
 				entity.switch_action_state_name("StunState")
 				if entity is AIEntity:
-					entity.current_ai_state.active = false
+					if entity.current_ai_state != null:
+						entity.current_ai_state.active = false
 		
 func death():
 	var _burst = pool.spawn_object()

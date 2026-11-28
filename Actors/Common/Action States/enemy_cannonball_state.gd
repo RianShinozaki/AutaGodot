@@ -26,6 +26,7 @@ func _start() -> void:
 	entity.collision_mode = entity.COLLISION_MODE_BOUNCE
 	anim.get("parameters/playback").start("Thrown", true)
 	entity.gravity = 0
+	entity.apply_physics = true
 	$"../../Art/AfterImageGenerator".start_afterimages()
 	
 func _process(delta: float) -> void:

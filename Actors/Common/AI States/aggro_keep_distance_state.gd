@@ -5,7 +5,6 @@ var origin_position: Vector2
 var inp: InputManager
 var aggro_param: EntityAggroKeepDistanceParameters
 @onready var anim: AnimationTree = $"../../Art/AnimationTree"
-
 const ATTACK_BUTTON = "B"
 
 var attack_counter: float
@@ -49,7 +48,7 @@ func _process(_delta: float) -> void:
 	else:
 		inp.set_input_direction(Vector2.ZERO)
 
-	if entity.is_on_floor() or not aggro_param.increment_counter_only_grounded:
+	if not (not entity.is_on_floor() and aggro_param.increment_counter_only_grounded):
 		attack_counter += _delta
 		if attack_counter > aggro_param.attack_wait_time:
 			attack_counter = randf_range(-aggro_param.attack_wait_time_variation, aggro_param.attack_wait_time_variation)

@@ -1,6 +1,7 @@
 extends AIState
 
 @export var patrol_state: int
+@export var can_patrol_in_air: bool = false
 
 var patrol_counter: float = 0
 var origin_position: Vector2

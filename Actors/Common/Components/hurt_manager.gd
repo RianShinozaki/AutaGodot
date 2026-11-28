@@ -57,7 +57,7 @@ func process_hurt(_hitbox: Area2D):
 	entity.inflict_hitstun(_len, _dir, _hb_data.hitstun_duration)
 	
 	if _dist_to_cam < 400:
-		GameCamera.instance.shake_screen(_len, 0.25)
+		GameCamera.instance.shake_screen(sqrt(_len), 0.25)
 	
 	var offset: Vector2 = (_hitbox.global_position - entity.global_position).normalized()*4
 	

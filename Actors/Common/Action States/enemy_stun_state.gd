@@ -82,6 +82,7 @@ func _process(delta: float) -> void:
 func _end() -> void:
 	entity.get_node("GenericAttributes/EntityStatus").can_be_stunned = false
 	art.material.set_shader_parameter("stunFX", 0)
+	entity.apply_physics = true
 	super._end()
 	
 #Grounded animation handler

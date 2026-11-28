@@ -12,7 +12,6 @@ max_speed = 30.0
 initial_speed = 30.0
 initial_speed_in_air = 35.0
 acceleration = 600.0
-acceleration_in_air = 100.0
 deceleration = 600.0
 deceleration_in_air = 70.0
 deceleration_above_speed = 120.0
