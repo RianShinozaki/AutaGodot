@@ -19,4 +19,5 @@ shader_parameter/emission_map = SubResource("PlaceholderTexture2D_p3rcc")
 shader_parameter/emission_strength = 0.0
 shader_parameter/outline_color_left = Color(1, 0, 1, 1)
 shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/outline_color_stun = Color(0, 0, 1, 1)
 shader_parameter/stunFX = 0.0

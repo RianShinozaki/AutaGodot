@@ -72,6 +72,7 @@ shader_parameter/emission_map = ExtResource("12_pwwud")
 shader_parameter/emission_strength = 0.585
 shader_parameter/outline_color_left = Color(1, 0, 1, 1)
 shader_parameter/outline_color_right = Color(0, 1, 1, 1)
+shader_parameter/outline_color_stun = Color(0, 0, 0, 1)
 shader_parameter/stunFX = 0.0
 
 [sub_resource type="Animation" id="Animation_merf2"]

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bvo2a2m6p25vy"]
+
+[ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Common/Components/ObjectPool.gd" id="1_tenx6"]
+[ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Effects/Oneshots/Land.tscn" id="2_oeiah"]
+[ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Effects/Oneshots/SlashFX.tscn" id="3_7ub7p"]
+[ext_resource type="PackedScene" uid="uid://ble3feonhjm7c" path="res://Effects/Oneshots/HitFX.tscn" id="4_3tc0e"]
+[ext_resource type="PackedScene" uid="uid://cimwbi0rmsxca" path="res://Effects/Oneshots/windburst.tscn" id="5_pyvu6"]
+[ext_resource type="PackedScene" uid="uid://l5arp1d430xi" path="res://Effects/Oneshots/stun_circle.tscn" id="5_vwi1n"]
+[ext_resource type="PackedScene" uid="uid://bimjw7qqi3lmu" path="res://Effects/Oneshots/wallslam.tscn" id="6_g1u0c"]
+[ext_resource type="PackedScene" uid="uid://dow28ow6nv6d" path="res://Effects/Oneshots/sonicboom.tscn" id="7_72l6u"]
+[ext_resource type="PackedScene" uid="uid://bp61slk7a2ff1" path="res://Effects/Oneshots/enemy_death.tscn" id="8_bv4dj"]
+
+[node name="CommonObjectPools" type="Node" unique_id=1362206061]
+
+[node name="Land" type="Node" parent="." unique_id=1927095109]
+script = ExtResource("1_tenx6")
+object = ExtResource("2_oeiah")
+count = 10
+
+[node name="SlashFX" type="Node" parent="." unique_id=1275341292]
+script = ExtResource("1_tenx6")
+object = ExtResource("3_7ub7p")
+count = 10
+
+[node name="HitFX" type="Node" parent="." unique_id=1080822144]
+script = ExtResource("1_tenx6")
+object = ExtResource("4_3tc0e")
+count = 10
+
+[node name="StunCircle" type="Node" parent="." unique_id=57683436]
+script = ExtResource("1_tenx6")
+object = ExtResource("5_vwi1n")
+count = 10
+
+[node name="Windburst" type="Node" parent="." unique_id=555472765]
+script = ExtResource("1_tenx6")
+object = ExtResource("5_pyvu6")
+count = 6
+
+[node name="WallSlam" type="Node" parent="." unique_id=817631359]
+script = ExtResource("1_tenx6")
+object = ExtResource("6_g1u0c")
+count = 10
+
+[node name="SonicBoom" type="Node" parent="." unique_id=2012123420]
+script = ExtResource("1_tenx6")
+object = ExtResource("7_72l6u")
+count = 20
+
+[node name="DeathExplosion" type="Node" parent="." unique_id=205207153]
+script = ExtResource("1_tenx6")
+object = ExtResource("8_bv4dj")
+count = 10

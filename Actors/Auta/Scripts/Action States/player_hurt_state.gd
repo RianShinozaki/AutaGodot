@@ -12,8 +12,6 @@ var hurt_param: PlayerHurtParameters
 
 var counter: float = 0
 
-@onready var hit_fx_pool = $"../../SpecialAttributes/ObjectPools/HitFX"
-
 func _ready() -> void:
 	super._ready()
 	auta = entity as Auta

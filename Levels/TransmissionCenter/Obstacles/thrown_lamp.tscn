@@ -13,7 +13,7 @@ damage = 1
 x_knockback = 50.0
 knockback_power = 2
 hitstun_duration = 0.15
-impact_fx = "OrbBurst"
+impact_fx = "HitFX"
 impact_sound = ExtResource("2_w7fq1")
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 

@@ -1,7 +1,7 @@
 extends ActionState
 
-@onready var slam_fx_pool = $"../../SpecialAttributes/ObjectPools/WallSlam"
-@onready var boom_fx_pool = $"../../SpecialAttributes/ObjectPools/SonicBoom"
+var slam_fx_pool = CommonObjectPools.get_node("WallSlam")
+var boom_fx_pool = CommonObjectPools.get_node("SonicBoom")
 var inp: InputManager
 var anim: AnimationTree
 var grabbed: bool = false

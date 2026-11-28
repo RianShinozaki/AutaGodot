@@ -17,9 +17,6 @@
 [ext_resource type="Script" uid="uid://b7guwprxh4pmy" path="res://Effects/AfterImageGenerator.gd" id="10_w7nl7"]
 [ext_resource type="PackedScene" uid="uid://cqa8tytdncd0s" path="res://Effects/Oneshots/after_image.tscn" id="11_xugyf"]
 [ext_resource type="Script" uid="uid://ckbikphybwc2j" path="res://Common/Components/ObjectPool.gd" id="13_3s03o"]
-[ext_resource type="PackedScene" uid="uid://c5db1ofb4p1qx" path="res://Effects/Oneshots/Land.tscn" id="14_pglu5"]
-[ext_resource type="PackedScene" uid="uid://ble3feonhjm7c" path="res://Effects/Oneshots/HitFX.tscn" id="15_ih27p"]
-[ext_resource type="PackedScene" uid="uid://dtrd4o1pxulkh" path="res://Effects/Oneshots/SlashFX.tscn" id="16_ggq7g"]
 [ext_resource type="PackedScene" uid="uid://jxbt53i5ibrm" path="res://Actors/Common/Components/enemy_generic_attributes.tscn" id="16_h6ji7"]
 [ext_resource type="PackedScene" uid="uid://7qyd1unc7cjw" path="res://Effects/Oneshots/BloodSpurt.tscn" id="17_t3lta"]
 [ext_resource type="Script" uid="uid://bxlxjbv23a585" path="res://Actors/Common/Components/death_manager.gd" id="18_3s03o"]
@@ -27,9 +24,8 @@
 [ext_resource type="Script" uid="uid://nnjq040k661b" path="res://Actors/Common/Action States/enemy_normal_state.gd" id="19_s0u4b"]
 [ext_resource type="Script" uid="uid://b7ynkgvkr7vca" path="res://Actors/Common/Action States/enemy_hurt_state.gd" id="20_qqell"]
 [ext_resource type="PackedScene" uid="uid://bp61slk7a2ff1" path="res://Effects/Oneshots/enemy_death.tscn" id="22_fkov2"]
-[ext_resource type="PackedScene" uid="uid://bimjw7qqi3lmu" path="res://Effects/Oneshots/wallslam.tscn" id="22_psrlb"]
 [ext_resource type="Script" uid="uid://bkffy6a8vknj" path="res://Actors/Common/AI States/patrol_state.gd" id="23_ugovn"]
-[ext_resource type="PackedScene" uid="uid://dow28ow6nv6d" path="res://Effects/Oneshots/sonicboom.tscn" id="24_mt4jo"]
+[ext_resource type="AudioStream" uid="uid://ck4b6m41vc0an" path="res://Actors/Common/Audio/Bash-Impact.wav" id="24_ospwh"]
 [ext_resource type="Script" uid="uid://b5ilw57hqw2c" path="res://Actors/Common/AI States/aggro_keep_distance_state.gd" id="24_widae"]
 [ext_resource type="Script" uid="uid://cpqb3ux5hqrdj" path="res://Actors/Common/Components/entity_hitbox.gd" id="25_3s03o"]
 [ext_resource type="Script" uid="uid://gqx4hwkk8jmx" path="res://Actors/Common/Components/hurt_manager.gd" id="25_jkofg"]
@@ -536,7 +532,7 @@ x_knockback_is_relative = true
 knockback_power = 3
 hitstun_duration = 0.15
 impact_fx = "HitFX"
-impact_sound = ExtResource("26_clcoo")
+impact_sound = ExtResource("24_ospwh")
 damage_type = 2
 metadata/_custom_type_script = "uid://3pmq8ed0n1bc"
 
@@ -634,31 +630,6 @@ script = ExtResource("25_jkofg")
 script = ExtResource("18_3s03o")
 
 [node name="ObjectPools" type="Node2D" parent="SpecialAttributes" unique_id=827681176]
-
-[node name="Land" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=194386854]
-script = ExtResource("13_3s03o")
-object = ExtResource("14_pglu5")
-count = 2
-
-[node name="HitFX" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1774795779]
-script = ExtResource("13_3s03o")
-object = ExtResource("15_ih27p")
-count = 2
-
-[node name="WallSlam" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1991167845]
-script = ExtResource("13_3s03o")
-object = ExtResource("22_psrlb")
-count = 2
-
-[node name="SonicBoom" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=840241800]
-script = ExtResource("13_3s03o")
-object = ExtResource("24_mt4jo")
-count = 6
-
-[node name="SlashFX" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=673442656]
-script = ExtResource("13_3s03o")
-object = ExtResource("16_ggq7g")
-count = 2
 
 [node name="BloodSpurt" type="Node" parent="SpecialAttributes/ObjectPools" unique_id=1226366956]
 script = ExtResource("13_3s03o")

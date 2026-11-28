@@ -1,6 +1,6 @@
 extends ActionState
 
-@onready var land_fx_pool = $"../../SpecialAttributes/ObjectPools/Land"
+var land_fx_pool = CommonObjectPools.get_node("Land")
 @onready var wind_fx_pool = $"../../SpecialAttributes/ObjectPools/Windburst"
 @onready var aim_arrow = $AimArrow
 @onready var aim_reticle = $AimReticle
@@ -15,6 +15,7 @@ var throw_param: AutaThrowParameters
 @export var land_sound: AudioStream
 
 var grabbed_entity: Node2D
+var hold_timer = 0
 
 func _ready() -> void:
 	super._ready()
@@ -44,6 +45,10 @@ func _start() -> void:
 	
 	aim_arrow.visible = true
 	aim_reticle.visible = true
+	hold_timer = 0
+	
+	GameCamera.instance.set_speed_line_visibility(true)
+	$FlipPivot.scale.x = 1 if not $"../../Art".flip_h else -1
 	
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -77,6 +82,10 @@ func _process(delta: float) -> void:
 	
 	grabbed_entity.entity.apply_physics = false
 	grabbed_entity.entity.velocity = Vector2.ZERO
+	
+	hold_timer += delta
+	if hold_timer > 1:
+		throw_that_thang()
 
 func _end() -> void:
 	super._end()
@@ -84,9 +93,14 @@ func _end() -> void:
 	Engine.time_scale = 1
 	aim_arrow.visible = false
 	aim_reticle.visible = false
+	throw_that_thang()
+	GameCamera.instance.set_speed_line_visibility(false)
 		
 func on_orb():
 	if not active: return
+	throw_that_thang()
+
+func throw_that_thang():
 	if grabbed_entity != null and is_instance_valid(grabbed_entity):
 		grabbed_entity.throw(aim_reticle.position.normalized(), throw_param.throw_power)
 		grabbed_entity = null
@@ -95,11 +109,12 @@ func on_orb():
 		entity.switch_action_state_name("NormalState")
 		var _wind = wind_fx_pool.spawn_object()
 		_wind.global_position = entity.global_position
-
+		auta.can_orb = true
+		
 #Grounded animation handler
 func just_grounded(_normal: Vector2, _velocity: Vector2, _position: Vector2):
 	if _velocity.y < 60: return
-	
+	throw_that_thang()
 	SFXController.play_sound(land_sound, global_position)
 	var fx: Node2D = land_fx_pool.spawn_object()
 	if fx != null:

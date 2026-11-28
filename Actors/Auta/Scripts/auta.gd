@@ -56,6 +56,7 @@ func on_impact(_hitbox: Hitbox, _hurtbox: Hurtbox):
 
 func process_damage(_area):
 	if not invincible:
+		PlayerUI.instance.player_hurt()
 		invincible = true
 		$SpecialAttributes/HurtManager.process_hurt(_area)
 		$Art.modulate.a = 0.5

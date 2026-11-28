@@ -9,7 +9,7 @@ var hurt_param: PlayerHurtParameters
 
 var counter: float = 0
 
-@onready var hit_fx_pool = $"../../SpecialAttributes/ObjectPools/HitFX"
+var hit_fx_pool = CommonObjectPools.get_node("HitFX")
 
 func _ready() -> void:
 	super._ready()

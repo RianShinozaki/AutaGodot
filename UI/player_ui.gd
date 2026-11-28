@@ -88,3 +88,5 @@ func toggle_menu():
 	menu_active = menu_active
 	play_ui.visible = not menu_active
 	
+func player_hurt():
+	$PlayUI/AutaTab/AnimationPlayer.play("Hurt")

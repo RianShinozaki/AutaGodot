@@ -4,6 +4,7 @@ uniform sampler2D emission_map : filter_nearest, repeat_disable;
 uniform float emission_strength = 0.0;
 uniform vec4 outline_color_left : source_color;
 uniform vec4 outline_color_right : source_color;
+uniform vec4 outline_color_stun : source_color;
 uniform float stunFX;
 
 varying vec4 color;

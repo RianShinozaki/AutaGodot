@@ -21,6 +21,8 @@ var tween: Tween
 
 var zoom_lock: bool
 
+var speed_lines_visible: bool = false
+
 func _enter_tree() -> void:
 	instance = self
 	if not targets.is_empty():
@@ -62,7 +64,13 @@ func _physics_process(_delta: float) -> void:
 		
 	if shake_amount > 0:
 		global_position += Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
-
+	
+	$CanvasLayer/SpeedLines.speed_scale = 1.0/Engine.time_scale
+	if speed_lines_visible: 
+		$CanvasLayer/SpeedLines.modulate.a = move_toward($CanvasLayer/SpeedLines.modulate.a, 0.4, _delta / Engine.time_scale)
+	else:
+		$CanvasLayer/SpeedLines.modulate.a = move_toward($CanvasLayer/SpeedLines.modulate.a, 0, _delta / Engine.time_scale)
+	
 func get_camera_size():
 	return get_viewport_rect().size/zoom.x
 	
@@ -122,3 +130,6 @@ func lerp_to_position(_target: Vector2, _time: float):
 	await _tween.finished
 	target_position = _target
 	emit_signal("reached_position")
+	
+func set_speed_line_visibility(_visible: bool):
+	speed_lines_visible = _visible

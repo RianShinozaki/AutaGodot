@@ -30,6 +30,7 @@ Music="*uid://m65mqk4g3464"
 SaveSystem="*uid://d1us5uy6bi0iq"
 Global="*uid://maj7ygy3uugy"
 DialogueManager="*uid://c3rodes2l3gxb"
+CommonObjectPools="*uid://bvo2a2m6p25vy"
 
 [debug]
 

@@ -9,6 +9,7 @@ extends Node2D
 @export var capture_ui: bool = true
 
 @onready var object_pools = $"../ObjectPools"
+var common_pools = CommonObjectPools
 
 var entity: CollisionEntity
 
@@ -66,7 +67,7 @@ func process_hurt(_hitbox: Area2D):
 		
 	#Create FX
 	if _hb_data.impact_fx != "":
-		var pool = object_pools.get_node(_hb_data.impact_fx)
+		var pool = common_pools.get_node(_hb_data.impact_fx)
 		var fx: Node2D = pool.spawn_object()
 		if fx != null:
 			fx.global_position = entity.global_position + offset

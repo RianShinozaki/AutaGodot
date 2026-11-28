@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://fr67c83tjktl" path="res://Common/Camera/GameCamera.gd" id="1_fxn4p"]
 [ext_resource type="Shader" uid="uid://crij0fawgr8t6" path="res://Effects/Desaturate.tres" id="2_317n0"]
+[ext_resource type="Texture2D" uid="uid://ca68imfs5y3y" path="res://Effects/Images/Screen/SpeedLines/spr_SpeedLines_0.png" id="3_ehbb6"]
+[ext_resource type="Texture2D" uid="uid://cbto7t4bu32fp" path="res://Effects/Images/Screen/SpeedLines/spr_SpeedLines_1.png" id="4_euf0g"]
+[ext_resource type="Texture2D" uid="uid://butkiw82s6a0o" path="res://Effects/Images/Screen/SpeedLines/spr_SpeedLines_2.png" id="5_82n3y"]
+[ext_resource type="Texture2D" uid="uid://i48k2py5mt0x" path="res://Effects/Images/Screen/SpeedLines/spr_SpeedLines_3.png" id="6_awmmu"]
+[ext_resource type="Texture2D" uid="uid://v4uhi4ybsj6k" path="res://Effects/Images/Screen/SpeedLines/spr_SpeedLines_4.png" id="7_asspu"]
+[ext_resource type="Texture2D" uid="uid://tahb45tish6j" path="res://Effects/Images/Screen/SpeedLines/spr_SpeedLines_5.png" id="8_qslnw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1w4b"]
 shader = ExtResource("2_317n0")
@@ -39,6 +45,32 @@ height = 259
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.512195, 0)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgbhd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ehbb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_euf0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_82n3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_awmmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_asspu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qslnw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Cam" type="Node2D" unique_id=1204299270]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1173792142]
@@ -50,7 +82,7 @@ visible = false
 material = SubResource("ShaderMaterial_c1w4b")
 texture = SubResource("PlaceholderTexture2D_t1264")
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=661491313]
+[node name="FunkyGradient1" type="Sprite2D" parent="Camera2D" unique_id=661491313]
 visible = false
 light_mask = 0
 z_index = -3997
@@ -60,10 +92,21 @@ position = Vector2(2, -12)
 scale = Vector2(1, 0.978764)
 texture = SubResource("GradientTexture2D_ajp8n")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=1184107212]
+[node name="FunkyGradient2" type="Sprite2D" parent="Camera2D" unique_id=1184107212]
 visible = false
 light_mask = 0
 material = SubResource("CanvasItemMaterial_yvfxt")
-position = Vector2(0, 26)
-scale = Vector2(1, 0.795367)
+position = Vector2(6.5, 60.999985)
+scale = Vector2(1.0286343, 1.0656371)
 texture = SubResource("GradientTexture2D_k1pnl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=958890160]
+
+[node name="SpeedLines" type="AnimatedSprite2D" parent="Camera2D/CanvasLayer" unique_id=1875806956]
+modulate = Color(1, 1, 1, 0.19607843)
+texture_filter = 1
+position = Vector2(766.99994, 429.50006)
+scale = Vector2(3.8349998, 4.9555554)
+sprite_frames = SubResource("SpriteFrames_jgbhd")
+autoplay = "default"
+frame_progress = 0.6097571

@@ -1,6 +1,7 @@
 extends ActionState
 
-@onready var land_fx_pool = $"../../SpecialAttributes/ObjectPools/Land"
+var land_fx_pool = CommonObjectPools.get_node("Land")
+var stun_fx_pool = CommonObjectPools.get_node("StunCircle")
 var inp: InputManager
 var anim: AnimationTree
 
@@ -12,6 +13,14 @@ var grabbed: bool = false
 
 @export var auto_flip: bool = true
 var parent_cache: Node
+@onready var art = $"../../Art"
+@onready var death_manager = $"../../SpecialAttributes/DeathManager"
+
+var stun_vis_counter = 0
+var stun_vis_counter_max = 0.4
+
+var stun_time = 0
+const max_stun_time = 4
 
 func _ready() -> void:
 	super._ready()
@@ -31,6 +40,9 @@ func _start() -> void:
 	$"../../SpecialAttributes/HurtManager".power_resistance = hurt_param.power_resistance_normal
 	anim.get("parameters/playback").start("Stunned", true)
 	entity.get_node("GenericAttributes/EntityStatus").stunned = true
+	var fx = stun_fx_pool.spawn_object()
+	if fx != null:
+		fx.global_position = entity.global_position
 	
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -53,11 +65,23 @@ func _process(delta: float) -> void:
 	var _art: Sprite2D = entity.get_node("Art")
 	var _to_angle: float = 0
 	_art.global_rotation = lerp_angle(_art.global_rotation,_to_angle,delta * 10)
+	
+	if not grabbed:
+		stun_vis_counter += delta
+		if stun_vis_counter > stun_vis_counter_max:
+			stun_vis_counter = 0
+		elif stun_vis_counter > stun_vis_counter_max/2:
+			art.material.set_shader_parameter("stunFX", -1.0)
+		else:
+			art.material.set_shader_parameter("stunFX", 0)
+		stun_time += delta
+		if stun_time > max_stun_time:
+			death_manager.death()
 
 
 func _end() -> void:
 	entity.get_node("GenericAttributes/EntityStatus").can_be_stunned = false
-	
+	art.material.set_shader_parameter("stunFX", 0)
 	super._end()
 	
 #Grounded animation handler
@@ -72,6 +96,7 @@ func play_animation_oneshot(_anim: String):
 
 
 func _on_grabbox_area_entered(area):
+	art.material.set_shader_parameter("stunFX", 0)
 	Auta.instance.switch_action_state_name("GrabState")
 	parent_cache = entity.get_parent()
 	entity.get_parent().call_deferred("remove_child",entity)

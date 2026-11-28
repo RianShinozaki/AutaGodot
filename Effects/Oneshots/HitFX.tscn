@@ -50,7 +50,7 @@ _data = {
 &"Slice": SubResource("Animation_e0svg")
 }
 
-[node name="HitFX" type="Sprite2D"]
+[node name="HitFX" type="Sprite2D" unique_id=918329158]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_e0svg")
 texture = ExtResource("1_e0svg")
@@ -59,12 +59,10 @@ hframes = 6
 frame = 1
 script = ExtResource("2_o7x61")
 
-[node name="ObjectPoolObject" type="Node" parent="."]
+[node name="ObjectPoolObject" type="Node" parent="." unique_id=457134771]
 script = ExtResource("3_2ag5d")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wcon5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=917302723]
+libraries/ = SubResource("AnimationLibrary_wcon5")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

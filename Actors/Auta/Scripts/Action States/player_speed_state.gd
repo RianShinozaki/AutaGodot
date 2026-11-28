@@ -1,6 +1,6 @@
 extends ActionState
 
-@onready var land_fx_pool = $"../../SpecialAttributes/ObjectPools/Land"
+var land_fx_pool = CommonObjectPools.get_node("Land")
 var auta: Auta
 var inp: InputManager
 var anim: AnimationTree
